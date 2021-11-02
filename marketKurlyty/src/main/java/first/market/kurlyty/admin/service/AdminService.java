@@ -8,4 +8,6 @@ public interface AdminService {
 
 	int joinProc(AdminVO admin);
 
+	AdminVO loginGetUser(AdminVO admin);
+
 }
