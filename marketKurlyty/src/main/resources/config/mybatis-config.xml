@@ -13,15 +13,15 @@
  		<typeAlias type="first.market.kurlyty.user.vo.UserAddressList" alias="userAddressList"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminVO" alias="admin"/>
  		<typeAlias type="first.market.kurlyty.user.vo.Board_noticeVO" alias="noticeList"/> <!-- bk -->
- 		<typeAlias type="first.market.kurlyty.user.vo.RegularVO" alias="regular"/> <!--  bk -->
- 		<typeAlias type="first.market.kurlyty.user.vo.PersonalQnaVO" alias="personalQna"/> <!--  sungy -->
+ 		<typeAlias type="first.market.kurlyty.user.vo.RegularVO" alias="regular"/> 
+ 		<typeAlias type="first.market.kurlyty.user.vo.PersonalQnaVO" alias="personalQna"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
  		<mapper resource="config/mappings/user-mapping.xml"/>
  		<mapper resource="config/mappings/admin-mapping.xml"/>
  		<mapper resource="config/mappings/board_notice-mapping.xml"/> <!-- bk -->
- 		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
- 		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
+ 		<mapper resource="config/mappings/regular-mapping.xml"/>	
+ 		<mapper resource="config/mappings/personalQna-mapping.xml"/>
  	</mappers>
  </configuration>
