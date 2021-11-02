@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+tit_page {
+	overflow: hidden;
+	width: 1050 px;
+	margin: 0 auto;
+	padding: 50 px 0 51 px;
+}
+
+.tit_page h2.tit {
+	font-weight: 700;
+	font-size: 28px;
+	color: #333;
+	line-height: 35px;
+	text-align: center;
+	letter-spacing: -1px;
+}
+
+.tit_page .sub {
+	font-family: noto sans;
+	font-size: 14px;
+	color: #999;
+	line-height: 20px;
+	letter-spacing: -.3px;
+	text-align: center;
+}
+
+#main {
+	border-bottom: 1 px solid #f7f7f7;
+}
+
+#content {
+	min-width: 1050 px;
+	padding-bottom: 60 px;
+}
+
+#header, #container, #content {
+	position: relative;
+}
+
+.boardView {
+	table-layout: fixed;
+	border-top: 2 px solid #333;
+	border-bottom: 1 px solid #f4f4f4;
+	color: #333;
+	line-height: 180%;
+	margin-top: 20 px;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.boardView th {
+	width: 130 px;
+	padding: 13 px 0 13 px 20 px;
+	background-color: #f7f5f8;
+	border-top: 1 px solid #f4f4f4;
+	text-align: left;
+}
+
+.boardView th {
+	width: 130 px;
+	padding: 13 px 0 13 px 20 px;
+	background-color: #f7f5f8;
+	border-top: 1 px solid #f4f4f4;
+	text-align: left;
+}
+
+.boardView td {
+	width: auto;
+	padding: 13 px 0 13 px 23 px;
+	border-top: 1 px solid #f4f4f4;
+}
+
+.boardView tr.etcArea td {
+	padding: 0;
+	border: 0;
+}
+
+.boardView td {
+	width: auto;
+	padding: 13 px 0 13 px 23 px;
+	border-top: 1 px solid #f4f4f4;
+}
+
+.boardView tr.etcArea ul {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	width: 100%;
+	border-top: 1 px solid #f4f4f4;
+}
+
+ol, ul {
+	list-style-type: none;
+}
+
+.boardView tr.etcArea ul li {
+	float: left;
+}
+
+.boardView tr.etcArea ul .th {
+	float: left;
+	padding: 13 px 0 13 px 20 px;
+	width: 130 px;
+	background-color: #f7f5f8;
+}
+
+b, strong {
+	font-weight: 700;
+}
+
+.boardView tr.etcArea ul .td {
+	float: left;
+	padding: 13 px 0 13 px 20 px;
+	width: 180 px;
+}

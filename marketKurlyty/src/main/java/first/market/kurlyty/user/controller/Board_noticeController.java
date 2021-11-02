@@ -21,4 +21,10 @@ public class Board_noticeController {
 		model.addAttribute("board",board_noticeService.getBoard_noticeList(vo));
 		return "customerCenter/notice"; 
 	}
+	@RequestMapping("/notice_detail.do")
+	public String customerCenter2(Board_noticeVO vo,Model model) {
+		//board_noticeService.getBoard_noticeList(vo);
+		model.addAttribute("board",board_noticeService.getBoard_noticeList(vo));
+		return "customerCenter/notice_detail"; 
+	}
 }
