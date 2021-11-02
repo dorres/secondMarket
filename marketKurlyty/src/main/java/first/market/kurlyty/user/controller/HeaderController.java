@@ -161,13 +161,6 @@ public class HeaderController {
 	}
 	
 	/*login and Join*/
-	//회원가입
-	
-	//로그인
-	@RequestMapping("/login.do")
-	public String loginAndJoin2() {
-		return "login_and_join/login"; 
-	}
 	//아이디찾기
 	@RequestMapping("/idFind.do")
 	public String loginAndJoin3() {

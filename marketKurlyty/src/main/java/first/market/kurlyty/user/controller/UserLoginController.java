@@ -18,6 +18,12 @@ public class UserLoginController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/login.do")
+	public String login(Model model) {
+		return "login_and_join/login";
+	}
+	
+	
 	@RequestMapping("/loginProc.do")
 	public String loginProc(UserVO user, Model model) {
 		String securityPw = null;
