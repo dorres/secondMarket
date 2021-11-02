@@ -29,10 +29,8 @@ public class AdminJoinController {
 	public String joinProc(AdminVO admin) {
 		int success = 0;
 		try {
-			System.out.println(admin);/////
 			String securityPw = SecurityUtil.sha256(admin.getAdmin_pw());
 			admin.setAdmin_pw(securityPw);
-			System.out.println(securityPw);///////
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
