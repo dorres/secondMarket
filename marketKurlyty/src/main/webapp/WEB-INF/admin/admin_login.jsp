@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/login.css">
         <script src="jquery-3.6.0.min.js"></script>
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
     <section class="login-form">
         <h1>Market Kurlyty</h1>
-        <form action="">
+        <form action="LoginProc.mdo" method="post">
             <div class="int-area">
-                <input type="text" name="id" id="id"
+                <input type="text" name="admin_id" id="id"
                 autocomplete="off" required>
                 <label for="id">ID</label>
             </div>
             <div class="int-area">
-                <input type="password" name="pw" id="pw"
+                <input type="password" name="admin_pw" id="pw"
                 autocomplete="off" required>
                 <label for="pw">PASSWORD</label>
             </div>

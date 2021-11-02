@@ -28,9 +28,12 @@ public class AdminServiceImpl implements AdminService {
 		return success;
 	}
 	
-	
-	
-	
-	
+	@Override
+	public AdminVO loginGetUser(AdminVO admin) {
+		return adminDao.getAdmin(admin);
+	}
 	
 }
+	
+	
+	
