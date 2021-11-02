@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <jsp:include page="../user/default/top.jsp"></jsp:include>
-<link rel="styleSheet"
-	href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/tstyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/tstyle2.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/tstyle3.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <script>
@@ -29,67 +32,67 @@ function validateEmail(email){
 function formJoinSubmit(){
 
 	if(document.frmAdmin.admin_id.value==""){
-		alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_id.focus();
 		return;
 	}
 	
-	if(document.frmAdmin.chk_id.value=="ºÒ°¡´É"){
-		alert("Áßº¹µÈ ¾ÆÀÌµğ´Â »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+	if(document.frmAdmin.chk_id.value=="ë¶ˆê°€ëŠ¥"){
+		alert("ì¤‘ë³µëœ ì•„ì´ë””ëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 		document.frmAdmin.user_id.focus();
 		return;
 	}
 
 	if(document.frmAdmin.admin_pw.value==""){
-		alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_pw.focus();
 		return;
 	}
 	
 	if(document.frmAdmin.admin_pw_check.value==""){
-		alert("ºñ¹Ğ¹øÈ£ È®ÀÎÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_pw_check.focus();
 		return;
 	}
 	
 	if(document.frmAdmin.admin_pw.value!=document.frmAdmin.admin_pw_check.value){
-		alert("ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã È®ÀÎÇØ ÁÖ¼¼¿ä.");
+		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 		document.frmAdmin.admin_pw_check.focus();
 		return;
 	}
 	
 	if(document.frmAdmin.admin_name.value==""){
-		alert("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_name.focus();
 		return;
 	}
 	
 	if(document.frmAdmin.admin_email.value==""){
-		alert("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì´ë©”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_email.focus();
 		return;
 	}
 	
 	if(!validateEmail(document.frmAdmin.admin_email.value)){
-		alert("¿Ã¹Ù¸¥ ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		alert("ì˜¬ë°”ë¥¸ ì´ë©”ì¼ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 		document.frmAdmin.admin_email.focus();
 		return;
 	}
 	
 	if(document.frmAdmin.admin_phone.value==""){
-		alert("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_phone.focus();
 		return;
 	}
 	
 	if(document.frmAdmin.admin_address1.value==""){
-		alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_address1.focus();
 		return;
 	}
 
 	if(document.frmAdmin.admin_address2.value==""){
-		alert("»ó¼¼ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ìƒì„¸ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		document.frmAdmin.admin_address2.focus();
 		return;
 	}
@@ -117,63 +120,63 @@ function chkId(){
 
 				<table class="tbl_comm">
 						<tr class="fst">
-							<th>¾ÆÀÌµğ</th>
+							<th>ì•„ì´ë””</th>
 							<td>
-								<input type="text" name="admin_id" value="" maxlength="16" placeholder="6ÀÚ ÀÌ»óÀÇ ¿µ¹® È¤Àº ¿µ¹®°ú ¼ıÀÚ¸¦ Á¶ÇÕ">
-								<input id="posibleId" type="hidden" name="chk_id" value="ºÒ°¡´É">
-								<a class="btn default" href="javascript:chkId()">Áßº¹È®ÀÎ</a>
+								<input type="text" name="admin_id" value="" maxlength="16" placeholder="6ì ì´ìƒì˜ ì˜ë¬¸ í˜¹ì€ ì˜ë¬¸ê³¼ ìˆ«ìë¥¼ ì¡°í•©">
+								<input id="posibleId" type="hidden" name="chk_id" value="ë¶ˆê°€ëŠ¥">
+								<a class="btn default" href="javascript:chkId()">ì¤‘ë³µí™•ì¸</a>
 							</td>
 						</tr>
 
 						<tr>
-							<th>ºñ¹Ğ¹øÈ£</th>
+							<th>ë¹„ë°€ë²ˆí˜¸</th>
 							<td>
-								<input type="password" name="admin_pw" label="ºñ¹Ğ¹øÈ£" maxlength="16" class="reg_pw" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä">
+								<input type="password" name="admin_pw" label="ë¹„ë°€ë²ˆí˜¸" maxlength="16" class="reg_pw" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”">
 							</td>
 						</tr>
 
 						<tr class="member_pwd">
-							<th>ºñ¹Ğ¹øÈ£È®ÀÎ</th>
+							<th>ë¹„ë°€ë²ˆí˜¸í™•ì¸</th>
 							<td>
-								<input type="password" name="admin_pw_check" maxlength="16" class="confirm_pw" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÇÑ¹ø ´õ ÀÔ·ÂÇØÁÖ¼¼¿ä">
+								<input type="password" name="admin_pw_check" maxlength="16" class="confirm_pw" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ í•œë²ˆ ë” ì…ë ¥í•´ì£¼ì„¸ìš”">
 							</td>
 						</tr>
 
 						<tr>
-							<th>ÀÌ¸§</th>
+							<th>ì´ë¦„</th>
 							<td>
-								<input type="text" name="admin_name" value="" placeholder="ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä">
+								<input type="text" name="admin_name" value="" placeholder="ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”">
 							</td>
 						</tr>
 
 						<tr>
-							<th>ÀÌ¸ŞÀÏ</th>
+							<th>ì´ë©”ì¼</th>
 							<td>
-								<input type="text" name="admin_email" value="" data-email="" size="30" label="ÀÌ¸ŞÀÏ" placeholder="">
+								<input type="text" name="admin_email" value="" data-email="" size="30" label="ì´ë©”ì¼" placeholder="">
 							</td>
 						</tr>
 						
 						<tr class="field_phone">
-							<th>ÈŞ´ëÆù</th>
+							<th>íœ´ëŒ€í°</th>
 							<td>
 								<div class="phone_num">
-									<input type="text" value="" pattern="[0-9]*" name="admin_phone" placeholder="¼ıÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä" class="inp">
+									<input type="text" value="" pattern="[0-9]*" name="admin_phone" placeholder="ìˆ«ìë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”" class="inp">
 								</div>
 							</td>
 						</tr>
 
 					<tr class="fst">
-						<th>ÁÖ¼Ò</th>
+						<th>ì£¼ì†Œ</th>
 						<td>
 							<input id="addr1" type="text" name="admin_address1" value="" >
-							<a class="btn default" href="javascript:zip()">ÁÖ¼Ò°Ë»ö</a><br><br>
-							<input id="addr2" type="text" name="admin_address2" value="" placeholder="³ª¸ÓÁö ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä" >
+							<a class="btn default" href="javascript:zip()">ì£¼ì†Œê²€ìƒ‰</a><br><br>
+							<input id="addr2" type="text" name="admin_address2" value="" placeholder="ë‚˜ë¨¸ì§€ ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”" >
 							
 						</td>
 						
 					</tr>
 					<tr class="select_sex">
-						<th>Á÷±Ş</th>
+						<th>ì§ê¸‰</th>
 						<td>
 							<label class="">
 								<input type="radio" name="admin_position" value="master">
@@ -193,7 +196,7 @@ function chkId(){
 					</tr>
 				</table>
 				<div id="formSubmit" class="form_footer">
-					<button type="button" class="btn active btn_join" onclick="formJoinSubmit()">°¡ÀÔÇÏ±â</button>
+					<button type="button" class="btn active btn_join" onclick="formJoinSubmit()">ê°€ì…í•˜ê¸°</button>
 				</div>
 			</form>
 		</div>
