@@ -23,9 +23,9 @@ public class AdminLoginController {
 		return "admin_login";
 	}
 	
-	@RequestMapping("LoginProc.mdo")
+	//·Î±×ÀÎ
+	@RequestMapping("loginProc.mdo")
 	public String adminJoin(AdminVO admin, Model model) {
-		System.out.println(admin.getAdmin_id());
 		String securityPw = null;
 		AdminVO adminInfo = adminService.loginGetUser(admin);
 		String dbPw = adminInfo.getAdmin_pw();
@@ -41,11 +41,7 @@ public class AdminLoginController {
 		}else {
 			return "redirect:login.mdo";
 		}
-		
 	}
 	
-	@RequestMapping("index.mdo")
-	public String adminindex() {
-		return "admin_index";
-	}
+
 }

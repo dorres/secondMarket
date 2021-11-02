@@ -27,7 +27,7 @@ margin-top: -50px;
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="ben_index.jsp">Admin_kurlyty</a>
+		<a class="navbar-brand ps-3" href="index.html">Admin_kurlyty</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
 			id="sidebarToggle" href="#!">
@@ -37,7 +37,7 @@ margin-top: -50px;
 		<form
 			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 			<div class="input-group">
-				<input class="form-control" type="text" placeholder="검색"
+				<input class="form-control" type="text" placeholder="Search for..."
 					aria-label="Search for..." aria-describedby="btnNavbarSearch" />
 				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
 					<i class="fas fa-search"></i>
@@ -52,13 +52,19 @@ margin-top: -50px;
 					class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#!">셋팅</a></li>
-					<li><a class="dropdown-item" href="#!">활동로그</a></li>
+					<li><a class="dropdown-item" href="#!">Settings</a></li>
+					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">로그아웃</a></li>
+					<li><a class="dropdown-item" href="#!">Logout</a></li>
 				</ul></li>
 		</ul>
 	</nav>
+
+
+
+
+
+
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark"
@@ -66,31 +72,33 @@ margin-top: -50px;
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">
-							Market관리
-							</h3>
+							<h3>Market관리 </h3>
 						</div>
+						<!-- 상품관리 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts" aria-expanded="false"
 							aria-controls="collapseLayouts">
+							
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div> 상품관리
+							</div>상품관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">상품조회/수정</a> <a
-									class="nav-link" href="layout-sidenav-light.html">상품등록</a> <a
-									class="nav-link" href="*">템플릿관리</a>
+								<a class="nav-link" href="layout-static.html">상품조회/수정</a>
+								<a class="nav-link" href="layout-sidenav-light.html">상품등록</a>
+								<a class="nav-link" href="*">템플릿관리</a>
 							</nav>
 						</div>
-
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+						
+						<!-- 판매관리 -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" 
 							data-bs-target="#collapseLayouts2" aria-expanded="false"
 							aria-controls="collapseLayouts">
+							
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 판매관리
@@ -98,18 +106,19 @@ margin-top: -50px;
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts2"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">상품통합관리</a> <a
-									class="nav-link" href="layout-sidenav-light.html">취소관리</a> <a
-									class="nav-link" href="*">환불관리</a>
+								<a class="nav-link" href="layout-static.html">상품통합관리</a>
+								<a class="nav-link" href="layout-sidenav-light.html">취소관리</a>
+								<a class="nav-link" href="*">환불관리</a>
 							</nav>
 						</div>
-
+						
+						<!-- 정산관리 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts3" aria-expanded="false"
 							aria-controls="collapseLayouts">
+							
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 정산관리
@@ -117,18 +126,19 @@ margin-top: -50px;
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts3"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">정산내역</a> <a
-									class="nav-link" href="layout-sidenav-light.html">주별정산</a> <a
-									class="nav-link" href="*">월별정산</a>
+								<a class="nav-link" href="layout-static.html">정산내역</a>
+								<a class="nav-link" href="layout-sidenav-light.html">주별정산</a>
+								<a class="nav-link" href="*">월별정산</a>
 							</nav>
 						</div>
-
+						<!-- 카테고리
+						 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts4" aria-expanded="false"
 							aria-controls="collapseLayouts">
+							
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 카테고리
@@ -136,17 +146,19 @@ margin-top: -50px;
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts4"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="*">상위 카테고리</a> <a class="nav-link"
-									href="*">중위 카테고리</a> <a class="nav-link" href="*">하위 카테고리</a>
+								<a class="nav-link" href="*">상위 카테고리</a>
+								<a class="nav-link" href="*">중위 카테고리</a>
+								<a class="nav-link" href="*">하위 카테고리</a>
 							</nav>
 						</div>
-
+						
+						<!-- 회원관리 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts5" aria-expanded="false"
 							aria-controls="collapseLayouts">
+							
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 회원관리
@@ -154,22 +166,36 @@ margin-top: -50px;
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts5"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts5" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="*">회원관리</a> <a class="nav-link"
-									href="*">회원등급 관리</a> <a class="nav-link" href="*">약관관리</a>
+								<a class="nav-link" href="*">회원관리</a>
+								<a class="nav-link" href="*">회원등급 관리</a>
+								<a class="nav-link" href="*">약관관리</a>
 							</nav>
 						</div>
 						
-						<a class="nav-link collapsed" href="join.mdo" data-bs-toggle="collapse"
-							data-bs-target="#collapseLayouts10" aria-expanded="false"
+						<!-- 매니저 관리 -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapseLayouts6" aria-expanded="false"
 							aria-controls="collapseLayouts">
+							
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div>매니저관리</a>
-
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							</div>매니저관리
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseLayouts6" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="*">매니저관리</a>
+								<a class="nav-link" href="*">매니저등급 관리</a>
+								<a class="nav-link" href="*">매니저 등록</a>
+							</nav>
+						</div>
+						
+						<!--  리뷰관리 -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" 
 							data-bs-target="#collapseLayouts7" aria-expanded="false"
 							aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon">
@@ -179,15 +205,16 @@ margin-top: -50px;
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts7"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts7" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="*">리뷰</a> <a class="nav-link" href="*">문의</a>
+								<a class="nav-link" href="*">리뷰</a>
+								<a class="nav-link" href="*">문의</a>
 							</nav>
 						</div>
-
+						
+						<!-- 게시글 -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseLayouts6" aria-expanded="false"
+							data-bs-target="#collapseLayouts8" aria-expanded="false"
 							aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
@@ -196,11 +223,11 @@ margin-top: -50px;
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapseLayouts6"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts8" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="*">공지사항</a> <a class="nav-link"
-									href="*">자주하는 질문</a> <a class="nav-link" href="*">1:1문의</a>
+								<a class="nav-link" href="*">공지사항</a>
+								<a class="nav-link" href="*">자주하는 질문</a>
+								<a class="nav-link" href="*">1:1문의</a>
 							</nav>
 						</div>
 

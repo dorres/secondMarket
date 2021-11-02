@@ -204,7 +204,7 @@ ul.sub_on li.on{
 							onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'dropdown'})">쿠폰</a>
 							<!----></li>
 						<li><a href="/shop/member/myinfo.php">개인 정보 수정</a></li>
-						<li><a href="/shop/member/logout.php">로그아웃</a></li>
+						<li><a href="logoutProc.do">로그아웃</a></li>
 					</ul></li>
 			</c:if>
 			<!---->
