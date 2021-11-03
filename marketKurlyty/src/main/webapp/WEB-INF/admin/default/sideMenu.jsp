@@ -160,8 +160,7 @@
 									aria-labelledby="headingOne"
 									data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="login.html">회원목록</a>
-										<a class="nav-link" href="register.html">회원관리</a>
+										<a class="nav-link" href="admin_userList.mdo">회원관리</a>
 										<a class="nav-link" href="password.html">약관관리</a>
 									</nav>
 								</div>
@@ -179,7 +178,7 @@
 									aria-labelledby="headingOne"
 									data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="admin_member">매니저관리/등록</a>
+										<a class="nav-link" href="admin_adminList.mdo">매니저관리/등록</a>
 										<a class="nav-link" href="admin_join.mdo">매니저관리등록(임시)</a>
 
 									</nav>

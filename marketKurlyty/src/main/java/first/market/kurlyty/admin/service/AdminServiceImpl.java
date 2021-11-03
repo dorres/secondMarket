@@ -9,7 +9,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
-import first.market.kurlyty.user.vo.UserVO;
 
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
@@ -17,6 +16,7 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDao;
 	
+	//아이디 체크
 	@Override
 	public boolean idCheck(AdminVO admin) {
 		AdminVO adminData = adminDao.getAdmin(admin);
@@ -26,6 +26,7 @@ public class AdminServiceImpl implements AdminService {
 			return false;
 	}
 	
+	//회원가입처리
 	@Override
 	public int joinProc(AdminVO admin) {
 		int success = 0;
@@ -33,25 +34,25 @@ public class AdminServiceImpl implements AdminService {
 		return success;
 	}
 	
+	//아이디 체크
 	@Override
 	public AdminVO loginGetUser(AdminVO admin) {
 		return adminDao.getAdmin(admin);
 	}
 	
+	//관리자-관리자리스트
 	@Override
-	public List<AdminVO> memberAdmin(AdminVO admin){
-		return  adminDao.memberAdmin(admin);
+	public List<AdminVO> adminList(AdminVO admin){
+		return  adminDao.getAdminList(admin);
 	}
 	
+	//관리자-유저리스트
 	@Override
-	public List<UserVO> userList(UserVO user){
-		return  adminDao.userList(user);
+	public List<AdminUserVO> userList(AdminUserVO adminUser){
+		return  adminDao.getUserList(adminUser);
 	}
 	
-	@Override
-	public List<AdminUserVO> adminuserList(AdminUserVO adminuser){
-		return  adminDao.adminuserList(adminuser);
-	}
+	//관리자 로그아웃
 	@Override
 	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
