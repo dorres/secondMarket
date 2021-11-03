@@ -19,64 +19,45 @@
 		<main>
 			<div class="container-fluid px-4">
 
-				<!-- 여기만 수정해서 사용하세요!! -->
-				<h2 class="mt-4">회원관리</h2>
+				<h1 class="mt-4">매니저관리</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						여기내용을 수정
-						<a target="_blank" href="https://datatables.net/"> 이거 필요한가??</a> .
+						여기내용 수정
+						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 회원목록
+						<i class="fas fa-table me-1"></i> 매니저 목록
 					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>회원번호</th>
 									<th>아이디</th>
 									<th>이름</th>
-									<th>폰번</th>
-									<th>회원등급</th>
-									<th>마지막로그인</th>
-									<th>포인트</th>
-									<th>총금액</th>
-									<th>상태</th>
+									<th>직급</th>
 									<th>수정/삭제</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>회원번호</th>
 									<th>아이디</th>
 									<th>이름</th>
-									<th>폰번</th>
-									<th>회원등급</th>
-									<th>마지막로그인</th>
-									<th>포인트</th>
-									<th>총금액</th>
-									<th>상태</th>
+									<th>직급</th>
 									<th>수정/삭제</th>
 								</tr>
 							</tfoot>
 							<tbody>
-								<c:forEach var="userList" items="${userList }">
+								<c:forEach var="adminList" items="${adminList }">
 									<tr>
-										<td>${userList.user_serial }</td>
-										<td>${userList.user_id }</td>
-										<td>${userList.user_name }</td>
-										<td>${userList.user_phone }</td>
-										<td>${userList.user_membership_name }</td>
-										<td>${userList.user_last_login }</td>
-										<td>${userList.user_point }</td>
-										<td>${userList.user_total_purchase }</td>
-										<td>${userList.user_status }</td>
+										<td>${adminList.admin_id }</td>
+										<td>${adminList.admin_name }</td>
+										<td>${adminList.admin_position }</td>
 										<td>
 											<input type="button" value="수정">
 											<input type="button" value="삭제">
@@ -87,9 +68,11 @@
 						</table>
 					</div>
 				</div>
-				<!-- 여기만 수정해서 사용하세요!! -->
+
+
 			</div>
 		</main>
+
 		<jsp:include page="default/footer.jsp"></jsp:include>
 	</div>
 	<!-- Main -->

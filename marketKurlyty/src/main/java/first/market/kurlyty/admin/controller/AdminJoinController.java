@@ -19,12 +19,13 @@ public class AdminJoinController {
 	@Autowired
 	private AdminService adminService;
 	
+	//관리자 회원가입페이지
 	@RequestMapping("admin_join.mdo")
 	public String adminJoin(Model model) {
 		return "admin_join";
 	}
 	
-	//관리자 회원가입
+	//관리자 회원가입 처리
 	@RequestMapping("joinProc.mdo")
 	public String joinProc(AdminVO admin) {
 		int success = 0;

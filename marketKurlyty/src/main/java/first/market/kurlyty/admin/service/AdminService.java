@@ -16,11 +16,9 @@ public interface AdminService {
 
 	AdminVO loginGetUser(AdminVO admin);
 
-	List<AdminVO> memberAdmin(AdminVO admin);
+	List<AdminVO> adminList(AdminVO admin);
 
-	List<UserVO> userList(UserVO user);
-
-	List<AdminUserVO> adminuserList(AdminUserVO adminuser);
+	List<AdminUserVO> userList(AdminUserVO adminUser);
 
 	void logout(SessionStatus sessionStatus);
 }
