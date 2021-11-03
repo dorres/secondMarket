@@ -1,13 +1,17 @@
 package first.market.kurlyty.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
+import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.user.vo.UserVO;
 
-@Service("adminService")
+@Service("AdminService")
 public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
@@ -35,9 +39,22 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public void logout(SessionStatus sessionStatus) {
+	public List<AdminVO> memberAdmin(AdminVO admin){
+		return  adminDao.memberAdmin(admin);
+	}
+	
+	@Override
+	public List<UserVO> userList(UserVO user){
+		return  adminDao.userList(user);
+	}
+	
+	@Override
+	public List<AdminUserVO> adminuserList(AdminUserVO adminuser){
+		return  adminDao.adminuserList(adminuser);
+	}
+	@Override
+	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
-		
 	}
 }
 	

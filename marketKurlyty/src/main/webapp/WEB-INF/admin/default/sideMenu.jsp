@@ -179,9 +179,9 @@
 									aria-labelledby="headingOne"
 									data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="admin_member">매니저관리/등록</a>
+										<a class="nav-link" href="admin_index.mdo">매니저관리/등록</a><!-- 여기 체크해야함~!@~!$%#@%!$@~!#@!#$%#$# -->
 										<a class="nav-link" href="admin_join.mdo">매니저관리등록(임시)</a>
-
+							
 									</nav>
 								</div>
 								<!-- 매니저관리 -->
