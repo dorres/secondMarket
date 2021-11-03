@@ -13,7 +13,7 @@ public class AdminLoginInterceptor implements HandlerInterceptor{
 		HttpSession session = request.getSession();
 		Object loginStatus = session.getAttribute("adminId");
 		if(loginStatus==null) {
-			response.sendRedirect("/kurlyty/login.mdo");
+			response.sendRedirect("/kurlyty/admin_login.mdo");
 			return false;
 		}
 		return true;

@@ -24,15 +24,14 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
-<!-- 	<mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*.mdo"/>
-			<mvc:exclude-mapping path="/login.mdo"/>
-			<mvc:exclude-mapping path="/idCheck.mdo"/>
-			<mvc:exclude-mapping path="/join.mdo"/>
+			<mvc:exclude-mapping path="/admin_login.mdo"/>
+			<mvc:exclude-mapping path="/loginProc.mdo"/>
 			<bean id="LoginInterceptor" class="first.market.kurlyty.interceptor.AdminLoginInterceptor"/> 
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
