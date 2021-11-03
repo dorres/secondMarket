@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -50,6 +51,10 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<AdminUserVO> adminuserList(AdminUserVO adminuser){
 		return  adminDao.adminuserList(adminuser);
+	}
+	@Override
+	public void logout(SessionStatus sessionStatus){
+		sessionStatus.setComplete();
 	}
 }
 	
