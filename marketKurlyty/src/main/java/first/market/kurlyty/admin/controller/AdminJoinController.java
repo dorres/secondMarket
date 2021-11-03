@@ -19,7 +19,7 @@ public class AdminJoinController {
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping("/join.mdo")
+	@RequestMapping("join.mdo")
 	public String adminJoin(Model model) {
 		return "admin_join";
 	}
