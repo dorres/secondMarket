@@ -56,7 +56,13 @@ public class HeaderController {
 		System.out.println(product.getCategory_main_serial());
 		System.out.println(product.getCategory_sub_serial());
 		List<ProductVO> categoryProductList = sqlSession.selectList("CategoryDAO.getCategoryProductList",product);
+		CategoryMainVO categoryRoot = sqlSession.selectOne("CategoryDAO.getCategoryRoot",product);
+		List<CategorySubVO> categorySub = sqlSession.selectList("CategoryDAO.getCategorySub",categoryRoot);
 		model.addAttribute("categoryProductList",categoryProductList);
+		model.addAttribute("categoryRoot",categoryRoot);
+		model.addAttribute("categorySub",categorySub);
+		model.addAttribute("mainSerial", product.getCategory_main_serial());
+		model.addAttribute("subSerial",product.getCategory_sub_serial());
 		model.addAttribute("itemCount",categoryProductList.size());
 		return "mainPage/categoryGoods";
 	}
