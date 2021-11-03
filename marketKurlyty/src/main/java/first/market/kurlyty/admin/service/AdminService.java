@@ -1,6 +1,10 @@
 package first.market.kurlyty.admin.service;
 
+import java.util.List;
+
+import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.user.vo.UserVO;
 
 public interface AdminService {
 
@@ -10,4 +14,9 @@ public interface AdminService {
 
 	AdminVO loginGetUser(AdminVO admin);
 
+	List<AdminVO> memberAdmin(AdminVO admin);
+
+	List<UserVO> userList(UserVO user);
+
+	List<AdminUserVO> adminuserList(AdminUserVO adminuser);
 }

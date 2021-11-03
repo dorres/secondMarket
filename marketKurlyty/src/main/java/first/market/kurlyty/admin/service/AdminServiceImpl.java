@@ -1,12 +1,16 @@
 package first.market.kurlyty.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
+import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.user.vo.UserVO;
 
-@Service("adminService")
+@Service("AdminService")
 public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
@@ -33,6 +37,20 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getAdmin(admin);
 	}
 	
+	@Override
+	public List<AdminVO> memberAdmin(AdminVO admin){
+		return  adminDao.memberAdmin(admin);
+	}
+	
+	@Override
+	public List<UserVO> userList(UserVO user){
+		return  adminDao.userList(user);
+	}
+	
+	@Override
+	public List<AdminUserVO> adminuserList(AdminUserVO adminuser){
+		return  adminDao.adminuserList(adminuser);
+	}
 }
 	
 	
