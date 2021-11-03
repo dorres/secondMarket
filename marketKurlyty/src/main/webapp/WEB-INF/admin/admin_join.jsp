@@ -3,31 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Admin Index</title>
 <jsp:include page="../user/default/top.jsp"></jsp:include>
-<!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" /> -->
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/tstyle.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/tstyle2.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/tstyle3.css">
-<style>
-.container-fluid{
-margin-top: -50px;
-}
-</style>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> 
-<style>
-.page_aticle {
-    width: 1050px;
-    margin: 70px auto;
-    padding-left: 80px;
-}
-#form h2{
-text-align: center;
-}
-.member_join .tbl_comm {
-    width: 100%;
-    border-top: 2px solid #fff;
-}
-</style>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <script>
 function zip(){
@@ -117,7 +99,7 @@ function formJoinSubmit(){
 
 	document.frmAdmin.submit();
 }
-function chkId(){
+ function chkId(){
 	var id = document.frmAdmin.admin_id.value;
 	$.ajax({
 		url:"idCheck.mdo?admin_id="+id,
@@ -128,96 +110,106 @@ function chkId(){
 			$("#posibleId").val(data.usedId);
 		}
 	})
-}
-
+ }
 </script>
 <body class="sb-nav-fixed">
-	<div class="page_aticle">
-		<div class="type_form member_join ">
-			<form id="form" name="frmAdmin" method="post" action="joinProc.mdo" novalidate="">
-					<h2>매니저 등록</h2>
-				<table class="tbl_comm">
-						<tr class="fst">
-							<th>아이디</th>
-							<td>
-								<input type="text" name="admin_id" value="" maxlength="16" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합">
-								<input id="posibleId" type="hidden" name="chk_id" value="불가능">
-								<a class="btn default" href="javascript:chkId()">중복확인</a>
-							</td>
-						</tr>
+	<jsp:include page="default/top.jsp"></jsp:include>
+	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<div id="layoutSidenav_content">
+		<main>
+			<div class="container-fluid px-4">
 
-						<tr>
-							<th>비밀번호</th>
-							<td>
-								<input type="password" name="admin_pw" label="비밀번호" maxlength="16" class="reg_pw" placeholder="비밀번호를 입력해주세요">
-							</td>
-						</tr>
+				<div class="page_aticle">
+					<div class="type_form member_join ">
+						<form id="form" name="frmAdmin" method="post" action="joinProc.mdo" novalidate="">
+							<br>
+							<br>
+							<h2>매니저 등록</h2>
+							<table class="tbl_comm">
+								<tr class="fst">
+									<th>아이디</th>
+									<td><input type="text" name="admin_id" value=""
+										maxlength="16" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합">
+										<input id="posibleId" type="hidden" name="chk_id" value="불가능">
+										<a class="btn default" onclick="javascript:chkId()">중복확인</a></td>
+								</tr>
 
-						<tr class="member_pwd">
-							<th>비밀번호확인</th>
-							<td>
-								<input type="password" name="admin_pw_check" maxlength="16" class="confirm_pw" placeholder="비밀번호를 한번 더 입력해주세요">
-							</td>
-						</tr>
+								<tr>
+									<th>비밀번호</th>
+									<td><input type="password" name="admin_pw" label="비밀번호"
+										maxlength="16" class="reg_pw" placeholder="비밀번호를 입력해주세요">
+									</td>
+								</tr>
 
-						<tr>
-							<th>이름</th>
-							<td>
-								<input type="text" name="admin_name" value="" placeholder="이름을 입력해주세요">
-							</td>
-						</tr>
+								<tr class="member_pwd">
+									<th>비밀번호확인</th>
+									<td><input type="password" name="admin_pw_check"
+										maxlength="16" class="confirm_pw"
+										placeholder="비밀번호를 한번 더 입력해주세요"></td>
+								</tr>
 
-						<tr>
-							<th>이메일</th>
-							<td>
-								<input type="text" name="admin_email" value="" data-email="" size="30" label="이메일" placeholder="">
-							</td>
-						</tr>
-						
-						<tr class="field_phone">
-							<th>휴대폰</th>
-							<td>
-								<div class="phone_num">
-									<input type="text" value="" pattern="[0-9]*" name="admin_phone" placeholder="숫자만 입력해주세요" class="inp">
-								</div>
-							</td>
-						</tr>
+								<tr>
+									<th>이름</th>
+									<td><input type="text" name="admin_name" value=""
+										placeholder="이름을 입력해주세요"></td>
+								</tr>
 
-					<tr class="fst">
-						<th>주소</th>
-						<td>
-							<input id="addr1" type="text" name="admin_address1" value="" >
-							<a class="btn default" href="javascript:zip()">주소검색</a><br><br>
-							<input id="addr2" type="text" name="admin_address2" value="" placeholder="나머지 주소를 입력해주세요" >
-							
-						</td>
-						
-					</tr>
-					<tr class="select_sex">
-						<th>직급</th>
-						<td>
-							<label class="">
-								<input type="radio" name="admin_position" value="master">
-								<span class="ico"></span>Master
-							</label>
-							
-							<label class="">
-								<input type="radio" name="admin_position" value="senior" >
-								<span class="ico"></span>Senior
-							</label>
-							
-							<label class="checked">
-								<input type="radio" name="admin_position" value="junior" checked="checked">
-								<span class="ico"></span>Junior
-							</label>
-						</td>
-					</tr>
-				</table>
-				<div id="formSubmit" class="form_footer">
-					<button type="button" class="btn active btn_join" onclick="formJoinSubmit()">가입하기</button>
+								<tr>
+									<th>이메일</th>
+									<td><input type="text" name="admin_email" value=""
+										data-email="" size="30" label="이메일" placeholder=""></td>
+								</tr>
+
+								<tr class="field_phone">
+									<th>휴대폰</th>
+									<td>
+										<div class="phone_num">
+											<input type="text" value="" pattern="[0-9]*"
+												name="admin_phone" placeholder="숫자만 입력해주세요" class="inp">
+										</div>
+									</td>
+								</tr>
+
+								<tr class="fst">
+									<th>주소</th>
+									<td><input id="addr1" type="text" name="admin_address1"
+										value="">
+										<a class="btn default" onclick="javascript:zip()">주소검색</a><br>
+									<br> <input id="addr2" type="text" name="admin_address2"
+										value="" placeholder="나머지 주소를 입력해주세요"></td>
+
+								</tr>
+								<tr class="select_sex">
+									<th>직급</th>
+									<td><label class=""> <input type="radio"
+											name="admin_position" value="master"> <span
+											class="ico"></span>Master
+									</label> <label class=""> <input type="radio"
+											name="admin_position" value="senior"> <span
+											class="ico"></span>Senior
+									</label> <label class="checked"> <input type="radio"
+											name="admin_position" value="junior" checked="checked">
+											<span class="ico"></span>Junior
+									</label></td>
+								</tr>
+							</table>
+							<div id="formSubmit" class="form_footer">
+								<button type="button" class="btn active btn_join"
+									onclick="formJoinSubmit()">가입하기</button>
+							</div>
+						</form>
+					</div>
 				</div>
-			</form>
-		</div>
+			</div>
+		</main>
+		<jsp:include page="default/footer.jsp"></jsp:include>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<script src="js/scripts.js"> </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+	<script src="assets/demo/chart-area-demo.js"></script>
+	<script src="assets/demo/chart-bar-demo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+	<script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>

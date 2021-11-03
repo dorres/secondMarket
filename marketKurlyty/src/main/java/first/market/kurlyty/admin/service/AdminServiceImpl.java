@@ -2,6 +2,7 @@ package first.market.kurlyty.admin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -33,6 +34,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getAdmin(admin);
 	}
 	
+	@Override
+	public void logout(SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
+		
+	}
 }
 	
 	
