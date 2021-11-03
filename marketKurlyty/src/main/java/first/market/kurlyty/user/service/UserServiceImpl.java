@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.user.dao.UserDAO;
 import first.market.kurlyty.user.vo.UserVO;
@@ -57,11 +58,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void logout(HttpSession session) {
+	public void logout(SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 		
-		//session.removeAttribute("userId");
-		session.invalidate();
 	}
+
+//	@Override
+//	public void logout(HttpSession session) {
+//		
+//		//session.removeAttribute("userId");
+//		//session.invalidate();
+//	}
+	
 	
 	
 }

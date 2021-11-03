@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.UserVO;
 
 @Controller
+@SessionAttributes("userId")
 public class UserLoginController {
 	
 	@Autowired
@@ -40,7 +44,8 @@ public class UserLoginController {
 		}
 		
 		if(dbPw.equals(securityPw)) {
-			session.setAttribute("userId",user.getUser_id());
+			//session.setAttribute("userId",user.getUser_id());
+			model.addAttribute("userId",user.getUser_id());
 			return "mainPage/index";	
 		}else {
 			return "redirect:login.do";
@@ -49,9 +54,9 @@ public class UserLoginController {
 	
 	//로그아웃 처리
 	@RequestMapping("/logoutProc.do")
-	public String logout(HttpSession session) {
-		userService.logout(session);
-		return "mainPage/index";
+	public String logout(SessionStatus sessionStatus) {
+		userService.logout(sessionStatus);
+		return "redirect:index.do";
 	}
 
 }
