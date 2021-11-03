@@ -20,4 +20,7 @@
  		</if>
  		ORDER BY category_goods_serial
  	</select>
+ 	<select id="getCategoryRoot" resultType="categoryMain" parameterType="product">
+ 		SELECT * FROM mk_category_main WHERE category_main_serial=#{category_main_serial}
+ 	</select>
  </mapper>
