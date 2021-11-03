@@ -7,8 +7,10 @@
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
+<link rel="styleSheet"
+	href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
 </head>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return !disableSelection">
@@ -24,17 +26,46 @@
 
 					<jsp:include page="../default/sidemenu.jsp"></jsp:include><!-- sidemenu부분 -->
 
-					<div style="margin:0 auto; width: 1050px;">
-						<!-- 베스트 -->
-						<div style="padding-top: 26px;">
-							<div class="MainIntroTitle">
-								<div class="TitleDiv" align="center">
-									<span>베스트</span>
-								</div>
+					<div style="margin: 0 auto; width: 1050px;">
+						<div id="lnbMenu">
+							<div class="inner_lnb">
+								<h3 class="tit">${categoryRoot.category_main_name}</h3>
+								<ul class="list on">
+										<c:if test="${subSerial == null }">
+											<li><a class="on" href="categoryGoods.do?category_main_serial=${categoryRoot.category_main_serial}">전체보기</a></li>
+										</c:if>
+										<c:if test="${subSerial != null }">
+											<li><a class="" href="categoryGoods.do?category_main_serial=${categoryRoot.category_main_serial}">전체보기</a></li>
+										</c:if>
+									<c:forEach var="categorySub" items="${categorySub}">
+										<c:if test="${subSerial == categorySub.category_sub_serial }">
+											<li><a class="on" 
+												href="categoryGoods.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${categorySub.category_sub_serial}">
+												${categorySub.category_sub_name}
+												</a>
+											</li>
+										</c:if>
+										<c:if test="${subSerial != categorySub.category_sub_serial }">
+											<li><a class="" 
+												href="categoryGoods.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${categorySub.category_sub_serial}">
+												${categorySub.category_sub_name}
+												</a>
+											</li>
+										</c:if>
+										<!-- <li><a class="">친환경</a></li>
+										<li><a class="">고구마·감자·당근</a></li>
+										<li><a class="">시금치·쌈채소·나물</a></li>
+										<li><a class="">브로콜리·파프리카·양배추</a></li>
+										<li><a class="">양파·대파·마늘·배추</a></li>
+										<li><a class="">오이·호박·고추</a></li>
+										<li><a class="">냉동·이색·간편채소</a></li>
+										<li><a class="">콩나물·버섯</a></li> -->
+									</c:forEach>
+									<li class="bg"></li>
+								</ul>
 							</div>
 						</div>
-						
-						
+
 						<div id="sortbar">
 							<div class="list_ability">
 								<div class="sort_menu">
@@ -58,19 +89,19 @@
 								</div>
 							</div>
 						</div>
-						
-						
-						
+
+
+
 						<div class="MainIntroContain">
 							<ul class="foodList">
 								<c:forEach var="item" items="${categoryProductList }">
 									<li>
 										<div class="foodImg">
-											<a href="#"><img src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}"></a>
-										</div> <a class="info" href="#">
-												<span class="name">${item.category_goods_name }</span>
-												<span class="cost"> <span class="dc">12%</span>
-												<span class="price">6,500원</span> <span class="origin">1,800원</span>
+											<a href="#"><img
+												src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}"></a>
+										</div> <a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
+											<span class="cost"> <span class="dc">12%</span> <span
+												class="price">6,500원</span> <span class="origin">1,800원</span>
 												<span class="desc">${item.category_goods_name_subtext }</span>
 										</span>
 									</a>
