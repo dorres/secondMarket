@@ -203,7 +203,7 @@ ul.sub_on li.on{
 						<li><a href="#none"
 							onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'dropdown'})">쿠폰</a>
 							<!----></li>
-						<li><a href="/shop/member/myinfo.php">개인 정보 수정</a></li>
+						<li><a href="infoModify1.do">개인 정보 수정</a></li>
 						<li><a href="logoutProc.do">로그아웃</a></li>
 					</ul></li>
 			</c:if>
@@ -216,8 +216,7 @@ ul.sub_on li.on{
 					<li><a href="#none"
 						onclick="KurlyTrackerLink('/shop/service/faq.php', 'select_my_kurly_frequently_qna')">자주하는
 							질문</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_my_kurly_personal_inquiry_history')">1:1
+					<li><a href="personalQnaBoard.do">1:1
 							문의</a></li>
 					<li><a href="#none"
 						onclick="KurlyTrackerLink('/shop/main/html.php?htmid=mypage/bulk_order.htm', 'select_my_kurly_bulk_order')">대량주문
