@@ -24,4 +24,10 @@
     	JOIN MK_USER_DETAILS B 
     	ON A.USER_ID = B.USER_ID; 
  	</select>
+ 	<update id="update" parameterType="admin">
+ 		UPDATE MK_ADMIN SET ADMIN_ID = #{ADMIN_ID}, SET ADMIN_POSITION #{ADMIN_POSITION} WHERE ADIN_I = #{ADMIN_ID}
+ 	</update>
+ 	<delete id="delete" parameterType="admin">
+ 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{ADMIN_ID}
+ 	</delete>
 </mapper>
