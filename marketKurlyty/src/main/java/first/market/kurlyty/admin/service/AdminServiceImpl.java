@@ -1,17 +1,22 @@
 package first.market.kurlyty.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
+import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
-@Service("adminService")
+@Service("AdminService")
 public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	private AdminDAO adminDao;
 	
+	//아이디 체크
 	@Override
 	public boolean idCheck(AdminVO admin) {
 		AdminVO adminData = adminDao.getAdmin(admin);
@@ -21,6 +26,7 @@ public class AdminServiceImpl implements AdminService {
 			return false;
 	}
 	
+	//회원가입처리
 	@Override
 	public int joinProc(AdminVO admin) {
 		int success = 0;
@@ -28,11 +34,29 @@ public class AdminServiceImpl implements AdminService {
 		return success;
 	}
 	
+	//아이디 체크
 	@Override
 	public AdminVO loginGetUser(AdminVO admin) {
 		return adminDao.getAdmin(admin);
 	}
 	
+	//관리자-관리자리스트
+	@Override
+	public List<AdminVO> adminList(AdminVO admin){
+		return  adminDao.getAdminList(admin);
+	}
+	
+	//관리자-유저리스트
+	@Override
+	public List<AdminUserVO> userList(AdminUserVO adminUser){
+		return  adminDao.getUserList(adminUser);
+	}
+	
+	//관리자 로그아웃
+	@Override
+	public void logout(SessionStatus sessionStatus){
+		sessionStatus.setComplete();
+	}
 }
 	
 	

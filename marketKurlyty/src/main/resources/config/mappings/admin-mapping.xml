@@ -7,8 +7,21 @@
   	<select id="getAdmin" resultType="admin" parameterType="admin">
   		SELECT * FROM MK_ADMIN WHERE admin_id=#{admin_id}
   	</select>	
+ 	
  	<insert id="insertAdmin" parameterType="admin">
  		INSERT INTO MK_ADMIN VALUES (#{admin_id},#{admin_name},#{admin_position},#{admin_pw},
  		#{admin_email},#{admin_phone},#{admin_address1},#{admin_address2})
  	</insert>
+ 	
+ 	<select id="getAdminList" resultType="admin" >
+ 		SELECT * FROM MK_ADMIN
+ 	</select>
+ 	
+ 	<select id="getUserlist" resultType="adminUser">
+ 		SELECT B.USER_SERIAL, A.USER_ID, A.USER_NAME, A.USER_PHONE,
+ 			B.USER_MEMBERSHIP_NAME, B.USER_LAST_LOGIN, B.USER_POINT, B.USER_TOTAL_PURCHASE, B.USER_STATUS
+    	FROM MK_USER A 
+    	JOIN MK_USER_DETAILS B 
+    	ON A.USER_ID = B.USER_ID; 
+ 	</select>
 </mapper>
