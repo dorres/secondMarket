@@ -33,4 +33,12 @@ public class AdminDAO {
 	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
 		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
+	//매니저 수정
+	public int updateManager(AdminVO admin) {
+		return sqlSession.update("AdminDAO.update", admin);
+	}
+	//매니저 삭제
+	public int deleteManager(AdminVO admin) {
+		return sqlSession.delete("AdminDAO.delete", admin);
+	}
 }

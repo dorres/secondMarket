@@ -21,4 +21,8 @@ public interface AdminService {
 	List<AdminUserVO> userList(AdminUserVO adminUser);
 
 	void logout(SessionStatus sessionStatus);
+
+	int updateManager(AdminVO admin);
+
+	int deleteManager(AdminVO admin);
 }

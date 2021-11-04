@@ -57,6 +57,22 @@ public class AdminServiceImpl implements AdminService {
 	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
 	}
+	
+//	매니저 수정
+	@Override
+	public int updateManager(AdminVO admin) {
+		int success = 0;
+		success = adminDao.updateManager(admin);
+		return success;
+	}
+	
+	//매니저 삭제
+	@Override
+	public int deleteManager(AdminVO admin) {
+		int success = 0;
+		success = adminDao.deleteManager(admin);
+		return success;
+	}
 }
 	
 	
