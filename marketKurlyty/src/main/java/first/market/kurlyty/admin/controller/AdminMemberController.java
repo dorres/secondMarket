@@ -42,11 +42,14 @@ public class AdminMemberController {
 	@RequestMapping("updateProc.mdo")
 	public String updateManager(AdminVO admin) {
 		int sucess = 0;
+		System.out.println(admin.getAdmin_id());
 		sucess = adminService.updateManager(admin);
-		if(sucess==1) {
-			return "admin_update.mdo";
+		if(sucess!=0) {
+			System.out.println("성공");
+			return "redirect:admin_adminList.mdo";
 		}else {
-			return "redirect:admin.adminList";
+			System.out.println("실패");
+			return "admin_update";
 		}
 	}
 	

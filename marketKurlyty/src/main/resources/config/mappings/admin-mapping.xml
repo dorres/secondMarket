@@ -25,7 +25,7 @@
     	ON A.USER_ID = B.USER_ID; 
  	</select>
  	<update id="update" parameterType="admin">
- 		UPDATE MK_ADMIN SET ADMIN_ID = #{ADMIN_ID}, SET ADMIN_POSITION #{ADMIN_POSITION} WHERE ADMIN_ID = #{ADMIN_ID}
+ 		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
  	</update>
  	<delete id="delete" parameterType="admin">
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{ADMIN_ID};

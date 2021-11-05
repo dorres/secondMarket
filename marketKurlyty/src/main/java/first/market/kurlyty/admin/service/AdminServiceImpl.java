@@ -64,9 +64,7 @@ public class AdminServiceImpl implements AdminService {
 //	매니저 수정
 	@Override
 	public int updateManager(AdminVO admin) {
-		int success = 0;
-		success = adminDao.updateManager(admin);
-		return success;
+		return adminDao.updateManager(admin);
 	}
 	
 	//매니저 삭제

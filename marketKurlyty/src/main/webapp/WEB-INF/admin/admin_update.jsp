@@ -123,78 +123,31 @@ function formJoinSubmit(){
 
 				<div class="page_aticle">
 					<div class="type_form member_join ">
-						<form id="form" name="frmAdmin" method="post" action="joinProc.mdo" novalidate="">
+						<form id="form" name="frmAdmin" method="post" action="updateProc.mdo">
 							<br>
 							<br>
-							<h2>매니저 수정</h2>
+							<h2 align="center">매니저 수정</h2>
 							<table class="tbl_comm">
 								<tr class="fst">
-									<th>아이디</th>
-									<td>${update.admin_id}</td>
-								</tr>
-
 								<tr>
-									<th>비밀번호</th>
-									<td><input type="password" name="admin_pw" label="비밀번호"
-										maxlength="16" class="reg_pw" placeholder="비밀번호를 입력해주세요">
-									</td>
+									<th>아이디</th>
+									<td><input type="text" name="admin_id" value="${update.admin_id}"></td>  
 								</tr>
-
-								<tr class="member_pwd">
-									<th>비밀번호확인</th>
-									<td><input type="password" name="admin_pw_check"
-										maxlength="16" class="confirm_pw"
-										placeholder="비밀번호를 한번 더 입력해주세요"></td>
-								</tr>
-
+															
 								<tr>
 									<th>이름</th>
-									<td><input type="text" name="admin_name" value=""
-										placeholder="이름을 입력해주세요"></td>
+									<td>${update.admin_name}</td>
 								</tr>
 
 								<tr>
-									<th>이메일</th>
-									<td><input type="text" name="admin_email" value=""
-										data-email="" size="30" label="이메일" placeholder=""></td>
-								</tr>
-
-								<tr class="field_phone">
-									<th>휴대폰</th>
-									<td>
-										<div class="phone_num">
-											<input type="text" value="" pattern="[0-9]*"
-												name="admin_phone" placeholder="숫자만 입력해주세요" class="inp">
-										</div>
-									</td>
-								</tr>
-
-								<tr class="fst">
-									<th>주소</th>
-									<td><input id="addr1" type="text" name="admin_address1"
-										value="">
-										<a class="btn default" onclick="javascript:zip()">주소검색</a><br>
-									<br> <input id="addr2" type="text" name="admin_address2"
-										value="" placeholder="나머지 주소를 입력해주세요"></td>
-
-								</tr>
-								<tr class="select_sex">
 									<th>직급</th>
-									<td><label class=""> <input type="radio"
-											name="admin_position" value="master"> <span
-											class="ico"></span>Master
-									</label> <label class=""> <input type="radio"
-											name="admin_position" value="senior"> <span
-											class="ico"></span>Senior
-									</label> <label class="checked"> <input type="radio"
-											name="admin_position" value="junior" checked="checked">
-											<span class="ico"></span>Junior
-									</label></td>
+									<td><input type="text" name="admin_position" placeholder="직급을 수정 해주세요."></td>
 								</tr>
+
+								
 							</table>
 							<div id="formSubmit" class="form_footer">
-								<button type="button" class="btn active btn_join"
-									onclick="formJoinSubmit()">가입하기</button>
+								<button class="btn active btn_join" onclick="location.href='updateProc.mdo'">수정하기</button>
 							</div>
 						</form>
 					</div>
