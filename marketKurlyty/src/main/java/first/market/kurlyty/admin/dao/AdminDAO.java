@@ -17,6 +17,7 @@ public class AdminDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
 	public AdminVO getAdmin(AdminVO admin) {
 		return sqlSession.selectOne("AdminDAO.getAdmin",admin);
 	}
@@ -25,13 +26,11 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertAdmin", admin);
 	}
 	
-	public List<AdminVO> memberAdmin(AdminVO admin){
-		return sqlSession.selectList("AdminDAO.memberAdmin", admin);
+	public List<AdminVO> getAdminList(AdminVO admin){
+		return sqlSession.selectList("AdminDAO.getAdminList", admin);
 	}
-	public List<UserVO> userList(UserVO user){
-		return sqlSession.selectList("AdminDAO.userList", user);
-	}
-	public List<AdminUserVO> adminuserList(AdminUserVO adminuser){
-		return sqlSession.selectList("AdminDAO.adminuserlist", adminuser);
+	
+	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
+		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
 }
