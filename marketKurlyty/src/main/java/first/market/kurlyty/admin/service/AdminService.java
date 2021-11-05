@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.web.bind.support.SessionStatus;
 
+import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
-import first.market.kurlyty.user.vo.UserVO;
 
 public interface AdminService {
 
@@ -25,4 +25,15 @@ public interface AdminService {
 	int updateManager(AdminVO admin);
 
 	int deleteManager(AdminVO admin);
+	
+	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
+	
+	AdminNoticeVO getNotice(AdminNoticeVO notice);
+	
+	int updateNotice(AdminNoticeVO notice);
+	
+	int deleteNotice(AdminNoticeVO notice);
+	
+	int insertNotice(AdminNoticeVO notice);
+	
 }
