@@ -33,7 +33,9 @@ public class AdminMemberController {
 	//매니저 수정
 	@RequestMapping("update.mdo")
 	public String update(AdminVO admin, Model model) {
+		System.out.println(admin.getAdmin_id());
 			model.addAttribute("update", adminService.loginGetUser(admin));
+//			System.out.println("update출력!!" + adminService.loginGetUser(admin).getAdmin_id());
 		return "admin_update";
 	}
 	
