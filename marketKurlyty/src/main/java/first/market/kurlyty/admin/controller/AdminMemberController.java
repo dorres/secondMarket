@@ -54,14 +54,14 @@ public class AdminMemberController {
 	}
 	
 	//매니저 삭제
-		@RequestMapping(value = "/delete", method = RequestMethod.POST) 
+		@RequestMapping("deleteMember.mdo") 
 		public String deleteManager(AdminVO admin) {
 			int sucess = 0;
 			sucess = adminService.deleteManager(admin);
-			if(sucess==1) {
-				return "admin_adminList";
+			if(sucess!=0) {
+				return "redirect:admin_adminList.mdo";
 			}else {
-				return "redirect:admin.adminList";
+				return "update.mdo";
 			}
 		}
 }

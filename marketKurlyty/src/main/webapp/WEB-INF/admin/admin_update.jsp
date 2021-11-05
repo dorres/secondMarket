@@ -112,6 +112,7 @@ function formJoinSubmit(){
 		}
 	})
  }
+
 </script>
 
 <body class="sb-nav-fixed">
@@ -131,7 +132,7 @@ function formJoinSubmit(){
 								<tr class="fst">
 								<tr>
 									<th>아이디</th>
-									<td><input type="text" name="admin_id" value="${update.admin_id}"></td>  
+									<td><input type="text" name="admin_id" readonly="readonly" value="${update.admin_id}"></td>  
 								</tr>
 															
 								<tr>

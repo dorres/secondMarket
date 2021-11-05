@@ -70,9 +70,7 @@ public class AdminServiceImpl implements AdminService {
 	//매니저 삭제
 	@Override
 	public int deleteManager(AdminVO admin) {
-		int success = 0;
-		success = adminDao.deleteManager(admin);
-		return success;
+		return adminDao.deleteManager(admin);
 	}
 	//관리자-공지사항리스트
 	@Override
