@@ -130,7 +130,7 @@ function formJoinSubmit(){
 							<table class="tbl_comm">
 								<tr class="fst">
 									<th>아이디</th>
-									<td><c:out value="${update.admin_id}"></c:out></td>
+									<td>${update.admin_id}</td>
 								</tr>
 
 								<tr>

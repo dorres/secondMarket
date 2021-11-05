@@ -85,7 +85,7 @@
 										<td>${adminList.admin_name }</td>
 										<td>${adminList.admin_position }</td>
 										<td>
-											<input type="button" value="수정" onclick="location.href= 'update.mdo'">
+											<input type="button" value="수정" onclick="location.href= 'update.mdo?admin_id=${adminList.admin_id}'">
 											<input type="button" value="삭제" onclick="location.href= 'admin_adminList.mdo'">
 										</td>
 									</tr>
