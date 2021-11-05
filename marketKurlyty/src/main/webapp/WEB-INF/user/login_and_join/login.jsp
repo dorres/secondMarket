@@ -31,7 +31,55 @@ function formLoginSubmit(){
 		document.frmMember.submit();
 	}
 }
+Kakao.init('e843248c5d13b454b09013d97687a1b6');
+console.log(Kakao.isInitialized());
+function KakaoLogin(){
+	window.Kakao.Auth.login({
+		success:(auth)=>{
+			console.log("정상적으로 로그인 되었습니다.",auth)
+			window.Kakao.API.request({
+				url:'/v2/user/me',
+				success:(res)=>{
+					const kakao_account=res.id;
+					console.log(kakao_account);
+					console.log(res);
+				}
+			});
+		},
+		fail:(err)=>{
+			console.error(err)
+		}
+	});
+}
 </script>
+<style>
+.btn_kakao{
+	border: 1px solid;
+    background-color: #F8DF00;
+}
+.btn_kakao .kakao_type{
+	color: #000000;
+	display: inline-block;
+    height: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 51px;
+    text-align: right;
+    padding:0px;
+}
+.kakaoLogo{
+	float:left;
+	width:50px;
+	height:50px;
+	overflow:hidden;
+	margin-left:0px;
+	margin-top:2px;
+	margin-right:0px;
+}
+.kakaoLogo img{
+	object-fit:cover;
+}
+</style>
 </head>
 <body class="main-index" oncontextmenu="return false" ondragstart="return false">
 
@@ -68,6 +116,10 @@ function formLoginSubmit(){
 									</form>
 									<a href="join.do" class="btn_type2 btn_member">
 									<span class="txt_type">회원가입</span></a>
+									<a href="" onclick="javascript:kakaoLogin()" class="btn_type2 btn_kakao">
+										<span class="kakaoLogo"><img src="${pageContext.request.contextPath }/resources/images/kakaoLogo.png"></span>
+										<span class="kakao_type">카카오 로그인</span>
+									</a>
 								</div>
 							</div>
 						</div>

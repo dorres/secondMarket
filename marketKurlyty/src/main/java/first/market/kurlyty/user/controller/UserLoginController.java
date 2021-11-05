@@ -16,7 +16,7 @@ import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.UserVO;
 
 @Controller
-@SessionAttributes("userId")
+@SessionAttributes({"userId","userName"})
 public class UserLoginController {
 	
 	@Autowired
@@ -50,6 +50,7 @@ public class UserLoginController {
 		if(dbPw.equals(securityPw)) {
 			//session.setAttribute("userId",user.getUser_id());
 			model.addAttribute("userId",user.getUser_id());
+			model.addAttribute("userName", userInfo.getUser_name());
 			return "mainPage/index";
 		}else {
 			redirect.addFlashAttribute("FailMessage", "비밀번호가 틀렸습니다. 다시 입력해주세요.");

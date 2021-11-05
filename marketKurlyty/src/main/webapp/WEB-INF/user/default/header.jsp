@@ -186,7 +186,7 @@ ul.sub_on li.on{
 			<c:if test="${userId != null}">
 				<li class="menu menu_user"><a class="link_menu grade_comm" href="mykurly.do"><span
 						class="ico_grade grade6">웰컴</span> <span class="txt"><span
-							class="name">${userId }</span><span class="sir">님</span></span> <!----></a>
+							class="name">${userName }</span><span class="sir">님</span></span> <!----></a>
 					<ul class="sub">
 						<li><a href="/shop/mypage/mypage_orderlist.php">주문 내역</a></li>
 						<li><a href="#none"
@@ -213,8 +213,7 @@ ul.sub_on li.on{
 				<ul class="sub">
 					<li><a href="notice.do">공지사항</a>
 					</li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/service/faq.php', 'select_my_kurly_frequently_qna')">자주하는
+					<li><a href="faq.do">자주하는
 							질문</a></li>
 					<li><a href="personalQnaBoard.do">1:1
 							문의</a></li>
