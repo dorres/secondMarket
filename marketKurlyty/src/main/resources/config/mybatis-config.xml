@@ -15,7 +15,8 @@
  		<typeAlias type="first.market.kurlyty.user.vo.Board_noticeVO" alias="noticeList"/> <!-- bk -->
  		<typeAlias type="first.market.kurlyty.user.vo.RegularVO" alias="regular"/> <!--  bk -->
  		<typeAlias type="first.market.kurlyty.user.vo.PersonalQnaVO" alias="personalQna"/> <!--  sungy -->
- 		<typeAlias type="first.market.kurlyty.admin.vo.AdminUserVO" alias="adminuser"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminUserVO" alias="adminUser"/> 
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminNoticeVO" alias="notice"/> 
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>

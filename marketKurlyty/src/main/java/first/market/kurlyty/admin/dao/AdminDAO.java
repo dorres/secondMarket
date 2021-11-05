@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 import first.market.kurlyty.user.vo.UserVO;
@@ -17,6 +18,7 @@ public class AdminDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
 	public AdminVO getAdmin(AdminVO admin) {
 		return sqlSession.selectOne("AdminDAO.getAdmin",admin);
 	}
@@ -25,13 +27,31 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertAdmin", admin);
 	}
 	
-	public List<AdminVO> memberAdmin(AdminVO admin){
-		return sqlSession.selectList("AdminDAO.memberAdmin", admin);
+	public List<AdminVO> getAdminList(AdminVO admin){
+		return sqlSession.selectList("AdminDAO.getAdminList", admin);
 	}
-	public List<UserVO> userList(UserVO user){
-		return sqlSession.selectList("AdminDAO.userList", user);
+	
+	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
+		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
-	public List<AdminUserVO> adminuserList(AdminUserVO adminuser){
-		return sqlSession.selectList("AdminDAO.adminuserlist", adminuser);
+	
+	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice){
+		return sqlSession.selectList("AdminDAO.getNoticeList",notice);
+	}
+	
+	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
+		return sqlSession.selectOne("AdminDAO.getNotice",notice);
+	}
+	
+	public int updateNotice(AdminNoticeVO notice) {
+		return sqlSession.update("AdminDAO.updateNotice",notice);
+	}
+	
+	public int deleteNotice(AdminNoticeVO notice){
+		return sqlSession.delete("AdminDAO.deleteNotice",notice);
+	}
+	
+	public int insertNotice(AdminNoticeVO notice) {
+		return sqlSession.insert("AdminDAO.insertNotice",notice);
 	}
 }

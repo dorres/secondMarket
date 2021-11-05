@@ -12,9 +12,50 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
 </head>
+<style>
+.cartBt {
+	background:
+		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kulryImage/ico_cart.svg)
+		no-repeat 50% 50%;
+	background-size: 50px 50px;
+	width: 50px;
+	height: 50px;
+	margin-top: 15px;
+	border: 0;
+	position:absolute;
+	z-index:2;
+	right:15px;
+	bottom:15px;
+	opacity:0.9;
+}
+/* .foodImg{
+position:relative;
+} */
+.cartClick{
+	position: fixed;
+	z-index: 9998;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: .5
+}
+</style>
+<script>
+function inputCart(name){
+	$(".cartNone").attr("class","cartClick");
+	$(".cart_option").css("opacity","1").css("display","block");
+	$("#cartPut .in_option").find("span.name").text(name);
+}
+function cancelCart(){
+	$(".cartClick").attr("class","cartNone");
+	$(".cart_option").css("opacity","0").css("display","none");
+}
+</script>
 <body class="main-index" oncontextmenu="return false"
-	ondragstart="return false" onselectstart="return !disableSelection">
-
+	ondragstart="return false">
+	<div class="cartNone"></div>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -52,14 +93,6 @@
 												</a>
 											</li>
 										</c:if>
-										<!-- <li><a class="">친환경</a></li>
-										<li><a class="">고구마·감자·당근</a></li>
-										<li><a class="">시금치·쌈채소·나물</a></li>
-										<li><a class="">브로콜리·파프리카·양배추</a></li>
-										<li><a class="">양파·대파·마늘·배추</a></li>
-										<li><a class="">오이·호박·고추</a></li>
-										<li><a class="">냉동·이색·간편채소</a></li>
-										<li><a class="">콩나물·버섯</a></li> -->
 									</c:forEach>
 									<li class="bg"></li>
 								</ul>
@@ -90,7 +123,53 @@
 							</div>
 						</div>
 
-
+						<div id="cartPut">
+							<div class="cart_option cartList cart_type3" style="opacity: 0; display:none;">
+								<div class="inner_option">
+									<button type="button" class="btn_close1">레이어닫기</button>
+									<!---->
+									<div class="in_option">
+										<div class="list_goods">
+											<ul class="list list_nopackage">
+												<li class="on"><span class="btn_position"><button
+															type="button" class="btn_del">
+															<span class="txt">삭제하기</span>
+														</button></span> <span class="name">
+														<!--- 장흥 표고 버섯 가루 70g ---->
+												</span> <!---->
+													<div class="option">
+														<span class="count"><button type="button"
+																class="btn down on">수량내리기</button> <input type="number"
+															readonly="readonly" onfocus="this.blur()" class="inp">
+															<button type="button" class="btn up on">수량올리기</button></span> <span
+															class="price">
+															<!----> <span class="dc_price">5,490원</span>
+														</span>
+													</div></li>
+											</ul>
+										</div>
+										<div class="total">
+											<div class="price">
+												<strong class="tit">합계</strong>
+												<!---->
+												<span class="sum"><span class="num">5,490</span> <span
+													class="won">원</span></span>
+											</div>
+											<p class="txt_point">
+												<span class="ico">적립</span> <span class="no_login">
+													<span>로그인 후, 적립혜택 제공</span>
+												</span>
+											</p>
+										</div>
+									</div>
+									<div class="group_btn off layer_btn2">
+										<span class="btn_type2"><button type="button"
+												class="txt_type" onclick="javascript:cancelCart()">취소</button></span> <span class="btn_type1"><button
+												type="button" class="txt_type">장바구니 담기</button> <!----></span>
+									</div>
+								</div>
+							</div>
+						</div>
 
 						<div class="MainIntroContain">
 							<ul class="foodList">
@@ -98,8 +177,12 @@
 									<li>
 										<div class="foodImg">
 											<a href="#"><img
-												src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}"></a>
-										</div> <a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
+												src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}">
+											</a>
+											<button type="button" class="cartBt"
+												onclick="javascript:inputCart('${item.category_goods_name }')"></button>
+										</div>
+										<a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
 											<span class="cost"> <span class="dc">12%</span> <span
 												class="price">6,500원</span> <span class="origin">1,800원</span>
 												<span class="desc">${item.category_goods_name_subtext }</span>

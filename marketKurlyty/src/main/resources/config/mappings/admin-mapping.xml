@@ -7,18 +7,49 @@
   	<select id="getAdmin" resultType="admin" parameterType="admin">
   		SELECT * FROM MK_ADMIN WHERE admin_id=#{admin_id}
   	</select>	
+ 	
  	<insert id="insertAdmin" parameterType="admin">
  		INSERT INTO MK_ADMIN VALUES (#{admin_id},#{admin_name},#{admin_position},#{admin_pw},
  		#{admin_email},#{admin_phone},#{admin_address1},#{admin_address2})
  	</insert>
- 	<select id="memberAdmin" resultType="admin" >
+ 	
+ 	<select id="getAdminList" resultType="admin" >
  		SELECT * FROM MK_ADMIN
  	</select>
- 	<select id="userList" resultType="user" parameterType="user">
- 		SELECT * FROM MK_USER
+ 	
+ 	<select id="getUserlist" resultType="adminUser">
+ 		SELECT B.USER_SERIAL, A.USER_ID, A.USER_NAME, A.USER_PHONE,
+ 			B.USER_MEMBERSHIP_NAME, B.USER_LAST_LOGIN, B.USER_POINT, B.USER_TOTAL_PURCHASE, B.USER_STATUS
+    	FROM MK_USER A 
+    	JOIN MK_USER_DETAILS B 
+    	ON A.USER_ID = B.USER_ID; 
  	</select>
- 	<select id="adminuserlist" resultType="adminuser">
- 		SELECT B.USER_SERIAL,A.USER_ID,A.USER_NAME,A.USER_PHONE,B.USER_MEMBERSHIP_NAME,B.USER_LAST_LOGIN,B.USER_POINT,B.USER_TOTAL_PURCHASE,B.USER_STATUS
-       FROM MK_USER  A JOIN MK_USER_DETAILS  B ON A.USER_ID = B.USER_ID; 
- 	</select>
+ 	<update id="update" parameterType="admin">
+ 		UPDATE MK_ADMIN SET ADMIN_ID = #{ADMIN_ID}, SET ADMIN_POSITION #{ADMIN_POSITION} WHERE ADIN_I = #{ADMIN_ID}
+ 	</update>
+ 	<delete id="delete" parameterType="admin">
+ 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{ADMIN_ID};
+ 	</delete>
+
+	<select id="getNoticeList" resultType="notice">
+		SELECT * FROM MK_NOTICE ORDER BY 1;
+	</select>
+	
+	<select id="getNotice" resultType="notice" parameterType="notice">
+		SELECT * FROM MK_NOTICE WHERE notice_serial=#{notice_serial};
+	</select>
+	
+	<update id="updateNotice" parameterType="notice">
+ 		UPDATE MK_NOTICE SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE NOTICE_SERIAL = #{notice_serial}
+ 	</update>
+ 	
+ 	<delete id="deleteNotice" parameterType="notice">
+ 		DELETE FROM MK_NOTICE WHERE NOTICE_SERIAL = #{notice_serial}
+ 	</delete>
+ 	
+ 	 <insert id="insertNotice" parameterType="notice">
+ 		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
+
+ 	</insert>
+ 		
 </mapper>
