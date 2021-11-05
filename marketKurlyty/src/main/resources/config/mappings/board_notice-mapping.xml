@@ -15,7 +15,7 @@
  	<!-- <select id="getBoard_noticeList" resultType="noticeList" parameterType="noticeList">
  		SELECT * FROM MK_NOTICE
  	</select> -->
- 	<select id="getBoard" resultType="noticeList" parameterType="noticeList">
+ 	<select id="getBoard" resultType="noticeList" parameterType="int">
  		SELECT * FROM MK_NOTICE WHERE notice_serial=#{notice_serial}
  	</select>
  	<update id="notice_hitUp" parameterType="int">
