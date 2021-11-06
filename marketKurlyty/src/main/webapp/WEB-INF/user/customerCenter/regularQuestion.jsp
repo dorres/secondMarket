@@ -89,7 +89,7 @@
 																		<td width=70 align=center>${board.faq_serial }</td>
 																		<td width=135 align=center>${board.faq_category }</td>
 																		<td style="cusor:pointer">${board.faq_title }</td>
-																		
+																		<td class="sub" style="display:none">${board.faq_content }</td>
 																		
 																		
 																	</tr>
@@ -220,7 +220,16 @@
 
 								</div>
 							</form>
-			
+			<script>
+				$(".menu").click(function(){
+					if($(".sub").is(":visible")){
+						$(".sub").css("display","none");
+					}
+					else{
+						$(."sub").css("display","block");
+					}
+				})
+			</script>
 
 						</div> <!-- MainCenter 끝 -->
 					</div> <!-- Main 끝 -->
