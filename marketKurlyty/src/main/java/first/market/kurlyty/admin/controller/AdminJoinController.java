@@ -44,7 +44,7 @@ public class AdminJoinController {
 	}
 
 	//관리자 회원가입-아이디 체크
-		@RequestMapping(value="/idCheck.mdo", produces="html/text; charset=utf-8")
+		@RequestMapping(value="idCheck.mdo", produces="html/text; charset=utf-8")
 		@ResponseBody
 		public String idCheck(AdminVO admin) {
 			boolean used = adminService.idCheck(admin);
