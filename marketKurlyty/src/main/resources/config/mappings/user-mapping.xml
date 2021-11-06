@@ -24,4 +24,17 @@
  		INSERT INTO MK_USER_ADDRESS_LIST VALUES
  		(default,#{user_address1},#{user_address2},#{user_zipcode},#{user_id})
  	</insert>
+ 	<update id="updateUser" parameterType="user">
+	 	UPDATE mk_user SET  
+	 	user_pw = #{user_pw}, 
+	 	user_name = #{user_name}, 
+	 	user_email = #{user_email}, 
+	 	user_phone = #{user_phone}, 
+	 	user_sex = #{user_sex}, 
+	 	user_birth = #{user_birth} 
+	 	WHERE user_id = #{user_id}
+ 	</update>
+ 	<delete id="deleteUser" parameterType="user">
+ 	
+ 	</delete>
 </mapper>

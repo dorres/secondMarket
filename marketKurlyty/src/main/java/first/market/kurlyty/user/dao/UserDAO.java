@@ -27,5 +27,7 @@ public class UserDAO {
 	public void insertUserAddressList(UserVO user) {
 		sqlSession.insert("UserDAO.insertUserAddressList", user);
 	}
-	
+	public void updateUser(UserVO user) {
+		sqlSession.update("UserDAO.updateUser", user);
+	}
 }
