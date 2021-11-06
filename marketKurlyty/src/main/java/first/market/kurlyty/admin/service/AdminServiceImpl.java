@@ -18,7 +18,6 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDao;
 	
-	//¾ÆÀÌµğ Ã¼Å©
 	@Override
 	public boolean idCheck(AdminVO admin) {
 		AdminVO adminData = adminDao.getAdmin(admin);
@@ -28,7 +27,6 @@ public class AdminServiceImpl implements AdminService {
 			return false;
 	}
 	
-	//È¸¿ø°¡ÀÔÃ³¸®
 	@Override
 	public int joinProc(AdminVO admin) {
 		int success = 0;
@@ -36,75 +34,85 @@ public class AdminServiceImpl implements AdminService {
 		return success;
 	}
 	
-	//¾ÆÀÌµğ Ã¼Å©
 	@Override
 	public AdminVO loginGetUser(AdminVO admin) {
 		return adminDao.getAdmin(admin);
 	}
 	
-	//°ü¸®ÀÚ-°ü¸®ÀÚ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½Æ®
 	@Override
 	public List<AdminVO> adminList(AdminVO admin){
 		return  adminDao.getAdminList(admin);
 	}
 	
-	//°ü¸®ÀÚ-À¯Àú¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	@Override
 	public List<AdminUserVO> userList(AdminUserVO adminUser){
 		return  adminDao.getUserList(adminUser);
 	}
 	
-	//°ü¸®ÀÚ ·Î±×¾Æ¿ô
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±×¾Æ¿ï¿½
 	@Override
 	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
 	}
-	
-
-//	¸Å´ÏÀú ¼öÁ¤
+	@Override
+	public AdminUserVO getAdminUser(AdminUserVO adminuserVO) {
+		return adminDao.getUser(adminuserVO);
+	}
 	@Override
 	public int updateManager(AdminVO admin) {
 		return adminDao.updateManager(admin);
 	}
 	
-	//¸Å´ÏÀú »èÁ¦
 	@Override
 	public int deleteManager(AdminVO admin) {
 		return adminDao.deleteManager(admin);
 	}
-	//À¯Àú »èÁ¦
 	@Override
-	public int deleteUser(AdminUserVO user) {
-		return adminDao.
+	public int updateUser1(AdminUserVO user) {
+		return adminDao.updateUser1(user);
 	}
-	//°ü¸®ÀÚ-°øÁö»çÇ×¸®½ºÆ®
+	@Override
+	public int updateUser2(AdminUserVO user) {
+		return adminDao.updateUser2(user);
+	}
+	
 	@Override
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice) {
 		return adminDao.getNoticeList(notice);
 	}
 	
-	//°ü¸®ÀÚ-°øÁö»çÇ×
 	@Override
 	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
 		return adminDao.getNotice(notice);
 	}
 	
-	//°ü¸®ÀÚ-°øÁö»çÇ×¼öÁ¤ÇÏ±â
 	public int updateNotice(AdminNoticeVO notice) {
 		return adminDao.updateNotice(notice);
 	}
 
-	//°ü¸®ÀÚ-°øÁö»çÇ×»èÁ¦ÇÏ±â
 	@Override
 	public int deleteNotice(AdminNoticeVO notice) {
 		return adminDao.deleteNotice(notice);
 	}
 	
-	//°ü¸®ÀÚ -°øÁö»çÇ×µî·ÏÇÏ±â
 	@Override
 	public int insertNotice(AdminNoticeVO notice) {
 		return adminDao.insertNotice(notice);
 
+	}
+
+	@Override
+	public int deleteUser1(AdminUserVO user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteUser2(AdminUserVO user) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
 	

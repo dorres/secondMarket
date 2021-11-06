@@ -16,26 +16,22 @@ public class AdminMemberController {
 	@Autowired
 	private AdminService adminService;
 	
-	//관리자에서 유저관리페이지
 	@RequestMapping("admin_userList.mdo")
 	public String adminuserList(AdminUserVO adminUser, Model model) {
 		model.addAttribute("userList", adminService.userList(adminUser));
 		return "admin_userList";
 	}
 	
-	//관리자에서 매니저관리페이지
 	@RequestMapping("admin_adminList.mdo")
 	public String memberAdmin(AdminVO admin, Model model) {
 		model.addAttribute("adminList", adminService.adminList(admin));
 		return "admin_adminList";
 	}
 	
-	//매니저 수정
 	@RequestMapping("update.mdo")
 	public String update(AdminVO admin, Model model) {
 		System.out.println(admin.getAdmin_id());
 			model.addAttribute("update", adminService.loginGetUser(admin));
-//			System.out.println("update출력!!" + adminService.loginGetUser(admin).getAdmin_id());
 		return "admin_update";
 	}
 	
@@ -45,15 +41,12 @@ public class AdminMemberController {
 		System.out.println(admin.getAdmin_id());
 		sucess = adminService.updateManager(admin);
 		if(sucess!=0) {
-			System.out.println("성공");
 			return "redirect:admin_adminList.mdo";
 		}else {
-			System.out.println("실패");
 			return "admin_update";
 		}
 	}
 	
-	//매니저 삭제
 		@RequestMapping("deleteMember.mdo") 
 		public String deleteManager(AdminVO admin) {
 			int sucess = 0;
@@ -64,10 +57,11 @@ public class AdminMemberController {
 				return "update.mdo";
 			}
 		}
-		//admin_user 삭제
-		@RequestMapping("delteUser.mdo")
-		public String deleteUser(AdminUserVO user) {
-			int success = 0;
-			success = adminService.del
+		
+		@RequestMapping("updateAdminUser.mdo")
+		public String updateUser(AdminUserVO adminuserVO, Model model) {
+				model.addAttribute("updateUser", adminService.getAdminUser(adminuserVO));
+			return "admin_updateUser";
 		}
+		
 }

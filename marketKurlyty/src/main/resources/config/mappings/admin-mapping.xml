@@ -25,21 +25,21 @@
     	ON A.USER_ID = B.USER_ID; 
  	</select>
  	
- 	
- 	
  	<update id="update" parameterType="admin">
  		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
  	</update>
+ 	
  	<delete id="delete" parameterType="admin">
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
  	</delete>
- 	<update id="updateUser" parameterType="user">
- 		UPDATE MK_USER A JOIN MK_USERDETAILS B SET B.USER_SERIAL=${user_serial}, A.USER_ID=${user_id}, A.USER_NAME=${user_name}, A.USER_PHONE=${user_phone},
- 			B.USER_MEMBERSHIP_NAME=${user_membership_name}, B.USER_LAST_LOGIN=${user_last_login}, B.USER_POINT=${user_point},
- 			 B.USER_TOTAL_PURCHASE=${user_user_total_purchase}, B.USER_STATUS=${user_status};
+ 	
+ 	<update id="updateUser1" parameterType="user">
+ 		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone} WHERE USER_ID = #{user_id}
+ 	</update>
+ 	<update id="updateUser2">
+ 		UPDATE MK_DETAILES SET USER_POSITION =#{user_position} where WHERE USER_ID = #{user_id}
  	</update>
  	
-
 	<select id="getNoticeList" resultType="notice">
 		SELECT * FROM MK_NOTICE ORDER BY 1;
 	</select>

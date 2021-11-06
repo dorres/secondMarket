@@ -35,5 +35,14 @@ public interface AdminService {
 	int deleteNotice(AdminNoticeVO notice);
 	
 	int insertNotice(AdminNoticeVO notice);
+
+	int deleteUser1(AdminUserVO user);
+
+	int deleteUser2(AdminUserVO user);
+
+	int updateUser1(AdminUserVO user);
+
+	int updateUser2(AdminUserVO user);
 	
+	AdminUserVO getAdminUser(AdminUserVO adminuserVo);
 }
