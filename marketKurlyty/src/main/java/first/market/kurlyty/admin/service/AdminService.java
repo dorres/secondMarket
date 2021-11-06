@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.springframework.web.bind.support.SessionStatus;
 
-<<<<<<< HEAD
-=======
 import first.market.kurlyty.admin.vo.AdminFAQVO;
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -25,19 +23,6 @@ public interface AdminService {
 	List<AdminUserVO> userList(AdminUserVO adminUser);
 
 	void logout(SessionStatus sessionStatus);
-<<<<<<< HEAD
-	
-	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
-	
-	AdminNoticeVO getNotice(AdminNoticeVO notice);
-	
-	int updateNotice(AdminNoticeVO notice);
-	
-	int deleteNotice(AdminNoticeVO notice);
-	
-	int insertNotice(AdminNoticeVO notice);
-	
-=======
 
 	int updateManager(AdminVO admin);
 
@@ -47,9 +32,9 @@ public interface AdminService {
 
 	int deleteUser2(AdminUserVO user);
 
-	int updateUser1(AdminUserVO user);
+//	int updateUser1(AdminUserVO user);
 
-	int updateUser2(AdminUserVO user);
+//	int updateUser2(AdminUserVO user);
 	
 //	AdminUserVO getAdminUser(AdminUserVO adminuserVo);
 	
@@ -85,12 +70,4 @@ public interface AdminService {
 	//자주하는 질문 등록
 	int insertFAQ(AdminFAQVO faq);
 	
-	
-	
-	
-	
-
-
-
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 }

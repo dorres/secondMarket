@@ -7,10 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
-=======
 import first.market.kurlyty.admin.vo.AdminFAQVO;
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -37,9 +34,7 @@ public class AdminDAO {
 	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
 		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
-<<<<<<< HEAD
-	
-=======
+
 //	public AdminUserVO getUser(AdminUserVO adminUserVO) {
 //		return sqlSession.selectOne("AdminDAO.getUserList", adminUserVO);
 //	}
@@ -51,49 +46,28 @@ public class AdminDAO {
 		return sqlSession.delete("AdminDAO.delete", admin);
 	}
 	
-	public int updateUser1(AdminUserVO user) {
-		return sqlSession.delete("AdminDAO.updateUser1", user);
-	}
-	public int updateUser2(AdminUserVO user) {
-		return sqlSession.delete("AdminDAO.updateUser2", user);
-	}
-	
+
 	//---------------------------------------------------------------
 	//공지사항 목록	
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice){
 		return sqlSession.selectList("AdminDAO.getNoticeList",notice);
 	}
-	
-<<<<<<< HEAD
-	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
-		return sqlSession.selectOne("AdminDAO.getNotice",notice);
-	}
-	
-=======
+
 	//공지사항 세부사항
 	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
 		return sqlSession.selectOne("AdminDAO.getNotice",notice);
 	}
 	//공지사항 수정
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	public int updateNotice(AdminNoticeVO notice) {
 		return sqlSession.update("AdminDAO.updateNotice",notice);
 	}
 	
-<<<<<<< HEAD
-=======
 	//공지사항 삭제
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	public int deleteNotice(AdminNoticeVO notice){
 		return sqlSession.delete("AdminDAO.deleteNotice",notice);
 	}
 	
-<<<<<<< HEAD
-	public int insertNotice(AdminNoticeVO notice) {
-		return sqlSession.insert("AdminDAO.insertNotice",notice);
-	}
-=======
 	//공지사항 등록
 	public int insertNotice(AdminNoticeVO notice) {
 		return sqlSession.insert("AdminDAO.insertNotice",notice);
@@ -125,5 +99,5 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertFAQ",faq);
 	}
 	
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+
 }

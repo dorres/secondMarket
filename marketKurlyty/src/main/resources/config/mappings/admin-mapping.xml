@@ -25,13 +25,20 @@
     	ON A.USER_ID = B.USER_ID; 
  	</select>
 <<<<<<< HEAD
+ 	
+=======
+<<<<<<< HEAD
+>>>>>>> main
  	<update id="update" parameterType="admin">
- 		UPDATE MK_ADMIN SET ADMIN_ID = #{ADMIN_ID}, SET ADMIN_POSITION #{ADMIN_POSITION} WHERE ADIN_I = #{ADMIN_ID}
+ 		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
  	</update>
+ 	
  	<delete id="delete" parameterType="admin">
- 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{ADMIN_ID};
+ 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
  	</delete>
 
+<<<<<<< HEAD
+=======
 =======
  	
  	<update id="update" parameterType="admin">
@@ -42,6 +49,7 @@
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
  	</delete>
 
+>>>>>>> main
 	<update id="updateUser1" parameterType="user">
 		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone}
 		WHERE USER_ID = #{user_id}
@@ -53,7 +61,10 @@
 	
 	<!-- 공지사항 쿼리문 -->
 
+<<<<<<< HEAD
+=======
 >>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+>>>>>>> main
 	<select id="getNoticeList" resultType="notice">
 		SELECT * FROM MK_NOTICE ORDER BY 1;
 	</select>
@@ -64,12 +75,18 @@
 	
 	<update id="updateNotice" parameterType="notice">
 <<<<<<< HEAD
+ 		UPDATE MK_NOTICE SET 
+ 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content},
+ 		WHERE NOTICE_SERIAL = #{notice_serial}
+=======
+<<<<<<< HEAD
  		UPDATE MK_NOTICE SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE NOTICE_SERIAL = #{notice_serial}
 =======
  		UPDATE MK_NOTICE SET 
  		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content},
  		WHERE NOTICE_SERIAL = #{notice_serial}
 >>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+>>>>>>> main
  	</update>
  	
  	<delete id="deleteNotice" parameterType="notice">
@@ -77,14 +94,20 @@
  	</delete>
  	
 <<<<<<< HEAD
+ 	<insert id="insertNotice" parameterType="notice">
+=======
+<<<<<<< HEAD
  	 <insert id="insertNotice" parameterType="notice">
+>>>>>>> main
  		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
-
  	</insert>
+<<<<<<< HEAD
+=======
 =======
  	<insert id="insertNotice" parameterType="notice">
  		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
  	</insert>
+>>>>>>> main
  	<!-- 공지사항 쿼리문 -->
  	
  	<!-- 자주하는 질문 쿼리문 -->
@@ -111,6 +134,9 @@
  	</insert>
  	<!-- 자주하는 질문 쿼리문 -->
  	
+<<<<<<< HEAD
+=======
 >>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+>>>>>>> main
  		
 </mapper>
