@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sun.tools.internal.ws.processor.model.Service;
-
-import first.market.kurlyty.user.dao.PersonalQnaDAO;
 import first.market.kurlyty.user.service.PersonalQnaService;
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
