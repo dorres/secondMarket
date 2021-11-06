@@ -7,14 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
-<<<<<<< HEAD
-=======
+
 import first.market.kurlyty.admin.vo.AdminFAQVO;
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
-import first.market.kurlyty.user.vo.Board_noticeVO;
 
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
@@ -60,14 +57,7 @@ public class AdminServiceImpl implements AdminService {
 	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
 	}
-<<<<<<< HEAD
-	
-	//관리자-공지사항리스트
-=======
-//	@Override
-//	public AdminUserVO getAdminUser(AdminUserVO adminuserVO) {
-//		return adminDao.getUser(adminuserVO);
-//	}
+
 	@Override
 	public int updateManager(AdminVO admin) {
 		return adminDao.updateManager(admin);
@@ -77,15 +67,17 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteManager(AdminVO admin) {
 		return adminDao.deleteManager(admin);
 	}
-	@Override
-	public int updateUser1(AdminUserVO user) {
-		return adminDao.updateUser1(user);
-	}
 	
-	@Override
-	public int updateUser2(AdminUserVO user) {
-		return adminDao.updateUser2(user);
-	}
+//	@Override
+//	public int updateUser1(AdminUserVO user) {
+//		//return adminDao.updateUser1(user);
+//		return
+//	}
+//	
+//	@Override
+//	public int updateUser2(AdminUserVO user) {
+//		//return adminDao.updateUser2(user);
+//	}
 	
 	@Override
 	public int deleteUser1(AdminUserVO user) {
@@ -98,54 +90,31 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
-
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	@Override
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice) {
 		return adminDao.getNoticeList(notice);
 	}
-	
-<<<<<<< HEAD
-	//관리자-공지사항
-=======
 	//관리자-공지사항 세부사항
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	@Override
 	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
 		return adminDao.getNotice(notice);
 	}
-	
-<<<<<<< HEAD
 	//관리자-공지사항수정하기
-=======
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	public int updateNotice(AdminNoticeVO notice) {
 		return adminDao.updateNotice(notice);
 	}
-
-<<<<<<< HEAD
 	//관리자-공지사항삭제하기
-=======
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	@Override
 	public int deleteNotice(AdminNoticeVO notice) {
 		return adminDao.deleteNotice(notice);
 	}
-	
-<<<<<<< HEAD
 	//관리자 -공지사항등록하기
-=======
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	@Override
 	public int insertNotice(AdminNoticeVO notice) {
 		return adminDao.insertNotice(notice);
 	}
-<<<<<<< HEAD
-=======
-	
 	//---------------------------------------------------------------
 	//관리자  -자주하는 질문 리스트
 	@Override
@@ -176,9 +145,6 @@ public class AdminServiceImpl implements AdminService {
 	public int insertFAQ(AdminFAQVO faq) {
 		return adminDao.insertFAQ(faq);
 	}
-	
-
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 }
 	
 	

@@ -66,10 +66,14 @@ textarea {
 					<div class="card-body">
 						<!-- 메인작업 -->
 <<<<<<< HEAD
+						<form action="admin_noticeUpdate.mdo" method="POST">
+=======
+<<<<<<< HEAD
 						<form action="admin_noticeProc.mdo" method="POST">
 =======
 						<form action="admin_noticeUpdate.mdo" method="POST">
 >>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+>>>>>>> main
 							<table >
 								<tr>
 									<td width="300px" height="40px">글번호</td>
@@ -100,10 +104,14 @@ textarea {
 								<tr>
 									<td width="300px" height="500px">내용</td>
 <<<<<<< HEAD
+									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
+=======
+<<<<<<< HEAD
 									<td colspan="3"  height="500px"><textarea name="notice_content"  readonly="readonly">${notice.notice_content }</textarea>
 =======
 									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
 >>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
+>>>>>>> main
 								</tr>
 							</table>
 							<input type="submit" value="수정하기" />
