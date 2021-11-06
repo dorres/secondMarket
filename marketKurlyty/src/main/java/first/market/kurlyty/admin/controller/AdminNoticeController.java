@@ -31,6 +31,7 @@ public class AdminNoticeController {
 	//관리자 -공지사항 수정(update)
 	@RequestMapping("admin_noticeUpdate.mdo")
 	public String adminNoticeUpdate(AdminNoticeVO notice) {
+
 		int success =0;
 		success = adminService.updateNotice(notice);
 		if(success != 0) {

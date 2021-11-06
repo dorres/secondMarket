@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -31,9 +32,9 @@ public interface AdminService {
 
 	int deleteUser2(AdminUserVO user);
 
-	int updateUser1(AdminUserVO user);
+//	int updateUser1(AdminUserVO user);
 
-	int updateUser2(AdminUserVO user);
+//	int updateUser2(AdminUserVO user);
 	
 //	AdminUserVO getAdminUser(AdminUserVO adminuserVo);
 	
@@ -69,11 +70,4 @@ public interface AdminService {
 	//자주하는 질문 등록
 	int insertFAQ(AdminFAQVO faq);
 	
-	
-	
-	
-	
-
-
-
 }

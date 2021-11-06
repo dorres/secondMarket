@@ -34,6 +34,7 @@ public class AdminDAO {
 	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
 		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
+
 //	public AdminUserVO getUser(AdminUserVO adminUserVO) {
 //		return sqlSession.selectOne("AdminDAO.getUserList", adminUserVO);
 //	}
@@ -45,19 +46,14 @@ public class AdminDAO {
 		return sqlSession.delete("AdminDAO.delete", admin);
 	}
 	
-	public int updateUser1(AdminUserVO user) {
-		return sqlSession.delete("AdminDAO.updateUser1", user);
-	}
-	public int updateUser2(AdminUserVO user) {
-		return sqlSession.delete("AdminDAO.updateUser2", user);
-	}
-	
+
 	//---------------------------------------------------------------
 	//공지사항 목록	
+
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice){
 		return sqlSession.selectList("AdminDAO.getNoticeList",notice);
 	}
-	
+
 	//공지사항 세부사항
 	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
 		return sqlSession.selectOne("AdminDAO.getNotice",notice);
@@ -103,4 +99,5 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertFAQ",faq);
 	}
 	
+
 }

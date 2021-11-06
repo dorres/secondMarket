@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
+
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -56,10 +57,7 @@ public class AdminServiceImpl implements AdminService {
 	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
 	}
-//	@Override
-//	public AdminUserVO getAdminUser(AdminUserVO adminuserVO) {
-//		return adminDao.getUser(adminuserVO);
-//	}
+
 	@Override
 	public int updateManager(AdminVO admin) {
 		return adminDao.updateManager(admin);
@@ -69,15 +67,17 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteManager(AdminVO admin) {
 		return adminDao.deleteManager(admin);
 	}
-	@Override
-	public int updateUser1(AdminUserVO user) {
-		return adminDao.updateUser1(user);
-	}
 	
-	@Override
-	public int updateUser2(AdminUserVO user) {
-		return adminDao.updateUser2(user);
-	}
+//	@Override
+//	public int updateUser1(AdminUserVO user) {
+//		//return adminDao.updateUser1(user);
+//		return
+//	}
+//	
+//	@Override
+//	public int updateUser2(AdminUserVO user) {
+//		//return adminDao.updateUser2(user);
+//	}
 	
 	@Override
 	public int deleteUser1(AdminUserVO user) {
@@ -90,35 +90,31 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
-
 	@Override
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice) {
 		return adminDao.getNoticeList(notice);
 	}
-	
 	//관리자-공지사항 세부사항
 	@Override
 	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
 		return adminDao.getNotice(notice);
 	}
-	
+	//관리자-공지사항수정하기
 	public int updateNotice(AdminNoticeVO notice) {
 		return adminDao.updateNotice(notice);
 	}
-
+	//관리자-공지사항삭제하기
 	@Override
 	public int deleteNotice(AdminNoticeVO notice) {
 		return adminDao.deleteNotice(notice);
 	}
-	
+	//관리자 -공지사항등록하기
 	@Override
 	public int insertNotice(AdminNoticeVO notice) {
 		return adminDao.insertNotice(notice);
 	}
-	
 	//---------------------------------------------------------------
 	//관리자  -자주하는 질문 리스트
 	@Override
@@ -149,8 +145,6 @@ public class AdminServiceImpl implements AdminService {
 	public int insertFAQ(AdminFAQVO faq) {
 		return adminDao.insertFAQ(faq);
 	}
-	
-
 }
 	
 	
