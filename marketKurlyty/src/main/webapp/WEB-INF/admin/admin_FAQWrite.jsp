@@ -25,16 +25,7 @@ textarea {
     resize: none;
   }
 </style>
-<script type="text/javascript">
 
-	function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할꺼임?");
-		if (answer == true) {
-			location = url;
-		}
-	}
-//-->
-</script>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="default/top.jsp"></jsp:include>
@@ -46,9 +37,9 @@ textarea {
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">공지사항</h1>
+				<h1 class="mt-4">자주하는 질문</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">공지사항 상세</a></li>
+					<li class="breadcrumb-item"><a href="index.html">자주하는질문 등록</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
@@ -65,41 +56,39 @@ textarea {
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-						<form action="admin_noticeUpdate.mdo" method="POST">
+						<form action="admin_FAQInsert.mdo" method="POST">
+							<input type="hidden" name="faq_id" value="${adminId }">
 							<table >
+							<tr>
+								<td width="100px" height="40px">카테고리</td>
+								<td>
+									<select name="faq_category">
+										<option value="배송지연/불만" >배송지연/불만</option>
+										<option value="컬리패스 (무료배송)">컬리패스 (무료배송)</option>
+										<option value="반품문의">반품문의</option>
+										<option value="A/S문의">A/S문의</option>
+										<option value=">환불문의">환불문의</option>
+										<option value="주문결제문의">주문결제문의</option>
+										<option value="회원정보문의">회원정보문의</option>
+										<option value="취소문의">취소문의</option>
+										<option value="교환문의">교환문의</option>
+										<option value="상품정보문의">상품정보문의</option>											
+										<option value="기타문의">기타문의</option>
+									</select>
+								</td>
+							</tr>
 								<tr>
-									<td width="300px" height="40px">글번호</td>
-									<td width="400px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;"name="notice_serial" value="${notice.notice_serial }" readonly="readonly">
-									</td>
-									
-									<td width="300px">조회수</td>
-									<td width="400px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;" name="notice_hit" value="${notice.notice_hit }" readonly="readonly">
+									<td width="100px" height="40px">제목</td>
+									<td width="800px" height="40px">
+										<input type="text" style="width:100%; height:100%; border: none;"name="faq_title">
 									</td>
 								</tr>
 								<tr>
-									<td width="300px" height="40px">작성자</td>
-									<td width="400px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;"  value="master" readonly="readonly">
-									</td>
-									
-									<td width="300px">작성일</td>
-									<td width="400px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${notice.notice_date }" pattern="yyyy-MM-dd [E]"/>" readonly="readonly">
-									</td>
-								</tr>
-								<tr>
-									<td width="300px" height="40px">제목</td>
-									<td width="400px" height="40px" colspan="3"><input type="text" style="width:100%; height:100%; border: none;" name="notice_title" value="${notice.notice_title }" ></td>
-								</tr>
-								<tr>
-									<td width="300px" height="500px">내용</td>
-									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
+									<td width="100px" height="500px">내용</td>
+									<td colspan="3"  height="500px"><textarea name="faq_content" ></textarea>
 								</tr>
 							</table>
-							<input type="submit" value="수정하기" />
-							<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_noticeDelete.mdo?notice_serial=${notice.notice_serial}')"/>
+							<input type="submit" value="등록하기" />
 							<input type="button" value="목록보기" onclick="location.href='admin_noticeList.mdo'"/>
 						</form>
 					</div>

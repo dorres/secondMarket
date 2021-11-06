@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
+import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
-import first.market.kurlyty.user.vo.Board_noticeVO;
 
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
@@ -76,13 +76,14 @@ public class AdminServiceImpl implements AdminService {
 		success = adminDao.deleteManager(admin);
 		return success;
 	}
+	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice) {
 		return adminDao.getNoticeList(notice);
 	}
 	
-	//관리자-공지사항
+	//관리자-공지사항 세부사항
 	@Override
 	public AdminNoticeVO getNotice(AdminNoticeVO notice) {
 		return adminDao.getNotice(notice);
@@ -103,8 +104,39 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int insertNotice(AdminNoticeVO notice) {
 		return adminDao.insertNotice(notice);
-
 	}
+	
+	//---------------------------------------------------------------
+	//관리자  -자주하는 질문 리스트
+	@Override
+	public List<AdminFAQVO> getFAQList(AdminFAQVO faq) {
+		return adminDao.getFAQList(faq);
+	}
+	
+	//관리자-자주하는질문 세부사항
+	@Override
+	public AdminFAQVO getFAQ(AdminFAQVO faq) {
+		return adminDao.getFAQ(faq);
+	}
+	
+	//관리자-자주하는 질문 수정
+	@Override
+	public int updateFAQ(AdminFAQVO faq) {
+		return adminDao.updateFAQ(faq);
+	}
+	
+	//관리자-자주하는 질문 삭제
+	@Override
+	public int deleteFAQ(AdminFAQVO faq) {
+		return adminDao.deleteFAQ(faq);
+	}
+	
+	//관리자-자주하는 질문 등록
+	@Override
+	public int insertFAQ(AdminFAQVO faq) {
+		return adminDao.insertFAQ(faq);
+	}
+	
 }
 	
 	
