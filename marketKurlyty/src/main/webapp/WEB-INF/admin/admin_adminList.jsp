@@ -34,6 +34,12 @@
 				location.href = "/board/list";
 			})
 		})
+		function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할까요?");
+		if (answer == true) {
+			location = url;
+		}
+	}
 	</script>
 </head>
 <body class="sb-nav-fixed">
@@ -86,7 +92,7 @@
 										<td>${adminList.admin_position }</td>
 										<td>
 											<input type="button" value="수정" onclick="location.href= 'update.mdo?admin_id=${adminList.admin_id}'">
-											<input type="button" value="삭제" onclick="location.href= 'admin_adminList.mdo'">
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteMember.mdo?admin_id=${adminList.admin_id}')"/>
 										</td>
 									</tr>
 								</c:forEach>

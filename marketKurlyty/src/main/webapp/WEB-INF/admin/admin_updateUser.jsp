@@ -127,16 +127,16 @@ function formJoinSubmit(){
 						<form id="form" name="frmAdmin" method="post" action="updateProc.mdo">
 							<br>
 							<br>
-							<h2 align="center">매니저 수정</h2>
+							<h2 align="center">유저 수정</h2>
 							<table class="tbl_comm">
 								<tr class="fst">
 								<tr>
-									<th>아이디</th>
+									<th>이름</th>
 									<td><input type="text" name="admin_id" readonly="readonly" value="${update.admin_id}"></td>  
 								</tr>
 															
 								<tr>
-									<th>이름</th>
+									<th>전화번호</th>
 									<td>${update.admin_name}</td>
 								</tr>
 

@@ -27,6 +27,16 @@ public interface AdminService {
 
 	int deleteManager(AdminVO admin);
 	
+	int deleteUser1(AdminUserVO user);
+
+	int deleteUser2(AdminUserVO user);
+
+	int updateUser1(AdminUserVO user);
+
+	int updateUser2(AdminUserVO user);
+	
+//	AdminUserVO getAdminUser(AdminUserVO adminuserVo);
+	
 	//------------------------------------------------
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
@@ -42,7 +52,7 @@ public interface AdminService {
 	
 	//공지사항 등록
 	int insertNotice(AdminNoticeVO notice);
-	
+
 	//--------------------------------------------
 	//자주하는 질문 리스트
 	List<AdminFAQVO> getFAQList(AdminFAQVO faq);
@@ -61,4 +71,9 @@ public interface AdminService {
 	
 	
 	
+	
+	
+
+
+
 }

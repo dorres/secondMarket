@@ -18,7 +18,6 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDao;
 	
-	//아이디 체크
 	@Override
 	public boolean idCheck(AdminVO admin) {
 		AdminVO adminData = adminDao.getAdmin(admin);
@@ -28,7 +27,6 @@ public class AdminServiceImpl implements AdminService {
 			return false;
 	}
 	
-	//회원가입처리
 	@Override
 	public int joinProc(AdminVO admin) {
 		int success = 0;
@@ -36,48 +34,66 @@ public class AdminServiceImpl implements AdminService {
 		return success;
 	}
 	
-	//아이디 체크
 	@Override
 	public AdminVO loginGetUser(AdminVO admin) {
 		return adminDao.getAdmin(admin);
 	}
 	
-	//관리자-관리자리스트
+
 	@Override
 	public List<AdminVO> adminList(AdminVO admin){
 		return  adminDao.getAdminList(admin);
 	}
 	
-	//관리자-유저리스트
+
 	@Override
 	public List<AdminUserVO> userList(AdminUserVO adminUser){
 		return  adminDao.getUserList(adminUser);
 	}
 	
-	//관리자 로그아웃
+
 	@Override
 	public void logout(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
 	}
-	
-
-//	매니저 수정
+//	@Override
+//	public AdminUserVO getAdminUser(AdminUserVO adminuserVO) {
+//		return adminDao.getUser(adminuserVO);
+//	}
 	@Override
 	public int updateManager(AdminVO admin) {
-		int success = 0;
-		success = adminDao.updateManager(admin);
-		return success;
+		return adminDao.updateManager(admin);
 	}
 	
-	//매니저 삭제
 	@Override
 	public int deleteManager(AdminVO admin) {
-		int success = 0;
-		success = adminDao.deleteManager(admin);
-		return success;
+		return adminDao.deleteManager(admin);
 	}
+	@Override
+	public int updateUser1(AdminUserVO user) {
+		return adminDao.updateUser1(user);
+	}
+	
+	@Override
+	public int updateUser2(AdminUserVO user) {
+		return adminDao.updateUser2(user);
+	}
+	
+	@Override
+	public int deleteUser1(AdminUserVO user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteUser2(AdminUserVO user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
+
 	@Override
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice) {
 		return adminDao.getNoticeList(notice);
@@ -89,18 +105,15 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getNotice(notice);
 	}
 	
-	//관리자-공지사항수정하기
 	public int updateNotice(AdminNoticeVO notice) {
 		return adminDao.updateNotice(notice);
 	}
 
-	//관리자-공지사항삭제하기
 	@Override
 	public int deleteNotice(AdminNoticeVO notice) {
 		return adminDao.deleteNotice(notice);
 	}
 	
-	//관리자 -공지사항등록하기
 	@Override
 	public int insertNotice(AdminNoticeVO notice) {
 		return adminDao.insertNotice(notice);
@@ -137,6 +150,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.insertFAQ(faq);
 	}
 	
+
 }
 	
 	
