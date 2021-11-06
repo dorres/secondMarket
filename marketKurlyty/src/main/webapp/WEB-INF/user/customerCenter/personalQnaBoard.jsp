@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,10 +8,9 @@
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="style/ItemListStyle.css">
-
 </head>
-<body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
 
+<body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -27,18 +27,39 @@
 									<h2 class="tit">1:1 문의</h2>
 								</div>
 
-								<table class="xans-board-listheader" width="100%">
-									<tbody>
-										<tr class="input_txt">
-											<th width="8%">번호</th>
-											<th width="15%">카테고리</th>
-											<th>제목</th>
-											<th width="12%">작성자</th>
-											<th width="12%">작성일</th>
+								<table class="xans-board-listheader" width="100%" onclick="view_content(this, event)">
+									<tr class="input_txt">
+										<th width="8%">번호</th>
+										<th width="15%">카테고리</th>
+										<th>제목</th>
+										<th width="12%">작성자</th>
+										<th width="12%">작성일</th>
+									</tr>
+									<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
+										<tr>
+											<td>${num.index+1}</td>
+											<td>${personalqna.qna_personal_category}</td>
+											<td>${personalqna.qna_personal_title}</td>
+											<td>${personalqna.user_id}</td>
+											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern = "yyyy-mm-dd"/> </td>
 										</tr>
-									</tbody>
+									</c:forEach>
 								</table>
-								
+<!--  글을 클릭하면 아래에 게시글 내용이 내려옴.  -->
+								<div style="display: block; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
+									<div width="100%" style="padding-left: 55px;">
+										<tr> 
+										<td>${personalqna.qna_personal_content}</td>
+										</tr>
+									</div>
+									<div class="goods-review-grp-btn" style="text-align: right;">
+										<button type="button" class="styled-button"
+											onclick="popup_register( 'mod_qna', '5173186' );">수정</button>
+										<button type="button" class="styled-button"
+											onclick="popup_register( 'del_qna', '5173186' );">삭제</button>
+									</div>
+								</div>
+
 								<!-- 문의 내역이 없을때 ↓↓↓↓↓↓↓↓↓-->
 								<!--  <div class="no_data" style="padding: 150px 0 148px; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; font-size: 12px; color: #4c4c4c">
 									1:1 문의 내역이 존재하지 않습니다.
@@ -55,7 +76,7 @@
 								</div> -->
 								
 								<!-- 문의 내역이 있을때 ↓↓↓↓↓↓↓↓↓-->
-								<div class="mypage_wrap" style="float: none; width: 100%">
+					<!--			<div class="mypage_wrap" style="float: none; width: 100%">
 									<table class="table_faq" width="100%" onclick="view_content(this, event)">
 										<tbody>
 											<tr>
@@ -79,9 +100,14 @@
 										</div>
 									</div>
 								</div>
+								
+								 -->
+								 
+								 
 								<div style="position: relative">
 									<div style="position: absolute; right: 0; top: 60px;">
-										<a href="javascript:popup_register( 'add_qna' );">
+										<a href="/kurlyty/personalQnaWrite.do">
+									<!-- <a href="javascript:popup_register( '/personalQnaWrite.jsp' );">-->
 											<span class="bhs_buttonsm yb" style="float: none;">글쓰기</span>
 										</a>
 									</div>

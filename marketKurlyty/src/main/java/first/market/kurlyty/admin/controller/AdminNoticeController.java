@@ -29,8 +29,13 @@ public class AdminNoticeController {
 	}
 	
 	//관리자 -공지사항 수정(update)
+<<<<<<< HEAD
 	@RequestMapping("admin_noticeProc.mdo")
 	public String adminNoticeProc(AdminNoticeVO notice) {
+=======
+	@RequestMapping("admin_noticeUpdate.mdo")
+	public String adminNoticeUpdate(AdminNoticeVO notice) {
+>>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 		int success =0;
 		success = adminService.updateNotice(notice);
 		if(success != 0) {

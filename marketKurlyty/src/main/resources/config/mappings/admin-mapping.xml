@@ -17,13 +17,14 @@
  		SELECT * FROM MK_ADMIN
  	</select>
  	
- 	<select id="getUserlist" resultType="adminUser">
+ 	<select id="getUserlist" resultType="adminUser" >
  		SELECT B.USER_SERIAL, A.USER_ID, A.USER_NAME, A.USER_PHONE,
  			B.USER_MEMBERSHIP_NAME, B.USER_LAST_LOGIN, B.USER_POINT, B.USER_TOTAL_PURCHASE, B.USER_STATUS
     	FROM MK_USER A 
     	JOIN MK_USER_DETAILS B 
     	ON A.USER_ID = B.USER_ID; 
  	</select>
+<<<<<<< HEAD
  	<update id="update" parameterType="admin">
  		UPDATE MK_ADMIN SET ADMIN_ID = #{ADMIN_ID}, SET ADMIN_POSITION #{ADMIN_POSITION} WHERE ADIN_I = #{ADMIN_ID}
  	</update>
@@ -31,6 +32,28 @@
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{ADMIN_ID};
  	</delete>
 
+=======
+ 	
+ 	<update id="update" parameterType="admin">
+ 		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="admin">
+ 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
+ 	</delete>
+
+	<update id="updateUser1" parameterType="user">
+		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone}
+		WHERE USER_ID = #{user_id}
+	</update>
+	<update id="updateUser2">
+		UPDATE MK_DETAILES SET USER_POSITION =#{user_position} where WHERE USER_ID =
+		#{user_id}
+	</update>
+	
+	<!-- 공지사항 쿼리문 -->
+
+>>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
 	<select id="getNoticeList" resultType="notice">
 		SELECT * FROM MK_NOTICE ORDER BY 1;
 	</select>
@@ -40,16 +63,54 @@
 	</select>
 	
 	<update id="updateNotice" parameterType="notice">
+<<<<<<< HEAD
  		UPDATE MK_NOTICE SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE NOTICE_SERIAL = #{notice_serial}
+=======
+ 		UPDATE MK_NOTICE SET 
+ 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content},
+ 		WHERE NOTICE_SERIAL = #{notice_serial}
+>>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
  	</update>
  	
  	<delete id="deleteNotice" parameterType="notice">
  		DELETE FROM MK_NOTICE WHERE NOTICE_SERIAL = #{notice_serial}
  	</delete>
  	
+<<<<<<< HEAD
  	 <insert id="insertNotice" parameterType="notice">
  		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
 
  	</insert>
+=======
+ 	<insert id="insertNotice" parameterType="notice">
+ 		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
+ 	</insert>
+ 	<!-- 공지사항 쿼리문 -->
+ 	
+ 	<!-- 자주하는 질문 쿼리문 -->
+ 	<select id="getFAQList" resultType="faq" parameterType="faq">
+ 		SELECT (ROW_NUMBER() OVER(Order by faq_date)) AS ROWNUM , * FROM mk_faq
+ 	</select>
+ 	
+ 	<select id="getFAQ" resultType="faq" parameterType="faq">
+		SELECT * FROM MK_FAQ WHERE faq_serial=#{faq_serial};
+	</select>
+	
+	<update id="updateFAQ" parameterType="faq">
+ 		UPDATE MK_FAQ SET 
+ 		FAQ_TITLE = #{faq_title}, FAQ_CONTENT = #{faq_content}, FAQ_CATEGORY = #{faq_category} 
+ 		WHERE FAQ_SERIAL = #{faq_serial}
+ 	</update>
+ 	
+ 	<delete id="deleteFAQ" parameterType="faq">
+ 		DELETE FROM MK_FAQ WHERE FAQ_SERIAL = #{faq_serial}
+ 	</delete>
+ 	
+ 	<insert id="insertFAQ" parameterType="faq">
+ 		INSERT INTO MK_FAQ VALUES (DEFAULT, #{faq_id}, #{faq_title}, #{faq_content}, NOW(), #{faq_category});
+ 	</insert>
+ 	<!-- 자주하는 질문 쿼리문 -->
+ 	
+>>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
  		
 </mapper>

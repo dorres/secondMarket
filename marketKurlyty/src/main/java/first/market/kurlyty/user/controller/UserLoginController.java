@@ -2,38 +2,42 @@ package first.market.kurlyty.user.controller;
 
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.UserVO;
 
 @Controller
-@SessionAttributes("userId")
+@SessionAttributes({"userId","userName"})
 public class UserLoginController {
 	
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/login.do")
+	@GetMapping("/login.do")
 	public String login() {
 		return "login_and_join/login";
 	}
 	
 	//로그인 처리
-	@RequestMapping("/loginProc.do")
-	public String login(HttpSession session, UserVO user, Model model) {
+	@PostMapping("/login.do")
+	public String login(UserVO user, Model model, RedirectAttributes redirect) {
 		String securityPw = null;
 		//db에 등록된 회원 비밀번호를 가지고옴
 		// 이때 가지고온 비밀번호는 암호화임
 		UserVO userInfo = userService.loginGetUser(user);
+		if(userInfo==null) {
+			redirect.addFlashAttribute("FailMessage","존재하지 않는 회원정보입니다. 다시 입력해주세요");
+			return "redirect:login.do";
+		}
 		String dbPw = userInfo.getUser_pw();
 		
 		//유저가 입력한 비밀번호를 암호화 시킴
@@ -46,8 +50,10 @@ public class UserLoginController {
 		if(dbPw.equals(securityPw)) {
 			//session.setAttribute("userId",user.getUser_id());
 			model.addAttribute("userId",user.getUser_id());
-			return "mainPage/index";	
+			model.addAttribute("userName", userInfo.getUser_name());
+			return "mainPage/index";
 		}else {
+			redirect.addFlashAttribute("FailMessage", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			return "redirect:login.do";
 		}
 	}
@@ -58,6 +64,23 @@ public class UserLoginController {
 		userService.logout(sessionStatus);
 		return "redirect:index.do";
 	}
-
+	
+	@RequestMapping("/kakaoLogin.do")
+	public String KakaoLogin(String kakaoId, String kakaoEmail, String kakaoNickName, Model model) {
+		UserVO user = new UserVO();
+		user.setUser_id(kakaoId);
+		UserVO userInfo = userService.loginGetUser(user);
+		if(userInfo==null) {
+			model.addAttribute("KakaoJoin",true);
+			model.addAttribute("kakaoId",kakaoId);
+			model.addAttribute("kakaoEmail",kakaoEmail);
+			model.addAttribute("kakaoNickName",kakaoNickName);
+			return "login_and_join/join";
+		}else {
+			model.addAttribute("userId",kakaoId);
+			model.addAttribute("userName",userInfo.getUser_name());
+			return "redirect:index.do";	
+		}
+	}
 }
 
