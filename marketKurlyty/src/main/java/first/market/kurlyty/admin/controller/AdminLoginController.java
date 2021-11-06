@@ -21,19 +21,19 @@ public class AdminLoginController {
 	private AdminService adminService;
 	
 	//관리자 로그인페이지
-	@RequestMapping("/admin_login.mdo")
+	@RequestMapping("admin_login.mdo")
 	public String adminlogin() {
 		return "admin_login";
 	}
 	
 	//관리자메인페이지
-	@RequestMapping("/admin_index.mdo")
+	@RequestMapping("admin_index.mdo")
 	public String adminIndex() {
 		return "admin_index";
 	}
 	
 	//관리자 로그인처리
-	@RequestMapping("/loginProc.mdo")
+	@RequestMapping("loginProc.mdo")
 	public String adminJoin(AdminVO admin, Model model) {
 		String securityPw = null;
 		AdminVO adminInfo = adminService.loginGetUser(admin);
@@ -53,7 +53,7 @@ public class AdminLoginController {
 	}
 	
 	//관리자 로그아웃처리
-	@RequestMapping("/logoutProc.mdo")
+	@RequestMapping("logoutProc.mdo")
 	public String logout(SessionStatus sessionStatus) {
 		adminService.logout(sessionStatus);
 		return "redirect:admin_login.mdo";
