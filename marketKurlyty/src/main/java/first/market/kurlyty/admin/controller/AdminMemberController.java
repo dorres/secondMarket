@@ -64,4 +64,10 @@ public class AdminMemberController {
 				return "update.mdo";
 			}
 		}
+		//admin_user ªË¡¶
+		@RequestMapping("delteUser.mdo")
+		public String deleteUser(AdminUserVO user) {
+			int success = 0;
+			success = adminService.del
+		}
 }

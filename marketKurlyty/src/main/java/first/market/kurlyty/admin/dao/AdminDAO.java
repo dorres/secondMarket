@@ -44,6 +44,11 @@ public class AdminDAO {
 		return sqlSession.delete("AdminDAO.delete", admin);
 	}
 	
+	//유저 삭제
+	public int deleteUser(AdminUserVO user) {
+		return sqlSession.delete("")
+	}
+	
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice){
 		return sqlSession.selectList("AdminDAO.getNoticeList",notice);
 	}

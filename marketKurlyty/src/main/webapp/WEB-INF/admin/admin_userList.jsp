@@ -78,8 +78,8 @@
 										<td>${userList.user_total_purchase }</td>
 										<td>${userList.user_status }</td>
 										<td>
-											<input type="button" value="수정">
-											<input type="button" value="삭제">
+											<input type="button" value="수정" action="location.href='*'">
+											<input type="button" value="삭제" action="location.href='deleteMember.mdo'">
 										</td>
 									</tr>
 								</c:forEach>

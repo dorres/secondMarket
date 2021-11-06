@@ -72,6 +72,11 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteManager(AdminVO admin) {
 		return adminDao.deleteManager(admin);
 	}
+	//유저 삭제
+	@Override
+	public int deleteUser(AdminUserVO user) {
+		return adminDao.
+	}
 	//관리자-공지사항리스트
 	@Override
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice) {
