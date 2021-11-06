@@ -41,10 +41,12 @@ function formJoinSubmit(){
 		document.frmMember.user_id.focus();
 		return;
 	}
-	if(document.frmMember.chk_id.value=="불가능"){
-		alert("중복된 아이디는 사용할 수 없습니다.");
-		document.frmMember.user_id.focus();
-		return;
+	if(${!KakaoJoin}){
+		if(document.frmMember.chk_id.value=="불가능"){
+			alert("중복된 아이디는 사용할 수 없습니다.");
+			document.frmMember.user_id.focus();
+			return;
+		}
 	}
 	if(document.frmMember.user_pw.value==""){
 		alert("비밀번호를 입력하세요.");
@@ -76,10 +78,12 @@ function formJoinSubmit(){
 		document.regForm.email.focus();
 		return;
 	}
-	if(document.frmMember.chk_email.value=="불가능"){
-		alert("중복된 이메일은 사용할 수 없습니다.");
-		document.frmMember.user_email.focus();
-		return;
+	if(${!KakaoJoin}){
+		if(document.frmMember.chk_email.value=="불가능"){
+			alert("중복된 이메일은 사용할 수 없습니다.");
+			document.frmMember.user_email.focus();
+			return;
+		}
 	}
 	if(document.frmMember.user_phone.value==""){
 		alert("전화번호를 입력하세요.");
@@ -131,18 +135,21 @@ function chkEmail(){
 	})
 }
 function smsResponse(){
-	alert("문자 ㄱㄱ");
-	var phone = document.frmMember.user_phone.value;
-	$.ajax({
-		url:"smsCheck.do?user_phone="+phone,
-		datatype:"json",
-		success:function(res){
-			const data = JSON.parse(res);
-			$("#checkNum").val(data.checkNum);
-			$(".phoneHid").attr("class","addressShow");
-		}
-	});
 	
+	if(false){
+		alert("문자 ㄱㄱ");
+		var phone = document.frmMember.user_phone.value;
+		$.ajax({
+			url:"smsCheck.do?user_phone="+phone,
+			datatype:"json",
+			success:function(res){
+				const data = JSON.parse(res);
+				$("#checkNum").val(data.checkNum);
+				$(".phoneHid").attr("class","addressShow");
+			}
+		});
+	}
+	$(".phoneHid").attr("class","addressShow");
 }
 function certCheck(){
 	var smsCheck = $("#smsCheck").val();
@@ -155,6 +162,39 @@ function certCheck(){
 		alert("인증에 실패했습니다. 다시 입력해주세요.");
 		$("#okCerCheck").val("불가능");
 	}
+}
+$(document).ready(function(){
+	$("input[name=user_phone]").on("keyup", function() {
+		$(this).val( $(this).val().replace(/[^0-9]/gi,"") );
+	});
+	$("input[name=user_id]").on("keyup",function(){
+		$(this).val( $(this).val().replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/gi,"") );
+	});
+	$("input[name=user_pw]").on("keyup",function(){
+		$(this).val( $(this).val().replace(/[^0-9a-z\!\@\#\$\%\^\&\*]/gi,"") );
+	}).blur(function(){
+		/* if(!(/[\w\!\@\#\$\%\^\&\*]+[\!\@\#\$\%\^\&\*]/gi).test($(this).val())){
+			alert("특수기호를 반드시 넣어야합니다.");
+		} */
+		if(!(/[a-z]+/g).test($(this).val())){
+			alert("영어와 숫자와 특수기호로 조합하여 만드시오.");
+		}
+		if(!(/[A-Z]+/g).test($(this).val())){
+			alert("영어대문자는 무조건 입력하세요.");
+		}
+		if(!(/[0-9]*/gi).test($(this).val())){
+			alert("영어와 숫자와 특수기호로 조합하여 만드시오.");
+		}
+		if(!(/[\!\@\#\$\%\^\&\*]+/gi).test($(this).val())){
+			alert("특수기호를 반드시 넣어야합니다.");
+		}
+	});
+});
+function showPassword(){
+	$("#password").attr("type","text");
+}
+function hiddenPassword(){
+	$("#password").attr("type","password");
 }
 </script>
 <style>
@@ -207,10 +247,16 @@ function certCheck(){
 											<th>아이디<span class="ico">*<span
 													class="screen_out">필수항목</span></span></th>
 											<td>
-												<input type="text" name="user_id" value="" maxlength="16" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
-													label="아이디">
-												<input id="posibleId" type="hidden" name="chk_id" label="아이디중복체크" value="불가능">
-												<a class="btn default" href="javascript:chkId()">중복확인</a>
+												<c:if test="${KakaoJoin == null}">
+													<input type="text" name="user_id" value="" maxlength="16" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
+														label="아이디">
+													<input id="posibleId" type="hidden" name="chk_id" label="아이디중복체크" value="불가능">
+													<a class="btn default" href="javascript:chkId()">중복확인</a>
+												</c:if>
+												<c:if test="${KakaoJoin}">
+													<input type="text" name="user_id" value="${kakaoId}" maxlength="16" label="아이디"
+														readonly="readonly">
+												</c:if>
 												<p class="txt_guide square">
 													<span class="txt txt_case1">6자 이상의 영문 혹은 영문과 숫자를 조합</span>
 													<span class="txt txt_case2">아이디 중복확인</span>
@@ -220,12 +266,15 @@ function certCheck(){
 										<tr>
 											<th>비밀번호<span class="ico">*<span
 													class="screen_out">필수항목</span></span></th>
-											<td><input type="password" name="user_pw" label="비밀번호"
+											<td><input id="password" type="password" name="user_pw" label="비밀번호"
 												maxlength="16" class="reg_pw" placeholder="비밀번호를 입력해주세요">
+												<input class="btn default" type="button" onmousedown="javascript:showPassword()" 
+													onmouseup="javascript:hiddenPassword()" value="암호보기">
 												<p class="txt_guide square">
 													<span class="txt txt_case1">10자 이상 입력</span> <span
 														class="txt txt_case2">영문/숫자/특수문자(공백 제외)만 허용하며, 2개이상
-														조합</span> <span class="txt txt_case3">동일한 숫자 3개 이상 연속사용 불가</span>
+														조합</span>
+													<span class="txt txt_case3">동일한 숫자 3개 이상 연속사용 불가</span>
 												</p></td>
 										</tr>
 
@@ -241,7 +290,7 @@ function certCheck(){
 
 										<tr>
 											<th>이름<span class="ico">*<span class="screen_out">필수항목</span></span></th>
-											<td><input type="text" name="user_name" value="" placeholder="이름을 입력해주세요">
+											<td><input type="text" name="user_name" value="${kakaoNickName }" placeholder="이름을 입력해주세요">
 											</td>
 										</tr>
 
@@ -249,11 +298,17 @@ function certCheck(){
 											<th>이메일<span class="ico">*<span
 													class="screen_out">필수항목</span></span></th>
 											<td>
-												<input type="text" name="user_email" value="" data-email="" size="30" label="이메일"
-													placeholder="예: marketkurly@kurly.com">
-												<input id="posibleEmail" type="hidden" name="chk_email" label="이메일중복체크" value="불가능">
-												<a href="javascript:void(0)"
-													onclick="chkEmail()" class="btn default">중복확인</a>
+												<c:if test="${KakaoJoin==null }">
+													<input type="text" name="user_email" value="" data-email="" size="30" label="이메일"
+														placeholder="예: marketkurly@kurly.com">
+													<input id="posibleEmail" type="hidden" name="chk_email" label="이메일중복체크" value="불가능">
+													<a href="javascript:void(0)"
+														onclick="chkEmail()" class="btn default">중복확인</a>
+												</c:if>
+												<c:if test="${KakaoJoin}">
+													<input type="text" name="user_email" value="${kakaoEmail }" data-email="" size="30" label="이메일"
+														readonly="readonly">
+												</c:if>
 											</td>
 										</tr>
 										<tr class="field_phone">
@@ -261,8 +316,7 @@ function certCheck(){
 													class="screen_out">필수항목</span></span></th>
 											<td>
 												<div class="phone_num">
-													<input type="text" value="" pattern="[0-9]*"
-														name="user_phone" placeholder="숫자만 입력해주세요" class="inp">
+													<input type="text" value="" name="user_phone" placeholder="숫자만 입력해주세요" class="inp">
 													<button id="btn_cert" class="btn default enabled" onclick="smsResponse()"
 														type="button">인증번호 받기</button>
 												</div>
@@ -286,7 +340,7 @@ function certCheck(){
 											<td>
 												<div class="phoneHid">
 													<input id="smsCheck" type="text" name="smsCheck" size="6" maxlength="6" value="" />
-													<button id="btn_cert" class="btn default enabled" onclick="certCheck()"
+													<button id="btn_cert2" class="btn default enabled" onclick="certCheck()"
 														type="button">인증번호 확인</button>
 													<input type="hidden" id="posiblePhone"/>
 													<input type="hidden" id="checkNum"/>

@@ -64,6 +64,23 @@ public class UserLoginController {
 		userService.logout(sessionStatus);
 		return "redirect:index.do";
 	}
-
+	
+	@RequestMapping("/kakaoLogin.do")
+	public String KakaoLogin(String kakaoId, String kakaoEmail, String kakaoNickName, Model model) {
+		UserVO user = new UserVO();
+		user.setUser_id(kakaoId);
+		UserVO userInfo = userService.loginGetUser(user);
+		if(userInfo==null) {
+			model.addAttribute("KakaoJoin",true);
+			model.addAttribute("kakaoId",kakaoId);
+			model.addAttribute("kakaoEmail",kakaoEmail);
+			model.addAttribute("kakaoNickName",kakaoNickName);
+			return "login_and_join/join";
+		}else {
+			model.addAttribute("userId",kakaoId);
+			model.addAttribute("userName",userInfo.getUser_name());
+			return "redirect:index.do";	
+		}
+	}
 }
 
