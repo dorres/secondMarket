@@ -34,18 +34,20 @@ public class Board_noticeController {
 		return "customerCenter/notice"; 
 	}
 	@GetMapping("/notice_detail.do")
-	public String customerCenter2(HttpServletRequest request ,Model model) throws Exception {
+	public String customerCenter2(HttpServletRequest request,Board_noticeVO vo ,Model model) throws Exception {
 		//board_noticeService.getBoard_noticeList(vo);
+		System.out.println(request.getParameter("notice_serial"));
 		
-		String ff = request.getParameter("notice_serial".toString());
-		System.out.println(ff);	
-		if(ff == null) {
-			ff="1";
-		}
-		System.out.println(ff);		
-		Board_noticeVO vo = board_noticeService.getBoard(Integer.parseInt(ff));
-		board_noticeService.UpdateHit(Integer.parseInt(ff));
-		model.addAttribute("board",vo);
+		System.out.println();
+		//String ff = request.getParameter("board.notice_serial");
+		System.out.println(vo);	
+//		if(ff == null) {
+//			ff="1";
+//		}
+		//System.out.println(ff);		
+//		Board_noticeVO vo = board_noticeService.getBoard(Integer.parseInt(ff));
+//		board_noticeService.UpdateHit(Integer.parseInt(ff));
+		model.addAttribute("board",board_noticeService.getBoard(vo));
 		return "customerCenter/notice_detail"; 
 	}
 }

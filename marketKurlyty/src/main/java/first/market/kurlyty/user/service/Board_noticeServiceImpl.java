@@ -21,9 +21,9 @@ public class Board_noticeServiceImpl implements Board_noticeService{
 	}
 
 	@Override
-	public Board_noticeVO getBoard(int notice_serial) throws Exception {
+	public Board_noticeVO getBoard(Board_noticeVO vo) throws Exception {
 		
-		return Board_noticeDAO.getBoard(notice_serial);
+		return Board_noticeDAO.getBoard(vo);
 	}
 
 	@Override

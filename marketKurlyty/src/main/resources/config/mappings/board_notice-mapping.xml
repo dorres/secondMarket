@@ -15,16 +15,19 @@
  	<!-- <select id="getBoard_noticeList" resultType="noticeList" parameterType="noticeList">
  		SELECT * FROM MK_NOTICE
  	</select> -->
- 	<select id="getBoard" resultType="noticeList" parameterType="int">
- 		SELECT * FROM MK_NOTICE WHERE notice_serial=#{notice_serial}
+ 	<select id="getBoard" resultType="noticeList" parameterType="noticeList">
+ 		SELECT * FROM MK_NOTICE WHERE notice_serial = #{notice_serial}
  	</select>
  	<update id="notice_hitUp" parameterType="int">
  		UPDATE mk_notice set notice_hit=notice_hit+1 where notice_serial=#{notice_serial}
  	</update>
  	
  	<select id="getBoard_noticeList" resultType="noticeList">
-		SELECT * FROM MK_NOTICE ORDER BY notice_serial DESC
+		<!-- SELECT * FROM MK_NOTICE ORDER BY notice_serial DESC
 		LIMIT #{listSize} OFFSET #{startList} 
+		 -->
+		SELECT (ROW_NUMBER() OVER(Order by notice_date)) AS ROWNUM , * FROM mk_notice
+		LIMIT #{listSize} OFFSET #{startList}
 	</select>
 	
 	<select id="getBoardListCnt" resultType="int">

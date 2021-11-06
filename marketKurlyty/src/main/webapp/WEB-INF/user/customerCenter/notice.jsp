@@ -50,7 +50,7 @@
 											확인하세요.</span>
 									</h2>
 								</div>
-								<form name="frmList" method="get">
+								<form name="notice_serial" method="get">
 									<input type="hidden" name="id" value="notice">
 									<table width="100%" align="center" cellpadding="0"
 										cellspacing="0">
@@ -70,24 +70,29 @@
 																	<th>조회</th>
 																</tr>
 															</thead>
+															
 															<tbody>
+															
 																<c:forEach var="board" items="${board }">
 																	<tr>
 																		<td>${board.notice_serial }</td>
 																		<td><a
-																			href="notice_detail.do?serial=${board.notice_serial}">${board.notice_title }</a></td>
+																			href="notice_detail.do?notice_serial=${board.notice_serial}">${board.notice_title }</a></td>
 																		<td>${board.notice_id }</td>
 																		<td><fmt:formatDate value="${board.notice_date }" pattern="yyyy-MM-dd"/></td>
 																		<td>${board.notice_hit }</td>
 																	</tr>
 																</c:forEach>
+																
 															</tbody>
+															
 														</table>
 													</div>
 												</td>
 											</tr>
 										</tbody>
 									</table>
+									</form>
 									<div class="layout-pagination">
 										<div class="pagediv">
 											

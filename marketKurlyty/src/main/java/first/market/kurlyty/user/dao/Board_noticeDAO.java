@@ -13,9 +13,9 @@ public class Board_noticeDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public Board_noticeVO getBoard(int notice_serial) throws Exception {
+	public Board_noticeVO getBoard(Board_noticeVO vo) throws Exception {
 		
-		return sqlSession.selectOne("Board_noticeDAO.getBoard", notice_serial);
+		return (Board_noticeVO)sqlSession.selectOne("Board_noticeDAO.getBoard", vo);
 	}
 	public List<Board_noticeVO> getBoard_noticeList(Board_Pagination pagination) {
 		return sqlSession.selectList("Board_noticeDAO.getBoard_noticeList", pagination);

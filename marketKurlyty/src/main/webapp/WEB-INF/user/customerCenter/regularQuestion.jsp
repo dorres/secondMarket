@@ -69,46 +69,39 @@
 									<div class="xans-element- xans-myshop xans-myshop-couponserial ">
 										<table width="100%" class="xans-board-listheader">
 											<tbody>
+											
 												<tr>
 													<th width="70" class="input_txt">번호</th>
 													<th width="135" class="input_txt">카테고리</th>
 													<th class="input_txt">제목</th>
 												</tr>
+												
 											</tbody>
 										</table>
 										<div>
-											<div>
+											<div class="menu">
 												<table width="100%" class="table_faq"
 													onclick="view_content(this)" id="faq_7">
 													<tbody>
+													
 														<c:forEach var="board" items="${board }">
 																	<tr>
-																		<td>${board.faq_serial }</td>
-																		<td>${board.faq_id }</a></td>
-																		<td>${board.faq_title }</td>
+																		<td width=70 align=center>${board.faq_serial }</td>
+																		<td width=135 align=center>${board.faq_category }</td>
+																		<td style="cusor:pointer">${board.faq_title }</td>
+																		
 																		
 																		
 																	</tr>
+																	
 																</c:forEach>
+																
 														</tbody>
 													</table>
 												</div>
 											</div>
 										</div>
-										<div style="padding: 1px; border-top: 1px solid #e6e6e6"></div>
-										<div class="layout-pagination">
-											<div class="pagediv">
-												<a href="/shop/service/faq.php?&amp;page=1" class="layout-pagination-button layout-pagination-first-page">맨처음 페이지로 가기</a>
-												<a href="/shop/service/faq.php?&amp;page=1" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-												<strong class="layout-pagination-button layout-pagination-number __active">1</strong>
-												<a href="/shop/service/faq.php?&amp;page=2" class="layout-pagination-button layout-pagination-number">2</a>
-												<a href="/shop/service/faq.php?&amp;page=3" class="layout-pagination-button layout-pagination-number">3</a>
-												<a href="/shop/service/faq.php?&amp;page=4" class="layout-pagination-button layout-pagination-number">4</a>
-												<a href="/shop/service/faq.php?&amp;page=5" class="layout-pagination-button layout-pagination-number">5</a>
-												<a href="/shop/service/faq.php?&amp;page=2" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-												<a href="/shop/service/faq.php?&amp;page=5" class="layout-pagination-button layout-pagination-last-page">맨끝 페이지로 가기</a>
-											</div>
-										</div>
+										
 										<table class="xans-board-search xans-board-search2">
 											<tbody>
 												<tr>
@@ -121,10 +114,113 @@
 												</tr>
 											</tbody>
 										</table>
+										<script>
+													function fn_prev(page,
+															range, rangeSize) {
+
+														var page = ((range - 2) * rangeSize) + 1;
+
+														var range = range - 1;
+
+														var url = "${pageContext.request.contextPath}/faq.do";
+
+														url = url + "?page="
+																+ page;
+
+														url = url + "&range="
+																+ range;
+
+														location.href = url;
+
+													}
+
+													//페이지 번호 클릭
+
+													function fn_pagination(
+															page, range,
+															rangeSize,
+															searchType, keyword) {
+
+														var url = "${pageContext.request.contextPath}/faq.do";
+
+														url = url + "?page="
+																+ page;
+
+														url = url + "&range="
+																+ range;
+
+														location.href = url;
+
+													}
+
+													//다음 버튼 이벤트
+
+													function fn_next(page,
+															range, rangeSize) {
+
+														var page = parseInt((range * rangeSize)) + 1;
+
+														var range = parseInt(range) + 1;
+
+														var url = "${pageContext.request.contextPath}/faq.do";
+
+														url = url + "?page="
+																+ page;
+
+														url = url + "&range="
+																+ range;
+
+														location.href = url;
+
+													}
+												</script>
+												<!-- pagination{s} -->
+
+												<div class="layout-pagination">
+												<div class="pagediv">
+
+													
+														<c:if test="${pagination.prev}">
+
+															<div class="layout-pagination-button layout-pagination-number"><a class="page-link" href="#"
+																onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')"> 이전 </a></div>
+
+														</c:if>
+
+
+
+														<c:forEach begin="${pagination.startPage}"
+															end="${pagination.endPage}" var="idx">
+
+															<div
+																class="layout-pagination-button layout-pagination-number <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+																class="page-link" href="#"
+																onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+																	${idx} </a></div>
+
+														</c:forEach>
+
+
+
+														<c:if test="${pagination.next}">
+
+															<div class="layout-pagination-button layout-pagination-number"><a class="page-link" href="#" onClick="fn_next('${pagination.range}', 
+
+'${pagination.range}', '${pagination.rangeSize}')">다음</a></div>
+
+														</c:if>
+
+													</div>
+
+												</div>
+												
+
+												<!-- pagination{e} -->
 									</div>
 
 								</div>
 							</form>
+			
 
 						</div> <!-- MainCenter 끝 -->
 					</div> <!-- Main 끝 -->
