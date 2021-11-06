@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
-
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="style/ItemListStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/mykurly/coupon.css">
@@ -14,6 +14,34 @@ if(${FailMessage != null}){
 	alert("${FailMessage}");
 }
 
+Kakao.init('e843248c5d13b454b09013d97687a1b6');
+console.log(Kakao.isInitialized());
+function KakaoLogin(){
+	var kakaoOk=null;
+	window.Kakao.Auth.login({
+		success:(auth)=>{
+			console.log("정상적으로 로그인 되었습니다.",auth)
+			window.Kakao.API.request({
+				url:'/v2/user/me',
+				success:(res)=>{
+					const kakao_account=res.id;
+					console.log(kakao_account);
+					console.log(res);
+					console.log(res.kakao_account.email);
+					console.log(res.kakao_account.profile.nickname);
+					document.kakaoForm.kakaoId.value=res.id;
+					document.kakaoForm.kakaoEmail.value=res.kakao_account.email;
+					document.kakaoForm.kakaoNickName.value=res.kakao_account.profile.nickname;
+					document.kakaoForm.submit();
+				}
+			});
+		},
+		fail:(err)=>{
+			console.error(err)
+		}
+	});
+	
+}
 //판별문
 function formLoginSubmit(){
 
@@ -31,26 +59,12 @@ function formLoginSubmit(){
 		document.frmMember.submit();
 	}
 }
-Kakao.init('e843248c5d13b454b09013d97687a1b6');
-console.log(Kakao.isInitialized());
-function KakaoLogin(){
-	window.Kakao.Auth.login({
-		success:(auth)=>{
-			console.log("정상적으로 로그인 되었습니다.",auth)
-			window.Kakao.API.request({
-				url:'/v2/user/me',
-				success:(res)=>{
-					const kakao_account=res.id;
-					console.log(kakao_account);
-					console.log(res);
-				}
-			});
-		},
-		fail:(err)=>{
-			console.error(err)
-		}
-	});
-}
+$(document).ready(function(){
+	
+	$("input[name=user_id]").on("keyup",function(){
+		$(this).val( $(this).val().replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/gi,"") );
+	})
+});
 </script>
 <style>
 .btn_kakao{
@@ -91,7 +105,11 @@ function KakaoLogin(){
 				<div id="content">
 					<jsp:include page="../default/sidemenu.jsp"></jsp:include><!-- 오른쪽 스크롤메뉴 부분 -->
 					<div id="content">
-
+						<form id="kakaoForm" name="kakaoForm" action="kakaoLogin.do" method="post">
+							<input id="kakaoId" type="hidden" name="kakaoId">
+							<input id="kakaoEmail" type="hidden" name="kakaoEmail">
+							<input id="kakaoNickName" type="hidden" name="kakaoNickName">
+						</form>
 						<div id="qnb" class="quick-navigation"></div>
 						<div class="section_login">
 							<h3 class="tit_login">로그인</h3>
@@ -116,7 +134,7 @@ function KakaoLogin(){
 									</form>
 									<a href="join.do" class="btn_type2 btn_member">
 									<span class="txt_type">회원가입</span></a>
-									<a href="" onclick="javascript:kakaoLogin()" class="btn_type2 btn_kakao">
+									<a href="#" onclick="KakaoLogin()" class="btn_type2 btn_kakao">
 										<span class="kakaoLogo"><img src="${pageContext.request.contextPath }/resources/images/kakaoLogo.png"></span>
 										<span class="kakao_type">카카오 로그인</span>
 									</a>
