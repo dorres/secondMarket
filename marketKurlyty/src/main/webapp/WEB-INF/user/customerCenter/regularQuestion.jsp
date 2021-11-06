@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+ 
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
@@ -56,7 +57,7 @@
 									<div class="search_date">
 										<a href="#none" class="btn_layer">선택</a>
 										<ul class="layer_search">
-											<li><a href="#none" @click="searchResult" data-value="01" data-selected="">회원문의</a></li>
+											<li><a href="faq.do?faq_category=${faq_category }" @click="searchResult" data-value="01" data-selected="">회원문의</a></li>
 											<li><a href="#none" @click="searchResult" data-value="02" data-selected="">주문/결제</a></li>
 											<li><a href="#none" @click="searchResult" data-value="03" data-selected="">취소/교환/반품</a></li>
 											<li><a href="#none" @click="searchResult" data-value="04" data-selected="">배송문의</a></li>
@@ -78,26 +79,26 @@
 												
 											</tbody>
 										</table>
-										<div>
-											<div class="menu">
-												<table width="100%" class="table_faq"
-													onclick="view_content(this)" id="faq_7">
+					
+												<table width="100%" class="table_faq" id="faq_7" style=" table-layout:fixed;">
 													<tbody>
 													
 														<c:forEach var="board" items="${board }">
-																	<tr>
+																	<tr class="menu">
 																		<td width=70 align=center>${board.faq_serial }</td>
 																		<td width=135 align=center>${board.faq_category }</td>
 																		<td style="cusor:pointer">${board.faq_title }</td>
-																		<td class="sub" style="display:none">${board.faq_content }</td>
+																																
 																		
-																		
+																	</tr>
+																	<tr>
+																		<td align="center" colspan="3" class="sub" style="display:none;width:100% ">${board.faq_content }</td>
 																	</tr>
 																	
 																</c:forEach>
 																
 														</tbody>
-													</table>
+													</table> 
 												</div>
 											</div>
 										</div>
@@ -219,17 +220,18 @@
 									</div>
 
 								</div>
-							</form>
-			<script>
-				$(".menu").click(function(){
-					if($(".sub").is(":visible")){
-						$(".sub").css("display","none");
-					}
-					else{
-						$(."sub").css("display","block");
-					}
-				})
-			</script>
+							
+	 <script>
+            $(".menu").click(function(){
+                if($(this).nextAll("tr:eq(0)").find(".sub").is(":visible")){
+                    $(this).nextAll("tr:eq(0)").find(".sub").css("display","none");
+                }
+                else{
+                    $(this).nextAll("tr:eq(0)").find(".sub").css("display","table-cell");
+                }
+            })
+        </script>
+        	
 
 						</div> <!-- MainCenter 끝 -->
 					</div> <!-- Main 끝 -->

@@ -31,6 +31,7 @@
 						visit the <a target="_blank" href="https://datatables.net/">official
 							DataTables documentation</a> .
 					</div>
+					
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">

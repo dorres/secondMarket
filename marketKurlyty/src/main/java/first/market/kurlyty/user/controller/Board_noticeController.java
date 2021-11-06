@@ -36,11 +36,9 @@ public class Board_noticeController {
 	@GetMapping("/notice_detail.do")
 	public String customerCenter2(HttpServletRequest request,Board_noticeVO vo ,Model model) throws Exception {
 		//board_noticeService.getBoard_noticeList(vo);
-		System.out.println(request.getParameter("notice_serial"));
 		
-		System.out.println();
-		//String ff = request.getParameter("board.notice_serial");
-		System.out.println(vo);	
+		String ff = request.getParameter("notice_serial");
+		board_noticeService.UpdateHit(Integer.parseInt(ff));
 //		if(ff == null) {
 //			ff="1";
 //		}
