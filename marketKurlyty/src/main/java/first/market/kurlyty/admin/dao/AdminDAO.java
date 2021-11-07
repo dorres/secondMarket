@@ -34,11 +34,17 @@ public class AdminDAO {
 	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
 		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
-
-//	public AdminUserVO getUser(AdminUserVO adminUserVO) {
-//		return sqlSession.selectOne("AdminDAO.getUserList", adminUserVO);
-//	}
-
+	//회원 수정 출력
+	public AdminUserVO getUser(AdminUserVO user) {
+		return sqlSession.selectOne("AdminDAO.getUser", user);
+	}
+	public int updateUser1(AdminUserVO user) {
+		return sqlSession.update("AdminDAO.getUser1", user);
+	}
+	public int updateUser2(AdminUserVO user) {
+		return sqlSession.update("AdminDAO.getUser2", user);
+	}
+//
 	public int updateManager(AdminVO admin) {
 		return sqlSession.update("AdminDAO.update", admin);
 	}

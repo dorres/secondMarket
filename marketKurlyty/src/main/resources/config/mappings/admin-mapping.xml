@@ -32,17 +32,25 @@
  	<delete id="delete" parameterType="admin">
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
  	</delete>
-
-	<update id="updateUser1" parameterType="user">
+	<!-- 회원 수정 출력 -->
+	<select id="getUser" parameterType="user" resultType="adminUser">
+		SELECT U.USER_ID, U.USER_NAME, U.USER_PHONE,  UD.USER_MEMBERSHIP_NAME, UD.USER_STATUS
+		FROM MK_USER U
+		JOIN MK_USER_DETAILS UD
+		ON U.USER_ID = UD.USER_ID
+		WHERE U.USER_ID = #{user_id}
+	</select>
+	<update id="getUser1" parameterType="user">
 		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone}
 		WHERE USER_ID = #{user_id}
 	</update>
 	
-	<update id="updateUser2">
-		UPDATE MK_DETAILES SET USER_POSITION =#{user_position} where WHERE USER_ID =
-		#{user_id}
+	<update id="getUser2" parameterType="user">
+		UPDATE MK_USER_DETAILS 
+		SET USER_MEMBERSHIP_NAME = #{user_membership_name}, USER_STATUS = #{user_status}
+		WHERE USER_ID = #{user_id}
 	</update>
-	
+
 	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">
 		SELECT * FROM MK_NOTICE ORDER BY 1;

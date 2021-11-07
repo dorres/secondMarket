@@ -124,31 +124,41 @@ function formJoinSubmit(){
 
 				<div class="page_aticle">
 					<div class="type_form member_join ">
-						<form id="form" name="frmAdmin" method="post" action="updateProc.mdo">
+						<form id="form" name="frmAdmin" method="post" action="updateUser.mdo">
 							<br>
 							<br>
 							<h2 align="center">유저 수정</h2>
 							<table class="tbl_comm">
 								<tr class="fst">
 								<tr>
-									<th>이름</th>
-									<td><input type="text" name="admin_id" readonly="readonly" value="${update.admin_id}"></td>  
+									<th>아이디</th>
+									<td><input type="text" name="user_id" readonly="readonly" value="${getUser.user_id}"></td>  
 								</tr>
 															
 								<tr>
+									<th>이름</th>
+									<td><input type="text" name="user_name" readonly="readonly" value="${getUser.user_name}"></td>
+								</tr>
+								
+								<tr>
 									<th>전화번호</th>
-									<td>${update.admin_name}</td>
+									<td><input type="text" name="user_phone" readonly="readonly" value="${getUser.user_phone }"></td>
 								</tr>
 
 								<tr>
-									<th>직급</th>
-									<td><input type="text" name="admin_position" placeholder="직급을 수정 해주세요."></td>
+									<th>회원등급</th>
+									<td><input type="text" name="user_membersip_name" readonly="readonly" value="${getUser.user_membership_name }"></td>
+								</tr>
+								
+								<tr>
+									<th>상태</th>
+									<td><input type="text" name="user_status" placeholder="상태를 수정 해주세요."></td>
 								</tr>
 
 								
 							</table>
 							<div id="formSubmit" class="form_footer">
-								<button class="btn active btn_join" onclick="location.href='updateProc.mdo'">수정하기</button>
+								<button class="btn active btn_join" onclick="location.href='updateUser.mdo'">수정하기</button>
 							</div>
 						</form>
 					</div>
