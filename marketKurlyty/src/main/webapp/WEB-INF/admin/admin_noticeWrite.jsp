@@ -28,6 +28,7 @@ textarea {
 
 </head>
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 
@@ -79,6 +80,7 @@ textarea {
 			</div>
 		</main>
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

@@ -11,6 +11,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 
@@ -92,6 +93,7 @@
 			</div>
 		</main>
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

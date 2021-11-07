@@ -7,6 +7,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
@@ -74,5 +75,32 @@ public interface AdminService {
 	
 	//자주하는 질문 등록
 	int insertFAQ(AdminFAQVO faq);
+	
+	//--------------------------------------------------
+	//1:1문의 답변대기 리스트
+	List<AdminQnaVO> getPersonalQnaWaitList();
+	
+	//1:1문의 답변대기 세부사항
+	AdminQnaVO getPersonalQnaWait(AdminQnaVO qna);
+	
+	//1:1문의 답변대기 답변 등록
+	int updateQnaWait(AdminQnaVO qna);
+	
+	//1:1문의 답변대기 삭제
+	int deleteQnaWait(AdminQnaVO qna);
+	
+	
+	//====================================================
+	//1:1문의 답변완료 리스트
+	List<AdminQnaVO> getPersonalQnaFinishList();
+	
+	//1:1문의 답변완료 세부사항
+	AdminQnaVO getPersonalQnaFinish(AdminQnaVO qna);
+	
+	//1:1문의 답변완료 답변 수정
+	int updateQnaFinish(AdminQnaVO qna);
+	
+	//1:1문의 답변대기 삭제
+	int deleteQnaFinish(AdminQnaVO qna);
 	
 }

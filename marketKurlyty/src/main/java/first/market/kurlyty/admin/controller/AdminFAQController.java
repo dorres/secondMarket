@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
-import first.market.kurlyty.admin.vo.AdminNoticeVO;
 
 @Controller
 public class AdminFAQController {
@@ -37,7 +36,7 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";		
 		}else {
-			return "admin_FAQ";
+			return "redirect:admin_FAQ";
 			
 		}
 	}
@@ -50,7 +49,7 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";
 		}else {
-			return "admin_FAQ";
+			return "redirect:admin_FAQ";
 		}
 	}
 	
@@ -68,7 +67,7 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";
 		}else {
-			return "admin_fAQWrite";
+			return "redirect:admin_fAQWrite";
 		}
 	}
 	

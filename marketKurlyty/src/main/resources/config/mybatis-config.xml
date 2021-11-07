@@ -18,6 +18,7 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminUserVO" alias="adminUser"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminNoticeVO" alias="notice"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminFAQVO" alias="faq"/> 
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminQnaVO" alias="qna"/> 
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>

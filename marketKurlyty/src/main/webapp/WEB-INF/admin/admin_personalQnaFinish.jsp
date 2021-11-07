@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,68 +48,79 @@ textarea {
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">자주하는 질문</h1>
+				<h1 class="mt-4">1:1문의</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">자주하는질문 상세</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					<li class="breadcrumb-item"><a href="index.html">1:1 문의</a></li>
+					<li class="breadcrumb-item active">1:1문의 답변 대기 상세</li>
 				</ol>
-				<div class="card mb-4">
+<!-- 				<div class="card mb-4">
 					<div class="card-body">
 						DataTables is a third party plugin that is used to generate the
 						demo table below. For more information about DataTables, please
 						visit the <a target="_blank" href="https://datatables.net/">official
 							DataTables documentation</a> .
 					</div>
-				</div>
+				</div> -->
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> DataTable Example
+						<i class="fas fa-table me-1"></i> 1:1문의 내용
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-						<form action="admin_FAQUpdate.mdo" method="POST">
 							<table >
 								<tr>
-									<td width="300px" height="40px">글번호</td>
-									<td width="400px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;" name="faq_serial" value="${faq.faq_serial }" readonly="readonly">
+									<td width="200px" height="40px">문의종류</td>
+									<td width="300px" height="40px">
+										<input type="text" style="width:100%; height:100%; border: none;"  value="${qnaFinish.qna_personal_category }" readonly="readonly">
 									</td>
 									
-									<td width="300px" height="40px">카테고리</td>
-									<td>
-										<select name="faq_category">
-											<option value="배송지연/불만" >배송지연/불만</option>
-											<option value="컬리패스 (무료배송)">컬리패스 (무료배송)</option>
-											<option value="반품문의">반품문의</option>
-											<option value="A/S문의">A/S문의</option>
-											<option value=">환불문의">환불문의</option>
-											<option value="주문결제문의">주문결제문의</option>
-											<option value="회원정보문의">회원정보문의</option>
-											<option value="취소문의">취소문의</option>
-											<option value="교환문의">교환문의</option>
-											<option value="상품정보문의">상품정보문의</option>											
-											<option value="기타문의">기타문의</option>
-										</select>
+									<td width="200px" height="40px">작성자</td>
+									<td width="300px" height="40px" >
+										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaFinish.user_id}(${qnaWait.user_name })"  >
 									</td>
 								</tr>
 							
 								<tr>
-									<td width="300px" height="40px">제목</td>
-									<td width="400px" height="40px" colspan="3">
-										<input type="text"style="width:100%; height:100%; border: none;" name="faq_title" value="${faq.faq_title }" >
+									<td width="200px" height="40px">제목</td>
+									<td width="300px" height="40px" >
+										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaFinish.qna_personal_title }" readonly="readonly">
+									</td>
+									
+									<td width="200px" height="40px">날짜</td>
+									<td width="300px" height="40px" >
+										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${qnaFinish.qna_personal_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
 									</td>
 								</tr>
 								
 								<tr>
-									<td width="300px" height="500px">내용</td>
-									<td colspan="3"  height="500px"><textarea name="faq_content" >${faq.faq_content }</textarea>
+									<td width="200px" height="300px">내용</td>
+									<td colspan="3"  height="300px"><textarea readonly="readonly">${qnaFinish.qna_personal_content }</textarea>
 								</tr>
 							</table>
-							<input type="submit" value="수정하기" />
-							<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_FAQDelete.mdo?faq_serial=${faq.faq_serial}')"/>
-							<input type="button" value="목록보기" onclick="location.href='admin_FAQList.mdo'"/>
+					</div>
+					
+					<div class="card-header">
+						<i class="fas fa-table me-1"></i> 1:1문의 답변
+					</div>
+					<div class="card-body">
+						<!-- 메인작업 -->
+						<form action="admin_personalQnaFinishUpdate.mdo" method="POST">
+							<table >
+								<tr>
+								<td>답변</td>
+								</tr>
+								<tr>
+									<td width="200px" height="300px"><textarea  name="qna_personal_answer">${qnaFinish.qna_personal_answer }</textarea>
+								</tr>
+							</table>
+							<input type="hidden" name="qna_personal_serial" value="${qnaFinish.qna_personal_serial }">
+							<input type="submit" value="답변 수정하기" />
+							<input type="button" value="삭제" onclick="javascript:delete_check('admin_personalQnaFinishDelete.mdo?qna_personal_serial=${qnaFinish.qna_personal_serial}')"/>
+							<input type="button" value="1:1문의글 목록보기" onclick="location.href='admin_personalQnaFinishList.mdo'"/>
 						</form>
 					</div>
+					
+					
 				</div>
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>

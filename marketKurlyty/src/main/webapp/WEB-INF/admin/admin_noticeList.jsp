@@ -12,6 +12,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 
@@ -61,10 +62,10 @@
 							<tbody>
 							<c:forEach var="noticeList" items="${noticeList }">
 								<tr>
-									<td>${noticeList.notice_serial }</td>
+									<td>${noticeList.rownum }</td>
 									<td>${noticeList.notice_id }</td>
 									<td>${noticeList.notice_title }</td>
-									<td><fmt:formatDate value="${noticeList.notice_date }" pattern="yyyy-MM-dd [E]"/></td>
+									<td><fmt:formatDate value="${noticeList.notice_date }" pattern="yyyy-MM-dd"/></td>
 									<td>${noticeList.notice_hit }</td>
 									<td>
 										<input type="button" onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'" value="수정">
@@ -79,6 +80,7 @@
 			</div>
 		</main>
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	
