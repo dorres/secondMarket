@@ -12,5 +12,5 @@ public class AdminUserVO {
 	private String user_last_login;
 	private String user_point;
 	private String user_total_purchase;
-	private String user_status;
+	private int user_status;
 }

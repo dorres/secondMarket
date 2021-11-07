@@ -28,6 +28,11 @@ public interface AdminService {
 
 	int deleteManager(AdminVO admin);
 	
+	//회원 수정 출력
+	AdminUserVO getUser(AdminUserVO user);
+	
+	public int updateUser(AdminUserVO user);
+	
 	int deleteUser1(AdminUserVO user);
 
 	int deleteUser2(AdminUserVO user);
