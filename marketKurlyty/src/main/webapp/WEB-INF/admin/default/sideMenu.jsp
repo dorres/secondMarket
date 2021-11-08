@@ -107,8 +107,10 @@
 						<div class="collapse" id="collapseLayouts4"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">공지사항</a> <a
-									class="nav-link" href="layout-sidenav-light.html">자주하는 질문</a> <a
+								<a class="nav-link" href="admin_noticeList.mdo">공지사항</a> <a
+
+									class="nav-link" href="admin_FAQList.mdo">자주하는 질문</a> <a
+
 									class="nav-link" href="layout-sidenav-light.html">1:1문의</a>
 							</nav>
 						</div>
