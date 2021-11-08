@@ -8,9 +8,13 @@
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="style/ItemListStyle.css">
+
+<style>
+</style>
+
 </head>
 
-<body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
+<body class="main-index" oncontextmenu="return false" ondragstart="return false" >
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -26,8 +30,11 @@
 								<div class="head_aticle">
 									<h2 class="tit">1:1 문의</h2>
 								</div>
-
-								<table class="xans-board-listheader" width="100%" onclick="view_content(this, event)">
+					
+					<form name="delete" id="deleteform" method="get" action="deletePersonalQna.do">
+						<input type="hidden" name="deletePersonalQna" value="delete"/>
+					    
+								<table class="xans-board-listheader" width="100%" style="table-layout:fixed;">
 									<tr class="input_txt">
 										<th width="8%">번호</th>
 										<th width="15%">카테고리</th>
@@ -36,29 +43,36 @@
 										<th width="12%">작성일</th>
 									</tr>
 									<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
-										<tr>
+										<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}" />
+										<tr class="menu">
 											<td>${num.index+1}</td>
 											<td>${personalqna.qna_personal_category}</td>
 											<td>${personalqna.qna_personal_title}</td>
 											<td>${personalqna.user_id}</td>
 											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern = "yyyy-mm-dd"/> </td>
 										</tr>
+										<tr>
+											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_content}
+												<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+												
+												
+												<input type="button" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+												
+												</a>
+											</td>
+										</tr>
 									</c:forEach>
 								</table>
+							</form>
 <!--  글을 클릭하면 아래에 게시글 내용이 내려옴.  -->
-								<div style="display: block; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
+								<!-- <div style="display: block; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
 									<div width="100%" style="padding-left: 55px;">
 										<tr> 
 										<td>${personalqna.qna_personal_content}</td>
 										</tr>
 									</div>
-									<div class="goods-review-grp-btn" style="text-align: right;">
-										<button type="button" class="styled-button"
-											onclick="popup_register( 'mod_qna', '5173186' );">수정</button>
-										<button type="button" class="styled-button"
-											onclick="popup_register( 'del_qna', '5173186' );">삭제</button>
-									</div>
-								</div>
+									
+								</div> --!>
 
 								<!-- 문의 내역이 없을때 ↓↓↓↓↓↓↓↓↓-->
 								<!--  <div class="no_data" style="padding: 150px 0 148px; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; font-size: 12px; color: #4c4c4c">
@@ -102,8 +116,6 @@
 								</div>
 								
 								 -->
-								 
-								 
 								<div style="position: relative">
 									<div style="position: absolute; right: 0; top: 60px;">
 										<a href="/kurlyty/personalQnaWrite.do">
@@ -130,7 +142,22 @@
 		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>
 
-		<a href="#top" id="pageTop">맨 위로가기</a>
+	<script>
+		$(".menu")
+				.click(
+						function() {
+							if ($(this).nextAll("tr:eq(0)").find(".sub").is(
+									":visible")) {
+								$(this).nextAll("tr:eq(0)").find(".sub").css(
+										"display", "none");
+							} else {
+								$(this).nextAll("tr:eq(0)").find(".sub").css(
+										"display", "table-cell");
+							}
+						})
+	</script>
+
+	<a href="#top" id="pageTop">맨 위로가기</a>
 
 
 		<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe>

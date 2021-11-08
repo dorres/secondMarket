@@ -21,7 +21,7 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 	public List<PersonalQnaVO> getPersonalQnaList(PersonalQnaVO vo) {
 		return personalqnaDAO.PersonalQnaList(vo);
 	}
-    
+
 	@Override
 	public UserVO getUser(UserVO vo) {
 		return personalqnaDAO.getUser(vo);
@@ -32,14 +32,18 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 		return personalqnaDAO.insertPersonalQna(vo);
 	}
 
+
+	 @Override public int updatePersonalQna(PersonalQnaVO vo) { return
+	 personalqnaDAO.updatePersonalQna(vo); }
+	
+
 	@Override
-	public void updatePersonalQna(PersonalQnaVO vo) {
-		
+	public int deletePersonalQna(PersonalQnaVO vo) {
+		return personalqnaDAO.deletePersonalQna(vo);
 	}
 
 	@Override
-	public void deletePersonalQna(PersonalQnaVO vo) {
-		
+	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo) {
+		return personalqnaDAO.getPersonalQna(vo);
 	}
-
 }

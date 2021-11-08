@@ -10,7 +10,7 @@ public class PersonalQnaVO {
 		private int qna_personal_serial;
 		private String user_id;
 		private String admin_name;
-		private String order_detail_order_serial;
+		private int order_details_order_serial;
 		private String qna_personal_title;
 		private String qna_personal_content;
 		private Date qna_personal_date;

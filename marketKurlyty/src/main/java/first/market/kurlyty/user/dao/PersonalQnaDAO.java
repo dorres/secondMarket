@@ -13,7 +13,6 @@ import first.market.kurlyty.user.vo.UserVO;
 @Repository
 public class PersonalQnaDAO {
 	
-
 	@Autowired
 		private SqlSessionTemplate sqlSession;
 	
@@ -31,12 +30,13 @@ public class PersonalQnaDAO {
 		return sqlSession.insert("PersonalQnaDAO.insertPersonalQna", vo);
 	}
 	
-	public void updatePersonalQna(PersonalQnaVO vo) {
-		sqlSession.update("PersonalQnaDAO.updatePersonalQna", vo);
+	public int updatePersonalQna(PersonalQnaVO vo) { return
+	 sqlSession.update("PersonalQnaDAO.updatePersonalQna", vo); 
 	}
-	
-	public void deletePersonalQna(PersonalQnaVO vo) {
-		sqlSession.delete("PersonalQnaDAO.deletePersonalQna", vo);
+	 
+	//글 삭제하기 
+	public int deletePersonalQna(PersonalQnaVO vo) {
+		return sqlSession.delete("PersonalQnaDAO.deletePersonalQna", vo);
 	}
 	
 // 글읽어오기
