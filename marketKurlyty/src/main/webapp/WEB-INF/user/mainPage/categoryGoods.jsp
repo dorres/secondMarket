@@ -15,7 +15,7 @@
 <style>
 .cartBt {
 	background:
-		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kulryImage/ico_cart.svg)
+		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/ico_cart.svg)
 		no-repeat 50% 50%;
 	background-size: 50px 50px;
 	width: 50px;
@@ -183,8 +183,8 @@ function cancelCart(){
 												onclick="javascript:inputCart('${item.category_goods_name }')"></button>
 										</div>
 										<a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
-											<span class="cost"> <span class="dc">12%</span> <span
-												class="price">6,500원</span> <span class="origin">1,800원</span>
+											<span class="cost"> <span class="dc">${item.goods_detail_dicountrate }%</span> <span
+												class="price">${item.goods_last_price}원</span> <span class="origin">${item.goods_detail_price }</span>
 												<span class="desc">${item.category_goods_name_subtext }</span>
 										</span>
 									</a>
