@@ -382,3 +382,14 @@ table table td {
 .page_section .user_wrap .order_agree .check_view {
 	margin-left: 0
 }
+
+.styled-button  {
+	display: inline-block;
+	width: 175 px;
+	height: 50 px;
+	border: 1 px solid #5f0080;
+	background-color: #fff;
+	font-size: 14px;
+	color: #5f0080;
+	line-height: 50px;
+	text-align: center;}
