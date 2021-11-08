@@ -162,7 +162,7 @@
 									data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="admin_userList.mdo">회원관리</a>
-										<a class="nav-link" href="password.html">약관관리</a>
+										<a class="nav-link" href="terms_agreeList.mdo">약관관리</a>
 									</nav>
 								</div>
 								<!--회원 -->

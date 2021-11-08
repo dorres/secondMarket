@@ -10,6 +10,7 @@ import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
@@ -75,39 +76,18 @@ public class AdminServiceImpl implements AdminService {
 	public AdminUserVO getUser(AdminUserVO user) {
 		return adminDao.getUser(user);
 	}
-	
-	
+	//회원 수정
 	public int updateUser(AdminUserVO user) {
-		int result = 0;  
-			result = adminDao.updateUser1(user); 
-		int result2 = 0;
-			result2 = adminDao.updateUser2(user);
-		if(result + result2 == 2)
-			return 1;
-		else
-			return 0;
+		return adminDao.updateUser(user);
 	}
-//	@Override
-//	public int updateUser1(AdminUserVO user) {
-//		//return adminDao.updateUser1(user);
-//		return
-//	}
-//	
-//	@Override
-//	public int updateUser2(AdminUserVO user) {
-//		//return adminDao.updateUser2(user);
-//	}
 	
-	@Override
-	public int deleteUser1(AdminUserVO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	//회원 삭제
+	public int deleteUser(AdminUserVO user) {
+		return adminDao.deleteUser(user);
 	}
-
-	@Override
-	public int deleteUser2(AdminUserVO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	//약관동의 리스트
+	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree){
+		return adminDao.getTermsAgree(agree);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
@@ -210,6 +190,8 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteQnaFinish(AdminQnaVO qna) {
 		return adminDao.deleteQnaFinish(qna);
 	}
+
+
 
 
 }

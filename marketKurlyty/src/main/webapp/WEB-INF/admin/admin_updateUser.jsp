@@ -155,11 +155,9 @@ function formJoinSubmit(){
 									<th>상태</th>
 									<td><input type="text" name="user_status" placeholder="상태를 수정 해주세요."></td>
 								</tr>
-
-								
 							</table>
 							<div id="formSubmit" class="form_footer">
-								<button class="btn active btn_join" onclick="location.href='updateUser.mdo'">수정하기</button>
+								<input type="submit" class="btn active btn_join" value="수정하기"/>
 							</div>
 						</form>
 					</div>
