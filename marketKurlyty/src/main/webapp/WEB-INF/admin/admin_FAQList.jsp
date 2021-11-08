@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,69 +20,50 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h2 class="mt-4">회원관리</h2>
+				<h1 class="mt-4">자주하는질문</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+					<li class="breadcrumb-item"><a href="index.html">자주하는 질문 목록</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						여기내용을 수정
-						<a target="_blank" href="https://datatables.net/"> 이거 필요한가??</a> .
+						DataTables is a third party plugin that is used to generate the
+						demo table below. For more information about DataTables, please
+						visit the <a target="_blank" href="https://datatables.net/">official
+							DataTables documentation</a> .
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 회원목록
+						<i class="fas fa-table me-1"></i> <input type="button" value="자주하는질문 등록하기" onclick="location.href='admin_FAQWrite.mdo'">
 					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>회원번호</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>폰번</th>
-									<th>회원등급</th>
-									<th>마지막로그인</th>
-									<th>포인트</th>
-									<th>총금액</th>
-									<th>상태</th>
-									<th>수정/삭제</th>
+									<th>번호</th>
+									<th>카테고리</th>
+									<th>제목</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>회원번호</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>폰번</th>
-									<th>회원등급</th>
-									<th>마지막로그인</th>
-									<th>포인트</th>
-									<th>총금액</th>
-									<th>상태</th>
-									<th>수정/삭제</th>
+									<th>번호</th>
+									<th>카테고리</th>
+									<th>제목</th>
 								</tr>
 							</tfoot>
 							<tbody>
-								<c:forEach var="userList" items="${userList }">
-									<tr>
-										<td>${userList.user_serial }</td>
-										<td>${userList.user_id }</td>
-										<td>${userList.user_name }</td>
-										<td>${userList.user_phone }</td>
-										<td>${userList.user_membership_name }</td>
-										<td>${userList.user_last_login }</td>
-										<td>${userList.user_point }</td>
-										<td>${userList.user_total_purchase }</td>
-										<td>${userList.user_status }</td>
-										<td>
-											<input type="button" value="수정" onclick="location.href= 'updateAdminUser.mdo?user_id=${updateUsere.admin_id}'">
-											<input type="button" value="삭제" action="location.href='deleteMember.mdo'">
-										</td>
+								<c:forEach var="faq" items="${faqList }">
+								<tr>
+									<td>${faq.rownum }</td>
+									<td>${faq.faq_category }</td>
+									<td>${faq.faq_title }</td>
+									<td>
+										<input type="button" onclick="location.href='admin_FAQ.mdo?faq_serial=${faq.faq_serial}'" value="수정">
+									</td>
 									</tr>
-								</c:forEach>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
