@@ -17,14 +17,8 @@
  		<typeAlias type="first.market.kurlyty.user.vo.PersonalQnaVO" alias="personalQna"/> <!--  sungy -->
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminUserVO" alias="adminUser"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminNoticeVO" alias="notice"/> 
-<<<<<<< HEAD
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminFAQVO" alias="faq"/> 
-=======
-<<<<<<< HEAD
-=======
- 		<typeAlias type="first.market.kurlyty.admin.vo.AdminFAQVO" alias="faq"/> 
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminQnaVO" alias="qna"/> 
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>

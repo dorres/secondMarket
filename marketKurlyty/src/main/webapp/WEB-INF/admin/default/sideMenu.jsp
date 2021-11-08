@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<div id="layoutSidenav">
+
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
@@ -107,17 +107,10 @@
 						<div class="collapse" id="collapseLayouts4"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="admin_noticeList.mdo">공지사항</a> <a
-<<<<<<< HEAD
-									class="nav-link" href="admin_FAQList.mdo">자주하는 질문</a> <a
-=======
-<<<<<<< HEAD
-									class="nav-link" href="layout-sidenav-light.html">자주하는 질문</a> <a
-=======
-									class="nav-link" href="admin_FAQList.mdo">자주하는 질문</a> <a
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
-									class="nav-link" href="layout-sidenav-light.html">1:1문의</a>
+								<a class="nav-link" href="admin_noticeList.mdo">공지사항</a>
+								<a class="nav-link" href="admin_FAQList.mdo">자주하는 질문</a>
+								<a class="nav-link" href="admin_personalQnaWaitList.mdo">1:1문의-답변대기</a>
+								<a class="nav-link" href="admin_personalQnaFinishList.mdo">1:1문의-답변완료</a>									
 							</nav>
 						</div>
 						<!-- 게시글 -->

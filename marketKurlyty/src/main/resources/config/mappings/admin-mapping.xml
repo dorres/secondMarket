@@ -24,22 +24,6 @@
     	JOIN MK_USER_DETAILS B 
     	ON A.USER_ID = B.USER_ID; 
  	</select>
-<<<<<<< HEAD
- 	
-=======
-<<<<<<< HEAD
->>>>>>> main
- 	<update id="update" parameterType="admin">
- 		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
- 	</update>
- 	
- 	<delete id="delete" parameterType="admin">
- 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
- 	</delete>
-
-<<<<<<< HEAD
-=======
-=======
  	
  	<update id="update" parameterType="admin">
  		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
@@ -48,25 +32,28 @@
  	<delete id="delete" parameterType="admin">
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
  	</delete>
-
->>>>>>> main
-	<update id="updateUser1" parameterType="user">
+	<!-- 회원 수정 출력 -->
+	<select id="getUser" parameterType="user" resultType="adminUser">
+		SELECT U.USER_ID, U.USER_NAME, U.USER_PHONE,  UD.USER_MEMBERSHIP_NAME, UD.USER_STATUS
+		FROM MK_USER U
+		JOIN MK_USER_DETAILS UD
+		ON U.USER_ID = UD.USER_ID
+		WHERE U.USER_ID = #{user_id}
+	</select>
+	<update id="getUser1" parameterType="user">
 		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone}
 		WHERE USER_ID = #{user_id}
 	</update>
-	<update id="updateUser2">
-		UPDATE MK_DETAILES SET USER_POSITION =#{user_position} where WHERE USER_ID =
-		#{user_id}
-	</update>
 	
-	<!-- 공지사항 쿼리문 -->
+	<update id="getUser2" parameterType="user">
+		UPDATE MK_USER_DETAILS 
+		SET USER_MEMBERSHIP_NAME = #{user_membership_name}, USER_STATUS = #{user_status}
+		WHERE USER_ID = #{user_id}
+	</update>
 
-<<<<<<< HEAD
-=======
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
+	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">
-		SELECT * FROM MK_NOTICE ORDER BY 1;
+		SELECT (ROW_NUMBER() OVER(Order by notice_date)) AS ROWNUM , * FROM MK_NOTICE
 	</select>
 	
 	<select id="getNotice" resultType="notice" parameterType="notice">
@@ -74,40 +61,18 @@
 	</select>
 	
 	<update id="updateNotice" parameterType="notice">
-<<<<<<< HEAD
  		UPDATE MK_NOTICE SET 
- 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content},
+ 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content}
  		WHERE NOTICE_SERIAL = #{notice_serial}
-=======
-<<<<<<< HEAD
- 		UPDATE MK_NOTICE SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE NOTICE_SERIAL = #{notice_serial}
-=======
- 		UPDATE MK_NOTICE SET 
- 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content},
- 		WHERE NOTICE_SERIAL = #{notice_serial}
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
  	</update>
  	
  	<delete id="deleteNotice" parameterType="notice">
  		DELETE FROM MK_NOTICE WHERE NOTICE_SERIAL = #{notice_serial}
  	</delete>
  	
-<<<<<<< HEAD
- 	<insert id="insertNotice" parameterType="notice">
-=======
-<<<<<<< HEAD
- 	 <insert id="insertNotice" parameterType="notice">
->>>>>>> main
- 		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
- 	</insert>
-<<<<<<< HEAD
-=======
-=======
  	<insert id="insertNotice" parameterType="notice">
  		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
  	</insert>
->>>>>>> main
  	<!-- 공지사항 쿼리문 -->
  	
  	<!-- 자주하는 질문 쿼리문 -->
@@ -132,11 +97,49 @@
  	<insert id="insertFAQ" parameterType="faq">
  		INSERT INTO MK_FAQ VALUES (DEFAULT, #{faq_id}, #{faq_title}, #{faq_content}, NOW(), #{faq_category});
  	</insert>
- 	<!-- 자주하는 질문 쿼리문 -->
+ 	<!-- 자주하는 질문 쿼리문 -->	
  	
-<<<<<<< HEAD
-=======
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
- 		
+ 	<!-- 1:1문의 답변 대기 쿼리 -->
+ 	<select id="getPersonalQnaWaitList" resultType="qna">
+ 		SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
+ 		* FROM MK_QNA_PERSONAL WHERE qna_personal_answer IS NULL
+ 	</select>
+ 	
+ 	<select id="getPersonalQnaWait" resultType="qna" parameterType="qna">
+		SELECT * FROM MK_QNA_PERSONAL WHERE qna_personal_serial=#{qna_personal_serial};
+	</select>
+	
+	<update id="updateQnaWait" parameterType="qna">
+ 		UPDATE MK_QNA_PERSONAL SET 
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+ 		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</update>
+ 	
+ 	 <delete id="deleteQnaWait" parameterType="qna">
+ 		DELETE FROM MK_QNA_PERSONAL WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</delete>
+ 	 <!-- 1:1문의 답변 대기 쿼리 -->
+ 	
+ 	 <!-- 1:1문의 답변 완료 쿼리 -->
+ 	<select id="getPersonalQnaFinishList" resultType="qna">
+ 	 	SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
+ 		* FROM mk_qna_personal WHERE qna_personal_answer IS NOT NULL
+ 	</select>
+ 	
+ 	<select id="getPersonalQnaFinish" resultType="qna" parameterType="qna">
+		SELECT * FROM MK_QNA_PERSONAL WHERE qna_personal_serial=#{qna_personal_serial};
+	</select>
+	
+	<update id="updateQnaFinish" parameterType="qna">
+ 		UPDATE MK_QNA_PERSONAL SET 
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+ 		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</update>
+ 	
+ 	  <delete id="deleteQnaFinish" parameterType="qna">
+ 		DELETE FROM MK_QNA_PERSONAL WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</delete>
+ 	
+ 	 <!-- 1:1문의 답변 완료 쿼리 -->
+
 </mapper>

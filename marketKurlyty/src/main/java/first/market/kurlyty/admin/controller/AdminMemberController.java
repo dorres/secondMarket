@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -38,7 +37,6 @@ public class AdminMemberController {
 	@RequestMapping("updateProc.mdo")
 	public String updateManager(AdminVO admin) {
 		int sucess = 0;
-		System.out.println(admin.getAdmin_id());
 		sucess = adminService.updateManager(admin);
 		if(sucess!=0) {
 			return "redirect:admin_adminList.mdo";
@@ -58,10 +56,22 @@ public class AdminMemberController {
 			}
 		}
 		
-//		@RequestMapping("updateAdminUser.mdo")
-//		public String updateUser(AdminUserVO adminuserVO, Model model) {
-//				model.addAttribute("updateUser", adminService.getAdminUser(adminuserVO));
-//			return "admin_updateUser";
-//		}
+		@RequestMapping("getUser.mdo")
+		public String getUser(AdminUserVO user, Model model) {
+			model.addAttribute("getUser", adminService.getUser(user));
+			return "admin_updateUser";
+		}
 		
+		@RequestMapping("updateUser.mdo")
+		public String updateUser(AdminUserVO user, Model model) {
+			int sucess = 1;
+			sucess = adminService.updateUser(user);
+			if(sucess!=1) {
+				System.out.println("실패");
+				return "redirect:admin_userList";
+			}else {
+				System.out.println("성공");
+				return "admin_userList.mdo";
+			}
+		}
 }

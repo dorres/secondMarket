@@ -37,7 +37,7 @@ public class AdminNoticeController {
 		if(success != 0) {
 			return "redirect:admin_noticeList.mdo";
 		}else {
-			return "admin_notice";
+			return "redirect:admin_notice.mdo";
 		}
 	}
 	
@@ -49,7 +49,7 @@ public class AdminNoticeController {
 		if(success != 0) {
 			return "redirect:admin_noticeList.mdo";
 		}else {
-			return "admin_notice";
+			return "redirect:admin_notice.mdo";
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class AdminNoticeController {
 		if(success != 0) {
 			return "redirect:admin_noticeList.mdo";
 		}else {
-			return "admin_noticeWrite";
+			return "redirect:admin_noticeWrite.mdo";
 		}
 	}
 	

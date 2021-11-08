@@ -37,6 +37,7 @@ textarea {
 </script>
 </head>
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 
@@ -66,6 +67,7 @@ textarea {
 					<div class="card-body">
 						<!-- 메인작업 -->
 						<form action="admin_noticeUpdate.mdo" method="POST">
+
 							<table >
 								<tr>
 									<td width="300px" height="40px">글번호</td>
@@ -95,7 +97,9 @@ textarea {
 								</tr>
 								<tr>
 									<td width="300px" height="500px">내용</td>
+
 									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
+
 								</tr>
 							</table>
 							<input type="submit" value="수정하기" />
@@ -108,6 +112,7 @@ textarea {
 			</div>
 		</main>
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

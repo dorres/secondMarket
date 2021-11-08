@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
-
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+
 
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
@@ -27,13 +28,14 @@ public class AdminServiceImpl implements AdminService {
 		else
 			return false;
 	}
-	
+
 	@Override
 	public int joinProc(AdminVO admin) {
 		int success = 0;
 		success = adminDao.insertAdmin(admin);
 		return success;
 	}
+	
 	
 	@Override
 	public AdminVO loginGetUser(AdminVO admin) {
@@ -68,6 +70,23 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.deleteManager(admin);
 	}
 	
+	@Override
+	//회원 수정 출력
+	public AdminUserVO getUser(AdminUserVO user) {
+		return adminDao.getUser(user);
+	}
+	
+	
+	public int updateUser(AdminUserVO user) {
+		int result = 0;  
+			result = adminDao.updateUser1(user); 
+		int result2 = 0;
+			result2 = adminDao.updateUser2(user);
+		if(result + result2 == 2)
+			return 1;
+		else
+			return 0;
+	}
 //	@Override
 //	public int updateUser1(AdminUserVO user) {
 //		//return adminDao.updateUser1(user);
@@ -145,6 +164,54 @@ public class AdminServiceImpl implements AdminService {
 	public int insertFAQ(AdminFAQVO faq) {
 		return adminDao.insertFAQ(faq);
 	}
+	//-------------------------------------------------------------
+	//관리자 -1:1 문의 답변 대기 리스트
+	@Override
+	public List<AdminQnaVO> getPersonalQnaWaitList() {
+		return adminDao.getPersonalQnaWaitList();
+	}
+	
+	//관리자 - 1:1 문의 답변 대기 세부사항
+	@Override
+	public AdminQnaVO getPersonalQnaWait(AdminQnaVO qna) {
+		return adminDao.getPersonalQnaWait(qna);
+	}
+	
+	//관리자 - 1:1 문의 답변 등록 
+	@Override
+	public int updateQnaWait(AdminQnaVO qna) {
+		return adminDao.updateQnaWait(qna);
+	}
+	
+	//관리자 - 1:1 문의 답변 대기 삭제
+	@Override
+	public int deleteQnaWait(AdminQnaVO qna) {
+		return adminDao.deleteQnaWait(qna);
+	}
+	
+	//==============================================================
+	//관리자  -1:1문의 답변 완료 리스트
+	@Override
+	public List<AdminQnaVO> getPersonalQnaFinishList() {
+		return adminDao.getPersonalQnaFinishList();
+	}
+	
+	@Override
+	public AdminQnaVO getPersonalQnaFinish(AdminQnaVO qna) {
+		return adminDao.getPersonalQnaFinish(qna);
+	}
+
+	@Override
+	public int updateQnaFinish(AdminQnaVO qna) {
+		return adminDao.updateQnaFinish(qna);
+	}
+
+	@Override
+	public int deleteQnaFinish(AdminQnaVO qna) {
+		return adminDao.deleteQnaFinish(qna);
+	}
+
+
 }
 	
 	

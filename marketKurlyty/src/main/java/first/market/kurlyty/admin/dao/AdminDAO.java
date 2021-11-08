@@ -9,8 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+
 
 @Repository
 public class AdminDAO {
@@ -34,11 +36,17 @@ public class AdminDAO {
 	public List<AdminUserVO> getUserList(AdminUserVO adminUser){
 		return sqlSession.selectList("AdminDAO.getUserlist", adminUser);
 	}
-
-//	public AdminUserVO getUser(AdminUserVO adminUserVO) {
-//		return sqlSession.selectOne("AdminDAO.getUserList", adminUserVO);
-//	}
-
+	//회원 수정 출력
+	public AdminUserVO getUser(AdminUserVO user) {
+		return sqlSession.selectOne("AdminDAO.getUser", user);
+	}
+	public int updateUser1(AdminUserVO user) {
+		return sqlSession.update("AdminDAO.getUser1", user);
+	}
+	public int updateUser2(AdminUserVO user) {
+		return sqlSession.update("AdminDAO.getUser2", user);
+	}
+//
 	public int updateManager(AdminVO admin) {
 		return sqlSession.update("AdminDAO.update", admin);
 	}
@@ -99,5 +107,45 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertFAQ",faq);
 	}
 	
-
+	//-------------------------------------------------------------------
+	//1:1문의 답변 대기	리스트
+	public List<AdminQnaVO> getPersonalQnaWaitList(){
+		return sqlSession.selectList("AdminDAO.getPersonalQnaWaitList");
+	}
+	
+	//1:1문의 답변 대기 세부사항
+	public AdminQnaVO getPersonalQnaWait(AdminQnaVO qna){
+		return sqlSession.selectOne("AdminDAO.getPersonalQnaWait", qna);
+	}
+	
+	//1:1문의 답변 등록
+	public int updateQnaWait(AdminQnaVO qna){
+		return sqlSession.update("AdminDAO.updateQnaWait", qna);
+	}
+	
+	//1:1문의 답변 삭제
+	public int deleteQnaWait(AdminQnaVO qna){
+		return sqlSession.delete("AdminDAO.deleteQnaWait", qna);
+	}
+	
+	//================================================================
+	// 1:1문의 답변 완료 리스트
+	public List<AdminQnaVO> getPersonalQnaFinishList(){
+		return sqlSession.selectList("AdminDAO.getPersonalQnaFinishList");
+	}
+	
+	//1:1문의 답변 완료 세부사항
+	public AdminQnaVO getPersonalQnaFinish(AdminQnaVO qna){
+		return sqlSession.selectOne("AdminDAO.getPersonalQnaFinish", qna);
+	}
+	
+	//1:1문의 답변 완료 수정
+	public int updateQnaFinish(AdminQnaVO qna){
+		return sqlSession.update("AdminDAO.updateQnaFinish", qna);
+	}
+	
+	//1:1문의 답변 삭제
+	public int deleteQnaFinish(AdminQnaVO qna){
+		return sqlSession.delete("AdminDAO.deleteQnaFinish", qna);
+	}
 }

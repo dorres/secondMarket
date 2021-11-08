@@ -11,6 +11,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 
@@ -66,21 +67,22 @@
 								</tr>
 							</tfoot>
 							<tbody>
-								<c:forEach var="userList" items="${userList }">
+								<c:forEach var="user" items="${userList }">
 									<tr>
-										<td>${userList.user_serial }</td>
-										<td>${userList.user_id }</td>
-										<td>${userList.user_name }</td>
-										<td>${userList.user_phone }</td>
-										<td>${userList.user_membership_name }</td>
-										<td>${userList.user_last_login }</td>
-										<td>${userList.user_point }</td>
-										<td>${userList.user_total_purchase }</td>
-										<td>${userList.user_status }</td>
+										<td>${user.user_serial }</td>
+										<td>${user.user_id }</td>
+										<td>${user.user_name }</td>
+										<td>${user.user_phone }</td>
+										<td>${user.user_membership_name }</td>
+										<td>${user.user_last_login }</td>
+										<td>${user.user_point }</td>
+										<td>${user.user_total_purchase }</td>
+										<td>${user.user_status }</td>
 										<td>
-											<input type="button" value="수정" onclick="location.href= 'updateAdminUser.mdo?user_id=${updateUsere.admin_id}'">
-											<input type="button" value="삭제" action="location.href='deleteMember.mdo'">
+											<input type="button" value="수정" onclick="location.href= 'getUser.mdo?user_id=${user.user_id}'">
+											<input type="button" value="삭제" onclick="location.href='deleteMember.mdo'">
 										</td>
+									</form>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -91,6 +93,7 @@
 			</div>
 		</main>
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	
