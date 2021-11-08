@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class ProductVO {
+	//category_goods
 	private String category_main_serial;
 	private String category_sub_serial;
 	private int category_goods_serial;
@@ -22,4 +23,16 @@ public class ProductVO {
 	private String category_goods_image_main;
 	private String category_goods_image_thumb;
 	private String category_goods_image_contents_detail;
+	
+	//goods_detail
+	private int goods_detail_serial;
+	private int goods_detail_price;
+	private int goods_detail_stock_quantity;
+	private int goods_detail_stock_notification;
+	private int goods_detail_promotion_serial;
+	private int goods_detail_status;
+	private int goods_detail_dicountrate;
+	
+	//notDB
+	private String goods_last_price;
 }

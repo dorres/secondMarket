@@ -33,4 +33,7 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sessionFactory"/>
 	</bean>
+	<bean id="awsS3" class="first.market.kurlyty.s3.AwsS3" scope="singleton">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
 </beans>
