@@ -23,23 +23,33 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import first.market.kurlyty.user.controller.SecurityUtil;
 
 public class AwsS3 {
+	//github로 파일 공유시 AwsS3에서 받은 키값이 노출되어 본사에서 전화가옴
+	// 해결하기 위해 받은 키값을 db에 넣고 불러오기 위해 mybatis를 사용한거임
 	private SqlSessionTemplate sqlSession;
+	
+	//Amazon-s3-sdk
 	private AmazonS3 s3Client;
-	private String accessKey;
-	private String secretKey;
+	private String accessKey; //->IAM 에서 만든 엑세스 키
+	private String secretKey; //->IAM 에서 받은 시크릿 엑세스 키
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
-	private String bucket = "kurlybuc";
+	private String bucket = "kurlybuc"; //버킷 명
 	
 	public AwsS3() {}
 	public AwsS3(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 		createS3Client();
 	}
+	 
 	
+	// asw S3 Client 생성
 	private void createS3Client() {
+		//db에 넣은 암호화된 s3키값을 가져온다
 		S3KeyVO keyVO = sqlSession.selectOne("CategoryDAO.getS3Key");
+		
+		//암호화된 s3키를 복호화 하기위한 decodingKey, decodingIv 값을 가져와서 바이트형태?로 바꾼다?
 		SecretKey decodingKey = new SecretKeySpec(keyVO.getDecoding_key().getBytes(),"AES");
 		IvParameterSpec decodingIv = new IvParameterSpec(keyVO.getDecoding_iv().getBytes());
+		
 		try {
 			accessKey = SecurityUtil.decrypt("AES/CBC/PKCS5Padding",
 					decodingKey, decodingIv,
@@ -50,10 +60,14 @@ public class AwsS3 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 		this.s3Client=AmazonS3ClientBuilder.standard().withCredentials(
 				new AWSStaticCredentialsProvider(credentials)).withRegion(clientRegion).build();
-	}
+	
+	}//end createS3Client()
+	
+	
 	public void upload(File file, String key) {
 		uploadToS3(new PutObjectRequest(this.bucket, key, file));
 	}
