@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sun.tools.internal.ws.processor.model.Request;
 
 import first.market.kurlyty.user.service.PersonalQnaService;
 import first.market.kurlyty.user.vo.PersonalQnaVO;
@@ -24,7 +23,7 @@ public class PersonalQnaController {
 	@Autowired
 	private PersonalQnaService personalqnaService;
 	
-// 게시판 읽기 
+// 寃뚯떆�뙋 �씫湲� 
 	@RequestMapping("/personalQnaBoard.do")
 	public String getList(HttpServletRequest request, PersonalQnaVO vo, Model model) {
 		HttpSession session = request.getSession();
@@ -36,7 +35,7 @@ public class PersonalQnaController {
 		return "customerCenter/personalQnaBoard";
 	}
 	
-// 글 작성하기 페이지로 이동(userId의 전화번호, 이메일 불러오기)
+// 湲� �옉�꽦�븯湲� �럹�씠吏�濡� �씠�룞(userId�쓽 �쟾�솕踰덊샇, �씠硫붿씪 遺덈윭�삤湲�)
 	
 	@GetMapping("/personalQnaWrite.do")
 	public String getUser(HttpServletRequest request, UserVO vo, Model model) {
@@ -48,7 +47,7 @@ public class PersonalQnaController {
 		return "customerCenter/personalQnaWrite";
 	}
 
-//글을 작성해서 insert
+//湲��쓣 �옉�꽦�빐�꽌 insert
 	@PostMapping("/insertPersonalQna.do")
 	public String insertPersonalQna(PersonalQnaVO vo) {
 		System.out.println(vo.getUser_id());
@@ -81,12 +80,12 @@ public class PersonalQnaController {
 
 		
 		// System.out.println(vo.getQna_personal_serial());
-		 //1.DB 원본가져오기 (serial를 가지고)
+		 //1.DB �썝蹂멸��졇�삤湲� (serial瑜� 媛�吏�怨�)
 		 PersonalQnaVO getPersonalQna = personalqnaService.getPersonalQna(vo);
 		 //System.out.println(getPersonalQna.getQna_personal_title());
-		 //2.모델에 가지고온 db원본을 담아준다. *택배 상자를 만들어 준다.
+		 //2.紐⑤뜽�뿉 媛�吏�怨좎삩 db�썝蹂몄쓣 �떞�븘以��떎. *�깮諛� �긽�옄瑜� 留뚮뱾�뼱 以��떎.
 		 model.addAttribute("getPersonalQna", getPersonalQna);
-		 //3.어느 페이지로 넘어가는가. >> personalQnaWrite로 넘어간다 . // 그 이후로 jsp로 처리하는 것이다. 
+		 //3.�뼱�뒓 �럹�씠吏�濡� �꽆�뼱媛��뒗媛�. >> personalQnaWrite濡� �꽆�뼱媛꾨떎 . // 洹� �씠�썑濡� jsp濡� 泥섎━�븯�뒗 寃껋씠�떎. 
 		 
 		 return "customerCenter/personalQnaWrite";
 	 }
