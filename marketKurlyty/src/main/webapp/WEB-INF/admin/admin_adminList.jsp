@@ -9,6 +9,38 @@
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+ <script src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
+			var formObj = $("form[name='readForm']");
+			
+			// 수정 
+			$(".update_btn").on("click", function(){
+				formObj.attr("action", "/board/updateView");
+				formObj.attr("method", "get");
+				formObj.submit();				
+			})
+			
+			// 삭제
+			$(".delete_btn").on("click", function(){
+				formObj.attr("action", "/board/delete");
+				formObj.attr("method", "post");
+				formObj.submit();
+			})
+			
+			// 취소
+			$(".list_btn").on("click", function(){
+				
+				location.href = "/board/list";
+			})
+		})
+		function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할까요?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+	</script>
 </head>
 <body class="sb-nav-fixed">
 	<jsp:include page="default/top.jsp"></jsp:include>
@@ -59,8 +91,8 @@
 										<td>${adminList.admin_name }</td>
 										<td>${adminList.admin_position }</td>
 										<td>
-											<input type="button" value="수정">
-											<input type="button" value="삭제">
+											<input type="button" value="수정" onclick="location.href= 'update.mdo?admin_id=${adminList.admin_id}'">
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteMember.mdo?admin_id=${adminList.admin_id}')"/>
 										</td>
 									</tr>
 								</c:forEach>

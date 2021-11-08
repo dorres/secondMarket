@@ -10,17 +10,25 @@
  		SELECT * FROM MK_CATEGORY_SUB WHERE category_sub_first_no=#{category_main_serial} ORDER BY category_sub_serial ASC
  	</select>
  	<select id="getCategoryProductList" resultType="product" parameterType="product">
- 		SELECT * FROM MK_CATEGORY_GOODS
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		to_char((second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))),'9,999,999') as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE 1=1
  		<if test="category_main_serial != null">
- 			AND category_main_serial=#{category_main_serial}
+ 			AND PRODUCT.category_main_serial=#{category_main_serial}
  		</if>
  		<if test="category_sub_serial != null">
- 			AND category_sub_serial=#{category_sub_serial}
+ 			AND PRODUCT.category_sub_serial=#{category_sub_serial}
  		</if>
- 		ORDER BY category_goods_serial
+ 		AND PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.category_goods_serial
  	</select>
  	<select id="getCategoryRoot" resultType="categoryMain" parameterType="product">
  		SELECT * FROM mk_category_main WHERE category_main_serial=#{category_main_serial}
+ 	</select>
+ 	<select id="getS3Key" resultType="first.market.kurlyty.s3.S3KeyVO">
+ 		SELECT * FROM S3Key
  	</select>
  </mapper>
