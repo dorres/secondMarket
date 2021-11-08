@@ -2,7 +2,7 @@ package first.market.kurlyty.user.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import first.market.kurlyty.user.vo.Board_Pagination;
 import first.market.kurlyty.user.vo.Board_noticeVO;

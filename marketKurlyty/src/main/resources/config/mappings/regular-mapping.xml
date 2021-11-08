@@ -9,6 +9,6 @@
 	</select>
  <select id="getBoardListCnt" resultType="int">
 		SELECT	count(*) as listCnt
-		FROM MK_NOTICE
+		FROM MK_FAQ
 	</select>
  </mapper>

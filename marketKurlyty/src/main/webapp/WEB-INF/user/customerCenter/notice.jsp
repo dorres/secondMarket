@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 
@@ -70,46 +70,31 @@
 																	<th>조회</th>
 																</tr>
 															</thead>
-															
+
 															<tbody>
-															
+
 																<c:forEach var="board" items="${board }">
 																	<tr>
 																		<td>${board.notice_serial }</td>
 																		<td><a
 																			href="notice_detail.do?notice_serial=${board.notice_serial}">${board.notice_title }</a></td>
 																		<td>${board.notice_id }</td>
-																		<td><fmt:formatDate value="${board.notice_date }" pattern="yyyy-MM-dd"/></td>
+																		<td><fmt:formatDate value="${board.notice_date }"
+																				pattern="yyyy-MM-dd" /></td>
 																		<td>${board.notice_hit }</td>
 																	</tr>
 																</c:forEach>
-																
+
 															</tbody>
-															
+
 														</table>
 													</div>
 												</td>
 											</tr>
 										</tbody>
 									</table>
-									</form>
-									<div class="layout-pagination">
-										<div class="pagediv">
-											
-										</div>
-									</div>
-
-									<table class="xans-board-search xans-board-search2">
-										<tbody>
-											<tr>
-												<td class="input_txt"><img
-													src="${pageContext.request.contextPath }/resources/images/customerCenter/customerCenter_notice_1.gif">검색어</td>
-												<td class="stxt"><input type="checkbox"
-													name="search[name]">이름 <input type="checkbox"
-													name="search[subject]">제목 <input type="checkbox"
-													name="search[contents]">내용&nbsp;</td>
-												<td class="input_txt">&nbsp;</td>
-												<script>
+								</form>
+								<script>
 													function fn_prev(page,
 															range, rangeSize) {
 
@@ -169,53 +154,75 @@
 
 													}
 												</script>
-												<!-- pagination{s} -->
+	<!-- pagination{s} -->
 
-												<div class="layout-pagination">
-												<div class="pagediv">
-
-													
-														<c:if test="${pagination.prev}">
-
-															<div class="layout-pagination-button layout-pagination-number"><a class="page-link" href="#"
-																onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')"> 이전 </a></div>
-
-														</c:if>
+	<div class="layout-pagination">
+		<div class="pagediv">
 
 
+			<c:if test="${pagination.prev}">
 
-														<c:forEach begin="${pagination.startPage}"
-															end="${pagination.endPage}" var="idx">
+				<div class="layout-pagination-button layout-pagination-number">
+					<a class="page-link" href="#"
+						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">
+						이전 </a>
+				</div>
 
-															<div
-																class="layout-pagination-button layout-pagination-number <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-																class="page-link" href="#"
-																onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-																	${idx} </a></div>
-
-														</c:forEach>
+			</c:if>
 
 
 
-														<c:if test="${pagination.next}">
+			<c:forEach begin="${pagination.startPage}"
+				end="${pagination.endPage}" var="idx">
 
-															<div class="layout-pagination-button layout-pagination-number"><a class="page-link" href="#" onClick="fn_next('${pagination.range}', 
+				<div
+					class="layout-pagination-button layout-pagination-number <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+					<a class="page-link" href="#"
+						onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+						${idx} </a>
+				</div>
 
-'${pagination.range}', '${pagination.rangeSize}')">다음</a></div>
+			</c:forEach>
 
-														</c:if>
 
-													</div>
 
-												</div>
-												
+			<c:if test="${pagination.next}">
 
-												<!-- pagination{e} -->
+				<div class="layout-pagination-button layout-pagination-number">
+					<a class="page-link" href="#"
+						onClick="fn_next('${pagination.range}', 
 
-											</tr>
-										</tbody>
-									</table>
-								</form>
+'${pagination.range}', '${pagination.rangeSize}')">다음</a>
+				</div>
+
+			</c:if>
+
+		</div>
+
+	</div>
+
+
+	<!-- pagination{e} -->
+								<div class="layout-pagination">
+									<div class="pagediv"></div>
+								</div>
+
+								<table class="xans-board-search xans-board-search2">
+									<tbody>
+										<tr>
+											<td class="input_txt"><img
+												src="${pageContext.request.contextPath }/resources/images/customerCenter/customerCenter_notice_1.gif">검색어</td>
+											<td class="stxt"><input type="checkbox"
+												name="search[name]">이름 <input type="checkbox"
+												name="search[subject]">제목 <input type="checkbox"
+												name="search[contents]">내용&nbsp;</td>
+											<td class="input_txt">&nbsp;</td>
+
+
+										</tr>
+									</tbody>
+								</table>
+
 							</div>
 						</div>
 						<!-- MainCenter 끝 -->
@@ -232,5 +239,6 @@
 
 	<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank"
 		style="display: none; width: 100%; height: 600px;"></iframe>
+	
 </body>
 </html>
