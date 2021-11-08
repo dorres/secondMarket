@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.support.SessionStatus;
 
+import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -96,5 +97,21 @@ public interface AdminService {
 	
 	//1:1문의 답변대기 삭제
 	int deleteQnaFinish(AdminQnaVO qna);
+	
+	//==================================================
+	//관리자 배너등록
+	int insertBanner(AdminBannerVO banner);
+	
+	//관리자 배너 리스트
+	List<AdminBannerVO> getBannerList();
+	
+	//관리자 배너 세부사항
+	AdminBannerVO getBanner(AdminBannerVO banner);
+	
+	int updateBanner1(AdminBannerVO banner);
+	
+	int updateBanner2(AdminBannerVO banner);
+	
+	int deleteBanner(AdminBannerVO banner);
 	
 }

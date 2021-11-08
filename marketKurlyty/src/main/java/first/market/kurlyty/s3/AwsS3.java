@@ -17,6 +17,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -89,6 +90,20 @@ public class AwsS3 {
 		}catch(SdkClientException e) {
 			e.printStackTrace();
 		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(String key) {
+		try {
+			//Delete °´Ã¼ »ý¼º
+			DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(this.bucket, key);
+			//Delete
+			this.s3Client.deleteObject(deleteObjectRequest);
+			System.out.println(String.format("[%s] deletion complete", key));
+		}catch(AmazonServiceException e) {
+			e.printStackTrace();
+		}catch (SdkClientException e) {
 			e.printStackTrace();
 		}
 	}

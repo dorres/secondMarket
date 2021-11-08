@@ -20,9 +20,9 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">Tables</h1>
+				<h1 class="mt-4">배너</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+					<li class="breadcrumb-item"><a href="index.html">배너 등록</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
@@ -38,17 +38,23 @@
 						<i class="fas fa-table me-1"></i> DataTable Example
 					</div>
 					<div class="card-body">
-						<form action="admin_bannerInsert" method="POST" enctype="multipart/form-data">
+						<form action="admin_bannerInsert.mdo" method="POST" enctype="multipart/form-data">
 							<table>
 									<tr>
-										<td>업로드</td>
+										<td>배너 이미지</td>
 										<td><input type="file" name="uploadFile" /></td>
 									</tr>
 									<tr>
-										<td colspan="2"><input type="submit" value="새글 등록" /></td>
+										<td>배너 이름</td>
+										<td><input type="text" name="banner_title" /></td>
 									</tr>
-
+									<tr>
+										<td>배너 내용</td>
+										<td><textarea name="banner_contents"></textarea></td>
+									</tr>
 								</table>
+								<input type="submit" value="등록하기" />
+								<input type="button" value="목록보기" onclick="location.href='admin_bannerList.mdo'"/>
 						</form>
 					</div>
 				</div>
