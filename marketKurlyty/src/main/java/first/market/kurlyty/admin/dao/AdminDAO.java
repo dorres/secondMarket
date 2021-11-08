@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
@@ -53,8 +54,18 @@ public class AdminDAO {
 	public int deleteManager(AdminVO admin) {
 		return sqlSession.delete("AdminDAO.delete", admin);
 	}
-	
-
+	//유저 수정
+	public int updateUser(AdminUserVO user) {
+		return sqlSession.update("AdminDAO.updateUser", user);
+	}
+	//유저 삭제
+	public int deleteUser(AdminUserVO user) {
+		return sqlSession.delete("AdminDAO.deleteUser", user);
+	}
+	//약관관리
+	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree){
+		return sqlSession.selectList("AdminDAO.getTermsAgree");
+	}
 	//---------------------------------------------------------------
 	//공지사항 목록	
 

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import first.market.kurlyty.admin.service.AdminService;
+import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
@@ -62,16 +63,31 @@ public class AdminMemberController {
 			return "admin_updateUser";
 		}
 		
+		//회원 수정
 		@RequestMapping("updateUser.mdo")
-		public String updateUser(AdminUserVO user, Model model) {
-			int sucess = 1;
-			sucess = adminService.updateUser(user);
-			if(sucess!=1) {
-				System.out.println("실패");
-				return "redirect:admin_userList";
-			}else {
-				System.out.println("성공");
-				return "admin_userList.mdo";
-			}
+		public String updateUser(AdminUserVO user) {
+			int success = 0;
+			success = adminService.updateUser(user);
+			if(success !=0) {
+				return "redirect:admin_userList.mdo";
+		}else {
+			return "redirect:getUser.mdo";
+		}
+}
+		//회원 삭제
+		@RequestMapping("deleteUser.mdo")
+		public String deleteUser(AdminUserVO user) {
+			int success = 0;
+			success = adminService.deleteUser(user);
+			if(success !=0) {
+				return "redirect:admin_userList.mdo";
+		}else {
+			return "redirect:getUser.mdo";
+		}
+}
+		//약관관리
+		@RequestMapping("terms_agreeList.mdo")
+		public String getTermsAgree(AdminTermsAgreementVO agree) {
+			return "admin_terms_agreement";
 		}
 }

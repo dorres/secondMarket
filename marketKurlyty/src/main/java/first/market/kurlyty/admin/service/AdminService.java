@@ -8,6 +8,7 @@ import first.market.kurlyty.admin.vo.AdminFAQVO;
 
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
@@ -31,19 +32,12 @@ public interface AdminService {
 	
 	//회원 수정 출력
 	AdminUserVO getUser(AdminUserVO user);
-	
+	//회원 수정
 	public int updateUser(AdminUserVO user);
-	
-	int deleteUser1(AdminUserVO user);
-
-	int deleteUser2(AdminUserVO user);
-
-//	int updateUser1(AdminUserVO user);
-
-//	int updateUser2(AdminUserVO user);
-	
-//	AdminUserVO getAdminUser(AdminUserVO adminuserVo);
-	
+	//회원 삭제
+	public int deleteUser(AdminUserVO user);
+	//약관관리
+	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
 	//------------------------------------------------
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);

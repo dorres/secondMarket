@@ -40,16 +40,16 @@
 		ON U.USER_ID = UD.USER_ID
 		WHERE U.USER_ID = #{user_id}
 	</select>
-	<update id="getUser1" parameterType="user">
-		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone}
-		WHERE USER_ID = #{user_id}
-	</update>
 	
-	<update id="getUser2" parameterType="user">
-		UPDATE MK_USER_DETAILS 
-		SET USER_MEMBERSHIP_NAME = #{user_membership_name}, USER_STATUS = #{user_status}
-		WHERE USER_ID = #{user_id}
-	</update>
+	<update id="updateUser" parameterType="user">
+ 		UPDATE MK_USER_DETAILS 
+ 		SET USER_STATUS = #{user_status}
+ 		WHERE USER_ID=#{user_id}
+ 	</update>
+ 	
+ 	<delete id="deleteUser" parameterType="user">
+ 		DELETE FROM MK_USER WHERE MK_USER = #{user_id}
+ 	</delete>
 
 	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">
