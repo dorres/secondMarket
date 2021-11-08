@@ -3,6 +3,7 @@ package first.market.kurlyty.admin.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -14,7 +15,7 @@ import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
-
+@Repository
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
 	
@@ -77,17 +78,20 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getUser(user);
 	}
 	//회원 수정
+	@Override
 	public int updateUser(AdminUserVO user) {
 		return adminDao.updateUser(user);
 	}
 	
 	//회원 삭제
+	@Override
 	public int deleteUser(AdminUserVO user) {
 		return adminDao.deleteUser(user);
 	}
-	//약관동의 리스트
+	//약관관리 리스트
+	@Override
 	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree){
-		return adminDao.getTermsAgree(agree);
+		return adminDao.getTermsAgreeList(agree);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트

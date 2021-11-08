@@ -82,12 +82,13 @@ public class AdminMemberController {
 			if(success !=0) {
 				return "redirect:admin_userList.mdo";
 		}else {
-			return "redirect:getUser.mdo";
+			return "redirect:admin_userList.mdo";
 		}
 }
-		//距包包府
+		//距包包府 府胶飘
 		@RequestMapping("terms_agreeList.mdo")
-		public String getTermsAgree(AdminTermsAgreementVO agree) {
+		public String getTermsAgreeList(AdminTermsAgreementVO agree, Model model) {
+			model.addAttribute("agreeList", adminService.getTermsAgree(agree));
 			return "admin_terms_agreementList";
 		}
 }

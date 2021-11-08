@@ -9,6 +9,14 @@
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+ <script>
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할까요?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+ </script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -79,8 +87,8 @@
 										<td>${user.user_total_purchase }</td>
 										<td>${user.user_status }</td>
 										<td>
-											<input type="button" value="수정" onclick="location.href= 'getUser.mdo?user_id=${user.user_id}'">
-											<input type="button" value="삭제" onclick="location.href='deleteMember.mdo'">
+											<input type="button" value="수정" onclick="location.href= 'getUser.mdo?user_id=${user.user_id}'"/>
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteUser.mdo?user_id=${user.user_id}')"/>
 										</td>
 									</form>
 									</tr>
