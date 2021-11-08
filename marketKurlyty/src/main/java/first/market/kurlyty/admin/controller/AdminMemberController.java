@@ -88,6 +88,6 @@ public class AdminMemberController {
 		//약관관리
 		@RequestMapping("terms_agreeList.mdo")
 		public String getTermsAgree(AdminTermsAgreementVO agree) {
-			return "admin_terms_agreement";
+			return "admin_terms_agreementList";
 		}
 }
