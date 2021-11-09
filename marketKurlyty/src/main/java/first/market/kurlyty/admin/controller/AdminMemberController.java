@@ -91,4 +91,18 @@ public class AdminMemberController {
 			model.addAttribute("agreeList", adminService.getTermsAgree(agree));
 			return "admin_terms_agreementList";
 		}
+		//약관 등록버튼 이동
+		@RequestMapping("insertTerms.mdo")
+		public String insertTerms(AdminTermsAgreementVO agree) {
+			int success = 0;
+			success = adminService.insertTerms(agree);
+			if(success != 0) {
+				return "redirect:terms_agreeList.mdo";
+				}else {
+					return "redirect:terms_agreeList.mdo";
+				}
+		}
+		
+		
+		
 }

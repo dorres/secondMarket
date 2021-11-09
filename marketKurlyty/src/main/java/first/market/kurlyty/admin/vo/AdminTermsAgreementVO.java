@@ -2,6 +2,8 @@ package first.market.kurlyty.admin.vo;
 
 import java.sql.Date;
 
+import lombok.Data;
+@Data
 public class AdminTermsAgreementVO {
 	public int terms_agreement_serial;
 	public int terms_serial;
@@ -9,4 +11,5 @@ public class AdminTermsAgreementVO {
 	public boolean terms_agree_status;
 	public Date terms_agree_date;
 	public Date terms_agree_date_modified;
+	public String terms_content;
 }

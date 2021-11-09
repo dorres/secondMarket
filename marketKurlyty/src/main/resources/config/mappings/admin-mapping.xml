@@ -53,8 +53,13 @@
  	
  	<!-- 약관관리 출력--> 
 	<select id="getTermsAgreeList" resultType="agreeList">
-		SELECT * FROM MK_TERMS_AGREEMENT;
+		SELECT TERMS_AGREEMENT_SERIAL,TERMS_SERIAL,TERMS_ID,TERMS_AGREE_STATUS,TERMS_AGREE_DATE,TERMS_AGREE_DATE_MODIFIED FROM MK_TERMS_AGREEMENT;
 	</select>
+	
+	<!-- 약관 등록 
+	<insert id="insertTerms" parameterType="terms">
+		INSERT INTO MK_TERMS_AGREEMENT VALUES(#{terms_serial},#{terms_id},#{terms_status},#{terms_agree_date_modified});
+	</insert> -->
 	
 	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">

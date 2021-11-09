@@ -31,8 +31,8 @@
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h2 class="mt-4">회원관리</h2>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					<li class="breadcrumb-item">회원수정</li>
+					<li class="breadcrumb-item active">삭제</li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
@@ -45,8 +45,9 @@
 						<i class="fas fa-table me-1"></i> 회원목록
 					</div>
 					<div class="card-body">
+						<form>
 						<table id="datatablesSimple">
-							<thead>
+							
 								<tr>
 									<th>회원번호</th>
 									<th>아이디</th>
@@ -59,21 +60,6 @@
 									<th>상태</th>
 									<th>수정/삭제</th>
 								</tr>
-							</thead>
-							<tfoot>
-								<tr>
-									<th>회원번호</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>폰번</th>
-									<th>회원등급</th>
-									<th>마지막로그인</th>
-									<th>포인트</th>
-									<th>총금액</th>
-									<th>상태</th>
-									<th>수정/삭제</th>
-								</tr>
-							</tfoot>
 							<tbody>
 								<c:forEach var="user" items="${userList }">
 									<tr>
@@ -85,10 +71,10 @@
 										<td>${user.user_last_login }</td>
 										<td>${user.user_point }</td>
 										<td>${user.user_total_purchase }</td>
-										<td>${user.user_status }</td>
+										<td>${useuserrList.user_status }</td>
 										<td>
 											<input type="button" value="수정" onclick="location.href= 'getUser.mdo?user_id=${user.user_id}'"/>
-											<input type="button" value="삭제" onclick="javascript:delete_check('deleteUser.mdo?user_id=${user.user_id}')"/>
+											<input type="button" value="삭제" onclick="javascirpt:delete_check('deleteUser.mdo?user_id=${user.user_id}')"/>
 										</td>
 									</form>
 									</tr>

@@ -64,7 +64,11 @@ public class AdminDAO {
 	}
 	//약관관리 리스트
 	public List<AdminTermsAgreementVO> getTermsAgreeList(AdminTermsAgreementVO agree){
-		return sqlSession.selectList("AdminDAO.getTermsAgreeList");
+		return sqlSession.selectList("AdminDAO.getTermsAgreeList", agree);
+	}
+	// 약관 등록
+	public int insertTerms(AdminTermsAgreementVO agree) {
+		return sqlSession.insert("AdminDAO.insertTerms", agree);
 	}
 	//---------------------------------------------------------------
 	//공지사항 목록	
