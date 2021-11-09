@@ -28,8 +28,6 @@
 					</div>
 					<div id="main">
 						<div id="content">
-							
-							
 							<!-- 상품목록이 없을때 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
 							<h3 class="screen_out">장바구니 상품 목록</h3>
 							<form>
@@ -44,13 +42,153 @@
 													<a href="#none" class="btn_delete">선택삭제</a>
 												</div>
 											</div>
-											<div class="inner_empty">
-												<span class="bg"></span>
-												<p class="txt">장바구니에 담긴 상품이 없습니다</p>
-												<div class="btn_submit">
-													<button type="button" class="btn disabled">상품을담아주세요</button>
+											<c:if test="${frozenList == null && coldList==null && roomList==null }">
+												<div class="inner_empty">
+													<span class="bg"></span>
+													<p class="txt">장바구니에 담긴 상품이 없습니다</p>
+													<div class="btn_submit">
+														<button type="button" class="btn disabled">상품을담아주세요</button>
+													</div>
 												</div>
-											</div>
+											</c:if>
+											<c:if test="${coldList != null}">
+												<div class="box cold">
+													<div class="tit_box">
+														<h4 class="tit">
+															<span class="inner_tit"><span class="ico"></span>냉장
+																상품</span>
+														</h4>
+														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+													</div>
+													<ul class="list ">
+														<c:forEach var="item" items="${coldList }" varStatus="count">
+															<li><div class="item">
+																	<label class="check"><input
+																		type="checkbox"
+																		name="chkItem"
+																		checked=""><span class="ico"></span></label>
+																	<div class="name">
+																		<div class="inner_name">
+																			<a href="#" class="package ">${item.category_goods_name }</a>
+																			<div class="info"></div>
+																		</div>
+																	</div>
+																	<div class="goods">
+																		<a href="#" class="thumb "
+																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																		<div class="price">
+																			<div class="in_price">
+																				<span class="selling"><span class="won">원</span></span>
+																				<p class="noti"></p>
+																			</div>
+																			<div class="stamper count">
+																				<button type="button" class="btn minus off">감소</button>
+																				<input type="number" id="stepperCounter" class="num"
+																					readonly="" value="${item.goods_cart_count }">
+																				<button type="button" class="btn plus">추가</button>
+																			</div>
+																		</div>
+																	</div>
+																	<button type="button" class="btn_delete">상품 삭제</button>
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+												</div>
+											</c:if>
+											
+											<c:if test="${frozenList != null}">
+												<div class="box frozen">
+													<div class="tit_box">
+														<h4 class="tit">
+															<span class="inner_tit"><span class="ico"></span>냉동
+																상품</span>
+														</h4>
+														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+													</div>
+													<ul class="list ">
+														<c:forEach var="item" items="${frozenList }" varStatus="count">
+															<li><div class="item">
+																	<label class="check"><input
+																		type="checkbox"
+																		name="chkItem"
+																		checked=""><span class="ico"></span></label>
+																	<div class="name">
+																		<div class="inner_name">
+																			<a href="#" class="package ">${item.category_goods_name }</a>
+																			<div class="info"></div>
+																		</div>
+																	</div>
+																	<div class="goods">
+																		<a href="#" class="thumb "
+																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																		<div class="price">
+																			<div class="in_price">
+																				<span class="selling"><span class="won">원</span></span>
+																				<p class="noti"></p>
+																			</div>
+																			<div class="stamper count">
+																				<button type="button" class="btn minus off">감소</button>
+																				<input type="number" id="stepperCounter" class="num"
+																					readonly="" value="${item.goods_cart_count }">
+																				<button type="button" class="btn plus">추가</button>
+																			</div>
+																		</div>
+																	</div>
+																	<button type="button" class="btn_delete">상품 삭제</button>
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+												</div>
+											</c:if>
+											
+											<c:if test="${roomList != null}">
+												<div class="box room">
+													<div class="tit_box">
+														<h4 class="tit">
+															<span class="inner_tit"><span class="ico"></span>실온
+																상품</span>
+														</h4>
+														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+													</div>
+													<ul class="list ">
+														<c:forEach var="item" items="${roomList }" varStatus="count">
+															<li><div class="item">
+																	<label class="check"><input
+																		type="checkbox"
+																		name="chkItem"
+																		checked=""><span class="ico"></span></label>
+																	<div class="name">
+																		<div class="inner_name">
+																			<a href="#" class="package ">${item.category_goods_name }</a>
+																			<div class="info"></div>
+																		</div>
+																	</div>
+																	<div class="goods">
+																		<a href="#" class="thumb "
+																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																		<div class="price">
+																			<div class="in_price">
+																				<span class="selling"><span class="won">원</span></span>
+																				<p class="noti"></p>
+																			</div>
+																			<div class="stamper count">
+																				<button type="button" class="btn minus off">감소</button>
+																				<input type="number" id="stepperCounter" class="num"
+																					readonly="" value="${item.goods_cart_count }">
+																				<button type="button" class="btn plus">추가</button>
+																			</div>
+																		</div>
+																	</div>
+																	<button type="button" class="btn_delete">상품 삭제</button>
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+												</div>
+											</c:if>
+											
 											<div class="cart_select">
 												<div class="inner_select">
 													<label class="check"><input type="checkbox" name="checkAll" disabled="" checked="">
@@ -114,72 +252,13 @@
 							<form id="viewCart" name="frmCart" method="post" action="/shop/order/order.php">
 								<input type="hidden" name="mode" value="setOrder">
 							</form>
-							<script src="/appProxy/appData.php?ver=1.40.4"></script>
-							<script src="/asset/js/cart/list.bundle.js?ver=1.40.4"></script>
-							<script>
-  _cart.showItemList('pc');
 
-  /**
-   * 스크롤 이벤트 : CartContainer.jsx 에서 호출
-   * 스크립트 재시작 요건
-   * 아이템 삭제시
-   * 주소가 변경시
-   * 목록접을때
-   * 위치 값이 달라지는 경우
-   * .off('scroll') 을 사용할수 없음. gnb 때문에
-   */
-  function resultPosition() {
-    var objTarget = {};
-
-    objTarget = {
-      winHeight: $(window).height(),
-      gnbHeight: $('#gnbMenu').height(),
-      moveBox: $('.cart_result').find('.inner_result'),
-      boxHeight: $('.cart_result').find('.inner_result').height(),
-      baseTop: $('#cartItemList').offset().top - $('#gnbMenu').height()
-    }
-
-    var _position = {
-      scroll: function(){
-        var that = this, num = 0;
-        $(window).scroll(function () {
-          num = $(this).scrollTop().toFixed(0);
-          that.scrollEvent(num);
-        }).scroll();
-        if(num === 0){
-          that.scrollEvent(num);
-        }
-      },
-      scrollEvent: function(num){
-        num = num - objTarget.baseTop + objTarget.gnbHeight;
-        var baseHeight = $('#cartItemList').height();
-        var resultBox = baseHeight - objTarget.boxHeight;
-        if(objTarget.boxHeight > objTarget.winHeight || baseHeight <= objTarget.boxHeight){
-          num = 0;
-          $('#cartItemList').css({'minHeight' : objTarget.boxHeight});
-        }
-        if(num > resultBox){
-          num = resultBox;
-        }
-        objTarget.moveBox.css({ top: num <= 60 ? 60 : num });
-      }
-    }
-
-    _position.scroll();
-  }
-
-  KurlyTracker.setScreenName('cart');
-
-  function reloadAction(){
-    location.reload();
-  }
-</script>
 						</div>
 					</div>
 
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+
 					<!-- 상품목록이 있을때 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
-<!-- 					<form>
+				<!-- 	<form>
 						<div id="cartItemList" class="only_pc">
 							<div class="">
 								<div class="cart_item ">
@@ -485,8 +564,8 @@
 								</div>
 							</div>
 						</div>
-					</form>
- -->
+					</form> -->
+
 
 				</div>
 			</div>
