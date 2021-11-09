@@ -43,14 +43,31 @@ position:relative;
 }
 </style>
 <script>
-function inputCart(name){
+function inputCart(serial,name,lastprice,price,discount){
+	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
 	$(".cartNone").attr("class","cartClick");
 	$(".cart_option").css("opacity","1").css("display","block");
 	$("#cartPut .in_option").find("span.name").text(name);
+	$("#cartPut .in_option").find("span.dc_price").text(lastprice+"원");
+	$("#cartPut .in_option").find("span.sum").find("span.num").text(lastprice);
+	$("#cartPut .in_option").find("input.hprice").val(price);
+	$("#cartPut .in_option").find("input.hdiscount").val(discount);
+	$("#cartPut .in_option").find("input.hserial").val(serial);
+	
 }
 function cancelCart(){
 	$(".cartClick").attr("class","cartNone");
 	$(".cart_option").css("opacity","0").css("display","none");
+}
+function quantity(count){
+	var currentCount=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	var changeCount = parseInt(currentCount)+count;
+	var price=$("#cartPut .in_option").find("input.hprice").val();
+	var discount=$("#cartPut .in_option").find("input.hdiscount").val();
+	if(changeCount<1)changeCount=1;
+	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
+	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(changeCount);
+	$("#cartPut .in_option").find("div.total").find("span.num").text(changePrice.toLocaleString("ko-KR"));
 }
 </script>
 <body class="main-index" oncontextmenu="return false"
@@ -125,49 +142,65 @@ function cancelCart(){
 
 						<div id="cartPut">
 							<div class="cart_option cartList cart_type3" style="opacity: 0; display:none;">
-								<div class="inner_option">
-									<button type="button" class="btn_close1">레이어닫기</button>
-									<!---->
-									<div class="in_option">
-										<div class="list_goods">
-											<ul class="list list_nopackage">
-												<li class="on"><span class="btn_position"><button
-															type="button" class="btn_del">
-															<span class="txt">삭제하기</span>
-														</button></span> <span class="name">
-														<!--- 장흥 표고 버섯 가루 70g ---->
-												</span> <!---->
-													<div class="option">
-														<span class="count"><button type="button"
-																class="btn down on">수량내리기</button> <input type="number"
-															readonly="readonly" onfocus="this.blur()" class="inp">
-															<button type="button" class="btn up on">수량올리기</button></span> <span
-															class="price">
-															<!----> <span class="dc_price">5,490원</span>
-														</span>
-													</div></li>
-											</ul>
-										</div>
-										<div class="total">
-											<div class="price">
-												<strong class="tit">합계</strong>
-												<!---->
-												<span class="sum"><span class="num">5,490</span> <span
-													class="won">원</span></span>
+							<!--  -->
+								<form name="cartInput" action="cartInput.do">
+									<div class="inner_option">
+										<input type="button" class="btn_close1" value="레이어닫기"/>
+										<!---->
+										<div class="in_option">
+											<div class="list_goods">
+												<ul class="list list_nopackage">
+													<li class="on"><span class="btn_position"><button
+																type="button" class="btn_del">
+																<span class="txt">삭제하기</span>
+															</button></span> <span class="name">
+															<!--- 장흥 표고 버섯 가루 70g ---->
+													</span> <!---->
+														<div class="option">
+															<input type="hidden" class="hprice"/>
+															<input type="hidden" class="hdiscount"/>
+															<input type="hidden" class="hserial" name="category_goods_serial" value=""/>
+															<span class="count">
+																<input type="button"
+																	class="btn down on" onclick="javascript:quantity(-1)" value="수량내리기"/>
+																<input type="number" value="1" name="goods_cart_count"
+																	readonly="readonly" onfocus="this.blur()" class="inp">
+																<input type="button" class="btn up on" onclick="javascript:quantity(1)"
+																	value="수량올리기"/>
+															</span> 
+															<span class="price">
+																<!----> <span class="dc_price"></span>
+															</span>
+														</div></li>
+												</ul>
 											</div>
-											<p class="txt_point">
-												<span class="ico">적립</span> <span class="no_login">
-													<span>로그인 후, 적립혜택 제공</span>
-												</span>
-											</p>
+											<div class="total">
+												<div class="price">
+													<strong class="tit">합계</strong>
+													<!---->
+													<span class="sum"><span class="num"></span> <span
+														class="won">원</span></span>
+												</div>
+												<p class="txt_point">
+													<span class="ico">적립</span> <span class="no_login">
+														<span>로그인 후, 적립혜택 제공</span>
+													</span>
+												</p>
+											</div>
+										</div>
+										<div class="group_btn off layer_btn2">
+											<span class="btn_type2">
+												<button type="button"
+													class="txt_type" onclick="javascript:cancelCart()">취소</button>
+											</span>
+											<span class="btn_type1">
+												<input
+													type="submit" class="txt_type" value="장바구니 담기"/> <!---->
+											</span>
 										</div>
 									</div>
-									<div class="group_btn off layer_btn2">
-										<span class="btn_type2"><button type="button"
-												class="txt_type" onclick="javascript:cancelCart()">취소</button></span> <span class="btn_type1"><button
-												type="button" class="txt_type">장바구니 담기</button> <!----></span>
-									</div>
-								</div>
+								</form>
+								<!--  -->
 							</div>
 						</div>
 
@@ -175,16 +208,17 @@ function cancelCart(){
 							<ul class="foodList">
 								<c:forEach var="item" items="${categoryProductList }">
 									<li>
+										<input type="hidden" class="goodsSerial" value="${item.category_goods_serial}"/>
 										<div class="foodImg">
 											<a href="#"><img
 												src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}">
 											</a>
 											<button type="button" class="cartBt"
-												onclick="javascript:inputCart('${item.category_goods_name }')"></button>
+												onclick="javascript:inputCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>
 										</div>
 										<a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
 											<span class="cost"> <span class="dc">${item.goods_detail_dicountrate }%</span> <span
-												class="price">${item.goods_last_price}원</span> <span class="origin">${item.goods_detail_price }</span>
+												class="price">&nbsp;${item.goods_last_price}원</span> <span class="origin">${item.goods_detail_price }</span>
 												<span class="desc">${item.category_goods_name_subtext }</span>
 										</span>
 									</a>
