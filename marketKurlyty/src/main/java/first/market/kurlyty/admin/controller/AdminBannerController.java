@@ -2,6 +2,7 @@ package first.market.kurlyty.admin.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,18 +83,44 @@ public class AdminBannerController {
 	//관리자 -배너(delete)
 	@RequestMapping("admin_bannerDelete.mdo")
 	public String adminBannerDelete(AdminBannerVO banner) {
-		//교체하고싶은 이미지가 있을경우 0이 아니므로 s3에있는 이미지를 삭제한다.
-		AdminBannerVO bannerVO = adminService.getBanner(banner);
-		String deleteKey =bannerVO.getBanner_filepath().substring(49);
-		awsS3.delete(deleteKey);
-		
+		boolean result = false;
 		int success =0;
-		success = adminService.deleteBanner(banner);
-		if(success != 0) 
-			return "redirect:admin_bannerList.mdo";
-		else 
-			return "redirect:admin_banner.mdo";
-	}
+		
+		// 1. db에서 삭제하고싶은 칼럼의 데이터를 가져온다.
+		AdminBannerVO bannerVO = adminService.getBanner(banner);
+		
+		// 2. 칼럼의 데이터에서 파일 경로를 deletePath에 담는다.
+		String deletePath = bannerVO.getBanner_filepath();
+		
+		// 3. deletePath에 있는 데이터와 db에있는 모든 Banner_filepath와 비교해서 일치하는게 있다면 해당 칼럼만 삭제
+		List<AdminBannerVO> bannerList =  adminService.getBannerList();
+		for(AdminBannerVO bann : bannerList) {
+			System.out.println("bann : " + bann.getBanner_filepath());
+			System.out.println("deletepath : " + deletePath);
+			
+			if (bann.getBanner_filepath().equals(deletePath)) {
+				success = adminService.deleteBanner(banner);
+				result = true;
+				break;
+			}
+		}
+		if(!result) {
+			String deleteKey =bannerVO.getBanner_filepath().substring(49);
+			awsS3.delete(deleteKey);
+			
+			
+			success = adminService.deleteBanner(banner);
+			if(success != 0) 
+				return "redirect:admin_bannerList.mdo";
+			else 
+				return "redirect:admin_banner.mdo";
+		}else{
+			if(success != 0) 
+				return "redirect:admin_bannerList.mdo";
+			else 
+				return "redirect:admin_banner.mdo";
+		}//end if
+	}//end adminBannerDelete
 	
 	
 	
