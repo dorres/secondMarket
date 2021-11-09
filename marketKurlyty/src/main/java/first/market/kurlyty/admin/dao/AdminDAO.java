@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
@@ -158,5 +159,32 @@ public class AdminDAO {
 	//1:1문의 답변 삭제
 	public int deleteQnaFinish(AdminQnaVO qna){
 		return sqlSession.delete("AdminDAO.deleteQnaFinish", qna);
+	}
+	//==================================================================
+	//관리자 배너등록
+	public int insertBanner(AdminBannerVO banner) {
+		return sqlSession.insert("AdminDAO.insertBanner",banner);
+	}
+	
+	//관리자 배너리스트
+	public List<AdminBannerVO> getBannerList(){
+		return sqlSession.selectList("AdminDAO.getBannerList");
+	}
+	
+	//관리자 배너세부사항
+	public AdminBannerVO getBanner(AdminBannerVO banner) {
+		return sqlSession.selectOne("AdminDAO.getBanner",banner);
+	}
+	
+	public int updateBanner1(AdminBannerVO banner) {
+		return sqlSession.update("AdminDAO.updateBanner1",banner);
+	}
+	
+	public int updateBanner2(AdminBannerVO banner) {
+		return sqlSession.update("AdminDAO.updateBanner2",banner);
+	}
+	
+	public int deleteBanner(AdminBannerVO banner) {
+		return sqlSession.delete("AdminDAO.deleteBanner",banner);
 	}
 }

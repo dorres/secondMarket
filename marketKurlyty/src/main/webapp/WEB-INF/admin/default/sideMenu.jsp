@@ -133,9 +133,29 @@
 									class="nav-link" href="layout-sidenav-light.html">뮨의</a>
 							</nav>
 						</div>
+		
+						<!-- 리뷰관리 -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapseLayouts6" aria-expanded="false"
+							aria-controls="collapseLayouts">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 마케팅 관리
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseLayouts6"
+							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="admin_bannerList.mdo">배너</a> <a
+									class="nav-link" href="layout-sidenav-light.html">쿠폰</a>
+							</nav>
+						</div>
 
 
-						<!--회원/관리자  -->
+
+				<!--회원/관리자  -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapsePages" aria-expanded="false"
 							aria-controls="collapsePages">
@@ -185,6 +205,8 @@
 									</nav>
 								</div>
 								<!-- 매니저관리 -->
+								
+
 
 							</nav>
 						</div>

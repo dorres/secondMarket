@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
+import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
@@ -191,6 +192,37 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.deleteQnaFinish(qna);
 	}
 
+	@Override
+	public int insertBanner(AdminBannerVO banner) {
+		return adminDao.insertBanner(banner);
+	}
+
+	@Override
+	public List<AdminBannerVO> getBannerList() {
+		return adminDao.getBannerList();
+	}
+
+	@Override
+	public AdminBannerVO getBanner(AdminBannerVO banner) {
+		return adminDao.getBanner(banner);
+	}
+
+	@Override
+	public int updateBanner1(AdminBannerVO banner) {
+		return adminDao.updateBanner1(banner);
+	}
+	
+	@Override
+	public int updateBanner2(AdminBannerVO banner) {
+		return adminDao.updateBanner2(banner);
+	}
+
+	@Override
+	public int deleteBanner(AdminBannerVO banner) {
+		return adminDao.deleteBanner(banner);
+	}
+	
+	
 
 
 
