@@ -93,6 +93,11 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree){
 		return adminDao.getTermsAgreeList(agree);
 	}
+	//약관 등록
+	@Override
+	public int insertTerms(AdminTermsAgreementVO agree) {
+		return adminDao.insertTerms(agree);
+	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override

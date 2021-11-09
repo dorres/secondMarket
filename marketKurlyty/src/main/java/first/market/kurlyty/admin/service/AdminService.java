@@ -38,6 +38,8 @@ public interface AdminService {
 	public int deleteUser(AdminUserVO user);
 	//약관관리
 	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
+	//약관 등록
+	int insertTerms(AdminTermsAgreementVO agree);
 	//------------------------------------------------
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
@@ -96,5 +98,9 @@ public interface AdminService {
 	
 	//1:1문의 답변대기 삭제
 	int deleteQnaFinish(AdminQnaVO qna);
+
+	
+
+	
 	
 }
