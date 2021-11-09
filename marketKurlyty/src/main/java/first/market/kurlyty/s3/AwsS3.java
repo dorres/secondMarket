@@ -67,11 +67,12 @@ public class AwsS3 {
 	
 	}//end createS3Client()
 	
-	
+	//file 올릴때
 	public void upload(File file, String key) {
 		uploadToS3(new PutObjectRequest(this.bucket, key, file));
 	}
 	
+	//multipartFile을 사용해서 올릴때
 	public void upload(InputStream is, String key, String contentType, long contentLength) {
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentType(contentType);
