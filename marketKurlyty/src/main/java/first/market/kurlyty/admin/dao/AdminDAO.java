@@ -63,9 +63,13 @@ public class AdminDAO {
 	public int deleteUser(AdminUserVO user) {
 		return sqlSession.delete("AdminDAO.deleteUser", user);
 	}
-	//약관관리
-	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree){
-		return sqlSession.selectList("AdminDAO.getTermsAgree");
+	//약관관리 리스트
+	public List<AdminTermsAgreementVO> getTermsAgreeList(AdminTermsAgreementVO agree){
+		return sqlSession.selectList("AdminDAO.getTermsAgreeList", agree);
+	}
+	// 약관 등록
+	public int insertTerms(AdminTermsAgreementVO agree) {
+		return sqlSession.insert("AdminDAO.insertTerms", agree);
 	}
 	//---------------------------------------------------------------
 	//공지사항 목록	

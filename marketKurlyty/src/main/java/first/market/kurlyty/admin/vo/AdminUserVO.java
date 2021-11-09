@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class AdminUserVO {
-	private String user_serial;
+	private int user_serial;
 	private String user_id;
 	private String user_name;
 	private String user_phone;

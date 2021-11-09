@@ -77,14 +77,6 @@
 									<th>수정/삭제</th>
 								</tr>
 							</thead>
-							<tfoot>
-								<tr>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>직급</th>
-									<th>수정/삭제</th>
-								</tr>
-							</tfoot>
 							<tbody>
 								<c:forEach var="adminList" items="${adminList }">
 									<tr>

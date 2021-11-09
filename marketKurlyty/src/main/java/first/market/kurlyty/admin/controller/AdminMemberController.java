@@ -82,12 +82,27 @@ public class AdminMemberController {
 			if(success !=0) {
 				return "redirect:admin_userList.mdo";
 		}else {
-			return "redirect:getUser.mdo";
+			return "redirect:admin_userList.mdo";
 		}
 }
-		//약관관리
+		//약관관리 리스트
 		@RequestMapping("terms_agreeList.mdo")
-		public String getTermsAgree(AdminTermsAgreementVO agree) {
+		public String getTermsAgreeList(AdminTermsAgreementVO agree, Model model) {
+			model.addAttribute("agreeList", adminService.getTermsAgree(agree));
 			return "admin_terms_agreementList";
 		}
+		//약관 등록버튼 이동
+		@RequestMapping("insertTerms.mdo")
+		public String insertTerms(AdminTermsAgreementVO agree) {
+			int success = 0;
+			success = adminService.insertTerms(agree);
+			if(success != 0) {
+				return "redirect:terms_agreeList.mdo";
+				}else {
+					return "redirect:terms_agreeList.mdo";
+				}
+		}
+		
+		
+		
 }

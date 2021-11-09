@@ -40,17 +40,27 @@
 		ON U.USER_ID = UD.USER_ID
 		WHERE U.USER_ID = #{user_id}
 	</select>
-	
+	<!-- 회원 수정 -->
 	<update id="updateUser" parameterType="user">
  		UPDATE MK_USER_DETAILS 
  		SET USER_STATUS = #{user_status}
  		WHERE USER_ID=#{user_id}
  	</update>
- 	
+ 	<!-- 회원 삭제 -->
  	<delete id="deleteUser" parameterType="user">
- 		DELETE FROM MK_USER WHERE MK_USER = #{user_id}
+ 		DELETE FROM MK_USER WHERE USER_ID = #{user_id}
  	</delete>
-
+ 	
+ 	<!-- 약관관리 출력--> 
+	<select id="getTermsAgreeList" resultType="agreeList">
+		SELECT TERMS_AGREEMENT_SERIAL,TERMS_SERIAL,TERMS_ID,TERMS_AGREE_STATUS,TERMS_AGREE_DATE,TERMS_AGREE_DATE_MODIFIED FROM MK_TERMS_AGREEMENT;
+	</select>
+	
+	<!-- 약관 등록 
+	<insert id="insertTerms" parameterType="terms">
+		INSERT INTO MK_TERMS_AGREEMENT VALUES(#{terms_serial},#{terms_id},#{terms_status},#{terms_agree_date_modified});
+	</insert> -->
+	
 	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">
 		SELECT (ROW_NUMBER() OVER(Order by notice_date)) AS ROWNUM , * FROM MK_NOTICE
