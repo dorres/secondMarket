@@ -10,5 +10,8 @@ public interface CartService {
 	List<CartVO> getCartList(String userId);
 	ProductVO getCartItem(CartVO cartVO);
 	void insertCartItem(CartVO cartVO);
+	void updateCartItem(CartVO cartVO);
+	void deleteCartItem(CartVO cartVO);
+	boolean overlapCartItem(List<CartVO> cartList, CartVO cartVO);
 
 }

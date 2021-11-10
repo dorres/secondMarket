@@ -36,5 +36,5 @@ public class ProductVO {
 	//cartVO
 	private int goods_cart_count;
 	//notDB
-	private String goods_last_price;
+	private int goods_last_price;
 }

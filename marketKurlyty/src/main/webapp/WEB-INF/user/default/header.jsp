@@ -284,7 +284,7 @@ ul.sub_on li.on{
 					</div>
 					<div class="cart_count">
 						<div class="inner_cartcount">
-							<a href="/shop/goods/goods_cart.php" class="btn_cart"> <span
+							<a href="cartPage.do" class="btn_cart"> <span
 								class="screen_out">장바구니</span> <span
 								class="num realtime_cartcount" id="cart_item_count"></span>
 							</a>
