@@ -29,8 +29,8 @@
 						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">상품조회/수정</a>
-								<a class="nav-link" href="layout-sidenav-light.html">상품/등록</a>
+								<a class="nav-link" href="registration.mdo">상품조회/수정</a>
+								<a class="nav-link" href="registration.mdo">상품/등록</a>
 							</nav>
 						</div>
 						

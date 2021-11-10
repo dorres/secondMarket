@@ -71,6 +71,21 @@ public class AdminDAO {
 	public int insertTerms(AdminTermsAgreementVO agree) {
 		return sqlSession.insert("AdminDAO.insertTerms", agree);
 	}
+	
+	//약관 수정
+	public int updateTerms(AdminTermsAgreementVO agree) {
+		return sqlSession.update("AdminDAO.updateTerms", agree);
+	}
+	
+	//약관 정보
+	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree) {
+		return sqlSession.selectOne("AdminDAO.getTerms", agree);
+	}
+	
+	//약관 삭제
+	public int deleteTerms(AdminTermsAgreementVO agree) {
+		return sqlSession.delete("AdminDAO.deleteTerms", agree);
+	}
 	//---------------------------------------------------------------
 	//공지사항 목록	
 

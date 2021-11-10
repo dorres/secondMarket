@@ -52,14 +52,31 @@
  	</delete>
  	
  	<!-- 약관관리 출력--> 
-	<select id="getTermsAgreeList" resultType="agreeList">
-		SELECT TERMS_AGREEMENT_SERIAL,TERMS_SERIAL,TERMS_ID,TERMS_AGREE_STATUS,TERMS_AGREE_DATE,TERMS_AGREE_DATE_MODIFIED FROM MK_TERMS_AGREEMENT;
+	<select id="getTermsAgreeList" resultType="terms">
+		SELECT (ROW_NUMBER() OVER(Order by terms_agreement_serial)) AS ROWNUM , * FROM MK_TERMS_AGREEMENT;
 	</select>
 	
-	<!-- 약관 등록 
+	<!-- 약관 등록  --> 
 	<insert id="insertTerms" parameterType="terms">
-		INSERT INTO MK_TERMS_AGREEMENT VALUES(#{terms_serial},#{terms_id},#{terms_status},#{terms_agree_date_modified});
-	</insert> -->
+		INSERT INTO MK_TERMS_AGREEMENT VALUES(default,#{terms_serial},#{terms_id},#{terms_agree_status},now(),now(),#{terms_content});
+	</insert>
+	
+	<!-- 약관 수정 -->
+	<update id="updateTerms" parameterType="terms">
+		UPDATE MK_TERMS_AGREEMENT
+		SET TERMS_ID = #{terms_id}, TERMS_CONTENT = #{terms_content}
+		WHERE TERMS_SERIAL = #{terms_serial};
+	</update>
+	
+	<!-- 약관 정보 -->
+	<select id="getTerms" resultType="terms" parameterType="terms">
+		SELECT * FROM MK_TERMS_AGREEMENT WHERE TERMS_SERIAL = #{terms_serial};
+	</select>
+	
+	<!-- 약관 삭제 -->
+	<delete id="deleteTerms" parameterType="terms">
+		DELETE FROM MK_TERMS_AGREEMENT WHERE TERMS_SERIAL = #{terms_serial};
+	</delete>
 	
 	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">
@@ -83,6 +100,7 @@
  	<insert id="insertNotice" parameterType="notice">
  		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
  	</insert>
+ 	
  	<!-- 공지사항 쿼리문 -->
  	
  	<!-- 자주하는 질문 쿼리문 -->

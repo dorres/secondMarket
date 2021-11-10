@@ -91,7 +91,12 @@ public class AdminMemberController {
 			model.addAttribute("agreeList", adminService.getTermsAgree(agree));
 			return "admin_terms_agreementList";
 		}
-		//약관 등록버튼 이동
+		//약관 등록 이동
+		@RequestMapping("admin_terms.mdo")
+		public String terms(AdminTermsAgreementVO agree) {
+			return "admin_terms";
+		}
+		//약관 등록 
 		@RequestMapping("insertTerms.mdo")
 		public String insertTerms(AdminTermsAgreementVO agree) {
 			int success = 0;
@@ -99,10 +104,40 @@ public class AdminMemberController {
 			if(success != 0) {
 				return "redirect:terms_agreeList.mdo";
 				}else {
-					return "redirect:terms_agreeList.mdo";
+					return "redirect:admin_terms.mdo";
 				}
 		}
-		
-		
-		
+		//약관 수정 화면
+		@RequestMapping("termsDetails.mdo")
+		public String getTerms(AdminTermsAgreementVO agree, Model model) {
+			model.addAttribute("getTerms", adminService.getTerms(agree));
+			System.out.println(agree.getTerms_serial());
+			return "admin_termsDetails";
+		}
+		//약관 수정
+		@RequestMapping("updateTerms.mdo")
+		public String updateTerms(AdminTermsAgreementVO agree) {
+				int success = 0;
+				success = adminService.deleteTerms(agree);
+				if(success != 0) {
+					return "redirect:terms_agreeList.mdo";
+				}else {
+					return "redirect:termsDetails.mdo";
+				}
+		}
+		//약관 삭제
+		@RequestMapping("deleteTerms.mdo")
+		public String deleteTerms(AdminTermsAgreementVO agree) {
+			int success = 0;
+			success = adminService.deleteTerms(agree);
+			if(success != 0) {
+				return "redirect:terms_agreeList.mdo";
+			}else {
+				return "redirect:termDetail.mdo";
+			}
+		}
+		@RequestMapping("registration.mdo")
+		public String registration() {
+			return "admin_registration";
+		}
 }

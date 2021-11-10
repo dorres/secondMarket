@@ -70,6 +70,7 @@
 						<i class="fas fa-table me-1"></i> 약관 목록
 					</div>
 					<div class="card-body">
+					<form method="post">
 						<table id="datatablesSimple">
 							<thead>
 							<tr>
@@ -87,7 +88,7 @@
 									<tr>
 										<td>${agreeList.terms_agreement_serial }</td>
 										<td>${agreeList.terms_serial }</td>
-										<td><a href=".mdo?terms_serial=${terms_setial} }">${agreeList.terms_id }</a></td>
+										<td><a href="termsDetails.mdo?terms_serial=${agreeList.terms_serial}">${agreeList.terms_id }</a></td>
 										<td>${agreeList.terms_agree_status }</td>
 										<td><fmt:formatDate value="${agreeList.terms_agree_date}" pattern="yyyy-MM-dd"/></td>
 										<td><fmt:formatDate value="${agreeList.terms_agree_date_modified}" pattern="yyyy-MM-dd"/></td>
@@ -96,11 +97,10 @@
 								
 							</tbody>
 						</table>
-						<input type="button" value="등록" onclick="location.href='insertTerms.mdo'"/>
+						<input type="button" value="등록" onclick="location.href='admin_terms.mdo'"/>
+						</form>
 					</div>
 				</div>
-
-
 			</div>
 		</main>
 
