@@ -181,6 +181,15 @@
  	<delete id="deleteBanner" parameterType="banner">
  		DELETE FROM MK_BANNER WHERE BANNER_SERIAL = #{banner_serial}
  	</delete>
- 	 <!-- 관리자 배너 -->
+ 	<!-- 관리자 배너 -->
 
+	<!-- 관리자 1차카테고리 -->
+	 <select id="getCategory1List" resultType="category1">
+ 	 	SELECT (ROW_NUMBER() OVER(Order by category_main_serial)) AS ROWNUM , * FROM MK_CATEGORY_MAIN
+ 	 </select>
+	
+	<insert id="insertCategory1" parameterType="category1">
+	 	 	INSERT INTO MK_CATEGORY_MAIN VALUES (DEFAULT, #{category_main_name}, #{category_main_icon_black}, #{category_main_icon_color});
+ 	 </insert>
+	<!-- 관리자 1차카테고리 -->
 </mapper>

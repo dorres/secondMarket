@@ -25,12 +25,21 @@ textarea {
     resize: none;
   }
 </style>
+<script type="text/javascript">
 
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -40,38 +49,54 @@ textarea {
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">공지사항</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">공지사항 등록</a></li>
+					<li class="breadcrumb-item"><a href="index.html">공지사항 상세</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
-				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div>
+
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> DataTable Example
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-						<form action="admin_noticeInsert.mdo" method="POST">
-							<input type="hidden" name="notice_id" value="${adminId }">
+						<form action="admin_noticeUpdate.mdo" method="POST">
+
 							<table >
 								<tr>
-									<td width="100px" height="40px">제목</td>
-									<td width="800px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;"name="notice_title">
+									<td width="300px" height="40px">글번호</td>
+									<td width="400px" height="40px">
+										<input type="text" style="width:100%; height:100%; border: none;"name="notice_serial" value="${notice.notice_serial }" readonly="readonly">
+									</td>
+									
+									<td width="300px">조회수</td>
+									<td width="400px" height="40px">
+										<input type="text" style="width:100%; height:100%; border: none;" name="notice_hit" value="${notice.notice_hit }" readonly="readonly">
 									</td>
 								</tr>
 								<tr>
-									<td width="100px" height="500px">내용</td>
-									<td colspan="3"  height="500px"><textarea name="notice_content" ></textarea>
+									<td width="300px" height="40px">작성자</td>
+									<td width="400px" height="40px">
+										<input type="text" style="width:100%; height:100%; border: none;"  value="master" readonly="readonly">
+									</td>
+									
+									<td width="300px">작성일</td>
+									<td width="400px" height="40px">
+										<input type="text" style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${notice.notice_date }" pattern="yyyy-MM-dd [E]"/>" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td width="300px" height="40px">제목</td>
+									<td width="400px" height="40px" colspan="3"><input type="text" style="width:100%; height:100%; border: none;" name="notice_title" value="${notice.notice_title }" ></td>
+								</tr>
+								<tr>
+									<td width="300px" height="500px">내용</td>
+
+									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
+
 								</tr>
 							</table>
-							<input type="submit" value="등록하기" />
+							<input type="submit" value="수정하기" />
+							<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_noticeDelete.mdo?notice_serial=${notice.notice_serial}')"/>
 							<input type="button" value="목록보기" onclick="location.href='admin_noticeList.mdo'"/>
 						</form>
 					</div>
@@ -79,7 +104,7 @@ textarea {
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
 	</div>
 	<!-- Main -->

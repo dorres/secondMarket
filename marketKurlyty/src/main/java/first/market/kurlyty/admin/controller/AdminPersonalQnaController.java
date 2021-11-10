@@ -19,14 +19,14 @@ public class AdminPersonalQnaController {
 	@RequestMapping("admin_personalQnaWaitList.mdo")
 	public String personalQnaWaitList(Model model) {
 		model.addAttribute("qnaWaitList",adminService.getPersonalQnaWaitList());
-		return "admin_personalQnaWaitList";
+		return "qna/admin_personalQnaWaitList";
 	}
 	
 	//1:1문의 세부사항 (답변 대기)
 	@RequestMapping("admin_personalQnaWait.mdo")
 	public String personalQnaWait(AdminQnaVO qna, Model model) {
 		model.addAttribute("qnaWait",adminService.getPersonalQnaWait(qna));
-		return "admin_personalQnaWait";
+		return "qna/admin_personalQnaWait";
 	}
 	
 	//관리자 -1:1문의 답변작성(update)
@@ -61,14 +61,14 @@ public class AdminPersonalQnaController {
 	@RequestMapping("admin_personalQnaFinishList.mdo")
 	public String personalQnaFinishList(Model model) {
 		model.addAttribute("qnaFinishList",adminService.getPersonalQnaFinishList());
-		return "admin_personalQnaFinishList";
+		return "qna/admin_personalQnaFinishList";
 	}
 
 	//1:1문의 세부사항 (답변 완료)
 	@RequestMapping("admin_personalQnaFinish.mdo")
 	public String personalQnaFinish(AdminQnaVO qna, Model model) {
 		model.addAttribute("qnaFinish",adminService.getPersonalQnaFinish(qna));
-		return "admin_personalQnaFinish";
+		return "qna/admin_personalQnaFinish";
 	}
 	
 	//1:1문의 답변수정(update)

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -41,7 +42,7 @@ public interface AdminService {
 	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
 	//약관 등록
 	int insertTerms(AdminTermsAgreementVO agree);
-	//------------------------------------------------
+	//=================================================================
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
 	
@@ -57,7 +58,7 @@ public interface AdminService {
 	//공지사항 등록
 	int insertNotice(AdminNoticeVO notice);
 
-	//--------------------------------------------
+	//=================================================================
 	//자주하는 질문 리스트
 	List<AdminFAQVO> getFAQList(AdminFAQVO faq);
 	
@@ -73,7 +74,7 @@ public interface AdminService {
 	//자주하는 질문 등록
 	int insertFAQ(AdminFAQVO faq);
 	
-	//--------------------------------------------------
+	//=================================================================
 	//1:1문의 답변대기 리스트
 	List<AdminQnaVO> getPersonalQnaWaitList();
 	
@@ -85,9 +86,7 @@ public interface AdminService {
 	
 	//1:1문의 답변대기 삭제
 	int deleteQnaWait(AdminQnaVO qna);
-	
-	
-	//====================================================
+	//-----------------------------------------------------------------
 	//1:1문의 답변완료 리스트
 	List<AdminQnaVO> getPersonalQnaFinishList();
 	
@@ -100,11 +99,7 @@ public interface AdminService {
 	//1:1문의 답변대기 삭제
 	int deleteQnaFinish(AdminQnaVO qna);
 
-	
-
-	
-	
-	//==================================================
+	//=================================================================
 	//관리자 배너등록
 	int insertBanner(AdminBannerVO banner);
 	
@@ -119,5 +114,12 @@ public interface AdminService {
 	int updateBanner2(AdminBannerVO banner);
 	
 	int deleteBanner(AdminBannerVO banner);
+	
+	//=================================================================
+	//관리자 1차카테고리 리스트
+	List<AdminCategoryMainVO> getCategory1List();
+	
+	int insertCategory1(AdminCategoryMainVO category1); 
+	
 	
 }

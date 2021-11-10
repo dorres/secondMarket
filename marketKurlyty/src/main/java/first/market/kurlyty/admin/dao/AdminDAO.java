@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
@@ -71,7 +72,7 @@ public class AdminDAO {
 	public int insertTerms(AdminTermsAgreementVO agree) {
 		return sqlSession.insert("AdminDAO.insertTerms", agree);
 	}
-	//---------------------------------------------------------------
+	//================================================================
 	//공지사항 목록	
 
 	public List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice){
@@ -97,7 +98,7 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertNotice",notice);
 	}
 	
-	//-------------------------------------------------------------------
+	//================================================================
 	//자주하는질문 목록
 	public List<AdminFAQVO> getFAQList(AdminFAQVO faq){
 		return sqlSession.selectList("AdminDAO.getFAQList",faq);
@@ -123,7 +124,7 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertFAQ",faq);
 	}
 	
-	//-------------------------------------------------------------------
+	//================================================================
 	//1:1문의 답변 대기	리스트
 	public List<AdminQnaVO> getPersonalQnaWaitList(){
 		return sqlSession.selectList("AdminDAO.getPersonalQnaWaitList");
@@ -143,8 +144,7 @@ public class AdminDAO {
 	public int deleteQnaWait(AdminQnaVO qna){
 		return sqlSession.delete("AdminDAO.deleteQnaWait", qna);
 	}
-	
-	//================================================================
+	//-------------------------------------------------------------------
 	// 1:1문의 답변 완료 리스트
 	public List<AdminQnaVO> getPersonalQnaFinishList(){
 		return sqlSession.selectList("AdminDAO.getPersonalQnaFinishList");
@@ -164,6 +164,7 @@ public class AdminDAO {
 	public int deleteQnaFinish(AdminQnaVO qna){
 		return sqlSession.delete("AdminDAO.deleteQnaFinish", qna);
 	}
+	
 	//==================================================================
 	//관리자 배너등록
 	public int insertBanner(AdminBannerVO banner) {
@@ -191,4 +192,16 @@ public class AdminDAO {
 	public int deleteBanner(AdminBannerVO banner) {
 		return sqlSession.delete("AdminDAO.deleteBanner",banner);
 	}
+	
+	//================================================================
+	//관리자 메인카테고리 리스트
+	public List<AdminCategoryMainVO> getCategory1List(){
+		return sqlSession.selectList("AdminDAO.getCategory1List");
+	}
+	
+	public int insertCategory1(AdminCategoryMainVO category1) {
+		return sqlSession.insert("AdminDAO.insertCategory1",category1);
+	}
+	
+	
 }
