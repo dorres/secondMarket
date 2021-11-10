@@ -35,8 +35,8 @@
 					</div>
 				</div>
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> <input type="button" value="배너 등록하기" onclick="location.href='admin_bannerWrite.mdo'">
+					<div class="card-header" align="right">
+						<input type="button" value="배너 등록하기" onclick="location.href='admin_bannerWrite.mdo'" style="background-color: #8f3cab; color: white" >
 					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
