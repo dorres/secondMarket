@@ -42,8 +42,7 @@ public interface AdminService {
 	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
 	//약관 등록
 	int insertTerms(AdminTermsAgreementVO agree);
-<<<<<<< HEAD
-	
+
 	//약관 수정
 	public int updateTeerms(AdminTermsAgreementVO agree);
 	
@@ -51,11 +50,10 @@ public interface AdminService {
 	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree);
 	
 	//약관 삭제
-		public int deleteTerms(AdminTermsAgreementVO agree);
-	//------------------------------------------------
-=======
+	public int deleteTerms(AdminTermsAgreementVO agree);
+	
 	//=================================================================
->>>>>>> 04fcccce95bb416424a9d76d764721e5f3f95b8e
+
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
 	
