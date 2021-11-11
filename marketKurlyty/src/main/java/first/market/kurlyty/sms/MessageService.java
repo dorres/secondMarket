@@ -10,16 +10,16 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class MessageService {
 	public void sendMessage(String toNumber, String randomNumber) {
-		String apiKey = "NCSOFKMCQIHNL3X8";
-		String apiSecret = "RKZOXSDBRRO0K4M4SYYVMNJZWBHUG0ZM";
-		String fromNumber = "01028894993";
+		String apiKey="";// = "";
+		String apiSecret="";// = "";
+		String fromNumber="";// = "";
 		Message coolsms = new Message(apiKey, apiSecret);
 
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", toNumber);
 		params.put("from", fromNumber);
 		params.put("type", "SMS");
-		params.put("text", "[grabMe] ÀÎÁõ¹øÈ£ "+randomNumber+" ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		params.put("text", "[grabMe] ì¸ì¦ë²ˆí˜¸"+randomNumber+" ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		params.put("app_version", "test app 1.2"); // application name and version
 		try {
 			JSONObject obj = (JSONObject) coolsms.send(params);
