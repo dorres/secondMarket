@@ -94,11 +94,7 @@
 		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>
 <script>
-function popUp(myZipcode,myAddress){
-	
-	var url="destination_new.do?myZipcode="+myZipcode+"&myAddress="+myAddress;
-	window.open(url,'width=430,height=500,location=no,status=no,scrollbars=yes');
-}
+
 /* function upDate(user_name,user_phone,user_address2){
 	var user_name;
 	var user_phone;
@@ -111,6 +107,7 @@ function popUp(myZipcode,myAddress){
 function hi_zip(){
 	var myAddress;
 	var myZipcode;
+	var star;
 	new daum.Postcode({
 		oncomplete:function(data){
 			myAddress=data.address;
@@ -118,9 +115,21 @@ function hi_zip(){
 			$("#zip").val(myZipcode)
 			$("#addr1").val(myAddress);
 			$(".hid").attr("class",".addressShow");
-			popUp(myZipcode,myAddress);
+			
+			if(myAddress.includes("서울")){
+				star="샛별배송";
+			}else{
+				star="택배배송";
+			}
+		
+			popUp(myZipcode,myAddress,star);
 		}
 	}).open();
+}
+function popUp(myZipcode,myAddress,star){
+	
+	var url="destination_new.do?myZipcode="+myZipcode+"&myAddress="+myAddress+"&star="+star;
+	window.open(url,'width=450,height=500,location=no,status=no,scrollbars=yes');
 }
 </script>
 	<a href="#top" id="pageTop">맨 위로가기</a>
