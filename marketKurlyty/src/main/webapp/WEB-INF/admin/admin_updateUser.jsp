@@ -116,6 +116,7 @@ function formJoinSubmit(){
 </script>
 
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 	<div id="layoutSidenav_content">
@@ -124,31 +125,39 @@ function formJoinSubmit(){
 
 				<div class="page_aticle">
 					<div class="type_form member_join ">
-						<form id="form" name="frmAdmin" method="post" action="updateProc.mdo">
+						<form id="form" name="frmAdmin" method="post" action="updateUser.mdo">
 							<br>
 							<br>
 							<h2 align="center">유저 수정</h2>
 							<table class="tbl_comm">
 								<tr class="fst">
 								<tr>
-									<th>이름</th>
-									<td><input type="text" name="admin_id" readonly="readonly" value="${update.admin_id}"></td>  
+									<th>아이디</th>
+									<td><input type="text" name="user_id" readonly="readonly" value="${getUser.user_id}"></td>  
 								</tr>
 															
 								<tr>
+									<th>이름</th>
+									<td><input type="text" name="user_name" readonly="readonly" value="${getUser.user_name}"></td>
+								</tr>
+								
+								<tr>
 									<th>전화번호</th>
-									<td>${update.admin_name}</td>
+									<td><input type="text" name="user_phone" readonly="readonly" value="${getUser.user_phone }"></td>
 								</tr>
 
 								<tr>
-									<th>직급</th>
-									<td><input type="text" name="admin_position" placeholder="직급을 수정 해주세요."></td>
+									<th>회원등급</th>
+									<td><input type="text" name="user_membersip_name" readonly="readonly" value="${getUser.user_membership_name }"></td>
 								</tr>
-
 								
+								<tr>
+									<th>상태</th>
+									<td><input type="text" name="user_status" placeholder="상태를 수정 해주세요."></td>
+								</tr>
 							</table>
 							<div id="formSubmit" class="form_footer">
-								<button class="btn active btn_join" onclick="location.href='updateProc.mdo'">수정하기</button>
+								<input type="submit" class="btn active btn_join" value="수정하기"/>
 							</div>
 						</form>
 					</div>
@@ -156,6 +165,7 @@ function formJoinSubmit(){
 			</div>
 		</main>
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="js/scripts.js"> </script>

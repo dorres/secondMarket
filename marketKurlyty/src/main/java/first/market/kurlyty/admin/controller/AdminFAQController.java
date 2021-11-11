@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
-import first.market.kurlyty.admin.vo.AdminNoticeVO;
 
 @Controller
 public class AdminFAQController {
@@ -19,14 +18,14 @@ public class AdminFAQController {
 	@RequestMapping("admin_FAQList.mdo")
 	public String adminFAQList(AdminFAQVO faq, Model model) {
 		model.addAttribute("faqList",adminService.getFAQList(faq));
-		return "admin_FAQList";
+		return "faq/admin_FAQList";
 	}
 	
 	//관리자 -자주하는 질문 세부사항
 	@RequestMapping("admin_FAQ.mdo")
 	public String adminFAQ(AdminFAQVO faq, Model model) {
 		model.addAttribute("faq", adminService.getFAQ(faq));
-		return "admin_FAQ";
+		return "faq/admin_FAQ";
 	}
 	
 	//관리자 -자주하는 질문 수정(update)
@@ -37,7 +36,7 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";		
 		}else {
-			return "admin_FAQ";
+			return "redirect:admin_FAQ";
 			
 		}
 	}
@@ -50,14 +49,14 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";
 		}else {
-			return "admin_FAQ";
+			return "redirect:admin_FAQ";
 		}
 	}
 	
 	//관리자 -자주하는 질문 등록페이지
 	@RequestMapping("admin_FAQWrite.mdo")
 	public String adminFAQWrite(AdminFAQVO faq) {
-		return "admin_FAQWrite";
+		return "faq/admin_FAQWrite";
 	}
 	
 	//관리자 -자주하는 질문 등록(insert)
@@ -68,7 +67,7 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";
 		}else {
-			return "admin_fAQWrite";
+			return "redirect:admin_fAQWrite";
 		}
 	}
 	
