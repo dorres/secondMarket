@@ -32,20 +32,55 @@
  	<delete id="delete" parameterType="admin">
  		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
  	</delete>
-
-	<update id="updateUser1" parameterType="user">
-		UPDATE MK_USER SET USER_NAME = #{user_name}, USER_PHONE = #{user_phone}
-		WHERE USER_ID = #{user_id}
+	<!-- 회원 수정 출력 -->
+	<select id="getUser" parameterType="user" resultType="adminUser">
+		SELECT U.USER_ID, U.USER_NAME, U.USER_PHONE,  UD.USER_MEMBERSHIP_NAME, UD.USER_STATUS
+		FROM MK_USER U
+		JOIN MK_USER_DETAILS UD
+		ON U.USER_ID = UD.USER_ID
+		WHERE U.USER_ID = #{user_id}
+	</select>
+	<!-- 회원 수정 -->
+	<update id="updateUser" parameterType="user">
+ 		UPDATE MK_USER_DETAILS 
+ 		SET USER_STATUS = #{user_status}
+ 		WHERE USER_ID=#{user_id}
+ 	</update>
+ 	<!-- 회원 삭제 -->
+ 	<delete id="deleteUser" parameterType="user">
+ 		DELETE FROM MK_USER WHERE USER_ID = #{user_id}
+ 	</delete>
+ 	
+ 	<!-- 약관관리 출력--> 
+	<select id="getTermsAgreeList" resultType="terms">
+		SELECT (ROW_NUMBER() OVER(Order by terms_agreement_serial)) AS ROWNUM , * FROM MK_TERMS_AGREEMENT;
+	</select>
+	
+	<!-- 약관 등록  --> 
+	<insert id="insertTerms" parameterType="terms">
+		INSERT INTO MK_TERMS_AGREEMENT VALUES(default,#{terms_serial},#{terms_id},#{terms_agree_status},now(),now(),#{terms_content});
+	</insert>
+	
+	<!-- 약관 수정 -->
+	<update id="updateTerms" parameterType="terms">
+		UPDATE MK_TERMS_AGREEMENT
+		SET TERMS_ID = #{terms_id}, TERMS_CONTENT = #{terms_content}
+		WHERE TERMS_SERIAL = #{terms_serial};
 	</update>
 	
-	<update id="updateUser2">
-		UPDATE MK_DETAILES SET USER_POSITION =#{user_position} where WHERE USER_ID =
-		#{user_id}
-	</update>
+	<!-- 약관 정보 -->
+	<select id="getTerms" resultType="terms" parameterType="terms">
+		SELECT * FROM MK_TERMS_AGREEMENT WHERE TERMS_SERIAL = #{terms_serial};
+	</select>
+	
+	<!-- 약관 삭제 -->
+	<delete id="deleteTerms" parameterType="terms">
+		DELETE FROM MK_TERMS_AGREEMENT WHERE TERMS_SERIAL = #{terms_serial};
+	</delete>
 	
 	<!-- 공지사항 쿼리문 -->
 	<select id="getNoticeList" resultType="notice">
-		SELECT * FROM MK_NOTICE ORDER BY 1;
+		SELECT (ROW_NUMBER() OVER(Order by notice_date)) AS ROWNUM , * FROM MK_NOTICE
 	</select>
 	
 	<select id="getNotice" resultType="notice" parameterType="notice">
@@ -54,7 +89,7 @@
 	
 	<update id="updateNotice" parameterType="notice">
  		UPDATE MK_NOTICE SET 
- 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content},
+ 		NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content}
  		WHERE NOTICE_SERIAL = #{notice_serial}
  	</update>
  	
@@ -65,7 +100,7 @@
  	<insert id="insertNotice" parameterType="notice">
  		INSERT INTO MK_NOTICE VALUES (DEFAULT, #{notice_id}, #{notice_title}, #{notice_content}, NOW(), DEFAULT);
  	</insert>
-
+ 	
  	<!-- 공지사항 쿼리문 -->
  	
  	<!-- 자주하는 질문 쿼리문 -->
@@ -91,4 +126,88 @@
  		INSERT INTO MK_FAQ VALUES (DEFAULT, #{faq_id}, #{faq_title}, #{faq_content}, NOW(), #{faq_category});
  	</insert>
  	<!-- 자주하는 질문 쿼리문 -->	
+ 	
+ 	<!-- 1:1문의 답변 대기 쿼리 -->
+ 	<select id="getPersonalQnaWaitList" resultType="qna">
+ 		SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
+ 		* FROM MK_QNA_PERSONAL WHERE qna_personal_answer IS NULL
+ 	</select>
+ 	
+ 	<select id="getPersonalQnaWait" resultType="qna" parameterType="qna">
+		SELECT * FROM MK_QNA_PERSONAL WHERE qna_personal_serial=#{qna_personal_serial};
+	</select>
+	
+	<update id="updateQnaWait" parameterType="qna">
+ 		UPDATE MK_QNA_PERSONAL SET 
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+ 		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</update>
+ 	
+ 	 <delete id="deleteQnaWait" parameterType="qna">
+ 		DELETE FROM MK_QNA_PERSONAL WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</delete>
+ 	 <!-- 1:1문의 답변 대기 쿼리 -->
+ 	
+ 	 <!-- 1:1문의 답변 완료 쿼리 -->
+ 	<select id="getPersonalQnaFinishList" resultType="qna">
+ 	 	SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
+ 		* FROM mk_qna_personal WHERE qna_personal_answer IS NOT NULL
+ 	</select>
+ 	
+ 	<select id="getPersonalQnaFinish" resultType="qna" parameterType="qna">
+		SELECT * FROM MK_QNA_PERSONAL WHERE qna_personal_serial=#{qna_personal_serial};
+	</select>
+	
+	<update id="updateQnaFinish" parameterType="qna">
+ 		UPDATE MK_QNA_PERSONAL SET 
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+ 		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</update>
+ 	
+ 	 <delete id="deleteQnaFinish" parameterType="qna">
+ 		DELETE FROM MK_QNA_PERSONAL WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</delete>
+ 	 <!-- 1:1문의 답변 완료 쿼리 -->
+ 	 <!-- 관리자 배너 -->
+ 	 <insert id="insertBanner" parameterType="banner">
+ 	 	INSERT INTO MK_BANNER VALUES (DEFAULT, #{banner_title}, #{banner_filepath}, #{banner_contents});
+ 	 </insert>
+ 	 
+ 	 <select id="getBannerList" resultType="banner">
+ 	 	SELECT * FROM MK_BANNER
+ 	 </select>
+ 	 
+ 	 <select id="getBanner" resultType="banner" parameterType="banner">
+ 	 	SELECT * FROM MK_BANNER WHERE BANNER_SERIAL = #{banner_serial}
+ 	 </select>
+ 	 
+ 	 <update id="updateBanner1" parameterType="banner">
+ 		UPDATE MK_BANNER SET 
+ 		BANNER_TITLE = #{banner_title},
+ 		BANNER_FILEPATH = #{banner_filepath},
+ 		BANNER_CONTENTS = #{banner_contents}
+ 		WHERE BANNER_SERIAL = #{banner_serial}
+ 	</update>
+ 	
+ 	 <update id="updateBanner2" parameterType="banner">
+ 		UPDATE MK_BANNER SET 
+ 		BANNER_TITLE = #{banner_title},
+ 		BANNER_CONTENTS = #{banner_contents}
+ 		WHERE BANNER_SERIAL = #{banner_serial}
+ 	</update>
+ 	
+ 	<delete id="deleteBanner" parameterType="banner">
+ 		DELETE FROM MK_BANNER WHERE BANNER_SERIAL = #{banner_serial}
+ 	</delete>
+ 	<!-- 관리자 배너 -->
+
+	<!-- 관리자 1차카테고리 -->
+	 <select id="getCategory1List" resultType="category1">
+ 	 	SELECT (ROW_NUMBER() OVER(Order by category_main_serial)) AS ROWNUM , * FROM MK_CATEGORY_MAIN
+ 	 </select>
+	
+	<insert id="insertCategory1" parameterType="category1">
+	 	 	INSERT INTO MK_CATEGORY_MAIN VALUES (DEFAULT, #{category_main_name}, #{category_main_icon_black}, #{category_main_icon_color});
+ 	 </insert>
+	<!-- 관리자 1차카테고리 -->
 </mapper>

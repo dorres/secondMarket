@@ -43,6 +43,7 @@
 	</script>
 </head>
 <body class="sb-nav-fixed">
+<div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
 	<jsp:include page="default/sideMenu.jsp"></jsp:include>
 
@@ -76,14 +77,6 @@
 									<th>수정/삭제</th>
 								</tr>
 							</thead>
-							<tfoot>
-								<tr>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>직급</th>
-									<th>수정/삭제</th>
-								</tr>
-							</tfoot>
 							<tbody>
 								<c:forEach var="adminList" items="${adminList }">
 									<tr>
@@ -106,6 +99,7 @@
 		</main>
 
 		<jsp:include page="default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

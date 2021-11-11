@@ -37,8 +37,9 @@ textarea {
 </script>
 </head>
 <body class="sb-nav-fixed">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+<div id="layoutSidenav">
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -51,14 +52,6 @@ textarea {
 					<li class="breadcrumb-item"><a href="index.html">자주하는질문 상세</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
-				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div>
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> DataTable Example
@@ -112,7 +105,8 @@ textarea {
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

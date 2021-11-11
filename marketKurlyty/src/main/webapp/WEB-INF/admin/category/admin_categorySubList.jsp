@@ -5,14 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>??????????????</title>
- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<style type="text/css">
+.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}	
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+</style>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -20,23 +32,19 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">Tables</h1>
+				<h1 class="mt-4">카테고리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					<li class="breadcrumb-item"><a href="index.html">2차카테고리 목록</a></li>
+					<li class="breadcrumb-item active">목록</li>
 				</ol>
+
 				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div>
-				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> DataTable Example
-					</div>
+					<div class="card-header"  align="right">
+						<!-- <input type="button"  onclick="location.href='admin_bannerWrite.mdo'"  > -->
+							<div class="col three">
+								<a href="#" class="btn1 btn-dark">2차카테고리 등록</a>
+							</div>
+						</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
@@ -83,7 +91,7 @@
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
 	</div>
 	<!-- Main -->

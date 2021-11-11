@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.util.Date" %>
+<%
+  Date now = new Date();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +25,36 @@
 
 
 				<!-- 여기에 추가하면 가운데 페이지 추가하면 됩니다~~~~-->
-
-
+					<h1>약관 등록</h1>
+					<h6>약관 등록하는 페이지</h6>
+					<form action="insertTerms.mdo" method="post">
+					<table>
+						<p>약관번호<br>
+						<input type="text" class="*" name="terms_serial" placeholder="번호를 입력해주세요"/></p>
+						<p>약관이름<br>
+						<input type="text" class="*" name="terms_id" placeholder="약관명을 입력해주세요"/></p>
+						약관 필수여부<br>
+						<div>
+ 							 <input type="radio" name="terms_status" value="true"/>필수
+ 							 <input type="radio" name="terms_status" value="false"/>선택
+						</div>
+							약관내용
+							<div>
+								<textarea rows="100" cols="150" name="terms_content"></textarea>
+								<div>
+									<input type="submit" value="등록"/>
+									<input type="button" value="목록" onclick="location.href='terms_agreeList.mdo'"/>
+								</div>
+							</div>
+						</div>
+							
+					</table>
+					</form>
 			</div>
 		</main>
-
 		<jsp:include page="default/footer.jsp"></jsp:include>
 	</div>
 	</div>
-	<!-- Main -->
 	
 	<!-- 건들지마세요 -->
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

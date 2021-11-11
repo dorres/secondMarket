@@ -28,8 +28,9 @@ textarea {
 
 </head>
 <body class="sb-nav-fixed">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+<div id="layoutSidenav">
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -37,55 +38,29 @@ textarea {
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">자주하는 질문</h1>
+				<h1 class="mt-4">공지사항</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">자주하는질문 등록</a></li>
+					<li class="breadcrumb-item"><a href="index.html">공지사항 등록</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
-				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div>
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> DataTable Example
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-						<form action="admin_FAQInsert.mdo" method="POST">
-							<input type="hidden" name="faq_id" value="${adminId }">
+						<form action="admin_noticeInsert.mdo" method="POST">
+							<input type="hidden" name="notice_id" value="${adminId }">
 							<table >
-							<tr>
-								<td width="100px" height="40px">카테고리</td>
-								<td>
-									<select name="faq_category">
-										<option value="배송지연/불만" >배송지연/불만</option>
-										<option value="컬리패스 (무료배송)">컬리패스 (무료배송)</option>
-										<option value="반품문의">반품문의</option>
-										<option value="A/S문의">A/S문의</option>
-										<option value=">환불문의">환불문의</option>
-										<option value="주문결제문의">주문결제문의</option>
-										<option value="회원정보문의">회원정보문의</option>
-										<option value="취소문의">취소문의</option>
-										<option value="교환문의">교환문의</option>
-										<option value="상품정보문의">상품정보문의</option>											
-										<option value="기타문의">기타문의</option>
-									</select>
-								</td>
-							</tr>
 								<tr>
 									<td width="100px" height="40px">제목</td>
 									<td width="800px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;"name="faq_title">
+										<input type="text" style="width:100%; height:100%; border: none;"name="notice_title">
 									</td>
 								</tr>
 								<tr>
 									<td width="100px" height="500px">내용</td>
-									<td colspan="3"  height="500px"><textarea name="faq_content" ></textarea>
+									<td colspan="3"  height="500px"><textarea name="notice_content" ></textarea>
 								</tr>
 							</table>
 							<input type="submit" value="등록하기" />
@@ -96,7 +71,8 @@ textarea {
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

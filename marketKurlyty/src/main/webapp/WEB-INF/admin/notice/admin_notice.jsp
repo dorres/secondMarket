@@ -37,8 +37,9 @@ textarea {
 </script>
 </head>
 <body class="sb-nav-fixed">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+<div id="layoutSidenav">
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -51,29 +52,15 @@ textarea {
 					<li class="breadcrumb-item"><a href="index.html">공지사항 상세</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
-				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div>
+
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> DataTable Example
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-<<<<<<< HEAD
 						<form action="admin_noticeUpdate.mdo" method="POST">
-=======
-<<<<<<< HEAD
-						<form action="admin_noticeProc.mdo" method="POST">
-=======
-						<form action="admin_noticeUpdate.mdo" method="POST">
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
+
 							<table >
 								<tr>
 									<td width="300px" height="40px">글번호</td>
@@ -103,15 +90,9 @@ textarea {
 								</tr>
 								<tr>
 									<td width="300px" height="500px">내용</td>
-<<<<<<< HEAD
+
 									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
-=======
-<<<<<<< HEAD
-									<td colspan="3"  height="500px"><textarea name="notice_content"  readonly="readonly">${notice.notice_content }</textarea>
-=======
-									<td colspan="3"  height="500px"><textarea name="notice_content" >${notice.notice_content }</textarea>
->>>>>>> 4ba841d2c794a759a2262292794e3562a7fa4f09
->>>>>>> main
+
 								</tr>
 							</table>
 							<input type="submit" value="수정하기" />
@@ -123,7 +104,8 @@ textarea {
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	

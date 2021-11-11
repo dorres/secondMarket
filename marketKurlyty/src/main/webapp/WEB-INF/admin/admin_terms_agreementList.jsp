@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,39 @@
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
- <script>
-	function delete_check(url) {
+ <script src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
+			var formObj = $("form[name='readForm']");
+			
+			// 수정 
+			$(".update_btn").on("click", function(){
+				formObj.attr("action", "/board/updateView");
+				formObj.attr("method", "get");
+				formObj.submit();				
+			})
+			
+			// 삭제
+			$(".delete_btn").on("click", function(){
+				formObj.attr("action", "/board/delete");
+				formObj.attr("method", "post");
+				formObj.submit();
+			})
+			
+			// 취소
+			$(".list_btn").on("click", function(){
+				
+				location.href = "/board/list";
+			})
+		})
+		function delete_check(url) {
 		var answer = confirm("게시글를 정말로 삭제할까요?");
 		if (answer == true) {
 			location = url;
 		}
 	}
- </script>
+	</script>
+	
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -28,64 +54,56 @@
 		<main>
 			<div class="container-fluid px-4">
 
-				<!-- 여기만 수정해서 사용하세요!! -->
-				<h2 class="mt-4">회원관리</h2>
+				<h1 class="mt-4">약관관리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item">회원수정</li>
-					<li class="breadcrumb-item active">삭제</li>
+					<li class="breadcrumb-item"><a href="index.html">약관 약간?</a></li>
+					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						여기내용을 수정
-						<a target="_blank" href="https://datatables.net/"> 이거 필요한가??</a> .
+						여기내용 수정
+						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 회원목록
+						<i class="fas fa-table me-1"></i> 약관 목록
 					</div>
 					<div class="card-body">
-						<form>
+					<form method="post">
 						<table id="datatablesSimple">
-							
-								<tr>
-									<th>회원번호</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>폰번</th>
-									<th>회원등급</th>
-									<th>마지막로그인</th>
-									<th>포인트</th>
-									<th>총금액</th>
-									<th>상태</th>
-									<th>수정/삭제</th>
+							<thead>
+							<tr>
+									<th>번호</th>
+									<th>약관번호</th>
+									<th>약관이름</th>
+									<th>약관필수여부</th>
+									<th>약관등록일</th>
+									<th>마지막수정일</th>
+									
 								</tr>
+							</thead>
 							<tbody>
-								<c:forEach var="user" items="${userList }">
+								<c:forEach var="agreeList" items="${agreeList}">
 									<tr>
-										<td>${user.user_serial }</td>
-										<td>${user.user_id }</td>
-										<td>${user.user_name }</td>
-										<td>${user.user_phone }</td>
-										<td>${user.user_membership_name }</td>
-										<td>${user.user_last_login }</td>
-										<td>${user.user_point }</td>
-										<td>${user.user_total_purchase }</td>
-										<td>${useuserrList.user_status }</td>
-										<td>
-											<input type="button" value="수정" onclick="location.href= 'getUser.mdo?user_id=${user.user_id}'"/>
-											<input type="button" value="삭제" onclick="javascirpt:delete_check('deleteUser.mdo?user_id=${user.user_id}')"/>
-										</td>
-									</form>
+										<td>${agreeList.terms_agreement_serial }</td>
+										<td>${agreeList.terms_serial }</td>
+										<td><a href="termsDetails.mdo?terms_serial=${agreeList.terms_serial}">${agreeList.terms_id }</a></td>
+										<td>${agreeList.terms_agree_status }</td>
+										<td><fmt:formatDate value="${agreeList.terms_agree_date}" pattern="yyyy-MM-dd"/></td>
+										<td><fmt:formatDate value="${agreeList.terms_agree_date_modified}" pattern="yyyy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
+								
 							</tbody>
 						</table>
+						<input type="button" value="등록" onclick="location.href='admin_terms.mdo'"/>
+						</form>
 					</div>
 				</div>
-				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
+
 		<jsp:include page="default/footer.jsp"></jsp:include>
 	</div>
 	</div>

@@ -3,16 +3,21 @@ package first.market.kurlyty.admin.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
-
+import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
+@Repository
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
 	
@@ -27,13 +32,14 @@ public class AdminServiceImpl implements AdminService {
 		else
 			return false;
 	}
-	
+
 	@Override
 	public int joinProc(AdminVO admin) {
 		int success = 0;
 		success = adminDao.insertAdmin(admin);
 		return success;
 	}
+	
 	
 	@Override
 	public AdminVO loginGetUser(AdminVO admin) {
@@ -68,27 +74,46 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.deleteManager(admin);
 	}
 	
-//	@Override
-//	public int updateUser1(AdminUserVO user) {
-//		//return adminDao.updateUser1(user);
-//		return
-//	}
-//	
-//	@Override
-//	public int updateUser2(AdminUserVO user) {
-//		//return adminDao.updateUser2(user);
-//	}
-	
 	@Override
-	public int deleteUser1(AdminUserVO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	//회원 수정 출력
+	public AdminUserVO getUser(AdminUserVO user) {
+		return adminDao.getUser(user);
 	}
-
+	//회원 수정
 	@Override
-	public int deleteUser2(AdminUserVO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateUser(AdminUserVO user) {
+		return adminDao.updateUser(user);
+	}
+	
+	//회원 삭제
+	@Override
+	public int deleteUser(AdminUserVO user) {
+		return adminDao.deleteUser(user);
+	}
+	//약관관리 리스트
+	@Override
+	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree){
+		return adminDao.getTermsAgreeList(agree);
+	}
+	//약관 등록
+	@Override
+	public int insertTerms(AdminTermsAgreementVO agree) {
+		return adminDao.insertTerms(agree);
+	}
+	
+	//약관 수정
+	public int updateTeerms(AdminTermsAgreementVO agree) {
+		return adminDao.updateTerms(agree);
+	}
+	
+	//약관 정보
+	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree) {
+		return adminDao.getTerms(agree);
+	}
+	
+	//약관 삭제
+	public int deleteTerms(AdminTermsAgreementVO agree) {
+		return adminDao.deleteTerms(agree);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
@@ -145,6 +170,101 @@ public class AdminServiceImpl implements AdminService {
 	public int insertFAQ(AdminFAQVO faq) {
 		return adminDao.insertFAQ(faq);
 	}
+	//-------------------------------------------------------------
+	//관리자 -1:1 문의 답변 대기 리스트
+	@Override
+	public List<AdminQnaVO> getPersonalQnaWaitList() {
+		return adminDao.getPersonalQnaWaitList();
+	}
+	
+	//관리자 - 1:1 문의 답변 대기 세부사항
+	@Override
+	public AdminQnaVO getPersonalQnaWait(AdminQnaVO qna) {
+		return adminDao.getPersonalQnaWait(qna);
+	}
+	
+	//관리자 - 1:1 문의 답변 등록 
+	@Override
+	public int updateQnaWait(AdminQnaVO qna) {
+		return adminDao.updateQnaWait(qna);
+	}
+	
+	//관리자 - 1:1 문의 답변 대기 삭제
+	@Override
+	public int deleteQnaWait(AdminQnaVO qna) {
+		return adminDao.deleteQnaWait(qna);
+	}
+	
+	//==============================================================
+	//관리자  -1:1문의 답변 완료 리스트
+	@Override
+	public List<AdminQnaVO> getPersonalQnaFinishList() {
+		return adminDao.getPersonalQnaFinishList();
+	}
+	
+	@Override
+	public AdminQnaVO getPersonalQnaFinish(AdminQnaVO qna) {
+		return adminDao.getPersonalQnaFinish(qna);
+	}
+
+	@Override
+	public int updateQnaFinish(AdminQnaVO qna) {
+		return adminDao.updateQnaFinish(qna);
+	}
+
+	@Override
+	public int deleteQnaFinish(AdminQnaVO qna) {
+		return adminDao.deleteQnaFinish(qna);
+	}
+
+	//============================================================
+	//관리자 배너 등록
+	@Override
+	public int insertBanner(AdminBannerVO banner) {
+		return adminDao.insertBanner(banner);
+	}
+	//관리자 배너 리스트
+	@Override
+	public List<AdminBannerVO> getBannerList() {
+		return adminDao.getBannerList();
+	}
+	//관리자 배너 상세페이지
+	@Override
+	public AdminBannerVO getBanner(AdminBannerVO banner) {
+		return adminDao.getBanner(banner);
+	}
+
+	@Override
+	public int updateBanner1(AdminBannerVO banner) {
+		return adminDao.updateBanner1(banner);
+	}
+	
+	@Override
+	public int updateBanner2(AdminBannerVO banner) {
+		return adminDao.updateBanner2(banner);
+	}
+
+	@Override
+	public int deleteBanner(AdminBannerVO banner) {
+		return adminDao.deleteBanner(banner);
+	}
+	
+	//===========================================================
+	//관리자 1차 카테고리 
+	@Override
+	public List<AdminCategoryMainVO> getCategory1List() {
+		return adminDao.getCategory1List();
+	}
+
+	@Override
+	public int insertCategory1(AdminCategoryMainVO category1) {
+		return adminDao.insertCategory1(category1);
+	}
+	
+	
+
+
+
 }
 	
 	

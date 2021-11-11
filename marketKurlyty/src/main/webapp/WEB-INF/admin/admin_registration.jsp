@@ -18,11 +18,23 @@
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
-
-
-				<!-- 여기에 추가하면 가운데 페이지 추가하면 됩니다~~~~-->
-
-
+			<form method="post">
+				<table class="*" border="1">
+					<tr>
+					<td><h2>상품등록</h2></td>
+					</tr>
+					</table>
+					<br>
+					<table border="1">
+					<tr>
+						<td>카테고리</td>
+					</tr>
+					<tr>	
+						<td>상위 카테고리</td>&nbsp;&nbsp;<td>중위 카테고리</td>&nbsp;&nbsp;<td>하위 카테고리</td>
+					</tr>
+					
+				</table>
+			</form>					
 			</div>
 		</main>
 

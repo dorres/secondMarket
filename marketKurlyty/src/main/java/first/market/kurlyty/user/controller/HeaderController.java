@@ -95,12 +95,9 @@ public class HeaderController {
 	
 	@RequestMapping("/fileUploadTest.do")
 	public String fileUploadTest() {
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\자바공부\\마켓컬리\\coth.jpg"), "coth.jpg");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\자바공부\\마켓컬리\\ekdrms.jpg"), "ekdrms.jpg");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\자바공부\\마켓컬리\\didvk.jpg"), "didvk.jpg");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\자바공부\\마켓컬리\\ehowlrhrl.jpg"), "ehlwlrhrl.jpg");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\자바공부\\마켓컬리\\rhrnak.jpg"), "rhrnak.jpg");
-		System.out.println("���� ���ε�");
+		awsS3.upload(new File("C:\\pmProject\\ico_cart.svg"), "kurlyImage/ico_cart3.svg");
+		System.out.println("���� ���ε�");
+
 		return "redirect:index.do";
 		
 	}

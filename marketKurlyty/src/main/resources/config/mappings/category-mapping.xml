@@ -28,6 +28,7 @@
  	<select id="getCategoryRoot" resultType="categoryMain" parameterType="product">
  		SELECT * FROM mk_category_main WHERE category_main_serial=#{category_main_serial}
  	</select>
+ 	
  	<!-- S3 -->
  	<select id="getS3Key" resultType="first.market.kurlyty.s3.S3KeyVO">
  		SELECT * FROM S3Key
