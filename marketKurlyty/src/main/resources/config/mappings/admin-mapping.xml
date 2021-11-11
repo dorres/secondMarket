@@ -208,10 +208,28 @@
 	
 	<insert id="insertCategory1" parameterType="category1">
 	 	 	INSERT INTO MK_CATEGORY_MAIN VALUES (#{category_main_serial}, #{category_main_name}, #{category_main_icon_black}, #{category_main_icon_color});
- 	 </insert>
+ 	</insert>
  	 
- 	 <select id="getCategory1Column" resultType="int">
+ 	<select id="getCategory1Column" resultType="int">
  	 	SELECT COUNT(CATEGORY_MAIN_SERIAL) FROM MK_CATEGORY_MAIN
+ 	</select>
+ 	 
+ 	<select id="getIconBlack" resultType="int" parameterType="category1">
+ 	 	SELECT COUNT(*) FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_ICON_BLACK like CONCAT('%', #{category_main_icon_black})
+ 	</select>
+ 	 
+ 	<select id="getIconColor" resultType="int" parameterType="category1">
+ 	 	SELECT COUNT(*) FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_ICON_COLOR like CONCAT('%', #{category_main_icon_color})
+ 	</select>
+ 	 
+ 	<delete id="deleteCategory1" parameterType="category1">
+ 	 	DELETE FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_SERIAL = #{category_main_serial}
+ 	</delete>
+ 	
+ 	 <select id="getCategory1" resultType="category1" parameterType="category1">
+ 	 	SELECT * FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_SERIAL = #{category_main_serial}
  	 </select>
+ 	 
+ 	 
 	<!-- 관리자 1차카테고리 -->
 </mapper>

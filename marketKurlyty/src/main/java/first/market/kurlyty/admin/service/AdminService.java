@@ -134,7 +134,11 @@ public interface AdminService {
 	
 	int insertCategory1(AdminCategoryMainVO category1);
 	
+	int getIconBlack(AdminCategoryMainVO category1);
 	
+	int getIconColor(AdminCategoryMainVO category1);
 	
+	int deleteCategory1(AdminCategoryMainVO category1);
 	
+	AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1);
 }

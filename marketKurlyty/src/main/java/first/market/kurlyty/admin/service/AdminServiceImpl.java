@@ -265,6 +265,26 @@ public class AdminServiceImpl implements AdminService {
 	public int getCategory1Column() {
 		return adminDao.getCategory1Column();
 	}
+
+	@Override
+	public int getIconBlack(AdminCategoryMainVO category1) {
+		return adminDao.getIconBlack(category1);
+	}
+	@Override
+	public int getIconColor(AdminCategoryMainVO category1) {
+		return adminDao.getIconColor(category1);
+	}
+
+	@Override
+	public int deleteCategory1(AdminCategoryMainVO category1) {
+		return adminDao.deleteCategory1(category1);
+	}
+
+	@Override
+	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
+		return adminDao.getCategory1(category1);
+	}
+	
 	
 	
 
