@@ -9,6 +9,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
@@ -216,16 +217,18 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.deleteQnaFinish(qna);
 	}
 
+	//============================================================
+	//관리자 배너 등록
 	@Override
 	public int insertBanner(AdminBannerVO banner) {
 		return adminDao.insertBanner(banner);
 	}
-
+	//관리자 배너 리스트
 	@Override
 	public List<AdminBannerVO> getBannerList() {
 		return adminDao.getBannerList();
 	}
-
+	//관리자 배너 상세페이지
 	@Override
 	public AdminBannerVO getBanner(AdminBannerVO banner) {
 		return adminDao.getBanner(banner);
@@ -244,6 +247,18 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int deleteBanner(AdminBannerVO banner) {
 		return adminDao.deleteBanner(banner);
+	}
+	
+	//===========================================================
+	//관리자 1차 카테고리 
+	@Override
+	public List<AdminCategoryMainVO> getCategory1List() {
+		return adminDao.getCategory1List();
+	}
+
+	@Override
+	public int insertCategory1(AdminCategoryMainVO category1) {
+		return adminDao.insertCategory1(category1);
 	}
 	
 	

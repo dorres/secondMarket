@@ -84,9 +84,9 @@
 						</a>
 						<div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="admin_categoryFirstList.mdo">1차카테고리(메인)</a>
-								<a class="nav-link" href="admin_categorySecondList.mdo">2차카테고리(서브)</a>
-								<a class="nav-link" href="admin_categoryThirdList.mdo">3차카테고리(상품)</a>
+								<a class="nav-link" href="admin_categoryMainList.mdo">1차카테고리(메인)</a>
+								<a class="nav-link" href="admin_categorySubList.mdo">2차카테고리(서브)</a>
+								<a class="nav-link" href="admin_categoryGoodsList.mdo">3차카테고리(상품)</a>
 							</nav>
 						</div>
 

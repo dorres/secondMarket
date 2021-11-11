@@ -19,13 +19,13 @@ public class AdminNoticeController {
 	@RequestMapping("admin_noticeList.mdo")
 	public String adminNoticeList(AdminNoticeVO notice, Model model) {
 		model.addAttribute("noticeList", adminService.getNoticeList(notice));
-		return "admin_noticeList";
+		return "notice/admin_noticeList";
 	}
 	//관리자 -공지사항 세부사항
 	@RequestMapping("admin_notice.mdo")
 	public String adminNotice(AdminNoticeVO notice, Model model) {
 		model.addAttribute("notice", adminService.getNotice(notice));
-		return "admin_notice";
+		return "notice/admin_notice";
 	}
 	
 	//관리자 -공지사항 수정(update)
@@ -56,7 +56,7 @@ public class AdminNoticeController {
 	//관리자 -공지사항 등록페이지
 	@RequestMapping("admin_noticeWrite.mdo")
 	public String adminNoticeWrite(AdminNoticeVO notice) {
-		return "admin_noticeWrite";
+		return "notice/admin_noticeWrite";
 	}
 	
 	//관리자 -공지사항 등록(insert)

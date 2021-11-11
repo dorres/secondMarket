@@ -28,14 +28,14 @@ public class AdminBannerController {
 	@RequestMapping("admin_bannerList.mdo")
 	public String adminBannerList(Model model) {
 		model.addAttribute("bannerList", adminService.getBannerList());
-		return "admin_bannerList";
+		return "banner/admin_bannerList";
 	}
 	
 	//배너 세부사항
 	@RequestMapping("admin_banner.mdo")
 	public String adminBanner( Model model, AdminBannerVO banner) {
 		model.addAttribute("banner", adminService.getBanner(banner));
-		return "admin_banner";
+		return "banner/admin_banner";
 	}
 	
 	//배너 세부사항 수정
@@ -128,7 +128,7 @@ public class AdminBannerController {
 	//배너 등록 페이지
 	@RequestMapping("admin_bannerWrite.mdo")
 	public String adminBannerWrite() {
-		return "admin_bannerWrite";
+		return "banner/admin_bannerWrite";
 	}
 	
 	//배너 등록 처리
@@ -141,8 +141,6 @@ public class AdminBannerController {
 			String contentType = uploadFile.getContentType(); 
 			long contentLength = uploadFile.getSize();
 			awsS3.upload(is, key, contentType, contentLength);
-			
-			System.out.println("성공");
 			
 			banner.setBanner_filepath("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key);
 			adminService.insertBanner(banner);

@@ -21,7 +21,10 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminQnaVO" alias="qna"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminBannerVO" alias="banner"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminTermsAgreementVO" alias="terms"/> 
-
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminTermsAgreementVO" alias="agreeList"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategoryMainVO" alias="category1"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategorySubVO" alias="category2"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategoryGoodsVO" alias="category3"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>

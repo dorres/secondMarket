@@ -26,12 +26,21 @@ textarea {
     resize: none;
   }
 </style>
+<script type="text/javascript">
 
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -44,14 +53,6 @@ textarea {
 					<li class="breadcrumb-item"><a href="index.html">1:1 문의</a></li>
 					<li class="breadcrumb-item active">1:1문의 답변 대기 상세</li>
 				</ol>
-<!-- 				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div> -->
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 1:1문의 내용
@@ -62,30 +63,30 @@ textarea {
 								<tr>
 									<td width="200px" height="40px">문의종류</td>
 									<td width="300px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;"  value="${qnaWait.qna_personal_category }" readonly="readonly">
+										<input type="text" style="width:100%; height:100%; border: none;"  value="${qnaFinish.qna_personal_category }" readonly="readonly">
 									</td>
 									
 									<td width="200px" height="40px">작성자</td>
 									<td width="300px" height="40px" >
-										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaWait.user_id}(${qnaWait.user_name })"  >
+										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaFinish.user_id}(${qnaWait.user_name })"  >
 									</td>
 								</tr>
 							
 								<tr>
 									<td width="200px" height="40px">제목</td>
 									<td width="300px" height="40px" >
-										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaWait.qna_personal_title }" readonly="readonly">
+										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaFinish.qna_personal_title }" readonly="readonly">
 									</td>
 									
 									<td width="200px" height="40px">날짜</td>
 									<td width="300px" height="40px" >
-										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${qnaWait.qna_personal_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
+										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${qnaFinish.qna_personal_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
 									</td>
 								</tr>
 								
 								<tr>
 									<td width="200px" height="300px">내용</td>
-									<td colspan="3"  height="300px"><textarea readonly="readonly">${qnaWait.qna_personal_content }</textarea>
+									<td colspan="3"  height="300px"><textarea readonly="readonly">${qnaFinish.qna_personal_content }</textarea>
 								</tr>
 							</table>
 					</div>
@@ -95,18 +96,19 @@ textarea {
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-						<form action="admin_personalQnaWaitUpdate.mdo" method="POST">
+						<form action="admin_personalQnaFinishUpdate.mdo" method="POST">
 							<table >
 								<tr>
 								<td>답변</td>
 								</tr>
 								<tr>
-									<td width="200px" height="300px"><textarea  name="qna_personal_answer"></textarea>
+									<td width="200px" height="300px"><textarea  name="qna_personal_answer">${qnaFinish.qna_personal_answer }</textarea>
 								</tr>
 							</table>
-							<input type="hidden" name="qna_personal_serial" value="${qnaWait.qna_personal_serial }">
-							<input type="submit" value="답변 등록하기" />
-							<input type="button" value="1:1문의글 목록보기" onclick="location.href='admin_personalQnaWaitList.mdo'"/>
+							<input type="hidden" name="qna_personal_serial" value="${qnaFinish.qna_personal_serial }">
+							<input type="submit" value="답변 수정하기" />
+							<input type="button" value="삭제" onclick="javascript:delete_check('admin_personalQnaFinishDelete.mdo?qna_personal_serial=${qnaFinish.qna_personal_serial}')"/>
+							<input type="button" value="1:1문의글 목록보기" onclick="location.href='admin_personalQnaFinishList.mdo'"/>
 						</form>
 					</div>
 					
@@ -115,9 +117,9 @@ textarea {
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
-	</div>	
+	</div>
 	<!-- Main -->
 	
 	<!-- 건들지마세요 -->
