@@ -16,7 +16,6 @@ import first.market.kurlyty.user.vo.Board_noticeVO;
 
 
 @Controller
-
 public class Board_noticeController {
 	@Autowired
 	private Board_noticeService board_noticeService;
