@@ -1,4 +1,4 @@
-  $(document).ready(function() {
+  /*$(document).ready(function() {
     $('input[name=name]').on('keyup keydown blur', function(){
       preventSpecialChars($(this), 'write');
     });
@@ -556,4 +556,4 @@
   });
 
 
-  // KM-1483 Amplitude
+  // KM-1483 Amplitude*/

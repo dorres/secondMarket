@@ -34,14 +34,14 @@ public class AwsS3 {
 	private String secretKey; //->IAM 에서 받은 시크릿 엑세스 키
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
 	private String bucket = "kurlybuc"; //버킷 명
+
 	
 	public AwsS3() {}
 	public AwsS3(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 		createS3Client();
 	}
-	 
-	
+
 	// asw S3 Client 생성
 	private void createS3Client() {
 		//db에 넣은 암호화된 s3키값을 가져온다
@@ -50,7 +50,7 @@ public class AwsS3 {
 		//암호화된 s3키를 복호화 하기위한 decodingKey, decodingIv 값을 가져와서 바이트형태?로 바꾼다?
 		SecretKey decodingKey = new SecretKeySpec(keyVO.getDecoding_key().getBytes(),"AES");
 		IvParameterSpec decodingIv = new IvParameterSpec(keyVO.getDecoding_iv().getBytes());
-		
+
 		try {
 			accessKey = SecurityUtil.decrypt("AES/CBC/PKCS5Padding",
 					decodingKey, decodingIv,
@@ -94,7 +94,7 @@ public class AwsS3 {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void delete(String key) {
 		try {
 			//Delete 객체 생성

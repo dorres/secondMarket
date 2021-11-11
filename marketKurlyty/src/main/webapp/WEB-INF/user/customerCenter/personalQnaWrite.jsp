@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,17 +9,27 @@
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="style/ItemListStyle.css">
-<script>
+
+<script type="text/javascript">
+  function mySubmit(index) {
+    if (index == 1) {
+      document.insert.action='insertPersonalQna.do';
+    }
+    if (index == 2) {
+      document.insert.action='updatePersonalQna.do';
+    }
+    document.insert.submit();
+  }
 </script>
+
 <style>
 #qnaNotice.qna_goods {
 	display: none
 }
 </style>
-</head>
-<body class="main-index" oncontextmenu="return false"
-	ondragstart="return false" onselectstart="return !disableSelection">
 
+</head>
+<body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
 	<div id="wrap" class="personal">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -39,63 +50,131 @@
 								</div>
 
 								<div class="xans-board-write">
+									
+									
+							
+							<form name="insert" id="insertform" method="post" style="height: 100%;">
+										
+							<!-- 
 									<form name="insert" id="insertform" method="post"
-										action="insertPersonalQna.do"
-										style="height: 100%;">
-										<input type="hidden" name="user_id" value="${userId }">
+										action="insertPersonalQna.do" style="height: 100%;">  -->
+							
+										<input type="hidden" name="user_id" value="${userId}">
+										<input type="hidden" name="qna_personal_serial" value="${getPersonalQna.qna_personal_serial}" />
 										<table id="table_after" class="boardWrite2" width="100%">
 											<colgroup>
 												<col width="15%" align="right">
 											</colgroup>
 											<tbody>
 												<tr>
+													<!-- UPDATE -->
 													<th class="input_txt">제목</th>
-													<td><select name="qna_personal_category" label="질문유형" class="select">
-															<option value="">선택해주세요.</option>
-															<option value="배송지연/불만">배송지연/불만</option>
-															<option value="컬리패스(무료배송)">컬리패스(무료배송)</option>
-															<option value="반품문의">반품문의</option>
-															<option value="A/S문의">A/S문의</option>
-															<option value="환불문의">환불문의</option>
-															<option value="주문결제문의">주문결제문의</option>
-															<option value="회원정보문의">회원정보문의</option>
-															<option value="취소문의">취소문의</option>
-															<option value="교환문의">교환문의</option>
-															<option value="상품정보문의">상품정보문의</option>
-															<option value="기타문의">기타문의</option>
-													</select><br>
-													<input type="text" name="qna_personal_title"
-														style="width: 100%"
-														label="제목" value="">
+													<!-- UPDATE -->
+													
+													<td>
+													<!-- 처음 글쓸때 -->
+													<c:if test="${getPersonalQna == null }">
+														<select name="qna_personal_category" label="질문유형" class="select">
+																<option value="">선택해주세요.</option>
+																<option value="배송지연/불만">배송지연/불만</option>
+																<option value="컬리패스(무료배송)">컬리패스(무료배송)</option>
+																<option value="반품문의">반품문의</option>
+																<option value="A/S문의">A/S문의</option>
+																<option value="환불문의">환불문의</option>
+																<option value="주문결제문의">주문결제문의</option>
+																<option value="회원정보문의">회원정보문의</option>
+																<option value="취소문의">취소문의</option>
+																<option value="교환문의">교환문의</option>
+																<option value="상품정보문의">상품정보문의</option>
+																<option value="기타문의">기타문의</option>
+														</select><br>
+														<input type="text" name="qna_personal_title"
+															style="width: 100%" label="제목" value=""/>
+													</c:if>
+													<!-- 글 상세보기로 왔을때 -->
+													<c:if test="${getPersonalQna != null }">
+														<select name="qna_personal_category" label="질문유형" class="select">
+																<option value="${getPersonalQna.qna_personal_category}">"${getPersonalQna.qna_personal_category}"</option>
+																<option value="">--------------------</option>
+																<option value="배송지연/불만">배송지연/불만</option>
+																<option value="컬리패스(무료배송)">컬리패스(무료배송)</option>
+																<option value="반품문의">반품문의</option>
+																<option value="A/S문의">A/S문의</option>
+																<option value="환불문의">환불문의</option>
+																<option value="주문결제문의">주문결제문의</option>
+																<option value="회원정보문의">회원정보문의</option>
+																<option value="취소문의">취소문의</option>
+																<option value="교환문의">교환문의</option>
+																<option value="상품정보문의">상품정보문의</option>
+																<option value="기타문의">기타문의</option>
+														</select><br>
+														<input type="text" name="qna_personal_title" style="width: 100%" label="제목" 
+														value="${getPersonalQna.qna_personal_title}"/>
+														
+													</c:if>
 													</td>
 												</tr>
-
-												<tr>
+													<!-- UPDATE -->
+											
+												
+									
+												<c:if test="${getPersonalQna == null }">
+												<tr>												 
 													<th class="input_txt">주문번호</th>
 													<td><input type="text"
 														name="order_details_order_serial" style="width: 25%"
-														value="" readonly="readonly">
+														value="">
 														<input type="button" class="bhs_button yb"
 														value="주문조회"
-														style="float: none; line-height: 27px; width: 100px;">
+														style="float: none; line-height: 27px; width: 100px;"/>
 													</td>
 												</tr>
-
 												<tr>
 													<th class="input_txt">이메일</th>
 													<td><input type="text" name="qna_personal_email"
 														value="${UserData.user_email}" readonly="readonly"
-														class="read_only" label="이메일"></td>
+														class="read_only" label="이메일"/></td>
 												</tr>
 
 												<tr>
 													<th class="input_txt">문자메시지</th>
 													<td><input type="text" name="qna_personal_phone"
 														value="${UserData.user_phone }" readonly="readonly"
-														class="read_only" label="문자메세지"></td>
+														class="read_only" label="문자메세지"/></td>
+												</tr>
+								             	</c:if>			
+										
+										
+												<c:if test="${getPersonalQna != null }">
+												
+												<tr>												 
+													<th class="input_txt">주문번호</th>
+													<td><input type="text"
+														name="order_details_order_serial" style="width: 25%"
+														value="">
+														<input type="button" class="bhs_button yb"
+														value="주문조회"
+														style="float: none; line-height: 27px; width: 100px;">
+													</td>
+												</tr>
+												<tr>
+													<th class="input_txt">이메일</th>
+													<td><input type="text" name="qna_personal_email"
+														value="${getPersonalQna.qna_personal_email}" readonly="readonly"
+														class="read_only" label="이메일"></td>
 												</tr>
 
-
+												<tr>
+													<th class="input_txt">문자메시지</th>
+													<td><input type="text" name="qna_personal_phone"
+														value="${getPersonalQna.qna_personal_phone}" readonly="readonly"
+														class="read_only" label="문자메세지"></td>
+												</tr>
+								
+												</c:if>			
+									
+													
+												<!-- 내용이하공통--> 			
 												<tr>
 													<th class="input_txt">내용</th>
 													<td class="edit_area" style="position: relative;">
@@ -171,8 +250,17 @@
 															</div>
 														</div> 
 														<!-- 위에 자바스크립트가 원래 있던 부분 --> 
-														<textarea name="qna_personal_content"
-															style="width: 100%; height: 474px;" class="editing_area"></textarea>
+														
+														<c:if test = "${getPersonalQna == null}" >
+														<textarea name="qna_personal_content" class="editing_area">
+															style="width: 100%; height: 474px;" </textarea>
+														</c:if>
+														
+														<c:if test = "${getPersonalQna != null}" >
+														<textarea name="qna_personal_content" class="editing_area"
+															style="width: 100%; height: 474px;">${getPersonalQna.qna_personal_content}</textarea>
+														</c:if>
+														
 													</td>
 												</tr>
 
@@ -210,7 +298,19 @@
 												  		align="LEFT" style="padding-top: 5px; border: none;" id="avoidDbl">
 							 						</td>
 													<td align="right" style="padding-top: 5px; border: none;">
-														<input type="submit" class="bhs_button yb" value="저장" style="float: none;"> <!-- <a href="personalQnaBoard.do"> -->
+													
+													<input type="button" class="bhs_button yb" value="저장" onclick='mySubmit(1)' style="float: none;"> 
+													<input type="button" class="bhs_button yb" value="수정하기" onclick='mySubmit(2)' style="float: none;"> 
+												
+													<!-- 	<c:if test = "${getPersonalQna == null}">
+														<input type="submit" class="bhs_button yb" value="저장" style="float: none;"> 
+														</c:if>
+														
+														<c:if test = "${getPersonalQna != null}">
+														<input type="submit" class="bhs_button yb" value="수정하기" style="float: none;"> 
+														</c:if> 
+													-->
+														
 													</td>
 												</tr>
 											</tbody>

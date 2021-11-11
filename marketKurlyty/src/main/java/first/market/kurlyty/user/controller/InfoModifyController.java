@@ -23,12 +23,19 @@ public class InfoModifyController {
 			return "mykurly/infoModify1";
 		}
 	
-	//ㅂ
+	// 비밀번호 확인 후 페이지 넘기기
 	@RequestMapping("/infoModify2.do")
 	public String modifyUser(UserVO user, Model model) {
-		String securityPw = null;
+
 		// 1. DB에서 사용자 정보를 가지고 온다.
 		UserVO userVo = infoModifyService.getUserData(user);
+		
+		// 생년월일 짜르기
+		userVo.setUser_year(userVo.getUser_birth().substring(0, 4)); // 0번 ~ 3번까지 자르기
+		userVo.setUser_month(userVo.getUser_birth().substring(4, 6));
+		userVo.setUser_day(userVo.getUser_birth().substring(6)); // 6번부터 끝까지
+		
+		String securityPw = null;
 		String dbPw = userVo.getUser_pw();
 		// 2. 입력한 비밀번호를 암호화
 		try {
@@ -49,10 +56,15 @@ public class InfoModifyController {
 	
 	// 회원정보 수정
 	@RequestMapping("/updateProc.do")
-	public String updateProc(UserVO userVo, Model model) {
-		// 1. 비밀번호 변경 유무판별 ( NULL로 판별 )
-		// 2. 수정이 됐으면 암호화
-		// end. 쿼리문 실행
-		return "mykurly/index";
+	public String updateProc(UserVO user, Model model) {
+		// 비밀번호 암호화
+		try {
+			user.setUser_pw(SecurityUtil.sha256(user.getUser_new_pw()));
+		}catch(NoSuchAlgorithmException e){
+			e.printStackTrace();
+		}
+		// 쿼리문 실행
+		infoModifyService.updateUser(user);
+		return "mainPage/index";
 	}
 }

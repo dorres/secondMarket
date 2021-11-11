@@ -97,6 +97,7 @@ public class HeaderController {
 	public String fileUploadTest() {
 		awsS3.upload(new File("C:\\pmProject\\ico_cart.svg"), "kurlyImage/ico_cart3.svg");
 		System.out.println("파일 업로드");
+
 		return "redirect:index.do";
 		
 	}
