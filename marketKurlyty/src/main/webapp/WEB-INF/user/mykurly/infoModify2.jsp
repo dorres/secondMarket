@@ -17,54 +17,45 @@ function validateEmail(email){
 }
 function formUpdateSubmit(){
 	//판별문
-	var year = $("#birth_year").val();
-	var mon = $("#birth_month").val();
-	var day = $("#birth_day").val();
+	var year = $("#user_year").val();
+	var mon = $("#user_month").val();
+	var day = $("#user_day").val();
 	$("#totalbirth").val(year+mon+day);
 	
-	if(document.frmMember.user_pw.value==""){
-		alert("비밀번호를 입력하세요.");
-		document.frmMember.user_pw.focus();
-		return;
-	}
-	if(document.frmMember.user_pw_check.value==""){
+	
+	if(document.frmMember.user_new_pw.value!=""){
+		if(document.frmMember.user_new_pw_check.value==""){
 		alert("비밀번호 확인을 입력하세요.");
 		document.frmMember.user_pw_check.focus();
 		return;
+		}
+		if(document.frmMember.user_new_pw.value!=document.frmMember.user_new_pw_check.value){
+			alert("비밀번호를 다시 확인해 주세요.");
+			document.frmMember.user_pw_check.focus();
+			return;
+			}
 	}
-	if(document.frmMember.user_pw.value!=document.frmMember.user_pw_check.value){
-		alert("비밀번호를 다시 확인해 주세요.");
-		document.frmMember.user_pw_check.focus();
-		return;
-	}
+	
 	if(document.frmMember.user_name.value==""){
 		alert("이름을 입력하세요.");
 		document.frmMember.user_name.focus();
 		return;
 	}
-	if(document.frmMember.user_email.value==""){
-		alert("이메일을 입력하세요.");
-		document.frmMember.user_email.focus();
-		return;
-	}
-	if(!validateEmail(document.frmMember.user_email.value)){
-		alert("올바른 이메일을 입력해 주세요.");
-		document.regForm.email.focus();
-		return;
-	}
-	
-	if(document.frmMember.user_email.value!=document.frmMember.orgEmail.value){
-		if(document.frmMember.chk_email.value=="불가능"){
-			alert("중복된 이메일은 사용할 수 없습니다.");
-			document.frmMember.user_email.focus();
+	if(document.frmMember.user_email.value!=""){
+		if(!validateEmail(document.frmMember.user_email.value)){
+			alert("올바른 이메일을 입력해 주세요.");
+			document.regForm.email.focus();
 			return;
+			}
+		if(document.frmMember.user_email.value!=document.frmMember.orgEmail.value){
+			if(document.frmMember.chk_email.value=="불가능"){
+				alert("중복된 이메일은 사용할 수 없습니다.");
+				document.frmMember.user_email.focus();
+				return;
+			}
 		}
 	}
-	if(document.frmMember.user_phone.value==""){
-		alert("전화번호를 입력하세요.");
-		document.frmMember.user_phone.focus();
-		return;
-	}
+	
 	/* if(document.frmMember.okCerCheck.value=="불가능"){
 		alert("문자 인증을 해주세요.");
 		return;
@@ -81,6 +72,21 @@ function formUpdateSubmit(){
 	}
 	if(document.frmMember.user_day.value==""){
 		alert("생년월일을 입력하세요.");
+		document.frmMember.user_day.focus();
+		return;
+	}
+	if(document.frmMember.user_year.value>2030){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_year.focus();
+		return;
+	}
+	if(document.frmMember.user_month.value>12){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_month.focus();
+		return;
+	}
+	if(document.frmMember.user_day.value>31){
+		alert("생년월일을 다시 확인해주세요.");
 		document.frmMember.user_day.focus();
 		return;
 	}
@@ -138,8 +144,7 @@ function zip(){
 	}).open();
 }
 </script>
-<body class="main-index" oncontextmenu="return false"
-	ondragstart="return false" onselectstart="return !disableSelection">
+<body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
 
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
@@ -163,7 +168,7 @@ function zip(){
 								</div>
 								
 								<div class="type_form member_join member_mod">
-									<form id="form" name="frmMember" method="post" action="loginProc.do"
+									<form id="form" name="frmMember" method="post" action="updateProc.do"
 										onsubmit="return chkForm2(this)" novalidate="">
 										<input type="hidden" value="${userData.user_email }" name="orgEmail">
 										<input id="posibleEmail" type="hidden" name="chk_email" value="불가능">
@@ -171,16 +176,14 @@ function zip(){
 											<tbody>
 												<tr class="fst">
 													<th>아이디</th>
-													<td><input type="text" value="${userData.user_id }" readonly=""
-														class="user_id"></td>
+													<td><input type="text" value="${userData.user_id }" readonly="" name="user_id" id="user_id"	class="user_id"></td>
 												</tr>
 
 												<tr class="member_pwd">
 													<th>새 비밀번호</th>
-													<td><input type="password" name="user_new_pw"
-														id="user_new_pw" label="새 비밀번호" option="regPass"
-														maxlength="16" class="reg_pw" placeholder="비밀번호를 변경하지 않을 시 입력하지 마세요."> <input
-														type="hidden" name="newPasswordCheck" value="0">
+													<td><input type="password" name="user_new_pw" id="user_new_pw" label="새 비밀번호" option="regPass"
+														maxlength="16" class="reg_pw" placeholder="비밀번호를 변경 할 시 입력하세요."> 
+														<input type="hidden" name="newPasswordCheck" value="0">
 														<p class="txt_guide square">
 															<span class="txt txt_case4">현재 비밀번호와 다르게 입력</span> <span
 																class="txt txt_case1">10자 이상 입력</span> <span
@@ -192,9 +195,8 @@ function zip(){
 
 												<tr class="member_pwd">
 													<th>새 비밀번호 확인</th>
-													<td><input type="password" name="user_new_pw_check"
-														id="user_new_pw_check" label="새 비밀번호" option="regPass"
-														maxlength="16" class="confirm_pw" placeholder="새 비밀번호를 다시 입력하세요.">
+													<td><input type="password" name="user_new_pw_check"	id="user_new_pw_check" label="새 비밀번호" option="regPass"
+														maxlength="16" class="user_new_pw_check" placeholder="새 비밀번호를 다시 입력하세요.">
 														<p class="txt_guide square">
 															<span class="txt txt_case1">동일한 비밀번호를 입력해주세요.</span>
 														</p></td>
@@ -205,9 +207,8 @@ function zip(){
 															class="screen_out">필수항목</span>
 													</span>
 													</th>
-													<td><input type="text" name="user_name" value="${userData.user_name }"
-														required="" fld_esssential="" label="이름"
-														placeholder="이름을 입력해주세요"></td>
+													<td><input type="text" id="user_name" name="user_name" value="${userData.user_name }"
+														required="" fld_esssential="" label="이름" placeholder="이름을 입력해주세요"></td>
 												</tr>
 
 												<tr>
@@ -215,13 +216,9 @@ function zip(){
 															class="screen_out">필수항목</span>
 													</span>
 													</th>
-													<td><input type="text" name="user_email"
-														value="${userData.user_email }" data-email=""
-														size="30" required="" option="regEmail" label="이메일"
-														placeholder="예: marketkurly@kurly.com"
-														onblur="chkEmailChange($(this))">
-														<a href="javascript:void(0)"
-														onclick="chkEmail()" class="btn default">중복확인</a></td>
+													<td><input type="text" id="user_email" name="user_email" value="" data-email="" size="30"
+														required="" option="regEmail" label="이메일" placeholder="이메일을 수정할 시 입력하세요." onblur="chkEmailChange($(this))">
+														<a href="javascript:void(0)" onclick="chkEmail()" class="btn default">중복확인</a></td>
 												</tr>
 
 												<tr class="field_phone">
@@ -229,10 +226,8 @@ function zip(){
 													class="screen_out">필수항목</span></span></th>
 											<td>
 												<div class="phone_num">
-													<input type="text" value="" pattern="[0-9]*"
-														name="user_phone" placeholder="숫자만 입력해주세요" class="inp">
-													<button id="btn_cert" class="btn default enabled" onclick="smsResponse()"
-														type="button">인증번호 받기</button>
+													<input type="text" value="" pattern="[0-9]*" id="user_phone" name="user_phone" placeholder="휴대폰 번호를 바꿀시 입력하세요." class="inp">
+													<button id="btn_cert" class="btn default enabled" onclick="smsResponse()" type="button">인증번호 받기</button>
 												</div>
 												<!-- <div id="codeNum" class="code_num">
 													<input type="text" name="auth_code" id="auth_code" value=""
@@ -253,9 +248,8 @@ function zip(){
 											<th></th>
 											<td>
 												<div class="phoneHid">
-													<input id="smsCheck" type="text" name="smsCheck" size="6" maxlength="6" value="" />
-													<button id="btn_cert" class="btn default enabled" onclick="certCheck()"
-														type="button">인증번호 확인</button>
+													<input type="text" id="smsCheck" name="smsCheck" size="6" maxlength="6" value="" />
+													<button id="btn_cert" class="btn default enabled" onclick="certCheck()" type="button">인증번호 확인</button>
 													<input type="hidden" id="posiblePhone"/>
 													<input type="hidden" id="checkNum"/>
 													<input type="hidden" id="okCerCheck" value="불가능"/> 
@@ -280,38 +274,36 @@ function zip(){
 										</tr>
 										
 												<tr class="birth field_birth">
-													<th>생년월일</th>
-													<td>
-														<div class="birth_day">
+											<th>생년월일</th>
+											<td>
+												<div class="birth_day">
 													<input type="text" name="user_year" id="user_year"
-														pattern="[0-9]*" value="" label="생년월일" size="4"
+														pattern="[0-9]*" value="${userData.user_year }" label="생년월일" size="4"
 														maxlength="4" placeholder="YYYY">
 														<span class="bar"></span>
-														<input type="text" name="user_month"
-														id="user_month" pattern="[0-9]*" value="" label="생년월일"
+														<input type="text" name="birth[]"
+														id="user_month" pattern="[0-9]*" value="${userData.user_month }" label="생년월일"
 														size="2" maxlength="2" placeholder="MM">
 														<span class="bar"></span>
-														<input type="text" name="user_day"
-														id="user_day" pattern="[0-9]*" value="" label="생년월일"
+														<input type="text" name="birth[]"
+														id="user_day" pattern="[0-9]*" value="${userData.user_day }" label="생년월일"
 														size="2" maxlength="2" placeholder="DD">
 														
 													<input id="totalbirth" type="hidden" name="user_birth"/>
 												</div>
-														<p class="txt_guide">
-															<span class="txt bad"></span>
-														</p>
-													</td>
-												</tr>
+												<p class="txt_guide">
+													<span class="txt bad"></span>
+												</p>
+											</td>
+										</tr>
 												<tr>
 													<th>선택약관 동의</th>
 													<td class="reg_agree">
 														<div class="check_view">
-															<input type="hidden" id="consentHidden" name="consent[1]"
-																value="y"> <label
-																class="label_block check_agree checked"> <input
-																type="checkbox" name="hiddenCheck" value="y"
-																checked="checked"> <span class="ico"></span>개인정보
-																수집·이용 동의 <span class="sub">(선택)</span>
+															<input type="hidden" id="consentHidden" name="consent[1]" value="y">
+															<label class="label_block check_agree checked">
+															<input type="checkbox" name="hiddenCheck" value="y" checked="checked"> 
+															<span class="ico"></span>개인정보 수집·이용 동의 <span class="sub">(선택)</span>
 															</label> <a href="#none" class="link btn_link btn_choice">약관보기</a>
 														</div>
 
