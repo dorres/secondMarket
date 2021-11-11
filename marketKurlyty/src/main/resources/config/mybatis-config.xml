@@ -34,5 +34,6 @@
  		<mapper resource="config/mappings/board_notice-mapping.xml"/> <!-- bk -->
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
+ 		<mapper resource="config/mappings/user_address_list-mapping.xml"/>
  	</mappers>
  </configuration>
