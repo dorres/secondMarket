@@ -10,6 +10,7 @@ import first.market.kurlyty.admin.vo.AdminFAQVO;
 
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -50,7 +51,9 @@ public interface AdminService {
 	
 	//약관 삭제
 	public int deleteTerms(AdminTermsAgreementVO agree);
-
+	
+	//상품 등록
+	public int inserGoods(AdminRegistVO regist);
 	//=================================================================
 
 	//공지사항 리스트

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="RegistDAO">
+	<insert id="insertRegist" parameterType="regist">
+		INSERT INTO MK_GOODS_SELL VALUES(#{goods_sell_serial}, #{category_main_serial},#{category_sub_serial),#{category_goods_serial}
+		#{goods_sell_price},#{goods_sell_receiving_date},#{goods_sell_receiving_quantity},#{goods_sell_stock_quantity},#{goods_sell_exp_date}
+		#{goods_sell_promotion_serial},#{goods_sell_status},#{goods_sell_discountrate});
+	</insert> 
+ </mapper>

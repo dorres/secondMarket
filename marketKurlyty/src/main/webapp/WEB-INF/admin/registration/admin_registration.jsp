@@ -18,23 +18,59 @@
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
-			<form method="post">
-				<table class="*" border="1">
-					<tr>
-					<td><h2>상품등록</h2></td>
-					</tr>
-					</table>
-					<br>
-					<table border="1">
-					<tr>
-						<td>카테고리</td>
-					</tr>
-					<tr>	
-						<td>상위 카테고리</td>&nbsp;&nbsp;<td>중위 카테고리</td>&nbsp;&nbsp;<td>하위 카테고리</td>
-					</tr>
-					
-				</table>
-			</form>					
+			<h2>상품등록</h2>  
+			<form>
+  <table class="body">  
+      <tr>  
+        <td>상위카테고리&nbsp;&nbsp;&nbsp;<select>
+        <option id="*"value="*">카테고리1</option>
+        <option value="*">카테고리2</option>
+        <option value="*">카테고리3</option>
+        </select> </td> 
+        
+         <td>중위카테고리&nbsp;&nbsp;&nbsp;<select>
+        <option value="*">카테고리1</option>
+        <option value="*">카테고리2</option>
+        <option value="*">카테고리3</option>
+        </select> </td> 
+        
+        <td>하위카테고리&nbsp;&nbsp;&nbsp;<select>
+        <option value="*">카테고리1</option>
+        <option value="*">카테고리2</option>
+        <option value="*">카테고리3</option>
+        </select> </td> 
+      </tr> 
+      
+      <tr>
+       <td>상품가격
+       <input type="text" id="*" value="" placeholder="ex) 10,000"> 원&nbsp;&nbsp;</td>
+       <td>입고날짜
+       <input type="date" id="*" value="" placeholder="ex) 2021-00-00">&nbsp;&nbsp;</td>
+       <td>수량
+       <input type="text" id="*" value="" placeholder="ex) 10">개&nbsp;&nbsp;</td>
+      </tr>
+      
+       <tr>
+       <td>유통기한 
+       <input type="date" id="*" value="" placeholder="ex) 2021-00-00">&nbsp;&nbsp;</td>
+       <td>프로모션
+       <select>
+       <option value="none" selected="selected">프로모션 선택</option>
+       <option value="적용">적용</option>
+       <option value="미적용">미적용</option> 
+       </select> </td>
+       <td>상태
+       <select>
+       <option value="none" selected="selected">상태선택</option>
+       <option value="적용">판매중</option>
+       <option value="미적용">판매중지</option>
+       <option value="미적용">판매완료</option> 
+       </select> </td>
+      </tr>
+      
+      
+  </table> 
+  </form> 		
 			</div>
 		</main>
 

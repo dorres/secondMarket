@@ -101,7 +101,6 @@ public class AdminMemberController {
 		public String insertTerms(AdminTermsAgreementVO agree) {
 			int success = 0;
 			success = adminService.insertTerms(agree);
-			System.out.println(agree.terms_agree_status);
 			if(success != 0) {
 				return "redirect:terms_agreeList.mdo";
 				}else {
@@ -136,8 +135,6 @@ public class AdminMemberController {
 				return "redirect:termDetail.mdo";
 			}
 		}
-		@RequestMapping("registration.mdo")
-		public String registration() {
-			return "admin_registration";
-		}
+		
+		
 }
