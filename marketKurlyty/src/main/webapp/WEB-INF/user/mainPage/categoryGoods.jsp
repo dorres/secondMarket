@@ -218,11 +218,8 @@ function quantity(count){
 										</div>
 										<a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
 											<span class="cost"> <span class="dc">${item.goods_detail_dicountrate }%</span> <span
-<<<<<<< HEAD
 												class="price">&nbsp;${item.goods_last_price}원</span> <span class="origin">${item.goods_detail_price }</span>
-=======
-												class="price">${item.goods_last_price}원</span> <span class="origin">${item.goods_detail_price }</span>
->>>>>>> dorres
+
 												<span class="desc">${item.category_goods_name_subtext }</span>
 										</span>
 									</a>
@@ -230,7 +227,7 @@ function quantity(count){
 								</c:forEach>
 							</ul>
 						</div>
-					</div>
+					</div>s
 				</div>
 			</div>
 		</div>
