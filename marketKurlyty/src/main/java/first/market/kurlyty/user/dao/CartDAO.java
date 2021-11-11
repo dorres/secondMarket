@@ -23,4 +23,10 @@ public class CartDAO {
 	public void insertCartItem(CartVO cartVO) {
 		sqlSession.insert("CategoryDAO.insertCartItem",cartVO);
 	}
+	public void updateCartItem(CartVO cartVO) {
+		sqlSession.update("CategoryDAO.updateCartItem",cartVO);
+	}
+	public void deleteCartItem(CartVO cartVO) {
+		sqlSession.delete("CategoryDAO.deleteCartItem",cartVO);
+	}
 }

@@ -13,7 +13,7 @@
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
  		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		to_char((second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))),'9,999,999') as goods_last_price
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE 1=1
  		<if test="category_main_serial != null">
@@ -38,7 +38,7 @@
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
  		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		to_char((second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))),'9,999,999') as goods_last_price
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE 1=1
  		AND PRODUCT.category_goods_serial=#{category_goods_serial}
@@ -51,10 +51,12 @@
  		false,#{user_id})
  	</insert>
  	<select id="getCartList" resultType="first.market.kurlyty.user.vo.CartVO" parameterType="String">
- 		SELECT * FROM MK_GOODS_CART WHERE user_id=#{value}
+ 		SELECT * FROM MK_GOODS_CART WHERE user_id=#{value} ORDER BY GOODS_CART_SERIAL ASC
  	</select>
-
- 	<select id="getS3Key" resultType="first.market.kurlyty.s3.S3KeyVO">
- 		SELECT * FROM S3Key
- 	</select>
+ 	<update id="updateCartItem" parameterType="first.market.kurlyty.user.vo.CartVO">
+ 		UPDATE MK_GOODS_CART SET GOODS_CART_COUNT=#{goods_cart_count} WHERE CATEGORY_GOODS_SERIAL=#{category_goods_serial}
+ 	</update>
+ 	<delete id="deleteCartItem" parameterType="first.market.kurlyty.user.vo.CartVO">
+ 		DELETE FROM MK_GOODS_CART WHERE CATEGORY_GOODS_SERIAL=#{category_goods_serial}
+ 	</delete>
  </mapper>

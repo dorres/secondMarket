@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,19 +44,24 @@ position:relative;
 }
 </style>
 <script>
-function inputCart(serial,name,lastprice,price,discount){
+function openCart(serial,name,lastprice,price,discount){
+	var totalprice = parseInt(lastprice)
 	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
 	$(".cartNone").attr("class","cartClick");
 	$(".cart_option").css("opacity","1").css("display","block");
 	$("#cartPut .in_option").find("span.name").text(name);
-	$("#cartPut .in_option").find("span.dc_price").text(lastprice+"원");
-	$("#cartPut .in_option").find("span.sum").find("span.num").text(lastprice);
+	$("#cartPut .in_option").find("span.dc_price").text(totalprice.toLocaleString("ko-KR")+"원");
+	$("#cartPut .in_option").find("span.sum").find("span.num").text(totalprice.toLocaleString("ko-KR"));
 	$("#cartPut .in_option").find("input.hprice").val(price);
 	$("#cartPut .in_option").find("input.hdiscount").val(discount);
 	$("#cartPut .in_option").find("input.hserial").val(serial);
 	
 }
 function cancelCart(){
+	$(".cartClick").attr("class","cartNone");
+	$(".cart_option").css("opacity","0").css("display","none");
+}
+function closeCart(){
 	$(".cartClick").attr("class","cartNone");
 	$(".cart_option").css("opacity","0").css("display","none");
 }
@@ -68,6 +74,22 @@ function quantity(count){
 	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
 	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(changeCount);
 	$("#cartPut .in_option").find("div.total").find("span.num").text(changePrice.toLocaleString("ko-KR"));
+}
+function inputCart(){
+	var serial=$("#cartPut .in_option").find("input.hserial").val();
+	var count=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	$.ajax({
+		url:"cartInput.do",
+		type:"post",
+		data:{"category_goods_serial":serial,"goods_cart_count":count},
+		datatype:"text",
+		success:function(res){
+			closeCart();
+		},
+		error:function(res){
+			alert("담기에 실패했습니다.");
+		}
+	});
 }
 </script>
 <body class="main-index" oncontextmenu="return false"
@@ -195,7 +217,8 @@ function quantity(count){
 											</span>
 											<span class="btn_type1">
 												<input
-													type="submit" class="txt_type" value="장바구니 담기"/> <!---->
+													type="button" class="txt_type" value="장바구니 담기"
+													onclick="javascript:inputCart()"/> <!---->
 											</span>
 										</div>
 									</div>
@@ -214,12 +237,14 @@ function quantity(count){
 												src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}">
 											</a>
 											<button type="button" class="cartBt"
-												onclick="javascript:inputCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>
+												onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>
 										</div>
 										<a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
 											<span class="cost"> <span class="dc">${item.goods_detail_dicountrate }%</span> <span
-												class="price">&nbsp;${item.goods_last_price}원</span> <span class="origin">${item.goods_detail_price }</span>
-
+												class="price">&nbsp;
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price }" var="lastPrice"/>												
+												${lastPrice}원</span> 
+												<span class="origin">${item.goods_detail_price }</span>
 												<span class="desc">${item.category_goods_name_subtext }</span>
 										</span>
 									</a>
@@ -227,7 +252,7 @@ function quantity(count){
 								</c:forEach>
 							</ul>
 						</div>
-					</div>s
+					</div>
 				</div>
 			</div>
 		</div>
@@ -235,7 +260,6 @@ function quantity(count){
 	</div>
 
 	<a href="#top" id="pageTop">맨 위로가기</a>
-
 
 	<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank"
 		style="display: none; width: 100%; height: 600px;"></iframe>

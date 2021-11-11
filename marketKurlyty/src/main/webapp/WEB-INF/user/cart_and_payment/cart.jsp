@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,7 +15,7 @@
 <link rel="styleSheet" href="style/ItemListStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/cart_and_payment/cart.css">
 </head>
-<body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
+<body class="main-index" oncontextmenu="return false" ondragstart="return false">
 
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
@@ -32,6 +33,8 @@
 							<h3 class="screen_out">장바구니 상품 목록</h3>
 							<form>
 								<div id="cartItemList" class="only_pc" style="min-height: 557px;">
+									<input type="text" name="totalPrice" value="${totalPrice }"/>
+									<input type="text" name="dcPrice" value="${dcPrice }"/>
 									<div class="empty">
 										<div class="cart_item no_item">
 											<div class="cart_select">
@@ -42,15 +45,15 @@
 													<a href="#none" class="btn_delete">선택삭제</a>
 												</div>
 											</div>
-											<c:if test="${frozenList == null && coldList==null && roomList==null }">
-												<div class="inner_empty">
-													<span class="bg"></span>
-													<p class="txt">장바구니에 담긴 상품이 없습니다</p>
-													<div class="btn_submit">
-														<button type="button" class="btn disabled">상품을담아주세요</button>
-													</div>
-												</div>
-											</c:if>
+											<div class="inner_empty">
+												<c:if test="${frozenList == null && coldList==null && roomList==null }">
+														<span class="bg"></span>
+														<p class="txt">장바구니에 담긴 상품이 없습니다</p>
+														<div class="btn_submit">
+															<button type="button" class="btn disabled">상품을담아주세요</button>
+														</div>
+												</c:if>
+											</div>
 											<c:if test="${coldList != null}">
 												<div class="box cold">
 													<div class="tit_box">
@@ -58,11 +61,16 @@
 															<span class="inner_tit"><span class="ico"></span>냉장
 																상품</span>
 														</h4>
-														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+														<button type="button" class="btn_dropup">접기 / 펼치기</button>
 													</div>
 													<ul class="list ">
 														<c:forEach var="item" items="${coldList }" varStatus="count">
-															<li><div class="item">
+															<li id="${item.category_goods_serial}">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price*item.goods_cart_count }" var="lastPrice"/>
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price }" var="usuallyPrice"/>
+																<input type="hidden" id="price" value="${item.goods_last_price }"/>
+																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
+																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
 																		name="chkItem"
@@ -78,17 +86,20 @@
 																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
-																				<span class="selling"><span class="won">원</span></span>
+																				<span class="selling">${lastPrice}<span class="won">원</span></span>
+																				<span class="cost">${usuallyPrice}<span class="won">원</span></span>
 																				<p class="noti"></p>
 																			</div>
 																			<div class="stamper count">
+																				<input type="hidden" id="goodsSerial" value="${item.category_goods_serial }">
 																				<button type="button" class="btn minus off">감소</button>
-																				<input type="number" id="stepperCounter" class="num"
-																					readonly="" value="${item.goods_cart_count }">
+																				<input type="number" id="cartCount" class="num"
+																					readonly="readonly" value="${item.goods_cart_count }">
 																				<button type="button" class="btn plus">추가</button>
 																			</div>
 																		</div>
 																	</div>
+																	<input type="hidden" id="deleteSerial" value="${item.category_goods_serial}">
 																	<button type="button" class="btn_delete">상품 삭제</button>
 																</div>
 															</li>
@@ -104,11 +115,16 @@
 															<span class="inner_tit"><span class="ico"></span>냉동
 																상품</span>
 														</h4>
-														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+														<button type="button" class="btn_dropup">접기 / 펼치기</button>
 													</div>
 													<ul class="list ">
 														<c:forEach var="item" items="${frozenList }" varStatus="count">
-															<li><div class="item">
+															<li id="${item.category_goods_serial}">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price*item.goods_cart_count }" var="lastPrice"/>
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price }" var="usuallyPrice"/>
+																<input type="hidden" id="price" value="${item.goods_last_price }"/>
+																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
+																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
 																		name="chkItem"
@@ -124,17 +140,20 @@
 																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
-																				<span class="selling"><span class="won">원</span></span>
+																				<span class="selling">${lastPrice }<span class="won">원</span></span>
+																				<span class="cost">${usuallyPrice}<span class="won">원</span></span>
 																				<p class="noti"></p>
 																			</div>
 																			<div class="stamper count">
+																				<input type="hidden" id="goodsSerial" value="${item.category_goods_serial }">
 																				<button type="button" class="btn minus off">감소</button>
-																				<input type="number" id="stepperCounter" class="num"
+																				<input type="number" id="cartCount" class="num"
 																					readonly="" value="${item.goods_cart_count }">
 																				<button type="button" class="btn plus">추가</button>
 																			</div>
 																		</div>
 																	</div>
+																	<input type="hidden" id="deleteSerial" value="${item.category_goods_serial}">
 																	<button type="button" class="btn_delete">상품 삭제</button>
 																</div>
 															</li>
@@ -150,11 +169,16 @@
 															<span class="inner_tit"><span class="ico"></span>실온
 																상품</span>
 														</h4>
-														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+														<button type="button" class="btn_dropup">접기 / 펼치기</button>
 													</div>
 													<ul class="list ">
 														<c:forEach var="item" items="${roomList }" varStatus="count">
-															<li><div class="item">
+															<li id="${item.category_goods_serial}">
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price*item.goods_cart_count }" var="lastPrice"/>
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price }" var="usuallyPrice"/>
+																<input type="hidden" id="price" value="${item.goods_last_price }"/>
+																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
+																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
 																		name="chkItem"
@@ -170,18 +194,21 @@
 																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
-																				<span class="selling"><span class="won">원</span></span>
+																				<span class="selling">${lastPrice }<span class="won">원</span></span>
+																				<span class="cost">${usuallyPrice}<span class="won">원</span></span>
 																				<p class="noti"></p>
 																			</div>
 																			<div class="stamper count">
+																				<input type="hidden" id="goodsSerial" value="${item.category_goods_serial }">
 																				<button type="button" class="btn minus off">감소</button>
-																				<input type="number" id="stepperCounter" class="num"
-																					readonly="" value="${item.goods_cart_count }">
+																				<input type="number" id="cartCount" class="num"
+																					readonly value="${item.goods_cart_count }">
 																				<button type="button" class="btn plus">추가</button>
 																			</div>
 																		</div>
 																	</div>
-																	<button type="button" class="btn_delete">상품 삭제</button>
+																	<input type="hidden" id="deleteSerial" value="${item.category_goods_serial}">
+																	<button type="button" class="btn_delete" id="deleteCartItem">상품 삭제</button>
 																</div>
 															</li>
 														</c:forEach>
@@ -207,34 +234,46 @@
 													</div>
 												</div>
 												<div class="amount_view">
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${totalPrice}" var="total"/>
+													<fmt:formatNumber type="number" maxFractionDigits="3" value="${dcPrice-totalPrice }" var="discount"/>
+													<c:if test="${dcPrice < 40000}">
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="3000" var="shippingFee"/>
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="${dcPrice+3000}" var="applicable"/>
+													</c:if>
+													<c:if test="${dcPrice >= 40000}">
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="0" var="shippingFee"/>
+														<fmt:formatNumber type="number" maxFractionDigits="3" value="${dcPrice}" var="applicable"/>
+													</c:if>
+													
+													
 													<dl class="amount">
 														<dt class="tit">상품금액</dt>
 														<dd class="price">
-															<span class="num">0</span><span class="won">원</span>
+															<span id="total" class="num">${total}</span><span class="won">원</span>
 														</dd>
 													</dl>
 													<dl class="amount">
 														<dt class="tit">상품할인금액</dt>
 														<dd class="price">
-															<span class="num">0</span><span class="won">원</span>
+															<span id="discount" class="num">${discount}</span><span class="won">원</span>
 														</dd>
 													</dl>
 													<dl class="amount">
 														<dt class="tit">배송비</dt>
 														<dd class="price">
-															<span class="num">0</span><span class="won">원</span>
+															<span id="shippingFee" class="num">+${shippingFee}</span><span class="won">원</span>
 														</dd>
 													</dl>
 													<dl class="amount lst">
 														<dt class="tit">결제예정금액</dt>
 														<dd class="price">
-															<span class="num">0</span><span class="won">원</span>
+															<span id="applicable" class="num">${applicable}</span><span class="won">원</span>
 														</dd>
 													</dl>
 													<div class="reserve"></div>
 												</div>
 												<div class="btn_submit">
-													<button type="submit" class="btn disabled">상품을 담아주세요</button>
+													<button type="submit" class="btn active">상품을 담아주세요</button><!-- active -->
 												</div>
 												<div class="notice">
 													<span class="txt"><span class="ico">·</span>
@@ -578,5 +617,141 @@
 
 
 		<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe>
+<script>
+$(document).ready(function(){
+	$("button.minus").click(function(){
+		var count=parseInt($(this).siblings("#cartCount").val());
+		var serial=parseInt($(this).siblings("#goodsSerial").val());
+		var part=$(this);
+		
+		var price=parseInt(part.closest("li").find("input#price").val());
+		var oldPrice=parseInt(part.closest("li").find("input#oldPrice").val());
+		
+		var rootLi=$(this).closest("li");
+		var totalPrice = parseInt($("div#cartItemList").find("input[name='totalPrice']").val());
+		var dcPrice=parseInt($("div#cartItemList").find("input[name='dcPrice']").val());
+		if(count>1){
+			$.ajax({
+				url:"cartUpdateCount.do",
+				type:"post",
+				data:{"category_goods_serial":serial,"goods_cart_count":count-1},
+				datatype:"text",
+				success:function(res){
+					part.siblings("#cartCount").val(parseInt(res));
+					rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
+					rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
+					
+					$("div#cartItemList").find("input[name='totalPrice']").val(totalPrice-oldPrice);
+					$("div#cartItemList").find("input[name='dcPrice']").val(dcPrice-price);
+					$("div.cart_result").find("span#total").text((totalPrice-oldPrice).toLocaleString("ko-KR"));
+					$("div.cart_result").find("span#discount").text(((dcPrice-price)-(totalPrice-oldPrice)).toLocaleString("ko-KR"));
+					if((dcPrice-price)>40000){
+						$("div.cart_result").find("span#applicable").text((dcPrice-price).toLocaleString("ko-KR"));
+						$("div.cart_result").find("span#shippingFee").text("0");						
+					}else{
+						$("div.cart_result").find("span#applicable").text((dcPrice-price+3000).toLocaleString("ko-KR"));
+						$("div.cart_result").find("span#shippingFee").text("+3,000");
+					}
+				},
+				error:function(res){
+					alert("예상치 못한 오류 발생");
+				}
+			});
+		}
+	});
+	$("button.plus").click(function(){
+		var count=parseInt($(this).siblings("#cartCount").val());
+		var serial=parseInt($(this).siblings("#goodsSerial").val());
+		var part=$(this);
+		
+		var price=parseInt(part.closest("li").find("input#price").val());
+		var oldPrice=parseInt(part.closest("li").find("input#oldPrice").val());
+		
+		var rootLi=$(this).closest("li");
+		var totalPrice = parseInt($("div#cartItemList").find("input[name='totalPrice']").val());
+		var dcPrice=parseInt($("div#cartItemList").find("input[name='dcPrice']").val());
+		$.ajax({
+				url : "cartUpdateCount.do",
+				type : "post",
+				data : {
+					"category_goods_serial" : serial,
+					"goods_cart_count" : count + 1
+				},
+				datatype : "text",
+				success : function(res) {
+					part.siblings("#cartCount").val(parseInt(res));
+					rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
+					rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
+					
+					$("div#cartItemList").find("input[name='totalPrice']").val(totalPrice+oldPrice);
+					$("div#cartItemList").find("input[name='dcPrice']").val(dcPrice+price);
+					$("div.cart_result").find("span#total").text((totalPrice+oldPrice).toLocaleString("ko-KR"));
+					$("div.cart_result").find("span#discount").text(((dcPrice+price)-(totalPrice+oldPrice)).toLocaleString("ko-KR"));
+					if((dcPrice+price)>40000){
+						$("div.cart_result").find("span#applicable").text((dcPrice+price).toLocaleString("ko-KR"));
+						$("div.cart_result").find("span#shippingFee").text("0");
+					}else{
+						$("div.cart_result").find("span#applicable").text((dcPrice+price+3000).toLocaleString("ko-KR"));
+						$("div.cart_result").find("span#shippingFee").text("+3,000");
+					}
+					
+				},
+				error : function(res) {
+					alert("예상치 못한 오류 발생");
+				}
+			});
+
+		});
+	$("button.btn_delete").click(function(){
+		if(confirm("상품을 장바구니에서 삭제하시겠습니까?")==true){
+			var serial = parseInt($(this).siblings("#deleteSerial").val());
+			var part=$(this);
+			var list=$(this).closest("ul");
+			
+			//제품 수량
+			var goodsCount=parseInt($(this).siblings("div.goods").find("input#cartCount")val());
+			
+			//제품 개인의 가격 old:할인전 가격
+			var price=parseInt(part.closest("li").find("input#price").val());
+			var oldPrice=parseInt(part.closest("li").find("input#oldPrice").val());
+			
+			//장바구니 제품 올 가격
+			var totalPrice = parseInt($("div#cartItemList").find("input[name='totalPrice']").val());
+			var dcPrice=parseInt($("div#cartItemList").find("input[name='dcPrice']").val());
+			$.ajax({
+				url:"cartDelete.do",
+				type:"post",
+				data:{"category_goods_serial" : serial},
+				datatype:"text",
+				success:function(res){
+					part.closest("li").remove();
+					
+					if(list.children().length==0){
+						list.closest("div.box").remove();
+					}
+					if($("#cartItemList").find("ul").length==0){
+						$(".inner_empty").html("<div class='inner_empty'><span class='bg'></span><p class='txt'>장바구니에 담긴 상품이 없습니다</p><div class='btn_submit'><button type='button' class='btn disabled'>상품을담아주세요</button></div></div>");
+					}
+				},
+				error:function(res){
+					alert("예상치 못한 오류 발생");
+				}
+			});
+		}
+	})
+})
+$("button.btn_dropup").click(function(){
+		var partDiv = $(this).closest("div");
+		if($(this).attr("class")=="btn_dropup"){
+			partDiv.nextAll("ul").css("display","none");
+			$(this).addClass("off");
+		}
+		else{
+			partDiv.nextAll("ul").css("display","block");
+			$(this).removeClass("off");
+		}
+});
+
+</script>
 </body>
 </html>
