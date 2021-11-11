@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<div id="layoutSidenav">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
@@ -32,8 +29,8 @@
 						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">상품조회/수정</a>
-								<a class="nav-link" href="layout-sidenav-light.html">상품/등록</a>
+								<a class="nav-link" href="registration.mdo">상품조회/수정</a>
+								<a class="nav-link" href="registration.mdo">상품/등록</a>
 							</nav>
 						</div>
 						
@@ -87,9 +84,9 @@
 						</a>
 						<div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">상위카테고리</a>
-								<a class="nav-link" href="layout-sidenav-light.html">중위카테고리</a>
-								<a class="nav-link" href="layout-sidenav-light.html">하위카테고리</a>
+								<a class="nav-link" href="admin_categoryMainList.mdo">1차카테고리(메인)</a>
+								<a class="nav-link" href="admin_categorySubList.mdo">2차카테고리(서브)</a>
+								<a class="nav-link" href="admin_categoryGoodsList.mdo">3차카테고리(상품)</a>
 							</nav>
 						</div>
 
@@ -107,11 +104,10 @@
 						<div class="collapse" id="collapseLayouts4"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="admin_noticeList.mdo">공지사항</a> <a
-
-									class="nav-link" href="admin_FAQList.mdo">자주하는 질문</a> <a
-
-									class="nav-link" href="layout-sidenav-light.html">1:1문의</a>
+								<a class="nav-link" href="admin_noticeList.mdo">공지사항</a>
+								<a class="nav-link" href="admin_FAQList.mdo">자주하는 질문</a>
+								<a class="nav-link" href="admin_personalQnaWaitList.mdo">1:1문의-답변대기</a>
+								<a class="nav-link" href="admin_personalQnaFinishList.mdo">1:1문의-답변완료</a>									
 							</nav>
 						</div>
 						<!-- 게시글 -->
@@ -134,9 +130,29 @@
 									class="nav-link" href="layout-sidenav-light.html">뮨의</a>
 							</nav>
 						</div>
+		
+						<!-- 리뷰관리 -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapseLayouts6" aria-expanded="false"
+							aria-controls="collapseLayouts">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 마케팅 관리
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseLayouts6"
+							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="admin_bannerList.mdo">배너</a> <a
+									class="nav-link" href="layout-sidenav-light.html">쿠폰</a>
+							</nav>
+						</div>
 
 
-						<!--회원/관리자  -->
+
+				<!--회원/관리자  -->
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapsePages" aria-expanded="false"
 							aria-controls="collapsePages">
@@ -163,7 +179,7 @@
 									data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="admin_userList.mdo">회원관리</a>
-										<a class="nav-link" href="password.html">약관관리</a>
+										<a class="nav-link" href="terms_agreeList.mdo">약관관리</a>
 									</nav>
 								</div>
 								<!--회원 -->
@@ -186,6 +202,8 @@
 									</nav>
 								</div>
 								<!-- 매니저관리 -->
+								
+
 
 							</nav>
 						</div>

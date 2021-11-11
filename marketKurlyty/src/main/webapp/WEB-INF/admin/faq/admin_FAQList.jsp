@@ -1,19 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin NoticeList</title>
+<title>??????????????</title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+ <style type="text/css">
+.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}	
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+ </style>
 </head>
 <body class="sb-nav-fixed">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+<div id="layoutSidenav">
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -21,55 +32,43 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">공지사항</h1>
+				<h1 class="mt-4">자주하는질문</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">공지사항 목록</a></li>
+					<li class="breadcrumb-item"><a href="index.html">자주하는 질문 목록</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
-					<div class="card-body">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net/">official
-							DataTables documentation</a> .
-					</div>
-				</div>
-				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> <input type="button" value="공지사항 등록하기" onclick="location.href='admin_noticeWrite.mdo'">
-					</div>
+					<div class="card-header"  align="right">
+							<div class="col three">
+								<a href="admin_FAQWrite.mdo" class="btn1 btn-dark">자주하는질문 등록</a>
+							</div>
+						</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
 									<th>번호</th>
-									<th>작성자</th>
-									<th>내용</th>
-									<th>작성일</th>
-									<th>조회</th>
+									<th>카테고리</th>
+									<th>제목</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>번호</th>
+									<th>카테고리</th>
 									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>조회</th>
 								</tr>
 							</tfoot>
 							<tbody>
-							<c:forEach var="noticeList" items="${noticeList }">
+								<c:forEach var="faq" items="${faqList }">
 								<tr>
-									<td>${noticeList.notice_serial }</td>
-									<td>${noticeList.notice_id }</td>
-									<td>${noticeList.notice_title }</td>
-									<td><fmt:formatDate value="${noticeList.notice_date }" pattern="yyyy-MM-dd [E]"/></td>
-									<td>${noticeList.notice_hit }</td>
+									<td>${faq.rownum }</td>
+									<td>${faq.faq_category }</td>
+									<td>${faq.faq_title }</td>
 									<td>
-										<input type="button" onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'" value="수정">
+										<input type="button" onclick="location.href='admin_FAQ.mdo?faq_serial=${faq.faq_serial}'" value="수정">
 									</td>
-									</tr>
+								</tr>
 							</c:forEach>
 							</tbody>
 						</table>
@@ -78,7 +77,8 @@
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- Main -->
 	
