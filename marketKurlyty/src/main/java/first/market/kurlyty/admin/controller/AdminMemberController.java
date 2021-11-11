@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import first.market.kurlyty.admin.service.AdminService;
+import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
 
@@ -38,7 +38,6 @@ public class AdminMemberController {
 	@RequestMapping("updateProc.mdo")
 	public String updateManager(AdminVO admin) {
 		int sucess = 0;
-		System.out.println(admin.getAdmin_id());
 		sucess = adminService.updateManager(admin);
 		if(sucess!=0) {
 			return "redirect:admin_adminList.mdo";
@@ -58,10 +57,87 @@ public class AdminMemberController {
 			}
 		}
 		
-//		@RequestMapping("updateAdminUser.mdo")
-//		public String updateUser(AdminUserVO adminuserVO, Model model) {
-//				model.addAttribute("updateUser", adminService.getAdminUser(adminuserVO));
-//			return "admin_updateUser";
-//		}
+		@RequestMapping("getUser.mdo")
+		public String getUser(AdminUserVO user, Model model) {
+			model.addAttribute("getUser", adminService.getUser(user));
+			return "admin_updateUser";
+		}
 		
+		//회원 수정
+		@RequestMapping("updateUser.mdo")
+		public String updateUser(AdminUserVO user) {
+			int success = 0;
+			success = adminService.updateUser(user);
+			if(success !=0) {
+				return "redirect:admin_userList.mdo";
+		}else {
+			return "redirect:getUser.mdo";
+		}
+}
+		//회원 삭제
+		@RequestMapping("deleteUser.mdo")
+		public String deleteUser(AdminUserVO user) {
+			int success = 0;
+			success = adminService.deleteUser(user);
+			if(success !=0) {
+				return "redirect:admin_userList.mdo";
+		}else {
+			return "redirect:admin_userList.mdo";
+		}
+}
+		//약관관리 리스트
+		@RequestMapping("terms_agreeList.mdo")
+		public String getTermsAgreeList(AdminTermsAgreementVO agree, Model model) {
+			model.addAttribute("agreeList", adminService.getTermsAgree(agree));
+			return "admin_terms_agreementList";
+		}
+		//약관 등록 이동
+		@RequestMapping("admin_terms.mdo")
+		public String terms(AdminTermsAgreementVO agree) {
+			return "admin_terms";
+		}
+		//약관 등록 
+		@RequestMapping("insertTerms.mdo")
+		public String insertTerms(AdminTermsAgreementVO agree) {
+			int success = 0;
+			success = adminService.insertTerms(agree);
+			if(success != 0) {
+				return "redirect:terms_agreeList.mdo";
+				}else {
+					return "redirect:admin_terms.mdo";
+				}
+		}
+		//약관 수정 화면
+		@RequestMapping("termsDetails.mdo")
+		public String getTerms(AdminTermsAgreementVO agree, Model model) {
+			model.addAttribute("getTerms", adminService.getTerms(agree));
+			System.out.println(agree.getTerms_serial());
+			return "admin_termsDetails";
+		}
+		//약관 수정
+		@RequestMapping("updateTerms.mdo")
+		public String updateTerms(AdminTermsAgreementVO agree) {
+				int success = 0;
+				success = adminService.deleteTerms(agree);
+				if(success != 0) {
+					return "redirect:terms_agreeList.mdo";
+				}else {
+					return "redirect:termsDetails.mdo";
+				}
+		}
+		//약관 삭제
+		@RequestMapping("deleteTerms.mdo")
+		public String deleteTerms(AdminTermsAgreementVO agree) {
+			int success = 0;
+			success = adminService.deleteTerms(agree);
+			if(success != 0) {
+				return "redirect:terms_agreeList.mdo";
+			}else {
+				return "redirect:termDetail.mdo";
+			}
+		}
+		@RequestMapping("registration.mdo")
+		public String registration() {
+			return "admin_registration";
+		}
 }
