@@ -115,7 +115,7 @@
 															<span class="inner_tit"><span class="ico"></span>냉동
 																상품</span>
 														</h4>
-														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+														<button type="button" class="btn_dropup">접기 / 펼치기</button>
 													</div>
 													<ul class="list ">
 														<c:forEach var="item" items="${frozenList }" varStatus="count">
@@ -169,7 +169,7 @@
 															<span class="inner_tit"><span class="ico"></span>실온
 																상품</span>
 														</h4>
-														<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+														<button type="button" class="btn_dropup">접기 / 펼치기</button>
 													</div>
 													<ul class="list ">
 														<c:forEach var="item" items="${roomList }" varStatus="count">
@@ -707,6 +707,17 @@ $(document).ready(function(){
 			var serial = parseInt($(this).siblings("#deleteSerial").val());
 			var part=$(this);
 			var list=$(this).closest("ul");
+			
+			//제품 수량
+			var goodsCount=parseInt($(this).siblings("div.goods").find("input#cartCount")val());
+			
+			//제품 개인의 가격 old:할인전 가격
+			var price=parseInt(part.closest("li").find("input#price").val());
+			var oldPrice=parseInt(part.closest("li").find("input#oldPrice").val());
+			
+			//장바구니 제품 올 가격
+			var totalPrice = parseInt($("div#cartItemList").find("input[name='totalPrice']").val());
+			var dcPrice=parseInt($("div#cartItemList").find("input[name='dcPrice']").val());
 			$.ajax({
 				url:"cartDelete.do",
 				type:"post",
@@ -714,6 +725,7 @@ $(document).ready(function(){
 				datatype:"text",
 				success:function(res){
 					part.closest("li").remove();
+					
 					if(list.children().length==0){
 						list.closest("div.box").remove();
 					}
