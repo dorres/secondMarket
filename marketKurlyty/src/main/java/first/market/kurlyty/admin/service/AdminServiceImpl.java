@@ -260,6 +260,11 @@ public class AdminServiceImpl implements AdminService {
 	public int insertCategory1(AdminCategoryMainVO category1) {
 		return adminDao.insertCategory1(category1);
 	}
+
+	@Override
+	public int getCategory1Column() {
+		return adminDao.getCategory1Column();
+	}
 	
 	
 

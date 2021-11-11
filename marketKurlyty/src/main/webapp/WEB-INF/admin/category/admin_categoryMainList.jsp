@@ -68,10 +68,11 @@
 								<tr>
 									<td>${main.category_main_serial }</td>
 									<td>${main.category_main_name }</td>
-									<td>${main.category_main_icon_black }</td>
-									<td>${main.category_main_icon_color }</td>
+									<td align="center"><img alt="메인 카테고리 아이콘 검정" src=" ${main.category_main_icon_black }"></td>
+									<td align="center"><img alt="메인 카테고리 아이콘 컬러" src="${main.category_main_icon_color }"></td>
 									<td>
-										<input type="button" onclick="location.href='admin_FAQ.mdo?faq_serial=${main.category_main_serial }'" value="수정">
+										<input type="button" onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" value="수정">
+										<input type="button" onclick="location.href='admin_categoryMainDelete.mdo?category_main_serial=${main.category_main_serial }'" value="삭제">
 									</td>
 								</tr>
 								</c:forEach>

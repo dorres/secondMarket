@@ -207,7 +207,11 @@
  	 </select>
 	
 	<insert id="insertCategory1" parameterType="category1">
-	 	 	INSERT INTO MK_CATEGORY_MAIN VALUES (DEFAULT, #{category_main_name}, #{category_main_icon_black}, #{category_main_icon_color});
+	 	 	INSERT INTO MK_CATEGORY_MAIN VALUES (#{category_main_serial}, #{category_main_name}, #{category_main_icon_black}, #{category_main_icon_color});
  	 </insert>
+ 	 
+ 	 <select id="getCategory1Column" resultType="int">
+ 	 	SELECT COUNT(CATEGORY_MAIN_SERIAL) FROM MK_CATEGORY_MAIN
+ 	 </select>
 	<!-- 관리자 1차카테고리 -->
 </mapper>

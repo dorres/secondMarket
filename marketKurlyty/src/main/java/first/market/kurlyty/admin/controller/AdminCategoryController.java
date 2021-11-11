@@ -2,6 +2,7 @@ package first.market.kurlyty.admin.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import first.market.kurlyty.admin.service.AdminService;
@@ -41,31 +43,76 @@ public class AdminCategoryController {
 	public String categoryMainWrite() {
 		return "category/admin_categoryMainWrite";
 	}
-	
-	@RequestMapping("admin_categoryMainInsert.mdo")
+	//메인 카테고리 등록처리
+	@RequestMapping(value ="admin_categoryMainInsert.mdo" ,produces="html/text; charset=utf-8")
+	@ResponseBody
 	public String categoryMainInsert(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
 		int success =0;
-		for(MultipartFile file: files) {
+		boolean result = false;
+		DecimalFormat df = new DecimalFormat("000");
+		
+		String key1 = "categoryMain/" + files[0].getOriginalFilename();
+		String key2 = "categoryMain/" + files[1].getOriginalFilename();
+		
+		category1.setCategory_main_icon_black("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key1);
+		category1.setCategory_main_icon_color("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key2);
+		category1.setCategory_main_serial("M" + df.format(adminService.getCategory1Column()+1));				
+		
+		List<AdminCategoryMainVO> MainList = adminService.getCategory1List();
+		for(AdminCategoryMainVO main : MainList) {
+			if(main.getCategory_main_icon_black().equals(category1.getCategory_main_icon_black()) ||
+					main.getCategory_main_icon_color().equals(category1.getCategory_main_icon_color()) ) {
+				result = false;
+				break;
+			}else
+				result = true;
+		}//end for
+		
+		if(result) {
 			try {
-				String key = "categoryMain/"+file.getOriginalFilename();
-				category1.setCategory_main_icon_black("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key);
 				success = adminService.insertCategory1(category1);
-				//여기 수정해야함(이렇게 하면 db에 업로드 2번중 1번만 성공해도 에러가 아님ㅜㅜ
-				
-				InputStream is = file.getInputStream();
-				String contentType = file.getContentType(); 
-				long contentLength = file.getSize();
-				awsS3.upload(is, key, contentType, contentLength);
-				
-				
-				}catch (IOException e) {e.printStackTrace();}
+		
+				if(success !=0) {
+					//Icon_black s3업로드
+					InputStream is = files[0].getInputStream();
+					String contentType = files[0].getContentType(); 
+					long contentLength = files[0].getSize();
+					awsS3.upload(is, key1, contentType, contentLength);
+					
+					//Icon_color s3업로드
+					is = files[1].getInputStream();
+					contentType = files[1].getContentType(); 
+					contentLength = files[1].getSize();
+					awsS3.upload(is, key2, contentType, contentLength);
+				}
+			}catch (IOException e) {e.printStackTrace();}
+			if(success !=0) 
+				return "redirect:admin_categoryMainList.mdo";
+			else
+				return "redirect:admin_categoryMainWrite.mdo";
+			
+		}else {
+			 return "{\"message\":\"중복된 이미지가 있습니다.\",\"usedId\":\"불가능\"}";
 		}
+	}
+	
+	@RequestMapping("admin_categoryMainDelete.mdo")
+	public String categoryMainDelete(AdminCategoryMainVO category1) {
+		int success =0;
+
+		
+		
+		
+		
 		
 		if(success !=0) 
 			return "redirect:admin_categoryMainList.mdo";
 		else
 			return "redirect:admin_categoryMainWrite.mdo";
 	}
+	
+	
+	
 	//-----------------------------------------------------
 	//서브 카테고리 리스트
 	@RequestMapping("admin_categorySubList.mdo")

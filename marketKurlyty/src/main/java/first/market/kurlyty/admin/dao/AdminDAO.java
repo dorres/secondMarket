@@ -221,5 +221,8 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertCategory1",category1);
 	}
 	
+	public int getCategory1Column() {
+		return sqlSession.selectOne("AdminDAO.getCategory1Column");
+	}
 	
 }
