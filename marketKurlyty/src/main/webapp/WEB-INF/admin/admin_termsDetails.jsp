@@ -39,15 +39,14 @@
 						<input type="text" class="*" name="terms_id" value="${getTerms.terms_id }"/></p>
 						약관 필수여부<br>
 						<div>
- 							 <input type="text" name="terms_status" readonly="readonly" value="${getTerms.terms_agree_status}"/>
- 							 
+ 							 <input type="text" name="terms_agree_status" readonly="readonly" value="${getTerms.terms_agree_status}"/>
 						</div>
 							약관내용
 							<div>
 								<textarea rows="100" cols="100" name="terms_content">${getTerms.terms_content}</textarea>
 								<div>
 									<input type="submit" value="수정"/>
-									<input type="submit" value="삭제" onclick="location.href=javascript:delete_check('deleteTerms.mdo?terms_serial=${getTerms.terms_serial}')"/>
+									<input type="button" value="삭제" onclick="location.href=javascript:delete_check('deleteTerms.mdo?terms_serial=${getTerms.terms_serial}')"/>
 									<input type="button" value="목록" onclick="location.href='terms_agreeList.mdo'"/>
 								</div>
 							</div>

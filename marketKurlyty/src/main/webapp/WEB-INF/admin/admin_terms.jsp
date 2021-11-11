@@ -27,7 +27,7 @@
 				<!-- 여기에 추가하면 가운데 페이지 추가하면 됩니다~~~~-->
 					<h1>약관 등록</h1>
 					<h6>약관 등록하는 페이지</h6>
-					<form action="insertTerms.mdo" method="post">
+					<form action="insertTerms.mdo" method="get">
 					<table>
 						<p>약관번호<br>
 						<input type="text" class="*" name="terms_serial" placeholder="번호를 입력해주세요"/></p>
@@ -35,8 +35,8 @@
 						<input type="text" class="*" name="terms_id" placeholder="약관명을 입력해주세요"/></p>
 						약관 필수여부<br>
 						<div>
- 							 <input type="radio" name="terms_status" value="true"/>필수
- 							 <input type="radio" name="terms_status" value="false"/>선택
+ 							 <input type="radio" name="terms_agree_status" value="true"/>필수
+ 							 <input type="radio" name="terms_agree_status" value="false"/>선택
 						</div>
 							약관내용
 							<div>

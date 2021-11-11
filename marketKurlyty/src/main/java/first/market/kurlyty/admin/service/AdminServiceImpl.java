@@ -102,7 +102,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//약관 수정
-	public int updateTeerms(AdminTermsAgreementVO agree) {
+	public int updateTerms(AdminTermsAgreementVO agree) {
 		return adminDao.updateTerms(agree);
 	}
 	
