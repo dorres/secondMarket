@@ -211,3 +211,14 @@
 		background-size: 24px 24px
 	}
 }
+.section_destination .tbl_type1 tr:first-child td, .section_destination .tbl_type1 td {
+    height: 90
+px
+;
+    font-size: 14px;
+    color: #333;
+    line-height: 22px;
+    letter-spacing: -0.4px;
+    vertical-align: middle;
+    text-align: center;
+}
