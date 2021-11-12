@@ -229,7 +229,5 @@
  	 <select id="getCategory1" resultType="category1" parameterType="category1">
  	 	SELECT * FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_SERIAL = #{category_main_serial}
  	 </select>
- 	 
- 	 
 	<!-- 관리자 1차카테고리 -->
 </mapper>

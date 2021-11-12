@@ -35,16 +35,61 @@ public class AdminCategoryController {
 	}
 	//메인 카테고리 세부사항
 	@RequestMapping("admin_categoryMain.mdo")
-	public String categoryMain() {
+	public String categoryMain(Model model, AdminCategoryMainVO cetogory1) {
+		model.addAttribute("category",adminService.getCategory1(cetogory1));
 		return "category/admin_categoryMain";
-	} //이거 할지 말지 생각해보자ㅋㅋㅋ
+	} 
 	
 	//메인 카테고리 등록페이지
 	@RequestMapping("admin_categoryMainWrite.mdo")
 	public String categoryMainWrite() {
 		return "category/admin_categoryMainWrite";
 	}
-	//메인 카테고리 등록처리
+	
+	//메인 카테고리(update)
+	@RequestMapping("admin_categoryMainUpdate.mdo")
+	public String categoryMainUpdate(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
+		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/categoryMain/";
+//		
+//		
+//		
+//		
+//		
+//		
+//		
+//		
+//		
+//		int success =0;
+//		int result1 =0;
+//		int result2 = 0;
+//		category1.setCategory_main_icon_black(files[0].getOriginalFilename());
+//		category1.setCategory_main_icon_color(files[1].getOriginalFilename());
+//		result1 = adminService.getIconBlack(category1);
+//		result2= adminService.getIconColor(category1);
+//		
+//		if(files[0].getOriginalFilename() !=null) {
+//			if(result1 !=0) 
+//				category1.setCategory_main_icon_black(awsPath + files[0].getOriginalFilename()+ "(" +result1 + ")" );
+//			else
+//				category1.setCategory_main_icon_color(awsPath + files[0].getOriginalFilename());
+//		}else if(files[1].getOriginalFilename() !=null){
+//			if(result2 !=0) 
+//				category1.setCategory_main_icon_color(awsPath + files[1].getOriginalFilename() + "(" +result2 + ")" );
+//			else
+//				category1.setCategory_main_icon_color(awsPath + files[1].getOriginalFilename());
+//		}
+//		success = adminService.insertCategory1(category1);
+//		//↑↑↑↑↑↑여기까지가 db작업
+		
+		
+		
+		
+		return "category/admin_categoryMainList";
+	}
+	
+	
+	
+	//메인 카테고리(insert)
 	@RequestMapping("admin_categoryMainInsert.mdo")
 	public String categoryMainInsert(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
 		int success =0;
@@ -117,12 +162,10 @@ public class AdminCategoryController {
 		//
 		//
 		//여기 수정해야함 success값으로 success을 활용안함 지금하기 너무 졸려ㅜㅜ
-		//
+		// 에러페이지??
 		//
 		
 	}
-	
-	
 	
 	//-----------------------------------------------------
 	//서브 카테고리 리스트
