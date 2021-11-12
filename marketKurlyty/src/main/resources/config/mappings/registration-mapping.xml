@@ -5,8 +5,12 @@
  
  <mapper namespace="RegistDAO">
 	<insert id="insertRegist" parameterType="regist">
-		INSERT INTO MK_GOODS_SELL VALUES(#{goods_sell_serial}, #{category_main_serial},#{category_sub_serial),#{category_goods_serial}
-		#{goods_sell_price},#{goods_sell_receiving_date},#{goods_sell_receiving_quantity},#{goods_sell_stock_quantity},#{goods_sell_exp_date}
-		#{goods_sell_promotion_serial},#{goods_sell_status},#{goods_sell_discountrate});
+		INSERT INTO MK_GOODS_DETAIL VALUES(#{goods_detail_serial},#{categoty_main_serial},#{categoty_sub_serial},#{categoty_goods_serial},
+		#{goods_detail_price},#{goods_detail_stock_quantity},#{goods_detail_stock_notification},#{goods_detail_promotion_serial},#{goods_detail_status},#{goods_detail_dicountrate});
 	</insert> 
+	
+	<select id="getGoods" resultType="regist">
+		SELECT * FROM MK_GOODS_DETAIL;
+	</select>
+	
  </mapper>

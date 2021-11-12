@@ -54,6 +54,9 @@ public interface AdminService {
 	
 	//상품 등록
 	public int inserGoods(AdminRegistVO regist);
+	
+	//상품조회리스트
+	public List<AdminRegistVO> getGoods(AdminRegistVO regist);
 	//=================================================================
 
 	//공지사항 리스트

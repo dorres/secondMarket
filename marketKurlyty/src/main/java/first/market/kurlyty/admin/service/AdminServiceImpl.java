@@ -103,23 +103,33 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//약관 수정
+	@Override
 	public int updateTerms(AdminTermsAgreementVO agree) {
 		return adminDao.updateTerms(agree);
 	}
 	
 	//약관 정보
+	@Override
 	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree) {
 		return adminDao.getTerms(agree);
 	}
 	
 	//약관 삭제
+	@Override
 	public int deleteTerms(AdminTermsAgreementVO agree) {
 		return adminDao.deleteTerms(agree);
 	}
 	
 	//상품 등록
+	@Override
 	public int inserGoods(AdminRegistVO regist) {
 		return adminDao.insertGoods(regist);
+	}
+	
+	//상품조회
+	@Override
+	public List<AdminRegistVO> getGoods(AdminRegistVO regist) {
+		return adminDao.getGoods(regist);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트

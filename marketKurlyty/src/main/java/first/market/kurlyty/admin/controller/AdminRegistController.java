@@ -2,6 +2,7 @@ package first.market.kurlyty.admin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import first.market.kurlyty.admin.service.AdminService;
@@ -29,5 +30,13 @@ public class AdminRegistController {
 		}else {
 			return "redirect:registration.mdo";
 		}
+	}
+	
+	//상품조회
+	@RequestMapping("getGoodsList.mdo")
+	public String getGoods(AdminRegistVO regist, Model model) {
+		model.addAttribute("goodsList", adminService.getGoods(regist));
+		System.out.println(regist.getCategory_main_serial());
+		return "registration/admin_goodsList";
 	}
 }

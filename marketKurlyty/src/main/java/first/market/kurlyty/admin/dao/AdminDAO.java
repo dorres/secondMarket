@@ -91,7 +91,12 @@ public class AdminDAO {
 	
 	//상품등록
 	public int insertGoods(AdminRegistVO regist) {
-		return sqlSession.insert("RegistDAO.insertRegist");
+		return sqlSession.insert("RegistDAO.insertRegist", regist);
+	}
+	
+	//상품조회리스트
+	public List<AdminRegistVO> getGoods(AdminRegistVO regist) {
+		return sqlSession.selectList("RegistDAO.getGoods", regist);
 	}
 	//================================================================
 
