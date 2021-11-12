@@ -31,12 +31,15 @@
 			<mvc:exclude-mapping path="/index.do"/>
 			<mvc:exclude-mapping path="/join.do"/>
 			<mvc:exclude-mapping path="/login.do"/>
+			<mvc:exclude-mapping path="/kakaoLogin.do"/>
 			<mvc:exclude-mapping path="/emailCheck.do"/>
 			<mvc:exclude-mapping path="/idCheck.do"/>
 			<mvc:exclude-mapping path="/categoryData.do"/>
 			<mvc:exclude-mapping path="/smsCheck.do"/>
 			<mvc:exclude-mapping path="/loginProc.do"/>
 			<mvc:exclude-mapping path="/categoryGoods.do"/>
+			<mvc:exclude-mapping path="/joinProc.do"/>
+			<mvc:exclude-mapping path="/cart*.do"/>
 			<bean id="LoginInterceptor" class="first.market.kurlyty.interceptor.UserLoginInterceptor"/> 
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 	$(document).ready(function(){
 		$.ajax({
@@ -72,6 +73,20 @@
 			$(this).css("display","none");
 		});
 		
+		$("#userMenu .menu_user").hover(function(){
+			$(this).find(".sub").css("display","block").css("opacity","1");
+			$(this).find(".sub").css("height","225px").css("z-index","200").css("position","absolute");
+		});
+		$("#userMenu .menu_user").mouseleave(function(){
+			$(this).find(".sub").css("display","none");
+		});
+		$("#userMenu .lst").hover(function(){
+			$(this).find(".sub").css("display","block").css("opacity","1");
+			$(this).find(".sub").css("height","156px").css("z-index","200").css("position","absolute");
+		});
+		$("#userMenu .lst").mouseleave(function(){
+			$(this).find(".sub").css("display","none");
+		});
 	});
 	
 	
@@ -143,7 +158,7 @@ ul.sub_on li.on{
 </style>
 <div id="header">
 	<!-- 헤더부분 -->
-
+	
 	<div class="bnr_header" id="top-message">
 		<a
 			href="https://www.kurly.com/shop/event/kurlyEvent.php?htmid=event/join/join_211006"
@@ -162,22 +177,45 @@ ul.sub_on li.on{
 	<!-- 우측 최상단 메뉴 -->
 	<div id="userMenu">
 		<ul class="list_menu">
-			<li class="menu none_sub menu_join"><a
-				href="join.do" class="link_menu">회원가입</a></li>
-			<li class="menu none_sub menu_login"><a
-				href="/shop/member/login.php" class="link_menu">로그인</a> <!----></li>
+			<c:if test="${userId eq null}">
+				<li class="menu none_sub menu_join"><a
+					href="join.do" class="link_menu">회원가입</a></li>
+				<li class="menu none_sub menu_login"><a
+					href="login.do" class="link_menu">로그인</a> <!----></li>
+			</c:if>
+			<c:if test="${userId != null}">
+				<li class="menu menu_user"><a class="link_menu grade_comm" href="mykurly.do"><span
+						class="ico_grade grade6">웰컴</span> <span class="txt"><span
+							class="name">${userName }</span><span class="sir">님</span></span> <!----></a>
+					<ul class="sub">
+						<li><a href="/shop/mypage/mypage_orderlist.php">주문 내역</a></li>
+						<li><a href="#none"
+							onclick="KurlyTrackerLink('/shop/mypage/mypage_gift.php', 'select_my_kurly_gift_list')">선물
+								내역</a></li>
+						<li><a href="#none"
+							onclick="KurlyTrackerLink('/shop/mypage/destination/list.php', 'select_shipping_address_list')">배송지
+								관리</a></li>
+						<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
+						<li><a>상품 문의</a></li>
+						<li><a href="#none"
+							onclick="KurlyTrackerLink('/shop/mypage/mypage_emoney.php', 'select_my_kurly_point_history', {selection_type: 'dropdown'})">적립금</a>
+							<!----></li>
+						<li><a href="#none"
+							onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'dropdown'})">쿠폰</a>
+							<!----></li>
+						<li><a href="infoModify1.do">개인 정보 수정</a></li>
+						<li><a href="logoutProc.do">로그아웃</a></li>
+					</ul></li>
+			</c:if>
 			<!---->
-			<li class="menu lst"><a href="/shop/board/list.php?id=notice"
+			<li class="menu lst"><a href="notice.do"
 				class="link_menu">고객센터</a>
 				<ul class="sub">
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/board/list.php?id=notice', 'select_my_kurly_notice_list')">공지사항</a>
+					<li><a href="notice.do">공지사항</a>
 					</li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/service/faq.php', 'select_my_kurly_frequently_qna')">자주하는
+					<li><a href="faq.do">자주하는
 							질문</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_my_kurly_personal_inquiry_history')">1:1
+					<li><a href="personalQnaBoard.do">1:1
 							문의</a></li>
 					<li><a href="#none"
 						onclick="KurlyTrackerLink('/shop/main/html.php?htmid=mypage/bulk_order.htm', 'select_my_kurly_bulk_order')">대량주문
@@ -246,7 +284,7 @@ ul.sub_on li.on{
 					</div>
 					<div class="cart_count">
 						<div class="inner_cartcount">
-							<a href="/shop/goods/goods_cart.php" class="btn_cart"> <span
+							<a href="cartPage.do" class="btn_cart"> <span
 								class="screen_out">장바구니</span> <span
 								class="num realtime_cartcount" id="cart_item_count"></span>
 							</a>

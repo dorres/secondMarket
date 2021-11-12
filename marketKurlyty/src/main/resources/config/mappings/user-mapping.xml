@@ -24,4 +24,27 @@
  		INSERT INTO MK_USER_ADDRESS_LIST VALUES
  		(default,#{user_address1},#{user_address2},#{user_zipcode},#{user_id})
  	</insert>
+ 	<update id="updateUser" parameterType="user">
+	 	UPDATE mk_user SET 
+	 	<if test="user_new_pw != '' and user_new_pw != null"> <!-- user_pw가 널이 아닐때 -->
+	 	user_pw = #{user_pw}, 
+	 	</if>
+	 	<if test="user_name != '' and user_name != null">
+	 	user_name = #{user_name}, 
+	 	</if>
+	 	<if test="user_email != '' and user_email != null">
+	 	user_email = #{user_email}, 
+	 	</if>
+	 	<if test="user_phone != '' and user_phone != null">
+	 	user_phone = #{user_phone}, 
+	 	</if>
+	 	user_sex = #{user_sex}, 
+	 	<if test="user_birth != '' and user_birth != null">
+	 	user_birth = #{user_birth} 
+	 	</if>
+	 	WHERE user_id = #{user_id}
+ 	</update>
+ 	<delete id="deleteUser" parameterType="user">
+ 	
+ 	</delete>
 </mapper>

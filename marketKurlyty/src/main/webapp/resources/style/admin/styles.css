@@ -11,7 +11,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --bs-pink: #EB7EA7;
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -49,7 +48,7 @@
   --bs-warning-rgb: 255, 193, 7;
   --bs-danger-rgb: 220, 53, 69;
   --bs-light-rgb: 248, 249, 250;
-  --bs-dark-rgb: 128, 0, 128;
+  --bs-dark-rgb: 95, 0, 128;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
@@ -211,7 +210,7 @@ strong {
 }
 
 small, .small {
-  font-size: 1em;
+  font-size: 0.875em;
 }
 
 mark, .mark {
@@ -1177,7 +1176,7 @@ progress {
 
   .col-md-6 {
     flex: 0 0 auto;
-    width: 33%;
+    width: 50%;
   }
 
   .col-md-7 {
@@ -1588,7 +1587,7 @@ progress {
 
   .col-xl-3 {
     flex: 0 0 auto;
-    width: 30%;
+    width: 25%;
   }
 
   .col-xl-4 {
@@ -3047,8 +3046,8 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #FF6699;
-  border-color: #FF6699;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
 }
 .btn-primary:hover {
   color: #fff;
@@ -4069,7 +4068,7 @@ textarea.form-control-lg {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -4561,8 +4560,6 @@ textarea.form-control-lg {
 .card-body {
   flex: 1 1 auto;
   padding: 1rem 1rem;
-  text-align: center;
-  font-size: 1.5rem;
 }
 
 .card-title {
@@ -4766,7 +4763,7 @@ textarea.form-control-lg {
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 .accordion-item:last-of-type .accordion-collapse {
-  border-bottom-right-radiu: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
 
@@ -4807,7 +4804,6 @@ textarea.form-control-lg {
   float: left;
   padding-right: 0.5rem;
   color: #6c757d;
-  font: bold;
   content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 }
 .breadcrumb-item.active {
@@ -7336,7 +7332,7 @@ textarea.form-control-lg {
 }
 
 .mt-4 {
-  margin-top: 3rem !important;
+  margin-top: 1.5rem !important;
 }
 
 .mt-5 {
@@ -7392,7 +7388,7 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
-  margin-bottom: 1rem !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .mb-5 {
@@ -7600,7 +7596,7 @@ textarea.form-control-lg {
 }
 
 .ps-3 {
-  padding-left: 1.5rem !important;
+  padding-left: 1rem !important;
 }
 
 .ps-4 {
@@ -7825,15 +7821,7 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
 }
 
-.bg-pink {
-  --bs-bg-opacity: 1;
-  background-color: #EB7EA7;
-}
-.bg-primary1 {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
-}
-.bg-primary2 {
+.bg-primary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -11461,12 +11449,9 @@ body {
 }
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
   padding: 1.75rem 1rem 0.75rem;
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
-  text-align: left;
-  color: #F4FFFF;
-  
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
   display: flex;
@@ -11496,7 +11481,7 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #800080;
+  background-color: #5F0080;
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
@@ -11521,7 +11506,7 @@ body {
   color: #fff;
 }
 .sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #800080;
+  background-color: #5F0080;
 }
 
 .sb-sidenav-light {
@@ -11714,10 +11699,3 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
-
-
-.card-footer>#cards{
-	float:right;
-}
-
-
