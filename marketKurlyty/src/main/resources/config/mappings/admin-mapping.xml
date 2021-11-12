@@ -64,7 +64,7 @@
 	<!-- 약관 수정 -->
 	<update id="updateTerms" parameterType="terms">
 		UPDATE MK_TERMS_AGREEMENT
-		SET TERMS_ID = #{terms_id}, TERMS_CONTENT = #{terms_content}
+		SET TERMS_ID = #{terms_id}, TERMS_CONTENT = #{terms_content}, TERMS_AGREE_DATE_MODIFIED = NOW()
 		WHERE TERMS_SERIAL = #{terms_serial};
 	</update>
 	

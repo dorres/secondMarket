@@ -13,6 +13,7 @@ import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -102,7 +103,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//약관 수정
-	public int updateTeerms(AdminTermsAgreementVO agree) {
+	public int updateTerms(AdminTermsAgreementVO agree) {
 		return adminDao.updateTerms(agree);
 	}
 	
@@ -114,6 +115,11 @@ public class AdminServiceImpl implements AdminService {
 	//약관 삭제
 	public int deleteTerms(AdminTermsAgreementVO agree) {
 		return adminDao.deleteTerms(agree);
+	}
+	
+	//상품 등록
+	public int inserGoods(AdminRegistVO regist) {
+		return adminDao.insertGoods(regist);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트

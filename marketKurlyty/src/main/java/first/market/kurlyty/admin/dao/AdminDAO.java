@@ -12,6 +12,7 @@ import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -73,7 +74,6 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertTerms", agree);
 	}
 
-	
 	//약관 수정
 	public int updateTerms(AdminTermsAgreementVO agree) {
 		return sqlSession.update("AdminDAO.updateTerms", agree);
@@ -88,7 +88,11 @@ public class AdminDAO {
 	public int deleteTerms(AdminTermsAgreementVO agree) {
 		return sqlSession.delete("AdminDAO.deleteTerms", agree);
 	}
-
+	
+	//상품등록
+	public int insertGoods(AdminRegistVO regist) {
+		return sqlSession.insert("RegistDAO.insertRegist");
+	}
 	//================================================================
 
 	//공지사항 목록	
