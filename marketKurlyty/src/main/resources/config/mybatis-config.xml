@@ -36,6 +36,6 @@
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
  		<mapper resource="config/mappings/user_address_list-mapping.xml"/>
- 		<mapper resource="config/mappings/registration-mapping.xml"/>
+ 	<!-- 	<mapper resource="config/mappings/registration-mapping.xml"/> -->
  	</mappers>
  </configuration>
