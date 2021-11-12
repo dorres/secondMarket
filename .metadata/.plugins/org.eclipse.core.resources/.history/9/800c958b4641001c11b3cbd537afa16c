@@ -1,0 +1,5 @@
+package first.market.kurlyty.user.service;
+
+public class user_address_listServiceImpl {
+
+}
