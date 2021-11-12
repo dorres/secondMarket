@@ -13,7 +13,7 @@
 			<li class="on"><a href="/shop/mypage/mypage_orderlist.php">주문내역</a></li>
 
 			<li><a href="#none">선물내역</a></li>
-			<li><a href="#none">배송지관리</a></li>
+			<li><a href="user_address_list.do">배송지관리</a></li>
 			<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
 			<li><a href="/shop/mypage/product_inquiry.php">상품 문의</a></li>
 			<li><a href="#none">적립금</a>
