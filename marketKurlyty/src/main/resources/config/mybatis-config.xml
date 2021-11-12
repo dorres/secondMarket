@@ -25,6 +25,7 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategoryMainVO" alias="category1"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategorySubVO" alias="category2"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategoryGoodsVO" alias="category3"/>
+ 		<typeAlias type="first.market.kurlyty.user.vo.user_address_listVO" alias="addressListVO"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -33,5 +34,6 @@
  		<mapper resource="config/mappings/board_notice-mapping.xml"/> <!-- bk -->
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
+ 		<mapper resource="config/mappings/user_address_list-mapping.xml"/>
  	</mappers>
  </configuration>
