@@ -41,7 +41,7 @@
 									<span id="addrListInfo" class="tit_sub"> 배송지에 따라상품정보가 달라질 수 있습니다. </span>
 								</h2>
 								<div class="new_address">
-									<button onclick="hi_zip(); return false;">
+									<button onclick="hi_zip();" target="_self">
 										<img src="https://res.kurly.com/pc/ico/2006/ico_add_16x16.svg" alt="" class="ico"> 새 배송지 추가
 									</button>
 								</div>
@@ -50,7 +50,7 @@
 							<span class="destination_add screen_out"></span>
 
 							<div id="tblParent" class="type_select">
-								<table class="tbl tbl_type1" style="display:table;">
+								<table class="tbl tbl_type1"  >
 									<thead>
 										<tr>
 											<th class="tit_select">선택</th>
@@ -61,28 +61,35 @@
 											<th class="tit_modify">수정</th>
 										</tr>
 									</thead>
-									
+									<c:forEach var="list" items="${list }">
 									<tbody id="addrList"> <!-- 저장된 주소지가 있는경우인데 처음 회원가입할 경우 주소를 입력하므로 주문 내역처럼 db가 없는 html은 따로 없다 -->
 										<tr>
 											<td class="select type_radio">
 												<label class="skin_checkbox"> 
-													<input type="radio" name="addrNo" data-delivery-type="direct" value="9622171" checked=""> 
-													<span class="ico"></span> 
+													<input type="radio" name="addrNo" data-delivery-type="direct" value="9622171" > 
+													<span class="ico"  >
+													
+													</span> 
 													<span class="screen_out">선택하기</span>
 												</label>
 											</td>
+											
 											<td class="address">
-												<span class="badge_default">기본배송지</span>
+												<span class="badge_default"><c:set var="base" value="기본배송지"/>
+													<c:if test="${list.address_default eq true }" >
+													<c:out value="${base }"/>
+													</c:if></span>
 												<p class="addr">${list.user_address1 } &nbsp; ${list.user_address2 }</p>
 											</td>
-											<td class="name" width="120px" style="display:table-cell; vertical-align:middle;">${list.user_name }</td>
+											<td >${list.user_name }</td>
 											<td class="phone">${list.user_phone }</td>
-											<td><span class="delivery star">샛별배송</span></td>
+											<td><span class="delivery star"></span></td>
 											<td>
 												<button type="button" class="ico modify" onclick="upDate(); return false;">수정하기</button>
 											</td>
 										</tr>
 									</tbody>
+									</c:forEach>
 								</table>
 							</div>
 						</div> <!-- MainCenter 끝 -->
@@ -94,15 +101,6 @@
 		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>
 <script>
-
-/* function upDate(user_name,user_phone,user_address2){
-	var user_name;
-	var user_phone;
-	var user_address2;
-	user_name=
-	var url2="destination_update.do?user_name="+${list.user_name}+"&user_address2="+${list.user_address2}+"&user_phone="+${list.user_phone};
-	window.open(url2,'width=430,height=500,location=no,status=no,scrollbars=yes');
-}  */
 
 function hi_zip(){
 	var myAddress;
@@ -116,20 +114,21 @@ function hi_zip(){
 			$("#addr1").val(myAddress);
 			$(".hid").attr("class",".addressShow");
 			
+	
 			if(myAddress.includes("서울")){
 				star="샛별배송";
-			}else{
-				star="택배배송";
-			}
-		
+			}else if(myAddress.includes("대전")){
+				star="샛별배송";
+			}else star="택배배송";
 			popUp(myZipcode,myAddress,star);
+			
 		}
 	}).open();
 }
 function popUp(myZipcode,myAddress,star){
 	
 	var url="destination_new.do?myZipcode="+myZipcode+"&myAddress="+myAddress+"&star="+star;
-	window.open(url,'width=450,height=500,location=no,status=no,scrollbars=yes');
+	window.open(url,'update','width=450,height=500,location=no,status=no,scrollbars=yes');
 }
 </script>
 	<a href="#top" id="pageTop">맨 위로가기</a>
