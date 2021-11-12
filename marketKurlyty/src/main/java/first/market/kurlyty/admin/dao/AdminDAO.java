@@ -225,5 +225,23 @@ public class AdminDAO {
 		return sqlSession.insert("AdminDAO.insertCategory1",category1);
 	}
 	
+	public int getCategory1Column() {
+		return sqlSession.selectOne("AdminDAO.getCategory1Column");
+	}
+	
+	public int getIconBlack(AdminCategoryMainVO category1) {
+		return sqlSession.selectOne("AdminDAO.getIconBlack",category1);
+	}
+	public int getIconColor(AdminCategoryMainVO category1) {
+		return sqlSession.selectOne("AdminDAO.getIconColor",category1);
+	}
+	public int deleteCategory1(AdminCategoryMainVO category1) {
+		return sqlSession.delete("AdminDAO.deleteCategory1",category1);
+	}
+	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
+		return sqlSession.selectOne("AdminDAO.getCategory1",category1);
+	}
+
+
 	
 }

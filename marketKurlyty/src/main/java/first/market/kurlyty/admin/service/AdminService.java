@@ -132,7 +132,15 @@ public interface AdminService {
 	//관리자 1차카테고리 리스트
 	List<AdminCategoryMainVO> getCategory1List();
 	
-	int insertCategory1(AdminCategoryMainVO category1); 
+	int getCategory1Column();
 	
+	int insertCategory1(AdminCategoryMainVO category1);
 	
+	int getIconBlack(AdminCategoryMainVO category1);
+	
+	int getIconColor(AdminCategoryMainVO category1);
+	
+	int deleteCategory1(AdminCategoryMainVO category1);
+	
+	AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1);
 }
