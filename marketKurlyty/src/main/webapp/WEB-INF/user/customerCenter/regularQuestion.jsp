@@ -46,7 +46,7 @@
 					<div class="page_aticle aticle_type2">	<!-- Main 시작 -->
 						<jsp:include page="default/mainLeft.jsp"></jsp:include>	<!-- Mainleft -->
 						<div class="page_aticle aticle_type2">	<!-- MainCenter 시작 -->
-							<form name="frmList" id="form" method="get" action="?">
+							
 								<div class="page_section">
 									<div class="head_aticle">
 										<h2 class="tit">
@@ -80,7 +80,7 @@
 											</tbody>
 										</table>
 					
-												<table width="100%" class="table_faq" id="faq_7" style=" table-layout:fixed;">
+												<table width="100%" class="table_faq" id="faq_7" style="table-layout:fixed;">
 													<tbody>
 													
 														<c:forEach var="board" items="${board }">
