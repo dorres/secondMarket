@@ -1,0 +1,24 @@
+package first.market.kurlyty.user.vo;
+
+import lombok.Data;
+
+@Data
+public class user_address_listVO {
+	private int address_serial;
+	private String user_address1;
+	private String user_address2;
+	private String user_zipcode;
+	private String user_id;
+	private String user_name;
+	private String user_phone;
+	boolean address_default;
+	@Override
+	public String toString() {
+		return "user_address_listVO [address_serial=" + address_serial + ", user_address1=" + user_address1
+				+ ", user_address2=" + user_address2 + ", user_zipcode=" + user_zipcode + ", user_id=" + user_id
+				+ ", user_name=" + user_name + ", user_phone=" + user_phone + ", address_default=" + address_default
+				+ "]";
+	}
+	
+	
+}

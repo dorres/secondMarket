@@ -1,0 +1,1355 @@
+@charset "UTF-8";
+
+.section_destination {
+	overflow: auto;
+	overflow-x: hidden;
+	height: 100%;
+	padding-bottom: 0;
+}
+
+.section_destination .only_pc.modify {
+	padding: 0 30 px;
+}
+
+.section_destination .only_pc {
+	position: static;
+}
+
+.section_destination .modify {
+	padding: 4 px 20 px 0;
+}
+
+.section_destination .only_pc .tit_result {
+	padding: 40 px 0 9 px;
+	font-weight: 700;
+	letter-spacing: -.5px;
+}
+
+.section_destination .tit_result .delivery.star {
+	color: #5f0080;
+}
+
+.section_destination .only_pc .tit_result .desc {
+	padding-top: 10 px;
+	font-size: 16px;
+	line-height: 22px;
+	letter-spacing: -.5px;
+}
+
+.section_destination .only_pc.modify .field {
+	padding-top: 22 px;
+}
+
+.section_destination .only_pc .address_search {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	padding: 0 128 px 10 px 0;
+}
+
+.section_destination .only_pc .address_search .address {
+	float: left;
+	width: 100%;
+	height: 44 px;
+	padding: 12 px 12 px 12 px 15 px;
+	border: 1 px solid #ddd;
+	border-radius: 3 px;
+	background-color: #fafafa;
+	font-weight: 400;
+	font-size: 14px;
+	color: #999;
+	line-height: 20px;
+	letter-spacing: -.5px;
+}
+
+.section_destination .only_pc .address_search .btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 120 px;
+	padding-right: 7 px;
+	border: 1 px solid #5f0080;
+	background-color: #fff;
+	font-weight: 700;
+	color: #5f0080;
+}
+
+.section_destination .only_pc .address_search .ico {
+	display: inline-block;
+	width: 24 px;
+	height: 24 px;
+	margin-right: 1 px;
+	background-image:
+		url(https://res.kurly.com/pc/service/common/2006/ico_search.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 24 px 24 px;
+	background-position: 50% 50%;
+	vertical-align: -6 px;
+}
+
+.section_destination .only_pc input[type=text] {
+	height: 44 px;
+	padding: 1 px 11 px 0 15 px;
+	border-radius: 3 px;
+	font-family: Noto Sans;
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: -.5px;
+}
+
+.section_destination .only_pc.modify .label_default {
+	padding: 20 px 0 19 px;
+	font-size: 14px;
+}
+
+.section_destination .only_pc * {
+	font-family: Noto Sans;
+}
+
+.skin_checkbox input[type=radio]+.ico, input[type=checkbox]+.ico {
+	display: inline-block;
+	position: relative;
+	width: 24 px;
+	height: 24 px;
+	margin-right: 12 px;
+	border: 0;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 24 px 24 px;
+	background-position: 50% 50%;
+	vertical-align: -7 px;
+}
+
+.section_destination .only_pc.modify .btn {
+	height: 44 px;
+	border-radius: 3 px;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 42px;
+}
+.txt_sub.bold {
+    font-weight: 700
+}
+.txt_sub.text {
+    color: #333
+}
+.txt_sub.text_light {
+    color: #ccc
+}
+.txt_sub.text_medium {
+    color: #999
+}
+.txt_sub.text_dark {
+    color: #666
+}
+.txt_sub.light_gray {
+    color: #ddd
+}
+.txt_sub.kurlyPurple {
+    color: #5f0080
+}
+.txt_sub.white {
+    color: #fff
+}
+.txt_sub.black {
+    color: #000
+}
+.txt_sub.kurlyGray450 {
+    color: #999
+}
+.txt_sub.kurlyGray600 {
+    color: #666
+}
+.txt_sub.kurlyReject {
+    color: #f03f40
+}
+body {
+    background-color: #fff
+}
+.noBody,
+body {
+    -webkit-overflow-scrolling: touch
+}
+input[type=radio] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0
+}
+input[type=radio]+.ico {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 100%;
+    vertical-align: -5px
+}
+input[type=radio]:focus {
+    outline: 0
+}
+input[type=radio]:checked+.ico {
+    border: 1px solid #5f0081;
+    background-color: #5f0080
+}
+input[type=radio]:checked+.ico:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 100%;
+    background-color: #fff
+}
+input[type=radio]:disabled+.ico {
+    border: 1px solid #ddd;
+    background-color: #fafafa
+}
+.skin_checkbox input[type=radio],
+input[type=checkbox] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0
+}
+.skin_checkbox input[type=radio]+.ico,
+input[type=checkbox]+.ico {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border: 0;
+    background-image: url('https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%;
+    vertical-align: -7px
+}
+.skin_checkbox input:focus[type=radio],
+input[type=checkbox]:focus {
+    outline: 0
+}
+.skin_checkbox input:checked[type=radio]+.ico,
+input[type=checkbox]:checked+.ico {
+    background-image: url('https://res.kurly.com/mobile/service/common/2006/ico_checkbox_checked.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%
+}
+.skin_checkbox input:disabled[type=radio]+.ico,
+input[type=checkbox]:disabled+.ico {
+    background-image: url('https://res.kurly.com/mobile/service/common/2003/ico_checkbox_disabled.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%
+}
+.skin_checkbox input[type=radio]+.ico {
+    border: none;
+    background-color: transparent
+}
+.skin_checkbox input[type=radio]:focus {
+    outline: 0
+}
+.skin_checkbox input[type=radio]:checked+.ico {
+    border: none;
+    background-color: transparent
+}
+.skin_checkbox input[type=radio]:checked+.ico:after {
+    background-color: transparent
+}
+.skin_checkbox input[type=radio]:disabled+.ico {
+    border: none;
+    background-color: transparent
+}
+label {
+    font-size: 16px;
+    line-height: 24px
+}
+label.label_block {
+    display: block
+}
+.select_box {
+    position: relative;
+    width: 100%
+}
+.select_box .tit_selected {
+    display: block;
+    overflow: hidden;
+    height: 50px;
+    padding: 14px 54px 0 11px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 24px
+}
+@media screen and(max-width:320px) {
+    .select_box .tit_selected {
+        white-space: nowrap
+    }
+}
+.select_box .tit_selected.off {
+    border: 1px solid #ccc;
+    color: #ddd
+}
+.select_box .tit_selected.off:after {
+    background-image: url('https://res.kurly.com/mobile/service/common/2003/ico_drop_up_disabled.png');
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0)
+}
+.select_box .tit_selected.off:after,
+.select_box .tit_selected:after {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: 50% 50%
+}
+.select_box .tit_selected:after {
+    content: "";
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 48px;
+    height: 48px;
+    background-image: url('https://res.kurly.com/mobile/service/common/2003/ico_drop_up.png');
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg)
+}
+.select_box select {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    opacity: 0
+}
+.screen_out {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px
+}
+.noScroll {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+.btn {
+    width: 100%;
+    height: 52px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    outline: none
+}
+.btn.normal {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333
+}
+.btn.default {
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    color: #5f0080
+}
+.btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff
+}
+.btn.submit {
+    height: 56px;
+    line-height: 58px
+}
+.btn.disabled,
+.btn:disabled {
+    background-color: #ddd;
+    color: #fff;
+    cursor: default
+}
+.double {
+    display: flex
+}
+.double .btn {
+    margin-left: 4px
+}
+.double .btn:first-child {
+    margin-left: 0;
+    margin-right: 4px
+}
+.stamper {
+    width: 101px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px
+}
+.stamper,
+.stamper .btn {
+    overflow: hidden;
+    height: 36px
+}
+.stamper .btn {
+    float: left;
+    width: 35px;
+    border: 0;
+    font-size: 0;
+    text-indent: -9999px
+}
+.stamper .btn.minus {
+    background-image: url('https://res.kurly.com/mobile/service/cart/2010/ico_minus_on.svg')
+}
+.stamper .btn.minus,
+.stamper .btn.minus.off {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+    background-position: 50% 50%
+}
+.stamper .btn.minus.off {
+    background-image: url('https://res.kurly.com/mobile/service/cart/2010/ico_minus.svg')
+}
+.stamper .btn.plus {
+    float: right;
+    margin-left: -1px;
+    background-image: url('https://res.kurly.com/mobile/service/cart/2010/ico_plus_on.svg')
+}
+.stamper .btn.plus,
+.stamper .btn.plus.off {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+    background-position: 50% 50%
+}
+.stamper .btn.plus.off {
+    background-image: url('https://res.kurly.com/mobile/service/cart/2010/ico_plus.svg')
+}
+.stamper .num {
+    float: left;
+    width: 29px;
+    height: 36px;
+    margin-right: -1px;
+    padding: 0;
+    border: 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    text-align: center
+}
+.only_pc .stamper {
+    width: 88px;
+    height: 30px;
+    border-radius: 3px
+}
+.only_pc .stamper .btn {
+    width: 30px;
+    height: 30px
+}
+.only_pc .stamper .btn.minus {
+    background-image: url('https://res.kurly.com/pc/service/common/2009/ico_minus_on.svg')
+}
+.only_pc .stamper .btn.minus,
+.only_pc .stamper .btn.minus.off {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 50% 50%
+}
+.only_pc .stamper .btn.minus.off {
+    background-image: url('https://res.kurly.com/pc/service/common/2009/ico_minus.svg')
+}
+.only_pc .stamper .btn.plus {
+    background-image: url('https://res.kurly.com/pc/service/common/2009/ico_plus_on.svg')
+}
+.only_pc .stamper .btn.plus,
+.only_pc .stamper .btn.plus.off {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 50% 50%
+}
+.only_pc .stamper .btn.plus.off {
+    background-image: url('https://res.kurly.com/pc/service/common/2009/ico_plus.svg')
+}
+.only_pc .stamper .num {
+    width: 26px;
+    height: 30px;
+    padding-bottom: 4px;
+    font-weight: 400;
+    line-height: 18px
+}
+.layer_kurly {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%
+}
+.layer_kurly .layer_off {
+    position: relative
+}
+.layer_kurly .layer_off .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    background-image: url('https://res.kurly.com/mobile/service/common/2003/ico_popup_close.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%
+}
+.layer_kurly:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .6
+}
+.layer_kurly.scroll_head.full .inner_layer {
+    padding-top: 0
+}
+.layer_kurly.scroll_head .inner_layer {
+    overflow: hidden;
+    padding: 15px 0 80px
+}
+.layer_kurly.scroll_head .in_layer {
+    overflow-y: scroll;
+    height: 100%
+}
+.layer_kurly.no_scroll .inner_layer {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%)
+}
+.layer_kurly.no_scroll .inner_layer .layer_head {
+    padding: 40px 15px 20px
+}
+.layer_kurly.no_scroll .tit_layer {
+    padding-top: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.4px;
+    text-align: center
+}
+.layer_kurly.no_scroll .layer_body:after {
+    display: none
+}
+.layer_kurly.no_scroll .layer_foot {
+    position: static;
+    height: auto;
+    padding: 0 20px 20px
+}
+.layer_kurly.no_scroll .layer_foot .btn {
+    margin-top: 10px
+}
+.layer_kurly.scroll_body .inner_layer {
+    padding: 64px 0 80px
+}
+.layer_kurly.scroll_body .inner_layer .in_layer {
+    overflow: hidden;
+    height: 100%
+}
+.layer_kurly.scroll_body .inner_layer .layer_head {
+    position: absolute;
+    left: 0;
+    top: 0
+}
+.layer_kurly.scroll_body .inner_layer .layer_body {
+    overflow: hidden;
+    height: 100%
+}
+.layer_kurly .inner_layer {
+    overflow: hidden;
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    bottom: 20px;
+    border-radius: 4px;
+    background-color: #fff
+}
+.layer_kurly .layer_head {
+    width: 100%;
+    padding: 21px 20px 19px;
+    background-color: #fff
+}
+.layer_kurly .tit_layer {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px
+}
+.layer_kurly .layer_body:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 80px;
+    width: 100%;
+    height: 24px;
+    background: linear-gradient(180deg,hsla(0,0%,100%,0),#fff);
+    pointer-events: none
+}
+.layer_kurly .layer_foot {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: #fff
+}
+.layer_addresssearch {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+.appView #kMain {
+    margin: 0
+}
+.list_policy li {
+    font-size: 14px;
+    line-height: 20px;
+    color: grey;
+    padding-left: 12px
+}
+.list_policy li:before {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    margin: 7px 8px 0 -11px;
+    background: #ccc;
+    vertical-align: top;
+    content: ""
+}
+.list_policy li span {
+    color: grey
+}
+.list_policy.type_black li:before {
+    background: #333
+}
+.list_policy.type_black li+li {
+    padding-top: 17px
+}
+.list_policy.type_black strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333
+}
+.list_policy.type_black span {
+    color: #666
+}
+.bg_ececec {
+    background-color: #ececec
+}
+.destination_add {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    padding: 2px 20px 0;
+    font-size: 16px;
+    color: #5f0080;
+    line-height: 50px;
+    text-align: right
+}
+.badge_default {
+    display: inline-block;
+    height: 22px;
+    padding: 1px 8px 0;
+    border-radius: 11px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #666;
+    line-height: 22px;
+    background-color: #f7f7f7;
+    vertical-align: top
+}
+.section_destination {
+    padding-bottom: 48px
+}
+.section_destination .info {
+    display: none;
+    height: 44px;
+    padding: 13px 0 0 20px;
+    background-color: #fafafa;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px
+}
+.section_destination .info:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 1px;
+    background-image: url('https://res.kurly.com/mobile/ico/2006/ico_info_v4.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0 50%;
+    vertical-align: -6px
+}
+.section_destination .list {
+    background-color: #fff;
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    padding-bottom: calc(var(--safe-area-inset-bottom))
+}
+.section_destination .list.type_select li {
+    padding-left: 36px
+}
+@supports(padding-bottom:constant(safe-area-inset-bottom)) {
+    .section_destination .list {
+        --safe-area-inset-bottom: constant(safe-area-inset-bottom)
+    }
+}
+.section_destination .list label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px
+}
+.section_destination .list label .ico {
+    width: 24px;
+    height: 24px
+}
+.section_destination .list li {
+    position: relative;
+    margin: 0 20px;
+    padding: 21px 44px 16px 0;
+    border-bottom: 1px solid #f4f4f4
+}
+.section_destination .list li.empty {
+    width: 100%;
+    padding: 143px 0 0;
+    margin: 0;
+    border: 0;
+    font-size: 16px;
+    color: #999;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    text-align: center
+}
+.section_destination .list .address .badge_default {
+    margin: -1px 0 10px
+}
+.section_destination .list .address .addr {
+    font-size: 16px;
+    color: #333;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    word-break: break-all
+}
+.section_destination .list .user {
+    padding-top: 2px;
+    font-size: 0;
+    line-height: 0
+}
+.section_destination .list .user .name,
+.section_destination .list .user .phone {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 57%;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    vertical-align: top;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.section_destination .list .user .middot {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    margin: 0 8px;
+    background-color: #ddd
+}
+.section_destination .list .user .delivery {
+    display: block;
+    padding-top: 4px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 600
+}
+.section_destination .list .user .delivery.star {
+    color: #5f0080
+}
+.section_destination .list .user .delivery.regular {
+    color: #666
+}
+.section_destination .list .user .delivery.none {
+    color: #ccc
+}
+.section_destination .list .btn_modify .ico {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    border: 0;
+    background-image: url('https://res.kurly.com/kurly/ico/2021/edit_24_24_ccc.svg?v=1');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%;
+    font-size: 0;
+    line-height: 0
+}
+.section_destination .modify {
+    padding: 4px 20px 0
+}
+.section_destination .modify .field {
+    padding-top: 24px
+}
+.section_destination .modify .badge_default {
+    margin-bottom: 9px
+}
+.section_destination .modify .address {
+    padding-bottom: 13px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px
+}
+.section_destination .modify .label_block {
+    padding-bottom: 7px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px
+}
+.section_destination .modify .label_default {
+    display: block;
+    padding: 15px 0 23px;
+    font-size: 15px;
+    line-height: 24px
+}
+.section_destination .modify .label_default+.btn.active {
+    margin-top: 0
+}
+.section_destination .modify .btn.active {
+    margin-top: 24px
+}
+.section_destination .modify .btn.normal {
+    margin-top: 12px
+}
+.section_destination .modify .notice {
+    position: relative;
+    margin-bottom: -2px;
+    padding: 12px 0 0 13px;
+    font-size: 12px;
+    color: #999;
+    line-height: 16px
+}
+.section_destination .modify .notice .ico {
+    position: absolute;
+    left: 0;
+    top: 12px
+}
+.section_destination .modify .notice .br {
+    display: block
+}
+@media screen and(max-width:320px) {
+    .section_destination .modify .notice .br {
+        display: none
+    }
+}
+.section_destination .modify .count_num .count {
+    display: block;
+    padding-top: 4px;
+    font-size: 12px;
+    color: #999;
+    line-height: 18px;
+    text-align: right
+}
+.section_destination .tit_result {
+    display: block;
+    padding: 55px 0 34px;
+    font-weight: 600;
+    font-size: 22px;
+    color: #333;
+    line-height: 30px;
+    text-align: center
+}
+.section_destination .tit_result .delivery.star {
+    color: #5f0080
+}
+.section_destination .tit_result .delivery.regular {
+    color: #666
+}
+.section_destination .tit_result .delivery.none {
+    color: #b3130b
+}
+.section_destination .tit_result .desc {
+    display: block;
+    padding-top: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #999;
+    line-height: 18px
+}
+.section_destination .no_delivery .tit {
+    position: relative;
+    padding-top: 33px
+}
+.section_destination .no_delivery .tit .ico {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    color: #f03f40;
+    line-height: 20px
+}
+.section_destination .no_delivery .tit .ico:before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    background-image: url('https://res.kurly.com/kurly/ico/2021/notice_14_14_f03f40.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0 50%;
+    vertical-align: -3px
+}
+.section_destination .no_delivery .tit .desc {
+    display: block;
+    padding: 4px 30px 0 0;
+    font-weight: 400;
+    font-size: 12px;
+    color: #999;
+    line-height: 20px
+}
+.section_destination .no_delivery .tit .desc .space {
+    padding: 0 2px
+}
+.section_destination .no_delivery .tit .btn {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 104px;
+    border: 0;
+    background: 0 0;
+    font-size: 0;
+    text-indent: -9999px
+}
+.section_destination .no_delivery .tit .btn:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -8px;
+    background-image: url('https://res.kurly.com/mobile/ico/2006/ico_arrow_down_20x20.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 50% 50%
+}
+.section_destination .no_delivery .tit .btn.open:after {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg)
+}
+.section_destination .no_delivery .list {
+    display: none;
+    padding: 8px 0 20px
+}
+.section_destination .no_delivery .list.open {
+    display: block
+}
+.section_destination .no_delivery .list li {
+    position: static;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 12px;
+    color: #999;
+    line-height: 16px
+}
+.only_pc.fixed_head {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #fff
+}
+.only_pc * {
+    font-family: Noto Sans
+}
+.only_pc .pop_head {
+    padding: 32px 0 0 30px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.5px
+}
+.only_pc .pop_head .sub {
+    display: inline-block;
+    padding-left: 12px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -0.6px;
+    vertical-align: 4px
+}
+.only_pc .pop_list {
+    overflow: hidden;
+    width: 470px;
+    margin: 18px auto 0;
+    padding: 15px 0 13px;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #333
+}
+.only_pc .pop_list .delivery,
+.only_pc .pop_list .modify,
+.only_pc .pop_list .select {
+    float: left;
+    width: 64px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    text-align: center
+}
+.only_pc .pop_list .delivery {
+    width: 342px
+}
+.only_pc .pop_list .modify {
+    float: right
+}
+.section_destination .only_pc {
+    position: static
+}
+.section_destination .only_pc * {
+    font-family: Noto Sans
+}
+.section_destination .only_pc .new_address {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    padding-top: 16px;
+    border-top: 1px solid #f4f4f4;
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    text-align: center
+}
+.section_destination .only_pc .new_address .ico {
+    margin-right: 1px;
+    vertical-align: -2px
+}
+.section_destination .only_pc .list {
+    width: 470px;
+    margin: 0 auto;
+    padding: 137px 0 59px
+}
+.section_destination .only_pc .list li {
+    padding: 24px 64px 18px 0;
+    margin: 0
+}
+.section_destination .only_pc .list label {
+    left: 20px
+}
+.section_destination .only_pc .list .address .badge_default {
+    margin: -3px 0 11px
+}
+.section_destination .only_pc .list .user {
+    padding-top: 7px
+}
+.section_destination .only_pc .list .user .name,
+.section_destination .only_pc .list .user .phone {
+    padding-left: 1px;
+    letter-spacing: 0
+}
+.section_destination .only_pc .list .user .middot {
+    vertical-align: -1px
+}
+.section_destination .only_pc .list .user .delivery {
+    padding-top: 0;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.4px
+}
+.section_destination .only_pc .list .user .name+.delivery,
+.section_destination .only_pc .list .user .phone+.delivery {
+    padding-top: 8px
+}
+.section_destination .only_pc .list .btn_modify .ico {
+    right: 7px
+}
+.section_destination .only_pc .list.type_select li {
+    padding-left: 64px
+}
+.section_destination .only_pc input[type=text] {
+    height: 44px;
+    padding: 1px 11px 0 15px;
+    border-radius: 3px;
+    font-family: Noto Sans;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc.modify {
+    padding: 0 30px
+}
+.section_destination .only_pc.modify .tit_popup {
+    padding: 30px 0 14px;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc.modify .field {
+    padding-top: 22px
+}
+.section_destination .only_pc.modify .badge_default {
+    margin-bottom: 11px;
+    padding: 0 8px;
+    font-weight: 700
+}
+.section_destination .only_pc.modify .address {
+    padding-bottom: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.3px
+}
+.section_destination .only_pc.modify .label_block {
+    padding-bottom: 7px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.3px
+}
+.section_destination .only_pc.modify .label_default {
+    padding: 20px 0 19px;
+    font-size: 14px
+}
+.section_destination .only_pc.modify .label_default+.btn.active {
+    margin-top: 0
+}
+.section_destination .only_pc.modify .btn {
+    height: 44px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 42px
+}
+.section_destination .only_pc.modify .btn.active {
+    margin-top: 30px
+}
+.section_destination .only_pc.modify .btn.default {
+    margin-top: 10px
+}
+.section_destination .only_pc.modify .notice {
+    margin-bottom: 1px;
+    padding: 11px 0 0 17px;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: -0.1px
+}
+.section_destination .only_pc.modify .notice .ico {
+    top: 11px
+}
+.section_destination .only_pc .tit_result {
+    padding: 40px 0 9px;
+    font-weight: 700;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc .tit_result .desc {
+    padding-top: 10px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc .address_search {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0 128px 10px 0
+}
+.section_destination .only_pc .address_search .address {
+    float: left;
+    width: 100%;
+    height: 44px;
+    padding: 12px 12px 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fafafa;
+    font-weight: 400;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc .address_search .ico {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 1px;
+    background-image: url('https://res.kurly.com/pc/service/common/2006/ico_search.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%;
+    vertical-align: -6px
+}
+.section_destination .only_pc .address_search .btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    padding-right: 7px;
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    font-weight: 700;
+    color: #5f0080
+}
+.section_destination .only_pc .no_delivery {
+    position: relative;
+    margin-top: 23px;
+    padding-top: 18px;
+    border-top: 1px solid #f4f4f4
+}
+.section_destination .only_pc .no_delivery .tit {
+    padding-top: 0;
+    text-align: left
+}
+.section_destination .only_pc .no_delivery .tit .ico {
+    padding-left: 0;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    vertical-align: top
+}
+.section_destination .only_pc .no_delivery .tit .ico:before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    background-image: url('https://res.kurly.com/kurly/ico/2021/notice_14_14_f03f40.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0 50%;
+    vertical-align: -2px
+}
+.section_destination .only_pc .no_delivery .tit .desc {
+    padding: 6px 0 0 21px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    text-align: left;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc .no_delivery .tit .desc .space {
+    padding: 0
+}
+.section_destination .only_pc .no_delivery .btn {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 25px;
+    width: auto;
+    height: auto;
+    padding-right: 16px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    text-indent: 0
+}
+.section_destination .only_pc .no_delivery .btn:after {
+    width: 11px;
+    height: 10px;
+    margin-top: -4px;
+    background-image: url('https://res.kurly.com/pc/ico/2008/ico_arrow_down_11x10.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 11px 10px;
+    background-position: 50% 50%
+}
+.section_destination .only_pc .no_delivery .btn.open:after {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg)
+}
+.section_destination .only_pc .no_delivery .list {
+    display: none;
+    padding: 20px 0 30px 11px
+}
+.section_destination .only_pc .no_delivery .list.open {
+    display: block
+}
+.section_destination .only_pc .no_delivery .list li {
+    position: static;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 18px;
+    text-align: left;
+    letter-spacing: -0.5px
+}
+.section_destination .only_pc .no_delivery .list li:before {
+    content: "\2022";
+    display: inline-block;
+    padding-right: 4px;
+    font-size: 1px
+}
