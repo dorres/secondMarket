@@ -47,79 +47,77 @@ public class AdminCategoryController {
 	}
 	
 	//메인 카테고리(update)
-	@RequestMapping("admin_categoryMainUpdate.mdo")
+	@RequestMapping("admin_categoryMainUpdate.mdo") //메인 카테고리 세부사항에서 수정하는거 봐야함
 	public String categoryMainUpdate(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
-		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/categoryMain/";
-//		
-//		
-//		
-//		
-//		
-//		
-//		
-//		
-//		
 //		int success =0;
-//		int result1 =0;
+//		int result1 = 0; 
 //		int result2 = 0;
-//		category1.setCategory_main_icon_black(files[0].getOriginalFilename());
-//		category1.setCategory_main_icon_color(files[1].getOriginalFilename());
-//		result1 = adminService.getIconBlack(category1);
-//		result2= adminService.getIconColor(category1);
+//		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/categoryMain/";
+//
+//		result1 = adminService.getIconBlack(files[0].getOriginalFilename());
+//		result2 = adminService.getIconBlack(files[1].getOriginalFilename());		
 //		
-//		if(files[0].getOriginalFilename() !=null) {
+//		//icon_black 수정하고 싶은경우
+//		if(files[0].getOriginalFilename() != null) {
+//			//수정하고싶은 이미지가 기존에 있을때
 //			if(result1 !=0) 
 //				category1.setCategory_main_icon_black(awsPath + files[0].getOriginalFilename()+ "(" +result1 + ")" );
-//			else
+//			//수정하고싶은 이미지가 기존에 없을때
+//			else 
 //				category1.setCategory_main_icon_color(awsPath + files[0].getOriginalFilename());
-//		}else if(files[1].getOriginalFilename() !=null){
+//
+//		}
+//		//icon_color 수정하고 싶은경우
+//		if(files[1].getOriginalFilename() !=null){
+//			//수정하고 싶은 이미자가 기존에 있을때
 //			if(result2 !=0) 
 //				category1.setCategory_main_icon_color(awsPath + files[1].getOriginalFilename() + "(" +result2 + ")" );
+//			//수정하고 싶은 이미지가 기존에 없을때
 //			else
 //				category1.setCategory_main_icon_color(awsPath + files[1].getOriginalFilename());
 //		}
-//		success = adminService.insertCategory1(category1);
-//		//↑↑↑↑↑↑여기까지가 db작업
-		
-		
-		
-		
+//		success = adminService.insertCategory1(category1);		
+////		//↑↑↑↑↑↑여기까지가 db작업
+//		
+//		
+//		
+//		if(success !=0) { //db에 성공적으로 수정이 끝나고나면 S3작업
+//			
+//		}
 		return "category/admin_categoryMainList";
 	}
-	
 	
 	
 	//메인 카테고리(insert)
 	@RequestMapping("admin_categoryMainInsert.mdo")
 	public String categoryMainInsert(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
-		int success =0;
 		String key1 = "";
 		String key2 = "";
-		int key1Result = 0;
-		int key2Result =0;
-		boolean result = false;
-		DecimalFormat df = new DecimalFormat("000");
-		category1.setCategory_main_icon_black(files[0].getOriginalFilename());
-		category1.setCategory_main_icon_color(files[1].getOriginalFilename());
+		int result1 = 0; 
+		int result2 = 0;
+		int success =0;
+		DecimalFormat df;
 		
-		key1Result = adminService.getIconBlack(category1);
-		if(key1Result !=0) 
-			key1 = "categoryMain/" + files[0].getOriginalFilename() + "(" + key1Result + ")";
+		df = new DecimalFormat("000");
+		result1 = adminService.getIconBlack(files[0].getOriginalFilename());
+		result2 = adminService.getIconBlack(files[1].getOriginalFilename());
+		
+		if(result1 !=0) 
+			key1 = "categoryMain/" + files[0].getOriginalFilename() + "(" + result1 + ")";
 		else
 			key1 = "categoryMain/" + files[0].getOriginalFilename();
 		
-		key2Result = adminService.getIconColor(category1);
-		if(key2Result !=0) 
-			key2 = "categoryMain/" + files[1].getOriginalFilename() + "(" + key2Result + ")";
+		if(result2 !=0) 
+			key2 = "categoryMain/" + files[1].getOriginalFilename() + "(" + result2 + ")";
 		else
-			key2 = "categoryMain/" + files[1].getOriginalFilename();
-		
+			key2 = "categoryMain/" + files[1].getOriginalFilename();		
+
 		category1.setCategory_main_icon_black("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key1);
 		category1.setCategory_main_icon_color("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key2);
-		category1.setCategory_main_serial("M" + df.format(adminService.getCategory1Column()+1));				
+		category1.setCategory_main_serial("M" + df.format(adminService.getCategory1Column()+1));	
 		success = adminService.insertCategory1(category1);
-		//↑↑↑↑↑↑여기까지가 db작업
-	
+//		//↑↑↑↑↑↑여기까지가 db작업	
+		
 		if(success != 0) {//db가 성공적으로 들어가면 s3작업 실행
 			try {
 				//Icon_black s3업로드
@@ -138,9 +136,10 @@ public class AdminCategoryController {
 			
 		}//end if
 		return "redirect:admin_categoryMainList.mdo";
-		
+
 	}
 	
+	//카테고리 메인 삭제(delete)
 	@RequestMapping("admin_categoryMainDelete.mdo")
 	public String categoryMainDelete(AdminCategoryMainVO category1) {
 		int success =0;
@@ -170,7 +169,8 @@ public class AdminCategoryController {
 	//-----------------------------------------------------
 	//서브 카테고리 리스트
 	@RequestMapping("admin_categorySubList.mdo")
-	public String categorySubList() {
+	public String categorySubList(Model model) {
+		model.addAttribute("category2",adminService.getCategory2List());
 		return "category/admin_categorySubList";
 	}
 	//서브 카테고리 세부사항

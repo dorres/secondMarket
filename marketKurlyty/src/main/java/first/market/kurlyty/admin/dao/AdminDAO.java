@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
+import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
@@ -229,17 +230,22 @@ public class AdminDAO {
 		return sqlSession.selectOne("AdminDAO.getCategory1Column");
 	}
 	
-	public int getIconBlack(AdminCategoryMainVO category1) {
-		return sqlSession.selectOne("AdminDAO.getIconBlack",category1);
+	public int getIconBlack(String black) {
+		return sqlSession.selectOne("AdminDAO.getIconBlack",black);
 	}
-	public int getIconColor(AdminCategoryMainVO category1) {
-		return sqlSession.selectOne("AdminDAO.getIconColor",category1);
+	public int getIconColor(String color) {
+		return sqlSession.selectOne("AdminDAO.getIconColor",color);
 	}
 	public int deleteCategory1(AdminCategoryMainVO category1) {
 		return sqlSession.delete("AdminDAO.deleteCategory1",category1);
 	}
 	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
 		return sqlSession.selectOne("AdminDAO.getCategory1",category1);
+	}
+	//----------------------------------------------------------------
+	//관리자 서브카테고리 리스트
+	public List<AdminCategorySubVO> getCategory2List(){
+		return sqlSession.selectList("AdminDAO.getCategory2List");
 	}
 
 

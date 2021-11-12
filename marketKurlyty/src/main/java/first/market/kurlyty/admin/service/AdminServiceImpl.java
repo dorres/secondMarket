@@ -10,6 +10,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
+import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
@@ -273,12 +274,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int getIconBlack(AdminCategoryMainVO category1) {
-		return adminDao.getIconBlack(category1);
+	public int getIconBlack(String black) {
+		return adminDao.getIconBlack(black);
 	}
 	@Override
-	public int getIconColor(AdminCategoryMainVO category1) {
-		return adminDao.getIconColor(category1);
+	public int getIconColor(String color) {
+		return adminDao.getIconColor(color);
 	}
 
 	@Override
@@ -290,11 +291,13 @@ public class AdminServiceImpl implements AdminService {
 	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
 		return adminDao.getCategory1(category1);
 	}
+	//-------------------------------------------------------------
+	//관리자 2차 카테고리
+	@Override
+	public List<AdminCategorySubVO> getCategory2List() {
+		return adminDao.getCategory2List();
+	}
 	
-	
-	
-
-
 
 }
 	
