@@ -15,6 +15,7 @@ import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -127,10 +128,30 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.insertGoods(regist);
 	}
 	
-	//상품조회
+	//상품조회리스트
 	@Override
-	public List<AdminRegistVO> getGoods(AdminRegistVO regist) {
+	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
+		return adminDao.goodsList(regist);
+	}
+	
+	//상품조회
+	public AdminRegistVO getGoods(AdminRegistVO regist) {
 		return adminDao.getGoods(regist);
+	}
+	
+	//상품 수정
+	public int updateGoods(AdminRegistVO regist) {
+		return adminDao.updateGoods(regist);
+	}
+	
+	//상품 삭제
+	public int deleteGoods(AdminRegistVO regist) {
+		return adminDao.deleteGoods(regist);
+	}
+	
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock) {
+		return adminDao.getStock(stock);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트

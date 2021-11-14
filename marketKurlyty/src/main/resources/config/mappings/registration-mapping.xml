@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
- "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
  
  <mapper namespace="RegistDAO">
+ 	<!-- 상품등록 -->
 	<insert id="insertRegist" parameterType="regist">
-		INSERT INTO MK_GOODS_DETAIL VALUES(#{goods_detail_serial},#{categoty_main_serial},#{categoty_sub_serial},#{categoty_goods_serial},
-		#{goods_detail_price},#{goods_detail_stock_quantity},#{goods_detail_stock_notification},#{goods_detail_promotion_serial},#{goods_detail_status},#{goods_detail_dicountrate});
+		INSERT INTO MK_GOODS_DETAIL VALUES(#{goods_detail_serial},#{category_main_serial},
+		#{category_sub_serial},#{category_goods_serial},#{goods_detail_price},#{goods_detail_stock_quantity},
+		#{goods_detail_stock_notification},#{goods_detail_promotion_serial},
+		#{goods_detail_status},#{goods_detail_dicountrate});
 	</insert> 
 	
+	<!-- 상품조회 -->
 	<select id="getGoods" resultType="regist">
 		SELECT * FROM MK_GOODS_DETAIL;
 	</select>
 	
+	<!-- 상품 수정 -->
+	<update id="updateGoods" parameterType="regist">
+		UPDATE MK_GOODS_DETAIL SET GOODS_DETAIL_STOCK_NOTIFICATION=#{goods_detail_stock_notification}
+			,GOODS_DETAIL_PROMOTION_SERIAL=#{goods_detail_promotion_serial}
+			,GOODS_DETAIL_STATUS=#{goods_detail_status},GOODS_DETAIL_DICOUNTRATE=#{goods_detail_dicountrate}
+			WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="deleteGoods" parameterType="regist">
+	 	DELETE FROM MK_GOODS_DETAIL WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+	</delete>
+	
+	<!-- 재고 조회 -->
+	<select id="getStock" resultType="stock">
+		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</select>
  </mapper>

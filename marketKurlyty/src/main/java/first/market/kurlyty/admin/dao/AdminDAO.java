@@ -14,6 +14,7 @@ import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
@@ -96,8 +97,28 @@ public class AdminDAO {
 	}
 	
 	//상품조회리스트
-	public List<AdminRegistVO> getGoods(AdminRegistVO regist) {
+	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
 		return sqlSession.selectList("RegistDAO.getGoods", regist);
+	}
+	
+	//상품 조회
+	public AdminRegistVO getGoods(AdminRegistVO regist) {
+		return sqlSession.selectOne("RegistDAO.getGoods", regist);
+	}
+	
+	//상품 수정
+	public int updateGoods(AdminRegistVO regist) {
+		return sqlSession.selectOne("RegistDAO.updateGoods", regist);
+	}
+	
+	//상품 삭제
+	public int deleteGoods(AdminRegistVO regist) {
+		return sqlSession.delete("RegistDAO.deleteGoods", regist);
+	}
+	
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock) {
+		return sqlSession.selectOne("RegistDAO.getStock", stock);
 	}
 	//================================================================
 

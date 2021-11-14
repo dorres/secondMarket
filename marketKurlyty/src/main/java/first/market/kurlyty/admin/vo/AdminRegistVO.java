@@ -14,5 +14,4 @@ public class AdminRegistVO {
 	private int goods_detail_promotion_serial;
 	private int goods_detail_status;
 	private int goods_detail_dicountrate;
-
 }

@@ -52,68 +52,46 @@
 		<main>
 			<div class="container-fluid px-4">
 
-				<h1 class="mt-4">상품조회/수정</h1>
+				<h1 class="mt-4">재고</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">상품조회/수정</a></li>
+					<li class="breadcrumb-item"><a href="index.html">재고</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						여기내용 수정
-						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 상품 목록
+						<i class="fas fa-table me-1"></i> 재고
 					</div>
 					<div class="card-body">
-					<form method="post" action="updateGoods.mdo?goods_detail_serial=${goods.goods_detail_serial}">
+					<form method="post" action="updateGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>상품번호</th>
-									<th>1차카테고리</th>
-									<th>2차카테고리</th>
+									<th>상품재고번호</th>
 									<th>3차카테고리</th>
-									<th>상품가격</th>
+									<th>입고일자</th>
+									<th>입고수량</th>
 									<th>재고수량</th>
-									<th>재고알림</th>
-									<th>프로모션</th>
-									<th>판매상태</th>
-									<th>상품할인</th>
-									<th>상세정보</th>
+									<th>유통기한</th>
 									<th>수정/삭제</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="goodsList" items="${goodsList}">
 									<tr>
-										<td>${goodsList.goods_detail_serial}</td>
-										<td>${goodsList.category_main_serial}</td>
-										<td>${goodsList.category_sub_serial}</td>
-										<td>${goodsList.category_goods_serial}</td>
-										<td>${goodsList.goods_detail_price}</td>
-										<td>${goodsList.goods_detail_stock_quantity}</td>
-										<td><input type="text" name="goods_detail_stock_notification" 
-										value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>
-										<td><select>
-											<option name="goods_detail_promotion_serial" value="1">적용</option>
-											<option name="goods_detail_promotion_serial" value="0">미적용</option>
-										</select></td>
-										<td><select>
-											<option name="goods_detail_status" value="1">판매</option>
-											<option name="goods_detail_status" value="0">판매중지</option>
-										</select></td>
-										<td><input type="text" name="goods_detail_dicountrate" 
-										value="${goodsList.goods_detail_dicountrate}" size="3"/>%</td>
-										<td><input type="button" value="상세정보" onclick="location.href= 'goodsDetail.mdo?category_goods_serial=${goodsList.category_goods_serial}'"/> </td>
+										<td>${stock.goods_stock_serial}</td>
+										<td>${stock.category_goods_serial}</td>
+										<td><input type="date" id="goods_stock_receiving_date"/></td>
+										<td><input type="text" id="goods_stock_receiving_quantity"/></td>
+										<td><input type="text" id="goods_stock_stock_quantity" value="${stock.goods_stock_stock_quantity}"/></td>
+										<td><input type="date" id="goods_stock_exp_date"/></td>
 										<td>
 											<input type="submit" value="수정" />
 											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}')"/>
 										</td>
 									</tr>
-								</c:forEach>
 							</tbody>
 						</table>
 						</form>
