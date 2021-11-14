@@ -46,7 +46,7 @@ table.type01 td {
 				<h1 class="mt-4">카테고리</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="index.html">1차카테고리 등록</a></li>
-					<li class="breadcrumb-item active">목록</li>
+					<li class="breadcrumb-item active">등록</li>
 				</ol>
 
 				<div class="card mb-4">

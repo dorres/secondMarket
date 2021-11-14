@@ -6,6 +6,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
+import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -139,11 +140,15 @@ public interface AdminService {
 	
 	int insertCategory1(AdminCategoryMainVO category1);
 	
-	int getIconBlack(AdminCategoryMainVO category1);
+	int getIconBlack(String black);
 	
-	int getIconColor(AdminCategoryMainVO category1);
+	int getIconColor(String color);
 	
 	int deleteCategory1(AdminCategoryMainVO category1);
 	
 	AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1);
+	//------------------------------------------------------------------
+	//관리자 1차카테고리 리스트
+	List<AdminCategorySubVO> getCategory2List();
+	
 }

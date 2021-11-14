@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,16 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 <style type="text/css">
 .btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
 		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
@@ -42,48 +53,37 @@
 					<div class="card-header"  align="right">
 						<!-- <input type="button"  onclick="location.href='admin_bannerWrite.mdo'"  > -->
 							<div class="col three">
-								<a href="#" class="btn1 btn-dark">2차카테고리 등록</a>
+								<a href="admin_categorySubWrite.mdo" class="btn1 btn-dark">2차카테고리 등록</a>
 							</div>
 						</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>번호</th>
+									<th>1차 카테고리(이름/번호)</th>
+									<th>2차 카테고리(이름/번호)</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>번호</th>
+									<th>1차 카테고리(이름/번호)</th>
+									<th>2차 카테고리(이름/번호)</th>
 								</tr>
 							</tfoot>
 							<tbody>
-								<tr>
-									<td>Michael Bruce</td>
-									<td>Javascript Developer</td>
-									<td>Singapore</td>
-									<td>29</td>
-									<td>2011/06/27</td>
-									<td>$183,000</td>
-								</tr>
-								<tr>
-									<td>Donna Snider</td>
-									<td>Customer Support</td>
-									<td>New York</td>
-									<td>27</td>
-									<td>2011/01/25</td>
-									<td>$112,000</td>
-								</tr>
+								<c:forEach var="sub" items="${category2 }">
+									<tr>
+										<td>${sub.rownum }</td>
+										<td>(${ sub.category_main_serial} / ${sub.category_main_name })</td>
+										<td>${ sub.category_sub_name}</td>
+										<td>
+											<input type="button" onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'" value="수정">
+											<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categorySubDelete.mdo?category_sub_serial=${sub.category_sub_serial }')"/>
+										</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

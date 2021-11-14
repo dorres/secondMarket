@@ -214,11 +214,11 @@
  	 	SELECT COUNT(CATEGORY_MAIN_SERIAL) FROM MK_CATEGORY_MAIN
  	</select>
  	 
- 	<select id="getIconBlack" resultType="int" parameterType="category1">
+ 	<select id="getIconBlack" resultType="int" >
  	 	SELECT COUNT(*) FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_ICON_BLACK like CONCAT('%', #{category_main_icon_black})
  	</select>
  	 
- 	<select id="getIconColor" resultType="int" parameterType="category1">
+ 	<select id="getIconColor" resultType="int">
  	 	SELECT COUNT(*) FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_ICON_COLOR like CONCAT('%', #{category_main_icon_color})
  	</select>
  	 
@@ -229,7 +229,14 @@
  	 <select id="getCategory1" resultType="category1" parameterType="category1">
  	 	SELECT * FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_SERIAL = #{category_main_serial}
  	 </select>
- 	 
- 	 
 	<!-- 관리자 1차카테고리 -->
+	<!-- 관리자 2차카테고리 -->
+	<select id="getCategory2List" resultType="category2">
+ 	 	SELECT (ROW_NUMBER() OVER(Order by category_sub_first_no, category_sub_serial)) AS ROWNUM,
+ 		A.CATEGORY_MAIN_SERIAL, A.CATEGORY_MAIN_NAME, B.CATEGORY_SUB_SERIAL, B.CATEGORY_SUB_NAME
+ 		FROM MK_CATEGORY_MAIN A 
+		JOIN MK_CATEGORY_SUB B 
+ 		ON A.CATEGORY_MAIN_SERIAL = B.CATEGORY_SUB_FIRST_NO;
+ 	 </select>
+	<!-- 관리자 2차카테고리 -->
 </mapper>

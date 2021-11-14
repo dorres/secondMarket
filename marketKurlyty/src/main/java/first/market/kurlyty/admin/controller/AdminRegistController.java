@@ -40,3 +40,4 @@ public class AdminRegistController {
 		return "registration/admin_goodsList";
 	}
 }
+
