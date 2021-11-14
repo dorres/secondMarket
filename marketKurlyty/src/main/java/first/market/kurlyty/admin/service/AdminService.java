@@ -144,8 +144,19 @@ public interface AdminService {
 	int deleteCategory1(AdminCategoryMainVO category1);
 	
 	AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1);
+	
+	int updateCategory1(AdminCategoryMainVO category1);
 	//------------------------------------------------------------------
-	//관리자 1차카테고리 리스트
+	//관리자 2차카테고리 리스트
 	List<AdminCategorySubVO> getCategory2List();
+	
+	int getCategory2Column();
+	
+	int insertCategory2(AdminCategorySubVO category2);
+	
+	AdminCategorySubVO getCategory2(AdminCategorySubVO category2);
+	
+	int updateCategory2(AdminCategorySubVO category2);
+	
 	
 }

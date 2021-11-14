@@ -72,6 +72,9 @@ table.type01 td {
 										<td><img alt="아이콘 컬러" src="${category.category_main_icon_color }"></td>
 									</tr>
 								</table>
+							<input type="hidden" value="${category.category_main_icon_black }" name="category_main_icon_black">
+							<input type="hidden" value="${category.category_main_icon_color }" name="category_main_icon_color">
+							<input type="hidden" value="${category.category_main_serial }" name="category_main_serial">
 							<input type="submit" value="수정하기" />
 							<input type="button" value="목록보기" onclick="location.href='admin_categoryMainList.mdo'"/>
 						</form>

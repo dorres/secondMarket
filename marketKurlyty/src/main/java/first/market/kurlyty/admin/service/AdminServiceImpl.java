@@ -291,12 +291,39 @@ public class AdminServiceImpl implements AdminService {
 	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
 		return adminDao.getCategory1(category1);
 	}
+	@Override
+	public int updateCategory1(AdminCategoryMainVO category1) {
+		return adminDao.updateCategory1(category1);
+	}
+	
 	//-------------------------------------------------------------
 	//관리자 2차 카테고리
 	@Override
 	public List<AdminCategorySubVO> getCategory2List() {
 		return adminDao.getCategory2List();
 	}
+
+	@Override
+	public int insertCategory2(AdminCategorySubVO category2) {
+		return adminDao.insertCategory2(category2);
+	}
+
+	@Override
+	public int getCategory2Column() {
+		return adminDao.getCategory2Column();
+	}
+
+	@Override
+	public AdminCategorySubVO getCategory2(AdminCategorySubVO category2) {
+		return adminDao.getCategory2(category2);
+	}
+	
+	@Override
+	public int updateCategory2(AdminCategorySubVO category2) {
+		return adminDao.updateCategory2(category2);
+	}
+
+
 	
 
 }

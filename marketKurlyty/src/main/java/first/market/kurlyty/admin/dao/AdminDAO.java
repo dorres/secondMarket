@@ -242,10 +242,25 @@ public class AdminDAO {
 	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
 		return sqlSession.selectOne("AdminDAO.getCategory1",category1);
 	}
+	public int updateCategory1(AdminCategoryMainVO category1) {
+		return sqlSession.update("AdminDAO.updateCategory1",category1);
+	}
 	//----------------------------------------------------------------
 	//관리자 서브카테고리 리스트
 	public List<AdminCategorySubVO> getCategory2List(){
 		return sqlSession.selectList("AdminDAO.getCategory2List");
+	}
+	public int insertCategory2(AdminCategorySubVO category2) {
+		return sqlSession.insert("AdminDAO.insertCategory2",category2);
+	}
+	public int getCategory2Column() {
+		return sqlSession.selectOne("AdminDAO.getCategory2Column");
+	}
+	public AdminCategorySubVO getCategory2(AdminCategorySubVO category2) {
+		return sqlSession.selectOne("AdminDAO.getCategory2",category2);
+	}
+	public int updateCategory2(AdminCategorySubVO category2) {
+		return sqlSession.update("AdminDAO.updateCategory2",category2);
 	}
 
 
