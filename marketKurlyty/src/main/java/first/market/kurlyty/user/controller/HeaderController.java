@@ -1,18 +1,27 @@
 package first.market.kurlyty.user.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.apache.tomcat.util.json.JSONParser;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import first.market.kurlyty.s3.AwsS3;
 import first.market.kurlyty.vo.CategoryMainVO;
@@ -34,31 +43,17 @@ public class HeaderController {
 	@RequestMapping(value="categoryData.do", produces="html/text; charset=utf-8")
 	@ResponseBody
 	public String getCategoryMain() {
-		StringBuffer categoryMain = new StringBuffer();
-		List<CategoryMainVO> category = sqlSession.selectList("CategoryDAO.getCategoryMain");
-		categoryMain.append("[");
-		
-		for(CategoryMainVO cm : category) {
-			List<CategorySubVO> categorySub = sqlSession.selectList("CategoryDAO.getCategorySub",cm);
-			categoryMain.append("{\"serial\":"+"\""+cm.getCategory_main_serial()+"\",");
-			categoryMain.append("\"name\":"+"\""+cm.getCategory_main_name()+"\",");
-			categoryMain.append("\"iconBlack\":"+"\""+cm.getCategory_main_icon_black()+"\",");
-			categoryMain.append("\"iconColor\":"+"\""+cm.getCategory_main_icon_color()+"\",");
-			categoryMain.append("\"data\":[");
-			for(CategorySubVO sub : categorySub) {
-				categoryMain.append("{\"serial\":"+"\""+sub.getCategory_sub_serial()+"\",");
-				categoryMain.append("\"name\":"+"\""+sub.getCategory_sub_name()+"\",");
-				categoryMain.append("\"firstSerial\":"+"\""+sub.getCategory_sub_first_no()+"\"},");
-			}
-			categoryMain.deleteCharAt(categoryMain.length()-1);
-			categoryMain.append("]");
-			categoryMain.append("},");
+
+		List<CategoryMainVO> categoryMainList = sqlSession.selectList("CategoryDAO.getCategoryMain");
+		for(CategoryMainVO cm:categoryMainList) {
+			List<CategorySubVO> categorySub=sqlSession.selectList("CategoryDAO.getCategorySub",cm);
+			cm.setData(categorySub);
+			//System.out.println(cm.getCategory_main_name());
 		}
-		String jsonCategory = categoryMain.substring(0, categoryMain.length()-1) + "]";
-		System.out.println(jsonCategory);
-		System.out.println("dfsdfadsfa");
-		return jsonCategory;
+		//System.out.println(jsonCategory);
+		return new Gson().toJson(categoryMainList);
 	}
+	
 	@RequestMapping("categoryGoods.do")
 	public String categoryGoods(ProductVO product, Model model) {
 		System.out.println(product.getCategory_main_serial());
@@ -95,7 +90,12 @@ public class HeaderController {
 	
 	@RequestMapping("/fileUploadTest.do")
 	public String fileUploadTest() {
-		awsS3.upload(new File("C:\\pmProject\\ico_cart.svg"), "kurlyImage/ico_cart3.svg");
+//		awsS3.upload(new File("C:\\pmProject\\ico_cart.svg"), "kurlyImage/ico_cart3.svg");
+		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_veggies_black.png"), "categoryMain/icon_veggies_black.png");
+		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_veggies_color.png"), "categoryMain/icon_veggies_color.png");
+		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_meat_black.png"), "categoryMain/icon_meat_black.png");
+		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_meat_color.png"), "categoryMain/icon_meat_color.png");
+		
 		System.out.println("파일 업로드");
 
 		return "redirect:index.do";

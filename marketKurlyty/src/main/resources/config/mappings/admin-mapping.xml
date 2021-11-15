@@ -210,4 +210,8 @@
 	 	 	INSERT INTO MK_CATEGORY_MAIN VALUES (DEFAULT, #{category_main_name}, #{category_main_icon_black}, #{category_main_icon_color});
  	 </insert>
 	<!-- 관리자 1차카테고리 -->
+	
+	<!-- <insert id="insertCoupon" parameterType="couponpub">
+	
+	</insert> -->
 </mapper>

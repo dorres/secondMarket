@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.user.service.CartService;
+import first.market.kurlyty.user.service.user_address_listService;
 import first.market.kurlyty.user.vo.CartVO;
 import first.market.kurlyty.vo.ProductVO;
 
@@ -21,6 +23,9 @@ public class CartController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private user_address_listService addressService;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/cartPage.do")
@@ -55,12 +60,17 @@ public class CartController {
 				if(frozenList.size()>0)model.addAttribute("frozenList",frozenList);
 				if(coldList.size()>0)model.addAttribute("coldList",coldList);
 				if(roomList.size()>0)model.addAttribute("roomList",roomList);
-				System.out.println(totalPrice);
 				model.addAttribute("totalPrice",totalPrice);
 				model.addAttribute("dcPrice",dcPrice);
+				model.addAttribute("listSize",cartList.size());
 			}
 		}else {
-			List<CartVO> cartList = cartService.getCartList((String)session.getAttribute("userId"));
+			String userId = (String)session.getAttribute("userId");
+			CartVO cartVO = new CartVO();
+			cartVO.setUser_id(userId);
+			cartVO.setGoods_cart_status(true);
+			cartService.allCheckItem(cartVO);
+			List<CartVO> cartList = cartService.getCartList(userId);
 			//List<ProductVO> productList = new ArrayList<ProductVO>();
 			List<ProductVO> coldList = new ArrayList<ProductVO>();
 			List<ProductVO> frozenList = new ArrayList<ProductVO>();
@@ -84,9 +94,10 @@ public class CartController {
 			if(frozenList.size()>0)model.addAttribute("frozenList",frozenList);
 			if(coldList.size()>0)model.addAttribute("coldList",coldList);
 			if(roomList.size()>0)model.addAttribute("roomList",roomList);
-			System.out.println(totalPrice);
 			model.addAttribute("totalPrice",totalPrice);
 			model.addAttribute("dcPrice",dcPrice);
+			model.addAttribute("listSize",cartList.size());
+			model.addAttribute("defaultAddress", cartService.getDefaultAddress((String)session.getAttribute("userId")));
 		}
 		return "cart_and_payment/cart";
 	}
@@ -152,20 +163,43 @@ public class CartController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cartDelete.do",produces="html/text; charset=utf-8")
 	@ResponseBody
-	public String deleteCount(CartVO cartVO, HttpServletRequest request) {
+	public String deleteCount(@RequestParam(value="category_goods_serial")List<Integer> category_goods_serial, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("userId")==null) {
-			ArrayList<CartVO> cartList = (ArrayList<CartVO>)session.getAttribute("cartList");
-			for(CartVO cartItem:cartList) {
-				if(cartItem.getCategory_goods_serial()==cartVO.getCategory_goods_serial()) {
-					cartList.remove(cartItem);
-					return String.valueOf(cartVO.getCategory_goods_serial());
+		int returnSerial = 0;
+		System.out.println(category_goods_serial);
+		for(int serial:category_goods_serial) {
+			System.out.println(serial);
+			CartVO cartVO = new CartVO();
+			cartVO.setCategory_goods_serial(serial);
+			if(session.getAttribute("userId")==null) {
+				ArrayList<CartVO> cartList = (ArrayList<CartVO>)session.getAttribute("cartList");
+				for(CartVO cartItem:cartList) {
+					if(cartItem.getCategory_goods_serial()==cartVO.getCategory_goods_serial()) {
+						cartList.remove(cartItem);
+						break;
+					}
 				}
+			}else {
+				
+				cartService.deleteCartItem(cartVO);
 			}
-		}else {
-			cartService.deleteCartItem(cartVO);
+			returnSerial=cartVO.getCategory_goods_serial();
 		}
-		return String.valueOf(cartVO.getCategory_goods_serial());
+		return String.valueOf(returnSerial);
+	}
+	
+	@RequestMapping(value="/changeStatus.do",produces="html/text; charset=utf-8")
+	@ResponseBody
+	public String ChangeStatus(boolean multiple, CartVO cartVO,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		cartVO.setUser_id(userId);
+		if(multiple) {
+			cartService.allCheckItem(cartVO);
+		}else {
+			cartService.updateCheckStatus(cartVO);
+		}
+		return "";
 	}
 }
 

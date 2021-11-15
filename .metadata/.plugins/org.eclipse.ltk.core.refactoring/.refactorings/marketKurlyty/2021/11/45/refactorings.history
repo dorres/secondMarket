@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;first.market.kurlyty.user.vo.dd.java&apos; to &apos;Board_Pagination.java&apos;&#x0D;&#x0A;- Original project: &apos;marketKurlyty&apos;&#x0D;&#x0A;- Original element: &apos;first.market.kurlyty.user.vo.dd.java&apos;&#x0D;&#x0A;- Renamed element: &apos;first.market.kurlyty.user.vo.Board_Pagination.java&apos;" description="Rename compilation unit &apos;dd.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;first.market.kurlyty.user.vo{dd.java" name="Board_Pagination.java" references="false" stamp="1636029779908" version="1.0"/>
+</session>

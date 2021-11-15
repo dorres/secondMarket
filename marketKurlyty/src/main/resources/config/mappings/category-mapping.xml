@@ -59,4 +59,16 @@
  	<delete id="deleteCartItem" parameterType="first.market.kurlyty.user.vo.CartVO">
  		DELETE FROM MK_GOODS_CART WHERE CATEGORY_GOODS_SERIAL=#{category_goods_serial}
  	</delete>
+ 	<update id="AllCheckItem">
+ 		UPDATE MK_GOODS_CART SET GOODS_CART_STATUS=#{goods_cart_status} WHERE user_id=#{user_id}
+ 	</update>
+ 	<update id="updateCheckStatus">
+ 		UPDATE MK_GOODS_CART SET GOODS_CART_STATUS=#{goods_cart_status} WHERE user_id=#{user_id}
+ 		AND category_goods_serial=#{category_goods_serial}
+ 	</update>
+ 	<!-- payment -->
+ 	<select id="getPurchaseGoods" resultType="first.market.kurlyty.user.vo.CartVO">
+ 		SELECT * FROM MK_GOODS_CART WHERE user_id=#{value} AND goods_cart_status=true
+ 		ORDER BY goods_cart_serial ASC
+ 	</select>
  </mapper>
