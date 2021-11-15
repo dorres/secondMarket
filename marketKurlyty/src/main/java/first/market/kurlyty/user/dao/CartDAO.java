@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.user_address_listVO;
 import first.market.kurlyty.vo.ProductVO;
 
 @Repository
@@ -28,5 +29,17 @@ public class CartDAO {
 	}
 	public void deleteCartItem(CartVO cartVO) {
 		sqlSession.delete("CategoryDAO.deleteCartItem",cartVO);
+	}
+	public user_address_listVO getDefaultAddress(String userId) {
+		return sqlSession.selectOne("UserDAO.getDefaultAddress",userId);
+	}
+	public void allCheckItem(CartVO cartVO) {
+		sqlSession.update("CategoryDAO.AllCheckItem",cartVO);
+	}
+	public void updateCheckStatus(CartVO cartVO) {
+		sqlSession.update("CategoryDAO.updateCheckStatus",cartVO);
+	}
+	public List<CartVO> getPurchaseGoods(String userId) {
+		return sqlSession.selectList("CategoryDAO.getPurchaseGoods",userId);
 	}
 }
