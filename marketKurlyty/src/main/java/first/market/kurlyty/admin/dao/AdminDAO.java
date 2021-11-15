@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
@@ -262,7 +263,16 @@ public class AdminDAO {
 	public int updateCategory2(AdminCategorySubVO category2) {
 		return sqlSession.update("AdminDAO.updateCategory2",category2);
 	}
-
-
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return sqlSession.delete("AdminDAO.deleteCategory2",category2);
+	}
+	//---------------------------------------------------------------------
+	//관리자 상품카테고리 리스트
+	public List<AdminCategoryGoodsVO> getCategory3List(){
+		return sqlSession.selectList("AdminDAO.getCategory3List");
+	}
+	public List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3){
+		return sqlSession.selectList("AdminDAO.getCategoryType",category3);
+	}
 	
 }

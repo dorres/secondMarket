@@ -3,15 +3,18 @@ package first.market.kurlyty.admin.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import first.market.kurlyty.admin.service.AdminService;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.s3.AwsS3;
@@ -137,6 +140,7 @@ public class AdminCategoryController {
 
 		category1.setCategory_main_icon_black("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key1);
 		category1.setCategory_main_icon_color("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key2);
+		
 		category1.setCategory_main_serial("M" + df.format(adminService.getCategory1Column()+1));	
 		success = adminService.insertCategory1(category1);
 //		//↑↑↑↑↑↑여기까지가 db작업	
@@ -240,11 +244,23 @@ public class AdminCategoryController {
 			return "category/admin_categorySub";
 		}
 	}
+	//서브 카테고리 삭제(Delete)
+	@RequestMapping("admin_categorySubDelete.mdo")
+	public String categorySubDelete(AdminCategorySubVO category2) {
+		int success =0;
+
+		success =adminService.deleteCategory2(category2);
+		if(success != 0) 
+			return "redirect:admin_categorySubList.mdo";
+		else 
+			return "redirect:admin_categorySubList.mdo";
+	}
 	
 	//=============================================================
 	//상품 카테고리 리스트
 	@RequestMapping("admin_categoryGoodsList.mdo")
-	public String categoryGoodsList() {
+	public String categoryGoodsList(Model model) {
+		model.addAttribute("category3",adminService.getCategory3List());
 		return "category/admin_categoryGoodsList";
 	}
 	//상품 카테고리 세부사항
@@ -254,7 +270,16 @@ public class AdminCategoryController {
 	}
 	//상품 카테고리 등록
 	@RequestMapping("admin_categoryGoodsWrite.mdo")
-	public String categoryGoodsWrite() {
+	public String categoryGoodsWrite(Model model) {
+		model.addAttribute("category1",adminService.getCategory1List());
+//		UUID uuid = UUID.randomUUID();
+//		 String uploadImageName = uuid.toString()+"_"+image.getOriginalFilename();
 		return "category/admin_categoryGoodsWrite";
+	}
+	@RequestMapping("admin_getCategoryType.mdo")
+	@ResponseBody
+	public Object getCategoryType(AdminCategoryGoodsVO category3) {
+	List<AdminCategoryGoodsVO> goodsList = 	adminService.getCategoryType(category3);
+		return goodsList;
 	}
 }

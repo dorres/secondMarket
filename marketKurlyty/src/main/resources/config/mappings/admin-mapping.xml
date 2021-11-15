@@ -264,6 +264,29 @@
  		CATEGORY_SUB_FIRST_NO = #{category_sub_first_no},
  		CATEGORY_SUB_NAME = #{category_sub_name}
  		WHERE CATEGORY_SUB_SERIAL = #{category_sub_serial}
- 	</update>	
-	<!-- 관리자 2차카테고리 -->
+ 	</update>
+ 	
+ 	<delete id="deleteCategory2" parameterType="category2">
+ 	 	DELETE FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_SERIAL = #{category_sub_serial}
+ 	</delete>
+
+	
+	<!-- 관리자 3차카테고리 -->
+	<select id="getCategory3List" resultType="category3">
+		SELECT (ROW_NUMBER() OVER(ORDER by A.CATEGORY_MAIN_SERIAL,A.CATEGORY_SUB_SERIAL)) AS ROWNUM,
+		B.CATEGORY_MAIN_NAME, B.CATEGORY_SUB_NAME, A.*
+		FROM MK_CATEGORY_GOODS A 
+		JOIN (
+			SELECT (ROW_NUMBER() OVER()) AS ROWNUM,
+			A.*, B.* FROM MK_CATEGORY_MAIN A JOIN MK_CATEGORY_SUB B 
+			ON A.CATEGORY_MAIN_SERIAL = B.CATEGORY_SUB_FIRST_NO) B 
+		ON A.CATEGORY_SUB_SERIAL = B.CATEGORY_SUB_SERIAL;
+ 	</select>
+ 
+ 	<select id="getCategoryType" resultType="category2" parameterType="category2">
+ 		SELECT * FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_FIRST_NO = #{category_main_serial}
+ 	</select>
+	
+	
+	<!-- 관리자 3차카테고리 -->
 </mapper>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
@@ -323,7 +324,20 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateCategory2(category2);
 	}
 
-
+	@Override
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return adminDao.deleteCategory2(category2);
+	}
+	//--------------------------------------------------------------
+	@Override
+	public List<AdminCategoryGoodsVO> getCategory3List() {
+		return adminDao.getCategory3List();
+	}
+	@Override
+	public List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategoryType(category3);
+	}
+	
 	
 
 }

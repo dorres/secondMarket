@@ -51,7 +51,6 @@
 
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
-						<!-- <input type="button"  onclick="location.href='admin_bannerWrite.mdo'"  > -->
 							<div class="col three">
 								<a href="admin_categorySubWrite.mdo" class="btn1 btn-dark">2차카테고리 등록</a>
 							</div>

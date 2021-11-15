@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
-
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
@@ -158,5 +158,11 @@ public interface AdminService {
 	
 	int updateCategory2(AdminCategorySubVO category2);
 	
+	int deleteCategory2(AdminCategorySubVO category2);
+	//---------------------------------------------------------------------
+	//관리자 3차카테고리 리스트
+	List<AdminCategoryGoodsVO> getCategory3List();
+	
+	List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3);
 	
 }
