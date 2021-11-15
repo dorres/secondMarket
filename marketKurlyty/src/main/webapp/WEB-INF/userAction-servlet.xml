@@ -24,7 +24,6 @@
 		<property name="prefix" value="/WEB-INF/user/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*.do"/>
