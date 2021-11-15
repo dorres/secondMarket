@@ -108,7 +108,7 @@ public class AdminDAO {
 	
 	//상품 수정
 	public int updateGoods(AdminRegistVO regist) {
-		return sqlSession.selectOne("RegistDAO.updateGoods", regist);
+		return sqlSession.update("RegistDAO.updateGoods", regist);
 	}
 	
 	//상품 삭제

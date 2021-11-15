@@ -1,5 +1,7 @@
 package first.market.kurlyty.admin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,8 +52,21 @@ public class AdminRegistController {
 	
 	//상품 수정
 	@RequestMapping(value="updateGoods.mdo", method = {RequestMethod.POST})
-	public String updateGoods(AdminRegistVO regist) {
+	public String updateGoods(int[] goods_detail_stock_notification,
+			int[] goods_detail_promotion_serial,
+			int[] goods_detail_status,
+			int[] goods_detail_dicountrate,int index,int serial) {
 		int success = 0;
+		System.out.println(goods_detail_stock_notification[index]);
+		System.out.println(goods_detail_promotion_serial[index]);
+		System.out.println(goods_detail_status[index]);
+		System.out.println(goods_detail_dicountrate[index]);
+		AdminRegistVO regist = new AdminRegistVO();
+		regist.setGoods_detail_serial(serial);
+		regist.setGoods_detail_stock_notification(goods_detail_stock_notification[index]);
+		regist.setGoods_detail_promotion_serial(goods_detail_promotion_serial[index]);
+		regist.setGoods_detail_status(goods_detail_status[index]);
+		regist.setGoods_detail_dicountrate(goods_detail_dicountrate[index]);
 		success = adminService.updateGoods(regist);
 		if(success != 0) {
 			return "redirect:getGoodsList.mdo";

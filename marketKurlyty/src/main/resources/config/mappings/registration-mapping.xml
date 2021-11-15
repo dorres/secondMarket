@@ -14,7 +14,7 @@
 	
 	<!-- 상품조회 -->
 	<select id="getGoods" resultType="regist">
-		SELECT * FROM MK_GOODS_DETAIL;
+		SELECT (ROW_NUMBER() OVER(ORDER BY goods_detail_serial)) AS ROWNUM, * FROM MK_GOODS_DETAIL;
 	</select>
 	
 	<!-- 상품 수정 -->

@@ -40,6 +40,19 @@
 			location = url;
 		}
 	}
+		var noti = document.getElementById("noti");
+		if(noti<15){
+			alert("재고가 충분하지 않습니다.");
+		}else{ null;}
+		
+		//	var dis = document.getElementById("dis");
+	//	if(dis==100){
+	//		alert("100미만으로 입력 해주세요.");
+	//		location.href = "getGoodsList.mdo";
+	//	}else{
+	//		alert("할인 적용!");
+	//		location.href = "admin_index.mdo";
+		//}
 	</script>
 </head>
 <body class="sb-nav-fixed">
@@ -68,7 +81,7 @@
 						<i class="fas fa-table me-1"></i> 상품 목록
 					</div>
 					<div class="card-body">
-					<form method="post" action="updateGoods.mdo?goods_detail_serial=${goods.goods_detail_serial}">
+					<form name="updateForm" method="post" action="updateGoods.mdo?goods_detail_serial=${goods.goods_detail_serial}">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
@@ -87,29 +100,39 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="goodsList" items="${goodsList}">
+								<c:forEach var="goodsList" items="${goodsList}" varStatus="index">
 									<tr>
 										<td>${goodsList.goods_detail_serial}</td>
 										<td>${goodsList.category_main_serial}</td>
 										<td>${goodsList.category_sub_serial}</td>
-										<td>${goodsList.category_goods_serial}</td>
+										<td id="goods">${goodsList.category_goods_serial}</td>
 										<td>${goodsList.goods_detail_price}</td>
 										<td>${goodsList.goods_detail_stock_quantity}</td>
-										<td><input type="text" name="goods_detail_stock_notification" 
+										
+										<td id="noti"><input type="text" name="goods_detail_stock_notification" 
 										value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>
-										<td><select>
-											<option name="goods_detail_promotion_serial" value="1">적용</option>
-											<option name="goods_detail_promotion_serial" value="0">미적용</option>
+										
+										<td><select name="goods_detail_promotion_serial" id="promotion">
+											<option value="1">1번 프로모션</option>
+											<option value="2">2번 프로모션</option>
+											<option value="3">3번 프로모션</option>
+											<option value="4">4번 프로모션</option>
 										</select></td>
-										<td><select>
-											<option name="goods_detail_status" value="1">판매</option>
-											<option name="goods_detail_status" value="0">판매중지</option>
+										
+										<td><select name="goods_detail_status" id="status">
+											<option value="0" ${goodsList.goods_detail_status == 0 ? "selected='selected'" : '' }>판매완료</option>
+											<option value="1" ${goodsList.goods_detail_status == 1 ? "selected='selected'" : '' }>판매중</option>
+											<option value="2" ${goodsList.goods_detail_status == 2 ? "selected='selected'" : '' }>판매중지</option>
 										</select></td>
-										<td><input type="text" name="goods_detail_dicountrate" 
+										
+										<td id="dis"><input type="text" name="goods_detail_dicountrate" 
 										value="${goodsList.goods_detail_dicountrate}" size="3"/>%</td>
-										<td><input type="button" value="상세정보" onclick="location.href= 'goodsDetail.mdo?category_goods_serial=${goodsList.category_goods_serial}'"/> </td>
+										
+										<td><input type="button" value="상세정보" 
+										onclick="location.href= 'goodsDetail.mdo?category_goods_serial=${goodsList.category_goods_serial}'"/> </td>
+										
 										<td>
-											<input type="submit" value="수정" />
+											<input type="submit" onclick="javascript:update('${index.index}','${goodsList.goods_detail_serial}')" value="수정"/>
 											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}')"/>
 										</td>
 									</tr>
@@ -138,5 +161,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
 	<!-- 건들지마세요 -->
+<script>
+function update(index,serial){
+	document.updateForm.action="updateGoods.mdo?index="+String(index)+"&serial="+String(serial);
+	document.updateForm.submit();
+}
+
+</script>
 </body>
 </html>
