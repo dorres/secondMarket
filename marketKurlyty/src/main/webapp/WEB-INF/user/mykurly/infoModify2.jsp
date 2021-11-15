@@ -226,7 +226,7 @@ function zip(){
 													class="screen_out">필수항목</span></span></th>
 											<td>
 												<div class="phone_num">
-													<input type="text" value="" pattern="[0-9]*" id="user_phone" name="user_phone" placeholder="휴대폰 번호를 바꿀시 입력하세요." class="inp">
+													<input type="text" value="" pattern="[0-9]*" id="user_phone" name="user_phone" placeholder="휴대폰 번호를 바꿀시 입력하세요." class="inp" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 													<button id="btn_cert" class="btn default enabled" onclick="smsResponse()" type="button">인증번호 받기</button>
 												</div>
 												<!-- <div id="codeNum" class="code_num">
@@ -248,7 +248,7 @@ function zip(){
 											<th></th>
 											<td>
 												<div class="phoneHid">
-													<input type="text" id="smsCheck" name="smsCheck" size="6" maxlength="6" value="" />
+													<input type="text" id="smsCheck" name="smsCheck" size="6" maxlength="6" value="" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
 													<button id="btn_cert" class="btn default enabled" onclick="certCheck()" type="button">인증번호 확인</button>
 													<input type="hidden" id="posiblePhone"/>
 													<input type="hidden" id="checkNum"/>
@@ -279,15 +279,15 @@ function zip(){
 												<div class="birth_day">
 													<input type="text" name="user_year" id="user_year"
 														pattern="[0-9]*" value="${userData.user_year }" label="생년월일" size="4"
-														maxlength="4" placeholder="YYYY">
+														maxlength="4" placeholder="YYYY" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<span class="bar"></span>
 														<input type="text" name="birth[]"
 														id="user_month" pattern="[0-9]*" value="${userData.user_month }" label="생년월일"
-														size="2" maxlength="2" placeholder="MM">
+														size="2" maxlength="2" placeholder="MM" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<span class="bar"></span>
 														<input type="text" name="birth[]"
 														id="user_day" pattern="[0-9]*" value="${userData.user_day }" label="생년월일"
-														size="2" maxlength="2" placeholder="DD">
+														size="2" maxlength="2" placeholder="DD" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														
 													<input id="totalbirth" type="hidden" name="user_birth"/>
 												</div>

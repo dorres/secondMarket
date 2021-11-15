@@ -127,7 +127,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="layout-static.html">리뷰</a> <a
-									class="nav-link" href="layout-sidenav-light.html">뮨의</a>
+									class="nav-link" href="layout-sidenav-light.html">문의</a>
 							</nav>
 						</div>
 		
@@ -145,8 +145,9 @@
 						<div class="collapse" id="collapseLayouts6"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="admin_bannerList.mdo">배너</a> <a
-									class="nav-link" href="layout-sidenav-light.html">쿠폰</a>
+								<a class="nav-link" href="admin_bannerList.mdo">배너</a>
+								<a class="nav-link" href="admin_couponpub.mdo">쿠폰 발행</a>
+								<a class="nav-link" href="admin_couponiss.mdo">쿠폰 발급</a>
 							</nav>
 						</div>
 
