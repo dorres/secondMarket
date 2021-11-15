@@ -9,6 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script src="jquery-3.6.0.min.js"></script>
 <style type="text/css">
 table{
 	border-collapse: collapse;
@@ -53,15 +54,11 @@ $(document).ready(function () {
 			type : "POST",
 			url : "admin_getCategoryType.mdo",
 			dataType : "json",
-			data : "category_sub_first_no="+ selectType,
+			data : {"category_sub_first_no" : selectType},
 			success : function(result) {
-				//$("#category_sub_serial").html("");
-				//$('#category_sub_serial').append('<option value="">모집할 인원을 선택해주세요</option>');	
-				//alert(result.membershipName);
-				//alert(result.concurrentUsers);}
-			//var category2 = result.category_sub_serial
-			for(AdminCategorySubVO sub : result){
-				${'#category_sub_serial'}.append("<option value="+sub.category_sub_serial+">"+sub.category_sub_name+"</option>")
+
+			for(key in result){
+				$('#category_sub_serial').append("<option value="+result[key].category_sub_serial+">"+result[key].category_sub_name+"</option>")
 			}
 		 }
 		});//ajax 

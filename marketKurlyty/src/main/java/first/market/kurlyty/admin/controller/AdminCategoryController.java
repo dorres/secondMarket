@@ -279,7 +279,7 @@ public class AdminCategoryController {
 	@RequestMapping("admin_getCategoryType.mdo")
 	@ResponseBody
 	public Object getCategoryType(AdminCategoryGoodsVO category3) {
-	List<AdminCategoryGoodsVO> goodsList = 	adminService.getCategoryType(category3);
+		List<AdminCategoryGoodsVO> goodsList = 	adminService.getCategoryType(category3);
 		return goodsList;
 	}
 }
