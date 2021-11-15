@@ -229,7 +229,7 @@
                 else{
                     $(this).nextAll("tr:eq(0)").find(".sub").css("display","table-cell");
                 }
-            });
+            })
         </script>
         	
 
