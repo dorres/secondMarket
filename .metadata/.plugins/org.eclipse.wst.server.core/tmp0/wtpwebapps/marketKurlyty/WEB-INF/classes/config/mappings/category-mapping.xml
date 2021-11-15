@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="CategoryDAO">
+ 	<select id="getCategoryMain" resultType="categoryMain">
+		SELECT * FROM mk_category_main ORDER BY category_main_serial ASC 	
+ 	</select>
+ 	<select id="getCategorySub" resultType="categorySub" parameterType="categoryMain">
+ 		SELECT * FROM MK_CATEGORY_SUB WHERE category_sub_first_no=#{category_main_serial} ORDER BY category_sub_serial ASC
+ 	</select>
+ 	<select id="getCategoryProductList" resultType="product" parameterType="product">
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE 1=1
+ 		<if test="category_main_serial != null">
+ 			AND PRODUCT.category_main_serial=#{category_main_serial}
+ 		</if>
+ 		<if test="category_sub_serial != null">
+ 			AND PRODUCT.category_sub_serial=#{category_sub_serial}
+ 		</if>
+ 		AND PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.category_goods_serial
+ 	</select>
+ 	<select id="getCategoryRoot" resultType="categoryMain" parameterType="product">
+ 		SELECT * FROM mk_category_main WHERE category_main_serial=#{category_main_serial}
+ 	</select>
+ 	
+ 	<!-- S3 -->
+ 	<select id="getS3Key" resultType="first.market.kurlyty.s3.S3KeyVO">
+ 		SELECT * FROM S3Key
+ 	</select>
+ 	<!-- Cart -->
+ 	<select id="getCartItem" resultType="product" parameterType="first.market.kurlyty.user.vo.CartVO">
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE 1=1
+ 		AND PRODUCT.category_goods_serial=#{category_goods_serial}
+ 		ORDER BY PRODUCT.category_goods_serial
+ 	</select>
+ 	<insert id="insertCartItem" parameterType="first.market.kurlyty.user.vo.CartVO">
+ 		INSERT INTO MK_GOODS_CART VALUES(default,
+ 		#{category_goods_serial},
+ 		#{goods_cart_count},
+ 		false,#{user_id})
+ 	</insert>
+ 	<select id="getCartList" resultType="first.market.kurlyty.user.vo.CartVO" parameterType="String">
+ 		SELECT * FROM MK_GOODS_CART WHERE user_id=#{value} ORDER BY GOODS_CART_SERIAL ASC
+ 	</select>
+ 	<update id="updateCartItem" parameterType="first.market.kurlyty.user.vo.CartVO">
+ 		UPDATE MK_GOODS_CART SET GOODS_CART_COUNT=#{goods_cart_count} WHERE CATEGORY_GOODS_SERIAL=#{category_goods_serial}
+ 	</update>
+ 	<delete id="deleteCartItem" parameterType="first.market.kurlyty.user.vo.CartVO">
+ 		DELETE FROM MK_GOODS_CART WHERE CATEGORY_GOODS_SERIAL=#{category_goods_serial}
+ 	</delete>
+ </mapper>
