@@ -10,7 +10,7 @@ import first.market.kurlyty.user.dao.UserDAO;
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
 
-//컨트롤러  - service - DAO 
+//CONTROLLER - service - DAO 
 
 @Service
 public class PersonalQnaServiceImpl implements PersonalQnaService {
@@ -33,8 +33,8 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 	}
 
 
-	 @Override public int updatePersonalQna(PersonalQnaVO vo) { return
-	 personalqnaDAO.updatePersonalQna(vo); }
+	 @Override public int updatePersonalQna(PersonalQnaVO vo) { 
+		 return personalqnaDAO.updatePersonalQna(vo); }
 	
 
 	@Override

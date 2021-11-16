@@ -12,14 +12,14 @@
  		
  <!-- insert 글 작성. 완료 -->
  	<insert id="insertPersonalQna" parameterType="personalQna">
- 		INSERT INTO mk_qna_personal VALUES (default,#{user_id},#{admin_name},#{order_detail_order_serial},
- 		#{qna_personal_title},#{qna_personal_content},now(),#{qna_personal_hit},
- 		#{qna_personal_answer},#{qna_personal_category},#{qna_personal_phone},#{qna_personal_email})
+ 		INSERT INTO mk_qna_personal VALUES (default, #{user_id}, #{admin_name}, #{order_details_order_serial},
+ 		#{qna_personal_title}, #{qna_personal_content}, now(), #{qna_personal_hit},
+ 		#{qna_personal_answer}, #{qna_personal_category}, #{qna_personal_phone}, #{qna_personal_email})
  	</insert>
 	
 <!-- 글 수정하기. 11월 6일 시작. -->
 	<update id="updatePersonalQna" parameterType="personalQna">
-		UPDATE mk_qna_personal SET order_details_order_serial = #{order_details_order_serial}, qna_personal_title = #{qna_personal_title}, qna_personal_content = #{qna_personal_content}, 
+		UPDATE mk_qna_personal SET qna_personal_serial = #{qna_personal_serial}, qna_personal_title = #{qna_personal_title}, qna_personal_content = #{qna_personal_content}, 
 		qna_personal_date = now(), qna_personal_category = #{qna_personal_category}
 		WHERE qna_personal_serial = #{qna_personal_serial} 
 	</update>
@@ -41,7 +41,7 @@
 
 <!-- UPDATE용 상세보기 -->
 	<select id="getPersonalQna" resultType="personalQna" parameterType="personalQna">
-		SELECT * FROM mk_qna_personal WHERE qna_personal_serial = #{qna_personal_serial}
+		SELECT * FROM mk_qna_personal WHERE qna_personal_serial = #{qna_personal_serial} 
 	</select>
 
  </mapper> 
