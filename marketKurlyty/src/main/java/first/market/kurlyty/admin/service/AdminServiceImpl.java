@@ -154,6 +154,15 @@ public class AdminServiceImpl implements AdminService {
 	public AdminStockVO getStock(AdminStockVO stock) {
 		return adminDao.getStock(stock);
 	}
+	
+	//입고 수정
+	public int updateStock (AdminStockVO stock) {
+		return adminDao.updateStock(stock);
+	}
+	//재고 합계
+	public AdminStockVO sumStock(AdminStockVO stock) {
+		return adminDao.sumStock(stock);
+	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override

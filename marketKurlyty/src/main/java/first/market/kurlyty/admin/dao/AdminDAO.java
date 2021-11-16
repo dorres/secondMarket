@@ -99,7 +99,7 @@ public class AdminDAO {
 	
 	//상품조회리스트
 	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
-		return sqlSession.selectList("RegistDAO.getGoods", regist);
+		return sqlSession.selectList("RegistDAO.getGoodsList", regist);
 	}
 	
 	//상품 조회
@@ -120,6 +120,16 @@ public class AdminDAO {
 	//재고 조회
 	public AdminStockVO getStock(AdminStockVO stock) {
 		return sqlSession.selectOne("RegistDAO.getStock", stock);
+	}
+	
+	//입고 수정
+	public int updateStock(AdminStockVO stock) {
+		return sqlSession.update("RegistDAO.updateStock", stock);
+	}
+	
+	//수량 합계
+	public AdminStockVO sumStock(AdminStockVO stock) {
+		return sqlSession.selectOne("RegistDAO.stockSum", stock);
 	}
 	//================================================================
 

@@ -67,7 +67,7 @@
 						<i class="fas fa-table me-1"></i> 재고
 					</div>
 					<div class="card-body">
-					<form method="post" action="updateGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}">
+					<form method="post" action="updateStock.mdo">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
@@ -77,20 +77,19 @@
 									<th>입고수량</th>
 									<th>재고수량</th>
 									<th>유통기한</th>
-									<th>수정/삭제</th>
+									<th>수정</th>
 								</tr>
 							</thead>
 							<tbody>
 									<tr>
 										<td>${stock.goods_stock_serial}</td>
-										<td>${stock.category_goods_serial}</td>
+										<td><input type="text" name="category_goods_serial" value="${stock.category_goods_serial}" readonly="readonly"/></td>
 										<td><fmt:formatDate value="${stock.goods_stock_receiving_date}" pattern="yyyy-MM-dd"/></td>
-										<td>${stock.goods_stock_receiving_quantity}</td>
+										<td><input type="text" name="goods_stock_receiving_quantity" value="${stock.goods_stock_receiving_quantity}" /></td>
 										<td>${stock.goods_stock_stock_quantity}</td>
 										<td><fmt:formatDate value="${stock.goods_stock_exp_date}" pattern="yyyy-MM-dd"/></td>
 										<td>
 											<input type="submit" value="수정" />
-											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}')"/>
 										</td>
 									</tr>
 							</tbody>

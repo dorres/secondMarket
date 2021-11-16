@@ -71,6 +71,12 @@ public interface AdminService {
 		
 	//재고 조회
 	public AdminStockVO getStock(AdminStockVO stock);
+	
+	//입고 수정
+	public int updateStock (AdminStockVO stock);
+	
+	//재고 합계
+	public AdminStockVO sumStock(AdminStockVO stock);
 	//=================================================================
 
 	//공지사항 리스트

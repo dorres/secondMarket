@@ -107,7 +107,7 @@
 										<td>${goodsList.category_sub_serial}</td>
 										<td id="goods">${goodsList.category_goods_serial}</td>
 										<td>${goodsList.goods_detail_price}</td>
-										<td>${goodsList.goods_detail_stock_quantity}</td>
+										<td>${goodsList.goods_stock_stock_quantity+goodsList.goods_stock_receiving_quantity}</td>
 										
 										<td id="noti"><input type="text" name="goods_detail_stock_notification" 
 										value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>

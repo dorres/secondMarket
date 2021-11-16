@@ -38,7 +38,7 @@ public class AdminRegistController {
 	
 	//상품조회리스트
 	@RequestMapping("getGoodsList.mdo")
-	public String getGoodsList(AdminRegistVO regist, Model model) {
+	public String getGoodsList(AdminRegistVO regist, AdminStockVO stock, Model model) {
 		model.addAttribute("goodsList", adminService.goodsList(regist));
 		return "registration/admin_goodsList";
 	}
@@ -94,5 +94,16 @@ public class AdminRegistController {
 			return "registration/admin_goodsDetails";
 		}
 		
+	//입고 수정
+		@RequestMapping("updateStock.mdo")
+		public String updateStock(AdminStockVO stock) {
+			int success = 0;
+			success = adminService.updateStock(stock);
+			if(success != 0) {
+				return "redirect:getGoodsList.mdo";
+			}else {
+				return "redirect:goodsDetail.mdo";
+			}
+		}
 }
 

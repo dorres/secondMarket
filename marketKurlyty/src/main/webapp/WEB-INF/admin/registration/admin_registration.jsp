@@ -21,33 +21,34 @@
 			<h2>상품등록</h2>  
 			<form>
   <table class="body">  
-      <tr>  
-        <td>상위카테고리&nbsp;&nbsp;&nbsp;<select>
+   <tr>
+    <th class="tg-0pky">카테고리 </th>
+    <th class="tg-0pky"> 상위카테고리               중위카테고리               하위카테고리<br><select>
         <option id="*"value="*">카테고리1</option>
         <option value="*">카테고리2</option>
         <option value="*">카테고리3</option>
-        </select> </td> 
-        
-         <td>중위카테고리&nbsp;&nbsp;&nbsp;<select>
-        <option value="*">카테고리1</option>
+        </select>
+        <select>
+        <option id="*"value="*">카테고리1</option>
         <option value="*">카테고리2</option>
         <option value="*">카테고리3</option>
-        </select> </td> 
-        
-        <td>하위카테고리&nbsp;&nbsp;&nbsp;<select>
-        <option value="*">카테고리1</option>
+        </select>
+        <select>
+        <option id="*"value="*">카테고리1</option>
         <option value="*">카테고리2</option>
         <option value="*">카테고리3</option>
-        </select> </td> 
+        </select>
+        </th>
+    
+  </tr>
+      <tr>  
+        <th>판매가격</th>
+        <th><input type="text" name="*"/></th>
       </tr> 
       
       <tr>
-       <td>상품가격
-       <input type="text" id="*" value="" placeholder="ex) 10,000"> 원&nbsp;&nbsp;</td>
-       <td>입고날짜
-       <input type="date" id="*" value="" placeholder="ex) 2021-00-00">&nbsp;&nbsp;</td>
-       <td>수량
-       <input type="text" id="*" value="" placeholder="ex) 10">개&nbsp;&nbsp;</td>
+      <th>재고알림</th>
+       <th><input type="text" name="*"></th>
       </tr>
       
        <tr>
