@@ -8,7 +8,7 @@
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet" href="style/ItemListStyle.css">
+<link rel="styleSheet" href="/resources/style/ItemListStyle.css">
 
 <script type="text/javascript">
   function mySubmit(index) {
@@ -58,10 +58,14 @@
 							<!-- 
 									<form name="insert" id="insertform" method="post"
 										action="insertPersonalQna.do" style="height: 100%;">  -->
-							
+							           
 										<input type="hidden" name="user_id" value="${userId}">
-										<input type="hidden" name="qna_personal_serial" value="${getPersonalQna.qna_personal_serial}" />
+								<c:if test="${getPersonalQna != null }">
+										<input type="hidden" name="qna_personal_serial" value="${getPersonalQna.qna_personal_serial}"/>
+								</c:if>
+								
 										<table id="table_after" class="boardWrite2" width="100%">
+										
 											<colgroup>
 												<col width="15%" align="right">
 											</colgroup>
@@ -110,7 +114,6 @@
 														</select><br>
 														<input type="text" name="qna_personal_title" style="width: 100%" label="제목" 
 														value="${getPersonalQna.qna_personal_title}"/>
-														
 													</c:if>
 													</td>
 												</tr>
@@ -151,7 +154,7 @@
 													<th class="input_txt">주문번호</th>
 													<td><input type="text"
 														name="order_details_order_serial" style="width: 25%"
-														value="">
+														value="${getPersonalQna.order_details_order_serial}">
 														<input type="button" class="bhs_button yb"
 														value="주문조회"
 														style="float: none; line-height: 27px; width: 100px;">
@@ -252,8 +255,8 @@
 														<!-- 위에 자바스크립트가 원래 있던 부분 --> 
 														
 														<c:if test = "${getPersonalQna == null}" >
-														<textarea name="qna_personal_content" class="editing_area">
-															style="width: 100%; height: 474px;" </textarea>
+														<textarea name="qna_personal_content" class="editing_area"
+															style="width: 100%; height: 474px;"> </textarea>
 														</c:if>
 														
 														<c:if test = "${getPersonalQna != null}" >
