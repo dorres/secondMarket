@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-<script src="jquery-3.6.0.min.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
 table{
 	border-collapse: collapse;
@@ -48,25 +48,22 @@ textarea:focus, input:focus{
 $(document).ready(function () {
 	$('#category_main_serial').change(function () {
 		var selectType=$(this).val();
-		alert(selectType);
-		
+
 		$.ajax({
 			type : "POST",
 			url : "admin_getCategoryType.mdo",
 			dataType : "json",
-			data : {"category_sub_first_no" : selectType},
+			data : {"category_main_serial" : selectType},
 			success : function(result) {
-
-			for(key in result){
-				$('#category_sub_serial').append("<option value="+result[key].category_sub_serial+">"+result[key].category_sub_name+"</option>")
-			}
+				$("#category_sub_serial").html("");
+				for(key in result){
+					
+					$('#category_sub_serial').append("<option value="+result[key].category_sub_serial+">"+result[key].category_sub_name+"</option>")
+				}
 		 }
 		});//ajax 
-	})//첫번째 select 박스
-/* 	$('#partyHeadCount').change(function () {
-		//alert($('#partyHeadCount').val());
-		
-	})// 두번째 select 박스 */
+	})
+
 })
 
 </script>
@@ -100,14 +97,16 @@ $(document).ready(function () {
 										<td colspan="3">
 											<b>1차</b>
 											<select name="category_main_serial" id="category_main_serial">
-												<c:forEach var="goods" items="${category1 }">
-													<option value="${goods.category_main_serial }">${goods.category_main_name }</option>
+												<c:forEach var="main" items="${category1 }">
+													<option value="${main.category_main_serial }">${main.category_main_name }</option>
 												</c:forEach>
 											</select>
 											&nbsp;&nbsp;&nbsp;
 											<b>2차</b>
 											<select name="category_sub_serial" id="category_sub_serial">
-													<option value="???">최대10글자니까작성해</option>
+												<c:forEach var="sub" items="${category2 }">
+													<option value="${sub.category_sub_serial }">${sub.category_sub_name }</option>
+												</c:forEach>
 											</select>
 										</td>
 										
