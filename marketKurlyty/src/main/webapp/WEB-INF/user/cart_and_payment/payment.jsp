@@ -18,6 +18,7 @@
 <body>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false">
+	
 	<c:if test="${orderPrice >= 400 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
@@ -28,10 +29,11 @@
 	</c:if>
 	<fmt:formatNumber var="oldPrice" maxFractionDigits="3" value="${goodsPrice}"/>
 	<fmt:formatNumber var="dc" maxFractionDigits="3" value="${orderPrice-goodsPrice }"/>
-	<input type="hidden" id="payment" value="${orderPrice }">
+	<%-- <input type="hidden" id="payment" value="${orderPrice }"> --%>
 	<input type="hidden" id="address1" value="${userInfo.user_address1 }"/>
 	<input type="hidden" id="address2" value="${userInfo.user_address2 }"/>
 	<input type="hidden" id="zipcode" value="${userInfo.user_zipcode}"/>
+	<input type="hidden" id="reserves" value="${orderPrice*(membershipInfo.user_membership_point_rate/100)}"/>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -195,14 +197,13 @@
 
 
 
-										<div class="message" id="deliveryMessage"
-											style="display: none;">
+										<div class="message" id="deliveryMessage" style="display: none;">
 											<span class="place" id="deliveryMessageTitle">배송완료 메시지</span>
 											<span class="txt" id="deliveryMessageDetail">배송 직후</span>
 										</div>
 									</div>
-									<button type="button" id="btnUpdateSubAddress"
-										data-address-no="" class="btn active">입력</button>
+									<button type="button" id="btnUpdateSubAddress" class="btn active"
+										onclick="javascript:shippingInfoPage()">입력</button>
 
 								</div>
 							</div>
@@ -296,7 +297,8 @@
 										</dl>
 										<p class="reserve" style="display: block;">
 											<span class="ico">적립</span> 구매 시 <span class="emph"><span
-												id="expectAmount">596</span> 원 (<span class="ratio">5</span>%)
+												id="expectAmount">${orderPrice*(membershipInfo.user_membership_point_rate/100)}</span> 원 (
+												<span class="ratio">${membershipInfo.user_membership_point_rate }</span>%)
 												적립</span>
 										</p>
 									</div>
@@ -698,46 +700,56 @@ function reqeustPay(){
 				type:"POST",
 				dataType:"JSON"
 			}).done(function(data){
+				var address1=$("input#address1").val();
+				var address2=$("input#address2").val();
+				var zipcode=$("input#zipcode").val();
+				var listSize=String(${listSize});
+				var price=$("input#payment").val();
+				var merchant=String(req.merchant_uid);
+				var id='${userInfo.user_id}';
+				var name='${userInfo.user_name}';
+				var email='${userInfo.user_email}';
+				var phone='${userInfo.user_phone}';
 				console.log(data);
 				console.log(req);
+				console.log(id);
+				console.log(name);
+				console.log(email);
+				console.log(phone);
+				console.log(id);
 				var amount=parseInt(data.amount)
-				if(req.paid_amount==amount){
+				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
 					$.ajax({
 						url:"paymentSuccess.do",
 						type:"POST",
-						data:JSON.stringify({
-							"user_id":${userInfo.user_id},
-							"user_name":${userInfo.user_id}
-							
-						})
+						dataType:"text",
+						data:{
+							"user_id":id,
+							"user_name":name,
+							"user_email":email,
+							"user_phone":phone,
+							"user_address1":address1,
+							"user_address2":address2,
+							"user_zipcode":zipcode,
+							"order_goods_count":listSize,
+							"order_goods_price":price,
+							"order_coupon_serial":"0",
+							"order_merchant_serial":merchant
+						}
+					}).done(function(location){
+						window.location.href="index.do";
 					})
 				}
 			})
 		}
 	);
 }
-$(document).ready(function(){
-	var address1=$("input#address1").val();
-	var address2=$("input#address2").val();
-	var zipcode=$("input#zipcode").val();
-	$.ajax({
-		url:"paymentSuccess.do",
-		type:"POST",
-		data:{
-			"user_id":'${userInfo.user_id}',
-			"user_name":'${userInfo.user_id}',
-			"user_email":'${userInfo.user_email}',
-			"user_phone":'${userInfo.user_phone}',
-			"user_address1":address1,
-			"user_address2":address2,
-			"user_zipcode":zipcode,
-			
-		}
-	}).done(function(res){
-		alert(res);
-	})
-})
+function shippingInfoPage(){
+	var url="shippingInfo.do?userName="+'${userInfo.user_name}'+"&phone="+'${userInfo.user_phone}';
+	window.open(url,"post","toolbar=no, width=532, height=703,"+
+			"directories=no, status=yes, scrollbars=yes,menubar=no, resizable=no");
+}
 </script>
 
 	<!-- <iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe> -->

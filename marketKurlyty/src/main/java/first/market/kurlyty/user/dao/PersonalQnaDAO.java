@@ -20,32 +20,32 @@ public class PersonalQnaDAO {
 	/*	public void insertPersonalQna <PersonalQnaVO vo>() {
 			sqlSession.insert("PersonalQnaDAO.insertPersonalQna", vo);*/
 
-	//user에서 이메일과 전화번호 입력하기
+	// LIST
+	public List<PersonalQnaVO> PersonalQnaList(PersonalQnaVO vo) {
+		return sqlSession.selectList("PersonalQnaDAO.getPersonalQnaList", vo);
+	}
+
 	public UserVO getUser(UserVO vo) {
 		return sqlSession.selectOne("UserDAO.getUser", vo);
 	}
 	
-	//입력된 정보를 db로 전달하기
+	//
 	public int insertPersonalQna(PersonalQnaVO vo) {
 		return sqlSession.insert("PersonalQnaDAO.insertPersonalQna", vo);
 	}
 	
-	public int updatePersonalQna(PersonalQnaVO vo) { return
-	 sqlSession.update("PersonalQnaDAO.updatePersonalQna", vo); 
+	public int updatePersonalQna(PersonalQnaVO vo) { 
+		return sqlSession.update("PersonalQnaDAO.updatePersonalQna", vo); 
 	}
 	 
-	//글 삭제하기 
+	
 	public int deletePersonalQna(PersonalQnaVO vo) {
 		return sqlSession.delete("PersonalQnaDAO.deletePersonalQna", vo);
 	}
 	
-// 글읽어오기
+
 	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo) {
 		return sqlSession.selectOne("PersonalQnaDAO.getPersonalQna", vo);
 	}
 
-// LIST 
-	public List<PersonalQnaVO> PersonalQnaList(PersonalQnaVO vo){
-		return sqlSession.selectList("PersonalQnaDAO.getPersonalQnaList", vo);
-	}
 }

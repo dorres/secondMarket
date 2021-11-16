@@ -367,10 +367,12 @@ $(document).ready(function(){
 				datatype:"text",
 				success:function(res){
 					part.siblings("#cartCount").val(parseInt(res));
-					rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
-					rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
-					
-					cartResult(totalPrice-oldPrice, dcPrice-price )
+					if(rootLi.find("input[name='chkItem']").is(":checked")){
+						rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
+						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
+						
+						cartResult(totalPrice-oldPrice, dcPrice-price )
+					}
 				},
 				error:function(res){
 					alert("예상치 못한 오류 발생");
@@ -399,9 +401,11 @@ $(document).ready(function(){
 				datatype : "text",
 				success : function(res) {
 					part.siblings("#cartCount").val(parseInt(res));
-					rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
-					rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
-					cartResult(totalPrice+oldPrice, dcPrice+price)
+					if(rootLi.find("input[name='chkItem']").is(":checked")){
+						rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
+						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
+						cartResult(totalPrice+oldPrice, dcPrice+price)
+					}
 				},
 				error : function(res) {
 					alert("예상치 못한 오류 발생");

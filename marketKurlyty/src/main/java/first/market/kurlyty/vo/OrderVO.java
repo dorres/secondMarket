@@ -26,4 +26,8 @@ public class OrderVO {
 	//mk_order_details
 	private int order_details_serial;
 	private int category_goods_serial;
+	
+	//mk_order_details의 각 제품의 수량과 가격
+	private int goods_count;
+	private int goods_price;
 }
