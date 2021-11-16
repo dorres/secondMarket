@@ -18,6 +18,7 @@
 <body>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false">
+	
 	<c:if test="${orderPrice >= 400 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
@@ -649,6 +650,7 @@
 								</tbody>
 							</table>
 							<input type="button" value="${payPrice }원 결제하기" onclick="javascript:reqeustPay()" class="btn_payment">
+							<input type="button" onclick="javascript:test()" class="btn_payment" value="클릭"/>
 						</form>
 					</div>
 				</div>
@@ -698,46 +700,60 @@ function reqeustPay(){
 				type:"POST",
 				dataType:"JSON"
 			}).done(function(data){
+				var address1=$("input#address1").val();
+				var address2=$("input#address2").val();
+				var zipcode=$("input#zipcode").val();
+				var listSize=String(${listSize});
+				var price=$("input#payment").val();
+				var merchant=String(req.merchant_uid);
+				var id='${userInfo.user_id}';
+				var name='${userInfo.user_name}';
+				var email='${userInfo.user_email}';
+				var phone='${userInfo.user_phone}';
 				console.log(data);
 				console.log(req);
+				console.log(id);
+				console.log(name);
+				console.log(email);
+				console.log(phone);
+				console.log(id);
 				var amount=parseInt(data.amount)
-				if(req.paid_amount==amount){
+				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
 					$.ajax({
 						url:"paymentSuccess.do",
 						type:"POST",
-						data:JSON.stringify({
-							"user_id":${userInfo.user_id},
-							"user_name":${userInfo.user_id}
-							
-						})
+						dataType:"text",
+						data:{
+							"user_id":id,
+							"user_name":name,
+							"user_email":email,
+							"user_phone":phone,
+							"user_address1":address1,
+							"user_address2":address2,
+							"user_zipcode":zipcode,
+							"order_goods_count":listSize,
+							"order_goods_price":price,
+							"order_coupon_serial":"0",
+							"order_merchant_serial":merchant
+						}
+					}).done(function(location){
+						window.location.href="index.do";
 					})
 				}
 			})
 		}
 	);
 }
-$(document).ready(function(){
-	var address1=$("input#address1").val();
-	var address2=$("input#address2").val();
-	var zipcode=$("input#zipcode").val();
+function test(){
 	$.ajax({
-		url:"paymentSuccess.do",
-		type:"POST",
-		data:{
-			"user_id":'${userInfo.user_id}',
-			"user_name":'${userInfo.user_id}',
-			"user_email":'${userInfo.user_email}',
-			"user_phone":'${userInfo.user_phone}',
-			"user_address1":address1,
-			"user_address2":address2,
-			"user_zipcode":zipcode,
-			
+		url:"test.do",
+		dataType:"JSON",
+		success:function(res){
+			console.log(res)
 		}
-	}).done(function(res){
-		alert(res);
 	})
-})
+}
 </script>
 
 	<!-- <iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe> -->

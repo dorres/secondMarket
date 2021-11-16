@@ -6,6 +6,9 @@ $(document).ready(function(){
 	$.ajax({
 		url:"categoryData.do",
 		dataType:"JSON",
+		beforeSend: function (xhr) {
+            xhr.setRequestHeader("Content-type","application/json");
+        },
 		success:function(data){
 			//var data=JSON.parse(res);
 			for(key in data){
