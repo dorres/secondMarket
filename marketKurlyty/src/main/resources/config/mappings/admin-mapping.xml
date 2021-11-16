@@ -229,6 +229,14 @@
  	 <select id="getCategory1" resultType="category1" parameterType="category1">
  	 	SELECT * FROM MK_CATEGORY_MAIN WHERE CATEGORY_MAIN_SERIAL = #{category_main_serial}
  	 </select>
+ 	 
+ 	<update id="updateCategory1" parameterType="category1">
+ 		UPDATE MK_CATEGORY_MAIN SET 
+ 		CATEGORY_MAIN_NAME = #{category_main_name},
+ 		CATEGORY_MAIN_ICON_BLACK = #{category_main_icon_black},
+ 		CATEGORY_MAIN_ICON_COLOR = #{category_main_icon_color}
+ 		WHERE CATEGORY_MAIN_SERIAL = #{category_main_serial}
+ 	</update>
 	<!-- 관리자 1차카테고리 -->
 	<!-- 관리자 2차카테고리 -->
 	<select id="getCategory2List" resultType="category2">
@@ -237,6 +245,48 @@
  		FROM MK_CATEGORY_MAIN A 
 		JOIN MK_CATEGORY_SUB B 
  		ON A.CATEGORY_MAIN_SERIAL = B.CATEGORY_SUB_FIRST_NO;
+ 	</select>
+ 	 
+ 	<insert id="insertCategory2" parameterType="category2">
+	 	 	INSERT INTO MK_CATEGORY_SUB VALUES (#{category_sub_serial}, #{category_sub_name}, #{category_sub_first_no});
+ 	</insert>
+ 	
+ 	<select id="getCategory2Column" resultType="int">
+ 	 	SELECT COUNT(CATEGORY_SUB_SERIAL) FROM MK_CATEGORY_SUB
+ 	</select>
+
+ 	 <select id="getCategory2" resultType="category2" parameterType="category2">
+ 	 	SELECT * FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_SERIAL = #{category_sub_serial}
  	 </select>
-	<!-- 관리자 2차카테고리 -->
+
+ 	<update id="updateCategory2" parameterType="category2">
+ 		UPDATE MK_CATEGORY_SUB SET 
+ 		CATEGORY_SUB_FIRST_NO = #{category_sub_first_no},
+ 		CATEGORY_SUB_NAME = #{category_sub_name}
+ 		WHERE CATEGORY_SUB_SERIAL = #{category_sub_serial}
+ 	</update>
+ 	
+ 	<delete id="deleteCategory2" parameterType="category2">
+ 	 	DELETE FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_SERIAL = #{category_sub_serial}
+ 	</delete>
+
+	
+	<!-- 관리자 3차카테고리 -->
+	<select id="getCategory3List" resultType="category3">
+		SELECT (ROW_NUMBER() OVER(ORDER by A.CATEGORY_MAIN_SERIAL,A.CATEGORY_SUB_SERIAL)) AS ROWNUM,
+		B.CATEGORY_MAIN_NAME, B.CATEGORY_SUB_NAME, A.*
+		FROM MK_CATEGORY_GOODS A 
+		JOIN (
+			SELECT (ROW_NUMBER() OVER()) AS ROWNUM,
+			A.*, B.* FROM MK_CATEGORY_MAIN A JOIN MK_CATEGORY_SUB B 
+			ON A.CATEGORY_MAIN_SERIAL = B.CATEGORY_SUB_FIRST_NO) B 
+		ON A.CATEGORY_SUB_SERIAL = B.CATEGORY_SUB_SERIAL;
+ 	</select>
+ 
+ 	<select id="getCategoryType" resultType="category2" parameterType="category2">
+ 		SELECT * FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_FIRST_NO = #{category_main_serial}
+ 	</select>
+	
+	
+	<!-- 관리자 3차카테고리 -->
 </mapper>

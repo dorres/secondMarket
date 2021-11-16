@@ -18,14 +18,14 @@ table.type01 {
   margin-bottom: 10px;
 }
 table.type01 th {
-  width: 300px;
+  width: 200px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
   /* border: 1px solid #ccc; */
 }
 table.type01 td {
-  width: 100%;
+  width: 200px;
   padding: 10px;
   vertical-align: top;
   /* border: 1px solid #ccc; */
@@ -54,18 +54,19 @@ table.type01 td {
 						2차 카테고리 등록
 					</div>
 					<div class="card-body">
-						<form action="admin_categoryMainInsert.mdo" method="POST" enctype="multipart/form-data">
+						<form action="admin_categorySubInsert.mdo" method="POST">
 								<table class="type01">
 									<tr>
 										<th scope="row" style="font-size: 20px">1차 카테고리</th>
-										<td><input type="text"></td>
-										<select>
-										<%-- 	<option value="${ }"> --%>
-										</select>
-									</tr>
-									<tr>
+										<td>
+											<select name="category_sub_first_no">
+												<c:forEach var="main" items="${mainList }">
+													<option value="${main.category_main_serial }">${main.category_main_name }</option>
+												</c:forEach>
+											</select>
+										</td>
 										<th scope="row"  style="font-size: 20px">2차 카테고리</th>
-										<td><input type="text"/></td>
+										<td><input type="text" name="category_sub_name"/></td>
 									</tr>
 								</table>
 							<input type="submit" value="등록하기" />

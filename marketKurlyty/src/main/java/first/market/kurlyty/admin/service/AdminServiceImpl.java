@@ -9,6 +9,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
@@ -322,12 +323,52 @@ public class AdminServiceImpl implements AdminService {
 	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
 		return adminDao.getCategory1(category1);
 	}
+	@Override
+	public int updateCategory1(AdminCategoryMainVO category1) {
+		return adminDao.updateCategory1(category1);
+	}
+	
 	//-------------------------------------------------------------
 	//관리자 2차 카테고리
 	@Override
 	public List<AdminCategorySubVO> getCategory2List() {
 		return adminDao.getCategory2List();
 	}
+
+	@Override
+	public int insertCategory2(AdminCategorySubVO category2) {
+		return adminDao.insertCategory2(category2);
+	}
+
+	@Override
+	public int getCategory2Column() {
+		return adminDao.getCategory2Column();
+	}
+
+	@Override
+	public AdminCategorySubVO getCategory2(AdminCategorySubVO category2) {
+		return adminDao.getCategory2(category2);
+	}
+	
+	@Override
+	public int updateCategory2(AdminCategorySubVO category2) {
+		return adminDao.updateCategory2(category2);
+	}
+
+	@Override
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return adminDao.deleteCategory2(category2);
+	}
+	//--------------------------------------------------------------
+	@Override
+	public List<AdminCategoryGoodsVO> getCategory3List() {
+		return adminDao.getCategory3List();
+	}
+	@Override
+	public List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategoryType(category3);
+	}
+	
 	
 
 }
