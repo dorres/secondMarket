@@ -18,6 +18,8 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminUserVO" alias="adminUser"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminNoticeVO" alias="notice"/> 
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminFAQVO" alias="faq"/> 
+ 		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
+ 		
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -26,5 +28,6 @@
  		<mapper resource="config/mappings/board_notice-mapping.xml"/> <!-- bk -->
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
+ 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
  	</mappers>
  </configuration>
