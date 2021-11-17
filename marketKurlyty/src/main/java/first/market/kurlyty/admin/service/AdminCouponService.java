@@ -4,5 +4,5 @@ import first.market.kurlyty.admin.vo.AdminCouponVO;
 
 public interface AdminCouponService {
 	void insertCoupon(AdminCouponVO couponVo);
-	AdminCouponVO selectCoupon(AdminCouponVO couponVo);
+	AdminCouponVO getCoupon(AdminCouponVO couponVo);
 }

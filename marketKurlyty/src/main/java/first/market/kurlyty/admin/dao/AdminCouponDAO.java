@@ -13,11 +13,11 @@ public class AdminCouponDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public void insertCoupon(AdminCouponVO couponVo) {
-		sqlSession.insert("AdminCouponDAO.insertCoupon", couponVo);
+		sqlSession.insert("AdminDAO.insertCoupon", couponVo);
 		
 	}
 
-	public AdminCouponVO getcoupon(AdminCouponVO couponVo) {
-		return sqlSession.selectOne("AdminCouponDAO.getcoupon", couponVo);
+	public AdminCouponVO getCoupon(AdminCouponVO couponVo) {
+		return sqlSession.selectOne("AdminDAO.selectCoupon", couponVo);
 	}
 }

@@ -18,7 +18,7 @@ public class AdminCouponServiceImpl implements AdminCouponService{
 		couponDao.insertCoupon(couponVo);
 	}
 	@Override
-	public AdminCouponVO selectCoupon(AdminCouponVO couponVo) {
-		return couponDao.getcoupon(couponVo);
+	public AdminCouponVO getCoupon(AdminCouponVO couponVo) {
+		return couponDao.getCoupon(couponVo);
 	}
 }

@@ -211,12 +211,12 @@
  	 </insert>
 	<!-- 관리자 1차카테고리 -->
 	<!-- 쿠폰 -->
-	<!-- <select id="selectCoupon" parameterType="couponpub">
-	SELECT * FROM mk_coupon_test WHERE coupon_code=#{coupon_code}
+ 	<select id="selectCoupon" resultType="couponVO">
+		SELECT * FROM mk_coupon_test
 	</select>
-	<insert id="insertCoupon" parameterType="couponpub">
-	INSERT INTO mk_coupon_test VALUES ( DEFAULT, 
-	#{coupon_name}, #{coupon_code}, #{coupon_expiry}, #{coupon_discount_price}, #{coupon_min_use}, #{coupon_max_bargain}, #{coupon_note});
-	</insert> -->
+	<insert id="insertCoupon" parameterType="couponVO">
+		INSERT INTO mk_coupon_test VALUES ( DEFAULT, 
+		#{coupon_name}, #{coupon_code}, #{coupon_expiry}, #{coupon_discount_price}, #{coupon_min_use}, #{coupon_max_bargain}, #{coupon_note});
+	</insert>
 	<!-- 쿠폰 end -->
 </mapper>
