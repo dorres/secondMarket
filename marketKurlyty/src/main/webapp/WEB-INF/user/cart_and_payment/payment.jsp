@@ -18,6 +18,7 @@
 <body>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false">
+	
 	<c:if test="${orderPrice >= 400 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
@@ -28,10 +29,13 @@
 	</c:if>
 	<fmt:formatNumber var="oldPrice" maxFractionDigits="3" value="${goodsPrice}"/>
 	<fmt:formatNumber var="dc" maxFractionDigits="3" value="${orderPrice-goodsPrice }"/>
-	<input type="hidden" id="payment" value="${orderPrice }">
+	<%-- <input type="hidden" id="payment" value="${orderPrice }"> --%>
 	<input type="hidden" id="address1" value="${userInfo.user_address1 }"/>
 	<input type="hidden" id="address2" value="${userInfo.user_address2 }"/>
 	<input type="hidden" id="zipcode" value="${userInfo.user_zipcode}"/>
+	<fmt:parseNumber var="oldReserves" type="number" integerOnly="true" value="${(orderPrice*(membershipInfo.user_membership_point_rate/100)+5)/10}"/>
+	<fmt:formatNumber var="afterReserves" type="number" maxFractionDigits="1" value="${oldReserves*10 }"/>
+	<input type="hidden" id="reserves" value="${oldReserves*10 }"/>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -82,7 +86,7 @@
 									<li>
 										<div class="thumb">
 											<img
-												src="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}"
+												src="${item.category_goods_image_thumb}"
 												alt="상품이미지">
 										</div>
 										<div class="name">
@@ -195,14 +199,13 @@
 
 
 
-										<div class="message" id="deliveryMessage"
-											style="display: none;">
+										<div class="message" id="deliveryMessage" style="display: none;">
 											<span class="place" id="deliveryMessageTitle">배송완료 메시지</span>
 											<span class="txt" id="deliveryMessageDetail">배송 직후</span>
 										</div>
 									</div>
-									<button type="button" id="btnUpdateSubAddress"
-										data-address-no="" class="btn active">입력</button>
+									<button type="button" id="btnUpdateSubAddress" class="btn active"
+										onclick="javascript:shippingInfoPage()">입력</button>
 
 								</div>
 							</div>
@@ -295,8 +298,11 @@
 											</dd>
 										</dl>
 										<p class="reserve" style="display: block;">
-											<span class="ico">적립</span> 구매 시 <span class="emph"><span
-												id="expectAmount">596</span> 원 (<span class="ratio">5</span>%)
+											<span class="ico">적립</span> 구매 시 <span class="emph">
+											
+											<span id="expectAmount">${afterReserves}</span>
+											 원 (
+												<span class="ratio">${membershipInfo.user_membership_point_rate }</span>%)
 												적립</span>
 										</p>
 									</div>
@@ -454,32 +460,7 @@
 													<div id="cardSelect">
 														<div>
 															<div class="card_select">
-																<!-- <div class="select_box">
-																	<strong class="tit">카드를 선택해주세요</strong> <input
-																		type="hidden" name="lguplus_card_code">
-																	<ul class="list off">
-																		<li><a class="">현대 (무이자)</a></li>
-																		<li><a class="">신한</a></li>
-																		<li><a class="">비씨</a></li>
-																		<li><a class="">KB국민</a></li>
-																		<li><a class="">삼성</a></li>
-																		<li><a class="">씨티</a></li>
-																		<li><a class="">롯데</a></li>
-																		<li><a class="">하나(외환)</a></li>
-																		<li><a class="">NH채움</a></li>
-																		<li><a class="">우리</a></li>
-																		<li><a class="">수협</a></li>
-																		<li><a class="">광주</a></li>
-																		<li><a class="">전북</a></li>
-																		<li><a class="">제주</a></li>
-																		<li><a class="">신협체크</a></li>
-																		<li><a class="">MG새마을체크</a></li>
-																		<li><a class="">저축은행체크</a></li>
-																		<li><a class="">우체국카드</a></li>
-																		<li><a class="">KDB산업은행</a></li>
-																		<li><a class="">카카오뱅크</a></li>
-																	</ul>
-																</div> -->
+														
 																<div class="select_box">
 																	<strong class="tit off">할부기간을 선택해주세요</strong> <input
 																		type="hidden" name="lguplus_card_installment_month">
@@ -495,39 +476,6 @@
 														</div>
 													</div>
 												</div>
-
-												<!-- <ul id="simplePayments" class="payments"
-													style="display: none;">
-													<li class="chai"><label class="label_radio"
-														for="paymentChai"> <input type="radio"
-															name="settlekind" value="chai"
-															onclick="input_escrow(this,'N')" id="paymentChai">
-															차이 <span class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-													<li class="toss"><label class="label_radio"> <input
-															type="radio" name="settlekind" value="toss"
-															onclick="input_escrow(this,'N')"> 토스 <span
-															class="txt_benefit">혜택</span>
-													</label></li>
-													<li class="npay naver-pay"><label class="label_radio">
-															<input type="radio" name="settlekind" value="n"
-															onclick="input_escrow(this,'N');"> 네이버페이 <span
-															class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-													<li class="payco"><label class="label_radio">
-															<input type="radio" name="settlekind" value="t"
-															onclick="input_escrow(this,'N');check_naverNcashUseAble();">
-															페이코 <span class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-													<li class="spay smile-pay"><label class="label_radio">
-															<input type="radio" name="settlekind" value="s"
-															onclick="input_escrow(this,'N')"> 스마일페이 <span
-															class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-
-												</ul> -->
-
-
 											</td>
 										</tr>
 										<tr>
@@ -698,46 +646,60 @@ function reqeustPay(){
 				type:"POST",
 				dataType:"JSON"
 			}).done(function(data){
+				var address1=$("input#address1").val();
+				var address2=$("input#address2").val();
+				var zipcode=$("input#zipcode").val();
+				var listSize=String(${listSize});
+				var price=$("input#payment").val();
+				var merchant=String(req.merchant_uid);
+				var id='${userInfo.user_id}';
+				var name='${userInfo.user_name}';
+				var email='${userInfo.user_email}';
+				var phone='${userInfo.user_phone}';
+				var masterGoodsSerial=${purchaseList[0].category_goods_serial };
+				var point=$("input#reserves").val();
 				console.log(data);
 				console.log(req);
+				console.log(id);
+				console.log(name);
+				console.log(email);
+				console.log(phone);
+				console.log(id);
 				var amount=parseInt(data.amount)
-				if(req.paid_amount==amount){
+				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
 					$.ajax({
 						url:"paymentSuccess.do",
 						type:"POST",
-						data:JSON.stringify({
-							"user_id":${userInfo.user_id},
-							"user_name":${userInfo.user_id}
-							
-						})
+						dataType:"text",
+						data:{
+							"user_id":id,
+							"user_name":name,
+							"user_email":email,
+							"user_phone":phone,
+							"user_address1":address1,
+							"user_address2":address2,
+							"user_zipcode":zipcode,
+							"order_goods_count":listSize,
+							"order_goods_price":price,
+							"order_coupon_serial":"0",
+							"order_merchant_serial":merchant,
+							"master_goods_serial":masterGoodsSerial,
+							"usesr_point":point
+						}
+					}).done(function(location){
+						window.location.href="index.do";
 					})
 				}
 			})
 		}
 	);
 }
-$(document).ready(function(){
-	var address1=$("input#address1").val();
-	var address2=$("input#address2").val();
-	var zipcode=$("input#zipcode").val();
-	$.ajax({
-		url:"paymentSuccess.do",
-		type:"POST",
-		data:{
-			"user_id":'${userInfo.user_id}',
-			"user_name":'${userInfo.user_id}',
-			"user_email":'${userInfo.user_email}',
-			"user_phone":'${userInfo.user_phone}',
-			"user_address1":address1,
-			"user_address2":address2,
-			"user_zipcode":zipcode,
-			
-		}
-	}).done(function(res){
-		alert(res);
-	})
-})
+function shippingInfoPage(){
+	var url="shippingInfo.do?userName="+'${userInfo.user_name}'+"&phone="+'${userInfo.user_phone}';
+	window.open(url,"post","toolbar=no, width=532, height=703,"+
+			"directories=no, status=yes, scrollbars=yes,menubar=no, resizable=no");
+}
 </script>
 
 	<!-- <iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe> -->

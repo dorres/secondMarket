@@ -44,13 +44,13 @@ public class CartController {
 				for(CartVO cartItem : cartList) {
 					ProductVO product = cartService.getCartItem(cartItem);
 					//productList.add(product);
-					if(product.getCategory_goods_packaging_type().equals("³ÃÀå")) {
+					if(product.getCategory_goods_packaging_type().contains("³ÃÀå")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						coldList.add(product);
-					}else if(product.getCategory_goods_packaging_type().equals("³Ãµ¿")) {
+					}else if(product.getCategory_goods_packaging_type().contains("³Ãµ¿")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						frozenList.add(product);
-					}else if(product.getCategory_goods_packaging_type().equals("½Ç¿Â")) {
+					}else if(product.getCategory_goods_packaging_type().contains("½Ç¿Â")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						roomList.add(product);
 					}
@@ -78,18 +78,21 @@ public class CartController {
 			for(CartVO cartItem : cartList) {
 				ProductVO product = cartService.getCartItem(cartItem);
 				//productList.add(product);
-				if(product.getCategory_goods_packaging_type().equals("³ÃÀå")) {
-					product.setGoods_cart_count(cartItem.getGoods_cart_count());
-					coldList.add(product);
-				}else if(product.getCategory_goods_packaging_type().equals("³Ãµ¿")) {
-					product.setGoods_cart_count(cartItem.getGoods_cart_count());
-					frozenList.add(product);
-				}else if(product.getCategory_goods_packaging_type().equals("½Ç¿Â")) {
-					product.setGoods_cart_count(cartItem.getGoods_cart_count());
-					roomList.add(product);
+				if(product!=null) {
+					if(product.getCategory_goods_packaging_type().contains("³ÃÀå")) {
+						product.setGoods_cart_count(cartItem.getGoods_cart_count());
+						coldList.add(product);
+					}else if(product.getCategory_goods_packaging_type().contains("³Ãµ¿")) {
+						product.setGoods_cart_count(cartItem.getGoods_cart_count());
+						frozenList.add(product);
+					}else if(product.getCategory_goods_packaging_type().contains("½Ç¿Â")) {
+						product.setGoods_cart_count(cartItem.getGoods_cart_count());
+						roomList.add(product);
+					}
+					
+					totalPrice+=product.getGoods_cart_count()*product.getGoods_detail_price();
+					dcPrice+=product.getGoods_cart_count()*product.getGoods_last_price();
 				}
-				totalPrice+=product.getGoods_cart_count()*product.getGoods_detail_price();
-				dcPrice+=product.getGoods_cart_count()*product.getGoods_last_price();
 			}
 			if(frozenList.size()>0)model.addAttribute("frozenList",frozenList);
 			if(coldList.size()>0)model.addAttribute("coldList",coldList);

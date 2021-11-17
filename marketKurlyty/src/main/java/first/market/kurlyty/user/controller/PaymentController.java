@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 import first.market.kurlyty.user.service.CartService;
+import first.market.kurlyty.user.service.MembershipService;
+import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.MembershipVO;
 import first.market.kurlyty.user.vo.UserVO;
 import first.market.kurlyty.vo.OrderVO;
 import first.market.kurlyty.vo.ProductVO;
@@ -33,6 +37,10 @@ public class PaymentController {
 	private CartService cartService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private OrderService orderService;
+	@Autowired
+	private MembershipService membershipService;
 	
 	private IamportClient api;
 	
@@ -43,7 +51,7 @@ public class PaymentController {
 	
 	@ResponseBody
 	@RequestMapping("/iamport.do")
-	public String paymentByImUid(Model model, Locale locale, HttpSession session,
+	public IamportResponse<Payment> paymentByImUid(Model model, Locale locale, HttpSession session,
 			@RequestParam(value="imp_uid")String imp_uid) throws IamportResponseException, IOException{
 		System.out.println(imp_uid);
 		System.out.println(api.paymentByImpUid(imp_uid));
@@ -52,9 +60,10 @@ public class PaymentController {
 		payMap.put("amount",api.paymentByImpUid(imp_uid).getResponse().getAmount().toString());
 		payMap.put("payType", api.paymentByImpUid(imp_uid).getResponse().getPayMethod());
 		payMap.put("payStatus", api.paymentByImpUid(imp_uid).getResponse().getStatus());
-		//return api.paymentByImpUid(imp_uid);
-		System.out.println(new Gson().toJson(payMap));
-		return new Gson().toJson(payMap);
+		return api.paymentByImpUid(imp_uid);
+//		System.out.println(new Gson().toJson(payMap));
+//		
+//		return new Gson().toJson(payMap);
 	}
 	
 	@RequestMapping("/paymentPage.do")
@@ -64,6 +73,11 @@ public class PaymentController {
 		userVO.setUser_id(userId);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(userId);
 		List<ProductVO> purchaseList = new ArrayList<ProductVO>();
+		
+		UserVO userInfo = userService.getUser(userVO);
+		String membership = membershipService.getMembershipOfUser(userId);
+		System.out.println(membership);
+		MembershipVO membershipInfo = membershipService.getMembershipData(membership);
 		for(CartVO goods:purchaseGoods) {
 			ProductVO product = cartService.getCartItem(goods);
 			product.setGoods_cart_count(goods.getGoods_cart_count());
@@ -72,7 +86,8 @@ public class PaymentController {
 		model.addAttribute("orderPrice", dcPrice);
 		model.addAttribute("goodsPrice",totalPrice);
 		model.addAttribute("purchaseList", purchaseList);
-		model.addAttribute("userInfo",userService.getUser(userVO));
+		model.addAttribute("userInfo",userInfo);
+		model.addAttribute("membershipInfo",membershipInfo);
 		return "cart_and_payment/payment";
 	}
 	
@@ -80,13 +95,25 @@ public class PaymentController {
 	@ResponseBody
 	public String paymentSuccess(OrderVO order) {
 		System.out.println(order.getUser_id());
-		System.out.println(order.getUser_name());
-		System.out.println(order.getUser_email());
-		System.out.println(order.getUser_phone());
-		System.out.println(order.getUser_address1());
-		System.out.println(order.getUser_address2());
-		System.out.println(order.getUser_zipcode());
-		
-		return "redirect:index.do";
+		order.setOrder_delivery_status("결제완료");
+		orderService.insertOrder(order);
+		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
+		for(CartVO cartItem : purchaseGoods) {
+			ProductVO productInfo = cartService.getCartItem(cartItem);
+			int goods_price = cartItem.getGoods_cart_count()*productInfo.getGoods_last_price();
+			order.setGoods_count(cartItem.getGoods_cart_count());
+			order.setGoods_price(goods_price);
+			order.setCategory_goods_serial(cartItem.getCategory_goods_serial());
+			orderService.insertOrderDetails(order);
+			cartService.deleteCartItem(cartItem);
+		}
+		return "index.do";
+	}
+	
+	@RequestMapping("/shippingInfo.do")
+	public String shippingInfo(String userName, String phone, Model model) {
+		model.addAttribute("userName",userName);
+		model.addAttribute("phone",phone);
+		return "cart_and_payment/shippingInfo";
 	}
 }

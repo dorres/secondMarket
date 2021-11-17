@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>쿠폰 발행</title>
 <link
@@ -15,44 +16,75 @@
 	crossorigin="anonymous"></script>
 </head>
 <script type="text/javascript">
-function couponpubSubmit(){
-if(document.fst.coupon_name.value==""){
-	alert("쿠폰 이름을 입력하세요.");
-	document.fst.coupon_name.focus();
-	return;
-	}
-if(document.fst.coupon_code.value==""){
-	alert("쿠폰 코드를 입력하세요.");
-	document.fst.coupon_code.focus();
-	return;
-	}
-if(document.fst.coupon_expiry.value==""){
-	alert("쿠폰 사용기간을 입력하세요.");
-	document.fst.coupon_expiry.focus();
-	return;
-	}
-if(document.fst.coupon_discount_price.value==""){
-	alert("쿠폰 할인금액을 입력하세요.");
-	document.fst.coupon_discount_price.focus();
-	return;
-	}
-if(document.fst.coupon_min_use.value==""){
-	alert("쿠폰사용 제한금액을 입력하세요.");
-	document.fst.coupon_min_use.focus();
-	return;
-	}
-if(document.fst.coupon_max_bargain.value==""){
-	alert("쿠폰할인 제한금액을 입력하세요.");
-	document.fst.coupon_max_bargain.focus();
-	return;
-	}
-if(document.fst.coupon_note.value==""){
-	alert("쿠폰 설명(비고)을 입력하세요.");
-	document.fst.coupon_note.focus();
-	return;
-	}
-document.fst.submit();
+function RandomCode(){ // 쿠폰번호 자동 생성
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    for( var i=0; i < 8; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    document.getElementById("coupon_code").value = text;
 }
+
+$("#coupon_button").click(function(){
+    var coupon_data = $("#coupon_data").serialize(); // 해당하는 frm을 serialize를 해줍니다. ajax로 데이터를 보내기위해서 하는 작업입니다.
+     // id값은 기본키이자 바뀌면안되는것이고 id값으로 조건을 줄꺼라서 고유 id 값을 받아옵니다.
+    $.ajax({
+        type : "post", // post방식으로 전송
+        url : "admin_couponpub.mdo", // controller로 보낼 url
+        data : coupon_data, // data로는 위에서 se	rialize한 frm을 보냅니다.
+        async : false, // 전역변수 사용을 위해서 설정해준다
+         // serialize하면 json형태로 값을 보내줘야합니다.
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", // 인코딩 설정
+        success : function(data){
+        	alert("완료");
+           window.opener.location.replace("admin_couponpub.mdo");
+        },
+        error:function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           }
+
+    });
+});
+
+function couponpubSubmit(){
+if(document.coupon_data.coupon_name.value==""){
+	alert("쿠폰 이름을 입력하세요.");
+	document.coupon_data.coupon_name.focus();
+	return;
+	}
+if(document.coupon_data.coupon_code.value==""){
+	alert("쿠폰 코드를 입력하세요.");
+	document.coupon_data.coupon_code.focus();
+	return;
+	}
+if(document.coupon_data.coupon_expiry.value==""){
+	alert("쿠폰 사용기간을 입력하세요.");
+	document.coupon_data.coupon_expiry.focus();
+	return;
+	}
+if(document.coupon_data.coupon_discount_price.value==""){
+	alert("쿠폰 할인금액을 입력하세요.");
+	document.coupon_data.coupon_discount_price.focus();
+	return;
+	}
+if(document.coupon_data.coupon_min_use.value==""){
+	alert("쿠폰사용 제한금액을 입력하세요.");
+	document.coupon_data.coupon_min_use.focus();
+	return;
+	}
+if(document.coupon_data.coupon_max_bargain.value==""){
+	alert("쿠폰할인 제한금액을 입력하세요.");
+	document.coupon_data.coupon_max_bargain.focus();
+	return;
+	}
+if(document.coupon_data.coupon_note.value==""){
+	alert("쿠폰 설명(비고)을 입력하세요.");
+	document.coupon_data.coupon_note.focus();
+	return;
+	}
+document.coupon_data.submit();
+}
+
 </script>
 <body class="sb-nav-fixed">
 	<div id="layoutSidenav">
@@ -66,19 +98,19 @@ document.fst.submit();
 
 					<!-- 여기만 수정해서 사용하세요!! -->
 					<h1 class="mt-4">쿠폰 발행</h1>
-					<form id="form" name="fst" method="post" action="" onsubmit="return chkForm2(this)" novalidate="">
+					<form id="coupon_data" name="coupon_data" method="post" action="admin_couponpub.mdo" novalidate="">
 					<div class="card mb-4">
 					<table class="tbl_comm">
 												<tbody>
 													<tr class="fst">
 														<th>쿠폰 이름<input type="text" value="" class="coupon_name" id="coupon_name" name="coupon_name" placeholder="Coupon name">
-														<th>쿠폰 코드<input type="text" value="" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Coupon code">
-														<th>쿠폰 사용기간<input type="text" value="" class="coupon_expiry" id="coupon__expiry" name="coupon__expiry" placeholder="1 = 1일" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+														<th>쿠폰 코드　<input type="button" value="랜덤 번호" class="" onclick="RandomCode()" style="width:70px;height:20px;font-size:12px;"><input type="text" value="" class="coupon_code" id="coupon_code" name="coupon_code" placeholder="Coupon code">
+														<th>쿠폰 사용기간<input type="text" value="" class="coupon_expiry" id="coupon_expiry" name="coupon_expiry" placeholder="1 = 1일" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<th>쿠폰할인 금액<input type="text" value="" class="coupon_discount_price" id="coupon_discount_price" name="coupon_discount_price" placeholder="쿠폰 할인 금액" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<th>쿠폰사용 제한금액<input type="text" value="" class="coupon_min_use" id="coupon_min_use" name="coupon_min_use" placeholder="최소 사용 금액" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<th>쿠폰할인 제한금액<input type="text" value="" class="coupon_max_bargain" id="coupon_max_bargain" name="coupon_max_bargain" placeholder="최대 할인 금액" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<th>쿠폰 설명(비고)<input type="text" value="" class="coupon_note" id="coupon_note" name="coupon_note" placeholder="Coupon note" size=50>
-														<th>　<input type="button" value="쿠폰 발급" class="" onclick="couponpubSubmit()">
+														<th>　<input type="button" value="쿠폰 발행" id="coupon_button" onclick="couponpubSubmit()" style="width:70px;height:30px;font-size:13px;">
 														</tr>
 												</tbody>
 											</table>
