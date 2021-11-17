@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,73 +50,33 @@
 											<td>${personalqna.qna_personal_category}</td>
 											<td>${personalqna.qna_personal_title}</td>
 											<td>${personalqna.user_id}</td>
-											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern = "yyyy-mm-dd"/> </td>
+											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
 										</tr>
 										<tr>
-											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_content}
+											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
 												<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-												
-												
 												<input type="button" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-												
-												</a>
 											</td>
 										</tr>
+										
+										<tr class="menu">
+											<td></td>
+											<td> ┖ 답변</td>
+											<td>안녕하세요. 고객님! 답변드립니다.</td>
+											<td>Kurlyty</td>
+											<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-mm-dd"/> </td>
+										</tr>
+										<tr>
+											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_answer}
+												<input type="hidden" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+												<input type="hidden" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+											</td>
+										</tr>
+										
 									</c:forEach>
 								</table>
 							</form>
-<!--  글을 클릭하면 아래에 게시글 내용이 내려옴.  -->
-								<!-- <div style="display: block; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
-									<div width="100%" style="padding-left: 55px;">
-										<tr> 
-										<td>${personalqna.qna_personal_content}</td>
-										</tr>
-									</div>
-									
-								</div> --!>
 
-								<!-- 문의 내역이 없을때 ↓↓↓↓↓↓↓↓↓-->
-								<!--  <div class="no_data" style="padding: 150px 0 148px; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; font-size: 12px; color: #4c4c4c">
-									1:1 문의 내역이 존재하지 않습니다.
-								</div>
-								<div style="position: relative">
-									<div style="position: absolute; right: 0; top: 60px;">
-										<a href="javascript:popup_register( 'add_qna' );">
-											<span class="bhs_buttonsm yb" style="float: none;">글쓰기</span>
-										</a>
-									</div>
-								</div>
-								<div class="layout-pagination">
-									<div class="pagediv"></div>
-								</div> -->
-								
-								<!-- 문의 내역이 있을때 ↓↓↓↓↓↓↓↓↓-->
-					<!--			<div class="mypage_wrap" style="float: none; width: 100%">
-									<table class="table_faq" width="100%" onclick="view_content(this, event)">
-										<tbody>
-											<tr>
-												<td width="8%" align="center">1</td>
-												<td width="15%" align="center" class="stxt">
-													<b>[컬리패스(무료배송)]</b>
-												</td>
-												<td style="padding-top: 5px; padding-bottom: 5px;">
-													컬리패스가뭐에요? <span style="color: #007FC8;" class="stxt">[0]</span>
-												</td>
-												<td width="12%" align="center">rudtjr313</td>
-												<td width="12%" align="center">2021-10-25</td>
-											</tr>
-										</tbody>
-									</table>
-									<div style="display: none; padding: 30px; border-top: 1px solid #e6e6e6">
-										<div width="100%" style="padding-left: 55px;">컬리패스가 뭐에요?</div>
-										<div class="goods-review-grp-btn" style="text-align: right;">
-											<button type="button" class="styled-button" onclick="popup_register( 'mod_qna', '5098622' );">수정</button>
-											<button type="button" class="styled-button" onclick="popup_register( 'del_qna', '5098622' );">삭제</button>
-										</div>
-									</div>
-								</div>
-								
-								 -->
 								<div style="position: relative">
 									<div style="position: absolute; right: 0; top: 60px;">
 										<a href="/kurlyty/personalQnaWrite.do">
