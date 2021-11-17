@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <meta charset="UTF-8">
 <title>새 배송지 추가</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/mykurly/destination_new.css">
@@ -16,11 +17,11 @@
 </head>
 <body>
 
-<form action="user_address_list_new.do" method="post">
+<form id="frm" >
 	<div class="section_destination">
 		<div id="inputForm" class="">
 			<div class="modify only_pc">
-				<input type="hidden" name="user_id" value="${user_id }">
+				<input type="hidden" id="id" name="user_id" value="${user_id }">
 				<input type="hidden" name="user_zipcode" value="${myZipcode }">
 				<p class="tit_result">
 					${star} 지역입니다.
@@ -40,15 +41,34 @@
 				<label class="label_default"><input type="checkbox"
 					id="isDefault" name="isDefault"><span class="ico"></span>기본
 					배송지로 저장</label>
-				<button type="submit" class="btn active" onclick="close();" >저장</button>
+				<button type="submit" id="update_btn" class="btn active" onclick="" >저장</button>
 			</div>
 		</div>
 	</div>
 	</form>
-	<script>
-		function close(){
-			self.close();
-		}
-	</script>
+	<script type="text/javascript">
+    $("#update_btn").click(function(){
+        var frm = $("#frm").serialize(); // 해당하는 frm을 serialize를 해줍니다. ajax로 데이터를 보내기위해서 하는 작업입니다.
+         // id값은 기본키이자 바뀌면안되는것이고 id값으로 조건을 줄꺼라서 고유 id 값을 받아옵니다.
+        $.ajax({
+            type : "post", // post방식으로 전송
+            url : "user_address_list_new.do", // controller로 보낼 url
+            data : frm, // data로는 위에서 serialize한 frm을 보냅니다.
+            async : false, // 전역변수 사용을 위해서 설정해준다
+             // serialize하면 json형태로 값을 보내줘야합니다.
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8", // 인코딩 설정
+            success : function(data){
+            	
+            	window.opener.location.replace("user_address_list.do");
+            	self.close();
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+               }
+
+        });
+    });
+</script>
+
 </body>
 </html>
