@@ -98,7 +98,7 @@ document.coupon_data.submit();
 
 					<!-- 여기만 수정해서 사용하세요!! -->
 					<h1 class="mt-4">쿠폰 발행</h1>
-					<form id="coupon_data" name="coupon_data" method="post" action="admin_couponpub.mdo" novalidate="">
+					<form id="coupon_data" name="coupon_data" method="post" action="admin_insertCoupon.mdo" novalidate="">
 					<div class="card mb-4">
 					<table class="tbl_comm">
 												<tbody>
@@ -110,7 +110,7 @@ document.coupon_data.submit();
 														<th>쿠폰사용 제한금액<input type="text" value="" class="coupon_min_use" id="coupon_min_use" name="coupon_min_use" placeholder="최소 사용 금액" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<th>쿠폰할인 제한금액<input type="text" value="" class="coupon_max_bargain" id="coupon_max_bargain" name="coupon_max_bargain" placeholder="최대 할인 금액" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 														<th>쿠폰 설명(비고)<input type="text" value="" class="coupon_note" id="coupon_note" name="coupon_note" placeholder="Coupon note" size=50>
-														<th>　<input type="button" value="쿠폰 발행" id="coupon_button" onclick="couponpubSubmit()" style="width:70px;height:30px;font-size:13px;">
+														<th>　<input type="button" value="쿠폰 발행" id="coupon_button" onclick="couponpubSubmit()" style=width:70px;height:30px;font-size:13px>
 														</tr>
 												</tbody>
 											</table>
@@ -124,8 +124,8 @@ document.coupon_data.submit();
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Position</th>
+										<th>번호</th>
+										<th>쿠폰 이름</th>
 										<th>Office</th>
 										<th>Age</th>
 										<th>Start date</th>
