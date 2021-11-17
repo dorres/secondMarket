@@ -79,13 +79,14 @@
 													<c:if test="${list.address_default eq true }" >
 													<c:out value="${base }"/>
 													</c:if></span>
-												<p class="addr">${list.user_address1 } &nbsp; ${list.user_address2 }</p>
+													<input type="hidden" id="idU" value="${list.user_id }">
+												<p class="addr"><span id="uadd1">${list.user_address1 }</span> &nbsp;<span id="uadd2"> ${list.user_address2 }</span></p>
 											</td>
-											<td >${list.user_name }</td>
-											<td class="phone">${list.user_phone }</td>
+											<td id="uusern">${list.user_name }</td>
+											<td class="phone" id="uuserp">${list.user_phone }</td>
 											<td><span class="delivery star"></span></td>
 											<td>
-												<button type="button" class="ico modify" onclick="upDate(); return false;">수정하기</button>
+												<button type="button" class="ico modify" onclick="upDate();">수정하기</button>
 											</td>
 										</tr>
 									</tbody>
@@ -125,9 +126,19 @@ function hi_zip(){
 		}
 	}).open();
 }
-function popUp(myZipcode,myAddress,star){
+function popUp(myZipcode,myAddress,star,user_id){
+	var user_id = $("#idU").val();
+	var url="destination_new.do?myZipcode="+myZipcode+"&myAddress="+myAddress+"&star="+star+"&user_id="+user_id;
+	window.open(url,'new','width=450,height=500,location=no,status=no,scrollbars=yes');
+}
+
+function upDate(user_address1,user_address2,user_phone,user_name){
+	var user_address1 = document.getElementById('uadd1').innerHTML;
+	var user_address2 = document.getElementById('uadd2').innerHTML;
+	var user_name = document.getElementById('uusern').innerHTML;
+	var user_phone = document.getElementById('uuserp').innerHTML;
 	
-	var url="destination_new.do?myZipcode="+myZipcode+"&myAddress="+myAddress+"&star="+star;
+	var url="destination_update.do?user_address1="+user_address1+"&user_address2="+user_address2+"&user_name="+user_name+"&user_phone="+user_phone;
 	window.open(url,'update','width=450,height=500,location=no,status=no,scrollbars=yes');
 }
 </script>

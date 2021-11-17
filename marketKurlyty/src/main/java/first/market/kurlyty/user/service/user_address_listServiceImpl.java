@@ -16,5 +16,15 @@ public class user_address_listServiceImpl implements user_address_listService {
 		
 		return user_address_listDAO.getBoard(user_id);
 	}
+	@Override
+	public void insert(user_address_listVO vo) {
+		user_address_listDAO.insertBoard(vo);
+		
+	}
+	@Override
+	public void update(user_address_listVO vo) {
+		user_address_listDAO.update(vo);
+		
+	}
 
 }

@@ -7,8 +7,13 @@
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
-<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/style3.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/mykurly/destination_new.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/default/style.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/default/style2.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/default/style3.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/default/style4.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/default/brn_qnbStyle.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/default/topButton.css">
 </head>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return !disableSelection">
@@ -46,12 +51,12 @@
 							</div>
 							
 							<!-- 주문내역이 없을경우 ↓↓↓↓↓↓↓↓ -->
-							<ul class="list_order"> 
+							<!-- <ul class="list_order"> 
 								<li class="no_data">주문내역이 없습니다.</li>
-							</ul>
+							</ul> -->
 							
 							<!-- 주문내역이 있는경우 ↓↓↓↓↓↓↓↓ -->
-							<!-- <ul class="list_order">   
+							<ul class="list_order">   
 								<li>
 									<div class="date">2021.06.04 (12시 28분)</div>
 									<div class="order_goods">
@@ -84,7 +89,7 @@
 										</div>
 									</div>
 								</li>
-							</ul> -->
+							</ul>
 									
 							<div class="layout-pagination"><!-- 이전, 다음 페이지 처리  -->
 								<div class="pagediv">
