@@ -27,6 +27,7 @@ import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
 import first.market.kurlyty.user.vo.MembershipVO;
+import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.user.vo.UserVO;
 import first.market.kurlyty.vo.OrderVO;
 import first.market.kurlyty.vo.ProductVO;
@@ -107,6 +108,13 @@ public class PaymentController {
 			orderService.insertOrderDetails(order);
 			cartService.deleteCartItem(cartItem);
 		}
+		UserDetailsVO userDetail = orderService.getUserDetails(order.getUser_id());
+		int point = userDetail.getUser_point();
+		int totalPurchase = userDetail.getUser_total_purchase();
+		System.out.println(point);
+		userDetail.setUser_point(point+order.getUser_point());
+		userDetail.setUser_total_purchase(totalPurchase+order.getOrder_goods_price());
+		orderService.updateUserPurchase(userDetail);
 		return "index.do";
 	}
 	

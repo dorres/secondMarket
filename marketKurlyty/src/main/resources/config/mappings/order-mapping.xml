@@ -20,7 +20,10 @@
 		)
 	</insert>
 	<update id="updateUserPurchase">
-		UPDATE MK_USER_DETAILS SET user_total_purchase=#{order_goods_price},
+		UPDATE MK_USER_DETAILS SET user_total_purchase=#{user_total_purchase},
 		user_point=#{user_point} WHERE user_id=#{user_id}
 	</update>
+	<select id="getUserDetails" resultType="userDetails">
+		SELECT * FROM mk_user_details WHERE user_id=#{value}
+	</select>
 </mapper>

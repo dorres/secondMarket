@@ -30,6 +30,7 @@
 	<fmt:formatNumber var="oldPrice" maxFractionDigits="3" value="${goodsPrice}"/>
 	<fmt:formatNumber var="dc" maxFractionDigits="3" value="${orderPrice-goodsPrice }"/>
 	<%-- <input type="hidden" id="payment" value="${orderPrice }"> --%>
+	<input type="hidden" id="orderPrice" value="${orderPrice }"/>
 	<input type="hidden" id="address1" value="${userInfo.user_address1 }"/>
 	<input type="hidden" id="address2" value="${userInfo.user_address2 }"/>
 	<input type="hidden" id="zipcode" value="${userInfo.user_zipcode}"/>
@@ -75,7 +76,7 @@
 										/ 닫힘</span></a>
 								<c:set var="listSize" value="${fn:length(purchaseList) }"/>
 								<c:if test="${fn:length(purchaseList)==1 }">
-									<div class="short_info">${purchaseList[0].category_goods_name }</div>
+									<div class="short_info">${purchaseList[0].category_goods_name }(을)를 주문합니다.</div>
 								</c:if>
 								<c:if test="${fn:length(purchaseList)>1 }">
 									<div class="short_info">${purchaseList[0].category_goods_name } 외 ${listSize -1 }개 상품을 주문합니다.</div>
@@ -650,7 +651,7 @@ function reqeustPay(){
 				var address2=$("input#address2").val();
 				var zipcode=$("input#zipcode").val();
 				var listSize=String(${listSize});
-				var price=$("input#payment").val();
+				var price=$("input#orderPrice").val();
 				var merchant=String(req.merchant_uid);
 				var id='${userInfo.user_id}';
 				var name='${userInfo.user_name}';
@@ -685,7 +686,7 @@ function reqeustPay(){
 							"order_coupon_serial":"0",
 							"order_merchant_serial":merchant,
 							"master_goods_serial":masterGoodsSerial,
-							"usesr_point":point
+							"user_point":point
 						}
 					}).done(function(location){
 						window.location.href="index.do";

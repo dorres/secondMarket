@@ -132,7 +132,7 @@
 							</div>
 							<div class="submit double">
 								<button type="button" class="btn default" onclick="javascript:self.close();">취소</button>
-								<button id="btnSubmit" class="btn active">저장</button>
+								<button id="btnSubmit" class="btn active" onclick="javascript:finish()">저장</button>
 							</div>
 						</form>
 					</div>
@@ -157,6 +157,9 @@ $("input#putUserInfo").click(function(){
 		$("input#receiverPhoneNumber").val("")
 	}
 })
+function finish(){
+	var
+}
 </script>
 </body>
 </html>
