@@ -1,4 +1,4 @@
-@charset "UTF-8";
+
 
 .lastview-menu {
 	margin-top: 10px;
@@ -1937,7 +1937,7 @@
 
 .goods-view-form .address_search {
 	margin-bottom: 20px;
-	font-family: applesdgothicneo, malgun gothic, ë§‘ì€ ê³ ë”•, sans-serif;
+	font-family: applesdgothicneo, malgun gothic, ¸¼Àº °íµñ, sans-serif;
 	color: #000;
 	letter-spacing: 0
 }
@@ -4345,7 +4345,7 @@ tr#product-review-read p {
 }
 
 .daily_desc .link_goods span {
-	font-family: dotum, ë‹ì›€;
+	font-family: dotum, µ¸¿ò;
 	font-weight: 700
 }
 

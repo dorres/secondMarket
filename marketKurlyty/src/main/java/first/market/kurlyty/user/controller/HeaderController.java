@@ -1,29 +1,22 @@
 package first.market.kurlyty.user.controller;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.apache.tomcat.util.json.JSONParser;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-
 import first.market.kurlyty.s3.AwsS3;
+import first.market.kurlyty.user.service.HeaderService;
+import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.vo.CategoryMainVO;
 import first.market.kurlyty.vo.CategorySubVO;
 import first.market.kurlyty.vo.ProductVO;
@@ -39,26 +32,29 @@ public class HeaderController {
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private AwsS3 awsS3;
+	@Autowired HeaderService headerService;
+	@Autowired UserService userService;
 	
-	@RequestMapping(value="categoryData.do", produces="html/text; charset=utf-8")
+	@RequestMapping(value="categoryData.do", produces="application/json; charset=utf-8")
 	@ResponseBody
-	public String getCategoryMain() {
+	public List<CategoryMainVO> getCategory() {
 
-		List<CategoryMainVO> categoryMainList = sqlSession.selectList("CategoryDAO.getCategoryMain");
+		List<CategoryMainVO> categoryMainList = headerService.getCategoryMain();
 		for(CategoryMainVO cm:categoryMainList) {
 			List<CategorySubVO> categorySub=sqlSession.selectList("CategoryDAO.getCategorySub",cm);
 			cm.setData(categorySub);
 			//System.out.println(cm.getCategory_main_name());
 		}
 		//System.out.println(jsonCategory);
-		return new Gson().toJson(categoryMainList);
+		//return new Gson().toJson(categoryMainList);
+		return categoryMainList;
 	}
 	
 	@RequestMapping("categoryGoods.do")
 	public String categoryGoods(ProductVO product, Model model) {
 		System.out.println(product.getCategory_main_serial());
 		System.out.println(product.getCategory_sub_serial());
-		List<ProductVO> categoryProductList = sqlSession.selectList("CategoryDAO.getCategoryProductList",product);
+		List<ProductVO> categoryProductList = headerService.getCategoryProduct(product);
 		CategoryMainVO categoryRoot = sqlSession.selectOne("CategoryDAO.getCategoryRoot",product);
 		List<CategorySubVO> categorySub = sqlSession.selectList("CategoryDAO.getCategorySub",categoryRoot);
 		
