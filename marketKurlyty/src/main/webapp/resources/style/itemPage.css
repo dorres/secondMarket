@@ -1,0 +1,446 @@
+@charset "UTF-8";
+
+.board-header-container strong {
+    display: block;
+    padding-bottom: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #333;
+}
+.list-description li {
+    padding-left: 12px;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #999;
+}
+.board-header-container {
+    padding-bottom: 38px;
+    font-family: Noto Sans;
+}
+    
+.board-item-container.product {
+    width: 1010px;
+} 
+.board-item-container {
+    position: relative;
+    font-family: Noto Sans;
+    border-top: 2px solid #333;
+}
+.goods_board .board_pg_area {
+    clear: both;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.board-item-container .inquiry-board-header {
+    display: table;
+    table-layout: fixed;
+    border-bottom: 1px  solid #333;
+}
+.board-item-container .inquiry-board-header>div {
+    display: table-cell;
+    text-align: center;
+    padding: 18px 0 20px;
+    width: 100px;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    color: #333;
+}    
+
+.board-item-container .inquiry-board-header {
+    display: table;
+    table-layout: fixed;
+    border-bottom: 1px  solid #333;
+}
+
+.board-item-container .board-list, 
+.board-item-container .inquiry-notice-list {
+    position: relative;
+}
+
+.board-item-container .board-list>li, 
+.board-item-container .inquiry-notice-list>li {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 16px 0;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+  }
+  
+.board-item-container.product .board-list>li .notice-cell, .board-item-container.product .board-list>li>div.inquiry-item:first-child, .board-item-container.product .inquiry-notice-list>li .notice-cell, .board-item-container.product .inquiry-notice-list>li>div.inquiry-item:first-child {
+    width: 710px;
+    text-align: left;
+    padding: 0 20px;
+    min-height: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.board-item-container.product .board-list>li .product-detail, .board-item-container.product .inquiry-notice-list>li .product-detail {
+    height: 100%;
+    padding: 0 0 0 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.board-item-container .board-list>li .item-cell, .board-item-container .inquiry-notice-list>li .item-cell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+}
+
+.xans-product-additional table.tbl_newtype1 td {
+    height: auto;
+    padding: 22px 3px 23px;
+}
+.txt_sub.text_medium {
+    color: #999;
+}
+
+.txt_sub.kurlyPurple {
+    color: #5f0080;
+}
+
+.board-item-container .board-list>li, .board-item-container .inquiry-notice-list>li {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 16px 0;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.board-item-container.product .board-list>li .product-detail, .board-item-container.product .inquiry-notice-list>li .product-detail {
+    height: 100%;
+    padding: 0 0 0 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.board-item-container .board-list>li .product-detail, .board-item-container .inquiry-notice-list>li .product-detail {
+    min-height: 44px;
+    text-align: left;
+    padding: 8px 20px 0 0;
+    font-weight: 400;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+
+.board-item-container .board-list>li .product-detail.is-secret, .board-item-container .inquiry-notice-list>li .product-detail.is-secret {
+    cursor: default;
+}
+
+.board-item-container .board-list>li .product-detail.is-secret strong, .board-item-container .inquiry-notice-list>li .product-detail.is-secret strong {
+    color: #b5b5b5;
+}
+
+.board-item-container.product .board-list>li .product-detail strong, .board-item-container.product .inquiry-notice-list>li .product-detail strong {
+    max-width: 640px;
+    vertical-align: top;
+    font-weight: 400;
+}
+
+.board-item-container .board-list>li .product-detail strong, .board-item-container .inquiry-notice-list>li .product-detail strong {
+    display: inline-block;
+    max-width: 500px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+}
+.board-item-container .board-list>li .product-detail .product-name, .board-item-container .board-list>li .product-detail strong, .board-item-container .inquiry-notice-list>li .product-detail .product-name, .board-item-container .inquiry-notice-list>li .product-detail strong {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.paging-navigation {
+    padding-top: 20px;
+    text-align: center;
+}
+.paging-navigation>button:disabled {
+    border-color: #eee;
+    cursor: default;
+}
+.paging-navigation>button {
+    display: inline-block;
+    width: 44px;   
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    background: 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    cursor: pointer;
+}
+button {
+    outline: none;
+}
+
+.btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+}
+.board-inquiry-area .btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 44px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    line-height: 1;
+}
+
+button {
+    outline: none;
+}
+utton {
+    outline: none;
+}
+
+
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+    border-radius: 0;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+.btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+}
+.btn.active span{
+color: #fff;
+}
+
+.btn {
+    width: 100%;
+    height: 52px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+}
+button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+.board-inquiry-area .btn span {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: top;
+}
+ 
+.paging-navigation>button:disabled.paging-prev {
+    margin-right: 12px;
+    background-image: url(https://res.kurly.com/kurly/img/2021/direction_prev_disabled_24_44_gray.svg);
+}
+
+ 
+.paging-navigation>button:disabled.paging-next {
+    margin-right: 12px;
+    background-image: url(https://res.kurly.com/kurly/img/2021/direction_next_disabled_24_44_gray.svg);
+} 
+.paging-navigation>button.paging-prev {
+    margin-right: 12px;
+    background: url(https://res.kurly.com/kurly/img/2021/direction_prev_24_44_black.svg) 50% 0 no-repeat;
+}
+.paging-navigation>button.paging-next {
+    background: url(https://res.kurly.com/kurly/img/2021/direction_next_24_44_black.svg) 50% 0 no-repeat;
+}
+
+.paging-navigation>button:hover {
+    border-color: #333;
+}
+
+.xans-product-additional table.xans-board-listheader {
+    margin: 15px 0 0;
+    color: #353535;
+    font-size: 12px;
+    line-height: 140%;
+    table-layout: fixed;
+}
+.xans-board-listheader {
+    border-top: 2px solid #522772;
+    font-size: 13px;
+    line-height: 100;
+}
+.xans-product-additional table.tbl_newtype1 td {
+    height: auto;
+    padding: 22px 3px 23px;
+}
+.xans-product-additional table.xans-board-listheaderd td {
+    padding: 25px 3px 23px;
+    border-top: 1px solid #e3e3e3;
+    text-align: center;
+    vertical-align: middle;
+    height: 65px;
+}
+.goods_board .tbl_newtype1 .subject {
+    padding-left: 50px;
+    text-align: left;
+}
+.xans-product-additional table.tbl_newtype1 td.user_grade {
+    padding: 22px 0 23px;
+    text-align: center;
+}
+.xans-product-additional .btnArea .bhs_button {
+    margin: 20px 0 20px 5px;
+}
+.bhs_button {
+    width: 150px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #795b8f;
+    border: 1px solid #5f0080;
+    color: #fff;
+    font-size: 15px;
+    float: right;
+    margin-left: 2px;
+    font-size: 13px;
+}
+.xans-product-additional div.board .btnArea a {
+    display: inline-block;
+}
+.goods_board .tbl_newtype1 .time {
+    color: #939393;
+}
+.grade_comm .grade2 {
+    border: 1px solid #8c4cc3;
+    background-color: #8c4cc4;
+}
+.xans-product-additional div.board .btnArea {
+    padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    display: table;
+}
+
+.xans-product-additional div.board>.btnArea {
+    border-top: 1px solid #6a3664;
+}
+.xans-product-additional div.board .btnArea {
+    text-align: right;
+}
+        /* 제목부분 글줄임처리 */
+        .goods_board .tbl_newtype1
+        .xans-product-additional table.tbl_newtype1 td{padding:20px 3px 22px;line-height:20px}
+        .xans-product-additional table.tbl_newtype1 td .snd{display:none}
+        .xans-product-additional .on table.tbl_newtype1 td .fst{display:none}
+        .xans-product-additional .on table.tbl_newtype1 td .snd{display:block}
+        /* 고객후기_제목 */
+        .goods_board .tbl_newtype1 .subject{padding-left:50px;text-align:left;}
+        .goods_board .tbl_newtype1 .subject .tit_notice{padding-left:20px;background:url(/shop/data/skin/designgj/images/goods/ico_re.gif) no-repeat 0 3px}
+        .goods_board .tbl_newtype1 .time{color:#939393}
+        /* 고객후기_상세 */
+        .goods_board .name_purchase .name{display:block;font-weight:700;font-size:12px;color:#514859;line-height:18px}
+        .goods_board .name_purchase .package{padding-top:2px;font-size:14px;color:#000;line-height:20px}
+        .goods_board .review_photo{padding-top:30px;line-height:16px}
+        .goods_board .review_view{display:none;padding:10px 10px 11px;border-top:1px solid #e3e3e3;}
+        .goods_board .review_view .inner_review{width:100%;padding:20px 9px 9px;line-height:25px}
+        .goods_board .review_notice .name_purchase{display:none}
+        .goods_board .review_notice .review_photo{display:none}
+        .goods_board .goods-review-grp-btn .styled-button{height:32px}
+        /* 고객후기 없을때 */
+        .goods_board .no_data{padding:30px;text-align:center}
+        /* 페이징영역 */
+        .goods_board .board_pg_area{clear:both;text-align:center;padding-bottom:15px}
+    
+ .layout-pagination-button:first-child {
+    border-left: 1px solid #ddd;
+}
+.layout-pagination-first-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
+}
+.layout-pagination-first-page, .layout-pagination-prev-page, .layout-pagination-next-page, .layout-pagination-last-page {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    text-indent: -9999px;
+}
+.layout-pagination-button {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ddd;
+    border-left: 0;
+    vertical-align: top;
+}
+.layout-pagination-first-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
+}
+.layout-pagination-prev-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png);
+}
+.layout-pagination-number:hover, .layout-pagination-number.__active {
+    background-color: #f7f7f7;
+    color: #5f0080;
+}
+.layout-pagination-number {
+    font-weight: 700;
+    color: #333;
+    line-height: 34px;
+}
+.layout-pagination-next-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png);
+}
+.layout-pagination-last-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);
+}
+
+

@@ -1,6 +1,7 @@
 package first.market.kurlyty.admin.vo;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 public class AdminCategorySubVO {

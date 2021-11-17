@@ -374,11 +374,35 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getCategory3List();
 	}
 	@Override
-	public List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3) {
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3) {
 		return adminDao.getCategoryType(category3);
 	}
-	
-	
+	@Override
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3(category3);
+	}
+	@Override
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategory3(category3);
+	}
+
+	@Override
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.deleteCategory3(category3);
+	}
+	@Override
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.updateCategory3(category3);
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategory2Name() {
+		return adminDao.getCategory2Name();
+	}
+
+	@Override
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3Detail(category3);
+	}
 
 }
 	

@@ -283,10 +283,73 @@
 		ON A.CATEGORY_SUB_SERIAL = B.CATEGORY_SUB_SERIAL;
  	</select>
  
- 	<select id="getCategoryType" resultType="category2" parameterType="category2">
+ 	<select id="getCategoryType" resultType="category2" parameterType="category3">
  		SELECT * FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_FIRST_NO = #{category_main_serial}
  	</select>
-	
+
+ 	<insert id="insertCategory3" parameterType="category3">
+	 	 	INSERT INTO MK_CATEGORY_GOODS VALUES (#{category_main_serial}, #{category_sub_serial}, DEFAULT, 
+	 	 	#{category_goods_name},#{category_goods_name_subtext},#{category_goods_unit},#{category_goods_weight},
+	 	 	#{category_goods_origin},#{category_goods_packaging_type},#{category_goods_delivery_type},
+	 	 	#{category_goods_exp_date},#{category_goods_info},#{category_goods_ref},#{category_goods_allergy},
+	 	 	#{category_goods_detail_name1},#{category_goods_detail_name2},#{category_goods_detail_name_subtext},
+	 	 	#{category_goods_image_thumb},#{category_goods_image_detail_header},#{category_goods_image_detail_main});
+ 	</insert>
+ 	 <insert id="insertCategory3Detail" parameterType="category3">	 	 	
+	 INSERT INTO MK_GOODS_DETAIL(
+	 	GOODS_DETAIL_SERIAL, 
+	 	CATEGORY_MAIN_SERIAL, 
+	 	CATEGORY_SUB_SERIAL, 
+	 	CATEGORY_GOODS_SERIAL
+	 	) VALUES (
+	 		DEFAULT,
+	 		#{category_main_serial},
+	 		#{category_sub_serial},
+	 		(SELECT MAX(CATEGORY_GOODS_SERIAL) FROM MK_CATEGORY_GOODS)
+	 	)
+ 	</insert>		
+
+ 	<select id="getCategory3" resultType="category3" parameterType="category3">
+ 	 	SELECT (ROW_NUMBER() OVER(ORDER by A.CATEGORY_MAIN_SERIAL,A.CATEGORY_SUB_SERIAL)) AS ROWNUM,
+		B.CATEGORY_MAIN_NAME, B.CATEGORY_SUB_NAME, A.*
+		FROM MK_CATEGORY_GOODS A 
+		JOIN (
+			SELECT (ROW_NUMBER() OVER()) AS ROWNUM,
+			A.*, B.* FROM MK_CATEGORY_MAIN A JOIN MK_CATEGORY_SUB B 
+			ON A.CATEGORY_MAIN_SERIAL = B.CATEGORY_SUB_FIRST_NO) B 
+		ON A.CATEGORY_SUB_SERIAL = B.CATEGORY_SUB_SERIAL
+		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial}
+ 	</select>
+
+ 	<delete id="deleteCategory3" parameterType="category3">
+ 	 	DELETE FROM MK_CATEGORY_GOODS WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial}
+ 	</delete>
+  	<update id="updateCategory3" parameterType="category3">
+ 		UPDATE MK_CATEGORY_GOODS SET 
+ 		CATEGORY_GOODS_NAME = #{category_goods_name},
+ 		CATEGORY_GOODS_NAME_SUBTEXT = #{category_goods_name_subtext},
+ 		CATEGORY_GOODS_UNIT = #{category_goods_unit},
+ 		CATEGORY_GOODS_WEIGHT = #{category_goods_weight},
+ 		CATEGORY_GOODS_ORIGIN = #{category_goods_origin},
+ 		CATEGORY_GOODS_PACKAGING_TYPE = #{category_goods_packaging_type},
+ 		CATEGORY_GOODS_DELIVERY_TYPE = #{category_goods_delivery_type},
+ 		CATEGORY_GOODS_EXP_DATE = #{category_goods_exp_date},
+ 		CATEGORY_GOODS_INFO = #{category_goods_info},
+ 		CATEGORY_GOODS_REF = #{category_goods_ref},
+ 		CATEGORY_GOODS_ALLERGY = #{category_goods_allergy},
+ 		CATEGORY_GOODS_DETAIL_NAME1 = #{category_goods_detail_name1},
+ 		CATEGORY_GOODS_DETAIL_NAME2 = #{category_goods_detail_name2},
+ 		CATEGORY_GOODS_DETAIL_NAME_SUBTEXT = #{category_goods_detail_name_subtext},
+ 		CATEGORY_GOODS_IMAGE_THUMB = #{category_goods_image_thumb},
+ 		CATEGORY_GOODS_IMAGE_DETAIL_HEADER = #{category_goods_image_detail_header},
+ 		CATEGORY_GOODS_IMAGE_DETAIL_MAIN = #{category_goods_image_detail_main}
+ 		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial}
+ 	</update>
+ 	
+ 	<select id="getCategory2Name" resultType="category2">
+ 		SELECT CATEGORY_SUB_NAME FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_FIRST_NO = 'M001'
+ 	</select>
+ 	 
 	
 	<!-- 관리자 3차카테고리 -->
 </mapper>

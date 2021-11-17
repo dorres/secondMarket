@@ -185,6 +185,18 @@ public interface AdminService {
 	//관리자 3차카테고리 리스트
 	List<AdminCategoryGoodsVO> getCategory3List();
 	
-	List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3);
+	List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3);
+	
+	int insertCategory3(AdminCategoryGoodsVO category3);
+	
+	int insertCategory3Detail(AdminCategoryGoodsVO category3);
+	
+	AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3);
+	
+	int deleteCategory3(AdminCategoryGoodsVO category3);
+	
+	int updateCategory3(AdminCategoryGoodsVO category);
+	
+	List<AdminCategorySubVO> getCategory2Name();
 	
 }

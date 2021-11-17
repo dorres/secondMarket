@@ -307,8 +307,26 @@ public class AdminDAO {
 	public List<AdminCategoryGoodsVO> getCategory3List(){
 		return sqlSession.selectList("AdminDAO.getCategory3List");
 	}
-	public List<AdminCategoryGoodsVO> getCategoryType(AdminCategoryGoodsVO category3){
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3){
 		return sqlSession.selectList("AdminDAO.getCategoryType",category3);
+	}
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("AdminDAO.insertCategory3",category3);
+	}
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.selectOne("AdminDAO.getCategory3",category3);
+	}
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.delete("AdminDAO.deleteCategory3",category3);
+	}
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.update("AdminDAO.updateCategory3",category3);
+	}
+	public List<AdminCategorySubVO> getCategory2Name(){
+		return sqlSession.selectList("AdminDAO.getCategory2Name");
+	}
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("AdminDAO.insertCategory3Detail",category3);
 	}
 	
 }

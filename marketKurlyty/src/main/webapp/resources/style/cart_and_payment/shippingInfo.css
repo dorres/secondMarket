@@ -1,0 +1,3394 @@
+@charset "UTF-8";
+body {
+	color: #333;
+	line-height: 1.5
+}
+
+#kHead {
+	display: none
+}
+
+.top_scrollcheck {
+	position: absolute;
+	left: 0;
+	top: -43px;
+	height: 1px
+}
+
+.header {
+	overflow: hidden;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 44px;
+	background-color: #fff;
+	text-align: center
+}
+
+.header:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	background-image: linear-gradient(0deg, #ddd 0, #ddd 51%, transparent 0);
+	background-size: 100% 1px;
+	opacity: 0;
+	transition: opacity 1s
+}
+
+.header.scroll_on:after {
+	opacity: 1;
+	transition: opacity 1s
+}
+
+.header .tit_logo img {
+	display: block;
+	height: 36px;
+	margin: 4px auto
+}
+
+.header .tit_header {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 44px
+}
+
+#headerLinkGoBack, .header .btn {
+	overflow: hidden;
+	position: absolute;
+	left: 5px;
+	top: 0;
+	width: 44px;
+	height: 44px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2006/ico_navi_back.svg?v=1);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 44px 44px;
+	background-position: 50% 50%
+}
+
+#headerLinkGoBack {
+	font-size: 0;
+	text-indent: -9999px
+}
+
+#headerLinkGoBack.close {
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_header_close.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 44px 44px;
+	background-position: 50% 50%
+}
+
+.page_order .tit_logo {
+	display: none
+}
+
+.page_order #kMain {
+	margin-top: 44px
+}
+
+.order_section {
+	border-top: 10px solid #f4f4f4;
+	background-color: #fff
+}
+
+.order_section .section_crux {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	padding: 18px 0 16px
+}
+
+.order_section .section_crux:after {
+	content: "";
+	position: absolute;
+	right: 20px;
+	top: 0;
+	width: 20px;
+	height: 20px;
+	margin-top: 18px;
+	transform: rotate(0);
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	-o-transform: rotate(0);
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2106/ico_drop_up.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 50% 50%
+}
+
+.order_section .section_crux .tit {
+	float: left;
+	margin-top: -2px;
+	padding-left: 20px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px
+}
+
+.order_section .section_crux .desc {
+	float: right;
+	margin-top: -2px;
+	padding-right: 40px;
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 24px;
+	text-align: right
+}
+
+.order_section .section_crux .ico_loading {
+	float: right;
+	padding-right: 15px;
+	text-align: right;
+	margin-top: -14px
+}
+
+.order_section.on .section_crux:after {
+	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg)
+}
+
+.order_section.on .section_crux .desc {
+	display: none
+}
+
+.order_section .section_full {
+	padding: 0 20px 19px
+}
+
+.order_section.on .section_full {
+	display: block
+}
+
+.order_section.invalid .desc {
+	color: #f03f40
+}
+
+.order_goods {
+	border-top: 0
+}
+
+.order_goods .section_crux .desc {
+	position: relative;
+	width: 69%;
+	padding-right: 52px
+}
+
+.order_goods .section_crux .txt {
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: top;
+	text-align: right
+}
+
+.order_goods .section_crux .txt.etc {
+	width: auto;
+	max-width: 65%
+}
+
+.order_goods .section_crux .num {
+	font-weight: 600
+}
+
+.order_goods .section_full {
+	display: none;
+	padding-bottom: 0
+}
+
+.order_goods .list_goods {
+	margin-top: -8px
+}
+
+.order_goods .list_goods li {
+	overflow: hidden
+}
+
+.order_goods .list_goods li:first-child .info {
+	border-top: 0
+}
+
+.order_goods .list_goods li:last-child .thumb {
+	margin-bottom: 20px
+}
+
+.order_goods .list_goods li:last-child .info {
+	padding-bottom: 19px
+}
+
+.order_goods .list_goods .thumb {
+	float: left;
+	width: 50px;
+	height: 65px;
+	margin: 16px 16px 16px 0;
+	background-color: #f4f4f4;
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat
+}
+
+.order_goods .list_goods .info {
+	overflow: hidden;
+	padding: 16px 0 15px;
+	border-top: 1px solid #f4f4f4
+}
+
+.order_goods .list_goods .tit_product {
+	display: block;
+	overflow: hidden;
+	max-height: 40px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: normal;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical
+}
+
+.order_goods .list_goods .tit_package {
+	display: block;
+	overflow: hidden;
+	margin-bottom: -3px;
+	font-weight: 400;
+	font-size: 12px;
+	color: #999;
+	line-height: 20px;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.order_goods .list_goods .desc {
+	display: block;
+	padding-top: 4px;
+	line-height: 20px
+}
+
+.order_goods .list_goods .subject {
+	display: inline-block;
+	width: 36px;
+	font-size: 14px;
+	vertical-align: top
+}
+
+.order_goods .list_goods .num {
+	font-weight: 700
+}
+
+.order_goods .list_goods .cost {
+	padding-left: 5px;
+	font-weight: 400;
+	font-size: 14px;
+	color: #999;
+	text-decoration: line-through
+}
+
+.order_goods .list_goods .quantity {
+	font-weight: 600;
+	color: #666
+}
+
+.order_goods .list_goods .quantity:before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 12px;
+	margin: 0 9px 0 8px;
+	background-color: #ddd;
+	vertical-align: -1px
+}
+
+.order_member.invalid .section_crux .desc {
+	color: #f03f40
+}
+
+.order_member .section_crux .off {
+	font-weight: 400;
+	color: #ccc
+}
+
+.order_member .section_crux .desc {
+	overflow: hidden;
+	width: 54%;
+	margin-right: 52px;
+	padding-right: 0;
+	white-space: nowrap
+}
+
+.layer_coupon .order_member .section_crux .desc .benefit, .order_member .section_crux .desc .layer_coupon .benefit,
+	.order_member .section_crux .desc .name {
+	overflow: hidden;
+	display: inline-block;
+	width: 30%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: right;
+	vertical-align: top
+}
+
+@media screen and (max-width:320px) {
+	.layer_coupon .order_member .section_crux .desc .benefit, .order_member .section_crux .desc .layer_coupon .benefit,
+		.order_member .section_crux .desc .name {
+		width: 20%
+	}
+}
+
+@media screen and (max-width:320px) {
+	.order_member .section_crux .desc {
+		overflow: visible;
+		width: 49%;
+		white-space: nowrap;
+		text-overflow: ellipsis
+	}
+}
+
+.order_member .section_full {
+	display: none
+}
+
+.order_member .no_member {
+	padding: 0
+}
+
+.order_member .no_member .list {
+	padding-top: 20px
+}
+
+.order_member .no_member .list.fst {
+	padding-top: 0
+}
+
+.order_member .no_member .subject {
+	display: block;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: .5px
+}
+
+.order_member .no_member .details {
+	padding-top: 6px
+}
+
+.order_member .member .list {
+	overflow: hidden;
+	padding-top: 11px;
+	font-size: 16px;
+	line-height: 20px
+}
+
+.order_member .member .list.fst {
+	padding-top: 9px
+}
+
+.order_member .member .subject {
+	float: left;
+	width: 100px;
+	color: #666
+}
+
+.order_member .member .subject .emph {
+	display: none
+}
+
+.order_member .member .details {
+	display: block;
+	overflow: hidden;
+	word-break: break-all
+}
+
+.order_member .notice {
+	padding-top: 15px;
+	font-size: 12px;
+	color: #999;
+	line-height: 16px
+}
+
+.order_member .notice .emph {
+	font-weight: 600
+}
+
+.order_reception {
+	position: relative;
+	margin: 0 20px;
+	padding: 0 60px 20px 0;
+	border-top: 1px solid #f4f4f4
+}
+
+.order_reception .receiving {
+	padding-top: 14px;
+	font-weight: 500;
+	font-size: 15px;
+	color: #333;
+	line-height: 20px
+}
+
+.order_reception .receiving.only {
+	padding: 32px 0 8px
+}
+
+.order_reception .receiving.off {
+	padding: 21px 0 4px;
+	font-weight: 400;
+	color: #f03f40
+}
+
+.order_reception .receiving.off:after {
+	content: "";
+	display: inline-block;
+	width: 8px;
+	height: 14px;
+	margin-left: 3px;
+	background-image:
+		url(https://res.kurly.com/kurly/ico/2021/direction_8_14_f03f40.svg?ver=1);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 8px 14px;
+	background-position: 50% 50%;
+	vertical-align: -2px
+}
+
+.order_reception .btn_edit {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%
+}
+
+.order_reception .btn_edit .modify {
+	position: absolute;
+	right: 0;
+	bottom: 20px;
+	width: 53px;
+	height: 38px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #fff;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 36px;
+	text-align: center
+}
+
+.order_reception .btn_edit.off:after {
+	display: none
+}
+
+.order_reception .way {
+	overflow: hidden;
+	padding-top: 7px;
+	font-size: 14px;
+	color: #666;
+	line-height: 17px
+}
+
+.order_reception .way .inner_way {
+	overflow: hidden
+}
+
+.order_reception .way .place {
+	overflow: hidden;
+	float: left;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.order_reception .way .massege {
+	padding-top: 5px
+}
+
+.order_reception .way .txt {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	padding-left: 18px;
+	word-break: break-all
+}
+
+.order_reception .way .txt:before {
+	content: "";
+	position: absolute;
+	left: 9px;
+	top: 2px;
+	width: 1px;
+	height: 12px;
+	background-color: #ddd
+}
+
+.order_reception .way .txt.off {
+	padding-left: 0;
+	color: #f03f40
+}
+
+.order_reception .way .txt.off:before {
+	display: none
+}
+
+.order_reception .way .txt.should_update_details {
+	color: #f03f40
+}
+
+.order_reception .way.indirect .txt {
+	padding-left: 0
+}
+
+.order_reception .way.indirect .txt:before {
+	display: none
+}
+
+.order_reception.invalid .way .txt.off {
+	color: #f03f40
+}
+
+.order_reception.invalid .btn_edit:after {
+	display: none
+}
+
+.order_reception.invalid .btn_edit.no_way:after {
+	display: block
+}
+
+.order_pack .section_full {
+	display: none;
+	padding-bottom: 12px
+}
+
+.order_pack .label_block {
+	padding: 13px 0 9px
+}
+
+#bnrOrder {
+	padding: 10px 0 0;
+	background-color: #f4f4f4
+}
+
+#bnrOrder .btn_layershow {
+	-webkit-tap-highlight-color: transparent
+}
+
+#bnrOrder img {
+	vertical-align: top
+}
+
+.order_coupon .section_crux {
+	padding-right: 20px;
+	padding-bottom: 14px
+}
+
+.order_coupon .section_crux:after {
+	display: none
+}
+
+.order_coupon .section_crux .link {
+	float: right;
+	margin-top: -1px;
+	padding-right: 17px;
+	font-weight: 600;
+	font-size: 14px;
+	color: #999;
+	line-height: 24px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_link_next.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-position: 100% 50%
+}
+
+.order_coupon .coupon {
+	padding-top: 9px
+}
+
+.order_coupon .have {
+	padding-top: 8px;
+	font-size: 14px;
+	line-height: 18px;
+	color: #999
+}
+
+.order_coupon .have .quantity {
+	font-weight: 600;
+	color: #666
+}
+
+.order_coupon .have .quantity .num {
+	font-weight: 700
+}
+
+.order_coupon .select {
+	display: block;
+	position: relative;
+	height: 48px;
+	padding: 0 50px 0 14px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #fff;
+	font-size: 16px;
+	line-height: 46px;
+	white-space: nowrap
+}
+
+.order_coupon .select.selected {
+	font-weight: 600
+}
+
+.order_coupon .select.off {
+	background-color: #fafafa;
+	color: #ccc
+}
+
+.order_coupon .select.off:after {
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2012/ico_select_next_off.svg)
+}
+
+.order_coupon .select.off:after, .order_coupon .select:after {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 48px 48px;
+	background-position: 50% 50%
+}
+
+.order_coupon .select:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 48px;
+	height: 48px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_select_next.svg)
+}
+
+.order_coupon .select.disabled {
+	border-color: #ddd;
+	color: #ccc
+}
+
+.order_coupon .reserve {
+	padding-top: 20px
+}
+
+.order_coupon .reserve .registration {
+	position: relative;
+	padding-right: 96px
+}
+
+.order_coupon .reserve .registration .inp {
+	padding-bottom: 2px
+}
+
+.order_coupon .reserve .registration input.on {
+	font-weight: 600
+}
+
+.order_coupon .reserve .registration input:disabled {
+	background-color: #fafafa;
+	color: #ccc
+}
+
+.order_coupon .reserve .registration .btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 88px
+}
+
+.order_coupon .reserve .registration .btn_clear {
+	position: absolute;
+	right: 95px;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	border: 0;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2002/ico_del_32x32.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-position: 50% 50%
+}
+
+.order_coupon .reserve input[type=number] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	padding: 3px 50px 0 14px
+}
+
+.order_coupon .reserve input[type=number]:disabled {
+	color: #ccc;
+	background-color: #f7f7f7
+}
+
+.order_packaging .section_crux:after {
+	display: none
+}
+
+.order_packaging .label_block+.label_block {
+	margin-top: 20px
+}
+
+.layer_coupon.scroll_body .inner_layer {
+	top: 50%;
+	bottom: auto;
+	height: 458px;
+	margin-top: -229px
+}
+
+.layer_coupon .list {
+	overflow-y: auto;
+	height: 100%;
+	padding: 0 20px
+}
+
+.layer_coupon .list li label {
+	display: block;
+	position: relative;
+	padding: 20px 20px 19px 36px
+}
+
+.layer_coupon .list li .ico, .layer_coupon .list li .radio,
+	.layer_coupon .list li:first-child .ico {
+	position: absolute;
+	left: 0;
+	top: 20px
+}
+
+.layer_coupon .list li:first-child label {
+	padding-top: 11px
+}
+
+.layer_coupon .list li:first-child .ico, .layer_coupon .list li:first-child .radio
+	{
+	top: 10px
+}
+
+.layer_coupon .list li.disabled .benefit, .layer_coupon .list li.disabled .name
+	{
+	color: #ccc
+}
+
+.layer_coupon .list li.disabled .date, .layer_coupon .list li.disabled .detail
+	{
+	color: #999
+}
+
+.layer_coupon .benefit, .layer_coupon .name {
+	display: block;
+	padding-top: 1px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 24px
+}
+
+.layer_coupon .benefit {
+	padding-top: 11px;
+	font-size: 16px;
+	color: #999;
+	line-height: 20px
+}
+
+.layer_coupon .date, .layer_coupon .detail {
+	display: block;
+	padding-top: 5px;
+	font-size: 12px;
+	color: #666;
+	line-height: 16px;
+	letter-spacing: -.5px
+}
+
+.layer_coupon .date {
+	padding-top: 4px
+}
+
+.order_price .section_crux {
+	padding-bottom: 14px
+}
+
+.order_price .section_crux:after {
+	display: none
+}
+
+.order_price .amount {
+	overflow: hidden;
+	padding-top: 9px
+}
+
+.order_price .amount .tit {
+	float: left;
+	width: 160px;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -.3px
+}
+
+.order_price .amount .price {
+	float: right;
+	line-height: 24px;
+	text-align: right
+}
+
+.order_price .amount .price .num {
+	font-size: 18px
+}
+
+.order_price .amount .price .num.minus:before {
+	content: "-";
+	display: inline-block;
+	vertical-align: 0
+}
+
+.order_price .amount .price .num.plus:before {
+	content: "+";
+	display: inline-block;
+	vertical-align: 0
+}
+
+.order_price .amount .price .won {
+	padding-left: 4px;
+	font-size: 16px;
+	vertical-align: 1px
+}
+
+.order_price .amount .price .emph {
+	color: #5f0080
+}
+
+.order_price .amount.coupon .num, .order_price .amount.coupon .won {
+	color: #fa622f
+}
+
+.order_price .amount.fst {
+	padding-top: 11px
+}
+
+.order_price .amount.sub {
+	padding-top: 8px
+}
+
+.order_price .amount.sub .tit {
+	padding-left: 16px;
+	font-size: 14px;
+	color: #999;
+	line-height: 20px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_sub_price_dot.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 16px 20px;
+	background-position: 0 50%
+}
+
+.order_price .amount.sub .price {
+	color: #999;
+	line-height: 20px
+}
+
+.order_price .amount.sub .price .num {
+	font-weight: 400;
+	font-size: 14px
+}
+
+.order_price .amount.sub .price .won {
+	font-size: 14px
+}
+
+.order_price .amount.lst {
+	margin: 9px 0 0;
+	padding: 14px 0 1px;
+	border-top: 1px solid #f4f4f4
+}
+
+.order_price .amount.lst .tit {
+	padding-top: 2px;
+	font-weight: 600;
+	letter-spacing: 0
+}
+
+.order_price .amount.lst .price .num {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 28px
+}
+
+.order_price .reserve {
+	padding-top: 2px;
+	font-size: 12px;
+	color: #666;
+	line-height: 16px;
+	text-align: right
+}
+
+.order_price .reserve .bage {
+	display: inline-block;
+	height: 18px;
+	margin-right: 6px;
+	padding: 0 5px 0 6px;
+	border: 1px solid #ffbf01;
+	border-radius: 9px;
+	background-color: #ffbf00;
+	font-weight: 600;
+	font-size: 10px;
+	color: #fff;
+	line-height: 18px;
+	vertical-align: 0
+}
+
+.order_price .reserve .emph {
+	font-weight: 600
+}
+
+.order_payment.invalid .section_crux .off {
+	color: #f03f40
+}
+
+.order_payment .section_crux {
+	padding-bottom: 14px
+}
+
+.order_payment .section_crux .off {
+	font-weight: 400;
+	color: #ccc
+}
+
+.order_payment .section_crux .ico {
+	height: 18px;
+	margin-top: 3px
+}
+
+.order_payment .section_crux .desc {
+	overflow: hidden;
+	padding-right: 52px;
+	max-width: 70%;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+@media screen and (max-width:320px) {
+	.order_payment .section_crux .desc {
+		max-width: 60%
+	}
+}
+
+.order_payment .section_full {
+	display: none;
+	padding-bottom: 0
+}
+
+.order_payment .section_full .blank {
+	height: 20px
+}
+
+.order_payment .select {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-top: 3px
+}
+
+.order_payment .select li {
+	position: relative;
+	flex: 1 0;
+	height: 48px;
+	margin-right: 8px;
+	border: 1px solid #e2e2e2;
+	border-radius: 4px;
+	text-align: center
+}
+
+.order_payment .select li:last-child {
+	margin-right: 0
+}
+
+.order_payment .select li.kakao-pay {
+	flex: none;
+	width: 100%;
+	margin: 0 0 10px
+}
+
+.order_payment .select li.kakao-pay .event {
+	top: -8px
+}
+
+.order_payment .select li.on {
+	border: 1px solid #5f0081;
+	background-color: #5f0080;
+	color: #fff
+}
+
+.order_payment .select li.on.kakao-pay {
+	border: 1px solid #f6e501;
+	background-color: #f6e500
+}
+
+.order_payment .select li a {
+	display: block;
+	height: 100%;
+	padding-top: 13px
+}
+
+.layer_coupon .order_payment .select li a .benefit, .order_payment .select li a .layer_coupon .benefit,
+	.order_payment .select li a .name {
+	font-weight: 600
+}
+
+.order_payment .select li .event {
+	position: absolute;
+	left: 9px;
+	top: -7px;
+	height: 17px;
+	padding: 0 6px;
+	border: 1px solid #fa622f;
+	border-radius: 9px;
+	background-color: #fff;
+	font-weight: 600;
+	font-size: 10px;
+	color: #fa622f;
+	line-height: 15px;
+	text-align: center
+}
+
+.order_payment .select li .ico {
+	height: 20px
+}
+
+.order_payment .select li.regular {
+	width: 100%
+}
+
+.order_payment .select li.regular a {
+	padding-top: 14px
+}
+
+.order_payment .select li.regular.kakao-pay {
+	margin-bottom: 5px
+}
+
+.order_payment .simple_payments {
+	display: flex;
+	flex-flow: wrap;
+	padding-top: 15px
+}
+
+.order_payment .simple_payments .item {
+	display: flex;
+	align-items: center;
+	flex: 1 0 50%;
+	margin-bottom: 11px;
+	padding: 8px 0
+}
+
+.order_payment .simple_payments .item .event {
+	font-size: 13px;
+	font-weight: 600;
+	line-height: .85;
+	color: #fa622f;
+	padding-left: 6px
+}
+
+.order_payment .txt_kakao {
+	padding-bottom: 1px;
+	font-size: 12px;
+	color: grey;
+	line-height: 15px
+}
+
+.order_payment .txt_kakao+.card_event.kakao {
+	margin-top: 16px
+}
+
+.order_payment .kurly_pass_info {
+	padding: 11px 0 16px;
+	font-size: 12px;
+	color: grey;
+	line-height: 16px
+}
+
+.order_payment .notice {
+	position: relative;
+	padding: 11px 20px 21px 59px;
+	font-size: 12px;
+	line-height: 17px
+}
+
+.order_payment .notice .badge {
+	position: absolute;
+	left: 20px;
+	top: 12px;
+	height: 17px;
+	padding: 0 6px;
+	border: 1px solid #fa622f;
+	border-radius: 9px;
+	background-color: #fff;
+	font-weight: 600;
+	font-size: 10px;
+	color: #fa622f;
+	line-height: 15px
+}
+
+.order_payment .notice .emph {
+	font-weight: 700
+}
+
+.order_payment .label_block {
+	padding: 27px 0 20px;
+	letter-spacing: -.3px
+}
+
+.order_payment .selected {
+	padding-top: 20px
+}
+
+.order_payment .selected.card .select_box.lst {
+	margin-top: 8px
+}
+
+.order_payment .selected.card .benefit {
+	padding-top: 11px;
+	font-size: 12px;
+	color: grey;
+	line-height: 16px
+}
+
+.order_payment .selected.card .benefit .emph {
+	font-weight: 600
+}
+
+.order_payment .selected.card .label_block {
+	padding: 17px 0 19px;
+	margin-bottom: -19px
+}
+
+.order_payment .selected.event .logo {
+	height: 18px
+}
+
+.order_payment .selected.event .subject {
+	display: block;
+	padding-top: 12px;
+	font-size: 16px;
+	line-height: 20px
+}
+
+.order_payment .selected .tit_benefit {
+	padding-top: 8px;
+	font-weight: 600;
+	font-size: 16px;
+	color: #333;
+	line-height: 20px
+}
+
+.order_payment .selected .benefit {
+	margin-top: -1px
+}
+
+.order_payment .selected .benefit p {
+	padding-top: 7px;
+	font-size: 12px;
+	color: #666;
+	line-height: 18px
+}
+
+.order_payment .selected .benefit p .ico {
+	display: inline-block;
+	padding-right: 2px;
+	vertical-align: 0
+}
+
+.order_payment .selected .benefit p .emph {
+	font-weight: 600
+}
+
+.order_payment .card_event {
+	margin-top: 20px;
+	padding: 5px 16px 15px;
+	border-radius: 6px;
+	background-color: #f7f7f7
+}
+
+.order_payment .card_event .tit {
+	font-weight: 600;
+	line-height: 18px
+}
+
+.order_payment .card_event .desc {
+	font-size: 12px;
+	color: #666;
+	line-height: 18px;
+	letter-spacing: -.3px
+}
+
+.order_payment .card_event .desc .ico {
+	padding-right: 2px
+}
+
+.order_payment .card_event.etc {
+	padding-top: 16px;
+	margin-top: 6px
+}
+
+.order_payment .card_event.etc .logo {
+	display: block;
+	height: 18px
+}
+
+.order_payment .card_event.etc .tit {
+	padding-top: 11px;
+	font-size: 15px;
+	letter-spacing: -.32px
+}
+
+.order_payment .card_event.etc .desc {
+	padding-top: 5px
+}
+
+.order_payment .card_event.etc .desc p {
+	padding-top: 2px
+}
+
+.order_payment .card_event.kakao {
+	margin-top: 12px
+}
+
+.order_payment .card_event .inner_event {
+	overflow: hidden;
+	padding-top: 10px
+}
+
+.order_payment .card_event .inner_event .tit {
+	font-size: 12px
+}
+
+.order_payment .card_event .inner_event .desc {
+	padding-top: 2px
+}
+
+.order_payment .select_box .tit_selected {
+	font-weight: 400;
+	font-size: 15px
+}
+
+.order_payment .select_box .tit_selected:after {
+	transform: rotate(0);
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	-o-transform: rotate(0)
+}
+
+.order_payment .layer_card {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	bottom: 0;
+	width: 100%
+}
+
+.order_payment .layer_card .off_layer {
+	display: none;
+	position: fixed;
+	z-index: 0;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background-color: #000;
+	opacity: .4
+}
+
+.order_payment .layer_card.open .off_layer {
+	display: block
+}
+
+.order_payment .layer_card.open .inner_card {
+	width: 100%;
+	bottom: 0;
+	transition: bottom .2s
+}
+
+.order_payment .layer_card .inner_card {
+	overflow-y: auto;
+	position: absolute;
+	left: 0;
+	bottom: -100vh;
+	max-height: 90vh;
+	border-radius: 10px 10px 0 0;
+	background-color: #fff;
+	transition: bottom .2s
+}
+
+.order_payment .layer_card .inner_card .off_card {
+	display: block;
+	width: 100%;
+	height: 32px;
+	border: none;
+	background: 0 0
+}
+
+.order_payment .layer_card .tit {
+	padding-left: 20px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 23px
+}
+
+.order_payment .layer_card .list_card {
+	display: flex;
+	overflow-y: auto;
+	flex-wrap: wrap;
+	width: 100%;
+	max-height: 80%;
+	padding: 14px 20px 12px; --safe-area-inset-bottom: env(safe-area-inset-bottom);
+	padding-bottom: calc(12px + var(- -safe-area-inset-bottom))
+}
+.order_payment .layer_card .list_card li {
+	flex: 1 0 50%;
+	padding: 0 3px 8px 0
+}
+
+.order_payment .layer_card .list_card li:nth-child(2n) {
+	padding: 0 0 8px 3px
+}
+
+.order_payment .layer_card .list_card li button {
+	display: block;
+	width: 100%;
+	height: 46px;
+	border-radius: 3px;
+	border: 1px solid #eee;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 19px
+}
+
+.order_payment .layer_card .list_card li.on.only {
+	padding-right: 0
+}
+
+.order_payment .layer_card .list_card li.on button {
+	border: 1px solid #5f0080;
+	font-weight: 600;
+	color: #5f0080
+}
+
+.order_undelivered.on .section_full {
+	display: block
+}
+
+@media screen and (max-width:320px) {
+	.order_undelivered .section_crux .desc {
+		overflow: hidden;
+		max-width: 30%;
+		margin-right: 40px;
+		padding-right: 0;
+		white-space: nowrap;
+		text-overflow: ellipsis
+	}
+}
+
+.order_undelivered .section_full {
+	display: none;
+	padding-bottom: 11px
+}
+
+.order_undelivered .section_full .label_block {
+	padding: 13px 0 9px
+}
+
+.order_agree .section_full {
+	padding-bottom: 0
+}
+
+.order_agree .label_block {
+	padding: 19px 0 11px;
+	font-weight: 600
+}
+
+.order_agree .list li .link {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	padding: 8px 0;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: -.3px
+}
+
+.order_agree .list li .link:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_link_next.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-position: 100% 50%
+}
+
+.order_agree .list li .link .emph {
+	color: #999;
+	white-space: nowrap
+}
+
+.layer_kurly.layer_agree .tit_layer {
+	padding-top: 13px;
+	font-weight: 600;
+	text-align: center
+}
+
+.layer_kurly.layer_agree .box_tbl {
+	padding: 0 20px
+}
+
+.layer_kurly.layer_agree .box_tbl th {
+	padding: 10px 5px;
+	background-color: #f4f4f4;
+	border: 1px solid #ccc;
+	text-align: center
+}
+
+.layer_kurly.layer_agree .box_tbl thead th {
+	border-bottom: 0;
+	font-size: 14px
+}
+
+.layer_kurly.layer_agree .box_tbl td {
+	padding: 5px;
+	border: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 12px;
+	line-height: 19px
+}
+
+.layer_kurly.layer_agree .box_tbl td.emph {
+	font-weight: 600;
+	font-size: 15px
+}
+
+.layer_kurly.layer_agree .box_tbl .log_in, .layer_kurly.layer_agree .box_tbl .log_out
+	{
+	display: none
+}
+
+.layer_kurly.layer_agree .in .log_in, .layer_kurly.layer_agree .out .log_out
+	{
+	display: table-row
+}
+
+.layer_kurly.layer_agree .tbl_desc {
+	padding: 0 5px;
+	color: #999
+}
+
+.layer_kurly.layer_agree .txt_service {
+	padding: 20px 5px 24px;
+	font-size: 14px;
+	color: #999;
+	line-height: 20px
+}
+
+.layer_kurly.layer_agree .terms_view {
+	margin-top: 20px;
+	font-size: 14px;
+	line-height: 20px
+}
+
+.layer_kurly.layer_agree .terms_view .tit_main {
+	font-size: 16px
+}
+
+.layer_kurly.layer_agree .terms_view .tit_sub {
+	display: block;
+	padding: 20px 0 10px
+}
+
+.layer_kurly.layer_agree .terms_view .normal, .layer_kurly.layer_agree .terms_view:last-child .tit_sub
+	{
+	font-weight: 400
+}
+
+.layer_kurly.layer_agree .terms_view:last-child .tit_sub .emph {
+	font-weight: 700
+}
+
+.btn_order {
+	padding: 24px 12px 8px; --safe-area-inset-bottom: env(safe-area-inset-bottom);
+	padding-bottom: calc(8px + var(- -safe-area-inset-bottom))
+}
+.btn_order .btn {
+	height: 52px;
+	padding-bottom: 2px
+}
+
+.notice_order {
+	padding: 12px 20px 0;
+	font-size: 12px;
+	line-height: 16px
+}
+
+.notice_order li {
+	position: relative;
+	padding-left: 7px;
+	color: #999
+}
+
+.notice_order li:before {
+	content: "・";
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.notice_order li.emph {
+	color: #666
+}
+
+.notice_order li .emph {
+	font-weight: 600
+}
+
+.service_delivery .inner_service {
+	position: fixed;
+	z-index: 2;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 39px 12px 8px; --safe-area-inset-bottom: env(safe-area-inset-bottom);
+	padding-bottom: calc(8px + var(- -safe-area-inset-bottom));
+	border-radius: 10px 10px 0 0;
+	background-color: #fff
+}
+.service_delivery .bg {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	background-color: #000;
+	opacity: .4
+}
+
+.service_delivery .br {
+	display: block
+}
+
+.service_delivery .tit_bnr {
+	display: block;
+	font-weight: 700;
+	font-size: 20px;
+	color: #1a1a1a;
+	line-height: 26px;
+	letter-spacing: -.3px;
+	text-align: center
+}
+
+.service_delivery .tit_bnr .emph {
+	color: #5f0080
+}
+
+.service_delivery .list {
+	padding: 0 12px 31px
+}
+
+.service_delivery .list li {
+	position: relative;
+	padding: 25px 27px 0 68px;
+	font-size: 14px;
+	color: #4c4c4c;
+	line-height: 18px
+}
+
+.service_delivery .list li:before {
+	content: "";
+	position: absolute;
+	left: -4px;
+	top: 23px;
+	width: 56px;
+	height: 56px
+}
+
+.service_delivery .list li.fst:before {
+	background:
+		url(https://res.kurly.com/pc/service/order/2101/img_order_delivery1.svg)
+		no-repeat 50% 50%;
+	background-size: 56px 56px
+}
+
+.service_delivery .list li.snd:before {
+	background:
+		url(https://res.kurly.com/pc/service/order/2101/img_order_delivery2.svg)
+		no-repeat 50% 50%;
+	background-size: 56px 56px
+}
+
+.service_delivery .list .tit {
+	display: block;
+	padding-bottom: 4px;
+	color: #1a1a1a;
+	font-size: 16px;
+	line-height: 20px
+}
+
+.service_delivery .btn {
+	display: block;
+	height: 52px;
+	font-size: 16px;
+	color: #333;
+	line-height: 21px
+}
+
+.badge, .service_delivery .btn {
+	background-color: #f4f4f4;
+	font-weight: 600
+}
+
+.badge {
+	display: inline-block;
+	height: 22px;
+	margin-right: 4px;
+	padding: 0 8px 0 7px;
+	border-radius: 11px;
+	font-size: 12px;
+	color: #666;
+	line-height: 24px;
+	vertical-align: top
+}
+
+.badge.default {
+	border: 1px solid #f3ebf4;
+	background-color: #f3ebf5;
+	color: #5f0080
+}
+
+.badge.star {
+	border: 1px solid #5f0080;
+	background-color: #fff;
+	color: #5f0080
+}
+
+.badge.regular {
+	border: 1px solid #999;
+	background-color: #fff;
+	color: #999
+}
+
+.badge.none {
+	padding-left: 0;
+	color: #f03f40
+}
+
+.badge.none+.default {
+	border: 1px solid #f2f2f1;
+	background-color: #f2f2f2;
+	color: #999
+}
+
+.address {
+	font-size: 16px;
+	color: #333;
+	line-height: 21px
+}
+
+.address .tag {
+	display: block;
+	font-size: 0
+}
+
+.address .tag.on {
+	padding-bottom: 13px
+}
+
+.address .addr {
+	display: block;
+	word-break: break-word
+}
+
+.address .delivery {
+	display: block;
+	padding-top: 6px;
+	font-weight: 600;
+	font-size: 12px
+}
+
+.address .delivery.star {
+	color: #5f0080
+}
+
+.address .delivery.regular {
+	color: #666
+}
+
+.address .delivery.none, .address .receive_info .info .delivery.reception.on,
+	.receive_info .info .address .delivery.reception.on {
+	color: #f03f40
+}
+
+.order_address .section_crux {
+	overflow: visible;
+	padding-bottom: 14px
+}
+
+.order_address .section_crux:after {
+	display: block;
+	overflow: hidden;
+	position: static;
+	width: 100%;
+	height: 0;
+	font-size: 0;
+	text-indent: -9999px;
+	clear: both;
+	background: 0 0
+}
+
+.order_address .section_crux .desc {
+	margin-top: -1px;
+	padding-right: 20px;
+	font-weight: 600;
+	font-size: 14px;
+	color: #999;
+	line-height: 22px
+}
+
+.order_address .section_crux .desc:after {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_question_v2.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 100% 50%;
+	vertical-align: top
+}
+
+.order_address .section_full {
+	display: block;
+	padding: 9px 20px 12px
+}
+
+.order_address .section_full .addr {
+	font-weight: 600
+}
+
+.order_address .section_full .addr .num {
+	word-break: break-all
+}
+
+.order_address .section_full .no_receiver, .order_address .section_full .receiving
+	{
+	padding-top: 6px;
+	font-size: 14px;
+	color: #666;
+	line-height: 20px
+}
+
+.order_address .section_full .no_address {
+	display: block;
+	font-size: 16px;
+	color: #ccc;
+	line-height: 20px
+}
+
+.order_address.invalid .no_address, .order_address.invalid .no_receiver
+	{
+	color: #f03f40
+}
+
+.order_address .layer_info {
+	position: absolute;
+	right: 20px;
+	top: 50px;
+	width: 192px;
+	height: 58px;
+	padding: 12px;
+	border-radius: 6px;
+	background-color: #bd76ff;
+	font-size: 14px;
+	color: #fff;
+	line-height: 17px;
+	opacity: 0;
+	white-space: nowrap;
+	transition: opacity .3s;
+	-webkit-transition: opacity .3s;
+	-moz-transition: opacity .3s;
+	-ms-transition: opacity .3s;
+	-o-transition: opacity .3s
+}
+
+.order_address .layer_info.on {
+	opacity: 1
+}
+
+.order_address .layer_info .emph {
+	font-weight: 600
+}
+
+.order_address .layer_info:before {
+	right: 15px;
+	top: -9px;
+	width: 15px;
+	height: 10px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2006/ico_location_picker.svg);
+	background-size: 15px 10px
+}
+
+.order_address .layer_info:after, .order_address .layer_info:before {
+	content: "";
+	position: absolute;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 100% 50%
+}
+
+.order_address .layer_info:after {
+	right: 12px;
+	top: 12px;
+	width: 16px;
+	height: 16px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_tooltip_close.svg);
+	background-size: 16px 16px
+}
+
+.module_address {
+	padding-top: 30px;
+	background-color: #fff
+}
+
+.module_address .btn_new {
+	display: block;
+	height: 44px;
+	margin: 0 auto;
+	padding: 3px 20px 0;
+	border: 1px solid #ddd;
+	border-radius: 25px;
+	background-color: #fff;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: .6px
+}
+
+.module_address .btn_new .ico {
+	display: inline-block;
+	width: 22px;
+	height: 16px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_add_address.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-position: 0 50%;
+	vertical-align: -2px
+}
+
+.module_address .list {
+	padding: 10px 20px 68px; --safe-area-inset-bottom: env(safe-area-inset-bottom);
+	padding-bottom: calc(68px + var(- -safe-area-inset-bottom))
+}
+
+.module_address .list li {
+	border-top: 1px solid #f4f4f4
+}
+
+.module_address .list li label {
+	display: block;
+	position: relative;
+	padding: 21px 20px 4px 36px
+}
+
+.module_address .list li .ico, .module_address .list li .radio {
+	position: absolute;
+	left: 0;
+	top: 20px
+}
+
+.module_address .list li:first-child {
+	border-top: 0
+}
+
+.module_address .list li.disabled .addr, .module_address .list li.disabled .contact,
+	.module_address .list li.disabled .spot {
+	color: #ccc
+}
+
+.module_address .list li:after {
+	content: "";
+	display: block;
+	overflow: hidden;
+	height: 0;
+	clear: both
+}
+
+.module_address .addr {
+	display: block;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -.3px;
+	word-break: break-all
+}
+
+.module_address .contact, .module_address .spot {
+	display: block;
+	padding-top: 9px;
+	font-size: 14px;
+	color: #666;
+	line-height: 18px;
+	word-break: break-all
+}
+
+.module_address .contact {
+	padding-top: 5px
+}
+
+.module_address .group_btn {
+	float: right;
+	width: 102px;
+	padding-bottom: 9px
+}
+
+.module_address .group_btn .btn {
+	float: left;
+	width: 46px;
+	height: 32px;
+	margin-right: 10px;
+	border: 0;
+	background-color: #fff;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 32px;
+	letter-spacing: .5px
+}
+
+.module_address .group_btn .btn:last-child {
+	margin-right: 0
+}
+
+.module_address .group_btn .btn.disable {
+	color: #ddd
+}
+
+.module_address .btn_fixed {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 0 12px 12px;
+	background-color: #fff; --safe-area-inset-bottom: env(safe-area-inset-bottom);
+	padding-bottom: calc(12px + var(- -safe-area-inset-bottom))
+}
+.module_address .btn_fixed .btn {
+	width: 100%;
+	height: 56px;
+	border-radius: 3px;
+	font-weight: 600;
+	font-size: 16px;
+	color: #fff;
+	line-height: 24px;
+	letter-spacing: -.3px
+}
+
+.module_address .btn_fixed .btn.active {
+	border: 1px solid #5f0081;
+	background-color: #5f0080;
+	color: #fff
+}
+
+#formReceiverInfo {
+	padding: 20px 20px 50px
+}
+
+#formReceiverInfo, .receive_info {
+	background-color: #fff
+}
+
+.receive_info .label_block {
+	margin-bottom: 9px;
+	padding: 7px 0
+}
+
+.receive_info .info_subaddress .field {
+	position: relative
+}
+
+.receive_info .info_subaddress .field .text_field {
+	height: 98px;
+	padding: 13px 16px;
+	vertical-align: top;
+	word-break: break-all
+}
+
+.receive_info .info_subaddress .field .count {
+	position: absolute;
+	right: 0;
+	top: -20px;
+	font-size: 12px;
+	color: #999;
+	text-align: right
+}
+
+.receive_info .info_agree {
+	padding-top: 20px;
+	margin-bottom: -20px;
+	font-size: 12px;
+	color: #666;
+	line-height: 17px
+}
+
+.receive_info .info {
+	padding-top: 17px
+}
+
+.receive_info .info.fst {
+	padding-top: 6px
+}
+
+.receive_info .info .tit {
+	padding-bottom: 2px
+}
+
+.receive_info .info .tit label {
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 14px;
+	letter-spacing: .5px
+}
+
+.receive_info .info .notice {
+	padding-top: 6px;
+	font-size: 12px;
+	color: #666;
+	line-height: 17px
+}
+
+.receive_info .info .notice .emph {
+	font-weight: 600
+}
+
+.receive_info .info .notcie_field {
+	margin: 12px 0 10px;
+	padding: 16px;
+	border-radius: 3px;
+	background-color: rgba(95, 0, 128, .04)
+}
+
+.receive_info .info .notcie_field .tit_notice {
+	display: block;
+	padding: 0 0 0 20px;
+	font-weight: 600;
+	font-size: 14px;
+	color: #5f0080;
+	line-height: 18px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_info.svg?v=2);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+	background-position: 0 50%
+}
+
+.receive_info .info .notcie_field .list_notice {
+	padding-top: 7px
+}
+
+.receive_info .info .notcie_field .list_notice li {
+	font-size: 14px;
+	line-height: 20px;
+	color: #5f0080
+}
+
+.receive_info .info .notcie_field .list_notice.multiple li {
+	position: relative;
+	padding-left: 11px
+}
+
+.receive_info .info .notcie_field .list_notice.multiple li:before {
+	content: "・";
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.receive_info .info.info_address .field {
+	padding-bottom: 2px
+}
+
+.receive_info .info.info_address .field .search {
+	display: block;
+	position: relative;
+	padding: 12px 50px 10px 15px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	font-size: 16px;
+	color: #ccc;
+	line-height: 24px
+}
+
+.receive_info .info.info_address .field .search:after {
+	content: "";
+	position: absolute;
+	right: -1px;
+	top: 50%;
+	width: 50px;
+	height: 50px;
+	margin-top: -25px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_search_address.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 50px 50px;
+	background-position: 50% 50%
+}
+
+.receive_info .info .reception.none, .receive_info .info .reception.on {
+	position: relative;
+	padding: 13px 50px 13px 16px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	font-size: 16px;
+	color: #ccc;
+	line-height: 24px
+}
+
+.receive_info .info .reception.none:after, .receive_info .info .reception.on:after
+	{
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 48px;
+	height: 48px;
+	margin-top: -25px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/2010/ico_select_next.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 48px 48px;
+	background-position: 50% 50%
+}
+
+.receive_info .info .reception.on {
+	color: #333
+}
+
+.receive_info .submit {
+	padding-top: 30px
+}
+
+.receive_info.reception_info {
+	padding: 0
+}
+
+.receive_info.reception_info .label_block {
+	margin-bottom: 0;
+	padding: 12px 0 9px
+}
+
+.receive_info.reception_info .info {
+	padding: 19px 20px 4px;
+	background-color: #fff
+}
+
+.receive_info.reception_info .info.info_same {
+	padding: 7px 21px 0 0;
+	text-align: right
+}
+
+.receive_info.reception_info .info.info_same+.info {
+	padding-top: 0
+}
+
+.receive_info.reception_info .info.info_place {
+	padding-bottom: 5px
+}
+
+.receive_info.reception_info .info.info_place .tit, .receive_info.reception_info .info.place_doorstep .tit
+	{
+	padding-bottom: 0
+}
+
+.receive_info.reception_info .info.place_delivery .notice {
+	padding: 8px 0 0;
+	line-height: 15px
+}
+
+.receive_info.reception_info .info.place_guard textarea {
+	height: 72px;
+	margin-bottom: 8px
+}
+
+.receive_info.reception_info .info.place_etc textarea {
+	height: 88px;
+	margin-bottom: 8px
+}
+
+.receive_info.reception_info .info .tit {
+	padding-bottom: 5px
+}
+
+.receive_info.reception_info .info .tit label {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 600
+}
+
+.receive_info.reception_info .info .tit .ico {
+	color: #ee6a7b
+}
+
+.receive_info.reception_info .info textarea {
+	height: 83px;
+	padding: 13px 16px;
+	word-break: break-all
+}
+
+.receive_info.reception_info .info textarea:focus::-webkit-input-placeholder
+	{
+	font-size: 0
+}
+
+.receive_info.reception_info .info .field_outer {
+	border-radius: 4px;
+	border: 1px solid #ddd
+}
+
+.receive_info.reception_info .info .field_outer.focus {
+	border: 1px solid #333
+}
+
+.receive_info.reception_info .info .field_outer textarea {
+	border: 0
+}
+
+.receive_info.reception_info .info.info_msg {
+	padding: 11px 20px 2px
+}
+
+.receive_info.reception_info .info.info_msg .tit {
+	padding-bottom: 0
+}
+
+.receive_info.reception_info .info .half {
+	overflow: hidden
+}
+
+.receive_info.reception_info .info .half .halve {
+	float: left;
+	width: 50%;
+	padding-right: 10px
+}
+
+.receive_info.reception_info .info .half .halve:last-child {
+	float: right;
+	padding-right: 0;
+	padding-left: 9px
+}
+
+.receive_info.reception_info .info .half .halve label {
+	display: block;
+	width: 100%;
+	padding: 12px 0 9px
+}
+
+.receive_info.reception_info .info .half .halve input {
+	height: 0
+}
+
+.receive_info.reception_info .info .half .halve input:after {
+	display: none
+}
+
+.receive_info.reception_info .info [name=pwdStarBox] {
+	margin-bottom: 10px
+}
+
+.receive_info.reception_info .info .field_count {
+	padding: 0 16px 10px 0;
+	text-align: right
+}
+
+.receive_info.reception_info .info .field_count .count {
+	font-size: 12px;
+	color: #999;
+	text-align: right
+}
+
+.receive_info.reception_info .notice {
+	padding: 7px 0;
+	color: #999
+}
+
+.receive_info.reception_info .submit {
+	padding: 12px 20px 40px
+}
+
+.receive_info .btn_back {
+	overflow: hidden;
+	position: absolute;
+	left: 5px;
+	top: 0;
+	width: 44px;
+	height: 44px;
+	font-size: 0;
+	text-indent: -9999px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2006/ico_navi_back.svg?v=1)
+}
+
+.receive_info .btn_back, .receive_info .btn_back.close {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 44px 44px;
+	background-position: 50% 50%
+}
+
+.receive_info .btn_back.close {
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_header_close.png)
+}
+
+.page_order #kMain {
+	position: relative
+}
+
+.pop_address {
+	display: none
+}
+
+.pop_address .close {
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 0 12px 12px; --safe-area-inset-bottom: env(safe-area-inset-bottom);
+	padding-bottom: calc(12px + var(- -safe-area-inset-bottom))
+}
+.inner_address {
+	height: 9999px
+}
+
+.inner_address div {
+	overflow: visible !important
+}
+
+.inner_address iframe {
+	margin-bottom: 48px !important
+}
+
+.pop_addresssub {
+	display: none;
+	background-color: #fff;
+	padding: 20px 20px 50px
+}
+
+.pop_addresssub .app {
+	overflow: hidden
+}
+
+.pop_addresssub .app .tit_header {
+	padding-top: 2px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 42px
+}
+
+.pop_addresssub .app .btn {
+	float: left;
+	overflow: hidden;
+	position: static !important;
+	width: 44px;
+	height: 44px;
+	font-size: 0;
+	text-indent: -9999px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2006/ico_navi_back.svg?v=1);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 44px 44px;
+	background-position: 50% 50%
+}
+
+.pop_addresssub .filed {
+	padding: 0 0 10px
+}
+
+.pop_addresssub .filed .inp {
+	margin-top: 10px
+}
+
+.pop_addresssub .filed .inp:first-child {
+	width: 80px
+}
+
+.pop_addresssub .filed .inp[name=popZonecode] {
+	margin-top: 0
+}
+
+.pop_addresssub .no_delivery {
+	overflow: hidden;
+	padding: 20px 0 65px;
+	background-color: #fff
+}
+
+.pop_addresssub .no_delivery .inner_no {
+	padding: 14px 10px 16px;
+	background-color: #f4f4f4;
+	text-align: center
+}
+
+.pop_addresssub .no_delivery .inner_no .tit .ico {
+	display: inline-block;
+	height: 18px;
+	padding-left: 19px;
+	font-weight: 600;
+	font-size: 12px;
+	color: #f03f40;
+	line-height: 18px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/1908/ico_noti_delivery_popup.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+	background-position: 0 50%
+}
+
+.pop_addresssub .no_delivery .inner_no .tit .desc {
+	display: block;
+	font-weight: 400;
+	font-size: 12px;
+	color: #666
+}
+
+.pop_addresssub .no_delivery .inner_no .btn {
+	height: 36px;
+	padding-top: 16px;
+	background: 0 0;
+	font-size: 12px;
+	color: #999;
+	line-height: 20px
+}
+
+.pop_addresssub .no_delivery .inner_no .btn .ico {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image:
+		url(https://res.kurly.com/mobile/ico/1908/ico_arrow_999_40x40.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 50% 50%;
+	vertical-align: -5px
+}
+
+.pop_addresssub .no_delivery .inner_no .btn.on .ico {
+	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg)
+}
+
+.pop_addresssub .no_delivery .inner_no .list {
+	display: none;
+	padding-top: 30px
+}
+
+.pop_addresssub .no_delivery .inner_no .list.on {
+	display: block
+}
+
+.pop_addresssub .no_delivery .inner_no .list li {
+	font-size: 12px;
+	color: #666;
+	line-height: 17px
+}
+
+.font_medium, .module_address.only_pc .addr, .module_address.only_pc .btn_new,
+	.receive_info.only_pc .notice .emph, .receive_info.only_pc.reception_info .info .tit_notice,
+	.receive_info.only_pc.reception_info .info .tit label, .receive_info.only_pc.reception_info .submit .btn
+	{
+	font-family: noto sans medium;
+	font-weight: 400
+}
+
+.font_normal, .module_address.only_pc .btn, .module_address.only_pc .contact,
+	.module_address.only_pc .spot, .only_pc input, .only_pc label,
+	.receive_info.only_pc .info, .receive_info.only_pc .info .field .text_field,
+	.receive_info.only_pc .info_agree, .receive_info.only_pc .label_block,
+	.receive_info.only_pc.reception_info .info.info_same .label_block {
+	font-family: noto sans;
+	font-weight: 400
+}
+
+.font_default, .module_address.only_pc .badge {
+	font-family: applesdgothicneo, apple sd gothic neo, sans-serif
+}
+
+#header.only_pc {
+	position: static;
+	height: 82px;
+	margin-top: -44px;
+	padding: 30px 0 0 30px;
+	border-bottom: 0;
+	text-align: left
+}
+
+#header.only_pc .tit_header {
+	float: left;
+	font: normal 24px/32px "Noto Sans Medium"
+}
+
+#header.only_pc #headerLinkGoBack {
+	display: none
+}
+
+.only_pc {
+	overflow: hidden;
+	min-width: 400px
+}
+
+.only_pc .layer_kurly .inner_layer {
+	width: auto
+}
+
+.only_pc label {
+	letter-spacing: -.3px
+}
+
+.only_pc input {
+	height: 44px;
+	padding: 0 14px 1px;
+	font-size: 14px;
+	letter-spacing: -.5px;
+	ime-mode: active
+}
+
+.only_pc input[type=checkbox]+.ico, .only_pc input[type=radio]+.ico {
+	vertical-align: -7px
+}
+
+.only_pc textarea {
+	ime-mode: active;
+	font-size: 14px;
+	word-break: break-all
+}
+
+.only_pc .btn {
+	height: 44px;
+	line-height: 42px
+}
+
+.only_pc .double {
+	display: block;
+	overflow: hidden
+}
+
+.only_pc .double .btn {
+	float: right;
+	width: 50%;
+	margin-right: -4px;
+	font-size: 14px
+}
+
+.only_pc .double .btn:first-child {
+	float: left;
+	margin-right: 0;
+	margin-left: -4px
+}
+
+.only_pc .double.layer_foot .btn {
+	width: 49%
+}
+
+.only_pc .inner_layer {
+	width: 400px
+}
+
+.module_address.only_pc {
+	padding-top: 0
+}
+
+.module_address.only_pc .inner_layer {
+	max-width: 440px;
+	margin: 0 auto
+}
+
+.module_address.only_pc .btn_new {
+	position: absolute;
+	z-index: 1;
+	right: 10px;
+	top: 21px;
+	border: 1px solid #fff
+}
+
+.module_address.only_pc .list {
+	min-height: 600px;
+	padding: 10px 30px 75px
+}
+
+.module_address.only_pc .btn_fixed {
+	padding: 0 30px 20px
+}
+
+.module_address.only_pc .addr {
+	padding-bottom: 6px
+}
+
+.module_address.only_pc .addr .num {
+	font-size: 16px
+}
+
+.module_address.only_pc .contact, .module_address.only_pc .spot {
+	padding-top: 4px
+}
+
+.module_address.only_pc .contact {
+	padding-top: 3px
+}
+
+.module_address.only_pc .btn {
+	line-height: 46px
+}
+
+.module_address.only_pc .badge {
+	line-height: 19px;
+	letter-spacing: 0
+}
+
+.module_address.only_pc .address .tag {
+	padding-bottom: 8px
+}
+
+.module_address.only_pc .group_btn {
+	padding-bottom: 11px
+}
+
+.receive_info.only_pc {
+	padding: 0 0 40px
+}
+
+.receive_info.only_pc .header {
+	position: absolute;
+	z-index: 1;
+	left: auto;
+	right: 10px;
+	top: 21px;
+	width: auto;
+	height: 44px;
+	padding: 14px 20px 0 30px;
+	border: 0
+}
+
+.receive_info.only_pc .header .tit_header {
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: .6px
+}
+
+.receive_info.only_pc .header .btn_back {
+	left: 0;
+	top: 2px
+}
+
+.receive_info.only_pc .pop_address .pop_addresssub .filed .inp[name=popZonecode]
+	{
+	margin-top: 20px
+}
+
+.receive_info.only_pc .pop_address .pop_addresssub .btn_back {
+	height: 44px
+}
+
+.receive_info.only_pc #formReceiverInfo {
+	padding: 20px 30px 0
+}
+
+.receive_info.only_pc.reception_info {
+	overflow: visible;
+	padding: 0
+}
+
+.receive_info.only_pc.reception_info .info {
+	padding: 16px 30px 0
+}
+
+.receive_info.only_pc.reception_info .info.info_same {
+	position: relative;
+	padding: 0 0 3px
+}
+
+.receive_info.only_pc.reception_info .info.info_same .label_block {
+	position: absolute;
+	right: 30px;
+	top: -58px
+}
+
+.receive_info.only_pc.reception_info .info.fst {
+	padding: 22px 30px 0;
+	border-top: 0
+}
+
+.receive_info.only_pc.reception_info .info.info_msg .tit {
+	padding-bottom: 10px
+}
+
+.receive_info.only_pc.reception_info .info.info_place {
+	padding: 26px 30px 11px
+}
+
+.receive_info.only_pc.reception_info .info .menas {
+	padding: 6px 0 0
+}
+
+.receive_info.only_pc.reception_info .info .menas .notice {
+	padding-bottom: 9px
+}
+
+.receive_info.only_pc.reception_info .info .subRadio {
+	padding-top: 6px
+}
+
+.receive_info.only_pc.reception_info .info .tit {
+	padding-bottom: 10px
+}
+
+.receive_info.only_pc.reception_info .info .tit label {
+	font-size: 14px
+}
+
+.receive_info.only_pc.reception_info .info .tit_notice {
+	font-size: 12px;
+	letter-spacing: 0
+}
+
+.receive_info.only_pc.reception_info .info .list_notice {
+	padding-top: 0
+}
+
+.receive_info.only_pc.reception_info .info .list_notice li {
+	position: relative;
+	padding: 4px 0 4px 20px;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: -.17px
+}
+
+.receive_info.only_pc.reception_info .info .list_notice li:before {
+	content: "\b7";
+	position: absolute;
+	left: 11px;
+	top: 4px
+}
+
+.receive_info.only_pc.reception_info .info .notcie_field {
+	margin: 10px 0;
+	padding: 15px 16px 14px
+}
+
+.receive_info.only_pc.reception_info .info .info .halve label {
+	padding: 10px 0 9px
+}
+
+.receive_info.only_pc.reception_info label {
+	padding: 10px 0 9px;
+	font-size: 14px
+}
+
+.receive_info.only_pc.reception_info .submit {
+	margin: 0 auto;
+	padding: 30px 34px 40px
+}
+
+.receive_info.only_pc.reception_info textarea {
+	height: 110px
+}
+
+.receive_info.only_pc * {
+	letter-spacing: -.5px;
+	width: 100%;
+}
+
+.receive_info.only_pc .label_block {
+	font-size: 14px;
+	vertical-align: -7px
+}
+
+.receive_info.only_pc .label_block.same {
+	margin: 22px 0 18px
+}
+
+.receive_info.only_pc .info {
+	padding-top: 15px
+}
+
+.receive_info.only_pc .info.fst {
+	padding-top: 0
+}
+
+.receive_info.only_pc .info.lst {
+	padding-top: 22px
+}
+
+.receive_info.only_pc .info.lst .label_block {
+	margin-bottom: 4px
+}
+
+.receive_info.only_pc .info .tit {
+	padding-bottom: 5px;
+	letter-spacing: -.3px
+}
+
+.receive_info.only_pc .info .field .search {
+	padding: 11px 50px 10px 15px;
+	font-size: 14px
+}
+
+.receive_info.only_pc .info .field .tag {
+	padding-bottom: 3px
+}
+
+.receive_info.only_pc .info .field .addr, .receive_info.only_pc .info .field .addr .num
+	{
+	font-size: 14px
+}
+
+.receive_info.only_pc .info .field .text_field {
+	font-size: 14px;
+	word-break: break-all
+}
+
+.receive_info.only_pc .info .reception {
+	padding: 8px 50px 10px 13px;
+	font-size: 14px
+}
+
+.receive_info.only_pc .notice {
+	padding-top: 7px;
+	letter-spacing: -.3px
+}
+
+.receive_info.only_pc .notice .emph {
+	font-weight: 400
+}
+
+.receive_info.only_pc .info_agree {
+	letter-spacing: -.3px
+}
+
+.noBody .bg_loading {
+	display: none !important
+}
+
+@font-face {
+	font-family: noto sans;
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://res.kurly.com/fonts/NotoSansKR-Regular.woff2)
+		format("woff2"),
+		url(https://res.kurly.com/fonts/NotoSansKR-Regular.woff)
+		format("woff"),
+		url(https://res.kurly.com/fonts/NotoSansKR-Regular.otf)
+		format("truetype")
+}
+
+@font-face {
+	font-family: noto sans light;
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://res.kurly.com/fonts/NotoSansKR-Light.woff2)
+		format("woff2"),
+		url(https://res.kurly.com/fonts/NotoSansKR-Light.woff) format("woff"),
+		url(https://res.kurly.com/fonts/NotoSansKR-Light.otf)
+		format("truetype")
+}
+
+@font-face {
+	font-family: noto sans medium;
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://res.kurly.com/fonts/NotoSansKR-Medium.woff2)
+		format("woff2"),
+		url(https://res.kurly.com/fonts/NotoSansKR-Medium.woff) format("woff"),
+		url(https://res.kurly.com/fonts/NotoSansKR-Medium.otf)
+		format("truetype")
+}
+
+.hide {
+	display: none
+}
+
+body {
+	background-color: #fff;
+	-webkit-overflow-scrolling: touch
+}
+
+img {
+	vertical-align: top
+}
+
+.noBody {
+	-webkit-overflow-scrolling: touch
+}
+
+textarea {
+	vertical-align: top
+}
+
+input[type=radio] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0
+}
+
+input[type=radio]+.ico {
+	display: inline-block;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	margin-right: 12px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	border-radius: 100%;
+	vertical-align: -7px
+}
+
+input[type=radio]:focus {
+	outline: 0
+}
+
+input[type=radio]:checked+.ico {
+	border: 1px solid #5f0081;
+	background-color: #5f0080
+}
+
+input[type=radio]:checked+.ico:after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 10px;
+	height: 10px;
+	margin: -5px 0 0 -5px;
+	border-radius: 100%;
+	background-color: #fff
+}
+
+input[type=radio].on+.ico {
+	border: 1px solid #5f0081;
+	background-color: #5f0080
+}
+
+input[type=radio].on+.ico:after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 10px;
+	height: 10px;
+	margin: -5px 0 0 -5px;
+	border-radius: 100%;
+	background-color: #fff
+}
+
+input[type=radio]:disabled+.ico {
+	border: 1px solid #ddd;
+	background-color: #fafafa
+}
+
+input[type=checkbox] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0
+}
+
+input[type=checkbox]+.ico {
+	display: inline-block;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	margin-right: 12px;
+	border: 0;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	background-position: 50% 50%;
+	vertical-align: -7px
+}
+
+input[type=checkbox]:focus {
+	outline: 0
+}
+
+input[type=checkbox]:checked+.ico {
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2006/ico_checkbox_checked.svg)
+}
+
+input[type=checkbox]:checked+.ico, input[type=checkbox]:disabled+.ico {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	background-position: 50% 50%
+}
+
+input[type=checkbox]:disabled+.ico {
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_checkbox_disabled.png)
+}
+
+label {
+	font-size: 16px;
+	line-height: 24px
+}
+
+label.label_block {
+	display: block
+}
+
+.select_box {
+	position: relative;
+	width: 100%
+}
+
+.select_box .tit_selected {
+	display: block;
+	overflow: hidden;
+	height: 48px;
+	padding: 11px 54px 0 15px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #fff;
+	font-size: 16px;
+	line-height: 24px
+}
+
+@media screen and (max-width:320px) {
+	.select_box .tit_selected {
+		white-space: nowrap
+	}
+}
+
+.select_box .tit_selected.off {
+	border: 1px solid #ddd;
+	color: #ccc;
+	background-color: #fafafa
+}
+
+.select_box .tit_selected.off:after {
+	background-image:
+		url(https://res.kurly.com/kurly/ico/2021/selectbox_20_20_999.svg);
+	transform: rotate(0);
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	-ms-transform: rotate(0);
+	-o-transform: rotate(0)
+}
+
+.select_box .tit_selected.off:after, .select_box .tit_selected:after {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 50% 50%
+}
+
+.select_box .tit_selected:after {
+	content: "";
+	position: absolute;
+	right: 1px;
+	top: 1px;
+	width: 48px;
+	height: 48px;
+	background-image:
+		url(https://res.kurly.com/kurly/ico/2021/selectbox_20_20_333.svg);
+	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg)
+}
+
+.select_box select {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+	opacity: 0
+}
+
+.screen_out {
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -9999px
+}
+
+.noScroll {
+	overflow: hidden;
+	position: fixed;
+	left: 0;
+	width: 100%;
+	height: 100%
+}
+
+.btn {
+	width: 100%;
+	height: 48px;
+	border: 0;
+	border-radius: 6px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 46px;
+	text-align: center;
+	outline: none
+}
+
+.btn.default, .btn.normal {
+	border: 1px solid #ddd;
+	background-color: #fff;
+	color: #333
+}
+
+.btn.active {
+	border: 1px solid #5f0081;
+	background-color: #5f0080;
+	color: #fff
+}
+
+.btn.disabled {
+	border-color: #ddd;
+	color: #ccc
+}
+
+.double {
+	display: flex
+}
+
+.double .btn {
+	margin-left: 4px
+}
+
+.double .btn:first-child {
+	margin-left: 0;
+	margin-right: 4px
+}
+
+.layer_kurly {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100%
+}
+
+.layer_kurly img {
+	vertical-align: top
+}
+
+.layer_kurly .layer_off {
+	position: relative
+}
+
+.layer_kurly .layer_off .close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 44px;
+	height: 44px;
+	background-image:
+		url(https://res.kurly.com/mobile/service/common/2003/ico_popup_close.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	background-position: 50% 50%
+}
+
+.layer_kurly:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: .6
+}
+
+.layer_kurly.scroll_head.full .inner_layer {
+	padding-top: 0
+}
+
+.layer_kurly.scroll_head .inner_layer {
+	overflow: hidden;
+	position: absolute;
+	top: 50%;
+	max-height: 474px;
+	margin-top: -237px;
+	padding: 15px 0 56px
+}
+
+.layer_kurly.scroll_head .in_layer {
+	overflow-y: scroll;
+	height: 100%
+}
+
+.layer_kurly.scroll_head .in_layer img {
+	border-radius: 4px
+}
+
+.layer_kurly.no_scroll .inner_layer {
+	top: 50%;
+	bottom: auto;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%)
+}
+
+.layer_kurly.no_scroll .inner_layer .layer_head {
+	padding: 40px 15px 20px
+}
+
+.layer_kurly.no_scroll .tit_layer {
+	padding-top: 0;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 26px;
+	letter-spacing: -.4px;
+	text-align: center
+}
+
+.layer_kurly.no_scroll .layer_body:after {
+	display: none
+}
+
+.layer_kurly.no_scroll .layer_foot {
+	position: static;
+	height: auto;
+	padding: 0 20px 20px
+}
+
+.layer_kurly.no_scroll .layer_foot .btn {
+	margin-top: 10px
+}
+
+.layer_kurly.scroll_body .inner_layer {
+	padding: 64px 0 80px
+}
+
+.layer_kurly.scroll_body .inner_layer .in_layer {
+	overflow: hidden;
+	height: 100%
+}
+
+.layer_kurly.scroll_body .inner_layer .layer_head {
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.layer_kurly.scroll_body .inner_layer .layer_body {
+	overflow: hidden;
+	height: 100%
+}
+
+.layer_kurly .inner_layer {
+	overflow: hidden;
+	position: fixed;
+	left: 20px;
+	right: 20px;
+	top: 20px;
+	bottom: 20px;
+	border-radius: 4px;
+	background-color: #fff
+}
+
+.layer_kurly .layer_head {
+	width: 100%;
+	padding: 21px 20px 19px;
+	background-color: #fff
+}
+
+.layer_kurly .layer_body {
+	background-color: #fff
+}
+
+.layer_kurly .tit_layer {
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 24px
+}
+
+.layer_kurly .layer_foot {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 0 0 4px 4px
+}
+
+.layer_kurly .layer_foot.btn_simple {
+	padding: 0;
+	border-top: 1px solid #f7f7f7
+}
+
+.layer_kurly .layer_foot.btn_simple .btn {
+	height: 56px;
+	border: 0;
+	background-color: #fff;
+	font-weight: 600;
+	font-size: 16px;
+	color: #5f0080
+}
+
+.appView #kMain {
+	margin: 0
+}

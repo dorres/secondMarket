@@ -1,8 +1,13 @@
 package first.market.kurlyty.vo;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CategorySubVO {
 	private String category_sub_serial;
 	private String category_sub_name;

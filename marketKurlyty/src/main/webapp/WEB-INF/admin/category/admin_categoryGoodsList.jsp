@@ -20,6 +20,16 @@
 .btn1.btn-dark:hover{background-color:#5f0080;}
 .btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
  </style>
+ <script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -69,12 +79,16 @@
 							<tbody>
 									<c:forEach var="goods" items="${category3 }">
 										<tr>
-											<td>${goods.rownum }</td>
-											<td>(${goods.category_main_serial }/${goods.category_main_name })</td>
-											<td>(${goods.category_sub_serial }/${ goods.category_sub_name})</td>
-											<td>${goods.category_goods_name }</td>
-											<td>${goods.category_goods_name_subtext }</td>
-											<td><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }"> </td>
+											<td style="vertical-align: middle;">${goods.rownum }</td>
+											<td style="vertical-align: middle;">(${goods.category_main_serial }/${goods.category_main_name })</td>
+											<td style="vertical-align: middle;">(${goods.category_sub_serial }/${ goods.category_sub_name})</td>
+											<td style="vertical-align: middle;">${goods.category_goods_name }</td>
+											<td style="vertical-align: middle;">${goods.category_goods_name_subtext }</td>
+											<td style="vertical-align: middle;"><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }" width="100px" height="100px"> </td>
+											<td style="vertical-align: middle;">
+												<input type="button" onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" value="수정">
+												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryGoodsDelete.mdo?category_goods_serial=${goods.category_goods_serial }')"/>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
