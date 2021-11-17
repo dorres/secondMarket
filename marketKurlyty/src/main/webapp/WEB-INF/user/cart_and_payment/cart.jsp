@@ -93,7 +93,7 @@
 																	</div>
 																	<div class="goods">
 																		<a href="#" class="thumb "
-																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																			style="background-image:url(${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
 																				<span class="selling">${lastPrice}<span class="won">원</span></span>
@@ -148,7 +148,7 @@
 																	</div>
 																	<div class="goods">
 																		<a href="#" class="thumb "
-																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																			style="background-image:url(${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
 																				<span class="selling">${lastPrice }<span class="won">원</span></span>
@@ -203,7 +203,7 @@
 																	</div>
 																	<div class="goods">
 																		<a href="#" class="thumb "
-																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																			style="background-image:url(${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
 																				<span class="selling">${lastPrice }<span class="won">원</span></span>
@@ -367,10 +367,10 @@ $(document).ready(function(){
 				datatype:"text",
 				success:function(res){
 					part.siblings("#cartCount").val(parseInt(res));
-					if(rootLi.find("input[name='chkItem']").is(":checked")){
+					
 						rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
 						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
-						
+					if(rootLi.find("input[name='chkItem']").is(":checked")){
 						cartResult(totalPrice-oldPrice, dcPrice-price )
 					}
 				},
@@ -401,9 +401,10 @@ $(document).ready(function(){
 				datatype : "text",
 				success : function(res) {
 					part.siblings("#cartCount").val(parseInt(res));
-					if(rootLi.find("input[name='chkItem']").is(":checked")){
+					
 						rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
 						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
+					if(rootLi.find("input[name='chkItem']").is(":checked")){
 						cartResult(totalPrice+oldPrice, dcPrice+price)
 					}
 				},
@@ -461,6 +462,11 @@ $(document).ready(function(){
 						}
 					}
 					$("label.check").find("span.checkCount").text("전체선택 ("+checkList.length +"/"+itemCount.length+")");
+					if(checkList.length==itemCount.length){
+						if(itemCount.length>0){
+							$("label.check").find("input[name='checkAll']").prop("checked",true);
+						}
+					}
 					if(list.children().length==0){
 						list.closest("div.box").remove();
 					}

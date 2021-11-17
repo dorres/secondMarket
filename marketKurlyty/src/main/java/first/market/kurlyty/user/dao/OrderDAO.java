@@ -17,4 +17,7 @@ public class OrderDAO {
 	public void insertOrderDetails(OrderVO order) {
 		sqlSession.insert("orderDAO.insertOrderDetail", order);
 	}
+	public void updateUserPurchase(OrderVO order) {
+		sqlSession.update("orderDAO.updateUserPurchase", order);
+	}
 }

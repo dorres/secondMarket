@@ -18,4 +18,8 @@ public class OrderServiceImpl implements OrderService {
 	public void insertOrderDetails(OrderVO order) {
 		orderDao.insertOrderDetails(order);
 	}
+	@Override
+	public void updateUserPurchase(OrderVO order) {
+		orderDao.updateUserPurchase(order);
+	}
 }
