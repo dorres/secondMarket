@@ -15,45 +15,55 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<context:component-scan base-package="first.market.kurlyty.user"></context:component-scan>
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<context:component-scan
+		base-package="first.market.kurlyty.user"></context:component-scan>
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/user/"/>
-		<property name="suffix" value=".jsp"/>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/user/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
-	
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*.do"/>
-			<mvc:exclude-mapping path="/index.do"/>
-			<mvc:exclude-mapping path="/join.do"/>
-			<mvc:exclude-mapping path="/login.do"/>
-			<mvc:exclude-mapping path="/kakaoLogin.do"/>
-			<mvc:exclude-mapping path="/emailCheck.do"/>
-			<mvc:exclude-mapping path="/idCheck.do"/>
-			<mvc:exclude-mapping path="/categoryData.do"/>
-			<mvc:exclude-mapping path="/smsCheck.do"/>
-			<mvc:exclude-mapping path="/loginProc.do"/>
-			<mvc:exclude-mapping path="/categoryGoods.do"/>
-			<mvc:exclude-mapping path="/joinProc.do"/>
-			<mvc:exclude-mapping path="/cart*.do"/>
-			<bean id="LoginInterceptor" class="first.market.kurlyty.interceptor.UserLoginInterceptor"/> 
+			<mvc:mapping path="/*.do" />
+			<mvc:exclude-mapping path="/index.do" />
+			<mvc:exclude-mapping path="/join.do" />
+			<mvc:exclude-mapping path="/login.do" />
+			<mvc:exclude-mapping path="/kakaoLogin.do" />
+			<mvc:exclude-mapping path="/emailCheck.do" />
+			<mvc:exclude-mapping path="/idCheck.do" />
+			<mvc:exclude-mapping path="/categoryData.do" />
+			<mvc:exclude-mapping path="/smsCheck.do" />
+			<mvc:exclude-mapping path="/loginProc.do" />
+			<mvc:exclude-mapping path="/categoryGoods.do" />
+			<mvc:exclude-mapping path="/joinProc.do" />
+			<mvc:exclude-mapping path="/cart*.do" />
+			<bean id="LoginInterceptor"
+				class="first.market.kurlyty.interceptor.UserLoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
+
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
-			<tx:method name="get*" read-only="true"/>
-			<tx:method name="*"/>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
-	
-	<aop:config>
-		<aop:pointcut expression="execution(* first.market.kurlyty.user.controller..*(..))" id="txPointcut"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
-	</aop:config>
 
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* first.market.kurlyty.user.controller..*(..))"
+			id="txPointcut" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="txPointcut" />
+	</aop:config>
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 </beans>

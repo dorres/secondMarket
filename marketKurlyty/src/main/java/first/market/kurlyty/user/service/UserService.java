@@ -13,4 +13,5 @@ public interface UserService {
 	UserVO loginGetUser(UserVO user);
 	//void logout(HttpSession session);
 	void logout(SessionStatus sessionStatus);
+	UserVO getUser(UserVO user);
 }

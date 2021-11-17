@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import first.market.kurlyty.user.dao.CartDAO;
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.user_address_listVO;
 import first.market.kurlyty.vo.ProductVO;
 
 @Service
@@ -47,5 +48,21 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void deleteCartItem(CartVO cartVO) {
 		cartDao.deleteCartItem(cartVO);
+	}
+	@Override
+	public user_address_listVO getDefaultAddress(String userId) {
+		return cartDao.getDefaultAddress(userId);
+	}
+	@Override
+	public void allCheckItem(CartVO cartVO) {
+		cartDao.allCheckItem(cartVO);
+	}
+	@Override
+	public void updateCheckStatus(CartVO cartVO) {
+		cartDao.updateCheckStatus(cartVO);
+	}
+	@Override
+	public List<CartVO> getPurchaseGoods(String userId) {
+		return cartDao.getPurchaseGoods(userId);
 	}
 }

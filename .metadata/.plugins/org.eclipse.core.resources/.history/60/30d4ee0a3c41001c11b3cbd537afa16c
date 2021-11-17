@@ -1,0 +1,5 @@
+package first.market.kurlyty.user.dao;
+
+public class user_address_listDAO {
+
+}

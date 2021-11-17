@@ -176,7 +176,7 @@ function inputCart(){
 																type="button" class="btn_del">
 																<span class="txt">삭제하기</span>
 															</button></span> <span class="name">
-															<!--- 장흥 표고 버섯 가루 70g ---->
+															
 													</span> <!---->
 														<div class="option">
 															<input type="hidden" class="hprice"/>
@@ -234,7 +234,7 @@ function inputCart(){
 										<input type="hidden" class="goodsSerial" value="${item.category_goods_serial}"/>
 										<div class="foodImg">
 											<a href="#"><img
-												src="${pageContext.request.contextPath }/resources/images/Item/${item.category_goods_image_thumb}">
+												src="${item.category_goods_image_thumb}">
 											</a>
 											<button type="button" class="cartBt"
 												onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>

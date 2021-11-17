@@ -1,7 +1,5 @@
 package first.market.kurlyty.user.service;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
@@ -61,6 +59,11 @@ public class UserServiceImpl implements UserService {
 	public void logout(SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
 		
+	}
+
+	@Override
+	public UserVO getUser(UserVO user) {
+		return userDao.getUser(user);
 	}
 
 //	@Override
