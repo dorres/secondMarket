@@ -22,9 +22,11 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 import first.market.kurlyty.user.service.CartService;
+import first.market.kurlyty.user.service.MembershipService;
 import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.MembershipVO;
 import first.market.kurlyty.user.vo.UserVO;
 import first.market.kurlyty.vo.OrderVO;
 import first.market.kurlyty.vo.ProductVO;
@@ -37,6 +39,8 @@ public class PaymentController {
 	private UserService userService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private MembershipService membershipService;
 	
 	private IamportClient api;
 	
@@ -69,6 +73,11 @@ public class PaymentController {
 		userVO.setUser_id(userId);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(userId);
 		List<ProductVO> purchaseList = new ArrayList<ProductVO>();
+		
+		UserVO userInfo = userService.getUser(userVO);
+		String membership = membershipService.getMembershipOfUser(userId);
+		System.out.println(membership);
+		MembershipVO membershipInfo = membershipService.getMembershipData(membership);
 		for(CartVO goods:purchaseGoods) {
 			ProductVO product = cartService.getCartItem(goods);
 			product.setGoods_cart_count(goods.getGoods_cart_count());
@@ -77,7 +86,8 @@ public class PaymentController {
 		model.addAttribute("orderPrice", dcPrice);
 		model.addAttribute("goodsPrice",totalPrice);
 		model.addAttribute("purchaseList", purchaseList);
-		model.addAttribute("userInfo",userService.getUser(userVO));
+		model.addAttribute("userInfo",userInfo);
+		model.addAttribute("membershipInfo",membershipInfo);
 		return "cart_and_payment/payment";
 	}
 	
@@ -100,10 +110,10 @@ public class PaymentController {
 		return "index.do";
 	}
 	
-	@RequestMapping("/test.do")
-	@ResponseBody
-	public List<CartVO> test(HttpSession session){
-		String userId = (String)session.getAttribute("userId");
-		return cartService.getPurchaseGoods(userId);
+	@RequestMapping("/shippingInfo.do")
+	public String shippingInfo(String userName, String phone, Model model) {
+		model.addAttribute("userName",userName);
+		model.addAttribute("phone",phone);
+		return "cart_and_payment/shippingInfo";
 	}
 }

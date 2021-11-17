@@ -10,13 +10,17 @@
 		#{user_address1},#{user_address2},#{user_zipcode},
 		#{order_goods_count},#{order_goods_price},
 		#{order_coupon_serial},#{order_delivery_status},
-		#{order_merchant_serial})
+		#{order_merchant_serial},
+		#{master_goods_serial})
 	</insert>
 	<insert id="insertOrderDetail">
 		INSERT INTO MK_ORDER_DETAILS VALUES(
 		default,#{order_merchant_serial},#{category_goods_serial},
 		#{goods_count},#{goods_price},#{user_id}
 		)
-		
 	</insert>
+	<update id="updateUserPurchase">
+		UPDATE MK_USER_DETAILS SET user_total_purchase=#{order_goods_price},
+		user_point=#{user_point} WHERE user_id=#{user_id}
+	</update>
 </mapper>

@@ -7,5 +7,5 @@ public interface OrderService {
 	void insertOrder(OrderVO order);
 
 	void insertOrderDetails(OrderVO order);
-
+	void updateUserPurchase(OrderVO order);
 }

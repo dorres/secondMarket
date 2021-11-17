@@ -31,6 +31,7 @@
 
  	</typeAliases>
  	<mappers>
+ 		<mapper resource="config/mappings/membership-mapping.xml"/>
  		<mapper resource="config/mappings/category-mapping.xml"/>
  		<mapper resource="config/mappings/user-mapping.xml"/>
  		<mapper resource="config/mappings/admin-mapping.xml"/>
