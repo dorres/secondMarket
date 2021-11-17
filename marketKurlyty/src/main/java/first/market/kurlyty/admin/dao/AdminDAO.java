@@ -289,5 +289,8 @@ public class AdminDAO {
 	public List<AdminCategorySubVO> getCategory2Name(){
 		return sqlSession.selectList("AdminDAO.getCategory2Name");
 	}
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("AdminDAO.insertCategory3Detail",category3);
+	}
 	
 }

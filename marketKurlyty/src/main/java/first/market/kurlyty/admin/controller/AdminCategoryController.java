@@ -225,7 +225,7 @@ public class AdminCategoryController {
 		int success =0;
 		
 		df = new DecimalFormat("000");
-		category2.setCategory_sub_serial("M" + df.format(adminService.getCategory2Column()+1));	
+		category2.setCategory_sub_serial("S" + df.format(adminService.getCategory2Column()+1));	
 		success = adminService.insertCategory2(category2);
 		
 		if(success !=0) {
@@ -288,7 +288,7 @@ public class AdminCategoryController {
 	//상품 카테고리 등록(Insert)
 	@RequestMapping("admin_categoryGoodsInsert.mdo")
 	public String categoryGoodsInsert(@RequestParam("goodsImage") MultipartFile[] files, AdminCategoryGoodsVO category3) {
-		int success;
+		int result1, result2;
 		String key1;
 		String key2;
 		String key3;
@@ -306,10 +306,13 @@ public class AdminCategoryController {
 		category3.setCategory_goods_image_detail_header(path + key2);
 		category3.setCategory_goods_image_detail_main(path + key3);
 		
-		success = adminService.insertCategory3(category3);
+		//3차 카테고리 상품 등록
+		result1 = adminService.insertCategory3(category3);
+		result2 = adminService.insertCategory3Detail(category3);
+			
 		//↑↑↑↑↑↑여기까지가 db작업	
 		
-		if(success != 0) {//db가 성공적으로 들어가면 s3작업 실행
+		if(result1 != 0 && result2 != 0) {//db가 성공적으로 들어가면 s3작업 실행
 			try {
 				//썸네일 업로드
 				InputStream is = files[0].getInputStream();
@@ -366,7 +369,7 @@ public class AdminCategoryController {
 		//	
 	}
 	
-	//상품 삭제(update)
+	//상품 수정(update)
 	@RequestMapping("admin_categoryGoodsUpdate.mdo") //메인 카테고리 세부사항에서 수정하는거 봐야함
 	public String categoryGoodsUpdate(@RequestParam("thumbImage") MultipartFile file1, @RequestParam("headerImage") MultipartFile file2,
 			@RequestParam("mainImage") MultipartFile file3, AdminCategoryGoodsVO category3) {

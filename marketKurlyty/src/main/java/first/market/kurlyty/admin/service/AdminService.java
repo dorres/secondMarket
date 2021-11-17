@@ -167,6 +167,8 @@ public interface AdminService {
 	
 	int insertCategory3(AdminCategoryGoodsVO category3);
 	
+	int insertCategory3Detail(AdminCategoryGoodsVO category3);
+	
 	AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3);
 	
 	int deleteCategory3(AdminCategoryGoodsVO category3);

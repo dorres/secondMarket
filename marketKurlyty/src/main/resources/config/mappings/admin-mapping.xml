@@ -294,7 +294,20 @@
 	 	 	#{category_goods_exp_date},#{category_goods_info},#{category_goods_ref},#{category_goods_allergy},
 	 	 	#{category_goods_detail_name1},#{category_goods_detail_name2},#{category_goods_detail_name_subtext},
 	 	 	#{category_goods_image_thumb},#{category_goods_image_detail_header},#{category_goods_image_detail_main});
- 	</insert>	
+ 	</insert>
+ 	 <insert id="insertCategory3Detail" parameterType="category3">	 	 	
+	 INSERT INTO MK_GOODS_DETAIL(
+	 	GOODS_DETAIL_SERIAL, 
+	 	CATEGORY_MAIN_SERIAL, 
+	 	CATEGORY_SUB_SERIAL, 
+	 	CATEGORY_GOODS_SERIAL
+	 	) VALUES (
+	 		DEFAULT,
+	 		#{category_main_serial},
+	 		#{category_sub_serial},
+	 		(SELECT MAX(CATEGORY_GOODS_SERIAL) FROM MK_CATEGORY_GOODS)
+	 	)
+ 	</insert>		
 
  	<select id="getCategory3" resultType="category3" parameterType="category3">
  	 	SELECT (ROW_NUMBER() OVER(ORDER by A.CATEGORY_MAIN_SERIAL,A.CATEGORY_SUB_SERIAL)) AS ROWNUM,

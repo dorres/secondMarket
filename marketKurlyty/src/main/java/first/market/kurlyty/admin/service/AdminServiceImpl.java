@@ -359,6 +359,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getCategory2Name();
 	}
 
+	@Override
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3Detail(category3);
+	}
+
 }
 	
 	
