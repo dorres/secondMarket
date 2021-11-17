@@ -5,12 +5,17 @@
  
  <mapper namespace="RegistDAO">
  	<!-- 상품등록 -->
-	<insert id="insertRegist" parameterType="regist">
-		INSERT INTO MK_GOODS_DETAIL VALUES(#{goods_detail_serial},#{category_main_serial},
-		#{category_sub_serial},#{category_goods_serial},#{goods_detail_price},#{goods_detail_stock_quantity},
-		#{goods_detail_stock_notification},#{goods_detail_promotion_serial},
-		#{goods_detail_status},#{goods_detail_dicountrate});
-	</insert> 
+	<update id="insertGoods1" parameterType="regist">
+		UPDATE MK_GOODS_DETAIL
+		SET GOODS_DETAIL_PRICE = #{goods_detail_price}, GOODS_DETAIL_STOCK_NOTIFICATION = #{goods_detail_stock_notification},
+		GOODS_DETAIL_PROMOTION = #{goods_detail_promotion_serial}, GOODS_DETAIL_STATUS = #{goods_detail_status},
+		GOODS_DETAIL_PROMOTION_SERIAL = #{goods_detail_promotion_serial}
+		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</update>
+	<insert id="insertGoods2" parameterType="stock">
+		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
+		#{goods_stock_receiving_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date});
+	</insert>
 	
 	<!-- 상품조회 
 	<select id="getGoods" resultType="regist">

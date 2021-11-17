@@ -9,6 +9,9 @@
  	<select id="getCategorySub" resultType="categorySub" parameterType="categoryMain">
  		SELECT * FROM MK_CATEGORY_SUB WHERE category_sub_first_no=#{category_main_serial} ORDER BY category_sub_serial ASC
  	</select>
+ 	<select id="getCategoryGoods" resultType="categoryGoods">
+ 		SELECT * FROM MK_CATEGORY_GOODS WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial} ORDER BY CATEGORY_GOODS_SERIAL;
+ 	</select>
  	<select id="getCategoryProductList" resultType="product" parameterType="product">
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,

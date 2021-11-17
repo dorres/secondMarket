@@ -163,6 +163,14 @@ public class AdminServiceImpl implements AdminService {
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return adminDao.sumStock(stock);
 	}
+	
+	//판매 등록
+	public int insertGoods1(AdminRegistVO regist) {
+		return adminDao.insertGoods1(regist);
+	}
+	public int insertGoods2(AdminStockVO stock) {
+		return adminDao.insertGoods2(stock);
+	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override

@@ -1,7 +1,5 @@
 package first.market.kurlyty.admin.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -103,6 +101,19 @@ public class AdminRegistController {
 				return "redirect:getGoodsList.mdo";
 			}else {
 				return "redirect:goodsDetail.mdo";
+			}
+		}
+		
+		//판매 등록
+		 @RequestMapping("insertGoods12.mdo")
+		public String insertGoods12(AdminRegistVO regist, AdminStockVO stock) {
+			int success12 = 0;
+			success12 = adminService.insertGoods1(regist);
+			success12 = adminService.insertGoods2(stock);
+			if(success12 !=0) {
+				return "redirect:getGoodsList.mdo";
+			}else {
+				return "redirect:registration.mdo";
 			}
 		}
 }

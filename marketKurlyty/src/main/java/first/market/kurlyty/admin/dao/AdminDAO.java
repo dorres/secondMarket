@@ -131,6 +131,14 @@ public class AdminDAO {
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return sqlSession.selectOne("RegistDAO.stockSum", stock);
 	}
+	
+	//판매등록
+	public int insertGoods1(AdminRegistVO regist) {
+		return sqlSession.update("RegistDAO.insertGoods1", regist);
+	}
+	public int insertGoods2(AdminStockVO stock) {
+		return sqlSession.insert("RegistDAO.insertGoods2", stock);
+	}
 	//================================================================
 
 	//공지사항 목록	

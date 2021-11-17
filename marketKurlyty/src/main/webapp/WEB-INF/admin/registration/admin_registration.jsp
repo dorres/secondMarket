@@ -20,88 +20,85 @@
 		<main>
 			<div class="container-fluid px-4">
 			<h2>상품등록</h2>  
-			<form method="post" action="*">
+			<form method="post" action="">
   <table class="body">  
-   <tr>
-    <th class="tg-0pky">카테고리 </th>
-    <th class="tg-0pky"> 상위카테고리               중위카테고리               하위카테고리<br>
-    	
-    	<th>
-    	<select name="category_main_serial" id="category_main_serial">
-		<c:forEach var="goods" items="${category1 }">
-		<option value="${goods.category_main_serial }">${goods.category_main_name }</option>
-		</c:forEach>
-		</select>
-		</th>
-		
-		<th>
-        <select>
-        <option id="*"value="*">카테고리2</option>
-        <option value="*">카테고리2</option>
-        <option value="*">카테고리3</option>
-        </select>
-        </th>
-        
-        <th>
-        <select>
-        <option id="*"value="*">카테고리3</option>
-        <option value="*">카테고리2</option>
-        <option value="*">카테고리3</option>
-        </select>
-        </th>
-    </tr>
+  <tr>
+		<th>카테고리</th>
+			<td colspan="3">
+			<b>1차</b>
+			<select name="category_main_serial" id="category_main_serial">
+				<c:forEach var="main" items="${category1 }">
+					<option value="${main.category_main_serial }">${main.category_main_name }</option>
+				</c:forEach>
+			</select>
+			&nbsp;&nbsp;&nbsp;
+			<b>2차</b>
+			<select name="category_sub_serial" id="category_sub_serial">
+				<c:forEach var="sub" items="${category2 }">
+					<option value="${sub.category_sub_serial }">${sub.category_sub_name }</option>
+				</c:forEach>
+			</select>
+			&nbsp;&nbsp;&nbsp;
+			<b>3차</b>
+			<select name="category_sub_serial" id="category_sub_serial">
+				<c:forEach var="goods" items="${category3 }">
+					<option value="${sub.category_goods_serial }">${sub.category_goods_name }</option>
+				</c:forEach>
+			</select>
+			</td>
+	</tr>							
     
       <tr>  
         <th>판매가격</th>
-        <th><input type="text" name="*"/>원</th>
+        <th><input type="text" name="goods_detail_price"/>원</th>
       </tr> 
       
       <tr>
       <th>입고수량</th>
-       <th><input type="text" name="*">개</th>
+       <th><input type="text" name="goods_stock_receving_quantity">개</th>
       </tr>
       
       <tr>
 		<th>재고알림</th>
-		<th><input type="text" name="*">개</th>      
+		<th><input type="text" name="goods_detail_stock_notification">개</th>      
       </tr>
       
       <tr>
 		<th>프로모션</th>
-		<th><select>
-		<option value="*">프로모션1</option>
-		<option value="*">프로모션2</option>
-		<option value="*">프로모션3</option>
+		<th><select name="goods_detail_promotion_serial">
+		<option value="1">프로모션1</option>
+		<option value="2">프로모션2</option>
+		<option value="3">프로모션3</option>
 		</select> </th>      
       </tr>
       
       <tr>
 		<th>상태</th>
-		<th><select>
-		<option value="*">판매완료</option>
-		<option value="*">판매중</option>
-		<option value="*">판매중지</option>
+		<th><select name="goods_detail_status">
+		<option value="0">판매완료</option>
+		<option value="1">판매중</option>
+		<option value="2">판매중지</option>
 		</select> </th>      
       </tr>
       
       <tr>
 		<th>입고일자</th>
-		<th><input type="date" name="*"></th>      
+		<th><input type="date" name="goods_detail_promotion_serial"></th>      
       </tr>
       
       <tr>
 		<th>유통기한</th>
-		<th><input type="date" name="*"></th>      
+		<th><input type="date" name="goods_stock_exp_date"></th>      
       </tr>
       
       <tr>
 		<th>할인</th>
-		<th><input type="text" name="*">%</th>      
+		<th><input type="text" name="goods_detail_dicountrate">%</th>      
       </tr>
       
       <tr>
       	<th><input type="submit" value="등록"/></th>
-      	<th><input type="button" value="목록"/></th>
+      	<th><input type="button" value="목록" onclick="location.href='getGoodsList.mdo'"/></th>
       </tr>
   </table> 
   </form> 		

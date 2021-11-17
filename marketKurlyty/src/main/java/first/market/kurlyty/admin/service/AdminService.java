@@ -77,6 +77,10 @@ public interface AdminService {
 	
 	//재고 합계
 	public AdminStockVO sumStock(AdminStockVO stock);
+	
+	//판매 등록
+	public int insertGoods1(AdminRegistVO regist) ;
+	public int insertGoods2(AdminStockVO stock) ;
 	//=================================================================
 
 	//공지사항 리스트
