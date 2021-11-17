@@ -5,5 +5,13 @@
  <mapper namespace="user_address_listDAO">
  <select id="getAddress" resultType="addressListVO" >
 		SELECT * FROM MK_USER_ADDRESS_LIST where user_id=#{user_id}
-	</select>
+</select>
+<insert id="address_new" >
+		INSERT INTO MK_USER_ADDRESS_LIST (user_address1,user_address2,user_zipcode,user_id,address_default)
+		VALUES(#{user_address1},#{user_address2},#{user_zipcode},#{user_id},#{address_default})
+</insert>
+<update id="address_update">
+		UPDATE MK_USER_ADDRESS_LIST SET user_address2=#{user_address2},user_name=#{user_name},user_phone=#{user_phone}
+		WHERE user_address1=#{user_address1}
+</update>
 </mapper>
