@@ -12,6 +12,7 @@ import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminGoodsStockVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
@@ -138,6 +139,10 @@ public class AdminDAO {
 	}
 	public int insertGoods2(AdminStockVO stock) {
 		return sqlSession.insert("RegistDAO.insertGoods2", stock);
+	}
+	
+	public AdminGoodsStockVO goodsStock(AdminGoodsStockVO goodsstock) {
+		return sqlSession.selectOne("RegistDAO.goodsStock", goodsstock);
 	}
 	//================================================================
 

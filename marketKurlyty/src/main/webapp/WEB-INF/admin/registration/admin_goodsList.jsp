@@ -54,6 +54,17 @@
 	//		location.href = "admin_index.mdo";
 		//}
 	</script>
+	<style type="text/css">
+.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}	
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+ </style>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -67,19 +78,15 @@
 
 				<h1 class="mt-4">상품조회/수정</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">상품조회/수정</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+						<li class="breadcrumb-item"><a href="index.html">상품조회/수정</a></li>
+					<li class="breadcrumb-item active">목록</li>
 				</ol>
+
 				<div class="card mb-4">
-					<div class="card-body">
-						여기내용 수정
-						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
-					</div>
-				</div>
-				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 상품 목록
-					</div>
+					<div class="card-header"  align="right">
+							<div class="col three">
+							</div>
+						</div>
 					<div class="card-body">
 					<form name="updateForm" method="post" action="updateGoods.mdo?goods_detail_serial=${goods.goods_detail_serial}">
 						<table id="datatablesSimple">
@@ -91,11 +98,11 @@
 									<th>3차카테고리</th>
 									<th>상품가격</th>
 									<th>재고수량</th>
-									<th>재고알림</th>
+									<th>알림</th>
 									<th>프로모션</th>
-									<th>판매상태</th>
-									<th>상품할인</th>
-									<th>상세정보</th>
+									<th>상태</th>
+									<th>할인</th>
+									<th>판매&할인</th>
 									<th>수정/삭제</th>
 								</tr>
 							</thead>
@@ -128,7 +135,7 @@
 										<td id="dis"><input type="text" name="goods_detail_dicountrate" 
 										value="${goodsList.goods_detail_dicountrate}" size="3"/>%</td>
 										
-										<td><input type="button" value="상세정보" 
+										<td><input type="button" value="판매&입고" 
 										onclick="location.href= 'goodsDetail.mdo?category_goods_serial=${goodsList.category_goods_serial}'"/> </td>
 										
 										<td>

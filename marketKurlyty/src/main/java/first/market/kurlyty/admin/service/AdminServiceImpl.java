@@ -13,6 +13,7 @@ import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminGoodsStockVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
@@ -136,40 +137,52 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//상품조회
+	@Override
 	public AdminRegistVO getGoods(AdminRegistVO regist) {
 		return adminDao.getGoods(regist);
 	}
 	
 	//상품 수정
+	@Override
 	public int updateGoods(AdminRegistVO regist) {
 		return adminDao.updateGoods(regist);
 	}
 	
 	//상품 삭제
+	@Override
 	public int deleteGoods(AdminRegistVO regist) {
 		return adminDao.deleteGoods(regist);
 	}
 	
 	//재고 조회
+	@Override
 	public AdminStockVO getStock(AdminStockVO stock) {
 		return adminDao.getStock(stock);
 	}
 	
 	//입고 수정
+	@Override
 	public int updateStock (AdminStockVO stock) {
 		return adminDao.updateStock(stock);
 	}
 	//재고 합계
+	@Override
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return adminDao.sumStock(stock);
 	}
 	
 	//판매 등록
+	@Override
 	public int insertGoods1(AdminRegistVO regist) {
 		return adminDao.insertGoods1(regist);
 	}
+	@Override
 	public int insertGoods2(AdminStockVO stock) {
 		return adminDao.insertGoods2(stock);
+	}
+	@Override
+	public AdminGoodsStockVO goodsStock(AdminGoodsStockVO goodsstcok) {
+		return adminDao.goodsStock(goodsstcok);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
@@ -411,6 +424,7 @@ public class AdminServiceImpl implements AdminService {
 	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
 		return adminDao.insertCategory3Detail(category3);
 	}
+
 
 }
 	

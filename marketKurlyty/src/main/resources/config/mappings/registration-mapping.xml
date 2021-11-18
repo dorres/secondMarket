@@ -16,7 +16,19 @@
 		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
 		#{goods_stock_receiving_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date});
 	</insert>
-	
+	<!-- 상품등록 검색 -->
+	<select id="goodsStock" resultType="goodsstock" parameterType="goodsstock">
+		SELECT D.goods_detail_serial,D.category_main_serial, D.category_sub_serial, 
+		D.goods_detail_stock_quantity,
+		D.goods_detail_stock_notification, D.goods_detail_promotion_serial, D.goods_detail_status,
+		D.goods_detail_dicountrate,
+		S.goods_stock_serial, S.category_goods_serial, S.goods_stock_receiving_date,
+		S.goods_stock_receiving_quantity, S.goods_stock_stock_quantity, S.goods_stock_exp_date
+		FROM MK_GOODS_DETAIL D
+		JOIN MK_GOODS_STOCK S
+		ON D.CATEGORY_GOODS_SERIAL = S.CATEGORY_GOODS_SERIAL
+		ORDER BY GOODS_DETAIL_SERIAL;
+	</select>
 	<!-- 상품조회 
 	<select id="getGoods" resultType="regist">
 		SELECT (ROW_NUMBER() OVER(ORDER BY goods_detail_serial)) AS ROWNUM, * FROM MK_GOODS_DETAIL;

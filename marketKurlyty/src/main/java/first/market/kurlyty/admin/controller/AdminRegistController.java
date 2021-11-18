@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import first.market.kurlyty.admin.service.AdminService;
+import first.market.kurlyty.admin.vo.AdminGoodsStockVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
 
@@ -116,5 +117,12 @@ public class AdminRegistController {
 				return "redirect:registration.mdo";
 			}
 		}
+		 
+		 //Àç°í ºä
+		 @RequestMapping("goodsStock.mdo")
+		 public String goodsStock(AdminGoodsStockVO goodsstock, Model model) {
+			 model.addAttribute("goodsstock", adminService.goodsStock(goodsstock));
+			 return "registration/admin_registration";
+		 }
 }
 
