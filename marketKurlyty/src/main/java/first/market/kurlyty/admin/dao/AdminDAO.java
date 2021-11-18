@@ -118,9 +118,9 @@ public class AdminDAO {
 		return sqlSession.delete("RegistDAO.deleteGoods", regist);
 	}
 	
-	//재고 조회
-	public AdminStockVO getStock(AdminStockVO stock) {
-		return sqlSession.selectOne("RegistDAO.getStock", stock);
+	//입고 조회
+	public List<AdminStockVO> getStockList(AdminStockVO stock) {
+		return sqlSession.selectList("RegistDAO.stockList", stock);
 	}
 	
 	//입고 수정
@@ -134,15 +134,14 @@ public class AdminDAO {
 	}
 	
 	//판매등록
-	public int insertGoods1(AdminRegistVO regist) {
-		return sqlSession.update("RegistDAO.insertGoods1", regist);
+	public AdminStockVO getStock(AdminStockVO stock) {
+		return sqlSession.selectOne("RegistDAO.getStock", stock);
 	}
-	public int insertGoods2(AdminStockVO stock) {
-		return sqlSession.insert("RegistDAO.insertGoods2", stock);
+	public int updatePrice(AdminRegistVO regist) {
+		return sqlSession.update("RegistDAO.updatePrice", regist);
 	}
-	
-	public AdminGoodsStockVO goodsStock(AdminGoodsStockVO goodsstock) {
-		return sqlSession.selectOne("RegistDAO.goodsStock", goodsstock);
+	public int insertStock(AdminStockVO stock) {
+		return sqlSession.insert("RegistDAO.insertStock", stock);
 	}
 	//================================================================
 

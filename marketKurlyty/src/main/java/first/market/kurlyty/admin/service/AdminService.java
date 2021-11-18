@@ -9,7 +9,6 @@ import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
-import first.market.kurlyty.admin.vo.AdminGoodsStockVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
@@ -71,7 +70,7 @@ public interface AdminService {
 	public int deleteGoods(AdminRegistVO regist);
 		
 	//재고 조회
-	public AdminStockVO getStock(AdminStockVO stock);
+	public List<AdminStockVO> getStockList(AdminStockVO stock);
 	
 	//입고 수정
 	public int updateStock (AdminStockVO stock);
@@ -80,11 +79,9 @@ public interface AdminService {
 	public AdminStockVO sumStock(AdminStockVO stock);
 	
 	//판매 등록
-	public int insertGoods1(AdminRegistVO regist) ;
-	public int insertGoods2(AdminStockVO stock) ;
-	
-	//재고
-	public AdminGoodsStockVO goodsStock(AdminGoodsStockVO goodsstcok);
+	public AdminStockVO getStock(AdminStockVO stock);
+	public int updatePrice(AdminRegistVO regist);
+	public int insertStock(AdminStockVO stock);
 	//=================================================================
 
 	//공지사항 리스트

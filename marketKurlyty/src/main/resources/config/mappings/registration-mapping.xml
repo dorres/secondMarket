@@ -4,31 +4,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
  
  <mapper namespace="RegistDAO">
- 	<!-- 상품등록 -->
-	<update id="insertGoods1" parameterType="regist">
-		UPDATE MK_GOODS_DETAIL
-		SET GOODS_DETAIL_PRICE = #{goods_detail_price}, GOODS_DETAIL_STOCK_NOTIFICATION = #{goods_detail_stock_notification},
-		GOODS_DETAIL_PROMOTION = #{goods_detail_promotion_serial}, GOODS_DETAIL_STATUS = #{goods_detail_status},
-		GOODS_DETAIL_PROMOTION_SERIAL = #{goods_detail_promotion_serial}
-		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
-	</update>
-	<insert id="insertGoods2" parameterType="stock">
-		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
-		#{goods_stock_receiving_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date});
-	</insert>
-	<!-- 상품등록 검색 -->
-	<select id="goodsStock" resultType="goodsstock" parameterType="goodsstock">
-		SELECT D.goods_detail_serial,D.category_main_serial, D.category_sub_serial, 
-		D.goods_detail_stock_quantity,
-		D.goods_detail_stock_notification, D.goods_detail_promotion_serial, D.goods_detail_status,
-		D.goods_detail_dicountrate,
-		S.goods_stock_serial, S.category_goods_serial, S.goods_stock_receiving_date,
-		S.goods_stock_receiving_quantity, S.goods_stock_stock_quantity, S.goods_stock_exp_date
-		FROM MK_GOODS_DETAIL D
-		JOIN MK_GOODS_STOCK S
-		ON D.CATEGORY_GOODS_SERIAL = S.CATEGORY_GOODS_SERIAL
-		ORDER BY GOODS_DETAIL_SERIAL;
-	</select>
+ 	
 	<!-- 상품조회 
 	<select id="getGoods" resultType="regist">
 		SELECT (ROW_NUMBER() OVER(ORDER BY goods_detail_serial)) AS ROWNUM, * FROM MK_GOODS_DETAIL;
@@ -42,7 +18,6 @@
 		JOIN MK_GOODS_STOCK S
 		ON D.CATEGORY_GOODS_SERIAL = S.CATEGORY_GOODS_SERIAL
 		ORDER BY GOODS_DETAIL_SERIAL;
-		
 	</select>
 	
 	<!-- 상품 수정 -->
@@ -51,6 +26,7 @@
 		SET GOODS_DETAIL_STOCK_NOTIFICATION=#{goods_detail_stock_notification}
 			,GOODS_DETAIL_PROMOTION_SERIAL=#{goods_detail_promotion_serial}
 			,GOODS_DETAIL_STATUS=#{goods_detail_status},GOODS_DETAIL_DICOUNTRATE=#{goods_detail_dicountrate}
+			,GOODS_DETAIL_PRICE = #{goods_detail_price}
 			WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
 	</update>
 	
@@ -59,9 +35,11 @@
 	 	DELETE FROM MK_GOODS_DETAIL WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
 	</delete>
 	
-	<!-- 재고 조회 -->
-	<select id="getStock" resultType="stock">
-		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	<!-- 입고 조회 -->
+	<select id="stockList" resultType="stock">
+		SELECT GOODS_STOCK_RECEIVING_DATE,GOODS_STOCK_RECEIVING_QUANTITY, GOODS_STOCK_EXP_DATE,CATEGORY_GOODS_SERIAL
+		FROM MK_GOODS_STOCK 
+		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
 	</select>
 	
 	<!-- 입고 수정 -->
@@ -70,6 +48,19 @@
 		SET GOODS_STOCK_RECEIVING_QUANTITY = #{goods_stock_receiving_quantity}
 		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
 	</update>
+	
+	<!-- 판매등록/입고 -->
+	<select id="getStock" resultType="stock">
+		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</select>
+	<update id="updatePrice" parameterType="regist">
+		UPDATE MK_GOODS_DETAIL SET GOODS_DETAIL_PRICE WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</update>
+	<insert id="insertStock" parameterType="stock">
+		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
+		#{goods_stock_receivong_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date})
+	</insert>
+	
 	<!-- 수량 합계 -->
 	<select id="stockSum" resultType="stock">
 	SELECT SUM(GOODS_STOCK_RECEIVING_QUANTITY+GOODS_STOCK_STOCK_QUANTITY) TOTAL

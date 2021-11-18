@@ -73,7 +73,7 @@
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="goodsStock.mdo?category_goods_serial=${stock.category_goods_serial}" class="btn1 btn-dark">판매/입고</a>
+								<a href="*" class="btn1 btn-dark">판매/입고</a>
 							</div>
 						</div>
 					<div class="card-body">
@@ -81,27 +81,23 @@
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>상품재고번호</th>
 									<th>3차카테고리</th>
 									<th>입고일자</th>
 									<th>입고수량</th>
-									<th>재고</th>
 									<th>유통기한</th>
+									<th>수정</th>
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="stock" items="${stock}">
 									<tr>
-										<td>${stock.goods_stock_serial}</td>
 										<td><input type="text" name="category_goods_serial" value="${stock.category_goods_serial}" readonly="readonly"/></td>
 										<td><fmt:formatDate value="${stock.goods_stock_receiving_date}" pattern="yyyy-MM-dd"/></td>
-										<td><input type="text" name="goods_stock_receiving_quantity" value="${stock.goods_stock_receiving_quantity }"/></td>
-										<td>${stock.goods_stock_stock_quantity}</td>
+										<td><input type="text" name="goods_stock_receiving_quantity" value="${stock.goods_stock_receiving_quantity}"/></td>
 										<td><fmt:formatDate value="${stock.goods_stock_exp_date}" pattern="yyyy-MM-dd"/></td>
-										
-										<td>
-											<input type="submit" value="수정" />
-										</td>
+										<td><input type="button" value="수정" onclick="location.href='updateStock.mdo?category_goods_serial=${stock.category_goods_serial}'"/></td>
 									</tr>
+									</c:forEach>
 							</tbody>
 						</table>
 						</form>

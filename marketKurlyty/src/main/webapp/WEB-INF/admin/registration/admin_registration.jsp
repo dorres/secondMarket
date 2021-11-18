@@ -43,7 +43,7 @@
 	}
 	</script>
 	<style type="text/css">
-.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+.btn1 {font-size: 15px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
 		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
 		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
 		transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -73,7 +73,7 @@
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="admin_categoryMainWrite.mdo" class="btn1 btn-dark">등록</a>
+								<a href="admin_categoryMainWrite.mdo" class="btn1 btn-dark">Confirm</a>
 							</div>
 						</div>
 					<div class="card-body">
@@ -85,19 +85,20 @@
 									<th>3차카테고리</th>
 									<th>판매가격</th>
 									<th>입고수량</th>
+									<th>잔여재고</th>
 									<th>입고일자</th>
 									<th>유통기한</th>
 								</tr>
 							</thead>
 							<tbody>
 									<tr>
-										<td>${stock.goods_stock_serial}</td>
-										<td><input type="text" name="category_goods_serial" value="${stock.category_goods_serial}" readonly="readonly"/></td>
+										<td>${getstock.goods_stock_serial}</td>
+										<td><input type="text" name="category_goods_serial" value="${getstock.category_goods_serial}" readonly="readonly"/></td>
 										<td><input type="text" name="goods_detail_price"></td>
 										<td><input type="text" name="goods_stock_receiving_quantity"/></td>
+										<td><input type="text" name="goods_stock_stock_quantity"/></td>
 										<td><input type="date" name="goods_stock_receiving_date"/></td>
 										<td><input type="date" name="goods_stock_exp_date"/></td>
-										
 									</tr>
 							</tbody>
 						</table>

@@ -53,9 +53,13 @@
 	//		alert("할인 적용!");
 	//		location.href = "admin_index.mdo";
 		//}
+	function stock(index,serial){
+	document.updateForm.action="insertStock.mdo?index="+String(index)+"&serial="+String(serial);
+	document.updateForm.submit();
+}
 	</script>
 	<style type="text/css">
-.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+.btn1 {font-size: 20px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
 		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
 		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
 		transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -85,6 +89,7 @@
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
+								<a href="javascript:stock('${index.index}','${getstock.category_goods_serial}')" class="btn1 btn-dark">판매/입고</a>
 							</div>
 						</div>
 					<div class="card-body">
@@ -96,13 +101,13 @@
 									<th>1차카테고리</th>
 									<th>2차카테고리</th>
 									<th>3차카테고리</th>
-									<th>상품가격</th>
 									<th>재고수량</th>
+									<th>상품가격</th>
 									<th>알림</th>
 									<th>프로모션</th>
 									<th>상태</th>
 									<th>할인</th>
-									<th>판매&할인</th>
+									<th>재고</th>
 									<th>수정/삭제</th>
 								</tr>
 							</thead>
@@ -113,17 +118,17 @@
 										<td>${goodsList.category_main_serial}</td>
 										<td>${goodsList.category_sub_serial}</td>
 										<td id="goods">${goodsList.category_goods_serial}</td>
-										<td>${goodsList.goods_detail_price}</td>
 										<td>${goodsList.goods_stock_stock_quantity+goodsList.goods_stock_receiving_quantity}</td>
+										<td><input type="text" name="goods_detail_price" value="${goodsList.goods_detail_price}" readonly="readonly" size="4"/>원</td>
 										
 										<td id="noti"><input type="text" name="goods_detail_stock_notification" 
 										value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>
 										
 										<td><select name="goods_detail_promotion_serial" id="promotion">
-											<option value="1">1번 프로모션</option>
-											<option value="2">2번 프로모션</option>
-											<option value="3">3번 프로모션</option>
-											<option value="4">4번 프로모션</option>
+											<option value="1">1번프로</option>
+											<option value="2">2번프로</option>
+											<option value="3">3번프로</option>
+											<option value="4">4번프로</option>
 										</select></td>
 										
 										<td><select name="goods_detail_status" id="status">
@@ -135,9 +140,7 @@
 										<td id="dis"><input type="text" name="goods_detail_dicountrate" 
 										value="${goodsList.goods_detail_dicountrate}" size="3"/>%</td>
 										
-										<td><input type="button" value="판매&입고" 
-										onclick="location.href= 'goodsDetail.mdo?category_goods_serial=${goodsList.category_goods_serial}'"/> </td>
-										
+										<td><input type="button" value="재고" onclick="location.href='stockList.mdo?category_goods_serial=${goodsList.category_goods_serial}'"></td>
 										<td>
 											<input type="submit" onclick="javascript:update('${index.index}','${goodsList.goods_detail_serial}')" value="수정"/>
 											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}')"/>
