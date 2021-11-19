@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import first.market.kurlyty.user.dao.OrderDAO;
+import first.market.kurlyty.user.vo.ShippingVO;
 import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.vo.OrderVO;
 
@@ -26,5 +27,9 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public UserDetailsVO getUserDetails(String user_id) {
 		return orderDao.getUserDetails(user_id);
+	}
+	@Override
+	public void insertShippingInfo(ShippingVO shipping) {
+		orderDao.insertShippingInfo(shipping);
 	}
 }

@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import first.market.kurlyty.user.vo.ShippingVO;
 import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.vo.OrderVO;
 
@@ -23,5 +24,8 @@ public class OrderDAO {
 	}
 	public UserDetailsVO getUserDetails(String user_id) {
 		return sqlSession.selectOne("orderDAO.getUserDetails", user_id);
+	}
+	public void insertShippingInfo(ShippingVO shipping) {
+		sqlSession.insert("orderDAO.insertShippingInfo",shipping);
 	}
 }

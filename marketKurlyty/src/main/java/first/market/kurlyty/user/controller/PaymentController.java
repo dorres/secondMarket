@@ -27,6 +27,7 @@ import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
 import first.market.kurlyty.user.vo.MembershipVO;
+import first.market.kurlyty.user.vo.ShippingVO;
 import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.user.vo.UserVO;
 import first.market.kurlyty.vo.OrderVO;
@@ -94,7 +95,7 @@ public class PaymentController {
 	
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
-	public String paymentSuccess(OrderVO order) {
+	public String paymentSuccess(OrderVO order, ShippingVO shipping) {
 		System.out.println(order.getUser_id());
 		order.setOrder_delivery_status("결제완료");
 		orderService.insertOrder(order);
@@ -115,6 +116,14 @@ public class PaymentController {
 		userDetail.setUser_point(point+order.getUser_point());
 		userDetail.setUser_total_purchase(totalPurchase+order.getOrder_goods_price());
 		orderService.updateUserPurchase(userDetail);
+		//shipping정보 담기
+		shipping.setOrder_merchant_serial(order.getOrder_merchant_serial());
+		shipping.setShipping_address1(order.getUser_address1());
+		shipping.setShipping_address2(order.getUser_address2());
+		shipping.setShipping_zipcode(order.getUser_zipcode());
+		shipping.setShipping_sender_name(order.getUser_name());
+		shipping.setShipping_sender_phone(order.getUser_phone());
+		orderService.insertShippingInfo(shipping);
 		return "index.do";
 	}
 	
