@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- ㅡ*.ㅡmapping.xml 만들때 이거 가져가서 사용하세요 -->
+
+
+ <mapper namespace="WithdrawDAO">
+ 
+ 	<select id="getUser" resultType="user" parameterType="user" >
+ 		SELECT * FROM mk_user_details WHERE user_id = #{user_id}
+ 	</select>
+ 	
+ 	 <insert id="insertWithdraw" parameterType="withdraw">
+ 	  INSERT INTO mk_user_withdraw_info (user_withdraw_serial, user_withdraw_reason, user_withdraw_reason_detail, user_withdraw_date) 
+ 	  VALUES (default, #{user_withdraw_reason}, #{user_withdraw_reason_detail}, now())
+ 	 </insert>
+ 	 
+ 	<update id="updateWithdraw">
+ 		UPDATE mk_user_details SET user_membership_name = 0, user_point = 0, 
+ 		user_status = 0, user_total_purchase = 0, user_withdraw_date = now()
+		WHERE user_id = #{value}
+ 	</update>
+ 	
+ 	 
+ 	 <delete id="deleteWithdrawCart" >
+ 	 DELETE FROM mk_goods_cart WHERE user_id = #{value}
+ 	 </delete>
+ 	 
+ 	  <delete id="deleteWithdrawQnaGoods">
+ 	 DELETE FROM  mk_qna_goods WHERE user_id = #{value}
+ 	 </delete>
+ 	  
+ 	  <delete id="deleteWithdrawQnaPersonal">
+ 	 DELETE FROM mk_qna_personal WHERE user_id = #{value}
+ 	 </delete>
+ 	 
+ 	  <delete id="deleteWithdrawAddressList">
+ 	 DELETE FROM mk_user_address_list WHERE user_id = #{value}
+ 	 </delete>
+ 	 
+
+</mapper>
