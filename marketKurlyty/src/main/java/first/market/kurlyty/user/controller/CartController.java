@@ -50,7 +50,7 @@ public class CartController {
 					}else if(product.getCategory_goods_packaging_type().contains("냉동")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						frozenList.add(product);
-					}else if(product.getCategory_goods_packaging_type().contains("실온")) {
+					}else if(product.getCategory_goods_packaging_type().contains("상온")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						roomList.add(product);
 					}
@@ -85,7 +85,7 @@ public class CartController {
 					}else if(product.getCategory_goods_packaging_type().contains("냉동")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						frozenList.add(product);
-					}else if(product.getCategory_goods_packaging_type().contains("실온")) {
+					}else if(product.getCategory_goods_packaging_type().contains("상온")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						roomList.add(product);
 					}

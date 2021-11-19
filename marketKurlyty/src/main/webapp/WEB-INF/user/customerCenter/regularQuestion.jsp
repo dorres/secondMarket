@@ -3,35 +3,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
- 
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="style/ItemListStyle.css">
-<script type="text/javascript">
-	var $targetBtn = $('.search_date .btn_layer');
-	var $targetLayer = $('.search_date .layer_search');
-	var $targetSelector = $('.layer_search a');
 
-	$targetSelector.each(function() {
-		if ($(this).data('selected')) {
-			$targetBtn.text($(this).data('selected'));
-		}
-	});
-	$targetBtn.on('click', function(e) {
-		e.preventDefault();
-		$(this).toggleClass('on');
-		$targetLayer.slideToggle(100);
-	});
-	$targetSelector.on('click', function(e) {
-		e.preventDefault();
-		var value = $(this).data('value');
-		var text = $(this).text();
-		$targetBtn.trigger('click').text(text);
-		$('[name=sitemcd]').val(value);
-		$('[name=frmList]').submit();
-	});
-</script>
 </head>
 <body class="main-index" oncontextmenu="return false" ondragstart="return false" onselectstart="return !disableSelection">
 
@@ -57,7 +33,7 @@
 									<div class="search_date">
 										<a href="#none" class="btn_layer">선택</a>
 										<ul class="layer_search">
-											<li><a href="faq.do?faq_category=${faq_category }" @click="searchResult" data-value="01" data-selected="">회원문의</a></li>
+											<li><a href="#none" @click="searchResult" data-value="01" data-selected="">회원문의</a></li>
 											<li><a href="#none" @click="searchResult" data-value="02" data-selected="">주문/결제</a></li>
 											<li><a href="#none" @click="searchResult" data-value="03" data-selected="">취소/교환/반품</a></li>
 											<li><a href="#none" @click="searchResult" data-value="04" data-selected="">배송문의</a></li>
@@ -80,7 +56,7 @@
 											</tbody>
 										</table>
 					
-												<table width="100%" class="table_faq" id="faq_7" style="table-layout:fixed;">
+												<table width="100%" class="table_faq" id="faq_7" style=" table-layout:fixed;">
 													<tbody>
 													
 														<c:forEach var="board" items="${board }">
@@ -88,8 +64,6 @@
 																		<td width=70 align=center>${board.faq_serial }</td>
 																		<td width=135 align=center>${board.faq_category }</td>
 																		<td style="cusor:pointer">${board.faq_title }</td>
-																																
-																		
 																	</tr>
 																	<tr>
 																		<td align="center" colspan="3" class="sub" style="display:none;width:100% ">${board.faq_content }</td>
@@ -115,113 +89,34 @@
 												</tr>
 											</tbody>
 										</table>
-										<script>
-													function fn_prev(page,
-															range, rangeSize) {
-
-														var page = ((range - 2) * rangeSize) + 1;
-
-														var range = range - 1;
-
-														var url = "${pageContext.request.contextPath}/faq.do";
-
-														url = url + "?page="
-																+ page;
-
-														url = url + "&range="
-																+ range;
-
-														location.href = url;
-
-													}
-
-													//페이지 번호 클릭
-
-													function fn_pagination(
-															page, range,
-															rangeSize,
-															searchType, keyword) {
-
-														var url = "${pageContext.request.contextPath}/faq.do";
-
-														url = url + "?page="
-																+ page;
-
-														url = url + "&range="
-																+ range;
-
-														location.href = url;
-
-													}
-
-													//다음 버튼 이벤트
-
-													function fn_next(page,
-															range, rangeSize) {
-
-														var page = parseInt((range * rangeSize)) + 1;
-
-														var range = parseInt(range) + 1;
-
-														var url = "${pageContext.request.contextPath}/faq.do";
-
-														url = url + "?page="
-																+ page;
-
-														url = url + "&range="
-																+ range;
-
-														location.href = url;
-
-													}
-												</script>
-												<!-- pagination{s} -->
-
-												<div class="layout-pagination">
-												<div class="pagediv">
-
-													
-														<c:if test="${pagination.prev}">
-
-															<div class="layout-pagination-button layout-pagination-number"><a class="page-link" href="#"
-																onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')"> 이전 </a></div>
-
-														</c:if>
-
-
-
-														<c:forEach begin="${pagination.startPage}"
-															end="${pagination.endPage}" var="idx">
-
-															<div
-																class="layout-pagination-button layout-pagination-number <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-																class="page-link" href="#"
-																onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-																	${idx} </a></div>
-
-														</c:forEach>
-
-
-
-														<c:if test="${pagination.next}">
-
-															<div class="layout-pagination-button layout-pagination-number"><a class="page-link" href="#" onClick="fn_next('${pagination.range}', 
-
-'${pagination.range}', '${pagination.rangeSize}')">다음</a></div>
-
-														</c:if>
-
+										<!-- pagination{s} -->
+										<div class="layout-pagination">
+											<div class="pagediv">
+												<c:if test="${pagination.prev}">
+													<div class="layout-pagination-button layout-pagination-number">
+														<a class="page-link" href="#"bonClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">이전 </a>
 													</div>
-
-												</div>
-												
-
-												<!-- pagination{e} -->
+												</c:if>
+												<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+													<div class="layout-pagination-button layout-pagination-number <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+														<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> ${idx} </a>
+													</div>
+												</c:forEach>
+												<c:if test="${pagination.next}">
+													<div class="layout-pagination-button layout-pagination-number">
+														<a class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">다음</a>
+													</div>
+												</c:if>
+											</div>
+										</div>
 									</div>
-
 								</div>
-							
-	 <script>
+						</div> <!-- MainCenter 끝 -->
+					</div> <!-- Main 끝 -->
+				</div>
+<a href="#top" id="pageTop">맨 위로가기</a>
+<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe>
+	<script>
             $(".menu").click(function(){
                 if($(this).nextAll("tr:eq(0)").find(".sub").is(":visible")){
                     $(this).nextAll("tr:eq(0)").find(".sub").css("display","none");
@@ -229,21 +124,37 @@
                 else{
                     $(this).nextAll("tr:eq(0)").find(".sub").css("display","table-cell");
                 }
-            })
+            });
         </script>
-        	
-
-						</div> <!-- MainCenter 끝 -->
-					</div> <!-- Main 끝 -->
-				</div>
-			</div>
-		</div>	
-		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
-	</div>
-
-		<a href="#top" id="pageTop">맨 위로가기</a>
-
-
-		<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe>
+	<script>
+		function fn_prev(page,
+			range, rangeSize) {
+			var page = ((range - 2) * rangeSize) + 1;
+			var range = range - 1;
+			var url = "${pageContext.request.contextPath}/notice.do";
+			url = url + "?page=" + page;
+			url = url + "&range="+ range;
+			location.href = url;}
+			
+			//페이지 번호 클릭
+			function fn_pagination(
+					page, range, rangeSize, searchType, keyword) {
+					var url = "${pageContext.request.contextPath}/notice.do";
+					url = url + "?page=" + page;
+					url = url + "&range=" + range;
+					location.href = url;
+			}
+					
+			//다음 버튼 이벤트
+			function fn_next(page, range, rangeSize) {
+				var page = parseInt((range * rangeSize)) + 1;
+				var range = parseInt(range) + 1;
+				var url = "${pageContext.request.contextPath}/notice.do";
+				url = url + "?page=" + page;
+				url = url + "&range=" + range;
+				location.href = url;
+			}						
+	</script>
 </body>
+<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 </html>
