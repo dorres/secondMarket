@@ -1,10 +1,13 @@
 package first.market.kurlyty.admin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
@@ -37,6 +40,14 @@ public class AdminRegistController {
 	//상품조회리스트
 	@RequestMapping("getGoodsList.mdo")
 	public String getGoodsList(AdminRegistVO regist, AdminStockVO stock, Model model) {
+		List<AdminRegistVO> list=adminService.goodsList(regist);
+		for(AdminRegistVO vo : list) {
+			System.out.println(vo.getGoods_detail_stock_quantity());
+			if(vo.getGoods_detail_stock_quantity()<10) {
+				model.addAttribute("notification",true);
+				break;
+			}
+		}
 		model.addAttribute("goodsList", adminService.goodsList(regist));
 		return "registration/admin_goodsList";
 	}
@@ -109,18 +120,19 @@ public class AdminRegistController {
 		
 		//판매 등록
 		 @RequestMapping("insertStock.mdo")
-		 public String getStock(Model model, int[] category_goods_serial, int index, int serial) {
-			 AdminStockVO stock = new AdminStockVO();
-			 stock.setCategory_goods_serial(serial);
-			 model.addAttribute("getstock", adminService.getStock(stock));
+		 public String getStock(Model model, int serial){//@RequestParam(name="serial", required=false) String serial) {
+//			 AdminStockVO stock = new AdminStockVO();
+//			 stock.setCategory_goods_serial(serial);
+			 model.addAttribute("serial", serial);
 			 return "registration/admin_registration";
 		 }
 		 
 		 @RequestMapping("insertStocks.mdo")
-			 public String insertStock(AdminRegistVO regist, AdminStockVO stock) {
+			 public String insertStock(AdminStockVO stock, RedirectAttributes ra) {
 				 int success = 0;
-				 success = adminService.updatePrice(regist);
+				 System.out.println(stock.getGoods_stock_stock_quantity());
 				 success = adminService.insertStock(stock);
+				 ra.addFlashAttribute("stock", "insertSuc");
 				 if(success != 0) {
 					 return "redirect:getGoodsList.mdo";
 				 }else {

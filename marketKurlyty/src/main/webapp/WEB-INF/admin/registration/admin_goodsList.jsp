@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,15 +36,18 @@
 			})
 		})
 		function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할까요?");
-		if (answer == true) {
-			location = url;
+			var answer = confirm("게시글를 정말로 삭제할까요?");
+			if (answer == true) {
+				location = url;
+			}
 		}
-	}
-		var noti = document.getElementById("noti");
-		if(noti<15){
+		if(${notification!=null}){
+			alert("재고 부족한 재품이 있습니다.")
+		}
+		/* var noti = document.getElementById("noti").value;
+		if(noti<20){
 			alert("재고가 충분하지 않습니다.");
-		}else{ null;}
+		}else{ null;} */
 		
 		//	var dis = document.getElementById("dis");
 	//	if(dis==100){
@@ -57,6 +61,25 @@
 	document.updateForm.action="insertStock.mdo?index="+String(index)+"&serial="+String(serial);
 	document.updateForm.submit();
 }
+	$(document).ready(function(){ 
+		$('checkbox').click(function(e){
+			var id = e.target.getAttribute('name');
+			if ( ( name != '') && (name != null))  
+			alert(name);
+		});
+		
+		$("tr").each(function(){
+			$(this).click(function(){
+				if($(this).attr("style")){
+					$(this).attr("style","background:white;");
+				} else
+					 $(this).attr("style","background:pink;");
+				var text = $(this).find("#serial").text();
+				var serial = $(this).find("#hiSerial").val();
+				$("#a").attr("href","insertStock.mdo?serial="+serial);
+			})
+		});
+	});
 	</script>
 	<style type="text/css">
 .btn1 {font-size: 20px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
@@ -81,15 +104,12 @@
 			<div class="container-fluid px-4">
 
 				<h1 class="mt-4">상품조회/수정</h1>
-				<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">상품조회/수정</a></li>
-					<li class="breadcrumb-item active">목록</li>
-				</ol>
+				
 
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="javascript:stock('${index.index}','${getstock.category_goods_serial}')" class="btn1 btn-dark">판매/입고</a>
+								<a href="#" id="a" class ="btn1 btn-dark">입고</a>
 							</div>
 						</div>
 					<div class="card-body">
@@ -113,15 +133,18 @@
 							</thead>
 							<tbody>
 								<c:forEach var="goodsList" items="${goodsList}" varStatus="index">
-									<tr>
+									<tr id="${index.index}">
 										<td>${goodsList.goods_detail_serial}</td>
 										<td>${goodsList.category_main_serial}</td>
 										<td>${goodsList.category_sub_serial}</td>
-										<td id="goods">${goodsList.category_goods_serial}</td>
+										<td id="serial">
+											<input type="hidden" id="hiSerial" value="${goodsList.category_goods_serial }"/>
+											${goodsList.category_goods_serial}
+										</td>
 										<td>${goodsList.goods_stock_stock_quantity+goodsList.goods_stock_receiving_quantity}</td>
-										<td><input type="text" name="goods_detail_price" value="${goodsList.goods_detail_price}" readonly="readonly" size="4"/>원</td>
+										<td><input type="text" name="goods_detail_price" value="${goodsList.goods_detail_price}" size="4"/>원</td>
 										
-										<td id="noti"><input type="text" name="goods_detail_stock_notification" 
+										<td><input id="noti" type="text" name="goods_detail_stock_notification" 
 										value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>
 										
 										<td><select name="goods_detail_promotion_serial" id="promotion">

@@ -50,15 +50,13 @@
 	</update>
 	
 	<!-- 판매등록/입고 -->
-	<select id="getStock" resultType="stock">
-		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	<select id="getStock" resultType="stock" parameterType="int">
+		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{serial}
 	</select>
-	<update id="updatePrice" parameterType="regist">
-		UPDATE MK_GOODS_DETAIL SET GOODS_DETAIL_PRICE WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
-	</update>
+	
 	<insert id="insertStock" parameterType="stock">
 		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
-		#{goods_stock_receivong_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date})
+		#{goods_stock_receiving_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date})
 	</insert>
 	
 	<!-- 수량 합계 -->

@@ -172,13 +172,10 @@ public class AdminServiceImpl implements AdminService {
 	
 	//판매 등록
 	@Override
-	public AdminStockVO getStock(AdminStockVO stock) {
-		return adminDao.getStock(stock);
+	public AdminStockVO getStock(int serial) {
+		return adminDao.getStock(serial);
 	}
-	@Override
-	public int updatePrice(AdminRegistVO regist) {
-		return adminDao.updatePrice(regist);
-	}
+	
 	@Override
 	public int insertStock(AdminStockVO stock) {
 		return adminDao.insertStock(stock);

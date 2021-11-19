@@ -41,6 +41,13 @@
 			location = url;
 		}
 	}
+		//수정완료
+		const result = "${stock}"
+		if(result=="insertSuc"){
+			alert('입고완료 하였습니다!'');
+		}else{
+			alert('오류!!!!');
+		}
 	</script>
 	<style type="text/css">
 .btn1 {font-size: 15px; white-space:nowrap; width:100%; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
@@ -64,26 +71,21 @@
 		<main>
 			<div class="container-fluid px-4">
 
-				<h1 class="mt-4">판매등록&입고</h1>
-				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item">판매등록</li>
-					<li class="breadcrumb-item active">입고</li>
-				</ol>
+				<h1 class="mt-4">입고</h1>
+			
 				
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="admin_categoryMainWrite.mdo" class="btn1 btn-dark">Confirm</a>
+								<a href="#" onclick="javascript:document.insertstock.submit();" class="btn1 btn-dark">입고합니다</a>
 							</div>
 						</div>
 					<div class="card-body">
-					<form method="post" action="updateStock.mdo">
+					<form method="post" id="insertstock" name="insertstock" action="insertStocks.mdo">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>상품재고번호</th>
 									<th>3차카테고리</th>
-									<th>판매가격</th>
 									<th>입고수량</th>
 									<th>잔여재고</th>
 									<th>입고일자</th>
@@ -92,11 +94,9 @@
 							</thead>
 							<tbody>
 									<tr>
-										<td>${getstock.goods_stock_serial}</td>
-										<td><input type="text" name="category_goods_serial" value="${getstock.category_goods_serial}" readonly="readonly"/></td>
-										<td><input type="text" name="goods_detail_price"></td>
-										<td><input type="text" name="goods_stock_receiving_quantity"/></td>
-										<td><input type="text" name="goods_stock_stock_quantity"/></td>
+										<td><input type="text" name="category_goods_serial" value="${serial}" readonly="readonly"/></td>
+										<td><input type="text" name="goods_stock_receiving_quantity"/>개</td>
+										<td><input type="text" name="goods_stock_stock_quantity"/>
 										<td><input type="date" name="goods_stock_receiving_date"/></td>
 										<td><input type="date" name="goods_stock_exp_date"/></td>
 									</tr>

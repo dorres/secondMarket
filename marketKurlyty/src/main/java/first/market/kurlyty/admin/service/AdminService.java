@@ -79,8 +79,7 @@ public interface AdminService {
 	public AdminStockVO sumStock(AdminStockVO stock);
 	
 	//판매 등록
-	public AdminStockVO getStock(AdminStockVO stock);
-	public int updatePrice(AdminRegistVO regist);
+	public AdminStockVO getStock(int serial);
 	public int insertStock(AdminStockVO stock);
 	//=================================================================
 
