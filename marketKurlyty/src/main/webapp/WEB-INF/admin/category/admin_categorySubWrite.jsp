@@ -70,7 +70,7 @@ table.type01 td {
 									</tr>
 								</table>
 							<input type="submit" value="등록하기" />
-							<input type="button" value="목록보기" onclick="location.href='admin_categoryMainList.mdo'"/>
+							<input type="button" value="목록보기" onclick="location.href='admin_categorySubList.mdo'"/>
 						</form>
 					</div>
 				</div>

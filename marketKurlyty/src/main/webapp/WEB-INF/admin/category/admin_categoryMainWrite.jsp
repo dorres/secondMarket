@@ -62,11 +62,11 @@ table.type01 td {
 									</tr>
 									<tr>
 										<th scope="row"  style="font-size: 20px">icon(black)</th>
-										<td><input type="file" name="iconImage" /></td>
+										<td><input type="file" name="iconImage1" /></td>
 									</tr>
 									<tr>
 										<th scope="row"  style="font-size: 20px">icon(color)</th>
-										<td><input type="file" name="iconImage" /></td>
+										<td><input type="file" name="iconImage2" /></td>
 									</tr>
 								</table>
 							<input type="submit" value="등록하기" />

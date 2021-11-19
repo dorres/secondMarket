@@ -118,7 +118,8 @@
 						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="#">주문관리</a>
+								<a class="nav-link" href="admin_orderWaitList.mdo">주문관리(결제완료)</a>
+								<a class="nav-link" href="admin_orderFinishList.mdo">주문관리(구매완료)</a>
 								<a class="nav-link" href="#">환불관리</a>
 								<a class="nav-link" href="#">취소관리</a>
 							</nav>
@@ -198,7 +199,7 @@
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="admin_bannerList.mdo">배너</a>
 								<a class="nav-link" href="layout-sidenav-light.html">쿠폰</a>	
-								<a class="nav-link" href="#">적립금</a>														
+								<a class="nav-link" href="admin_membershipList.mdo">적립금</a>														
 							</nav>
 						</div>
 						<!-- 마케팅 관리 -->

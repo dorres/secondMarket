@@ -9,7 +9,18 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
+<style type="text/css">
+.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+ </style>
+ <script type="text/javascript">
 
 	function delete_check(url) {
 		var answer = confirm("게시글를 정말로 삭제할꺼임?");
@@ -18,18 +29,13 @@
 		}
 	}
 //-->
+$(document).ready(function(){
+    $("tableSelector").delegate("tr.rows", "click", function(){
+        alert("Click!");
+    });
+});
 </script>
-<style type="text/css">
-.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
-		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
-		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
-		transition: border .25s linear, color .25s linear, background-color .25s linear;
 
-	}	
-.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
-.btn1.btn-dark:hover{background-color:#5f0080;}
-.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
- </style>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -42,16 +48,16 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">카테고리</h1>
+				<h1 class="mt-4">적립금</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">1차카테고리</a></li>
+					<li class="breadcrumb-item"><a href="index.html">적립금</a></li>
 					<li class="breadcrumb-item active">목록</li>
 				</ol>
-
+				
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="admin_categoryMainWrite.mdo" class="btn1 btn-dark">1차카테고리 등록</a>
+								<a href="admin_membershipWrite.mdo" class="btn1 btn-dark">적립금 등록</a>
 							</div>
 						</div>
 					<div class="card-body">
@@ -59,34 +65,33 @@
 							<thead>
 								<tr>
 									<th>번호</th>
-									<th>이름</th>
-									<th>icon(black)</th>
-									<th>icon(color)</th>
+									<th>등급 이름</th>
+									<th>등급 할인율</th>
+									<th>등급 전월실적 조건</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>번호</th>
-									<th>이름</th>
-									<th>Icon(black)</th>
-									<th>Icon(color)</th>
+									<th>등급 이름</th>
+									<th>등급 할인율</th>
+									<th>등급 전월실적 조건</th>
 								</tr>
 							</tfoot>
 							<tbody>
-								<c:forEach var="main" items="${mainList }">
-								<tr>
-									<td>${main.rownum }</td>
-									<td>${main.category_main_name }</td>
-									<td align="center"><img alt="메인 카테고리 아이콘 검정" src=" ${main.category_main_icon_black }"></td>
-									<td align="center"><img alt="메인 카테고리 아이콘 컬러" src="${main.category_main_icon_color }"></td>
-									<td>
-										<input type="button" onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" value="수정">
-										<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryMainDelete.mdo?category_main_serial=${main.category_main_serial }')"/>
-									</td>
-								</tr>
-								</c:forEach>
-
-							</tbody>
+									<c:forEach var="mem" items="${membershipList }">
+										<tr class="rows">
+											<td>${mem.rownum }</td>
+											<td>${mem.user_membership_name }</td>
+											<td>${mem.user_membership_point_rate}</td>
+											<td>${mem.user_membership_performance}</td>
+											<td>
+												<input type="button" onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'" value="수정">
+												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_membershipDelete.mdo?user_membership_name=${mem.user_membership_name }')"/>
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
 						</table>
 					</div>
 				</div>

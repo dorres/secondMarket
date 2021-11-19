@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+ <mapper namespace="adminOrderDAO">
+ 	<select id="getOrderWaitList" resultType="order">
+ 		SELECT * FROM MK_ORDER WHERE ORDER_DELIVERY_STATUS != '구매완료' ORDER BY ORDER_DATE
+ 	</select>
+ 	<!-- mk_order 테이블 가져오는 쿼리  -->
+ 	<select id="getOrderWait" resultType="order">
+		SELECT * FROM MK_ORDER WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
+ 	</select>
+ 	
+ 	<!-- mk_shipping_info 테이블 가져오는 쿼리 -->
+ 	<select id="getShippingInfo" resultType="shipping" parameterType="order">
+ 		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
+ 	</select>
+ </mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+  <mapper namespace="AdminDAO">
+  	<select id="getAdmin" resultType="admin" parameterType="admin">
+  		SELECT * FROM MK_ADMIN WHERE admin_id=#{admin_id}
+  	</select>	
+ 	
+ 	<insert id="insertAdmin" parameterType="admin">
+ 		INSERT INTO MK_ADMIN VALUES (#{admin_id},#{admin_name},#{admin_position},#{admin_pw},
+ 		#{admin_email},#{admin_phone},#{admin_address1},#{admin_address2})
+ 	</insert>
+ 	
+ 	<select id="getAdminList" resultType="admin" >
+ 		SELECT * FROM MK_ADMIN
+ 	</select>
+ 	
+ 	<select id="getUserlist" resultType="adminUser" >
+ 		SELECT B.USER_SERIAL, A.USER_ID, A.USER_NAME, A.USER_PHONE,
+ 			B.USER_MEMBERSHIP_NAME, B.USER_LAST_LOGIN, B.USER_POINT, B.USER_TOTAL_PURCHASE, B.USER_STATUS
+    	FROM MK_USER A 
+    	JOIN MK_USER_DETAILS B 
+    	ON A.USER_ID = B.USER_ID; 
+ 	</select>
+ 	
+ 	<update id="update" parameterType="admin">
+ 		UPDATE MK_ADMIN SET ADMIN_ID = #{admin_id}, ADMIN_POSITION= #{admin_position} WHERE ADMIN_ID = #{admin_id}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="admin">
+ 		DELETE FROM MK_ADMIN WHERE ADMIN_ID = #{admin_id};
+ 	</delete>
+	<!-- 회원 수정 출력 -->
+	<select id="getUser" parameterType="user" resultType="adminUser">
+		SELECT U.USER_ID, U.USER_NAME, U.USER_PHONE,  UD.USER_MEMBERSHIP_NAME, UD.USER_STATUS
+		FROM MK_USER U
+		JOIN MK_USER_DETAILS UD
+		ON U.USER_ID = UD.USER_ID
+		WHERE U.USER_ID = #{user_id}
+	</select>
+	<!-- 회원 수정 -->
+	<update id="updateUser" parameterType="user">
+ 		UPDATE MK_USER_DETAILS 
+ 		SET USER_STATUS = #{user_status}
+ 		WHERE USER_ID=#{user_id}
+ 	</update>
+ 	<!-- 회원 삭제 -->
+ 	<delete id="deleteUser" parameterType="user">
+ 		DELETE FROM MK_USER WHERE USER_ID = #{user_id}
+ 	</delete>
+ 	
+ 	<!-- 약관관리 출력--> 
+	<select id="getTermsAgreeList" resultType="terms">
+		SELECT (ROW_NUMBER() OVER(Order by terms_agreement_serial)) AS ROWNUM , * FROM MK_TERMS_AGREEMENT;
+	</select>
+	
+	<!-- 약관 등록  --> 
+	<insert id="insertTerms" parameterType="terms">
+		INSERT INTO MK_TERMS_AGREEMENT VALUES(default,#{terms_serial},#{terms_id},#{terms_agree_status},now(),now(),#{terms_content});
+	</insert>
+	
+	<!-- 약관 수정 -->
+	<update id="updateTerms" parameterType="terms">
+		UPDATE MK_TERMS_AGREEMENT
+		SET TERMS_ID = #{terms_id}, TERMS_CONTENT = #{terms_content}, TERMS_AGREE_DATE_MODIFIED = NOW()
+		WHERE TERMS_SERIAL = #{terms_serial};
+	</update>
+	
+	<!-- 약관 정보 -->
+	<select id="getTerms" resultType="terms" parameterType="terms">
+		SELECT * FROM MK_TERMS_AGREEMENT WHERE TERMS_SERIAL = #{terms_serial};
+	</select>
+	
+	<!-- 약관 삭제 -->
+	<delete id="deleteTerms" parameterType="terms">
+		DELETE FROM MK_TERMS_AGREEMENT WHERE TERMS_SERIAL = #{terms_serial};
+	</delete>
+</mapper>

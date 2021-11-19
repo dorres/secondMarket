@@ -14,10 +14,10 @@
 table{
 	border-collapse: collapse;
 	text-align: left;
-	width: 1200px;
+	width: 1300px;
 }
 th {
-	width: 200px;
+	width: 130px;
 	font-weight: bold;
 	border: 1px solid #ccc;
 	height: 50px;
@@ -63,10 +63,67 @@ $(document).ready(function () {
 		 }
 		});//ajax 
 	})
-
 })
-
+function formGoodsSubmit() {
+	if(document.goodsForm.category_goods_name.value==""){
+		alert("상품명을 입력하세요.");
+		document.goodsForm.category_goods_name.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_name_subtext.value==""){
+		alert("상품명 설명을 입력하세요.");
+		document.goodsForm.category_goods_name_subtext.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_unit.value==""){
+		alert("상품 단위를 입력하세요.");
+		document.goodsForm.category_goods_unit.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_weight.value==""){
+		alert("상품 무게를 입력하세요.");
+		document.goodsForm.category_goods_weight.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_origin.value==""){
+		alert("원산지를 입력하세요.");
+		document.goodsForm.category_goods_origin.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_detail_name1.value==""){
+		alert("상품 정보 제목을 입력하세요.");
+		document.goodsForm.category_goods_detail_name1.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_detail_name2.value==""){
+		alert("상품 정보 소제목을 입력하세요.");
+		document.goodsForm.category_goods_detail_name2.focus();
+		return;
+	}
+	if(document.goodsForm.category_goods_detail_name_subtext.value==""){
+		alert("상품 정보 설명을 입력하세요.");
+		document.goodsForm.category_goods_detail_name_subtext.focus();
+		return;
+	}
+	if(document.goodsForm.goodsImage1.value==""){
+		alert("썸네일 이미지를 등록하세요.");
+		document.goodsForm.goodsImage1.focus();
+		return;
+	}
+	if(document.goodsForm.goodsImage2.value==""){
+		alert("상품 정보 상단 이미지를 등록하세요.");
+		document.goodsForm.goodsImage2.focus();
+		return;
+	}
+	if(document.goodsForm.goodsImage3.value==""){
+		alert("상품 정보 메인 이미지를 등록하세요.");
+		document.goodsForm.goodsImage3.focus();
+		return;
+	}
+	document.goodsForm.submit();
+}
 </script>
+
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -90,11 +147,11 @@ $(document).ready(function () {
 						3차 카테고리 등록
 					</div>
 					<div class="card-body">
-						<form action="admin_categoryGoodsInsert.mdo" method="POST" enctype="multipart/form-data">
+						<form action="admin_categoryGoodsInsert.mdo" name="goodsForm" method="POST" enctype="multipart/form-data">
 								<table>
 									<tr>
 										<th>카테고리</th>
-										<td colspan="3">
+										<td colspan="3" >
 											<b>1차</b>
 											<select name="category_main_serial" id="category_main_serial">
 												<c:forEach var="main" items="${category1 }">
@@ -111,32 +168,44 @@ $(document).ready(function () {
 										</td>
 										
 										<th>상품명</th>
-										<td colspan="2"><input type="text" name="category_goods_name" style="width: 100%; height: 100%"></td>
+										<td colspan="2"><input type="text" name="category_goods_name" style="width: 100%; height: 100%" placeholder="ex) 친환경 당근 500g"></td>
 									</tr>
 										
 									<tr>
 
 										<th>상품명 설명</th>
-										<td colspan="5"><input type="text" name="category_goods_name_subtext" ></td>
+										<td colspan="5"><input type="text" name="category_goods_name_subtext" placeholder="ex) 껍질째 먹을 수 있는 친환경 흙당근 (500g 내외)" ></td>
 									</tr>
 									
 									<tr>
 										<th>상품 단위</th>
-										<td><input type="text" name="category_goods_unit" ></td>
+										<td><input type="text" name="category_goods_unit"  placeholder="ex) 1봉지"></td>
 										
 										<th>상품 무게</th>
-										<td><input type="text" name="category_goods_weight"></td>
+										<td><input type="text" name="category_goods_weight" placeholder="ex) 500g(2~4개입)"></td>
 										
 										<th>원산지</th>
-										<td><input type="text" name="category_goods_origin"></td>
+										<td><input type="text" name="category_goods_origin" placeholder="ex) 국내산"></td>
 									</tr>
 		
 									<tr>
 										<th>포장 타입</th>
-										<td><input type="text" name="category_goods_packaging_type"></td>
+										<td>
+											<select name="category_goods_packaging_type" style="width: 200px">
+													<option value="냉동/종이포장" selected="selected">냉동/종이포장</option>
+													<option value="냉장/종이포장">냉장/종이포장</option>
+													<option value="상온/종이포장">상온/종이포장</option>
+													<option value="기타">기타</option>
+											</select>
+										</td>
 										
 										<th>배송 유형</th>
-										<td><input type="text" name="category_goods_delivery_type"></td>
+										<td>
+											<select name="category_goods_delivery_type" style="width: 200px">
+												<option value="샛별배송/택배배송" selected="selected">샛별배송/택배배송</option>
+												<option value="기타">기타</option>
+											</select>
+										</td>
 										
 										<th>유통기한</th>
 										<td><input type="text" name="category_goods_exp_date"></td>
@@ -159,38 +228,40 @@ $(document).ready(function () {
 									
 									<tr>
 										<th>상품 정보 제목</th>
-										<td colspan="5"><input type="text" name="category_goods_detail_name1"></td>
+										<td colspan="5"><input type="text" name="category_goods_detail_name1" placeholder="ex) 친환경 당근"></td>
 									</tr>
 									
 									<tr>
 										<th>상품 정보 소제목</th>
-										<td colspan="5"><input type="text" name="category_goods_detail_name2"></td>
+										<td colspan="5"><input type="text" name="category_goods_detail_name2" placeholder="ex) 베타카로틴이 풍부한 주황빛 채소"></td>
 									</tr>
 									
 									<tr>
 										<th>상품 정보 설명</th>
-										<td colspan="5"><textarea rows="5"  style="width: 100%" name="category_goods_detail_name_subtext"></textarea></td>
+										<td colspan="5">
+											<textarea rows="5"  style="width: 100%" name="category_goods_detail_name_subtext"></textarea>
+										</td>
 									</tr>
 									
 									<tr>
 										<th>썸네일 이미지</th>
-										<td colspan="5"><input type="file" name="goodsImage" /></td>
+										<td colspan="5"><input type="file" name="goodsImage1" /></td>
 									</tr>
 									
 									<tr>
 										<th>상품 정보 상단 이미지</th>
-										<td colspan="5"><input type="file" name="goodsImage" /></td>
+										<td colspan="5"><input type="file" name="goodsImage2" /></td>
 									</tr>
 									
 									<tr>
 										<th>상품 정보 메인 이미지</th>
-										<td colspan="5"><input type="file" name="goodsImage" /></td>
+										<td colspan="5"><input type="file" name="goodsImage3" /></td>
 									</tr>
 																		
 								</table>
 								<br>
 								<div align="right" style="width: 1200px">
-									<input type="submit" value="등록하기" />
+									<input type="button" value="등록하기" onclick="formGoodsSubmit()"/>
 									<input type="button" value="목록보기" onclick="location.href='admin_categoryGoodsList.mdo'"/>
 								</div>
 						</form>

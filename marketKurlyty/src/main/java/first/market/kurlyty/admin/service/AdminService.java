@@ -9,9 +9,12 @@ import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -155,13 +158,9 @@ public interface AdminService {
 	//관리자 1차카테고리 리스트
 	List<AdminCategoryMainVO> getCategory1List();
 	
-	int getCategory1Column();
+	String getCategory1Column();
 	
 	int insertCategory1(AdminCategoryMainVO category1);
-	
-	int getIconBlack(String black);
-	
-	int getIconColor(String color);
 	
 	int deleteCategory1(AdminCategoryMainVO category1);
 	
@@ -172,7 +171,7 @@ public interface AdminService {
 	//관리자 2차카테고리 리스트
 	List<AdminCategorySubVO> getCategory2List();
 	
-	int getCategory2Column();
+	String getCategory2Column();
 	
 	int insertCategory2(AdminCategorySubVO category2);
 	
@@ -198,5 +197,25 @@ public interface AdminService {
 	int updateCategory3(AdminCategoryGoodsVO category);
 	
 	List<AdminCategorySubVO> getCategory2Name();
+	
+	//===========================================================================
+	//적립금
+	List<AdminMembershipVO> getMembershipList();
+	
+	AdminMembershipVO getMembership(AdminMembershipVO membership);
+	
+	int updateMembership(AdminMembershipVO membership);
+	
+	int insertMembership(AdminMembershipVO membership);
+	
+	int deleteMembership(AdminMembershipVO membership);
+	
+	//===========================================================================
+	//주문관리 (결제완료)
+	List<AdminOrderVO> getOrderWaitList();
+	
+	AdminOrderVO getOrderWait(AdminOrderVO order);
+	
+	AdminShippingInfoVO getShippingInfo(AdminOrderVO order);
 	
 }

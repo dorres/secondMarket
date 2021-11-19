@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="membershipDAO">
+ 	<select id="getMemgershipData" resultType="first.market.kurlyty.user.vo.MembershipVO">
+ 		SELECT * FROM MK_USER_MEMBERSHIP
+ 		WHERE user_membership_name=#{value}
+ 	</select>
+ 	<select id="getMembershipOfUser" resultType="String">
+ 		SELECT user_membership_name FROM MK_USER_DETAILS WHERE user_id=#{value}
+ 	</select>
+ 	
+ 	<!-- 괸리자 -->
+	<select id="getMembershipList" resultType="membership">
+		SELECT (ROW_NUMBER() OVER(ORDER BY USER_MEMBERSHIP_POINT_RATE)) AS ROWNUM , * FROM MK_USER_MEMBERSHIP
+	</select>
+	
+	<select id="getMembership"	resultType="membership" parameterType="membership">
+		SELECT * FROM MK_USER_MEMBERSHIP WHERE USER_MEMBERSHIP_NAME = #{user_membership_name}
+	</select> 
+	 
+	 <update id="updateMembership" parameterType="membership">
+ 		UPDATE MK_USER_MEMBERSHIP SET 
+ 		USER_MEMBERSHIP_POINT_RATE = #{user_membership_point_rate},
+ 		USER_MEMBERSHIP_PERFORMANCE = #{user_membership_performance}
+ 		WHERE USER_MEMBERSHIP_NAME = #{user_membership_name}
+ 	</update>
+ 	
+ 	 <insert id="insertMembership" parameterType="membership">
+	 	 INSERT INTO MK_USER_MEMBERSHIP VALUES (
+	 	 	#{user_membership_name}, #{user_membership_point_rate}, #{user_membership_performance}
+	 	 );
+ 	</insert>
+ 	<delete id="deleteMembership" parameterType="membership">
+ 	 	DELETE FROM MK_USER_MEMBERSHIP WHERE USER_MEMBERSHIP_NAME = #{user_membership_name}
+ 	</delete>
+ 	
+ 	
+ 	<!-- 괸리자 -->
+ </mapper>
