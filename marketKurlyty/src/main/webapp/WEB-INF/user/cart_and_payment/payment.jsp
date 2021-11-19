@@ -19,6 +19,12 @@
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false">
 	
+	<input type="hidden" id="pickUpType" value=""/>
+	<input type="hidden" id="pickUpDetail" value=""/>
+	<input type="hidden" id="shippingMessageTime" value=""/>
+	<input type="hidden" id="doorPassword" value=""/>
+	<input type="hidden" id="recipientName" value=""/>
+	<input type="hidden" id="recipientPhone" value=""/>
 	<c:if test="${orderPrice >= 400 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
@@ -30,6 +36,7 @@
 	<fmt:formatNumber var="oldPrice" maxFractionDigits="3" value="${goodsPrice}"/>
 	<fmt:formatNumber var="dc" maxFractionDigits="3" value="${orderPrice-goodsPrice }"/>
 	<%-- <input type="hidden" id="payment" value="${orderPrice }"> --%>
+	<input type="hidden" id="orderPrice" value="${orderPrice }"/>
 	<input type="hidden" id="address1" value="${userInfo.user_address1 }"/>
 	<input type="hidden" id="address2" value="${userInfo.user_address2 }"/>
 	<input type="hidden" id="zipcode" value="${userInfo.user_zipcode}"/>
@@ -75,7 +82,7 @@
 										/ 닫힘</span></a>
 								<c:set var="listSize" value="${fn:length(purchaseList) }"/>
 								<c:if test="${fn:length(purchaseList)==1 }">
-									<div class="short_info">${purchaseList[0].category_goods_name }</div>
+									<div class="short_info">${purchaseList[0].category_goods_name }(을)를 주문합니다.</div>
 								</c:if>
 								<c:if test="${fn:length(purchaseList)>1 }">
 									<div class="short_info">${purchaseList[0].category_goods_name } 외 ${listSize -1 }개 상품을 주문합니다.</div>
@@ -189,13 +196,31 @@
 								style="">
 								<h3 class="section_crux">상세 정보</h3>
 								<div class="section_full">
+								<!-- <div class="section_full">
+
+									<div class="receiving" id="receiverInfo">최현호, 010-4453-4548</div>
+									<div class="way" id="wayPlace" style="">
+									<span class="place" id="areaInfo" style="">경비실</span>
+									
+									<span class="txt off" id="meanType" style="display: none;">받으실 장소를 입력해 주세요</span>
+									
+									
+									
+									<div class="message" id="deliveryMessage" style="">
+									<span class="place" id="deliveryMessageTitle">배송완료 메시지</span>
+									<span class="txt" id="deliveryMessageDetail">배송 직후</span>
+									</div>
+									</div>
+									<button type="button" id="btnUpdateSubAddress" data-address-no="" class="btn default">수정</button>
+									
+								</div> -->
 
 									<div class="receiving off" id="receiverInfo">받으실 분 정보를
 										입력해 주세요</div>
 									<div class="way" id="wayPlace" style="display: none;">
-										<span class="place" id="areaInfo" style="display: none;"></span>
+										<span class="place" id="areaInfo" style="display: none; float:left;"></span>
 
-										<span class="txt off" id="meanType">받으실 장소를 입력해 주세요</span>
+										<span class="txt off" id="meanType"></span>
 
 
 
@@ -650,7 +675,7 @@ function reqeustPay(){
 				var address2=$("input#address2").val();
 				var zipcode=$("input#zipcode").val();
 				var listSize=String(${listSize});
-				var price=$("input#payment").val();
+				var price=$("input#orderPrice").val();
 				var merchant=String(req.merchant_uid);
 				var id='${userInfo.user_id}';
 				var name='${userInfo.user_name}';
@@ -658,13 +683,12 @@ function reqeustPay(){
 				var phone='${userInfo.user_phone}';
 				var masterGoodsSerial=${purchaseList[0].category_goods_serial };
 				var point=$("input#reserves").val();
-				console.log(data);
-				console.log(req);
-				console.log(id);
-				console.log(name);
-				console.log(email);
-				console.log(phone);
-				console.log(id);
+				var pickupType=$("input#pickUpType").val();
+				var pickupDetail=$("input#pickUpDetail").val();
+				var messageTime=$("input#shippingMessageTime").val();
+				var doorPw = $("input#doorPassword").val();
+				var recipiName=$("input#recipientName").val();
+				var recipiPhone=$("input#recipientPhone").val();
 				var amount=parseInt(data.amount)
 				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
@@ -685,7 +709,14 @@ function reqeustPay(){
 							"order_coupon_serial":"0",
 							"order_merchant_serial":merchant,
 							"master_goods_serial":masterGoodsSerial,
-							"usesr_point":point
+							"user_point":point,
+							"shipping_pickup_type":pickupType,
+							"shipping_pickup_detail":pickupDetail,
+							"shipping_message_time":messageTime,
+							"shipping_door_password":doorPw,
+							"shipping_recipient_name":recipiName,
+							"shipping_recipient_phone":recipiPhone
+							
 						}
 					}).done(function(location){
 						window.location.href="index.do";
