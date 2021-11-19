@@ -377,7 +377,7 @@ function zip(){
 											</tbody>
 										</table>
 										<div id="formSubmit" class="form_footer">
-											<a href="/shop/member/hack.php?&amp;" class="btn default">탈퇴하기</a>
+											<a href="withdraw.do" class="btn default">탈퇴하기</a>
 											<button type="button" class="btn active" 
 											onclick="formUpdateSubmit()">회원정보수정</button>
 										</div>
