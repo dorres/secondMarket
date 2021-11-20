@@ -431,6 +431,10 @@ public class AdminServiceImpl implements AdminService {
 	public AdminShippingInfoVO getShippingInfo(AdminOrderVO order) {
 		return adminDao.getShippingInfo(order);
 	}
+	@Override
+	public List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order) {
+		return adminDao.getOrderWaitDetail(order);
+	}
 
 }
 	

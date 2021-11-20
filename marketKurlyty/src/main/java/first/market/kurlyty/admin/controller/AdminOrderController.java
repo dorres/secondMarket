@@ -1,5 +1,7 @@
 package first.market.kurlyty.admin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +25,13 @@ public class AdminOrderController {
 		//주문관리 결제완료 세부사항
 		@RequestMapping("admin_orderWait.mdo")
 		public String orderWait(Model model, AdminOrderVO order) {
-			model.addAttribute("shippingInfo",adminService.getShippingInfo(order));
 			model.addAttribute("orderWait",adminService.getOrderWait(order));
+			model.addAttribute("orderWaitDetail", adminService.getOrderWaitDetail(order));
+			model.addAttribute("shippingInfo",adminService.getShippingInfo(order));
+
 			return "order/admin_orderWait";
 		}
-		//주문관리 결제완료 삭제
 		//주문관리 결제완료	수정
-		
 		
 		
 		//주문관리 구매완료 리스트

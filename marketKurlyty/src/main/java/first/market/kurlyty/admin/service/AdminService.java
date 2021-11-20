@@ -217,5 +217,7 @@ public interface AdminService {
 	AdminOrderVO getOrderWait(AdminOrderVO order);
 	
 	AdminShippingInfoVO getShippingInfo(AdminOrderVO order);
+
+	List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order);
 	
 }

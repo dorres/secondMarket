@@ -7,7 +7,7 @@
   	<!-- 1:1문의 답변 대기 쿼리 -->
  	<select id="getPersonalQnaWaitList" resultType="qna">
  		SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
- 		* FROM MK_QNA_PERSONAL WHERE qna_personal_answer IS NULL
+ 		* FROM MK_QNA_PERSONAL WHERE qna_personal_answer IS NULL OR qna_personal_answer = ''
  	</select>
  	
  	<select id="getPersonalQnaWait" resultType="qna" parameterType="qna">
@@ -28,7 +28,7 @@
  	  	 <!-- 1:1문의 답변 완료 쿼리 -->
  	<select id="getPersonalQnaFinishList" resultType="qna">
  	 	SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
- 		* FROM mk_qna_personal WHERE qna_personal_answer IS NOT NULL
+ 		* FROM mk_qna_personal WHERE qna_personal_answer IS NOT NULL AND qna_personal_answer != ''
  	</select>
  	
  	<select id="getPersonalQnaFinish" resultType="qna" parameterType="qna">

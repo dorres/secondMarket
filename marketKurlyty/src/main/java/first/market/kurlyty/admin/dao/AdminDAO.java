@@ -353,6 +353,9 @@ public class AdminDAO {
 	public AdminShippingInfoVO getShippingInfo(AdminOrderVO order) {
 		return sqlSession.selectOne("adminOrderDAO.getShippingInfo",order);
 	}
+	public List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order) {
+		return sqlSession.selectList("adminOrderDAO.getOrderWaitDetail",order);
+	}
 	
 	
 }

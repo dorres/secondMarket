@@ -94,7 +94,13 @@ textarea:focus, input:focus{
 									<tr>
 										<th>구매 물품 내역</th>
 										<td colspan="5">
-											<textarea rows="5" style="width: 100%"></textarea>
+											<textarea rows="5" style="width: 100%" readonly="readonly"><c:forEach var="detail" items="${orderWaitDetail }">${detail.category_goods_name }
+가격: ${detail.goods_detail_price }
+수량: ${detail.order_goods_count }
+총가격: ${detail.order_goods_old_price }
+할인가격: ${detail.order_goods_price } 
+
+</c:forEach></textarea>
 										</td>
 									</tr>					
 								</table>
@@ -119,7 +125,6 @@ textarea:focus, input:focus{
 										<th>기타 정보</th>
 										<td colspan="3"><input type="text" name="shipping_pickup_detail" value="${shippingInfo.shipping_pickup_detail }" readonly="readonly"></td>
 										
-										
 									</tr>
 									<tr>
 									<th>배송 완료 메시지 전송</th>
@@ -133,7 +138,7 @@ textarea:focus, input:focus{
 								
 								<div align="right" style="width: 1200px">
 									<input type="submit" value="등록하기" />
-									<input type="button" value="목록보기" onclick="location.href='admin_categoryGoodsList.mdo'"/>
+									<input type="button" value="목록보기" onclick="location.href='admin_orderWaitList.mdo'"/>
 								</div>
 						</form>
 						
