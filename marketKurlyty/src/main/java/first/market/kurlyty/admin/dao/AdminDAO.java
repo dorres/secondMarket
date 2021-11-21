@@ -17,7 +17,9 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminReviewVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -142,6 +144,23 @@ public class AdminDAO {
 	
 	public int insertStock(AdminStockVO stock) {
 		return sqlSession.insert("RegistDAO.insertStock",stock);
+	}
+	
+	// 리스트에 재고 출력
+	public int stockstock(AdminStockStockVO stockstock) {
+		return sqlSession.update("RegistDAO.stockstcok", stockstock);
+	}
+	//================================================================
+	
+	//리뷰 리스트
+	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
+		return sqlSession.selectList("reviewDAO.reviewList", review);
+	}
+	
+	
+	//리뷰 삭제
+	public int deleteReview(AdminReviewVO review) {
+		return sqlSession.delete("reviewDAO.deleteReview", review);
 	}
 	//================================================================
 

@@ -14,7 +14,9 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminReviewVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -41,50 +43,61 @@ public interface AdminService {
 	//회원 수정 출력
 	AdminUserVO getUser(AdminUserVO user);
 	//회원 수정
-	public int updateUser(AdminUserVO user);
+	int updateUser(AdminUserVO user);
 	//회원 삭제
-	public int deleteUser(AdminUserVO user);
+	 int deleteUser(AdminUserVO user);
 	//약관관리
-	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
+	 List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
 	//약관 등록
 	int insertTerms(AdminTermsAgreementVO agree);
 	//약관 수정
-	public int updateTerms(AdminTermsAgreementVO agree);
+	 int updateTerms(AdminTermsAgreementVO agree);
 	
 	//약관 정보
-	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree);
+	 AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree);
 	
 	//약관 삭제
-	public int deleteTerms(AdminTermsAgreementVO agree);
+	 int deleteTerms(AdminTermsAgreementVO agree);
 	
 	//상품 등록
-	public int inserGoods(AdminRegistVO regist);
+	 int inserGoods(AdminRegistVO regist);
 	
 	//상품조회리스트
-	public List<AdminRegistVO> goodsList(AdminRegistVO regist);
+	 List<AdminRegistVO> goodsList(AdminRegistVO regist);
 	
 	//상품조회
-	public AdminRegistVO getGoods(AdminRegistVO regist);
+	 AdminRegistVO getGoods(AdminRegistVO regist);
 	
 	//상품 수정
-	public int updateGoods(AdminRegistVO regist);
+	 int updateGoods(AdminRegistVO regist);
 	
 	//상품 삭제
-	public int deleteGoods(AdminRegistVO regist);
+	 int deleteGoods(AdminRegistVO regist);
 		
 	//재고 조회
-	public List<AdminStockVO> getStockList(AdminStockVO stock);
+	 List<AdminStockVO> getStockList(AdminStockVO stock);
 	
 	//입고 수정
-	public int updateStock (AdminStockVO stock);
+	int updateStock (AdminStockVO stock);
 	
 	//재고 합계
-	public AdminStockVO sumStock(AdminStockVO stock);
+	AdminStockVO sumStock(AdminStockVO stock);
 	
 	//판매 등록
-	public AdminStockVO getStock(int serial);
-	public int insertStock(AdminStockVO stock);
+	AdminStockVO getStock(int serial);
+	int insertStock(AdminStockVO stock);
+	
+	// 리스트에 재고 출력
+	int stockstock(AdminStockStockVO stockstock);
+	
+	//----------------------------------------------------------------
+	
+		//리뷰 리스트
+	List<AdminReviewVO> getReviewList(AdminReviewVO review);
+	//리뷰 삭제
+	int deleteReview(AdminReviewVO review); 
 	//=================================================================
+	
 
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);

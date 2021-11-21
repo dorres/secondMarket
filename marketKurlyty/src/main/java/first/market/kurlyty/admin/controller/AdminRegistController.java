@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
 
 @Controller
@@ -42,8 +43,7 @@ public class AdminRegistController {
 	public String getGoodsList(AdminRegistVO regist, AdminStockVO stock, Model model) {
 		List<AdminRegistVO> list=adminService.goodsList(regist);
 		for(AdminRegistVO vo : list) {
-			System.out.println(vo.getGoods_detail_stock_quantity());
-			if(vo.getGoods_detail_stock_quantity()<10) {
+			if(vo.getGoods_detail_stock_quantity()<15) {
 				model.addAttribute("notification",true);
 				break;
 			}
@@ -65,8 +65,9 @@ public class AdminRegistController {
 			int[] goods_detail_promotion_serial,
 			int[] goods_detail_status,
 			int[] goods_detail_price,
-			int[] goods_detail_dicountrate,int index,int serial) {
+			int[] goods_detail_dicountrate,int index,int serial, AdminStockStockVO stockstcok) {
 		int success = 0;
+//		int stock = 0;
 //		System.out.println(goods_detail_price[index]);
 //		System.out.println(goods_detail_stock_notification[index]);
 //		System.out.println(goods_detail_promotion_serial[index]);
@@ -80,7 +81,8 @@ public class AdminRegistController {
 		regist.setGoods_detail_dicountrate(goods_detail_dicountrate[index]);
 		regist.setGoods_detail_price(goods_detail_price[index]);
 		success = adminService.updateGoods(regist);
-		if(success != 0) {
+//		stock = adminService.stockstock(stockstcok);
+		if(success != 0 ) {
 			return "redirect:getGoodsList.mdo";
 		}else {
 			return "redirect:getGoodsList.mdo";
@@ -130,7 +132,6 @@ public class AdminRegistController {
 		 @RequestMapping("insertStocks.mdo")
 			 public String insertStock(AdminStockVO stock, RedirectAttributes ra) {
 				 int success = 0;
-				 System.out.println(stock.getGoods_stock_stock_quantity());
 				 success = adminService.insertStock(stock);
 				 ra.addFlashAttribute("stock", "insertSuc");
 				 if(success != 0) {
@@ -140,7 +141,21 @@ public class AdminRegistController {
 				 }
 				 
 			 }
+		 
+		 
+		 //리스트에 재고 출력
+		 @RequestMapping("stockstock.mdo")
+		 public String stockstock(AdminStockStockVO stockstock1, int stock, Model model) {
+			 int success = 0;
+			 success = adminService.stockstock(stockstock1);
+			 model.addAttribute(stock);
+			 if(success != 0) {
+				 return "redirect:getGoodsList.mdo";
+			 }else {
+				 return "redirect:getGoodsList.mdo";
+			 }
 		 }
-
-		
+		 
+		 
+}
 

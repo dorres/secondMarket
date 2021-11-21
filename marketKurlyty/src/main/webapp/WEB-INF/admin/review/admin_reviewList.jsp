@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,19 +44,7 @@
 		if(${notification!=null}){
 			alert("재고 부족한 재품이 있습니다.")
 		}
-		/* var noti = document.getElementById("noti").value;
-		if(noti<20){
-			alert("재고가 충분하지 않습니다.");
-		}else{ null;} */
-		
-		//	var dis = document.getElementById("dis");
-	//	if(dis==100){
-	//		alert("100미만으로 입력 해주세요.");
-	//		location.href = "getGoodsList.mdo";
-	//	}else{
-	//		alert("할인 적용!");
-	//		location.href = "admin_index.mdo";
-		//}
+	
 	function stock(index,serial){
 	document.updateForm.action="insertStock.mdo?index="+String(index)+"&serial="+String(serial);
 	document.updateForm.submit();
@@ -110,69 +98,39 @@
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="#" id="a" class ="btn1 btn-dark">입고</a>
-							</div>
-							<div>
-								<button type="button" class="btm_image" id="img_btn" onclick="stockstock.mdo?goods_detail_serial">
-								<img src="${pageContext.request.contextPath }/resources/images/Admin/Re.png" style="width:25px; height:25px; border:0">
-								</button>
+								<a href="#" id="a" class ="btn1 btn-dark">버튼</a>
 							</div>
 						</div>
 					<div class="card-body">
-					<form name="updateForm" method="post" action="updateGoods.mdo?goods_detail_serial=${goods.goods_detail_serial}">
+					<form name="" method="post" action="">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>상품번호</th>
-									<th>1차카테고리</th>
-									<th>2차카테고리</th>
-									<th>3차카테고리</th>
-									<th>재고수량</th>
-									<th>상품가격</th>
-									<th>알림</th>
-									<th>프로모션</th>
-									<th>상태</th>
-									<th>할인</th>
-									<th>재고</th>
-									<th>수정/삭제</th>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+									<th>조회</th>
+									<th>베스트리뷰</th>
+									<th>삭제</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="goodsList" items="${goodsList}" varStatus="index">
-									<tr id="${index.index}">
-										<td>${goodsList.goods_detail_serial}</td>
-										<td>${goodsList.category_main_serial}</td>
-										<td>${goodsList.category_sub_serial}</td>
-										<td id="serial">
-											<input type="hidden" id="hiSerial" value="${goodsList.category_goods_serial }"/>
-											${goodsList.category_goods_serial}
-										</td>
-										<td>${goodsList.goods_detail_stock_quantity}</td>
-										<td><input type="text" name="goods_detail_price" value="${goodsList.goods_detail_price}" size="4"/>원</td>
-										
-										<td><input id="noti" type="text" name="goods_detail_stock_notification" 
-										value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>
-										
-										<td><select name="goods_detail_promotion_serial" id="promotion">
-											<option value="1" ${goodsList.goods_detail_promotion_serial == 1 ? "selected='selected'" : '' }>1번프로</option>
-											<option value="2" ${goodsList.goods_detail_promotion_serial == 2 ? "selected='selected'" : '' }>2번프로</option>
-											<option value="3" ${goodsList.goods_detail_promotion_serial == 3 ? "selected='selected'" : '' }>3번프로</option>
-											<option value="4" ${goodsList.goods_detail_promotion_serial == 4 ? "selected='selected'" : '' }>4번프로</option>
-										</select></td>
-										
-										<td><select name="goods_detail_status" id="status">
-											<option value="0" ${goodsList.goods_detail_status == 0 ? "selected='selected'" : '' }>판매완료</option>
-											<option value="1" ${goodsList.goods_detail_status == 1 ? "selected='selected'" : '' }>판매중</option>
-											<option value="2" ${goodsList.goods_detail_status == 2 ? "selected='selected'" : '' }>판매중지</option>
-										</select></td>
-										
-										<td id="dis"><input type="text" name="goods_detail_dicountrate" 
-										value="${goodsList.goods_detail_dicountrate}" size="3"/>%</td>
-										
-										<td><input type="button" value="재고" onclick="location.href='stockList.mdo?category_goods_serial=${goodsList.category_goods_serial}'"></td>
+								<c:forEach var="review" items="${reviewList}">
+									<tr>
+										<td>${review.review_serial }</td>
+										<td>${review.review_title }</td>
+										<td>${review.user_id }</td>
+										<td><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
+										<td>${review.review.hit }</td>
 										<td>
-											<input type="submit" onclick="javascript:update('${index.index}','${goodsList.goods_detail_serial}')" value="수정"/>
-											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGoods.mdo?goods_detail_serial=${goodsList.goods_detail_serial}')"/>
+										<select name="review_best_up">
+										<option value="0" ${review.review_best_up == 0 ? "selected='selected" : '' }>일반리뷰</option>
+										<option value="1" ${review.review_best_up == 1 ? "selected='selected" : '' }>베스트리뷰</option>
+										</select>
+										</td>
+										<td>
+											<input type="button" value="삭제" onclick="deleteReview.mdo?review_serial=${review.review_serial}"/>
 										</td>
 									</tr>
 								</c:forEach>
