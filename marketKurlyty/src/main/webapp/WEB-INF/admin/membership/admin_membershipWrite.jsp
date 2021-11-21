@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <style type="text/css">
-
 table.type01 {
   border-collapse: collapse;
   text-align: left;
@@ -46,37 +45,32 @@ table.type01 td {
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">카테고리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">1차카테고리 상세</a></li>
-					<li class="breadcrumb-item active">목록</li>
+					<li class="breadcrumb-item"><a href="index.html">적립금 상세</a></li>
 				</ol>
 
 				<div class="card mb-4">
 					<div class="card-header">
-						1차 카테고리 상세
+						적립금 상세
 					</div>
 					<div class="card-body">
-						<form action="admin_categoryMainUpdate.mdo" method="POST" enctype="multipart/form-data">
+						<form action="admin_membershipInsert.mdo" method="POST" >
 								<table class="type01">
 									<tr>
-										<th scope="row" style="font-size: 20px">이름</th>
-										<td><input type="text" name="category_main_name" value="${category.category_main_name }" style="width: 300px;"></td>
+										<th scope="row" style="font-size: 20px">등급 이름</th>
+										<td><input type="text" name="user_membership_name" /></td>
 									</tr>
 									<tr>
-										<th scope="row"  style="font-size: 20px">icon(black)</th>
-										<td><input type="file" name="iconImage1" /></td>
-										<td><img alt="아이콘 검정" src="${category.category_main_icon_black }"></td>
-									</tr>
+										<th scope="row"  style="font-size: 20px">등급 할인율</th>
+										<td><input type="text" name="user_membership_point_rate" /></td>
+									</tr>	
 									<tr>
-										<th scope="row"  style="font-size: 20px">icon(color)</th>
-										<td><input type="file" name="iconImage2" /></td>
-										<td><img alt="아이콘 컬러" src="${category.category_main_icon_color }"></td>
+										<th scope="row"  style="font-size: 20px">등급 전월실적</th>
+										<td><input type="text" name="user_membership_performance"/></td>
 									</tr>
+
 								</table>
-							<input type="hidden" value="${category.category_main_icon_black }" name="category_main_icon_black">
-							<input type="hidden" value="${category.category_main_icon_color }" name="category_main_icon_color">
-							<input type="hidden" value="${category.category_main_serial }" name="category_main_serial">
-							<input type="submit" value="수정하기" />
-							<input type="button" value="목록보기" onclick="location.href='admin_categoryMainList.mdo'"/>
+							<input type="submit" value="등록하기" />
+							<input type="button" value="목록보기" onclick="location.href='admin_membershipList.mdo'"/>
 						</form>
 					</div>
 				</div>

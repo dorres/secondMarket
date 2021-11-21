@@ -30,12 +30,14 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminStockVO" alias="stock"/>
  		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminGoodsStockVO" alias="goodsstock"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminMembershipVO" alias="membership"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminOrderVO" alias="order"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminShippingInfoVO" alias="shipping"/>
+ 		
  	</typeAliases>
  	<mappers>
- 		<mapper resource="config/mappings/membership-mapping.xml"/>
  		<mapper resource="config/mappings/category-mapping.xml"/>
  		<mapper resource="config/mappings/user-mapping.xml"/>
- 		<mapper resource="config/mappings/admin-mapping.xml"/>
  		<mapper resource="config/mappings/board_notice-mapping.xml"/> <!-- bk -->
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
@@ -43,5 +45,13 @@
  		<mapper resource="config/mappings/registration-mapping.xml"/>
  		<mapper resource="config/mappings/order-mapping.xml"/>
 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
+		<mapper resource="config/mappings/admin/banner-mapping.xml"/>
+		<mapper resource="config/mappings/admin/notice-mapping.xml"/>
+		<mapper resource="config/mappings/admin/faq-mapping.xml"/>
+		<mapper resource="config/mappings/admin/qna-mapping.xml"/>
+		<mapper resource="config/mappings/admin/category-mapping.xml"/>
+		<mapper resource="config/mappings/admin/admin-mapping.xml"/>
+		<mapper resource="config/mappings/admin/adminOrder-mapping.xml"/>
+		<mapper resource="config/mappings/common/membership-mapping.xml"/>
  	</mappers>
  </configuration>

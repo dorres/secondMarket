@@ -13,9 +13,12 @@ import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -327,17 +330,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int getCategory1Column() {
+	public String getCategory1Column() {
 		return adminDao.getCategory1Column();
-	}
-
-	@Override
-	public int getIconBlack(String black) {
-		return adminDao.getIconBlack(black);
-	}
-	@Override
-	public int getIconColor(String color) {
-		return adminDao.getIconColor(color);
 	}
 
 	@Override
@@ -367,7 +361,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int getCategory2Column() {
+	public String getCategory2Column() {
 		return adminDao.getCategory2Column();
 	}
 
@@ -419,6 +413,44 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
 		return adminDao.insertCategory3Detail(category3);
+	}
+	//================================================================
+	// 맴버쉽 리스트
+	@Override
+	public List<AdminMembershipVO> getMembershipList() {
+		return adminDao.getMembershipList();
+	}
+	@Override
+	public AdminMembershipVO getMembership(AdminMembershipVO membership) {
+		return adminDao.getMembership(membership);
+	}
+	@Override
+	public int updateMembership(AdminMembershipVO membership) {
+		return adminDao.updateMembership(membership);
+	}
+	@Override
+	public int insertMembership(AdminMembershipVO membership) {
+		return adminDao.insertMembership(membership);
+	}
+	@Override
+	public int deleteMembership(AdminMembershipVO membership) {
+		return adminDao.deleteMembership(membership);
+	}
+	@Override
+	public List<AdminOrderVO> getOrderWaitList() {
+		return adminDao.getOrderWaitList();
+	}
+	@Override
+	public AdminOrderVO getOrderWait(AdminOrderVO order) {
+		return adminDao.getOrderWait(order);
+	}
+	@Override
+	public AdminShippingInfoVO getShippingInfo(AdminOrderVO order) {
+		return adminDao.getShippingInfo(order);
+	}
+	@Override
+	public List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order) {
+		return adminDao.getOrderWaitDetail(order);
 	}
 
 

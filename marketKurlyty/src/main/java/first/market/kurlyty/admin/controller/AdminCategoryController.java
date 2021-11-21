@@ -51,116 +51,97 @@ public class AdminCategoryController {
 	
 	//메인 카테고리(update)
 	@RequestMapping("admin_categoryMainUpdate.mdo") //메인 카테고리 세부사항에서 수정하는거 봐야함
-	public String categoryMainUpdate(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
+	public String categoryMainUpdate(@RequestParam("iconImage1") MultipartFile file1,
+			@RequestParam("iconImage1") MultipartFile file2,  AdminCategoryMainVO category1) {
 		int success =0;
-		int result1 = 0; 
-		int result2 = 0;
-		AdminCategoryMainVO mainVO;
-		String key1;
-		String key2;
-		String deleteKey1;
-		String deleteKey2;
-		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/categoryMain/";
-
-		//s3삭제값
-		mainVO = adminService.getCategory1(category1);
-		deleteKey1 = mainVO.getCategory_main_icon_black().substring(49);
-		deleteKey2 = mainVO.getCategory_main_icon_color().substring(49);
+		String key1 = null, key2 =null;
+		UUID uuid;
+		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
 		
-		
-		// db작업 및 s3삭제 및 업로드
-		result1 = adminService.getIconBlack(files[0].getOriginalFilename());
-		result2 = adminService.getIconColor(files[1].getOriginalFilename());
-
-		//icon_black 수정하고 싶은경우
-		if(files[0].getSize() != 0) {
-			//수정하고싶은 이미지가 기존에 있을때
-			if(result1 !=0) {
-				category1.setCategory_main_icon_black(awsPath + files[0].getOriginalFilename()+ "(" +result1 + ")" );
-			//수정하고싶은 이미지가 기존에 없을때
-			}else { 
-				category1.setCategory_main_icon_black(awsPath + files[0].getOriginalFilename());
-				awsS3.delete(deleteKey1);
-			}
+		//S3작업
+		//검정 이미지 수정하고 싶은경우
+		if(file1.getSize() != 0) {
+			//기존 등록되어있던 이미지의 경로를 불러와서 S3에 이미지를 삭제한다.
+			String deleteKey1 =  adminService.getCategory1(category1).getCategory_main_icon_black().substring(49);
+			awsS3.delete(deleteKey1);
 			try {
-				key1 = "categoryMain/" + files[0].getOriginalFilename();
-				InputStream is =files[0].getInputStream();
-				String contentType = files[0].getContentType(); 
-				long contentLength = files[0].getSize();
+				uuid = UUID.randomUUID();
+				key1 = "categoryMain/" +uuid + file1.getOriginalFilename();
+				InputStream is = file1.getInputStream();
+				String contentType = file1.getContentType(); 
+				long contentLength = file1.getSize();
 				awsS3.upload(is, key1, contentType, contentLength);
 			}catch (IOException e) { e.printStackTrace();}
-
+			//db작업을 위한 값 
+			category1.setCategory_main_icon_black(awsPath+key1);
 		}
-		//icon_color 수정하고 싶은경우
-		if(files[1].getSize() !=0){
-			//수정하고 싶은 이미자가 기존에 있을때
-			if(result2 !=0) {
-				category1.setCategory_main_icon_color(awsPath + files[1].getOriginalFilename() + "(" +result2 + ")" );
-			//수정하고 싶은 이미지가 기존에 없을때
-			}else {
-				category1.setCategory_main_icon_color(awsPath + files[1].getOriginalFilename());
-				awsS3.delete(deleteKey2);
-			}
+		//컬러 이미지 수정하고 싶은경우
+		if(file2.getSize() !=0){
+			String deleteKey2 =  adminService.getCategory1(category1).getCategory_main_icon_color().substring(49);
+			awsS3.delete(deleteKey2);
 			try {
-				key2 = "categoryMain/" + files[1].getOriginalFilename();
-				InputStream is =files[1].getInputStream();
-				String contentType = files[1].getContentType(); 
-				long contentLength = files[1].getSize();
+				uuid = UUID.randomUUID();
+				key2 =  "categoryMain/" +uuid + file2.getOriginalFilename();
+				InputStream is = file2.getInputStream();
+				String contentType = file2.getContentType(); 
+				long contentLength = file2.getSize();
 				awsS3.upload(is, key2, contentType, contentLength);
-				
 			} catch (IOException e) { e.printStackTrace();}
+			//db작업을 위한 값 
+			category1.setCategory_main_icon_color(awsPath+key2);
 		}
 		success = adminService.updateCategory1(category1);		
-
-		return "redirect:admin_categoryMainList.mdo";
+		if(success !=0) {
+			return "redirect:admin_categoryMainList.mdo";
+		}else {
+			return "redirect:admin_categoryMain.mdo";
+		}
 	}
 	
 	
 	//메인 카테고리(insert)
 	@RequestMapping("admin_categoryMainInsert.mdo")
-	public String categoryMainInsert(@RequestParam("iconImage") MultipartFile[] files,  AdminCategoryMainVO category1) {
-		String key1 = "";
-		String key2 = "";
-		int result1 = 0; 
-		int result2 = 0;
+	public String categoryMainInsert(@RequestParam("iconImage1") MultipartFile file1,
+			@RequestParam("iconImage2") MultipartFile file2, AdminCategoryMainVO category1) {	
 		int success =0;
+		int result =0;
+		UUID uuid;
+		String key1 = null, key2 =null;
+		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
 		DecimalFormat df;
 		
+		//썸네일 이미지 등록하는경우
+		if(file1.getSize() !=0) {
+			uuid=UUID.randomUUID();
+			key1 = "categoryMain/" + uuid.toString() +file1.getOriginalFilename();
+			category1.setCategory_main_icon_black(path + key1);
+		}
+		//헤더 이미지 등록하는경우
+		if(file2.getSize() !=0) {
+			uuid=UUID.randomUUID();
+			key2 = "categoryMain/" + uuid.toString() +file2.getOriginalFilename();
+			category1.setCategory_main_icon_color(path+key2);
+		}
+		//3차 카테고리 상품 등록(db작업)
 		df = new DecimalFormat("000");
-		result1 = adminService.getIconBlack(files[0].getOriginalFilename());
-		result2 = adminService.getIconColor(files[1].getOriginalFilename());
-		
-		if(result1 !=0) 
-			key1 = "categoryMain/" + files[0].getOriginalFilename() + "(" + result1 + ")";
-		else
-			key1 = "categoryMain/" + files[0].getOriginalFilename();
-		
-		if(result2 !=0) 
-			key2 = "categoryMain/" + files[1].getOriginalFilename() + "(" + result2 + ")";
-		else
-			key2 = "categoryMain/" + files[1].getOriginalFilename();		
-
-		category1.setCategory_main_icon_black("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key1);
-		category1.setCategory_main_icon_color("https://kurlybuc.s3.ap-northeast-2.amazonaws.com/"+key2);
-		
-		category1.setCategory_main_serial("M" + df.format(adminService.getCategory1Column()+1));	
+		result = Integer.parseInt(adminService.getCategory1Column().substring(1));
+		category1.setCategory_main_serial("M" + df.format(result+1) );	
 		success = adminService.insertCategory1(category1);
-//		//↑↑↑↑↑↑여기까지가 db작업	
-		
-		if(success != 0) {//db가 성공적으로 들어가면 s3작업 실행
+
+		//db가 성공적으로 들어가면 s3작업 실행
+		if(success != 0) {
 			try {
 				//Icon_black s3업로드
-				InputStream is = files[0].getInputStream();
-				String contentType = files[0].getContentType(); 
-				long contentLength = files[0].getSize();
+				InputStream is = file1.getInputStream();
+				String contentType = file1.getContentType(); 
+				long contentLength = file1.getSize();
 				awsS3.upload(is, key1, contentType, contentLength);
 				
 				//Icon_color s3업로드
-				is = files[1].getInputStream();
-				contentType = files[1].getContentType(); 
-				contentLength = files[1].getSize();
+				is = file2.getInputStream();
+				contentType = file2.getContentType(); 
+				contentLength = file2.getSize();
 				awsS3.upload(is, key2, contentType, contentLength);
-
 			}catch (IOException e) {e.printStackTrace();}
 			
 		}//end if
@@ -172,7 +153,6 @@ public class AdminCategoryController {
 	//카테고리 메인 삭제(delete)
 	@RequestMapping("admin_categoryMainDelete.mdo")
 	public String categoryMainDelete(AdminCategoryMainVO category1) {
-		int success =0;
 		
 		// 1. db에서 삭제하고싶은 칼럼의 데이터를 가져온다.
 		AdminCategoryMainVO mainVO = adminService.getCategory1(category1);
@@ -183,17 +163,8 @@ public class AdminCategoryController {
 		String deletePath1 = mainVO.getCategory_main_icon_color().substring(49);
 		awsS3.delete(deletePath1);
 		
-		success =adminService.deleteCategory1(category1);
-		if(success != 0) 
-			return "redirect:admin_categoryMainList.mdo";
-		else 
-			return "redirect:admin_categoryMainList.mdo";
-		//
-		//
-		//여기 수정해야함 success값으로 success을 활용안함 지금하기 너무 졸려ㅜㅜ
-		// 에러페이지??
-		//
-		
+		adminService.deleteCategory1(category1);
+		return "redirect:admin_categoryMainList.mdo";
 	}
 	
 	//-----------------------------------------------------
@@ -221,18 +192,15 @@ public class AdminCategoryController {
 	//서브 카테고리 등록(insert)
 	@RequestMapping("admin_categorySubInsert.mdo")
 	public String categorySubWrite(AdminCategorySubVO category2) {
+		int result;
 		DecimalFormat df;
-		int success =0;
 		
 		df = new DecimalFormat("000");
-		category2.setCategory_sub_serial("S" + df.format(adminService.getCategory2Column()+1));	
-		success = adminService.insertCategory2(category2);
-		
-		if(success !=0) {
-			return "redirect:admin_categorySubList.mdo";
-		}else {
-			return "redirect:admin_categorySubList.mdo";
-		}
+		result = Integer.parseInt(adminService.getCategory2Column().substring(1));
+		category2.setCategory_sub_serial("S" + df.format(result+1));	
+		adminService.insertCategory2(category2);
+
+		return "redirect:admin_categorySubList.mdo";
 	}
 	//서브 카테고리 수정(update)
 	@RequestMapping("admin_categorySubUpdate.mdo")
@@ -287,63 +255,66 @@ public class AdminCategoryController {
 	
 	//상품 카테고리 등록(Insert)
 	@RequestMapping("admin_categoryGoodsInsert.mdo")
-	public String categoryGoodsInsert(@RequestParam("goodsImage") MultipartFile[] files, AdminCategoryGoodsVO category3) {
+	public String categoryGoodsInsert(@RequestParam("goodsImage1") MultipartFile file1, @RequestParam("goodsImage2") MultipartFile file2,
+			@RequestParam("goodsImage3") MultipartFile file3, AdminCategoryGoodsVO category3) {
 		int result1, result2;
-		String key1;
-		String key2;
-		String key3;
+		String key1 = null, key2 = null, key3 = null;
 		UUID uuid;
 		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
 		
-		uuid=UUID.randomUUID();
-		key1 = "categoryGoods/" + uuid.toString() +files[0].getOriginalFilename();
-		uuid=UUID.randomUUID();
-		key2 = "categoryGoods/" + uuid.toString() +files[1].getOriginalFilename();
-		uuid=UUID.randomUUID();
-		key3 = "categoryGoods/" + uuid.toString() +files[2].getOriginalFilename();
-			
-		category3.setCategory_goods_image_thumb(path + key1);
-		category3.setCategory_goods_image_detail_header(path + key2);
-		category3.setCategory_goods_image_detail_main(path + key3);
+		//썸네일 이미지 등록하는경우
+		if(file1.getSize() !=0) {
+			uuid=UUID.randomUUID();
+			key1 = "categoryGoods/" + uuid.toString() +file1.getOriginalFilename();
+			category3.setCategory_goods_image_thumb(path + key1);
+		}
+		//헤더 이미지 등록하는경우
+		if(file2.getSize() !=0) {
+			uuid=UUID.randomUUID();
+			key2 = "categoryGoods/" + uuid.toString() +file2.getOriginalFilename();
+			category3.setCategory_goods_image_detail_header(path + key2);
+		}
+		//메인 이미지 등록하는경우
+		if(file3.getSize() != 0) {
+			uuid=UUID.randomUUID();
+			key3 = "categoryGoods/" + uuid.toString() +file3.getOriginalFilename();
+			category3.setCategory_goods_image_detail_main(path + key3);
+		}
 		
-		//3차 카테고리 상품 등록
+		//3차 카테고리 상품 등록(db작업)
 		result1 = adminService.insertCategory3(category3);
+		//3차 카테고리 상품 디테일 등록(db작업)
 		result2 = adminService.insertCategory3Detail(category3);
-			
-		//↑↑↑↑↑↑여기까지가 db작업	
 		
-		if(result1 != 0 && result2 != 0) {//db가 성공적으로 들어가면 s3작업 실행
+		//db가 성공적으로 들어가면 s3작업 실행
+		if(result1 != 0 && result2 != 0) {
 			try {
 				//썸네일 업로드
-				InputStream is = files[0].getInputStream();
-				String contentType = files[0].getContentType(); 
-				long contentLength = files[0].getSize();
+				InputStream is = file1.getInputStream();
+				String contentType = file1.getContentType(); 
+				long contentLength = file1.getSize();
 				awsS3.upload(is, key1, contentType, contentLength);
 				
 				//상품 정보 헤더
-				is = files[1].getInputStream();
-				contentType = files[1].getContentType(); 
-				contentLength = files[1].getSize();
+				is = file2.getInputStream();
+				contentType = file2.getContentType(); 
+				contentLength = file2.getSize();
 				awsS3.upload(is, key2, contentType, contentLength);
 				
 				//상품 정보 메인
-				is = files[2].getInputStream();
-				contentType = files[2].getContentType(); 
-				contentLength = files[2].getSize();
+				is = file3.getInputStream();
+				contentType = file3.getContentType(); 
+				contentLength = file3.getSize();
 				awsS3.upload(is, key3, contentType, contentLength);
-
-
 			}catch (IOException e) {e.printStackTrace();}
 			
 		}//end if
 		return "redirect:admin_categoryGoodsList.mdo";
 	}
 	
-	//상품 등록 삭제(Delete)
+	//상품 삭제(Delete)
 	@RequestMapping("admin_categoryGoodsDelete.mdo")
 	public String categoryGoodsDelete(AdminCategoryGoodsVO category3) {
-		int success =0;
-
 		// 1. db에서 삭제하고싶은 칼럼의 데이터를 가져온다.
 		AdminCategoryGoodsVO goodsVO = adminService.getCategory3(category3);
 
@@ -357,32 +328,21 @@ public class AdminCategoryController {
 			awsS3.delete(goodsVO.getCategory_goods_image_detail_main());
 		}
 		
-		success =adminService.deleteCategory3(category3);
-		if(success != 0) 
-			return "redirect:admin_categoryGoodsList.mdo";
-		else 
-			return "redirect:admin_categoryGoodsList.mdo";
-		//
-		//
-		//여기 수정해야함 success값으로 success을 활용안함 지금하기 너무 졸려ㅜㅜ
-		// 에러페이지??
-		//	
+		adminService.deleteCategory3(category3);
+		return "redirect:admin_categoryGoodsList.mdo";
+
 	}
 	
 	//상품 수정(update)
 	@RequestMapping("admin_categoryGoodsUpdate.mdo") //메인 카테고리 세부사항에서 수정하는거 봐야함
 	public String categoryGoodsUpdate(@RequestParam("thumbImage") MultipartFile file1, @RequestParam("headerImage") MultipartFile file2,
 			@RequestParam("mainImage") MultipartFile file3, AdminCategoryGoodsVO category3) {
-		/*
-		 * db를 먼저 작업하고 s3 작업을 할 수있게 코드를 다 수정해야겠다.
-		 * 
-		 * */
+
 		int success = 0;
 		String key1 = null, key2 = null, key3 = null;
 		String deleteKey1, deleteKey2, deleteKey3;
 		UUID uuid;
 		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
-		
 		
 		//S3작업
 		//썸네일 이미지 수정하고 싶은경우
