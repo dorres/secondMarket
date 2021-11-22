@@ -95,6 +95,7 @@
 														<input type="text" name="qna_personal_title"
 															style="width: 100%" label="제목" value=""/>
 													</c:if>
+													
 													<!-- 글 상세보기로 왔을때 -->
 													<c:if test="${getPersonalQna != null }">
 														<select name="qna_personal_category" label="질문유형" class="select">
@@ -124,8 +125,8 @@
 												<c:if test="${getPersonalQna == null }">
 												<tr>												 
 													<th class="input_txt">주문번호</th>
-													<td><input type="text"
-														name="order_details_order_serial" style="width: 25%"
+													<td>
+													<input type="text" name="order_details_order_serial" style="width: 25%"
 														value="">
 														<input type="button" class="bhs_button yb"
 														value="주문조회"
