@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
+import first.market.kurlyty.user.vo.User_order_listVO;
 
 
 @Repository
@@ -43,6 +44,9 @@ public class PersonalQnaDAO {
 
 	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo) {
 		return sqlSession.selectOne("PersonalQnaDAO.getPersonalQna", vo);
+	}
+	public User_order_listVO getMerchantSerial(User_order_listVO vo) {
+		return sqlSession.selectOne("PersonalQnaDAO.order_merchant_serial", vo);	
 	}
 
 }

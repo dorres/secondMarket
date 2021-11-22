@@ -88,7 +88,7 @@
 											</div>
 											<div class="order_status">
 												<span class="inner_status"> <!----> <!---->
-												<a href="personalQnaWrite.do?order_notice_merchant?="${order_merchant_serial }class="link ga_tracking_event">1:1 문의</a>
+												<a href="personalQnaWrite.do?order_merchant_serial=${order.order_merchant_serial }" class="link ga_tracking_event">1:1 문의</a>
 												</span>
 											</div>
 										</div></li>
