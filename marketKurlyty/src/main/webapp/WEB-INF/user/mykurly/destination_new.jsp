@@ -41,7 +41,7 @@
 				<label class="label_default"><input type="checkbox"
 					id="isDefault" name="isDefault"><span class="ico"></span>기본
 					배송지로 저장</label>
-				<button type="submit" id="update_btn" class="btn active" onclick="" >저장</button>
+				<button type="button" id="update_btn" class="btn active" onclick="" >저장</button>
 			</div>
 		</div>
 	</div>
@@ -57,16 +57,23 @@
             async : false, // 전역변수 사용을 위해서 설정해준다
              // serialize하면 json형태로 값을 보내줘야합니다.
             contentType: "application/x-www-form-urlencoded; charset=UTF-8", // 인코딩 설정
+            dataType:"text",
             success : function(data){
-            	
-            	window.opener.location.replace("user_address_list.do");
-            	self.close();
+            	var userId='${user_id}';
+            	var shippingUrl="shippingAddressPage.do?user_id="+userId+"&addressSerial=0";
+            	if(${whatsPage=="cartPage"}){
+            		window.location.href=shippingUrl;
+            	}else{
+            		window.opener.location.replace("user_address_list.do");
+            		self.close();
+            	}
             },
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                }
 
         });
+      
     });
 </script>
 

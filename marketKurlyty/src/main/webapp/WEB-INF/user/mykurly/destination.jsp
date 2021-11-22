@@ -102,7 +102,6 @@
 		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>
 <script>
-
 function hi_zip(){
 	var myAddress;
 	var myZipcode;
@@ -126,8 +125,8 @@ function hi_zip(){
 		}
 	}).open();
 }
-function popUp(myZipcode,myAddress,star,user_id){
-	var user_id = $("#idU").val();
+function popUp(myZipcode,myAddress,star){
+	var user_id = '${userId}';
 	var url="destination_new.do?myZipcode="+myZipcode+"&myAddress="+myAddress+"&star="+star+"&user_id="+user_id;
 	window.open(url,'new','width=450,height=500,location=no,status=no,scrollbars=yes');
 }
