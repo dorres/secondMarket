@@ -32,21 +32,49 @@ table.type03 td {
   border-bottom: 1px solid #ccc;
 }
 </style>
+<script type="text/javascript">
+var name = $('#shipping_reipient_name').val(opener.document.getElementById('shipping_reipient_name').value);
+</script>
 </head>
 <body>
+	<h3>받으실 분</h3>
 	<table class="type03">
 		<tr>
-			<th scope="row">항목명</th>
-			<td>내용이 들어갑니다.</td>
+			<th scope="row">이름</th>
+			<td>
+				<input type="text" name="shipping_reipient_name">
+			</td>
 		</tr>
 		<tr>
-			<th scope="row">항목명</th>
-			<td>내용이 들어갑니다.</td>
+			<th scope="row">연락처</th>
+			<td>
+				<input type="text" name="shipping_reipient_phone">
+			</td>
 		</tr>
 		<tr>
-			<th scope="row">항목명</th>
-			<td>내용이 들어갑니다.</td>
+			<th scope="row">받으실 장소</th>
+			<td>
+				<input type="text" name="shipping_pickup_type">
+			</td>
 		</tr>
+		<tr>
+			<th scope="row">기타 정보</th>
+			<td>
+				<input type="text" name="shipping_pickup_detail">
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">배송 완료 메시지 전송</th>
+			<td>
+				<input type="text" name="shipping_message_time">
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">공동 비밀번호</th>
+			<td>
+				<input type="text" name="shipping_door_password">
+			</td>
+		</tr>	
 	</table>
 </body>
 </html>

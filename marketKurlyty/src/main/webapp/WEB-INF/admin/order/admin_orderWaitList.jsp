@@ -10,12 +10,14 @@
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+ <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  <style type="text/css">
  td{
  	text-align: center;
  	vertical-align: middle;
  }
  </style>
+
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -72,16 +74,20 @@
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 550px">${order.user_address1 } ${order.user_address2 }</td>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'"><fmt:formatNumber value="${order.order_goods_price}" pattern="#,###"/>원</td>
 									<td>
-										<select>
+										<select id="deleveryStatus-select">
 											<option value="결제완료" <c:if test ="${order.order_delivery_status eq '결제완료'}">selected="selected"</c:if> >결제완료</option>
 											<option value="배송준비중" <c:if test ="${order.order_delivery_status eq '배송준비중'}">selected="selected"</c:if> >배송준비중</option>
 											<option value="배송중" <c:if test ="${order.order_delivery_status eq '배송중'}">selected="selected"</c:if> >배송중</option>
 											<option value="배송완료" <c:if test ="${order.order_delivery_status eq '배송완료'}">selected="selected"</c:if> >배송완료</option>
+											<option value="취소요청" <c:if test ="${order.order_delivery_status eq '취소요청'}">selected="selected"</c:if> >취소요청</option>
+											<option value="취소완료" <c:if test ="${order.order_delivery_status eq '취소완료'}">selected="selected"</c:if> >취소완료</option>											
+											<option value="환불요청" <c:if test ="${order.order_delivery_status eq '환불요청'}">selected="selected"</c:if> >환불요청</option>
+											<option value="환불완료" <c:if test ="${order.order_delivery_status eq '환불완료'}">selected="selected"</c:if> >환불완료</option>
+											
 										</select>
 									</td>
 									<td>
-										<input type="button" onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" value="수정">
-										<input type="button" value="삭제" onclick="javascript:delete_check('admin_categoryGoodsDelete.mdo?category_goods_serial=${goods.category_goods_serial }')"/>
+										<input type="button" value="수정" onclick="btnUpdate()"/>
 									</td>
 								</tr>
 							</c:forEach>
@@ -96,8 +102,32 @@
 	</div>
 	</div>
 	<!-- Main -->
-	
 	<!-- 건들지마세요 -->
+ <script type="text/javascript">
+function btnUpdate(){
+/* 	var tr = $(this);
+    var td = tr.children();
+    var serial = td.eq(0).text(); */
+    var status =$("#deleveryStatus-select option:selected").val()
+	
+    
+	if(confirm('배송 상태를 수정하시겠습니까?')) {
+	$.ajax({
+		type:"POST",
+		url:"admin_orderWaitUpdate.mdo",
+		dataType : "json",
+		data : {"order_merchant_serial" : serial, "order_delivery_status" : status},
+		success: function(result) {
+			if(result != 0){
+				alert("배송 상태를 성공적으로 수정하였습니다.")
+			}else{
+				alert("배송 상태 수정에 실패했습니다.")
+			}
+		}
+	}) 
+	}
+}
+</script>
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

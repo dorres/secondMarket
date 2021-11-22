@@ -51,7 +51,6 @@
 		<mapper resource="config/mappings/admin/faq-mapping.xml"/>
 		<mapper resource="config/mappings/admin/qna-mapping.xml"/>
 		<mapper resource="config/mappings/admin/category-mapping.xml"/>
-		<mapper resource="config/mappings/admin/admin-mapping.xml"/>
 		<mapper resource="config/mappings/admin/adminOrder-mapping.xml"/>
 		<mapper resource="config/mappings/common/membership-mapping.xml"/>
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->

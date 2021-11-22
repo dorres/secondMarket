@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 
 @Controller
 public class AdminOrderController {
@@ -31,10 +33,24 @@ public class AdminOrderController {
 
 			return "order/admin_orderWait";
 		}
-		//주문관리 결제완료	수정
+		//주문관리 결제완료(받는사람) 수정
+		@ResponseBody
 		@RequestMapping("admin_shippingInfoUpdate.mdo")
-		public String shippingInfoUpdate() {
-			return "order/admin_destination";
+		public int shippingInfoUpdate(AdminShippingInfoVO shipping) {
+			int success = 0;
+			success =adminService.updateShippingInfo(shipping);
+			return success;	
+		}
+		
+		//주문관리 결제완료(배송준비중,배송중, 배송완료 상태 변경)Update
+		@ResponseBody
+		@RequestMapping("admin_orderWaitUpdate.mdo")
+		public int orderWaitUpdate(AdminOrderVO order) {
+			int success = 0;
+			System.out.println(order.getOrder_merchant_serial());
+			System.out.println(order.getOrder_delivery_status());
+			success =adminService.updateOrderWait(order);
+			return success;
 		}
 		
 		
