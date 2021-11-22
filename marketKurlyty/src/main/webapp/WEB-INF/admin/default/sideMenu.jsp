@@ -96,8 +96,7 @@
 								</a>
 								<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="getGoodsList.mdo">상품조회/수정</a>
-										<a class="nav-link" href="*">재고조회/등록</a>
+										<a class="nav-link" href="getGoodsList.mdo">상품조회/등록/수정</a>
 									</nav>
 								</div>
 								<!-- 판매 -->
@@ -170,7 +169,7 @@
 							aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div> 리뷰관리
+							</div> 리뷰/상품문의
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -178,7 +177,8 @@
 						<div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="getReviewList.mdo">리뷰</a>
-								<a class="nav-link" href="layout-sidenav-light.html">문의</a>
+								<a class="nav-link" href="gqnaList.mdo">상품문의(답변대기)</a>
+								<a class="nav-link" href="layout-sidenav-light.html">상품문의(답변완료)</a>
 							</nav>
 						</div>
 						<!-- 리뷰관리 -->

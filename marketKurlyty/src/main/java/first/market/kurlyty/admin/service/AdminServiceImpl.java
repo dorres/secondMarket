@@ -25,6 +25,7 @@ import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 @Repository
 @Service("AdminService")
@@ -190,6 +191,20 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int stockstock(AdminStockStockVO stockstock) {
 		return adminDao.stockstock(stockstock);
+	}
+	
+	//----------------------------------------------------------------
+	
+	// 상품문의 리스트 (답변대기)
+	@Override
+	public List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna){
+		return adminDao.gqnaList(gqna);
+	}
+	
+	// 상품문의 리스트 삭제(답변대기)
+	@Override 
+	public int deleteGqna(GoodsQnaVO gqna) {
+		return adminDao.deleteGqna(gqna);
 	}
 	//----------------------------------------------------------------
 	

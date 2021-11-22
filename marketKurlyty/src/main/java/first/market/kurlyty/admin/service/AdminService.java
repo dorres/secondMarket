@@ -21,6 +21,7 @@ import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 public interface AdminService {
 
@@ -98,6 +99,13 @@ public interface AdminService {
 	int deleteReview(AdminReviewVO review); 
 	//=================================================================
 	
+	// 상품문의 리스트 (답변대기)
+	List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna);
+	
+	// 상품문의 리스트 삭제(답변대기)
+	int deleteGqna(GoodsQnaVO gqna);
+	//=================================================================
+		
 
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);

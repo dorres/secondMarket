@@ -34,7 +34,7 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminOrderVO" alias="order"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminShippingInfoVO" alias="shipping"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminReviewVO" alias="review"/>
- 		
+ 		<typeAlias type="first.market.kurlyty.admin.vo.GoodsQnaVO" alias="gqna"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -55,5 +55,6 @@
 		<mapper resource="config/mappings/admin/adminOrder-mapping.xml"/>
 		<mapper resource="config/mappings/common/membership-mapping.xml"/>
 		<mapper resource="config/mappings/admin/admin-review.xml"/>
+		<mapper resource="config/mappings/admin/goodsQNA-mapping.xml"/>
  	</mappers>
  </configuration>

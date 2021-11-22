@@ -24,6 +24,7 @@ import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 
 @Repository
@@ -162,6 +163,18 @@ public class AdminDAO {
 	public int deleteReview(AdminReviewVO review) {
 		return sqlSession.delete("reviewDAO.deleteReview", review);
 	}
+	//===============================================================
+	
+	//상품문의 리스트(답변 대기)
+	public List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna){
+		return sqlSession.selectList("gqnaDAO.gqnaList", gqna);
+	}
+	
+	//상품문의 삭제(답변대기)
+	public int deleteGqna(GoodsQnaVO qgna) {
+		return sqlSession.delete("gqnaDAO.deleteGqna",qgna);
+	}
+	
 	//================================================================
 
 	//공지사항 목록	
