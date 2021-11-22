@@ -32,6 +32,10 @@ public class AdminOrderController {
 			return "order/admin_orderWait";
 		}
 		//주문관리 결제완료	수정
+		@RequestMapping("admin_shippingInfoUpdate.mdo")
+		public String shippingInfoUpdate() {
+			return "order/admin_destination";
+		}
 		
 		
 		//주문관리 구매완료 리스트

@@ -22,7 +22,7 @@
  	</insert>
  	<insert id="insertUserAddressList" parameterType="user">
  		INSERT INTO MK_USER_ADDRESS_LIST VALUES
- 		(default,#{user_address1},#{user_address2},#{user_zipcode},#{user_id})
+ 		(default,#{user_address1},#{user_address2},#{user_zipcode},#{user_id},#{user_name},#{user_phone},true)
  	</insert>
  	<update id="updateUser" parameterType="user">
 	 	UPDATE mk_user SET 
@@ -47,4 +47,8 @@
  	<delete id="deleteUser" parameterType="user">
  	
  	</delete>
+ 	<!-- userAddressList -->
+ 	<select id="getDefaultAddress" resultType="addressListVO">
+ 		SELECT * FROM MK_USER_ADDRESS_LIST where user_id=#{value} AND address_default=true
+ 	</select>
 </mapper>

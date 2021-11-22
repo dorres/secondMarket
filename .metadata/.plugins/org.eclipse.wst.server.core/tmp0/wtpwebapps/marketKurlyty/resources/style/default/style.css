@@ -267,3 +267,55 @@ ol, ul {
 html, body {
 	height: 100%
 }
+
+.section_orderlist .list_order .order_info {
+	overflow: hidden;
+	padding: 14 px 0 20 px;
+}
+
+.section_orderlist .list_order .order_goods {
+	position: relative;
+	margin-top: 10 px;
+	padding: 0 20 px;
+	border: 1 px solid #dddfe1;
+}
+
+.section_orderlist .list_order {
+	padding-top: 10 px;
+	border-top: 2 px solid #333;
+}
+
+.section_orderlist .list_order .order_goods {
+	position: relative;
+	margin-top: 10 px;
+	padding: 0 20 px;
+	border: 1 px solid #dddfe1;
+}
+
+.section_orderlist .list_order .thumb {
+	float: left;
+	width: 60 px;
+	margin-right: 20 px;
+}
+
+.section_orderlist .list_order .desc {
+	overflow: hidden;
+	padding-top: 1 px;
+}
+.section_orderlist .list_order .order_info dl:first-child {
+    padding-top: 3
+px
+;
+}
+.section_orderlist .list_order .order_info dl {
+    overflow: hidden;
+    padding-top: 6
+px
+;
+}
+.section_orderlist .list_order .thumb img {
+    width: 60
+px
+;
+    height: auto;
+}

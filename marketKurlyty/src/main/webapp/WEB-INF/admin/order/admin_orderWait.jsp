@@ -137,7 +137,8 @@ textarea:focus, input:focus{
 								</table>
 								
 								<div align="right" style="width: 1200px">
-									<input type="submit" value="등록하기" />
+									<input type="button" value="송장" />
+									<input type="button" value="받는사람 수정하기" onclick="popup()"/>
 									<input type="button" value="목록보기" onclick="location.href='admin_orderWaitList.mdo'"/>
 								</div>
 						</form>
@@ -150,6 +151,12 @@ textarea:focus, input:focus{
 		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
 	</div>
+<script>
+function popup(){
+	var url="admin_shippingInfoUpdate.mdo";
+	window.open(url,'','width=450,height=500,location=no,status=no,scrollbars=yes');
+}
+</script>
 	<!-- Main -->
 	
 	<!-- 건들지마세요 -->

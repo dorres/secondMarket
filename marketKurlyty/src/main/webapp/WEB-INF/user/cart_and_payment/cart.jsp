@@ -35,6 +35,12 @@
 								<div id="cartItemList" class="only_pc" style="min-height: 557px;">
 									<input type="hidden" id="totalPrice" name="totalPrice" value="${totalPrice }"/>
 									<input type="hidden" id="dcPrice" name="dcPrice" value="${dcPrice }"/>
+									<input type="hidden" id="user_address1" name="user_address1" value="${defaultAddress.user_address1 }"/>
+									<input type="hidden" id="user_address2" name="user_address2" value="${defaultAddress.user_address2 }"/>
+									<input type="text" id="user_zipcode" name="user_zipcode" value="${defaultAddress.user_zipcode }"/>
+									<input type="text" id="user_name" name="user_name" value="${defaultAddress.user_name }"/>
+									<input type="text" id="user_name" name="user_phone" value="${defaultAddress.user_phone }"/>
+									<input type="text" id="address_serial" name="address_serial" value="${defaultAddress.address_serial }"/>
 									<div class="empty">
 										<div class="cart_item no_item">
 											<div class="cart_select">
@@ -93,7 +99,7 @@
 																	</div>
 																	<div class="goods">
 																		<a href="#" class="thumb "
-																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																			style="background-image:url(${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
 																				<span class="selling">${lastPrice}<span class="won">원</span></span>
@@ -148,7 +154,7 @@
 																	</div>
 																	<div class="goods">
 																		<a href="#" class="thumb "
-																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																			style="background-image:url(${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
 																				<span class="selling">${lastPrice }<span class="won">원</span></span>
@@ -203,7 +209,7 @@
 																	</div>
 																	<div class="goods">
 																		<a href="#" class="thumb "
-																			style="background-image:url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}) ">상품이미지</a>
+																			style="background-image:url(${item.category_goods_image_thumb}) ">상품이미지</a>
 																		<div class="price">
 																			<div class="in_price">
 																				<span class="selling">${lastPrice }<span class="won">원</span></span>
@@ -246,6 +252,7 @@
 										</div>
 										<div class="cart_result">
 											<div class="inner_result" style="top: 60px;">
+												<!-- 배송지 -->
 												<div class="cart_delivery">
 													<h3 class="tit">배송지</h3>
 													<c:if test="${defaultAddress == null }">
@@ -257,8 +264,8 @@
 													<c:if test="${defaultAddress != null }">
 														<div class="address">
 															<p class="addr">${defaultAddress.user_address1 }<br> ${defaultAddress.user_address2 }</p>
-															<span class="delivery star">샛별배송</span><a href="#"
-																class="btn default">배송지 변경</a>
+															<span class="delivery star">샛별배송</span>
+															<a href="#" class="btn default" onclick="javascript:shippingAddressPage()">배송지 변경</a>
 														</div>
 														
 													</c:if>
@@ -312,8 +319,8 @@
 													<c:if test="${listSize>0}">
 														<button type="submit" class="btn active">주문하기</button><!-- active -->
 													</c:if>
-													<c:if test="${listSize == null }">
-														<button type="submit" class="btn disabled">상품을 담아주세요</button>
+													<c:if test="${listSize == null || listSize <= 0}">
+														<button type="button" class="btn disabled">상품을 담아주세요</button>
 													</c:if>
 												</div>
 												<div class="notice">
@@ -367,10 +374,10 @@ $(document).ready(function(){
 				datatype:"text",
 				success:function(res){
 					part.siblings("#cartCount").val(parseInt(res));
-					if(rootLi.find("input[name='chkItem']").is(":checked")){
+					
 						rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
 						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
-						
+					if(rootLi.find("input[name='chkItem']").is(":checked")){
 						cartResult(totalPrice-oldPrice, dcPrice-price )
 					}
 				},
@@ -401,9 +408,10 @@ $(document).ready(function(){
 				datatype : "text",
 				success : function(res) {
 					part.siblings("#cartCount").val(parseInt(res));
-					if(rootLi.find("input[name='chkItem']").is(":checked")){
+					
 						rootLi.find("div.price").find("span.selling").text((price*parseInt(res)).toLocaleString("ko-KR")+"원");
 						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
+					if(rootLi.find("input[name='chkItem']").is(":checked")){
 						cartResult(totalPrice+oldPrice, dcPrice+price)
 					}
 				},
@@ -461,6 +469,11 @@ $(document).ready(function(){
 						}
 					}
 					$("label.check").find("span.checkCount").text("전체선택 ("+checkList.length +"/"+itemCount.length+")");
+					if(checkList.length==itemCount.length){
+						if(itemCount.length>0){
+							$("label.check").find("input[name='checkAll']").prop("checked",true);
+						}
+					}
 					if(list.children().length==0){
 						list.closest("div.box").remove();
 					}
@@ -657,6 +670,12 @@ function selectDelete(){
 		});
 	}
 		
+}
+function shippingAddressPage(){
+	var addressSerial = $("input#address_serial").val();
+	var url="shippingAddressPage.do?user_id=${userId}&addressSerial="+addressSerial;
+	window.open(url,"post","top=40, left=600,toolbar=no, width=482, height=543,"+
+			"directories=no, status=yes, scrollbars=yes,menubar=no, resizable=no");
 }
 </script>
 </body>

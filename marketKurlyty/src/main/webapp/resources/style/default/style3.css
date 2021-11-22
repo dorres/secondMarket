@@ -1363,19 +1363,21 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 		url(https://res.kurly.com/pc/service/cart/2007/ico_dropup.svg)
 		no-repeat 50% 50%;
 	background-size: 30px 30px;
-	transform: rotate(180deg);
+	
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(180deg);
 	-ms-transform: rotate(180deg);
-	-o-transform: rotate(180deg)
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 .order_goodslist.on .info_product .btn {
-	transform: rotate(0);
+	
 	-webkit-transform: rotate(0);
 	-moz-transform: rotate(0);
 	-ms-transform: rotate(0);
-	-o-transform: rotate(0)
+	-o-transform: rotate(0);
+	transform: rotate(0);
 }
 
 .order_goodslist {
@@ -2723,11 +2725,12 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 }
 
 .search_date .btn_layer.on:after {
-	transform: rotate(-180deg);
+	
 	-webkit-transform: rotate(-180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
-	-o-transform: rotate(-180deg)
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 
 .search_date .layer_search {
@@ -4745,7 +4748,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 }
 
 .section_review .list_after .txt {
-	display: block;
+	
 	overflow: hidden;
 	max-height: 70px;
 	padding-top: 10px;
@@ -4755,8 +4758,10 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	word-wrap: break-word;
 	text-overflow: ellipsis;
 	display: -webkit-box;
+	display: block;
 	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical
+	-webkit-box-orient: vertical;
+	
 }
 
 .section_review .list_after .btn_after {
@@ -4813,8 +4818,9 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 .section_review .list_after li.item_view .txt {
 	max-height: none;
 	padding-top: 0;
+	
+	-webkit-line-clamp: inherit;
 	display: block;
-	-webkit-line-clamp: inherit
 }
 
 .section_review .list_after li.item_view .subject {
@@ -5197,7 +5203,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 
 #goodsList .list_goods .thumb .img:hover>img {
 	transform: scale(1.02);
-	transition: all .3s ease-in-out
+	transition: all .3s ease-in-out;
 }
 
 #goodsList .list_goods .thumb .ico {
@@ -5253,7 +5259,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 }
 
 #goodsList .list_goods .name {
-	display: block;
+	
 	overflow: hidden;
 	max-height: 58px;
 	font-weight: 400;
@@ -5261,9 +5267,11 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	color: #333;
 	line-height: 29px;
 	display: -webkit-box;
+	display: block;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-	word-wrap: break-word
+	word-wrap: break-word;
+	
 }
 
 #goodsList .list_goods .name img {
@@ -6772,7 +6780,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	width: 440px;
 	-webkit-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%)
+	transform: translate(-50%, -50%);
 }
 
 #sectionView .modal_coupon .modal {
@@ -7429,7 +7437,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	transform: translate(0, -50%);
 	-webkit-transform: translate(0, -50%);
 	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%)
+	transform: translate(0, -50%);
 }
 
 .page_service .layer_position .tit_layer {
@@ -8777,7 +8785,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 	background-color: #fff;
 	-webkit-transform: translate(0, -50%);
 	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%)
+	transform: translate(0, -50%);
 }
 
 #cartPut .cart_type3.on {

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import first.market.kurlyty.s3.AwsS3;
 import first.market.kurlyty.user.service.HeaderService;
 import first.market.kurlyty.user.service.UserService;
+import first.market.kurlyty.vo.BannerVO;
 import first.market.kurlyty.vo.CategoryMainVO;
 import first.market.kurlyty.vo.CategorySubVO;
 import first.market.kurlyty.vo.ProductVO;
@@ -68,7 +69,10 @@ public class HeaderController {
 	}
 	
 	@RequestMapping("/index.do")
-	public String index() {
+	public String index(Model model) {
+		List<BannerVO> banner = headerService.getBanner();
+		model.addAttribute("banners", banner);
+		model.addAttribute("bannerCount", banner.size());
 		return "mainPage/index";
 	}
 	@RequestMapping("/BestGoodsPage.do")
