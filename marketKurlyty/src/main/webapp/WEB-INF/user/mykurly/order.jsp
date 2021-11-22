@@ -56,8 +56,7 @@
 							<ul class="list_order">
 								<c:forEach var="order" items="${order }">
 									<li><div class="date">
-											<fmt:formatDate value="${order.order_date }"
-												pattern="yyyy.MM.dd(HH:mm)" />
+											<fmt:formatDate value="${order.order_date }" pattern="yyyy.MM.dd(HH:mm)" />
 										</div>
 										<div class="order_goods">
 											<div class="orderName">
