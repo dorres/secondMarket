@@ -50,7 +50,7 @@
 								<div class="field">
 									<input type="text" id="receiverName" name="receiverName"
 										data-max-length="20" class="inp" placeholder="이름을 입력해 주세요"
-										value="">
+										value="${shippingName }">
 								</div>
 							</div>
 							<div class="info">
@@ -61,7 +61,7 @@
 									<input type="text" id="receiverPhoneNumber"
 										name="receiverPhoneNumber" class="inp" data-max-length="11"
 										data-format="number" pattern="[0-9]*" inputmode="decimal"
-										placeholder="숫자만 입력해주세요" value="">
+										placeholder="숫자만 입력해주세요" value="${shippingPhone }">
 								</div>
 							</div>
 							<div class="info info_place">

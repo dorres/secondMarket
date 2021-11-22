@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import first.market.kurlyty.user.service.CartService;
 import first.market.kurlyty.user.service.user_address_listService;
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.user_address_listVO;
 import first.market.kurlyty.vo.ProductVO;
 
 @Controller
@@ -101,6 +102,7 @@ public class CartController {
 			model.addAttribute("dcPrice",dcPrice);
 			model.addAttribute("listSize",cartList.size());
 			model.addAttribute("defaultAddress", cartService.getDefaultAddress((String)session.getAttribute("userId")));
+			model.addAttribute("userId",session.getAttribute("userId"));
 		}
 		return "cart_and_payment/cart";
 	}
@@ -203,6 +205,20 @@ public class CartController {
 			cartService.updateCheckStatus(cartVO);
 		}
 		return "";
+	}
+	
+	@RequestMapping("/shippingAddressPage.do")
+	public String ShippingAddressPage(String user_id, int addressSerial, Model model) {
+		System.out.println("shipping");
+		try {
+			List<user_address_listVO> addressList = addressService.getBoard(user_id);
+			model.addAttribute("addressList",addressList);
+			model.addAttribute("addressSerial",addressSerial);
+			model.addAttribute("user_id",user_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "cart_and_payment/shippingChange";
 	}
 }
 

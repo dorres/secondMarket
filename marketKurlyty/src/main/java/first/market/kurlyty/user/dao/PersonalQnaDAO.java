@@ -28,8 +28,7 @@ public class PersonalQnaDAO {
 	public UserVO getUser(UserVO vo) {
 		return sqlSession.selectOne("UserDAO.getUser", vo);
 	}
-	
-	//
+
 	public int insertPersonalQna(PersonalQnaVO vo) {
 		return sqlSession.insert("PersonalQnaDAO.insertPersonalQna", vo);
 	}
@@ -38,11 +37,9 @@ public class PersonalQnaDAO {
 		return sqlSession.update("PersonalQnaDAO.updatePersonalQna", vo); 
 	}
 	 
-	
 	public int deletePersonalQna(PersonalQnaVO vo) {
 		return sqlSession.delete("PersonalQnaDAO.deletePersonalQna", vo);
 	}
-	
 
 	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo) {
 		return sqlSession.selectOne("PersonalQnaDAO.getPersonalQna", vo);
