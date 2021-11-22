@@ -27,6 +27,10 @@ public class Board_noticeController {
 	public String review() {
 		return "mykurly/review";
 	}
+	@RequestMapping("/point.do")
+	public String point() {
+		return "mykurly/point";
+	}
 	
 	@GetMapping("/notice.do")
 	public String customerCenter1(Model model
