@@ -9,6 +9,99 @@
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="${pageContext.request.contextPath}/resources/style/ItemListStyle.css">
 </head>
+<script>
+var index=1;
+$(document).ready(function(){
+	$("ul.banner").css("width","${(bannerCount+2)*1520}px")
+	$("ul.banner").css("transition","1ms");
+	$("ul.banner").css("transform","translate3d(-1520px,0px,0px)");
+	
+	$("button.bx-next").click(function(){
+		console.log("fur:",index);
+		index=index+1;
+		var move = "translate3d(-"+String(1520*index)+"px,0px,0px)";
+		$("ul.banner").css("transition","1000ms");
+		$("ul.banner").css("transform",move);
+		console.log("dd",index);
+		if(index==${bannerCount+1}){
+			index=1;
+			setTimeout(function(){
+				$("ul.banner").css("transition","1ms");
+				$("ul.banner").css("transform","translate3d(-1520px,0px,0px)");
+			},1000)
+		}
+	});
+	$("button.bx-prev").click(function(){
+		console.log("fur:",index);
+		index=index-1;
+		var move = "translate3d(-"+String(1520*index)+"px,0px,0px)";
+		$("ul.banner").css("transition","1000ms");
+		$("ul.banner").css("transform",move);
+		
+		console.log("dd",index);
+		if(index-1<0){
+			index=${bannerCount};
+			setTimeout(function(){
+				move = "translate3d(-"+String(${(bannerCount)*1520})+"px,0px,0px)";
+				$("ul.banner").css("transition","1ms");
+				$("ul.banner").css("transform",move);
+			},1000)
+			
+		}
+		
+	});
+	TSlide(4000);
+})
+function TSlide(time){
+	
+	setTimeout(function(){
+		index=index+1;
+		var move = "translate3d(-"+String(1520*index)+"px,0px,0px)";
+		$("ul.banner").css("transition","1000ms");
+		$("ul.banner").css("transform",move);
+		if(index==${bannerCount+1}){
+			index=1;
+			setTimeout(function(){
+				$("ul.banner").css("transition","1ms");
+				$("ul.banner").css("transform","translate3d(-1520px,0px,0px)");
+			},1000)
+			TSlide(3000);
+		}else{
+			TSlide(4000);	
+		}
+	},time);
+	
+	
+}
+</script>
+<style>
+div.bx-controls-direction {
+    position: relative;
+    width: 1520px;
+    margin: 0 auto;
+}
+button.bx-prev{
+ position:absolute;
+ 	bottom: 220px;
+    width: 52px;
+    height: 52px;
+	background: url(https://res.kurly.com/pc/service/main/1908/ico_prev1_x1.png) no-repeat 50% 50%;
+    transition: opacity 0.5s;
+    border:0;
+    left:80px;
+   
+}
+button.bx-next{
+ position:absolute;
+ 	bottom: 220px;
+    width: 52px;
+    height: 52px;
+	background: url(https://res.kurly.com/pc/service/main/1908/ico_next1_x1.png) no-repeat 50% 50%;
+    transition: opacity 0.5s;
+    border:0;
+    right:80px;
+}
+</style>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return !disableSelection">
 	<a href="#top" id="gotoTop">맨 위로 가기</a>
@@ -26,10 +119,30 @@
 					<div id="kurlyMain" class="page_aticle page_main"
 						style="width: 100%;">
 						<div id="shellMain"
-							style="width: 100%; height: 370px; margin-bottom: 80px; overflow: hidden; background: #eee;">
-							<img src="${pageContext.request.contextPath }/resources/images/BigBenu/benu1.png"
-								style="width: 100%; height: 100%; object-fit: cover">
-							<!-- <div class="shell_ani" style="width: 10%; height: inherit; background: none; background: linear-gradient(to right, rgba(225, 225, 225, 0), rgba(255, 255, 255, .1), rgba(255, 255, 255, 0))"> -->
+							style="width: 100%; height: 325px; margin-bottom: 80px; overflow: hidden; background: #eee;">
+							<ul class="banner">
+								<li class="banner" id="${bannerCount }" style="width:1520px; height: 325px; float:left;">
+									<img src="${banners[bannerCount-1].banner_filepath}"
+										style="width: 100%; height: 100%; object-fit: cover">
+								</li>
+								<c:forEach var="banner" items="${banners }" varStatus="index">
+									<li class="banner" id="${index.index }" style="width:1520px; height: 325px; float:left;">
+										<img src="${banner.banner_filepath}"
+										style="width: 100%; height: 100%; object-fit: cover">
+									</li>
+								</c:forEach>
+								<li class="banner" id="0" style="width:1520px; height: 325px; float:left;">
+									<img src="${banners[0].banner_filepath}"
+										style="width: 100%; height: 100%; object-fit: cover">
+								</li>
+							</ul>
+						</div>
+						<div
+							class="bx-has-controls-direction">
+							<div class="bx-controls-direction">
+								<button class="bx-prev"></button>
+								<button class="bx-next"></button>
+							</div>
 						</div>
 						<!-- 이 상품 어때요? -->
 						<div class="MainIntroTitle">
