@@ -1,7 +1,5 @@
 package first.market.kurlyty.user.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.user.service.user_address_listService;
 import first.market.kurlyty.user.vo.user_address_listVO;
@@ -30,12 +29,15 @@ public class user_address_listController {
 		return "mykurly/destination";
 	}
 	@GetMapping("/destination_new.do")
-	public String user_address_list2(String myZipcode,String myAddress, String star,String user_id,Model model) {
+	public String user_address_list2(String myZipcode,String myAddress, String star,String user_id, String whatsPage,Model model) {
 		
 		model.addAttribute("myZipcode",myZipcode);
 		model.addAttribute("myAddress", myAddress);
 		model.addAttribute("star", star);
 		model.addAttribute("user_id", user_id);
+		System.out.println(whatsPage);
+		if(whatsPage!=null)
+			model.addAttribute("whatsPage", whatsPage);
 		return "mykurly/destination_new";
 	}
 
@@ -49,6 +51,7 @@ public class user_address_listController {
 		return "mykurly/destination_update";
 	}
 	@RequestMapping(value="/user_address_list_new.do" ,method=RequestMethod.POST)
+	@ResponseBody
 	public String user_address_list4(HttpServletRequest request,user_address_listVO vo, Model model) throws Exception {
 		String user_id=request.getParameter("user_id");
 		String user_zipcode= request.getParameter("user_zipcode");

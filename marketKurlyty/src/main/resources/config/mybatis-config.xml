@@ -27,17 +27,12 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCategoryGoodsVO" alias="category3"/>
  		<typeAlias type="first.market.kurlyty.user.vo.user_address_listVO" alias="addressListVO"/>
  		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
- 		<typeAlias type="first.market.kurlyty.user.vo.User_order_listVO" alias="orderListVO"/> 
- 		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
- 		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/> 
- 		
- 		
-
+		<typeAlias type="first.market.kurlyty.user.vo.WithdrawInfoVO" alias="withdraw"/> <!-- sungy -->
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/membership-mapping.xml"/>
  		<mapper resource="config/mappings/category-mapping.xml"/>
- 		<mapper resource="config/mappings/user-mapping.xml"/>
+ 		<mapper resource="config/mappings/user-mapping.xml"/> <!-- sungy -withdraw in processing -->
  		<mapper resource="config/mappings/admin-mapping.xml"/>
  		<mapper resource="config/mappings/board_notice-mapping.xml"/> <!-- bk -->
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
@@ -45,7 +40,8 @@
  		<mapper resource="config/mappings/user_address_list-mapping.xml"/>
  		<mapper resource="config/mappings/order-mapping.xml"/>
 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
-		<mapper resource="config/mappings/user_order_list-mapping.xml"/> <!-- sungy -->
-
+		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
+		
+		
  	</mappers>
  </configuration>
