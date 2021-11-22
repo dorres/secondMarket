@@ -98,7 +98,7 @@ public class PaymentController {
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
 	public String paymentSuccess(OrderVO order, ShippingVO shipping) {
-		order.setOrder_delivery_status("Â°Ã¡ÃÂ¦Â¿ÃÂ·Ã¡");
+		order.setOrder_delivery_status("°áÁ¦¿Ï·á");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
 		for(CartVO cartItem : purchaseGoods) {
