@@ -2,7 +2,6 @@ package first.market.kurlyty.vo;
 
 import java.util.Date;
 
-import first.market.kurlyty.user.vo.UserVO;
 import lombok.Data;
 
 @Data
@@ -23,10 +22,12 @@ public class OrderVO {
 	private String order_delivery_status;
 	private String order_merchant_serial;
 	private int master_goods_serial;
+	private int order_point;
 	
 	//mk_order_details
 	private int order_details_serial;
 	private int category_goods_serial;
+	private int order_goods_old_price;
 
 	//user_details
 	private int user_point;
