@@ -10,6 +10,7 @@
 		o.master_goods_serial=c.category_goods_serial
 		where o.user_id=#{user_id}
 		order by o.order_serial desc
+		
 
 	</select>
 	<select id="order_detaillist" resultType="orderListVO">
