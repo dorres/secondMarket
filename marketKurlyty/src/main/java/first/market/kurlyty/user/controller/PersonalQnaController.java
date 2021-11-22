@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import first.market.kurlyty.user.service.PersonalQnaService;
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
+import first.market.kurlyty.user.vo.User_order_listVO;
 
 
 @Controller
@@ -36,11 +36,11 @@ public class PersonalQnaController {
 	}
 	
 	@GetMapping("/personalQnaWrite.do")
-	public String getUser(HttpServletRequest request, UserVO vo, Model model) {
+	public String getUser(HttpServletRequest request, UserVO vo, Model model,User_order_listVO lo) {
 		HttpSession session = request.getSession();
 		vo.setUser_id((String)session.getAttribute("userId"));
-		
 		model.addAttribute("UserData", personalqnaService.getUser(vo));
+		model.addAttribute("order_merchant_serial",personalqnaService.getMerchantSerial(lo));
 		
 		return "customerCenter/personalQnaWrite";
 	}
