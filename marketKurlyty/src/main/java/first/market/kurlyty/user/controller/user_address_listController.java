@@ -21,10 +21,7 @@ public class user_address_listController {
 	private user_address_listService user_address_listService;
 	HttpSession session;
 	
-	@RequestMapping("/order.do")
-	public String order() {
-		return "mykurly/order";
-	}
+	
 
 	@GetMapping("/user_address_list.do")
 	public String user_address_list( HttpSession session, user_address_listVO vo, Model model) throws Exception {

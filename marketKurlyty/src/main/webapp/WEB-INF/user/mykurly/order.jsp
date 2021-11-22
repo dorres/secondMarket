@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,6 +13,7 @@
 
 </head>
 <script>
+	
 </script>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return !disableSelection">
@@ -52,65 +54,102 @@
 							</div>
 
 							<ul class="list_order">
-								<li><div class="date">2021.06.04 (12시 28분)</div>
-									<div class="order_goods">
-										<div class="orderName">
-											<a>[다향오리] 훈제오리 150g 외 2건</a>
+								<c:forEach var="order" items="${order }">
+									<li><div class="date">
+											<fmt:formatDate value="${order.order_date }"
+												pattern="yyyy.MM.dd(HH:mm)" />
 										</div>
-										<div class="order_info">
-											<div class="thumb">
-												<img
-													src="https://img-cf.kurly.com/shop/data/goods/1617348174274s0.jpg"
-													alt="해당 주문 대표 상품 이미지">
+										<div class="order_goods">
+											<div class="orderName">
+											<c:set var="count" value="${order.order_goods_count -1}"/>
+												<a href="order_detail.do?order_merchant_serial=${order.order_merchant_serial }">${order.category_goods_name }외<c:out value="${count }"/>건</a>
 											</div>
-											<div class="desc">
-												<dl>
-													<dt>주문번호</dt>
-													<dd>1622777251129</dd>
-												</dl>
-												<dl>
-													<dt>결제금액</dt>
-													<dd>12,960원</dd>
-												</dl>
-												<dl>
-													<dt>주문상태</dt>
-													<dd class="status end">배송완료</dd>
-												</dl>
+											<div class="order_info">
+												<div class="thumb">
+													<img src="${order.category_goods_image_thumb }"
+														alt="해당 주문 대표 상품 이미지">
+												</div>
+												<div class="desc">
+													<dl>
+														<dt>주문번호</dt>
+														<dd>${order.order_merchant_serial }</dd>
+													</dl>
+													<dl>
+														<dt>결제금액</dt>
+														<dd>
+															<fmt:formatNumber value="${order.order_goods_price }" pattern="#,###" />원
+														</dd>
+													</dl>
+													<dl>
+														<dt>주문상태</dt>
+														<dd class="status end">${order.order_delivery_status }</dd>
+													</dl>
+												</div>
 											</div>
-										</div>
-										<div class="order_status">
-											<span class="inner_status"> <!----> <!----> <a
-												class="link ga_tracking_event">1:1 문의</a>
-											</span>
-										</div>
-									</div></li>
+											<div class="order_status">
+												<span class="inner_status"> <!----> <!---->
+												<a href="personalQnaWrite.do?order_notice_merchant?="${order_merchant_serial }class="link ga_tracking_event">1:1 문의</a>
+												</span>
+											</div>
+										</div></li>
+								</c:forEach>
 								<!---->
 							</ul>
-							<div class="layout-pagination">
-								<div class="pagediv">
-									<a href="#viewOrderList"
-										class="layout-pagination-button layout-pagination-first-page">맨
-										처음 페이지로 가기</a> <a href="#viewOrderList"
-										class="layout-pagination-button layout-pagination-prev-page">이전
-										페이지로 가기</a> <span> <!----> <strong
-										class="layout-pagination-button layout-pagination-number __active">1</strong>
-									</span> <a href="#viewOrderList"
-										class="layout-pagination-button layout-pagination-next-page">다음
-										페이지로 가기</a> <a href="#viewOrderList"
-										class="layout-pagination-button layout-pagination-last-page">맨
-										끝 페이지로 가기</a>
-								</div>
-							</div>
 						</div>
-
 					</div>
-
+					
+					<!-- pagination{s} -->
+					<div class="layout-pagination">
+						<div class="pagediv">
+							<c:if test="${pagination.prev}">
+								<div class="layout-pagination-button layout-pagination-number">
+								<a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')"> 이전 </a>
+								</div>
+							</c:if>
+							<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+								<div class="layout-pagination-button layout-pagination-number <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+									<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">${idx} </a>
+								</div>
+							</c:forEach>
+							<c:if test="${pagination.next}">
+								<div class="layout-pagination-button layout-pagination-number">
+									<a class="page-link" href="#" onClick="fn_next('${pagination.range}','${pagination.range}', '${pagination.rangeSize}')">다음</a>
+								</div>
+							</c:if>
+						</div>
+					</div>
+					<!-- pagination{e} -->
 					<a href="#top" id="pageTop">맨 위로가기</a>
-
 				</div>
 			</div>
 		</div>
 	</div>
+<script>
+						function fn_prev(page, range, rangeSize) {
+							var page = ((range - 2) * rangeSize) + 1;
+							var range = range - 1;
+							var url = "${pageContext.request.contextPath}/order.do";
+							url = url + "?page=" + page;
+							url = url + "&range=" + range;
+							location.href = url;
+						}
+						//페이지 번호 클릭
+						function fn_pagination(page, range, rangeSize,searchType, keyword) {
+							var url = "${pageContext.request.contextPath}/order.do";
+							url = url + "?page=" + page;
+							url = url + "&range=" + range;
+							location.href = url;
+						}
+						//다음 버튼 이벤트
+						function fn_next(page, range, rangeSize) {
+							var page = parseInt((range * rangeSize)) + 1;
+							var range = parseInt(range) + 1;
+							var url = "${pageContext.request.contextPath}/order.do";
+							url = url + "?page=" + page;
+							url = url + "&range=" + range;
+							location.href = url;
+						}
+					</script>
 </body>
 <jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 </html>

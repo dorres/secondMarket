@@ -195,12 +195,11 @@ ul.sub_on li.on{
 						class="ico_grade grade6">웰컴</span> <span class="txt"><span
 							class="name">${userName }</span><span class="sir">님</span></span> <!----></a>
 					<ul class="sub">
-						<li><a href="/shop/mypage/mypage_orderlist.php">주문 내역</a></li>
+						<li><a href="order.do">주문 내역</a></li>
 						<li><a href="#none"
 							onclick="KurlyTrackerLink('/shop/mypage/mypage_gift.php', 'select_my_kurly_gift_list')">선물
 								내역</a></li>
-						<li><a href="#none"
-							onclick="KurlyTrackerLink('/shop/mypage/destination/list.php', 'select_shipping_address_list')">배송지
+						<li><a href="user_address_list.do">배송지
 								관리</a></li>
 						<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
 						<li><a>상품 문의</a></li>
