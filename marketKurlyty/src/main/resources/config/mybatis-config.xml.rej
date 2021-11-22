@@ -1,0 +1,9 @@
+diff a/marketKurlyty/src/main/resources/config/mybatis-config.xml b/marketKurlyty/src/main/resources/config/mybatis-config.xml	(rejected hunks)
+@@ -30,6 +30,7 @@
+ 		<typeAlias type="first.market.kurlyty.user.vo.WithdrawInfoVO" alias="withdraw"/> <!-- sungy -->
+ 		<typeAlias type="first.market.kurlyty.user.vo.User_order_listVO" alias="orderListVO"/> 
+  		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
++ 		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/>
+  	</typeAliases>
+  	<mappers>
+  		<mapper resource="config/mappings/membership-mapping.xml"/>
