@@ -202,6 +202,7 @@
 									<button type="button" id="btnUpdateSubAddress" data-address-no="" class="btn default">수정</button>
 									
 								</div> -->
+
 									<c:if test="${shippingAddress.user_name==''||shippingAddress.user_name==null }">
 										<div class="receiving off" id="receiverInfo">받으실 분 정보를
 										입력해 주세요</div>
@@ -212,7 +213,7 @@
 									<div class="way" id="wayPlace" style="display: none;">
 										<span class="place" id="areaInfo" style="display: none; float:left;"></span>
 
-										<span class="txt off" id="meanType">받으실 장소를 입력해 주세요</span>
+										<span class="txt off" id="meanType"></span>
 
 
 
@@ -688,7 +689,6 @@ function reqeustPay(){
 							"shipping_recipient_name":recipiName,
 							"shipping_recipient_phone":recipiPhone,
 							"order_point":point
-							
 						}
 					}).done(function(location){
 						window.location.href="index.do";

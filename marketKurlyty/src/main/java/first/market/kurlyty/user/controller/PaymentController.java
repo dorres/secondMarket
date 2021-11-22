@@ -98,8 +98,7 @@ public class PaymentController {
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
 	public String paymentSuccess(OrderVO order, ShippingVO shipping) {
-		System.out.println(order.getOrder_goods_price());
-		order.setOrder_delivery_status("�����Ϸ�");
+		order.setOrder_delivery_status("°áÁ¦¿Ï·á");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
 		for(CartVO cartItem : purchaseGoods) {
@@ -120,7 +119,7 @@ public class PaymentController {
 		userDetail.setUser_point(point+order.getUser_point());
 		userDetail.setUser_total_purchase(totalPurchase+order.getOrder_goods_price());
 		orderService.updateUserPurchase(userDetail);
-		//shipping���� ���
+		//shippingÁ¤º¸ ´ã±â
 		shipping.setOrder_merchant_serial(order.getOrder_merchant_serial());
 		shipping.setShipping_address1(order.getUser_address1());
 		shipping.setShipping_address2(order.getUser_address2());

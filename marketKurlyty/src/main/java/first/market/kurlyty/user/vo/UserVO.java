@@ -20,4 +20,7 @@ public class UserVO {
 	private String user_year;
 	private String user_month;
 	private String user_day;
+
+
+
 }

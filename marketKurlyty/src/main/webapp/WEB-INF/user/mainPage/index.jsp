@@ -7,7 +7,7 @@
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath}/resources/style/ItemListStyle.css">
 </head>
 <script>
 var index=1;
