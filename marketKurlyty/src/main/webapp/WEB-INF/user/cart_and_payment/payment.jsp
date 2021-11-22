@@ -141,8 +141,8 @@
 										<tr>
 											<th>이메일</th>
 											<td><input type="hidden" id="email" name="orderer_email"
-												value="sodlfdms56@naver.com" option="regEmail">
-												sodlfdms56@naver.com
+												value="${userInfo.user_email }" option="regEmail">
+												${userInfo.user_email }
 												<p class="txt_guide">
 													<span class="txt txt_case1">이메일을 통해 주문처리과정을 보내드립니다.</span>
 													<span class="txt txt_case2">정보 변경은 <span
