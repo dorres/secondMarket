@@ -28,6 +28,7 @@
  		<typeAlias type="first.market.kurlyty.user.vo.user_address_listVO" alias="addressListVO"/>
  		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
 		<typeAlias type="first.market.kurlyty.user.vo.WithdrawInfoVO" alias="withdraw"/> <!-- sungy -->
+		<typeAlias type="first.market.kurlyty.user.vo.GoodsQnaVO" alias="goodsQna"/> <!-- sungy -->
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/membership-mapping.xml"/>
@@ -41,7 +42,7 @@
  		<mapper resource="config/mappings/order-mapping.xml"/>
 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
-		
+		<mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
 		
  	</mappers>
  </configuration>

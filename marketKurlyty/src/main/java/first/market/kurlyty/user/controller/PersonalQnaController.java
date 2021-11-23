@@ -24,14 +24,16 @@ public class PersonalQnaController {
 	private PersonalQnaService personalqnaService;
 	
 	
-// 
+//
+	
 	@RequestMapping("/personalQnaBoard.do")
 	public String getList(HttpServletRequest request, PersonalQnaVO vo, Model model) {
 		HttpSession session = request.getSession();
 		vo.setUser_id((String) session.getAttribute("userId"));
-		
 		List<PersonalQnaVO> boardList = personalqnaService.getPersonalQnaList(vo);
-		model.addAttribute("personalqnaboard", boardList);
+		if(boardList.size() > 0) {
+			model.addAttribute("personalqnaboard", boardList);
+		}
 		return "customerCenter/personalQnaBoard";
 	}
 	
