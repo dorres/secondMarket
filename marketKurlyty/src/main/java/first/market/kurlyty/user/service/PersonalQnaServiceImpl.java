@@ -9,6 +9,7 @@ import first.market.kurlyty.user.dao.PersonalQnaDAO;
 import first.market.kurlyty.user.dao.UserDAO;
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
+import first.market.kurlyty.user.vo.User_order_listVO;
 
 //CONTROLLER - service - DAO 
 
@@ -45,5 +46,10 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 	@Override
 	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo) {
 		return personalqnaDAO.getPersonalQna(vo);
+	}
+
+	@Override
+	public User_order_listVO getMerchantSerial(User_order_listVO vo) {
+		return personalqnaDAO.getMerchantSerial(vo);
 	}
 }

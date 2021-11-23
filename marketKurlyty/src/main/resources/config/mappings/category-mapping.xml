@@ -71,8 +71,28 @@
  		SELECT * FROM MK_GOODS_CART WHERE user_id=#{value} AND goods_cart_status=true
  		ORDER BY goods_cart_serial ASC
  	</select>
- 	<!-- banner -->
+ 	<!-- index -->
  	<select id="getBanner" resultType="first.market.kurlyty.vo.BannerVO">
  		SELECT * FROM MK_BANNER
+ 	</select>
+ 	<select id="getHotDeal" resultType="product">
+ 	SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.goods_detail_dicountrate DESC, PRODUCT.category_goods_serial ASC
+ 		LIMIT 3
+ 	</select>
+ 	<select id="getNewGoods" resultType="product">
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.category_goods_serial DESC
+ 		LIMIT 3
  	</select>
  </mapper>

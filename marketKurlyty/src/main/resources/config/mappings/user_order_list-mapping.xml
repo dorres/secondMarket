@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orderListDAO">
+	<select id="orderlist" resultType="orderListVO">
+		select * from
+		mk_order as o join mk_category_goods as c
+		on
+		o.master_goods_serial=c.category_goods_serial
+		where o.user_id=#{user_id}
+		order by o.order_serial desc
+		
+
+	</select>
+	<select id="order_detaillist" resultType="orderListVO">
+		SELECT * FROM
+		mk_category_goods C JOIN mk_goods_detail G
+		on
+		C.category_goods_serial = G.category_goods_serial
+		join
+		mk_order_details O
+		on
+		G.category_goods_serial = O.category_goods_serial
+		where
+		o.order_merchant_serial = #{order_merchant_serial}
+	</select>
+	<select id="shipping" resultType="shippingVO">
+		select * from mk_shipping_info where order_merchant_serial=#{order_merchant_serial}
+	</select>
+
+	<select id="getBoardListCnt" resultType="int">
+		SELECT count(*) as
+		listCnt
+		FROM mk_order as o join mk_category_goods as c
+		on
+		o.master_goods_serial=c.category_goods_serial
+	</select>
+	<select id="oldPrice" resultType="int">
+		select sum(order_goods_old_price) as op from mk_order_details where
+		order_merchant_serial=#{order_merchant_serial}
+	</select>
+	<select id="dcPrice" resultType="int">
+		select sum(order_goods_price) as dp from mk_order_details where
+		order_merchant_serial=#{order_merchant_serial}
+	</select>
+	<select id="point" resultType="int">
+		select order_point from mk_order where
+		order_merchant_serial=#{order_merchant_serial}
+	</select>
+</mapper>

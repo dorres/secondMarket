@@ -4,6 +4,7 @@ import java.util.List;
 
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
+import first.market.kurlyty.user.vo.User_order_listVO;
 
 
 public interface PersonalQnaService {
@@ -19,6 +20,8 @@ public interface PersonalQnaService {
 	public int deletePersonalQna(PersonalQnaVO vo);
 	 
 	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo);
+	
+	public User_order_listVO getMerchantSerial(User_order_listVO vo);
 	
 	//Controller >> service >> DAO
 
