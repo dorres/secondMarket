@@ -1,6 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="qnb" class="quick-navigation">
+<style>
+div.quick-navigation{
+	position: absolute;
+    z-index: 1;
+    right: 20px;
+    top: 330px;
+    width: 80px;
+    font: normal 12px/16px "Noto Sans";
+    color: #333;
+    letter-spacing: -0.3px;
+    transition: top 0.2s;
+}
+div#quickNavi div.side_menu{
+	width: 80px;
+    border: 1px solid #ddd;
+    border-top: 0 none;
+    background-color: #fff;
+}
+div#quickNavi div.side_recent{
+	position: relative;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+div#quickNavi .link_menu{
+	display: block;
+    height: 29px;
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+div#quickNavi .link_menu:hover{
+	color: #5f0080;
+}
+div.quickNaviFixed{
+	position: fixed;
+    z-index: 1;
+    right: 20px;
+    top: 330px;
+    width: 80px;
+    font: normal 12px/16px "Noto Sans";
+    color: #333;
+    letter-spacing: -0.3px;
+    transition: top 0.2s;
+}
+</style>
+<script>
+$(document).ready(function(){
+	var boffset = $("#quickNavi").offset();
+	
+	$(window).scroll(function(){
+		console.log(boffset.top)
+		console.log("document:",$(document).scrollTop());
+		if($(document).scrollTop()>boffset.top-400){
+			$("#quickNavi").attr("class","quickNaviFixed");
+		}
+		else{
+			$("#quickNavi").attr("class","quick-navigation");	
+		}
+	});
+});
+</script>
+<div id="quickNavi" class="quick-navigation">
 
 	<div class="bnr_qnb" id="brnQuick"></div>
 
