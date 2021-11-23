@@ -362,6 +362,13 @@ public class AdminDAO {
 	public int updateOrderWait(AdminOrderVO order) {
 		return sqlSession.update("adminOrderDAO.updateOrderWait",order);
 	}
+	public List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList) {
+		return sqlSession.selectList("adminOrderDAO.getShippingInfoList",merchantList);
+	}
+	public int updateStatus(List<String> merchantList) {
+		return sqlSession.update("adminOrderDAO.updateStatus",merchantList);
+	}
+	
 	
 	
 }

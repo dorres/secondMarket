@@ -224,4 +224,8 @@ public interface AdminService {
 	
 	int updateOrderWait(AdminOrderVO order);
 	
+	List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList);
+	
+	int updateStatus(List<String> merchantList);
+	
 }
