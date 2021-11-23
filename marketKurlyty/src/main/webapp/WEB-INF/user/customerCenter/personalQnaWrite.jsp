@@ -129,7 +129,7 @@
 													<th class="input_txt">주문번호</th>
 													<td>
 													<input type="text" name="order_details_order_serial" style="width: 25%"
-														value="">
+														value="${order_merchant_serial.order_merchant_serial }">
 														<input type="button" class="bhs_button yb"
 														value="주문조회"
 														style="float: none; line-height: 27px; width: 100px;"/>

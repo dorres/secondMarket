@@ -11,4 +11,6 @@ public interface HeaderService {
 	List<ProductVO> getCategoryProduct(ProductVO product);
 	List<CategoryMainVO> getCategoryMain();
 	List<BannerVO> getBanner();
+	List<ProductVO> getHotDealProduct();
+	List<ProductVO> getNewGoods();
 }

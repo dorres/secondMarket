@@ -43,5 +43,9 @@
 	<select id="getPersonalQna" resultType="personalQna" parameterType="personalQna">
 		SELECT * FROM mk_qna_personal WHERE qna_personal_serial = #{qna_personal_serial} 
 	</select>
+	
+	<select id="order_merchant_serial" resultType="orderListVO">
+		select order_merchant_serial from mk_order where order_merchant_serial=#{order_merchant_serial}
+	</select>
 
  </mapper> 
