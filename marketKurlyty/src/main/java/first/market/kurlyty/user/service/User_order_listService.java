@@ -14,6 +14,7 @@ public interface User_order_listService {
 	public int oldPrice(String order_merchant_serial) throws Exception;
 	public int dcPrice(String order_merchant_serial) throws Exception;
 	public int point(String order_merchant_serial);
+	User_order_listVO getDate(User_order_listVO vo);
 
 
 }

@@ -28,6 +28,7 @@ public class Board_noticeController {
 		return "mykurly/review";
 	}
 	
+	
 	@GetMapping("/notice.do")
 	public String customerCenter1(Model model
 			, @RequestParam(required = false, defaultValue = "1") int page

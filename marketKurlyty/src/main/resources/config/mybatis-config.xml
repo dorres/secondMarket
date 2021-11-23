@@ -45,6 +45,7 @@
 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
+		<mapper resource="config/mappings/point-mapping.xml"/>
 		
  	</mappers>
  </configuration>

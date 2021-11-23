@@ -48,4 +48,7 @@
 		select order_point from mk_order where
 		order_merchant_serial=#{order_merchant_serial}
 	</select>
+	<select id="orderTime" resultType="orderListVO">
+	select * from mk_order where order_merchant_serial=#{order_merchant_serial}
+	</select>
 </mapper>
