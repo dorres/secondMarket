@@ -5,36 +5,13 @@
  <mapper namespace="ItemPageDAO">
  
 	 <select id="getItemPage" resultType="itempage"	parameterType="itempage">
-	 SELECT A.category_main_serial,
-	        A.category_sub_serial,
-	        A.category_goods_serial,
-	        A.category_goods_name,
-	        A.category_goods_name_subtext,
-	        A.category_goods_unit,
-	        A.category_goods_weight,
-	        A.category_goods_origin,
-	        A.category_goods_packaging_type,
-	        A.category_goods_delivery_type,
-	        A.category_goods_exp_date,
-	        A.category_goods_info,
-	        A.category_goods_ref,
-	        A.category_goods_allergy,
- 			A.category_goods_detail_name1,
-	 		A.category_goods_detail_name2,	
-	 		A.category_goods_detail_name_subtext,   	   
-	 		A.category_goods_image_thumb,
-	 		A.category_goods_image_detail_header,
-	  		A.category_goods_image_detail_main,
-	        B.goods_detail_price,                
-            B.goods_detail_stock_quantity,         
-            B.goods_detail_stock_notification,     
-            B.goods_detail_promotion_serial,      
-            B.goods_detail_dicountrate
-      FROM mk_category_goods AS A 
-      INNER JOIN mk_goods_detail AS B
-      ON A.category_goods_serial = B.category_goods_serial	   		 
-      WHERE A.category_goods_serial = #{category_goods_serial}
- 	<!-- 	SELECT * FROM mk_category_goods WHERE category_goods_serial = #{category_goods_serial} -->
+	 SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE 1=1
+ 		AND PRODUCT.category_goods_serial=#{category_goods_serial}
 	 </select>
 	 
  	<select id="getCategoryItemPage" resultType="itempage"	parameterType="itempage">   

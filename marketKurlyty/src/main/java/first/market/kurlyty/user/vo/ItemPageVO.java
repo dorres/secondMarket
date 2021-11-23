@@ -50,5 +50,6 @@ public class ItemPageVO {
 	   private int goods_detail_stock_notification;
 	   private int goods_detail_promotion_serial;
 	   private int goods_detail_dicountrate;
+	   private int goods_last_price;
 	
 }

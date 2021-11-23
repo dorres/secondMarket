@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -32,47 +30,29 @@ position: absolute;
 
 <script>
 
-function openCart(serial,name,lastprice,price,discount){
-	var totalprice = parseInt(lastprice)
-	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
-	$(".cartNone").attr("class","cartClick");
-	$(".cart_option").css("opacity","1").css("display","block");
-	$("#cartPut .in_option").find("span.name").text(name);
-	$("#cartPut .in_option").find("span.dc_price").text(totalprice.toLocaleString("ko-KR")+"원");
-	$("#cartPut .in_option").find("span.sum").find("span.num").text(totalprice.toLocaleString("ko-KR"));
-	$("#cartPut .in_option").find("input.hprice").val(price);
-	$("#cartPut .in_option").find("input.hdiscount").val(discount);
-	$("#cartPut .in_option").find("input.hserial").val(serial);
-	
-}
-function cancelCart(){
-	$(".cartClick").attr("class","cartNone");
-	$(".cart_option").css("opacity","0").css("display","none");
-}
-function closeCart(){
-	$(".cartClick").attr("class","cartNone");
-	$(".cart_option").css("opacity","0").css("display","none");
-}
 function quantity(count){
-	var currentCount=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	var currentCount=$("span.count").find("input.inp").val();
 	var changeCount = parseInt(currentCount)+count;
-	var price=$("#cartPut .in_option").find("input.hprice").val();
-	var discount=$("#cartPut .in_option").find("input.hdiscount").val();
+	var price=$("input#oldPrice").val();
+	var discount=${getItemPage.goods_detail_dicountrate}
+	var membership = ${membership.user_membership_point_rate};
 	if(changeCount<1)changeCount=1;
 	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
-	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(changeCount);
-	$("#cartPut .in_option").find("div.total").find("span.num").text(changePrice.toLocaleString("ko-KR"));
+	var point = parseInt((changePrice*(membership/100)+5)/10)*10
+	$("span.count").find("input.inp").val(changeCount);
+	$("span.sum").find("span.num").text(changePrice.toLocaleString("ko-KR"));
+	$("p.txt_point").find("strong.emph").text(point.toLocaleString("ko-KR")+"원 적립");
 }
 function inputCart(){
-	var serial=$("#cartPut .in_option").find("input.hserial").val();
-	var count=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	var serial=${getItemPage.category_goods_serial};
+	var count=$("span.count").find("input.inp").val();
 	$.ajax({
 		url:"cartInput.do",
 		type:"post",
 		data:{"category_goods_serial":serial,"goods_cart_count":count},
 		datatype:"text",
 		success:function(res){
-			closeCart();
+			alert("장바구니에 담았습니다.");
 		},
 		error:function(res){
 			alert("담기에 실패했습니다.");
@@ -83,6 +63,12 @@ function inputCart(){
 
 <body class="main-index" oncontextmenu="return false" ondragstart="return false">
 	<a href="#top" id="gotoTop">맨 위로 가기</a>
+	<input type="hidden" id="oldPrice" value="${getItemPage.goods_detail_price}"/>
+	<input type="hidden" id="dcPrice" value="${getItemPage.goods_last_price }"/>
+	<fmt:formatNumber var="fmOldPrice" maxFractionDigits="3" value="${getItemPage.goods_detail_price }"/>
+	<fmt:formatNumber var="fmDcPrice" maxFractionDigits="3" value="${getItemPage.goods_last_price }"/>
+	<fmt:parseNumber var="oldReserves" type="number" integerOnly="true" value="${(getItemPage.goods_detail_price*(membership.user_membership_point_rate/100)+5)/10}"/>
+	<fmt:formatNumber var="afterReserves" type="number" maxFractionDigits="1" value="${oldReserves*10 }"/>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -91,25 +77,11 @@ function inputCart(){
 
 			<div id="main">
 				<div id="content">
-
+				
 					<jsp:include page="../default/sidemenu.jsp"></jsp:include><!-- sidemenu부분 -->
-
+					
 					<div id="kurlyMain" class="page_aticle page_main"
 						style="width: 100%;">
-							<div class="alert-window"
-							style="height: 225px;">
-							<div class="ask-alert-wrapper">
-								<div class="ask-alert-header">알림메세지</div>
-								<div class="ask-alert-content">
-									<p class="ask-alert-message">수량은 반드시 1 이상이어야 합니다.</p>
-								</div>
-								<button class="ask-alert-close-button">이 메세지를 닫기</button>
-							</div>
-							<div class="ask-alert-footer">
-								<button type="button" data-ask-callback-key="1557653029378"
-									class="styled-button __active">확인</button>
-							</div>
-						</div>
 						
 						<div class="section_view">
 							<div id="shareLayer">
@@ -136,8 +108,8 @@ function inputCart(){
 
 							<div id="sectionView">
 								<div class="inner_view">
-									<div class="thumb" style="background-image: url(${category_goods_image_thumb}); ">
-										<img src="${category_goods_image_thumb}" alt="상품 대표 이미지" class="bg"/>
+									<div class="thumb">
+										<img src="${getItemPage.category_goods_image_thumb}" alt="상품 대표 이미지" class="bg"/>
 									</div>
 									<p class="goods_name">
 										<span class="btn_share"><button id="btnShare">공유하기</button></span>
@@ -150,25 +122,19 @@ function inputCart(){
 									<p class="goods_price">
 										<span class="position">
 											<span class="dc"><!-- 할인된 가격 -->	
-												<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="3" 
-											value="${getItemPage.goods_detail_price-(getItemPage.goods_detail_price/getItemPage.goods_detail_dicountrate)}" 
-											var="lastPrice"/> ${lastPrice}</span>
-													<span class="won">원</span>
-											
-												<span class="dc_percent">${getItemPage.goods_detail_dicountrate}
-													<span class="per">%</span>
+												<span class="dc_price">
+													${fmDcPrice}
+												</span>
+												<span class="won">원</span>
+												<span class="dc_percent">${getItemPage.goods_detail_dicountrate}<span class="per">%</span>
 												</span>
 											</span>
 											<a class="original_price">
-												<span class="price">${getItemPage.goods_detail_price}
+												<span class="price">${fmOldPrice}
 													<span class="won">원</span>
 												</span>
 											</a>
 										</span>
-										<!---->
-										<!---->
-										<!---->
-										<!---->
 										<span class="not_login"> <!--적립금--> <span>로그인 후, 적립혜택이 제공됩니다.</span>
 										</span>
 									</p>
@@ -198,29 +164,23 @@ function inputCart(){
 											</dd>
 										</dl>
 										<!-- c:if문 적용되는 항목들 유통기한, 안내사항, 추가정보, 알레르기정보 -->
-										<c:if test="${getItemPage.category_goods_exp_date == null }">
-										</c:if>
-										<c:if test="${getItemPage.category_goods_exp_date != null }">
+										<c:if test="${getItemPage.category_goods_exp_date != null && getItemPage.category_goods_exp_date != ''}">
 										<dl class="list">
 											<dt class="tit">유통기한</dt>
 											<dd class="desc">${getItemPage.category_goods_exp_date}</dd>
 										</dl>
 										</c:if>
-										
-										<c:if test="${getItemPage.category_goods_info == null }">
+										<c:if test="${getItemPage.category_goods_info != null && getItemPage.category_goods_info != ''}">
+											<dl class="list">
+												<dt class="tit">안내사항</dt>
+												<dd class="desc">
+												<c:forEach var="goodsInfo" items="${fn:split(getItemPage.category_goods_info,'-') }">
+													-${goodsInfo}<br>
+												</c:forEach>
+												</dd>
+											</dl>
 										</c:if>
-										<c:if test="${getItemPage.category_goods_info != null }">
-										<dl class="list">
-											<dt class="tit">안내사항</dt>
-											<dd class="desc">
-												${getItemPage.category_goods_info}
-											</dd>
-										</dl>
-										</c:if>
-										
-										<c:if test="${getItemPage.category_goods_ref == null }">
-										</c:if>			
-										<c:if test="${getItemPage.category_goods_ref != null }">
+										<c:if test="${getItemPage.category_goods_ref != null && getItemPage.category_goods_ref != ''}">
 										<dl class="list">
 											<dt class="tit">추가정보</dt>
 											<dd class="desc">
@@ -228,9 +188,7 @@ function inputCart(){
 											</dd>
 										</dl>
 										</c:if>
-										<c:if test="${getItemPage.category_goods_allergy == null }">
-										</c:if>
-										<c:if test="${getItemPage.category_goods_allergy != null }">
+										<c:if test="${getItemPage.category_goods_allergy != null && getItemPage.category_goods_allergy != ''}">
 										<dl class="list">
 											<dt class="tit">알레르기정보</dt>
 											<dd class="desc">
@@ -245,14 +203,12 @@ function inputCart(){
 					<!--  -->
 					<div id="cartPut">
 						<div class="cart_option cartList cart_type2">
-							<form name="cartInput" action="cartInput.do">
+							<form name="cartInput">
+							
 							<div class="inner_option">
 								<!---->
 								<div class="in_option">
 									<div class="list_goods">
-										<!---->
-										<!---->
-										<!---->
 										<ul class="list list_nopackage">
 											<li class="on"><span class="btn_position">
 													<button type="button" class="btn_del">
@@ -280,14 +236,21 @@ function inputCart(){
 										<div class="price">
 											<!---->
 											<strong class="tit">총 상품금액 :</strong> 
-											<span class="sum"> <span class="num"> </span>	
-												<span class="won">원</span></span> 
+											<span class="sum">
+												<span class="num">${fmDcPrice }</span>	
+												<span class="won">원</span>
+											</span> 
 										</div>
 <!-- 수량따라 금액 올라가게 처리필  -->
 										<p class="txt_point">
 											<span class="ico">적립</span>
-											<!---->
-											<span class="point"> 구매 시 <strong class="emph">XXXXXXX원 적립</strong></span>
+											<c:if test="${membership != null }">
+												<span class="point"> 구매 시 <strong class="emph">${afterReserves }원 적립</strong></span>
+											</c:if>
+											<c:if test="${membership==null }">
+												<span class="point"> 로그인 시 적립 가능</span>
+											</c:if>
+											
 										</p>
 									</div>
 								</div>
@@ -322,8 +285,6 @@ function inputCart(){
 										</a>
 										</div>
 								<div id="hide0" style="display:none"> 										
-										<!---->
-										<!---->
 										<ul class="list list_nopackage">
 											<li class="on">
 												<span class="btn_position">
@@ -358,7 +319,7 @@ function inputCart(){
 										<div class="price">
 											<!---->
 											<strong class="tit">총 상품금액 :</strong>
-<!-- 수량따라 금액 올라가게 처리필  -->													
+									<!-- 수량따라 금액 올라가게 처리필  -->													
 											<span class="sum"><span class="num"></span> 
 											<span class="won">원</span></span>
 										</div>
@@ -366,7 +327,7 @@ function inputCart(){
 										<p class="txt_point">
 											<span class="ico">적립</span>
 											<!---->
-											<span class="point"> 구매 시 <strong class="emph">XXXXXXXX원 적립</strong></span>
+											<span class="point"> 구매 시 <strong class="emph">${afterReserves }원 적립</strong></span>
 										</p>
 									</div>
 								
@@ -753,8 +714,10 @@ function inputCart(){
 								
 								
 								<!--  리뷰페이지를 가져와서 반영합니다. -->
-											<div class="goods-view-infomation-content" id="goods-review" data-load="0">
-												<div id="inreview" class="goods-view-infomation-board" frameborder="0" height="736">
+											<div class="goods-view-infomation-content" id="goods-review"
+												data-load="0">
+												<div id="inreview" class="goods-view-infomation-board"
+													frameborder="0" height="736">
 													<div id="contents-wrapper" class="goods_board">
 														<div
 															class="xans-element- xans-product xans-product-additional detail_board  ">
@@ -769,10 +732,10 @@ function inputCart(){
 																		<div class="sort-wrap">
 																			<ul class="list_type1 old">
 																				<li><span class="ico"></span>
-																				<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과
-																						다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</p></li>
+																					<p class="txt">상품에 대한 문의를 남기는 공간입니다. 해당 게시판의
+																						성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</p></li>
 																				<li><span class="ico"></span>
-																				<p class="txt">
+																					<p class="txt">
 																						배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 <a
 																							href="#none"
 																							onclick="window.parent.location.href = '/shop/mypage/mypage_qna.php'"
@@ -814,121 +777,7 @@ function inputCart(){
 																			</tr>
 																		</tbody>
 																	</table>
-																	<div class="tr_line">
-																		<table class="xans-board-listheaderd tbl_newtype1"
-																			width="100%" cellpadding="0" cellspacing="0"
-																			onclick="view_content(this,event,'notice')">
-																			<caption style="display: none">구매후기 내용</caption>
-																			<colgroup>
-																				<col style="width: 70px;">
-																				<col style="width: auto;">
-																				<col style="width: 51px;">
-																				<col style="width: 77px;">
-																				<col style="width: 100px;">
-																				<col style="width: 40px;">
-																				<col style="width: 80px;">
-																			</colgroup>
-																			<tbody>
-																				<tr>
 
-																					<input type="hidden" name="index" value="-1">
-																					<input type="hidden" name="image" value="">
-																					<input type="hidden" name="grade" value="0">
-																					<input type="hidden" name="best" value="false">
-																					<input type="hidden" name="pNo" value="">
-
-																					<td align="center">공지</td>
-																					<td class="subject">
-																						<div>금주의 Best 후기 안내</div>
-																					</td>
-																					<td class="user_grade grade_comm"></td>
-																					<td class="user_grade">Marketkurly</td>
-																					<td class="time">2019-11-01</td>
-																					<td><span class="review-like-cnt"
-																						data-sno="6412655">0</span></td>
-																					<td><span class="review-hit-cnt"
-																						data-sno="6412655">430427</span></td>
-																				</tr>
-																			</tbody>
-																		</table>
-																		<div data-sno="6412655" class="review_view">
-																			<div class="inner_review">
-																				<div class="name_purchase">
-																					<strong class="name"></strong>
-																					<p class="package"></p>
-																				</div>
-																				<div class="review_photo"></div>
-																				<p class="MsoNormal">고객님 안녕하세요, 마켓컬리입니다</p>
-																				<p class="MsoNormal">
-																					<br>
-																				</p>
-																				<p class="MsoNormal">■ Best 후기 당첨자 안내</p>
-																			</div>
-																			<div class="goods-review-grp-btn"></div>
-																		</div>
-																	</div>
-																	<div class="tr_line">
-																		<table class="xans-board-listheaderd tbl_newtype1"
-																			width="100%" cellpadding="0" cellspacing="0"
-																			onclick="view_content(this,event,'notice')">
-																			<caption style="display: none">구매후기 내용</caption>
-																			<colgroup>
-																				<col style="width: 70px;">
-																				<col style="width: auto;">
-																				<col style="width: 51px;">
-																				<col style="width: 77px;">
-																				<col style="width: 100px;">
-																				<col style="width: 40px;">
-																				<col style="width: 80px;">
-																			</colgroup>
-																			<tbody>
-																				<tr>
-
-																					<input type="hidden" name="index" value="0">
-																					<input type="hidden" name="image" value="">
-																					<input type="hidden" name="grade" value="0">
-																					<input type="hidden" name="best" value="false">
-																					<input type="hidden" name="pNo" value="">
-
-																					<td align="center">공지</td>
-																					<td class="subject">
-																						<div>상품 후기 적립금 정책 안내</div>
-																					</td>
-																					<td class="user_grade grade_comm"></td>
-																					<td class="user_grade">Marketkurly</td>
-																					<td class="time">2019-11-01</td>
-																					<td><span class="review-like-cnt"
-																						data-sno="6412546">0</span></td>
-																					<td><span class="review-hit-cnt"
-																						data-sno="6412546">232154</span></td>
-																				</tr>
-																			</tbody>
-																		</table>
-																		<div data-sno="6412546" class="review_view">
-																			<div class="inner_review">
-																				<div class="name_purchase">
-																					<strong class="name"></strong>
-																					<p class="package"></p>
-																				</div>
-																				<div class="review_photo"></div>
-																				[ 금주의 Best 후기 및 상품 후기 적립금 정책 변경 안내 ]<br> <br>
-																				고객님 안녕하세요. 마켓컬리 입니다.<br> 적립금 지급 정책을 안내드리니 컬리
-																				이용에 참고 부탁드립니다.<br> <br> ■ 적립금 지급 정책<br>
-																				<br> 1. 일반 후기 기존과 같이 작성 후 1~3일 내에 기본 적립금이
-																				지급됩니다.<br> -글 후기 50원/건<br> -사진 후기 100원/건<br>
-																				*퍼플/더퍼플 러버스 고객님께는 더블 후기 적립금이 지급됩니다.<br> <br>
-																				2. Best 후기 &amp; Best 후기 적립금은 일주일 단위로 선정 및 지급됩니다.<br>
-																				1) 선정 건 수 : 일주일 최대 30건<br> 2) 지급 일시 : 매주 수요일(
-																				지급일이 공휴일의 경우 전 영업일)<br> 3) 당첨 ID 및 그 주의 Best
-																				후기는 후기 게시판 내 공지사항으로 등록됩니다.<br> <br> 3. 상품
-																				후기 게시판(Product review) 적립금 지급 유의 사항<br> 1) 실제
-																				구매한 상품의 후기가 아닌 경우 Best 후기 당첨 시 제외 됩니다.<br> 2)
-																				구매 상품 외의 사진이 첨부된 경우 후기 적립금 정책으로 제공한 적립금이 취소 될 수
-																				있습니다.
-																			</div>
-																			<div class="goods-review-grp-btn"></div>
-																		</div>
-																	</div>
 																	<div class="tr_line">
 																		<table class="xans-board-listheaderd tbl_newtype1"
 																			width="100%" cellpadding="0" cellspacing="0"
@@ -1098,160 +947,6 @@ function inputCart(){
 																			<tbody>
 																				<tr>
 
-																					<input type="hidden" name="index" value="3">
-																					<input type="hidden" name="image" value="true">
-																					<input type="hidden" name="grade" value="0">
-																					<input type="hidden" name="best" value="true">
-																					<input type="hidden" name="pNo" value="">
-
-																					<td align="center">BEST</td>
-																					<td class="subject">
-																						<div class="fst">
-																							간편하게 립! <img
-																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
-																								alt="이미지가 첨부됨">
-																						</div>
-																						<div class="snd">
-																							간편하게 립! <img
-																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
-																								alt="이미지가 첨부됨">
-																						</div>
-																					</td>
-																					<td class="user_grade grade_comm"></td>
-																					<td class="user_grade">최*인</td>
-																					<td class="time">2018-10-21</td>
-																					<td><span class="review-like-cnt"
-																						data-sno="1447090">0</span></td>
-																					<td><span class="review-hit-cnt"
-																						data-sno="1447090">1586</span></td>
-																				</tr>
-																			</tbody>
-																		</table>
-																		<div data-sno="1447090" class="review_view">
-																			<div class="inner_review">
-																				<div class="name_purchase">
-																					<strong class="name">[존쿡 델리미트] 바베큐 백립 450g
-																						(냉동)</strong>
-																					<p class="package"></p>
-																				</div>
-																				<div class="review_photo"></div>
-																				립을 이렇게 간단하게 먹을줄이야!!!<br> 오븐에 구웠는데 맛이 별로였다는 후기가
-																				있길래<br> 저는 전자레인지에 데워먹었어요!<br> 후라이팬에 해도
-																				맛있을것같은데! 저는 태울것같아서 ㅎㅎ<br> 700와트 5분이래서, 5분데웠더니
-																				찬기가 남아서 6분 데워줬어요<br> 근데 겉에만 뜨겁고 안은 여전히 차가워서<br>
-																				결국 가위로 다 자른 후 조금 더 데워줬더니 맛있게 되었어요!<br> 맛은 가격대비
-																				훌륭했어요! 개인적으로 코스*코에서 파는 립보다는 맛있게 먹었네요~ 그렇다고 물론 레스토랑급
-																				생각하시면 안되고요^^ 소스는 신맛이 조금 덜하면 훨씬 맛있겠단 생각 들고요^^<br>
-																				근데 다 먹고 생각났는데... 전자레인지에 데워서 뜨겁게 한다음에.. 후라이팬으로 살짝 더
-																				데워주면 소스도 더 꾸덕꾸덕하고 맛있겠다는 생각이....!<br> 그래서.. 이
-																				아쉬움에 조만간 재구매를 할 듯 합니다 ㅎㅎㅎㅎㅎ 아! 캠핑갈때 챙겨가서 숯불에 구워먹으면..
-																				정말 꿀맛일듯해요! 그럼 정말 레스토랑급 기대하셔도 될 듯 ㅎㅎ
-																			</div>
-																			<div class="goods-review-grp-btn">
-																				<button type="button"
-																					class="styled-button review-like-btn"
-																					data-sno="1447090"
-																					onclick="review_like('1447090',$(this));">
-																					도움이 돼요 <span class="num">0</span>
-																				</button>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="tr_line">
-																		<table class="xans-board-listheaderd tbl_newtype1"
-																			width="100%" cellpadding="0" cellspacing="0"
-																			onclick="view_content(this,event,false)">
-																			<caption style="display: none">구매후기 내용</caption>
-																			<colgroup>
-																				<col style="width: 70px;">
-																				<col style="width: auto;">
-																				<col style="width: 51px;">
-																				<col style="width: 77px;">
-																				<col style="width: 100px;">
-																				<col style="width: 40px;">
-																				<col style="width: 80px;">
-																			</colgroup>
-																			<tbody>
-																				<tr>
-
-																					<input type="hidden" name="index" value="4">
-																					<input type="hidden" name="image" value="true">
-																					<input type="hidden" name="grade" value="2">
-																					<input type="hidden" name="best" value="true">
-																					<input type="hidden" name="pNo" value="">
-
-																					<td align="center">BEST</td>
-																					<td class="subject">
-																						<div class="fst">
-																							정말 맛있어요!!♡♡ <img
-																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
-																								alt="이미지가 첨부됨">
-																						</div>
-																						<div class="snd">
-																							정말 맛있어요!!♡♡ <img
-																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
-																								alt="이미지가 첨부됨">
-																						</div>
-																					</td>
-																					<td class="user_grade grade_comm"><span
-																						class="ico_grade grade2"> 라벤더 </span></td>
-																					<td class="user_grade">김*</td>
-																					<td class="time">2018-09-06</td>
-																					<td><span class="review-like-cnt"
-																						data-sno="1212692">0</span></td>
-																					<td><span class="review-hit-cnt"
-																						data-sno="1212692">1882</span></td>
-																				</tr>
-																			</tbody>
-																		</table>
-																		<div data-sno="1212692" class="review_view">
-																			<div class="inner_review">
-																				<div class="name_purchase">
-																					<strong class="name">[존쿡 델리미트] 바베큐 백립 450g
-																						(냉동)</strong>
-																					<p class="package"></p>
-																				</div>
-																				<div class="review_photo"></div>
-																				바베큐 백립 너무 저렴하고 맛이있어요<br> 오븐을 예열해서 10분간 오븐에 돌려서
-																				먹었는데<br> 너무 맛이있었어요<br> 소스도 새콤달콤 맛있고<br>
-																				고기도 부드럽고 맛있어요<br> <br> 양도 많아서 둘이 먹기 충분할
-																				정도입니다♡<br> 가격이 저렴해서 양이 적을줄 알았는데<br> 정말 충분히
-																				많아요<br> 2만원도 안되는 가격으로 백립을 먹을수 있다는게<br> 좋아요<br>
-																				종종 사서 먹을 생각이예요<br> <br> 켈리에서 구매한 상품들이
-																				다만족인데<br> 유독 이제품 너무 마음에 들어요<br> 보통 고기
-																				구운것보다 비쥬얼도 좋아보여서<br> 손님접대용으로도 좋을것 같고<br>
-																				캠핑갈때도 몇개 들고가면 인기가 아주<br> 좋을것 같아요<br> 달콤한
-																				맛이라서 어린이들과 매운걸 안좋아하는 어른<br> 들은 그냥 먹기좋고<br>
-																				매운걸 좋아하는 사람들은 칠리소스를 곁들여 먹으니<br> 딱좋네요<br>
-																				그리고 마법의 파슬리가루는 필수입니다!!<br> 파릇파릇하니 예뻐요!!
-																			</div>
-																			<div class="goods-review-grp-btn">
-																				<button type="button"
-																					class="styled-button review-like-btn"
-																					data-sno="1212692"
-																					onclick="review_like('1212692',$(this));">
-																					도움이 돼요 <span class="num">0</span>
-																				</button>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="tr_line">
-																		<table class="xans-board-listheaderd tbl_newtype1"
-																			width="100%" cellpadding="0" cellspacing="0"
-																			onclick="view_content(this,event,false)">
-																			<caption style="display: none">구매후기 내용</caption>
-																			<colgroup>
-																				<col style="width: 70px;">
-																				<col style="width: auto;">
-																				<col style="width: 51px;">
-																				<col style="width: 77px;">
-																				<col style="width: 100px;">
-																				<col style="width: 40px;">
-																				<col style="width: 80px;">
-																			</colgroup>
-																			<tbody>
-																				<tr>
-
 																					<input type="hidden" name="index" value="5">
 																					<input type="hidden" name="image" value="true">
 																					<input type="hidden" name="grade" value="0">
@@ -1355,18 +1050,6 @@ function inputCart(){
 																class="layout-pagination-button layout-pagination-last-page">맨
 																끝 페이지로 가기</a>
 														</div>
-
-														<script>
-      // KMF-694 상품후기 Best후기내 링크 작동 오류
-      $('.review_view a').on('click', function(e){
-        if( $(this).attr('href').indexOf('http') > -1 ){
-          e.preventDefault();
-          parent.window.open($(this).attr('href'), '_blank');
-          // parent.location.href = $(this).attr('href');
-        }
-      });
-    </script>
-
 													</div>
 												</div>
 											</div>

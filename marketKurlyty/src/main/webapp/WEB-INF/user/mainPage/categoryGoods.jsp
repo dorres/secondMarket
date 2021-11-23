@@ -152,7 +152,6 @@ function inputCart(){
 												<li><a class="">추천순</a></li>
 												<li><a class="on">신상품순</a></li>
 												<li><a class="">인기상품순</a></li>
-												<li><a class="">혜택순</a></li>
 												<li><a class="">낮은 가격순</a></li>
 												<li><a class="">높은 가격순</a></li>
 											</ul>
@@ -233,13 +232,13 @@ function inputCart(){
 									<li>
 										<input type="hidden" class="goodsSerial" value="${item.category_goods_serial}"/>
 										<div class="foodImg">
-											<a href="#"><img
+											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }"><img
 												src="${item.category_goods_image_thumb}">
 											</a>
 											<button type="button" class="cartBt"
 												onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>
 										</div>
-										<a class="info" href="#"> <span class="name">${item.category_goods_name }</span>
+										<a class="info" href="itemPage.do?category_goods_serial=${item.category_goods_serial }"> <span class="name">${item.category_goods_name }</span>
 											<span class="cost"> <span class="dc">${item.goods_detail_dicountrate }%</span> <span
 												class="price">&nbsp;
 												<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price }" var="lastPrice"/>												

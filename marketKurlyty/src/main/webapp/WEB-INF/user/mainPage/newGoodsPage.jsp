@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,7 +59,6 @@
 												<li><a class="">추천순</a></li>
 												<li><a class="on">신상품순</a></li>
 												<li><a class="">인기상품순</a></li>
-												<li><a class="">혜택순</a></li>
 												<li><a class="">낮은 가격순</a></li>
 												<li><a class="">높은 가격순</a></li>
 											</ul>
@@ -72,16 +72,23 @@
 						
 						<div class="MainIntroContain">
 							<ul class="foodList">
-								<c:forEach begin="1" end="20" step="1">
+								<c:forEach var="item" items="${newGoodsList }">
 									<li>
 										<div class="foodImg">
-											<a href="#"><img src="${pageContext.request.contextPath }/resources/images/Item/Kimchi.png"></a>
-										</div> <a class="info" href="#"> <span class="name">[네이처]
-												오이 묶음</span> <span class="cost"> <span class="dc">36%</span>
-												<span class="price">7,500원</span> <span class="origin">11,800원</span>
-												<span class="desc">김치는 별로 맛없음</span>
-										</span>
-									</a>
+											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }">
+												<img src="${item.category_goods_image_thumb }">
+											</a>
+										</div>
+											<a class="info" href="itemPage.do?category_goods_serial=${item.category_goods_serial }"> 
+											<span class="name">${item.category_goods_name }</span>
+											<span class="cost">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price }" var="lastPrice"/>
+												<span class="dc">${item.goods_detail_dicountrate }%</span>
+												<span class="price">${lastPrice}원</span>
+												<span class="origin">${item.goods_detail_price }</span>
+												<span class="desc">${item.category_goods_name_subtext }</span>
+											</span>
+										</a>
 									</li>
 								</c:forEach>
 							</ul>
