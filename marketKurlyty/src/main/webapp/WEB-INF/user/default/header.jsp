@@ -12,14 +12,14 @@ $(document).ready(function(){
 		success:function(data){
 			//var data=JSON.parse(res);
 			for(key in data){
-				var rink = "categoryGoods.do?category_main_serial="+data[key].category_main_serial;
+				var rink = "categoryItemPage.do?category_main_serial="+data[key].category_main_serial;
 				$(".gnb_sub ul.gnb_menu").
 				append("<li class="+data[key].category_main_serial+"><a href="+rink+" class='menu'><span class='icon'><img src='"+data[key].category_main_icon_black+"' class='icon_on'>"+
 						"<img src='"+data[key].category_main_icon_color+"' class='icon_off'></span>"+
 						"<span class='name'>"+data[key].category_main_name+"</span></a></li>");
 				$(".gnb_sub ul.gnb_menu").find("li."+data[key].category_main_serial).append("<ul class='sub'></ul>");
 				for(sub in data[key].data){
-					var parentSerial = "categoryGoods.do?category_main_serial="+data[key].category_main_serial+"&category_sub_serial="+data[key].data[sub].category_sub_serial;
+					var parentSerial = "categoryItemPage.do?category_main_serial="+data[key].category_main_serial+"&category_sub_serial="+data[key].data[sub].category_sub_serial;
 					$("ul.gnb_menu li."+data[key].category_main_serial).find("ul").
 					append("<li><a class='sub' href="+parentSerial+"><span>"+data[key].data[sub].category_sub_name).
 					append("</span></a></li>")
@@ -259,8 +259,8 @@ ul.sub_on li.on{
 						<li class="menu1" class="on"><a href="#none"><span
 								class="ico"></span><span class="txt">전체 카테고리</span></a></li>
 						<li class="menu2"><a class="link new "
-							href="newGoodsPage.do"><span class="txt">신상품</span></a></li>
-						<li class="menu3"><a class="link best " href="BestGoodsPage.do"><span
+							href="newItemPage.do"><span class="txt">신상품</span></a></li>
+						<li class="menu3"><a class="link best " href="BestItemPage.do"><span
 								class="txt">베스트</span></a></li>
 						<li class="menu4"><a class="link bargain "
 							href="altleShopping.do"><span class="txt">알뜰쇼핑</span></a></li>
@@ -317,47 +317,6 @@ ul.sub_on li.on{
 					<div class="inner_sub">
 						<ul id="categoryMain"
 							class="gnb_menu size_over" style="height: 200.833px;">
-							<!-- <li class=""><a class="menu on"><span class="ico"><img
-										src="https://img-cf.kurly.com/shop/data/category/icon_veggies_inactive_pc@2x.1586324570.png"
-										alt="카테고리 아이콘" class="ico_off"> <img
-										src="https://img-cf.kurly.com/shop/data/category/icon_veggies_active_pc@2x.1586324570.png"
-										alt="카테고리 아이콘" class="ico_on"></span> <span class="tit"><span
-										class="txt">채소</span></span></a>
-								<ul class="sub_menu">
-									<li class=""><a class="sub"><span class="name">친환경</span></a>
-										</li>
-									<li><a class="sub"><span class="name">고구마·감자·당근</span></a>
-										</li>
-									<li><a class="sub"><span class="name">시금치·쌈채소·나물</span></a>
-										</li>
-									<li><a class="sub"><span class="name">브로콜리·파프리카·양배추</span></a>
-										</li>
-									<li><a class="sub"><span class="name">양파·대파·마늘·배추</span></a>
-										</li>
-									<li><a class="sub"><span class="name">오이·호박·고추</span></a>
-										</li>
-									<li><a class="sub"><span class="name">냉동·이색·간편채소</span></a>
-										</li>
-									<li><a class="sub"><span class="name">콩나물·버섯</span></a></li>
-								</ul></li>
-							<li class=""><a class="menu"><span class="ico"><img
-										src="https://img-cf.kurly.com/shop/data/category/icon_fruit_inactive_pc@2x.1568684150.png"
-										alt="카테고리 아이콘" class="ico_off"> <img
-										src="https://img-cf.kurly.com/shop/data/category/icon_fruit_active_pc@2x.1568684150.png"
-										alt="카테고리 아이콘" class="ico_on"></span> <span class="tit"><span
-										class="txt">과일·견과·쌀</span></span></a>
-								<ul class="sub_menu">
-									<li class=""><a class="sub"><span class="name">친환경</span></a>
-										</li>
-									<li><a class="sub"><span class="name">제철과일</span></a></li>
-									<li><a class="sub"><span class="name">국산과일</span></a></li>
-									<li><a class="sub"><span class="name">수입과일</span></a></li>
-									<li><a class="sub"><span class="name">간편과일</span></a></li>
-									<li><a class="sub"><span class="name">냉동·건과일</span></a></li>
-									<li><a class="sub"><span class="name">견과류</span></a></li>
-									<li><a class="sub"><span class="name">쌀·잡곡</span></a></li>
-								</ul>
-							</li> -->
 						</ul>
 					</div>
 				</div>

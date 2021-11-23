@@ -74,7 +74,7 @@ public class UserLoginController {
 			}
 			model.addAttribute("userId",user.getUser_id());
 			model.addAttribute("userName", userInfo.getUser_name());
-			return "mainPage/index";
+			return "redirect:index.do";
 		}else {
 			redirect.addFlashAttribute("FailMessage", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			return "redirect:login.do";

@@ -80,7 +80,7 @@
 														<c:forEach var="item" items="${coldList }" varStatus="count">
 															<li id="${item.category_goods_serial}">
 																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price*item.goods_cart_count }" var="lastPrice"/>
-																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price }" var="usuallyPrice"/>
+																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price*item.goods_cart_count }" var="usuallyPrice"/>
 																
 																<input type="hidden" id="price" value="${item.goods_last_price }"/>
 																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
