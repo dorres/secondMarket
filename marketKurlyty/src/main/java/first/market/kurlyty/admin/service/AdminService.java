@@ -104,6 +104,18 @@ public interface AdminService {
 	
 	// 상품문의 리스트 삭제(답변대기)
 	int deleteGqna(GoodsQnaVO gqna);
+	
+	//상품문의 답변 전 
+	GoodsQnaVO gqnaOne(GoodsQnaVO gqna);
+	
+	//상품 답변
+	int updateGqna(GoodsQnaVO gqna);
+	
+	// 상품문의 리스트 (답변완료)
+	List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna);
+	
+	//상품 답변 수정
+	int updateGqnaSuc(GoodsQnaVO gqna);
 	//=================================================================
 		
 

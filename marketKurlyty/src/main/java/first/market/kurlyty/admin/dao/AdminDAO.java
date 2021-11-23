@@ -175,6 +175,25 @@ public class AdminDAO {
 		return sqlSession.delete("gqnaDAO.deleteGqna",qgna);
 	}
 	
+	//상품문의 답변 하기 전
+	public GoodsQnaVO gqnaOne(GoodsQnaVO gqna) {
+		return sqlSession.selectOne("gqnaDAO.gqnaOne", gqna);
+	}
+	
+	//상품문의 답변
+	public int updateGqna(GoodsQnaVO gqna) {
+		return sqlSession.update("gqnaDAO.updateGqna",gqna);
+	}
+	
+	//상품문의 리스트(답변 완료)
+	public List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna){
+		return sqlSession.selectList("gqnaDAO.gqnaListSuc", gqna);
+		}
+	
+	//상품문의 답변 수정
+	public int updateGqnaSuc(GoodsQnaVO gqna) {
+		return sqlSession.update("gqnaDAO.updateGqna",gqna);
+	}
 	//================================================================
 
 	//공지사항 목록	

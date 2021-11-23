@@ -206,6 +206,28 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteGqna(GoodsQnaVO gqna) {
 		return adminDao.deleteGqna(gqna);
 	}
+	
+	//상품문의 답변 전 
+	@Override
+	public GoodsQnaVO gqnaOne(GoodsQnaVO gqna) {
+		return adminDao.gqnaOne(gqna);
+	}
+	
+	//상품 답변
+	public int updateGqna(GoodsQnaVO gqna) {
+		return adminDao.updateGqna(gqna);
+	}
+	
+	// 상품문의 리스트 (답변완료)
+	@Override
+	public List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna){
+		return adminDao.gqnaListSuc(gqna);
+	}
+	
+	//상품 답변 수정
+	public int updateGqnaSuc(GoodsQnaVO gqna) {
+		return adminDao.updateGqna(gqna);
+		}
 	//----------------------------------------------------------------
 	
 	//리뷰 리스트

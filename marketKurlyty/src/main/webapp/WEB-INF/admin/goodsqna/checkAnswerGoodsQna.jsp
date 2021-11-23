@@ -25,67 +25,29 @@
 				<div class="container-fluid px-4">
 
 					<h2 align="center">상품문의 답변</h2>
-					<form method="post" action="updqteGqna.mdo?qna_goods_serial=${qnaone.qna_goods_serial}">
-						<table border="1" style="float:left; width:50%;">
+					<form method="post" action="updqteGqnaSuc.mdo?qna_goods_serial=${qnaone.qna_goods_serial}">
+							<table border="4" style="float:right; width:100%;">
 							<tr align="center">
 							<tr>
-								<td>&nbsp;</td>
-								<td align="center">번호</td>
-								<td><input size="50" name="qna_goods_serial" value="${qnaone.qna_goods_serial}" readonly="readonly"></td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr height="1" bgcolor="#dddddd">
-								<td colspan="4"></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td align="center">제목</td>
-								<td><input size="50" maxlength="50" value="${qnaone.qna_goods_title}" readonly="readonly"></td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr height="1" bgcolor="#dddddd">
-								<td colspan="4"></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td align="center">아이디</td>
-								<td><input type="text" size="50" value="${qnaone.user_id}" readonly="readonly"></td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr height="1" bgcolor="#dddddd">
-								<td colspan="4"></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td align="center">내용</td>
-								<td><textarea name="memo" cols="50" rows="13">${qnaone.qna_goods_content}</textarea></td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr height="1" bgcolor="#dddddd">
-								<td colspan="4"></td>
-							</tr>
-						</table>
-						
-							<table border="4" style="float:right; width:50%;">
-							<tr align="center">
-							<tr>
+							<input type="hidden" name="qna_goods_serial" vlaue="${qnaone.qna_goods_serial}"/>
 								<td>&nbsp;</td>
 								<td><h3 style="text-align:right;">답변</h3></td>
 							</tr>
 							<tr height="20" bgcolor="#9932CC">
-								<td colspan="4" style="color:#ffff; text-align:center;">답변을 달아라~~</td>
+								<td colspan="4" style="color:#ffff; text-align:center;">답변</td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
 								<td align="center" style="height:100%;">내용</td>
-								<td><textarea name="qna_goods_answer" cols="50" rows="13"></textarea></td>
+								<td><textarea name="qna_goods_answer" cols="150" rows="13">${qnaone.qna_goods_answer}</textarea></td>
 								<td>&nbsp;</td>
 							</tr>
 							<tr height="1" bgcolor="#dddddd">
 								<td colspan="4"></td>
 							</tr>
 							<tr>
-								<td colspan="4" align="center" style="width:20px;"><input type="submit" value="등록"></td>
+								<td colspan="4" align="center" style="width:20px;">
+								<input type="submit" value="수정">&nbsp;<input type="button" value="목록" onclick="location.href='gqnaListSuc.mdo'"></td>
 							</tr>
 						</table>
 					</form>

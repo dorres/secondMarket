@@ -178,7 +178,7 @@
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="getReviewList.mdo">리뷰</a>
 								<a class="nav-link" href="gqnaList.mdo">상품문의(답변대기)</a>
-								<a class="nav-link" href="layout-sidenav-light.html">상품문의(답변완료)</a>
+								<a class="nav-link" href="gqnaListSuc.mdo">상품문의(답변완료)</a>
 							</nav>
 						</div>
 						<!-- 리뷰관리 -->

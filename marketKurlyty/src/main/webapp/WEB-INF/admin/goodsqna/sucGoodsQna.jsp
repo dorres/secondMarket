@@ -36,7 +36,7 @@
 			})
 		});
 		function delete_check(url) {
-			var answer = confirm("게시글를 정말로 삭제할까요?");
+			var answer = confirm("답변을 정말로 삭제합니까?");
 			if (answer == true) {
 				location.href = url;
 			}
@@ -66,7 +66,7 @@
 		<main>
 			<div class="container-fluid px-4">
 			</div>
-				<h1 class="mt-4">상품문의(답변대기)</h1>
+				<h1 class="mt-4">상품문의(답변완료)</h1>
 				
 
 				<div class="card mb-4">
@@ -84,23 +84,23 @@
 									<th>내용</th>
 									<th>작성일</th>
 									<th>공개유무</th>
-									<th>답변</th>
-									<th>삭제</th>
+									<th>답변확인</th>
+									<th>문의삭제</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="List" items="${gqnaList}">
+								<c:forEach var="ListSuc" items="${gqnaListSuc}">
 									<tr>
-										<td>${List.qna_goods_serial}</td>
-										<td>${List.category_goods_name }</td>
-										<td>${List.user_id}</td>
-										<td>${List.qna_goods_title}</td>
-										<td>${List.qna_goods_content }</td>
-										<td><fmt:formatDate value="${List.qna_goods_date}" pattern="yyyy-MM-dd"/></td>
-										<td>${List.qna_goods_lock}</td>
-										<td><input type="button" value="답변하기" onclick="location.href='toAnswer.mdo?qna_goods_serial=${List.qna_goods_serial}'"/></td>
+										<td>${ListSuc.qna_goods_serial}</td>
+										<td>${ListSuc.category_goods_name }</td>
+										<td>${ListSuc.user_id}</td>
+										<td>${ListSuc.qna_goods_title}</td>
+										<td>${ListSuc.qna_goods_content }</td>
+										<td><fmt:formatDate value="${ListSuc.qna_goods_date}" pattern="yyyy-MM-dd"/></td>
+										<td>${ListSuc.qna_goods_lock}</td>
+										<td><input type="button" value="답변확인" onclick="location.href='checkAnswer.mdo?qna_goods_serial=${ListSuc.qna_goods_serial}'"/></td>
 										<td>
-											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGqna.mdo?qna_goods_serial=${List.qna_goods_serial}')"/>
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteGqnaSuc.mdo?qna_goods_serial=${ListSuc.qna_goods_serial}')"/>
 										</td>
 									</tr>
 								</c:forEach>
