@@ -1,6 +1,8 @@
 package first.market.kurlyty.user.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import first.market.kurlyty.user.service.Board_noticeService;
 import first.market.kurlyty.user.vo.Board_Pagination;
 import first.market.kurlyty.user.vo.Board_noticeVO;
+import first.market.kurlyty.user.vo.faqVO;
 
 
 @Controller
@@ -25,12 +28,19 @@ public class Board_noticeController {
 			, @RequestParam(required = false, defaultValue = "1") int page
 			, @RequestParam(required = false, defaultValue = "1") int range
 			) throws Exception {
+		
 		int listCnt = board_noticeService.getBoardListCnt();
+		
 		Board_Pagination pagination = new Board_Pagination();
-	    pagination.pageInfo(page, range, listCnt);				
+	    
+		pagination.pageInfo(page, range, listCnt);				
+		
 		model.addAttribute("pagination", pagination);
+		
 		model.addAttribute("board",board_noticeService.getBoard_noticeList(pagination));
 		return "customerCenter/notice"; 
+
+		
 	}
 	@GetMapping("/notice_detail.do")
 	public String customerCenter2(HttpServletRequest request,Board_noticeVO vo ,Model model) throws Exception {

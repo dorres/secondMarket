@@ -19,6 +19,12 @@
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false">
 	
+	<input type="hidden" id="pickUpType" value=""/>
+	<input type="hidden" id="pickUpDetail" value=""/>
+	<input type="hidden" id="shippingMessageTime" value=""/>
+	<input type="hidden" id="doorPassword" value=""/>
+	<input type="hidden" id="recipientName" value=""/>
+	<input type="hidden" id="recipientPhone" value=""/>
 	<c:if test="${orderPrice >= 400 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
@@ -30,10 +36,13 @@
 	<fmt:formatNumber var="oldPrice" maxFractionDigits="3" value="${goodsPrice}"/>
 	<fmt:formatNumber var="dc" maxFractionDigits="3" value="${orderPrice-goodsPrice }"/>
 	<%-- <input type="hidden" id="payment" value="${orderPrice }"> --%>
-	<input type="hidden" id="address1" value="${userInfo.user_address1 }"/>
-	<input type="hidden" id="address2" value="${userInfo.user_address2 }"/>
-	<input type="hidden" id="zipcode" value="${userInfo.user_zipcode}"/>
-	<input type="hidden" id="reserves" value="${orderPrice*(membershipInfo.user_membership_point_rate/100)}"/>
+	<input type="hidden" id="orderPrice" value="${orderPrice }"/>
+	<input type="hidden" id="address1" value="${shippingAddress.user_address1 }"/>
+	<input type="hidden" id="address2" value="${shippingAddress.user_address2 }"/>
+	<input type="text" id="zipcode" value="${shippingAddress.user_zipcode}"/>
+	<fmt:parseNumber var="oldReserves" type="number" integerOnly="true" value="${(orderPrice*(membershipInfo.user_membership_point_rate/100)+5)/10}"/>
+	<fmt:formatNumber var="afterReserves" type="number" maxFractionDigits="1" value="${oldReserves*10 }"/>
+	<input type="hidden" id="reserves" value="${oldReserves*10 }"/>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -73,7 +82,7 @@
 										/ 닫힘</span></a>
 								<c:set var="listSize" value="${fn:length(purchaseList) }"/>
 								<c:if test="${fn:length(purchaseList)==1 }">
-									<div class="short_info">${purchaseList[0].category_goods_name }</div>
+									<div class="short_info">${purchaseList[0].category_goods_name }(을)를 주문합니다.</div>
 								</c:if>
 								<c:if test="${fn:length(purchaseList)>1 }">
 									<div class="short_info">${purchaseList[0].category_goods_name } 외 ${listSize -1 }개 상품을 주문합니다.</div>
@@ -84,7 +93,7 @@
 									<li>
 										<div class="thumb">
 											<img
-												src="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/${item.category_goods_image_thumb}"
+												src="${item.category_goods_image_thumb}"
 												alt="상품이미지">
 										</div>
 										<div class="name">
@@ -132,8 +141,8 @@
 										<tr>
 											<th>이메일</th>
 											<td><input type="hidden" id="email" name="orderer_email"
-												value="sodlfdms56@naver.com" option="regEmail">
-												sodlfdms56@naver.com
+												value="${userInfo.user_email }" option="regEmail">
+												${userInfo.user_email }
 												<p class="txt_guide">
 													<span class="txt txt_case1">이메일을 통해 주문처리과정을 보내드립니다.</span>
 													<span class="txt txt_case2">정보 변경은 <span
@@ -144,20 +153,8 @@
 									</tbody>
 								</table>
 							</div>
-
-
-
-							<input type="hidden" name="zonecode" id="zonecode" value="41826">
-							<input type="hidden" name="zipcode[]" id="zipcode0" value="">
-							<input type="hidden" name="zipcode[]" id="zipcode1" value="">
-							<input type="hidden" name="address" id="address"
-								value="대구 서구 평리동 1207-6"> 
-							<input type="hidden" name="road_address" id="road_address" value="대구 서구 국채보상로52길 31-28">
-							<input type="hidden" name="address_sub" id="address_sub" value="단독주택 3층">
-							<input type="hidden" name="deliPoli" id="deliPoli" value="0">
+							
 							<input type="hidden" name="deliveryType" id="deliveryType" value="direct">
-							<input type="hidden" id="means_inp" name="means" value="">
-							<input type="hidden" id="addressBookNo" name="addressbook_no" value="12223986">
 							<h2 class="tit_section" id="divAddressWrapper">
 								배송 정보 <span class="desc">배송 휴무일: 샛별배송(휴무없음), 택배배송(일요일)</span>
 							</h2>
@@ -175,8 +172,8 @@
 								<div class="section_full">
 									<span class="address" id="divDestination" style=""> <span
 										class="default on" id="addrDefault" data-text="기본배송지">기본배송지</span>
-										<span class="addr" id="addrInfo">대구 서구 국채보상로52길 31-28
-											단독주택 3층</span> <span class="tag" id="addrTags"> <span
+										<span class="addr" id="addrInfo">${shippingAddress.user_address1 } 
+											${shippingAddress.user_address2 }</span> <span class="tag" id="addrTags"> <span
 											class="badge star" id="addrBadge">샛별배송</span>
 									</span>
 									</span>
@@ -187,13 +184,36 @@
 								style="">
 								<h3 class="section_crux">상세 정보</h3>
 								<div class="section_full">
+								<!-- <div class="section_full">
 
-									<div class="receiving off" id="receiverInfo">받으실 분 정보를
+									<div class="receiving" id="receiverInfo">최현호, 010-4453-4548</div>
+									<div class="way" id="wayPlace" style="">
+									<span class="place" id="areaInfo" style="">경비실</span>
+									
+									<span class="txt off" id="meanType" style="display: none;">받으실 장소를 입력해 주세요</span>
+									
+									
+									
+									<div class="message" id="deliveryMessage" style="">
+									<span class="place" id="deliveryMessageTitle">배송완료 메시지</span>
+									<span class="txt" id="deliveryMessageDetail">배송 직후</span>
+									</div>
+									</div>
+									<button type="button" id="btnUpdateSubAddress" data-address-no="" class="btn default">수정</button>
+									
+								</div> -->
+
+									<c:if test="${shippingAddress.user_name==''||shippingAddress.user_name==null }">
+										<div class="receiving off" id="receiverInfo">받으실 분 정보를
 										입력해 주세요</div>
+									</c:if>
+									<c:if test="${shippingAddress.user_name!=''&&shippingAddress.user_name!=null }">
+										<div class="receiving" id="receiverInfo">${shippingAddress.user_name }, ${shippingAddress.user_phone }</div>
+									</c:if>
 									<div class="way" id="wayPlace" style="display: none;">
-										<span class="place" id="areaInfo" style="display: none;"></span>
+										<span class="place" id="areaInfo" style="display: none; float:left;"></span>
 
-										<span class="txt off" id="meanType">받으실 장소를 입력해 주세요</span>
+										<span class="txt off" id="meanType"></span>
 
 
 
@@ -296,8 +316,10 @@
 											</dd>
 										</dl>
 										<p class="reserve" style="display: block;">
-											<span class="ico">적립</span> 구매 시 <span class="emph"><span
-												id="expectAmount">${orderPrice*(membershipInfo.user_membership_point_rate/100)}</span> 원 (
+											<span class="ico">적립</span> 구매 시 <span class="emph">
+											
+											<span id="expectAmount">${afterReserves}</span>
+											 원 (
 												<span class="ratio">${membershipInfo.user_membership_point_rate }</span>%)
 												적립</span>
 										</p>
@@ -451,85 +473,6 @@
 															onclick="input_escrow(this,'N')"> 휴대폰
 													</label></li> -->
 												</ul>
-
-												<div class="card_detail" style="display: none;">
-													<div id="cardSelect">
-														<div>
-															<div class="card_select">
-																<!-- <div class="select_box">
-																	<strong class="tit">카드를 선택해주세요</strong> <input
-																		type="hidden" name="lguplus_card_code">
-																	<ul class="list off">
-																		<li><a class="">현대 (무이자)</a></li>
-																		<li><a class="">신한</a></li>
-																		<li><a class="">비씨</a></li>
-																		<li><a class="">KB국민</a></li>
-																		<li><a class="">삼성</a></li>
-																		<li><a class="">씨티</a></li>
-																		<li><a class="">롯데</a></li>
-																		<li><a class="">하나(외환)</a></li>
-																		<li><a class="">NH채움</a></li>
-																		<li><a class="">우리</a></li>
-																		<li><a class="">수협</a></li>
-																		<li><a class="">광주</a></li>
-																		<li><a class="">전북</a></li>
-																		<li><a class="">제주</a></li>
-																		<li><a class="">신협체크</a></li>
-																		<li><a class="">MG새마을체크</a></li>
-																		<li><a class="">저축은행체크</a></li>
-																		<li><a class="">우체국카드</a></li>
-																		<li><a class="">KDB산업은행</a></li>
-																		<li><a class="">카카오뱅크</a></li>
-																	</ul>
-																</div> -->
-																<div class="select_box">
-																	<strong class="tit off">할부기간을 선택해주세요</strong> <input
-																		type="hidden" name="lguplus_card_installment_month">
-																	<ul class="list off">
-																		<li><a class="">일시불</a></li>
-																	</ul>
-																</div>
-															</div>
-															<!---->
-															<div class="card_noti">은행계열/체크/기프트/선불/법인/개인사업자
-																기업카드는 무이자 할부 시 제외</div>
-															<!---->
-														</div>
-													</div>
-												</div>
-
-												<!-- <ul id="simplePayments" class="payments"
-													style="display: none;">
-													<li class="chai"><label class="label_radio"
-														for="paymentChai"> <input type="radio"
-															name="settlekind" value="chai"
-															onclick="input_escrow(this,'N')" id="paymentChai">
-															차이 <span class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-													<li class="toss"><label class="label_radio"> <input
-															type="radio" name="settlekind" value="toss"
-															onclick="input_escrow(this,'N')"> 토스 <span
-															class="txt_benefit">혜택</span>
-													</label></li>
-													<li class="npay naver-pay"><label class="label_radio">
-															<input type="radio" name="settlekind" value="n"
-															onclick="input_escrow(this,'N');"> 네이버페이 <span
-															class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-													<li class="payco"><label class="label_radio">
-															<input type="radio" name="settlekind" value="t"
-															onclick="input_escrow(this,'N');check_naverNcashUseAble();">
-															페이코 <span class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-													<li class="spay smile-pay"><label class="label_radio">
-															<input type="radio" name="settlekind" value="s"
-															onclick="input_escrow(this,'N')"> 스마일페이 <span
-															class="txt_benefit" style="display: inline;">혜택</span>
-													</label></li>
-
-												</ul> -->
-
-
 											</td>
 										</tr>
 										<tr>
@@ -704,19 +647,20 @@ function reqeustPay(){
 				var address2=$("input#address2").val();
 				var zipcode=$("input#zipcode").val();
 				var listSize=String(${listSize});
-				var price=$("input#payment").val();
+				var price=$("input#orderPrice").val();
 				var merchant=String(req.merchant_uid);
 				var id='${userInfo.user_id}';
 				var name='${userInfo.user_name}';
 				var email='${userInfo.user_email}';
 				var phone='${userInfo.user_phone}';
-				console.log(data);
-				console.log(req);
-				console.log(id);
-				console.log(name);
-				console.log(email);
-				console.log(phone);
-				console.log(id);
+				var masterGoodsSerial=${purchaseList[0].category_goods_serial };
+				var point=$("input#reserves").val();
+				var pickupType=$("input#pickUpType").val();
+				var pickupDetail=$("input#pickUpDetail").val();
+				var messageTime=$("input#shippingMessageTime").val();
+				var doorPw = $("input#doorPassword").val();
+				var recipiName=$("input#recipientName").val();
+				var recipiPhone=$("input#recipientPhone").val();
 				var amount=parseInt(data.amount)
 				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
@@ -735,7 +679,16 @@ function reqeustPay(){
 							"order_goods_count":listSize,
 							"order_goods_price":price,
 							"order_coupon_serial":"0",
-							"order_merchant_serial":merchant
+							"order_merchant_serial":merchant,
+							"master_goods_serial":masterGoodsSerial,
+							"user_point":point,
+							"shipping_pickup_type":pickupType,
+							"shipping_pickup_detail":pickupDetail,
+							"shipping_message_time":messageTime,
+							"shipping_door_password":doorPw,
+							"shipping_recipient_name":recipiName,
+							"shipping_recipient_phone":recipiPhone,
+							"order_point":point
 						}
 					}).done(function(location){
 						window.location.href="index.do";
@@ -746,7 +699,7 @@ function reqeustPay(){
 	);
 }
 function shippingInfoPage(){
-	var url="shippingInfo.do?userName="+'${userInfo.user_name}'+"&phone="+'${userInfo.user_phone}';
+	var url="shippingInfo.do?userName="+'${userInfo.user_name}'+"&phone="+'${userInfo.user_phone}'+"&shippingName=${shippingAddress.user_name}&shippingPhone=${shippingAddress.user_phone}";
 	window.open(url,"post","toolbar=no, width=532, height=703,"+
 			"directories=no, status=yes, scrollbars=yes,menubar=no, resizable=no");
 }

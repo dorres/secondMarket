@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -11,6 +11,24 @@
 <link rel="styleSheet" href="style/ItemListStyle.css">
 
 <style>
+element.style {
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+.page_aticle .no_data {
+    padding: 50px 0;
+    font-size: 13px;
+    color: #757575;
+    text-align: center;
+}
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
+    font-family: noto sans;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+div, th, td, li, dt, dd, p {
+    word-break: break-all;
+}
 </style>
 
 </head>
@@ -34,7 +52,7 @@
 					
 					<form name="delete" id="deleteform" method="get" action="deletePersonalQna.do">
 						<input type="hidden" name="deletePersonalQna" value="delete"/>
-					    
+					 
 								<table class="xans-board-listheader" width="100%" style="table-layout:fixed;">
 									<tr class="input_txt">
 										<th width="8%">번호</th>
@@ -43,6 +61,7 @@
 										<th width="12%">작성자</th>
 										<th width="12%">작성일</th>
 									</tr>
+								
 									<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
 										<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}" />
 										<tr class="menu">
@@ -52,6 +71,7 @@
 											<td>${personalqna.user_id}</td>
 											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
 										</tr>
+										
 										<tr>
 											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
 												<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
@@ -72,9 +92,14 @@
 												<input type="hidden" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
 											</td>
 										</tr>
-										
 									</c:forEach>
-								</table>
+								
+								</table>	   
+					   			 <c:if test="${num.index == null}">
+									<div class="no_data" style="border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6">
+										문의 내역이 존재하지 않습니다</div>
+									<div style="padding:1px; border-top:1px solid #e6e6e6"></div>
+								</c:if>
 							</form>
 
 								<div style="position: relative">

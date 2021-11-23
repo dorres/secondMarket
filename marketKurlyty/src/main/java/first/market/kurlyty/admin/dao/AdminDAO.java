@@ -397,6 +397,12 @@ public class AdminDAO {
 	public List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order) {
 		return sqlSession.selectList("adminOrderDAO.getOrderWaitDetail",order);
 	}
+	public int updateShippingInfo(AdminShippingInfoVO shipping) {
+		return sqlSession.update("adminOrderDAO.updateShippingInfo",shipping);
+	}
+	public int updateOrderWait(AdminOrderVO order) {
+		return sqlSession.update("adminOrderDAO.updateOrderWait",order);
+	}
 	
 	
 }

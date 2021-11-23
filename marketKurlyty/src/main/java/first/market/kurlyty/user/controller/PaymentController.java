@@ -27,7 +27,10 @@ import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
 import first.market.kurlyty.user.vo.MembershipVO;
+import first.market.kurlyty.user.vo.ShippingVO;
+import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.user.vo.UserVO;
+import first.market.kurlyty.user.vo.user_address_listVO;
 import first.market.kurlyty.vo.OrderVO;
 import first.market.kurlyty.vo.ProductVO;
 
@@ -67,7 +70,7 @@ public class PaymentController {
 	}
 	
 	@RequestMapping("/paymentPage.do")
-	public String paymentPage(int totalPrice,int dcPrice, Model model, HttpSession session) {
+	public String paymentPage(user_address_listVO addressVO,int totalPrice,int dcPrice, Model model, HttpSession session) {
 		String userId = (String)session.getAttribute("userId");
 		UserVO userVO = new UserVO();
 		userVO.setUser_id(userId);
@@ -88,32 +91,52 @@ public class PaymentController {
 		model.addAttribute("purchaseList", purchaseList);
 		model.addAttribute("userInfo",userInfo);
 		model.addAttribute("membershipInfo",membershipInfo);
+		model.addAttribute("shippingAddress",addressVO);
 		return "cart_and_payment/payment";
 	}
 	
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
-	public String paymentSuccess(OrderVO order) {
-		System.out.println(order.getUser_id());
+	public String paymentSuccess(OrderVO order, ShippingVO shipping) {
 		order.setOrder_delivery_status("∞·¡¶øœ∑·");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
 		for(CartVO cartItem : purchaseGoods) {
 			ProductVO productInfo = cartService.getCartItem(cartItem);
 			int goods_price = cartItem.getGoods_cart_count()*productInfo.getGoods_last_price();
+			int goods_old_price = cartItem.getGoods_cart_count()*productInfo.getGoods_detail_price();
+			order.setOrder_goods_old_price(goods_old_price);
 			order.setGoods_count(cartItem.getGoods_cart_count());
 			order.setGoods_price(goods_price);
 			order.setCategory_goods_serial(cartItem.getCategory_goods_serial());
 			orderService.insertOrderDetails(order);
 			cartService.deleteCartItem(cartItem);
 		}
+		UserDetailsVO userDetail = orderService.getUserDetails(order.getUser_id());
+		int point = userDetail.getUser_point();
+		int totalPurchase = userDetail.getUser_total_purchase();
+		System.out.println(point);
+		userDetail.setUser_point(point+order.getUser_point());
+		userDetail.setUser_total_purchase(totalPurchase+order.getOrder_goods_price());
+		orderService.updateUserPurchase(userDetail);
+		//shipping√Å¬§¬∫¬∏ ¬¥√£¬±√¢
+		shipping.setOrder_merchant_serial(order.getOrder_merchant_serial());
+		shipping.setShipping_address1(order.getUser_address1());
+		shipping.setShipping_address2(order.getUser_address2());
+		shipping.setShipping_zipcode(order.getUser_zipcode());
+		shipping.setShipping_sender_name(order.getUser_name());
+		shipping.setShipping_sender_phone(order.getUser_phone());
+		orderService.insertShippingInfo(shipping);
 		return "index.do";
 	}
 	
 	@RequestMapping("/shippingInfo.do")
-	public String shippingInfo(String userName, String phone, Model model) {
+	public String shippingInfo(String userName, String phone,
+			String shippingName, String shippingPhone,Model model) {
 		model.addAttribute("userName",userName);
 		model.addAttribute("phone",phone);
+		model.addAttribute("shippingName",shippingName);
+		model.addAttribute("shippingPhone",shippingPhone);
 		return "cart_and_payment/shippingInfo";
 	}
 }

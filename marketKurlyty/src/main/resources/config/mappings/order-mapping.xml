@@ -10,13 +10,32 @@
 		#{user_address1},#{user_address2},#{user_zipcode},
 		#{order_goods_count},#{order_goods_price},
 		#{order_coupon_serial},#{order_delivery_status},
-		#{order_merchant_serial})
+		#{order_merchant_serial},
+		#{master_goods_serial},
+		#{order_point})
 	</insert>
 	<insert id="insertOrderDetail">
 		INSERT INTO MK_ORDER_DETAILS VALUES(
 		default,#{order_merchant_serial},#{category_goods_serial},
-		#{goods_count},#{goods_price},#{user_id}
+		#{goods_count},#{goods_price},#{user_id},#{order_goods_old_price}
 		)
-		
+	</insert>
+	<update id="updateUserPurchase">
+		UPDATE MK_USER_DETAILS SET user_total_purchase=#{user_total_purchase},
+		user_point=#{user_point} WHERE user_id=#{user_id}
+	</update>
+	<select id="getUserDetails" resultType="userDetails">
+		SELECT * FROM mk_user_details WHERE user_id=#{value}
+	</select>
+	
+	<!-- shipping -->
+	<insert id="insertShippingInfo">
+		INSERT INTO MK_SHIPPING_INFO VALUES(
+		default,#{shipping_address1},#{shipping_address2},
+		#{shipping_zipcode},#{shipping_recipient_name},
+		#{shipping_recipient_phone},#{shipping_pickup_type},
+		#{shipping_pickup_detail},#{shipping_message_time},
+		#{shipping_door_password},#{shipping_sender_name},
+		#{shipping_sender_phone},#{order_merchant_serial})
 	</insert>
 </mapper>

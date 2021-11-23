@@ -67,8 +67,8 @@ textarea:focus, input:focus{
 				<div class="card mb-4">
 					<div class="card-header">주문내역 <fmt:formatDate value="${orderWait.order_date  }" pattern="yyyy-MM-dd"/></div>
 					<div class="card-body">
-						<form action="admin_categoryGoodsUpdate.mdo" method="POST" enctype="multipart/form-data">
-								<h3>주문자 정보</h3>주문번호!!!!
+						<form action="admin_categoryGoodsUpdate.mdo" method="POST" >
+								<h3>주문자 정보</h3>${orderWait.order_merchant_serial }
 								<table>
 									<tr>
 										<th>이름</th>
@@ -109,35 +109,36 @@ textarea:focus, input:focus{
 								<table>
 									<tr>
 										<th>이름</th>
-										<td><input type="text" name="shipping_reipient_name" value="${shippingInfo.shipping_recipient_name }" readonly="readonly"></td>
+										<td><input type="text" name="shipping_recipient_name" id="shipping_recipient_name" value="${shippingInfo.shipping_recipient_name }" ></td>
 										
 										<th>연락처</th>
-										<td><input type="text" name="shipping_reipient_phone" value="${shippingInfo.shipping_recipient_phone }" readonly="readonly"></td>
+										<td><input type="text" name="shipping_recipient_phone" value="${shippingInfo.shipping_recipient_phone }" ></td>
 									</tr>                 
 									
 									<tr>
 										<th>받으실 장소</th>
-										<td colspan="3"><input type="text" name="shipping_pickup_type" value="${shippingInfo.shipping_pickup_type }" readonly="readonly"></td>
+										<td colspan="3"><input type="text" name="shipping_pickup_type" value="${shippingInfo.shipping_pickup_type }" ></td>
 									</tr>
 		
 									<tr>
-										
 										<th>기타 정보</th>
-										<td colspan="3"><input type="text" name="shipping_pickup_detail" value="${shippingInfo.shipping_pickup_detail }" readonly="readonly"></td>
-										
+										<td colspan="3"><input type="text" name="shipping_pickup_detail" value="${shippingInfo.shipping_pickup_detail }" ></td>
 									</tr>
 									<tr>
 									<th>배송 완료 메시지 전송</th>
-										<td><input type="text" name="shipping_message_time" value="${shippingInfo.shipping_message_time }" readonly="readonly"></td>
+										<td><input type="text" name="shipping_message_time" value="${shippingInfo.shipping_message_time }" ></td>
 									
 									<th>공동 비밀번호</th>
-										<td ><input type="text" name="shipping_door_password" value="${shippingInfo.shipping_door_password }" readonly="readonly"></td>
+										<td ><input type="text" name="shipping_door_password" value="${shippingInfo.shipping_door_password }" ></td>
 									</tr>
 				
 								</table>
 								
 								<div align="right" style="width: 1200px">
-									<input type="submit" value="등록하기" />
+									<input type="button" value="송장" />
+<!-- 									<input type="button" value="받는사람 수정하기" onclick="popup()"/> -->
+									<input type="button" value="받는사람 수정하기" id="updateBtn"  /> 
+									<input type="hidden" value="${orderWait.order_merchant_serial }" name="order_merchant_serial">
 									<input type="button" value="목록보기" onclick="location.href='admin_orderWaitList.mdo'"/>
 								</div>
 						</form>
@@ -150,6 +151,39 @@ textarea:focus, input:focus{
 		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
 	</div>
+<script>
+function popup(){
+	var url="admin_shippingInfoUpdate.mdo";
+	window.open(url,'','width=450,height=500,location=no,status=no,scrollbars=yes');
+}
+</script>
+<script type="text/javascript">
+$("#updateBtn").on("click",function(){
+	var serial = $('input[name=order_merchant_serial]').val();
+	var name = $('input[name=shipping_recipient_name]').val();
+	var phone = $('input[name=shipping_recipient_phone]').val();
+	var place = $('input[name=shipping_pickup_type]').val();
+	var info = $('input[name=shipping_pickup_detail]').val();
+	var message = $('input[name=shipping_message_time]').val();
+	var pw = $('input[name=shipping_door_password]').val();
+	if(confirm('받는 사람을 수정하시겠습니까?')) {
+	$.ajax({
+		type:"POST",
+		url:"admin_shippingInfoUpdate.mdo",
+		dataType : "json",
+		data : {"order_merchant_serial" : serial, "shipping_recipient_name" : name, "shipping_recipient_phone" : phone, "shipping_pickup_type" : place, "shipping_pickup_detail" : info, "shipping_message_time" : message, "shipping_door_password" : pw },
+		success: function(result) {
+			if(result != 0){
+				alert("성공적으로 수정하였습니다.")
+			}else{
+				alert("수정에 실패했습니다.")
+			}
+		}
+	}) 
+	}
+});
+
+</script>
 	<!-- Main -->
 	
 	<!-- 건들지마세요 -->

@@ -76,4 +76,8 @@
  		SELECT * FROM MK_GOODS_CART WHERE user_id=#{value} AND goods_cart_status=true
  		ORDER BY goods_cart_serial ASC
  	</select>
+ 	<!-- banner -->
+ 	<select id="getBanner" resultType="first.market.kurlyty.vo.BannerVO">
+ 		SELECT * FROM MK_BANNER
+ 	</select>
  </mapper>

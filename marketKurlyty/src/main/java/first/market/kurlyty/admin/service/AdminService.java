@@ -245,4 +245,8 @@ public interface AdminService {
 
 	List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order);
 	
+	int updateShippingInfo(AdminShippingInfoVO shipping);
+	
+	int updateOrderWait(AdminOrderVO order);
+	
 }
