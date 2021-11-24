@@ -22,13 +22,7 @@ import first.market.kurlyty.user.vo.faqVO;
 public class Board_noticeController {
 	@Autowired
 	private Board_noticeService board_noticeService;
-	
-	@RequestMapping("/review.do")
-	public String review() {
-		return "mykurly/review";
-	}
-	
-	
+			
 	@GetMapping("/notice.do")
 	public String customerCenter1(Model model
 			, @RequestParam(required = false, defaultValue = "1") int page

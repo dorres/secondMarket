@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="reviewDAO">
+ <select id="reviewList" resultType="orderListVO">
+  select * from
+		mk_order_details as o join mk_category_goods as c
+		on
+		o.category_goods_serial=c.category_goods_serial
+		where o.user_id=#{user_id}
+ </select>
+ <select id="count" resultType="Integer">
+  select count(*) as listCnt from
+		mk_order_details
+		where user_id=#{user_id}
+ </select>
+ <select id="reviewWrite" resultType="orderListVO">
+	SELECT * FROM
+	mk_category_goods C JOIN mk_goods_detail G
+	on
+	C.category_goods_serial = G.category_goods_serial
+	join
+	mk_order_details O
+	on
+	G.category_goods_serial = O.category_goods_serial
+	where
+	O.order_details_serial = #{order_details_serial}
+ </select>
+ <insert id="reviewInsert">
+	insert into mk_review values(
+	default, #{user_id},#{review_title},#{review_content},now(),#{review_image_main},default,default,#{category_goods_serial}
+	)
+ </insert>
+ </mapper>

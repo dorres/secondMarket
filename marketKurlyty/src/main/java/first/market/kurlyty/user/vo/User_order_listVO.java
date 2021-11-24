@@ -28,7 +28,8 @@ public class User_order_listVO {
 	private String goods_detail_price;
 	private String order_goods_old_price;
 	private int order_point;
-	
+	private int category_goods_serial;
+	private int order_details_serial;
 	
 	
 	
