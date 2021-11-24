@@ -23,9 +23,6 @@ public class PersonalQnaController {
 	@Autowired
 	private PersonalQnaService personalqnaService;
 	
-	
-//
-	
 	@RequestMapping("/personalQnaBoard.do")
 	public String getList(HttpServletRequest request, PersonalQnaVO vo, Model model) {
 		HttpSession session = request.getSession();
@@ -75,7 +72,6 @@ public class PersonalQnaController {
 	 @GetMapping("/updatePersonalQna.do") 
 	 public String updatePersonalQna(PersonalQnaVO vo, Model model) {
 
-		
 		// System.out.println(vo.getQna_personal_serial());
 		 //1.call(get DB) to get SERIAL
 		 PersonalQnaVO getPersonalQna = personalqnaService.getPersonalQna(vo);

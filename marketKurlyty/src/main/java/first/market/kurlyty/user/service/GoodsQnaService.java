@@ -25,7 +25,7 @@ public interface GoodsQnaService {
 	public int deleteGoodsQna(GoodsQnaVO vo);
 	 
 	//¼öÁ¤¿ë
-	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo);
+//	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo);
 	
 	//Controller >> service >> DAO
 

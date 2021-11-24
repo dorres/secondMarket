@@ -466,6 +466,36 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminOrderVO> getOrderFinishList() {
 		return adminDao.getOrderFinishList();
 	}
+	
+	//======================================================================
+	//券阂包府
+	@Override
+	public List<AdminOrderVO> getOrderRefundList() {
+		return adminDao.getOrderRefundList();
+	}
+	@Override
+	public int updateRefundWait(AdminQnaVO qna) {
+		return adminDao.updateRefundWait(qna);
+	}
+	//馆前包府
+	@Override
+	public List<AdminOrderVO> getOrderReturnList() {
+		return adminDao.getOrderReturnList();
+	}
+	@Override
+	public int updateReturnWait(AdminQnaVO qna) {
+		return adminDao.updateReturnWait(qna);
+	}
+	//秒家包府
+	@Override
+	public List<AdminOrderVO> getOrderCancleList() {
+		return adminDao.getOrderCancleList();
+	}
+	@Override
+	public int updateCancleWait(AdminQnaVO qna) {
+		return adminDao.updateCancleWait(qna);
+	}
+	
 
 }
 	

@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
+import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 
 @Controller
@@ -173,8 +174,68 @@ public class AdminOrderController {
 		public String orderFinishList(Model model) {
 			model.addAttribute("orderList",adminService.getOrderFinishList());
 			return "order/admin_orderFinishList";
-		}		
-		//주문관리 구매완료 세부사항
-		//주문관리 구매완료 삭제
-		//주문관리 구매완료 수정
+		}	
+//========================================================================		
+		//환불관리 리스트
+		@RequestMapping("admin_orderRefundList.mdo")
+		public String orderRefundList(Model model) {
+			model.addAttribute("orderList",adminService.getOrderRefundList());
+			return "order/admin_orderRefundList";
+		}
+		//문의에서 환불요청 처리상태로 변경
+		@ResponseBody
+		@RequestMapping("admin_orderRefundUpdate.mdo")
+		public boolean orderRefundUpdate(AdminQnaVO qna){
+			int success1 = 0;
+			int success2 = 0;
+			success1 =adminService.updateRefundWait(qna);
+			success2 = adminService.updateQnaWait(qna);
+			if(success1 !=0 && success2 !=0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		
+		//반품관리 리스트
+		@RequestMapping("admin_orderReturnList.mdo")
+		public String orderReturnList(Model model) {
+			model.addAttribute("orderList",adminService.getOrderReturnList());
+			return "order/admin_orderReturnList";
+		}
+		@ResponseBody
+		@RequestMapping("admin_orderReturnUpdate.mdo")
+		public boolean orderReturnUpdate(AdminQnaVO qna){
+			int success1 = 0;
+			int success2 = 0;
+			success1 = adminService.updateReturnWait(qna);
+			success2 = adminService.updateQnaWait(qna);
+			if(success1 !=0 && success2 !=0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		//취소관리 리스트
+		@RequestMapping("admin_orderCancleList.mdo")
+		public String orderCancleList(Model model) {
+			model.addAttribute("orderList",adminService.getOrderCancleList());
+			return "order/admin_orderCancleList";
+		}
+		@ResponseBody
+		@RequestMapping("admin_orderCancleUpdate.mdo")
+		public boolean orderCancleUpdate(AdminQnaVO qna){
+			int success1 = 0;
+			int success2 = 0;
+			success1 =adminService.updateCancleWait(qna);
+			success2 = adminService.updateQnaWait(qna);
+			if(success1 !=0 && success2 !=0) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		}
 }

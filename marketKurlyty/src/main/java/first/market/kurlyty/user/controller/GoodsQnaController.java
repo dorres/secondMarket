@@ -81,17 +81,17 @@ public class GoodsQnaController {
 		}
 	}
 		
-	//업데이트를 위해 씌여진 글 받아오기 
-	@GetMapping("/updateGoodsQna.do")
-	public String updateGoodsQnaContent(GoodsQnaVO vo, Model model){
-		GoodsQnaVO getGoodsQna = goodsqnaService.getGoodsQnaContent(vo);
-	
-		//모델에 담아준다.
-		model.addAttribute("getGoodsQna", getGoodsQna);
-	
-		//받아온 후 글쓰기로 간다.
-		return "customerCenter/goodsQnaWrite"; 
-	}
+//	//업데이트를 위해 씌여진 글 받아오기 
+//	@GetMapping("/updateGoodsQna.do")
+//	public String updateGoodsQnaContent(GoodsQnaVO vo, Model model){
+//		GoodsQnaVO getGoodsQna = goodsqnaService.getGoodsQnaContent(vo);
+//	
+//		//모델에 담아준다.
+//		model.addAttribute("getGoodsQna", getGoodsQna);
+//	
+//		//받아온 후 글쓰기로 간다.
+//		return "customerCenter/goodsQnaWrite"; 
+//	}
 }
 
 	

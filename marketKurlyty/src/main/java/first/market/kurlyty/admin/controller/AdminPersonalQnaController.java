@@ -33,6 +33,7 @@ public class AdminPersonalQnaController {
 	@RequestMapping("admin_personalQnaWaitUpdate.mdo")
 	public String personalQnaWaitUpdate(AdminQnaVO qna) {
 		int success =0;
+		System.out.println(qna.getQna_personal_answer_title());
 		success = adminService.updateQnaWait(qna);
 		if(success != 0) {
 			return "redirect:admin_personalQnaWaitList.mdo";		

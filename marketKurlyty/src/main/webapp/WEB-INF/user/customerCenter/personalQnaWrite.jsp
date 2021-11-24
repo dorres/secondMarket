@@ -52,7 +52,6 @@
 								<div class="xans-board-write">
 									
 									
-							
 							<form name="insert" id="insertform" method="post" style="height: 100%;">
 										
 							<!-- 
@@ -270,7 +269,7 @@
 													</td>
 												</tr>
 
-												<!-- <tr>
+												<tr>
 													<th class="input_txt">이미지</th>
 													<td>
 														<table width="95%" id="table" cellpadding="0" cellspacing="0" border="0" style="border: solid 1px #f4f4f4; border-collapse: collapse;">
@@ -298,7 +297,7 @@
 													</td>
 												</tr>
 											</tbody>
-										</table> -->
+										</table>
 												<tr>
 													<td 
 												  		align="LEFT" style="padding-top: 5px; border: none;" id="avoidDbl">

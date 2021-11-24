@@ -378,6 +378,28 @@ public class AdminDAO {
 		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
 	}
 	
+	//券阂包府
+	public List<AdminOrderVO> getOrderRefundList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderRefundList");
+	}
+	public int updateRefundWait(AdminQnaVO qna) {
+		return sqlSession.update("adminOrderDAO.updateRefundWait",qna);
+	}
+	//馆前包府
+	public List<AdminOrderVO> getOrderReturnList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderReturnList");
+	}
+	public int updateReturnWait(AdminQnaVO qna) {
+		return sqlSession.update("adminOrderDAO.updateReturnWait",qna);
+	}
+	//秒家包府
+	public List<AdminOrderVO> getOrderCancleList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderCancleList");
+	}
+	public int updateCancleWait(AdminQnaVO qna) {
+		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
+	}
+	
 	
 	
 }

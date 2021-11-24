@@ -121,8 +121,9 @@
 								<a class="nav-link" href="admin_orderWaitList.mdo">주문관리(결제완료)</a>
 								<a class="nav-link" href="admin_orderdeliveryList.mdo">주문관리(배송과정)</a>
 								<a class="nav-link" href="admin_orderFinishList.mdo">주문관리(구매완료)</a>
-								<a class="nav-link" href="#">환불관리</a>
-								<a class="nav-link" href="#">취소관리</a>
+								<a class="nav-link" href="admin_orderRefundList.mdo">환불관리</a>
+								<a class="nav-link" href="admin_orderReturnList.mdo">반품관리</a>
+								<a class="nav-link" href="admin_orderCancleList.mdo">취소관리</a>
 							</nav>
 						</div>
 						
