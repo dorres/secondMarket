@@ -43,6 +43,7 @@
 			<mvc:exclude-mapping path="/joinProc.do" />
 			<mvc:exclude-mapping path="/cart*.do" />
 			<mvc:exclude-mapping path="/*temPage.do"/>
+			<mvc:exclude-mapping path="/*Find.do"/>
 			<bean id="LoginInterceptor"
 				class="first.market.kurlyty.interceptor.UserLoginInterceptor" />
 		</mvc:interceptor>

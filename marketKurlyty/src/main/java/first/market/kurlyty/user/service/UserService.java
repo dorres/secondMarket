@@ -2,6 +2,8 @@ package first.market.kurlyty.user.service;
 
 import org.springframework.web.bind.support.SessionStatus;
 
+import first.market.kurlyty.emailsend.EmailSendVO;
+import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.user.vo.UserVO;
 
 public interface UserService {
@@ -14,4 +16,9 @@ public interface UserService {
 	//void logout(HttpSession session);
 	void logout(SessionStatus sessionStatus);
 	UserVO getUser(UserVO user);
+	String idFind(UserVO user);
+	UserDetailsVO getUserStatus(String userId);
+	String pwFind(UserVO user);
+	EmailSendVO getSendEmailKey();
+	void newPw(UserVO user);
 }

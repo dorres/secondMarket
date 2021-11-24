@@ -48,7 +48,7 @@ function openCart(serial,name,lastprice,price,discount){
 	var totalprice = parseInt(lastprice)
 	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
 	$(".cartNone").attr("class","cartClick");
-	$(".cart_option").css("opacity","1").css("display","block");
+	$(".cart_option").css("opacity","1").fadeIn(400);
 	$("#cartPut .in_option").find("span.name").text(name);
 	$("#cartPut .in_option").find("span.dc_price").text(totalprice.toLocaleString("ko-KR")+"원");
 	$("#cartPut .in_option").find("span.sum").find("span.num").text(totalprice.toLocaleString("ko-KR"));
@@ -59,11 +59,11 @@ function openCart(serial,name,lastprice,price,discount){
 }
 function cancelCart(){
 	$(".cartClick").attr("class","cartNone");
-	$(".cart_option").css("opacity","0").css("display","none");
+	$(".cart_option").css("opacity","1").fadeOut(100);
 }
 function closeCart(){
 	$(".cartClick").attr("class","cartNone");
-	$(".cart_option").css("opacity","0").css("display","none");
+	$(".cart_option").css("opacity","1").fadeOut(100);
 }
 function quantity(count){
 	var currentCount=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
