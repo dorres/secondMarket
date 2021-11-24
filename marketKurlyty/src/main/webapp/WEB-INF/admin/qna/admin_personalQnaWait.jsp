@@ -40,11 +40,6 @@ textarea {
 
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">1:1문의</h1>
-				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">1:1 문의</a></li>
-					<li class="breadcrumb-item active">1:1문의 답변 대기 상세</li>
-				</ol>
-
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 1:1문의 내용

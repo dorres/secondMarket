@@ -19,7 +19,6 @@
  th{
  	text-align: center;
  }
-
  </style>
  <style type="text/css">
 .btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
