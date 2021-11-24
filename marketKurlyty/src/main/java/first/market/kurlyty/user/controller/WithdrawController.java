@@ -50,20 +50,20 @@ public class WithdrawController {
 			if(dbPw.equals(securityPw)) {
 				redirect.addAttribute("user_withdraw_reason", vo.getUser_withdraw_reason());
 				redirect.addAttribute("user_withdraw_reason_detail", vo.getUser_withdraw_reason_detail());
-				
 				redirect.addAttribute("user_id", user.getUser_id());
+				redirect.addFlashAttribute("ConfirmMessage", "탈퇴를 진행하시겠습니까?");
 				return "redirect:withdrawProc.do";
 			}
 			else {
-					return "mykurly/withdraw";
+					redirect.addFlashAttribute("FailMessage", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
+					return "redirect:withdraw.do";
 				}
 	}
 // 확인한 것 - 
 
 	@RequestMapping("/withdrawProc.do")
-		public String withdrawProc(HttpServletRequest Request, String user_id, WithdrawInfoVO vo, Model model) {
+		public String withdrawProc(String user_id, WithdrawInfoVO vo, Model model) {
 			int success = 0;
-			System.out.println(vo.getUser_withdraw_reason());
 			success = withdrawService.insertWithdraw(vo);
 			success = withdrawService.updateWithdraw(user_id);
 			success = withdrawService.deleteWithdrawAddressList(user_id);

@@ -25,4 +25,10 @@ public class HeaderDAO {
 	public List<BannerVO> getBanner(){
 		return sqlSession.selectList("CategoryDAO.getBanner");
 	}
+	public List<ProductVO> getHotDeal(){
+		return sqlSession.selectList("CategoryDAO.getHotDeal");
+	}
+	public List<ProductVO> getNewGoods(){
+		return sqlSession.selectList("CategoryDAO.getNewGoods");
+	}
 }

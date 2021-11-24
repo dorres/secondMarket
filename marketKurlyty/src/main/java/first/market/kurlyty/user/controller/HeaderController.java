@@ -51,7 +51,7 @@ public class HeaderController {
 		return categoryMainList;
 	}
 	
-	@RequestMapping("categoryGoods.do")
+	@RequestMapping("categoryItemPage.do")
 	public String categoryGoods(ProductVO product, Model model) {
 		System.out.println(product.getCategory_main_serial());
 		System.out.println(product.getCategory_sub_serial());
@@ -71,16 +71,20 @@ public class HeaderController {
 	@RequestMapping("/index.do")
 	public String index(Model model) {
 		List<BannerVO> banner = headerService.getBanner();
+		List<ProductVO> hotDeal = headerService.getHotDealProduct();
 		model.addAttribute("banners", banner);
 		model.addAttribute("bannerCount", banner.size());
+		model.addAttribute("hotDeal",hotDeal);
 		return "mainPage/index";
 	}
-	@RequestMapping("/BestGoodsPage.do")
+	@RequestMapping("/BestItemPage.do")
 	public String BestGoods() {
 		return "mainPage/BestGoodsPage"; 
 	}
-	@RequestMapping("/newGoodsPage.do")
-	public String newGoodsPage() {
+	@RequestMapping("/newItemPage.do")
+	public String newGoodsPage(Model model) {
+		List<ProductVO> newGoodsList = headerService.getNewGoods();
+		model.addAttribute("newGoodsList",newGoodsList);
 		return "mainPage/newGoodsPage"; 
 	}
 	@RequestMapping("/altleShopping.do")

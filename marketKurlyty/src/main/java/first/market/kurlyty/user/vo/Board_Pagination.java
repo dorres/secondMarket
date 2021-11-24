@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Board_Pagination {
-	private int listSize = 5;               //초기값으로 목록개수를 10으로 셋팅
-	private int rangeSize = 5;            //초기값으로 페이지범위를 10으로 셋팅
+	private int listSize = 2;               //珥덇린媛믪쑝濡� 紐⑸줉媛쒖닔瑜� 10�쑝濡� �뀑�똿
+	private int rangeSize = 5;            //珥덇린媛믪쑝濡� �럹�씠吏�踰붿쐞瑜� 10�쑝濡� �뀑�똿
 	private int page;
 	private int range;
 	private int listCnt;
@@ -15,6 +15,9 @@ public class Board_Pagination {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
+	private String user_id;
+
+	private User_order_listVO User_order_listVO;
 	
 	public int getRangeSize() {
 		return rangeSize;
@@ -93,23 +96,23 @@ public class Board_Pagination {
 		this.range = range;
 		this.listCnt = listCnt;
 		
-		//전체 페이지수 
+		//�쟾泥� �럹�씠吏��닔 
 		this.pageCnt = (int) Math.ceil((double)listCnt/listSize);
 
 		
-		//시작 페이지
+		//�떆�옉 �럹�씠吏�
 		this.startPage = (range - 1) * rangeSize + 1 ;
 		
-		//끝 페이지
+		//�걹 �럹�씠吏�
 		this.endPage = range * rangeSize;
 				
-		//게시판 시작번호
+		//寃뚯떆�뙋 �떆�옉踰덊샇
 		this.startList = (page - 1) * listSize;
 		
-		//이전 버튼 상태
+		//�씠�쟾 踰꾪듉 �긽�깭
 		this.prev = range == 1 ? false : true;
 		
-		//다음 버튼 상태
+		//�떎�쓬 踰꾪듉 �긽�깭
 		this.next = pageCnt > endPage ? true : false;
 
 		if (this.endPage > this.pageCnt) {

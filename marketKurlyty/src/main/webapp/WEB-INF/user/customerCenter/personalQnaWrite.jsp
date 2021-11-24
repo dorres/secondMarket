@@ -60,6 +60,7 @@
 										action="insertPersonalQna.do" style="height: 100%;">  -->
 							           
 										<input type="hidden" name="user_id" value="${userId}">
+										<input type="text" name="user_name" value="${userName}">
 								<c:if test="${getPersonalQna != null }">
 										<input type="hidden" name="qna_personal_serial" value="${getPersonalQna.qna_personal_serial}"/>
 								</c:if>
@@ -121,13 +122,14 @@
 													<!-- UPDATE -->
 											
 												
+														
 									
 												<c:if test="${getPersonalQna == null }">
 												<tr>												 
 													<th class="input_txt">주문번호</th>
 													<td>
 													<input type="text" name="order_details_order_serial" style="width: 25%"
-														value="">
+														value="${order_merchant_serial.order_merchant_serial }">
 														<input type="button" class="bhs_button yb"
 														value="주문조회"
 														style="float: none; line-height: 27px; width: 100px;"/>
