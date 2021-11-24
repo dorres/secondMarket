@@ -64,9 +64,16 @@ public class AdminOrderController {
 		@RequestMapping("admin_orderWaitUpdate.mdo")
 		public int orderWaitUpdate(AdminOrderVO order) {
 			int success = 0;
-			System.out.println(order.getOrder_merchant_serial());
-			System.out.println(order.getOrder_delivery_status());
 			success =adminService.updateOrderWait(order);
+			return success;
+		}
+		
+		//주문관리 결제완료 ->배송중 선택한거 Update
+		@ResponseBody
+		@RequestMapping("admin_orderWaitUpdate1.mdo")
+		public int orderWaitUpdate1(@RequestParam(value = "merchant[]") List<String> merchantList){
+			int success = 0;
+			success =adminService.updateOrderWait1(merchantList);
 			return success;
 		}
 		
@@ -143,7 +150,7 @@ public class AdminOrderController {
 				LocalDate date = LocalDate.now();
 				LocalTime time = LocalTime.now();
 				
-				File xlsFile = new File("D:/"+date+time.getHour()+time.getMinute()+".xls");
+				File xlsFile = new File("D:/"+date+"."+time.getHour()+":"+time.getMinute()+".xls");
 	            FileOutputStream fileOut = new FileOutputStream(xlsFile);
 	            wb.write(fileOut);
 	            //db작업
@@ -151,13 +158,20 @@ public class AdminOrderController {
 	            
 				}catch (Exception e) {e.printStackTrace(); }
 			return result;
+		}
 		
+		//주문관리 배송과정 리스트
+		@RequestMapping("admin_orderdeliveryList.mdo")
+		public String orderDeliveryList(Model model) {
+			model.addAttribute("orderList",adminService.getOrderDeliveryList());
+			return "order/admin_orderDeliveryList";
 		}
 
 		
 		//주문관리 구매완료 리스트
 		@RequestMapping("admin_orderFinishList.mdo")
 		public String orderFinishList(Model model) {
+			model.addAttribute("orderList",adminService.getOrderFinishList());
 			return "order/admin_orderFinishList";
 		}		
 		//주문관리 구매완료 세부사항

@@ -362,11 +362,20 @@ public class AdminDAO {
 	public int updateOrderWait(AdminOrderVO order) {
 		return sqlSession.update("adminOrderDAO.updateOrderWait",order);
 	}
+	public int updateOrderWait1(List<String> merchantList) {
+		return sqlSession.update("adminOrderDAO.updateOrderWait1",merchantList);
+	}
 	public List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList) {
 		return sqlSession.selectList("adminOrderDAO.getShippingInfoList",merchantList);
 	}
 	public int updateStatus(List<String> merchantList) {
 		return sqlSession.update("adminOrderDAO.updateStatus",merchantList);
+	}
+	public List<AdminOrderVO> getOrderDeliveryList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderDeliveryList");
+	}
+	public List<AdminOrderVO> getOrderFinishList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
 	}
 	
 	

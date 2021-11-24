@@ -445,12 +445,26 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateOrderWait(order);
 	}
 	@Override
+	public int updateOrderWait1(List<String> merchantList) {
+		return adminDao.updateOrderWait1(merchantList);
+	}
+	
+	@Override
 	public List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList) {
 		return adminDao.getShippingInfoList(merchantList);
 	}
 	@Override
 	public int updateStatus(List<String> merchantList) {
 		return adminDao.updateStatus(merchantList);
+	}
+
+	@Override
+	public List<AdminOrderVO> getOrderDeliveryList() {
+		return adminDao.getOrderDeliveryList();
+	}
+	@Override
+	public List<AdminOrderVO> getOrderFinishList() {
+		return adminDao.getOrderFinishList();
 	}
 
 }

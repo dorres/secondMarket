@@ -19,6 +19,9 @@
  th{
  	text-align: center;
  }
+.do {
+	font-size:20px  !important;
+}
 
  </style>
  <style type="text/css">
@@ -44,22 +47,20 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">주문관리 목록</h1>
+				<h1 class="mt-4">주문관리 리스트</h1>
 				<div class="card mb-4">
 					<div class="card-header">
 						<div class="col three">
-							<div>결제완료, 배송준비중</div>
-							<a href="#" class="btn1 btn-dark" id="down">송장출력</a>
-							<a href="#" class="btn1 btn-dark" id="update">배송상태 변경(배송중)</a>
+							<div>배송중, 배송완료</div>
 						</div>
 					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th style="text-align: center; vertical-align: middle;">
+								<!-- 	<th style="text-align: center; vertical-align: middle;">
 										<input type="checkbox" name="checkall" id="checkall"/>
-									</th>
+									</th> -->
 									<th style="text-align: center;">주문번호</th>
 									<th style="text-align: center;">날짜</th>
 									<th style="text-align: center;">이름(아이디)</th>
@@ -81,9 +82,9 @@
 								</tr>
 							</tfoot>
 							<tbody>
-							<c:forEach var="order" items="${orderWaitList }">
+							<c:forEach var="order" items="${orderList }">
 								<tr>
-									<td><input type="checkbox" name="chk" value="${order.order_merchant_serial}"/></td>
+								<%-- 	<td><input type="checkbox" name="chk" value="${order.order_merchant_serial}"/></td> --%>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 200px" >${order.order_merchant_serial }</td>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 100px"><fmt:formatDate value="${order.order_date }" pattern="yyyy-MM-dd"/></td>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 150px">${order.user_name }/(${order.user_id })</td>
@@ -100,7 +101,7 @@
 											<option value="취소완료" <c:if test ="${order.order_delivery_status eq '취소완료'}">selected="selected"</c:if> >취소완료</option>											
 											<option value="환불요청" <c:if test ="${order.order_delivery_status eq '환불요청'}">selected="selected"</c:if> >환불요청</option>
 											<option value="환불완료" <c:if test ="${order.order_delivery_status eq '환불완료'}">selected="selected"</c:if> >환불완료</option>
-											<option value="구매완료" <c:if test ="${order.order_delivery_status eq '구매완료'}">selected="selected"</c:if> >구매완료</option>										
+											<option value="구매완료" <c:if test ="${order.order_delivery_status eq '구매완료'}">selected="selected"</c:if> >구매완료</option>
 										</select>
 									</td>
 									<td>
@@ -122,80 +123,31 @@
 	<!-- Main -->
 	<!-- 건들지마세요 -->
 <script type="text/javascript"><!-- 동적 테이블은 이렇게 해야 버튼 이벤트가 먹힘-->
-	$(document).on("click", "#updateBtn", function(){
-		var checkBtn = $(this);
-		var tr = checkBtn.closest("tr");
-		var status = tr.find("#deleveryStatus-select option:selected").val();
-		var serial = tr.find("#order_merchant_serial").val();
-		
-	    if(confirm('배송상태를 수정하시겠습니까?')) {
-		$.ajax({
-			type:"POST",
-			url:"admin_orderWaitUpdate.mdo",
-			dataType : "json",
-			data : {"order_merchant_serial" : serial, "order_delivery_status" : status},
-			success: function(result) {
-				if(result != 0){
-					alert("배송 상태를 성공적으로 수정하였습니다.")
-					location.reload();
-				}else{
-					alert("배송 상태 수정에 실패했습니다.")
-					location.reload();
-				}
-			}
-		}) 
-		}
-	});
+$(document).on("click", "#updateBtn", function(){
+	var checkBtn = $(this);
+	var tr = checkBtn.closest("tr");
+	var status = tr.find("#deleveryStatus-select option:selected").val();
+	var serial = tr.find("#order_merchant_serial").val();
 	
-	$("#down").click(function() {
-		var checkArr = [];
-		$("input[name=chk]:checked").each(function(){
-			 checkArr.push($(this).val());
-		});
-		
-		 if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
-		$.ajax({
-		    type: 'post',
-		    url: 'admin_excelDown.mdo',
-		    dataType: 'text',
-		    data: { "merchant": checkArr },
-		    success: function(result) {
-				if(result != 0){
-					alert("송장 출력 성공.")
-					 location.reload();
-				}else{
-					alert("송장 출력 실패.")
-					
-				}
+    if(confirm('받는 사람을 수정하시겠습니까?')) {
+	$.ajax({
+		type:"POST",
+		url:"admin_orderWaitUpdate.mdo",
+		dataType : "json",
+		data : {"order_merchant_serial" : serial, "order_delivery_status" : status},
+		success: function(result) {
+			if(result != 0){
+				alert("배송 상태를 성공적으로 수정하였습니다.")
+				location.reload();
+			}else{
+				alert("배송 상태 수정에 실패했습니다.")
+				location.reload();
 			}
-		});
 		}
-	});
-	
-	$("#update").click(function() {
-		var checkArr = [];
-		$("input[name=chk]:checked").each(function(){
-			 checkArr.push($(this).val());
-		});
-		
-		 if(confirm('체크한 주문건 배송상태를 (배송중)으로 수정하시겠습니까?')) {
-		$.ajax({
-		    type: 'post',
-		    url: 'admin_orderWaitUpdate1.mdo',
-		    dataType: 'text',
-		    data: { "merchant": checkArr },
-		    success: function(result) {
-				if(result != 0){
-					alert("배송 상태 수정을 성공 하였습니다.")
-					 location.reload();
-				}else{
-					alert("배송 상태 수정을 실패 하였습니다.")
-					
-				}
-			}
-		});
-		}
-	});
+	}) 
+	}
+});
+
 </script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
@@ -204,7 +156,7 @@
 <script src="assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(window).load(function(){
 		$("input#checkall").unwrap();
 		
@@ -221,6 +173,6 @@
 	    })
 		
 	});
-</script>
+</script> -->
 </body>
 </html>

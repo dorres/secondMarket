@@ -5,8 +5,21 @@
  
  <mapper namespace="adminOrderDAO">
  	<select id="getOrderWaitList" resultType="order">
- 		SELECT * FROM MK_ORDER WHERE ORDER_DELIVERY_STATUS = '결제완료' ORDER BY ORDER_DATE
+ 		SELECT * FROM MK_ORDER
+ 		WHERE ORDER_DELIVERY_STATUS IN ('결제완료','배송준비중') 
+ 		ORDER BY ORDER_DATE
  	</select>
+ 	<select id="getOrderDeliveryList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('배송중','배송완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 	<select id="getOrderFinishList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('구매완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 	
  	<!-- mk_order 테이블 가져오는 쿼리  -->
  	<select id="getOrderWait" resultType="order">
 		SELECT * FROM MK_ORDER WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
@@ -77,4 +90,15 @@
  		ORDER_DELIVERY_STATUS = #{order_delivery_status}
  		WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
  	</update>
+ 	
+ 	<update id="updateOrderWait1" parameterType="java.util.List">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '배송중'
+ 		WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</update>
+ 	
+
  </mapper>

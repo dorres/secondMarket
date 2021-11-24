@@ -223,9 +223,15 @@ public interface AdminService {
 	int updateShippingInfo(AdminShippingInfoVO shipping);
 	
 	int updateOrderWait(AdminOrderVO order);
+	int updateOrderWait1(List<String> merchantList);
 	
 	List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList);
 	
 	int updateStatus(List<String> merchantList);
+	//---------------------------------------------------------------------------
+	//林巩包府 (硅价苞沥)
+	List<AdminOrderVO> getOrderDeliveryList();
+	//林巩包府 (备概肯丰)
+	List<AdminOrderVO> getOrderFinishList();
 	
 }
