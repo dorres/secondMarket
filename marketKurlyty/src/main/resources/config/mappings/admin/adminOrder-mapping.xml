@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+ <mapper namespace="adminOrderDAO">
+ 	<select id="getOrderWaitList" resultType="order">
+ 		SELECT * FROM MK_ORDER
+ 		WHERE ORDER_DELIVERY_STATUS IN ('결제완료','배송준비중') 
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 	<select id="getOrderDeliveryList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('배송중','배송완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 	<select id="getOrderFinishList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('구매완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 	
+ 	<!-- mk_order 테이블 가져오는 쿼리  -->
+ 	<select id="getOrderWait" resultType="order">
+		SELECT * FROM MK_ORDER WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
+ 	</select>
+ 	
+ 	<select id="getOrderWaitDetail" resultType="order" parameterType="order">
+	 	SELECT  
+			C.CATEGORY_GOODS_NAME,
+			G.GOODS_DETAIL_PRICE,
+			O.ORDER_GOODS_COUNT,
+			O.ORDER_GOODS_PRICE,
+			O.ORDER_GOODS_OLD_PRICE
+		FROM 
+			mk_category_goods C JOIN mk_goods_detail G 
+		on
+			C.category_goods_serial = G.category_goods_serial
+		join 
+			mk_order_details O 
+		on
+			G.category_goods_serial = O.category_goods_serial
+		where 
+			o.order_merchant_serial = #{order_merchant_serial}
+ 	</select>
+ 	<!-- mk_order 테이블 가져오는 쿼리 -->
+ 	
+ 	<!-- mk_shipping_info 테이블 가져오는 쿼리 -->
+ 	<select id="getShippingInfo" resultType="shipping" parameterType="order">
+ 		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
+ 	</select>
+ 	
+ 	 <select id="getShippingInfoList" resultType="shipping" parameterType="java.util.List">
+ 		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</select>
+ 	
+ 	<select id="updateShippingInfoList" resultType="shipping" parameterType="java.util.List">
+ 		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</select>
+ 	
+ 	 <update id="updateStatus" parameterType="java.util.List">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '배송준비중' WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</update>
+ 	
+ 	<!-- 받는사람 배송지 수정 -->
+ 	<update id="updateShippingInfo" parameterType="shipping">
+ 		UPDATE MK_SHIPPING_INFO SET 
+ 		SHIPPING_RECIPIENT_NAME = #{shipping_recipient_name},
+ 		SHIPPING_RECIPIENT_PHONE = #{shipping_recipient_phone},
+ 		SHIPPING_PICKUP_TYPE = #{shipping_pickup_type},
+ 		SHIPPING_PICKUP_DETAIL = #{shipping_pickup_detail},
+ 		SHIPPING_MESSAGE_TIME = #{shipping_message_time},
+ 		SHIPPING_DOOR_PASSWORD = #{shipping_door_password}
+ 		WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
+ 	</update>
+ 	
+ 	<!-- 리스트 페이지에서 배송상태 변경 -->
+ 	<update id="updateOrderWait" parameterType="order">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = #{order_delivery_status}
+ 		WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
+ 	</update>
+ 	
+ 	<update id="updateOrderWait1" parameterType="java.util.List">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '배송중'
+ 		WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</update>
+ 	
+
+ </mapper>

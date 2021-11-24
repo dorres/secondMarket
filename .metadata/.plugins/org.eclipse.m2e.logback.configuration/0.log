@@ -880,3 +880,835 @@
 2021-11-24 18:04:14,593 [Worker-317: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2021-11-24 18:04:14,593 [Worker-317: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 2021-11-24 18:04:14,595 [Worker-317: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:14:02,593 [Worker-324: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: first.market:kurlyty:1.0.0-BUILD-SNAPSHOT @ C:\secondk\marketKurlyty\pom.xml.
+2021-11-24 18:14:06,908 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi/5.0.0/poi-5.0.0.pom
+2021-11-24 18:14:07,940 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi/5.0.0/poi-5.0.0.pom
+2021-11-24 18:14:08,276 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi/5.0.0/poi-5.0.0.pom
+2021-11-24 18:14:08,340 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2021-11-24 18:14:08,514 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2021-11-24 18:14:08,718 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2021-11-24 18:14:08,771 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom
+2021-11-24 18:14:08,945 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom
+2021-11-24 18:14:09,154 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom
+2021-11-24 18:14:09,214 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.pom
+2021-11-24 18:14:09,395 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.pom
+2021-11-24 18:14:09,577 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.pom
+2021-11-24 18:14:09,814 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom
+2021-11-24 18:14:09,986 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom
+2021-11-24 18:14:10,222 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom
+2021-11-24 18:14:11,005 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.pom
+2021-11-24 18:14:11,178 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.pom
+2021-11-24 18:14:11,405 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.pom
+2021-11-24 18:14:12,191 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.pom
+2021-11-24 18:14:12,365 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.pom
+2021-11-24 18:14:12,555 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.pom
+2021-11-24 18:14:12,781 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.pom
+2021-11-24 18:14:12,954 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.pom
+2021-11-24 18:14:13,152 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.pom
+2021-11-24 18:14:13,908 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.pom
+2021-11-24 18:14:14,081 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.pom
+2021-11-24 18:14:14,267 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.pom
+2021-11-24 18:14:15,046 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.pom
+2021-11-24 18:14:15,220 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.pom
+2021-11-24 18:14:15,410 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.pom
+2021-11-24 18:14:15,655 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2021-11-24 18:14:15,831 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2021-11-24 18:14:16,046 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2021-11-24 18:14:17,197 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.pom
+2021-11-24 18:14:17,284 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.pom
+2021-11-24 18:14:17,459 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.pom
+2021-11-24 18:14:17,663 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.pom
+2021-11-24 18:14:17,777 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.pom
+2021-11-24 18:14:17,950 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.pom
+2021-11-24 18:14:18,139 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.pom
+2021-11-24 18:14:18,377 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.pom
+2021-11-24 18:14:18,549 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.pom
+2021-11-24 18:14:18,776 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.pom
+2021-11-24 18:14:19,514 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.pom
+2021-11-24 18:14:19,688 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.pom
+2021-11-24 18:14:19,878 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.pom
+2021-11-24 18:14:19,942 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.pom
+2021-11-24 18:14:20,118 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.pom
+2021-11-24 18:14:20,310 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.pom
+2021-11-24 18:14:20,381 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.pom
+2021-11-24 18:14:20,554 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.pom
+2021-11-24 18:14:20,761 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.pom
+2021-11-24 18:14:21,027 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/xml/bind/jakarta.xml.bind-api-parent/2.3.2/jakarta.xml.bind-api-parent-2.3.2.pom
+2021-11-24 18:14:21,204 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api-parent/2.3.2/jakarta.xml.bind-api-parent-2.3.2.pom
+2021-11-24 18:14:21,399 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api-parent/2.3.2/jakarta.xml.bind-api-parent-2.3.2.pom
+2021-11-24 18:14:21,478 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.pom
+2021-11-24 18:14:21,657 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.pom
+2021-11-24 18:14:21,845 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.pom
+2021-11-24 18:14:21,895 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/sun/activation/all/1.2.1/all-1.2.1.pom
+2021-11-24 18:14:22,077 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/sun/activation/all/1.2.1/all-1.2.1.pom
+2021-11-24 18:14:22,282 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/sun/activation/all/1.2.1/all-1.2.1.pom
+2021-11-24 18:14:22,350 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/eclipse/ee4j/project/1.0.2/project-1.0.2.pom
+2021-11-24 18:14:22,525 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.2/project-1.0.2.pom
+2021-11-24 18:14:22,731 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.2/project-1.0.2.pom
+2021-11-24 18:14:22,985 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.pom
+2021-11-24 18:14:23,167 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.pom
+2021-11-24 18:14:23,362 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.pom
+2021-11-24 18:14:23,607 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik/1.13/batik-1.13.pom
+2021-11-24 18:14:23,781 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik/1.13/batik-1.13.pom
+2021-11-24 18:14:23,977 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik/1.13/batik-1.13.pom
+2021-11-24 18:14:24,217 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.pom
+2021-11-24 18:14:24,401 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.pom
+2021-11-24 18:14:24,593 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.pom
+2021-11-24 18:14:25,341 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.pom
+2021-11-24 18:14:25,514 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.pom
+2021-11-24 18:14:25,706 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.pom
+2021-11-24 18:14:26,460 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.pom
+2021-11-24 18:14:26,641 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.pom
+2021-11-24 18:14:26,856 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.pom
+2021-11-24 18:14:27,107 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.pom
+2021-11-24 18:14:27,279 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.pom
+2021-11-24 18:14:27,474 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.pom
+2021-11-24 18:14:27,730 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.pom
+2021-11-24 18:14:27,903 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.pom
+2021-11-24 18:14:28,093 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.pom
+2021-11-24 18:14:28,342 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.pom
+2021-11-24 18:14:28,516 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.pom
+2021-11-24 18:14:28,711 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.pom
+2021-11-24 18:14:29,483 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.pom
+2021-11-24 18:14:29,658 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.pom
+2021-11-24 18:14:29,847 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.pom
+2021-11-24 18:14:29,899 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+2021-11-24 18:14:30,073 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+2021-11-24 18:14:30,262 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+2021-11-24 18:14:31,055 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.pom
+2021-11-24 18:14:31,229 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.pom
+2021-11-24 18:14:31,415 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.pom
+2021-11-24 18:14:31,652 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.pom
+2021-11-24 18:14:31,828 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.pom
+2021-11-24 18:14:32,013 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.pom
+2021-11-24 18:14:32,787 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.pom
+2021-11-24 18:14:32,962 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.pom
+2021-11-24 18:14:33,153 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.pom
+2021-11-24 18:14:33,381 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.pom
+2021-11-24 18:14:33,554 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.pom
+2021-11-24 18:14:33,771 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.pom
+2021-11-24 18:14:34,516 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.pom
+2021-11-24 18:14:34,689 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.pom
+2021-11-24 18:14:34,879 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.pom
+2021-11-24 18:14:34,957 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xalan/xalan/2.7.2/xalan-2.7.2.pom
+2021-11-24 18:14:35,130 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xalan/xalan/2.7.2/xalan-2.7.2.pom
+2021-11-24 18:14:35,320 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xalan/xalan/2.7.2/xalan-2.7.2.pom
+2021-11-24 18:14:36,134 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xalan/serializer/2.7.2/serializer-2.7.2.pom
+2021-11-24 18:14:36,306 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xalan/serializer/2.7.2/serializer-2.7.2.pom
+2021-11-24 18:14:36,493 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xalan/serializer/2.7.2/serializer-2.7.2.pom
+2021-11-24 18:14:36,555 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2021-11-24 18:14:36,735 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2021-11-24 18:14:36,933 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2021-11-24 18:14:37,170 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.pom
+2021-11-24 18:14:37,345 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.pom
+2021-11-24 18:14:37,550 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.pom
+2021-11-24 18:14:38,292 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.pom
+2021-11-24 18:14:38,467 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.pom
+2021-11-24 18:14:38,659 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.pom
+2021-11-24 18:14:39,416 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.pom
+2021-11-24 18:14:39,588 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.pom
+2021-11-24 18:14:39,773 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.pom
+2021-11-24 18:14:40,530 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.pom
+2021-11-24 18:14:40,712 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.pom
+2021-11-24 18:14:40,899 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.pom
+2021-11-24 18:14:41,146 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.pom
+2021-11-24 18:14:41,320 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.pom
+2021-11-24 18:14:41,612 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.pom
+2021-11-24 18:14:42,371 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.pom
+2021-11-24 18:14:42,553 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.pom
+2021-11-24 18:14:42,737 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.pom
+2021-11-24 18:14:42,983 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.pom
+2021-11-24 18:14:43,156 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.pom
+2021-11-24 18:14:43,348 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.pom
+2021-11-24 18:14:43,592 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.pom
+2021-11-24 18:14:43,765 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.pom
+2021-11-24 18:14:43,956 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.pom
+2021-11-24 18:14:44,710 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.pom
+2021-11-24 18:14:44,890 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.pom
+2021-11-24 18:14:45,081 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.pom
+2021-11-24 18:14:45,842 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.pom
+2021-11-24 18:14:46,014 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.pom
+2021-11-24 18:14:46,208 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.pom
+2021-11-24 18:14:46,449 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.pom
+2021-11-24 18:14:46,622 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.pom
+2021-11-24 18:14:46,808 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.pom
+2021-11-24 18:14:47,053 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.pom
+2021-11-24 18:14:47,226 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.pom
+2021-11-24 18:14:47,416 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.pom
+2021-11-24 18:14:47,669 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.pom
+2021-11-24 18:14:47,843 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.pom
+2021-11-24 18:14:48,037 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.pom
+2021-11-24 18:14:48,804 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.pom
+2021-11-24 18:14:48,977 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.pom
+2021-11-24 18:14:49,167 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.pom
+2021-11-24 18:14:49,428 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.pom
+2021-11-24 18:14:49,600 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.pom
+2021-11-24 18:14:49,790 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.pom
+2021-11-24 18:14:50,019 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.pom
+2021-11-24 18:14:50,190 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.pom
+2021-11-24 18:14:50,380 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.pom
+2021-11-24 18:14:50,638 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.pom
+2021-11-24 18:14:50,811 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.pom
+2021-11-24 18:14:51,004 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.pom
+2021-11-24 18:14:51,253 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.pom
+2021-11-24 18:14:51,426 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.pom
+2021-11-24 18:14:51,618 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.pom
+2021-11-24 18:14:51,861 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.pom
+2021-11-24 18:14:52,041 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.pom
+2021-11-24 18:14:52,227 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.pom
+2021-11-24 18:14:52,476 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.pom
+2021-11-24 18:14:52,652 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.pom
+2021-11-24 18:14:52,852 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.pom
+2021-11-24 18:14:53,613 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.pom
+2021-11-24 18:14:53,786 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.pom
+2021-11-24 18:14:53,974 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.pom
+2021-11-24 18:14:54,226 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/de/rototor/pdfbox/pdfboxgraphics2d-parent/0.30/pdfboxgraphics2d-parent-0.30.pom
+2021-11-24 18:14:54,400 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/de/rototor/pdfbox/pdfboxgraphics2d-parent/0.30/pdfboxgraphics2d-parent-0.30.pom
+2021-11-24 18:14:54,590 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/de/rototor/pdfbox/pdfboxgraphics2d-parent/0.30/pdfboxgraphics2d-parent-0.30.pom
+2021-11-24 18:14:54,817 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.pom
+2021-11-24 18:14:54,993 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.pom
+2021-11-24 18:14:55,252 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.pom
+2021-11-24 18:14:55,993 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/pdfbox-parent/2.0.22/pdfbox-parent-2.0.22.pom
+2021-11-24 18:14:56,186 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox-parent/2.0.22/pdfbox-parent-2.0.22.pom
+2021-11-24 18:14:56,374 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox-parent/2.0.22/pdfbox-parent-2.0.22.pom
+2021-11-24 18:14:57,111 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.pom
+2021-11-24 18:14:57,290 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.pom
+2021-11-24 18:14:57,479 [Worker-324: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.pom
+2021-11-24 18:14:57,858 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar
+2021-11-24 18:14:57,893 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar
+2021-11-24 18:14:58,084 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar
+2021-11-24 18:14:58,128 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar
+2021-11-24 18:14:58,304 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2021-11-24 18:14:58,384 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://jitpack.io/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar
+2021-11-24 18:14:58,395 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar
+2021-11-24 18:14:58,400 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi/5.0.0/poi-5.0.0.jar
+2021-11-24 18:14:58,412 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar
+2021-11-24 18:14:58,430 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+2021-11-24 18:14:58,446 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar
+2021-11-24 18:14:58,482 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar
+2021-11-24 18:14:58,536 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar
+2021-11-24 18:14:58,641 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar
+2021-11-24 18:14:58,652 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar
+2021-11-24 18:14:58,674 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar
+2021-11-24 18:14:58,763 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar
+2021-11-24 18:14:58,885 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar
+2021-11-24 18:14:58,929 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar
+2021-11-24 18:14:58,987 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar
+2021-11-24 18:14:59,152 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar
+2021-11-24 18:14:59,217 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar
+2021-11-24 18:14:59,217 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar
+2021-11-24 18:14:59,395 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar
+2021-11-24 18:14:59,472 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar
+2021-11-24 18:14:59,524 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar
+2021-11-24 18:14:59,570 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2021-11-24 18:14:59,645 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar
+2021-11-24 18:14:59,710 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xalan/serializer/2.7.2/serializer-2.7.2.jar
+2021-11-24 18:14:59,870 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar
+2021-11-24 18:14:59,889 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar
+2021-11-24 18:14:59,931 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar
+2021-11-24 18:15:00,101 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar
+2021-11-24 18:15:00,124 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar
+2021-11-24 18:15:00,151 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xalan/xalan/2.7.2/xalan-2.7.2.jar
+2021-11-24 18:15:00,164 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar
+2021-11-24 18:15:00,347 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar
+2021-11-24 18:15:00,347 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar
+2021-11-24 18:15:00,388 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar
+2021-11-24 18:15:00,573 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar
+2021-11-24 18:15:00,612 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar
+2021-11-24 18:15:00,694 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar
+2021-11-24 18:15:00,844 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar
+2021-11-24 18:15:00,878 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar
+2021-11-24 18:15:00,911 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar
+2021-11-24 18:15:00,918 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar
+2021-11-24 18:15:01,067 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar
+2021-11-24 18:15:01,119 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar
+2021-11-24 18:15:01,144 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar
+2021-11-24 18:15:01,245 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar
+2021-11-24 18:15:01,313 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar
+2021-11-24 18:15:01,367 [AetherRepositoryConnector-jitpack.io-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar
+2021-11-24 18:15:01,513 [AetherRepositoryConnector-jitpack.io-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar
+2021-11-24 18:15:01,808 [AetherRepositoryConnector-jitpack.io-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar
+2021-11-24 18:15:01,907 [AetherRepositoryConnector-jitpack.io-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar
+2021-11-24 18:15:02,080 [AetherRepositoryConnector-jitpack.io-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar
+2021-11-24 18:15:03,205 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar
+2021-11-24 18:15:03,400 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi/5.0.0/poi-5.0.0.jar
+2021-11-24 18:15:03,400 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+2021-11-24 18:15:03,400 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar
+2021-11-24 18:15:03,400 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar
+2021-11-24 18:15:03,969 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar
+2021-11-24 18:15:04,509 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar
+2021-11-24 18:15:05,097 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+2021-11-24 18:15:05,553 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar
+2021-11-24 18:15:05,783 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar
+2021-11-24 18:15:05,793 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi/5.0.0/poi-5.0.0.jar
+2021-11-24 18:15:05,793 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar
+2021-11-24 18:15:06,074 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2021-11-24 18:15:06,167 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar
+2021-11-24 18:15:06,271 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar
+2021-11-24 18:15:06,968 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar
+2021-11-24 18:15:07,252 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar
+2021-11-24 18:15:07,282 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar
+2021-11-24 18:15:07,289 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar
+2021-11-24 18:15:07,289 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2021-11-24 18:15:07,505 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar
+2021-11-24 18:15:07,599 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar
+2021-11-24 18:15:07,616 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar
+2021-11-24 18:15:07,656 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar
+2021-11-24 18:15:07,687 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar
+2021-11-24 18:15:07,805 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar
+2021-11-24 18:15:07,815 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar
+2021-11-24 18:15:07,851 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar
+2021-11-24 18:15:07,864 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar
+2021-11-24 18:15:07,967 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar
+2021-11-24 18:15:08,724 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar
+2021-11-24 18:15:08,800 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar
+2021-11-24 18:15:08,803 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar
+2021-11-24 18:15:08,822 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar
+2021-11-24 18:15:08,927 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar
+2021-11-24 18:15:08,983 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar
+2021-11-24 18:15:09,075 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar
+2021-11-24 18:15:09,082 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar
+2021-11-24 18:15:09,083 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar
+2021-11-24 18:15:09,150 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar
+2021-11-24 18:15:09,258 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar
+2021-11-24 18:15:09,371 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar
+2021-11-24 18:15:09,373 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar
+2021-11-24 18:15:09,394 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar
+2021-11-24 18:15:09,450 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar
+2021-11-24 18:15:09,556 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar
+2021-11-24 18:15:09,602 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar
+2021-11-24 18:15:09,609 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar
+2021-11-24 18:15:09,610 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar
+2021-11-24 18:15:09,721 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar
+2021-11-24 18:15:09,770 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xalan/xalan/2.7.2/xalan-2.7.2.jar
+2021-11-24 18:15:10,295 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xalan/serializer/2.7.2/serializer-2.7.2.jar
+2021-11-24 18:15:10,332 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2021-11-24 18:15:10,368 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar
+2021-11-24 18:15:10,368 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar
+2021-11-24 18:15:10,485 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xalan/xalan/2.7.2/xalan-2.7.2.jar
+2021-11-24 18:15:10,516 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xalan/serializer/2.7.2/serializer-2.7.2.jar
+2021-11-24 18:15:10,643 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar
+2021-11-24 18:15:10,646 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar
+2021-11-24 18:15:10,650 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2021-11-24 18:15:10,672 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar
+2021-11-24 18:15:10,812 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar
+2021-11-24 18:15:10,844 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar
+2021-11-24 18:15:10,851 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar
+2021-11-24 18:15:10,862 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar
+2021-11-24 18:15:10,982 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar
+2021-11-24 18:15:11,021 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar
+2021-11-24 18:15:11,029 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar
+2021-11-24 18:15:11,136 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar
+2021-11-24 18:15:11,143 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar
+2021-11-24 18:15:11,185 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar
+2021-11-24 18:15:11,308 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar
+2021-11-24 18:15:11,320 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar
+2021-11-24 18:15:11,349 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar
+2021-11-24 18:15:11,356 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar
+2021-11-24 18:15:11,474 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar
+2021-11-24 18:15:11,509 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar
+2021-11-24 18:15:11,631 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar
+2021-11-24 18:15:11,638 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar
+2021-11-24 18:15:11,640 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar
+2021-11-24 18:15:11,675 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar
+2021-11-24 18:15:11,804 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar
+2021-11-24 18:15:11,839 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar
+2021-11-24 18:15:11,847 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar
+2021-11-24 18:15:11,869 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar
+2021-11-24 18:15:11,965 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar
+2021-11-24 18:15:12,000 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar
+2021-11-24 18:15:12,014 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar
+2021-11-24 18:15:12,049 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar
+2021-11-24 18:15:12,130 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar
+2021-11-24 18:15:12,166 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar
+2021-11-24 18:15:12,213 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar
+2021-11-24 18:15:12,287 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar
+2021-11-24 18:15:12,296 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar
+2021-11-24 18:15:12,329 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar
+2021-11-24 18:15:12,375 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar
+2021-11-24 18:15:12,453 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar
+2021-11-24 18:15:12,464 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar
+2021-11-24 18:15:12,498 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar
+2021-11-24 18:15:12,540 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar
+2021-11-24 18:15:12,648 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar
+2021-11-24 18:15:12,665 [AetherRepositoryConnector-repo.maven.apache.org-1-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar
+2021-11-24 18:15:12,701 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar
+2021-11-24 18:15:12,739 [AetherRepositoryConnector-repo.maven.apache.org-1-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar
+2021-11-24 18:15:13,152 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar
+2021-11-24 18:15:13,417 [AetherRepositoryConnector-repo.maven.apache.org-1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar
+2021-11-24 18:15:13,417 [AetherRepositoryConnector-repo.maven.apache.org-1-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar
+2021-11-24 18:15:13,593 [AetherRepositoryConnector-repo.maven.apache.org-1-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar
+2021-11-24 18:15:19,540 [Worker-324: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:15:19,545 [Worker-324: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2021-11-24 18:15:19,573 [Worker-324: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:15:19,574 [Worker-324: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:15:19,574 [Worker-324: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of marketKurlyty
+2021-11-24 18:15:19,574 [Worker-324: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for marketKurlyty
+2021-11-24 18:15:19,577 [Worker-324: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:15:22,359 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi/5.0.0/poi-5.0.0-sources.jar
+2021-11-24 18:15:22,974 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi/5.0.0/poi-5.0.0-sources.jar
+2021-11-24 18:15:24,260 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi/5.0.0/poi-5.0.0-sources.jar
+2021-11-24 18:15:24,358 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.poi:poi:5.0.0
+2021-11-24 18:15:24,785 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-sources.jar
+2021-11-24 18:15:25,460 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-sources.jar
+2021-11-24 18:15:26,487 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-sources.jar
+2021-11-24 18:15:26,546 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.commons:commons-collections4:4.4
+2021-11-24 18:15:26,985 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1-sources.jar
+2021-11-24 18:15:27,654 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1-sources.jar
+2021-11-24 18:15:29,004 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1-sources.jar
+2021-11-24 18:15:29,058 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.commons:commons-math3:3.6.1
+2021-11-24 18:15:29,498 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2-sources.jar
+2021-11-24 18:15:30,092 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2-sources.jar
+2021-11-24 18:15:30,439 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2-sources.jar
+2021-11-24 18:15:30,563 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.zaxxer:SparseBitSet:1.2
+2021-11-24 18:15:31,544 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0-sources.jar
+2021-11-24 18:15:32,121 [Worker-326: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:15:32,125 [Worker-326: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2021-11-24 18:15:32,184 [Worker-326: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:15:32,185 [Worker-326: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-24 18:15:32,239 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0-sources.jar
+2021-11-24 18:15:33,466 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0-sources.jar
+2021-11-24 18:15:33,516 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.poi:poi-ooxml:5.0.0
+2021-11-24 18:15:34,461 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0-sources.jar
+2021-11-24 18:15:35,068 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0-sources.jar
+2021-11-24 18:15:35,092 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for org.apache.poi:poi-ooxml-lite:5.0.0
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.poi:poi-ooxml-lite:jar:sources:5.0.0
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:304)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:15:35,443 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0-sources.jar
+2021-11-24 18:15:36,126 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0-sources.jar
+2021-11-24 18:15:37,342 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0-sources.jar
+2021-11-24 18:15:37,396 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlbeans:xmlbeans:4.0.0
+2021-11-24 18:15:38,249 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/commons/commons-compress/1.20/commons-compress-1.20-sources.jar
+2021-11-24 18:15:38,945 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20-sources.jar
+2021-11-24 18:15:39,935 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20-sources.jar
+2021-11-24 18:15:40,050 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.commons:commons-compress:1.20
+2021-11-24 18:15:40,428 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://jitpack.io/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar
+2021-11-24 18:15:40,742 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar
+2021-11-24 18:15:40,816 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.github.virtuald:curvesapi:1.06
+2021-11-24 18:15:41,206 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68-sources.jar
+2021-11-24 18:15:41,693 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68-sources.jar
+2021-11-24 18:15:42,360 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68-sources.jar
+2021-11-24 18:15:42,443 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.bouncycastle:bcpkix-jdk15on:1.68
+2021-11-24 18:15:42,786 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68-sources.jar
+2021-11-24 18:15:43,479 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68-sources.jar
+2021-11-24 18:15:45,614 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68-sources.jar
+2021-11-24 18:15:45,659 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.bouncycastle:bcprov-jdk15on:1.68
+2021-11-24 18:15:46,001 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1-sources.jar
+2021-11-24 18:15:46,592 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1-sources.jar
+2021-11-24 18:15:47,548 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1-sources.jar
+2021-11-24 18:15:47,627 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.santuario:xmlsec:2.2.1
+2021-11-24 18:15:47,995 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1-sources.jar
+2021-11-24 18:15:48,696 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1-sources.jar
+2021-11-24 18:15:49,659 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1-sources.jar
+2021-11-24 18:15:49,710 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.woodstox:woodstox-core:5.2.1
+2021-11-24 18:15:49,915 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2-sources.jar
+2021-11-24 18:15:50,584 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2-sources.jar
+2021-11-24 18:15:51,239 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2-sources.jar
+2021-11-24 18:15:51,292 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.codehaus.woodstox:stax2-api:4.2
+2021-11-24 18:15:51,620 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar
+2021-11-24 18:15:52,227 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar
+2021-11-24 18:15:52,801 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar
+2021-11-24 18:15:52,855 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for jakarta.xml.bind:jakarta.xml.bind-api:2.3.2
+2021-11-24 18:15:53,211 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+2021-11-24 18:15:53,894 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+2021-11-24 18:15:54,358 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar
+2021-11-24 18:15:54,527 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for jakarta.activation:jakarta.activation-api:1.2.1
+2021-11-24 18:15:55,390 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13-sources.jar
+2021-11-24 18:15:56,052 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13-sources.jar
+2021-11-24 18:15:56,054 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for org.apache.xmlgraphics:batik-all:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-all:jar:sources:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:304)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:15:56,999 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13-sources.jar
+2021-11-24 18:15:57,668 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13-sources.jar
+2021-11-24 18:15:58,520 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13-sources.jar
+2021-11-24 18:15:58,621 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-anim:1.13
+2021-11-24 18:15:58,963 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13-sources.jar
+2021-11-24 18:15:59,662 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13-sources.jar
+2021-11-24 18:16:00,004 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13-sources.jar
+2021-11-24 18:16:00,066 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-shared-resources:1.13
+2021-11-24 18:16:00,919 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04-sources.jar
+2021-11-24 18:16:01,604 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04-sources.jar
+2021-11-24 18:16:01,606 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for xml-apis:xml-apis-ext:1.3.04
+org.eclipse.core.runtime.CoreException: Could not resolve artifact xml-apis:xml-apis-ext:jar:sources:1.3.04
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:304)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:16:02,485 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13-sources.jar
+2021-11-24 18:16:03,168 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13-sources.jar
+2021-11-24 18:16:04,042 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13-sources.jar
+2021-11-24 18:16:04,093 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-awt-util:1.13
+2021-11-24 18:16:04,530 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4-sources.jar
+2021-11-24 18:16:05,194 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4-sources.jar
+2021-11-24 18:16:06,194 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4-sources.jar
+2021-11-24 18:16:06,241 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:xmlgraphics-commons:2.4
+2021-11-24 18:16:06,598 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13-sources.jar
+2021-11-24 18:16:07,188 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13-sources.jar
+2021-11-24 18:16:07,974 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13-sources.jar
+2021-11-24 18:16:08,024 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-bridge:1.13
+2021-11-24 18:16:08,914 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13-sources.jar
+2021-11-24 18:16:09,500 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13-sources.jar
+2021-11-24 18:16:09,894 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13-sources.jar
+2021-11-24 18:16:09,947 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-codec:1.13
+2021-11-24 18:16:10,362 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13-sources.jar
+2021-11-24 18:16:11,027 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13-sources.jar
+2021-11-24 18:16:11,425 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13-sources.jar
+2021-11-24 18:16:11,481 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-constants:1.13
+2021-11-24 18:16:11,850 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13-sources.jar
+2021-11-24 18:16:12,537 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13-sources.jar
+2021-11-24 18:16:13,272 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13-sources.jar
+2021-11-24 18:16:13,326 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-css:1.13
+2021-11-24 18:16:13,694 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13-sources.jar
+2021-11-24 18:16:14,262 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13-sources.jar
+2021-11-24 18:16:14,735 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13-sources.jar
+2021-11-24 18:16:14,789 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-dom:1.13
+2021-11-24 18:16:15,060 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xalan/xalan/2.7.2/xalan-2.7.2-sources.jar
+2021-11-24 18:16:15,637 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xalan/xalan/2.7.2/xalan-2.7.2-sources.jar
+2021-11-24 18:16:16,886 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xalan/xalan/2.7.2/xalan-2.7.2-sources.jar
+2021-11-24 18:16:16,976 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for xalan:xalan:2.7.2
+2021-11-24 18:16:17,175 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xalan/serializer/2.7.2/serializer-2.7.2-sources.jar
+2021-11-24 18:16:17,857 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xalan/serializer/2.7.2/serializer-2.7.2-sources.jar
+2021-11-24 18:16:19,375 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xalan/serializer/2.7.2/serializer-2.7.2-sources.jar
+2021-11-24 18:16:19,426 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for xalan:serializer:2.7.2
+2021-11-24 18:16:19,591 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01-sources.jar
+2021-11-24 18:16:20,206 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01-sources.jar
+2021-11-24 18:16:21,014 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01-sources.jar
+2021-11-24 18:16:21,070 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for xml-apis:xml-apis:1.4.01
+2021-11-24 18:16:21,992 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13-sources.jar
+2021-11-24 18:16:22,663 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13-sources.jar
+2021-11-24 18:16:23,010 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13-sources.jar
+2021-11-24 18:16:23,102 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-ext:1.13
+2021-11-24 18:16:24,044 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13-sources.jar
+2021-11-24 18:16:24,720 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13-sources.jar
+2021-11-24 18:16:25,101 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13-sources.jar
+2021-11-24 18:16:25,155 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-extension:1.13
+2021-11-24 18:16:25,587 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13-sources.jar
+2021-11-24 18:16:26,242 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13-sources.jar
+2021-11-24 18:16:26,735 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13-sources.jar
+2021-11-24 18:16:26,782 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-gui-util:1.13
+2021-11-24 18:16:27,121 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13-sources.jar
+2021-11-24 18:16:27,803 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13-sources.jar
+2021-11-24 18:16:28,380 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13-sources.jar
+2021-11-24 18:16:28,437 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-gvt:1.13
+2021-11-24 18:16:28,784 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13-sources.jar
+2021-11-24 18:16:29,348 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13-sources.jar
+2021-11-24 18:16:29,630 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13-sources.jar
+2021-11-24 18:16:29,739 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-i18n:1.13
+2021-11-24 18:16:30,138 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13-sources.jar
+2021-11-24 18:16:30,704 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13-sources.jar
+2021-11-24 18:16:31,043 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13-sources.jar
+2021-11-24 18:16:31,095 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-parser:1.13
+2021-11-24 18:16:31,532 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13-sources.jar
+2021-11-24 18:16:32,187 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13-sources.jar
+2021-11-24 18:16:32,189 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for org.apache.xmlgraphics:batik-rasterizer-ext:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-rasterizer-ext:jar:sources:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:304)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:16:32,647 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13-sources.jar
+2021-11-24 18:16:33,332 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13-sources.jar
+2021-11-24 18:16:33,684 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13-sources.jar
+2021-11-24 18:16:33,792 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-rasterizer:1.13
+2021-11-24 18:16:34,208 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13-sources.jar
+2021-11-24 18:16:34,766 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13-sources.jar
+2021-11-24 18:16:35,049 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13-sources.jar
+2021-11-24 18:16:35,200 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-script:1.13
+2021-11-24 18:16:35,552 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13-sources.jar
+2021-11-24 18:16:36,224 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13-sources.jar
+2021-11-24 18:16:36,576 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13-sources.jar
+2021-11-24 18:16:36,688 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-slideshow:1.13
+2021-11-24 18:16:37,056 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13-sources.jar
+2021-11-24 18:16:37,711 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13-sources.jar
+2021-11-24 18:16:37,714 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for org.apache.xmlgraphics:batik-squiggle-ext:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-squiggle-ext:jar:sources:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:304)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:16:38,233 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13-sources.jar
+2021-11-24 18:16:38,800 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13-sources.jar
+2021-11-24 18:16:38,802 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for org.apache.xmlgraphics:batik-squiggle:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-squiggle:jar:sources:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:304)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:16:39,226 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13-sources.jar
+2021-11-24 18:16:39,902 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13-sources.jar
+2021-11-24 18:16:40,475 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13-sources.jar
+2021-11-24 18:16:40,528 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-svg-dom:1.13
+2021-11-24 18:16:41,361 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13-sources.jar
+2021-11-24 18:16:42,032 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13-sources.jar
+2021-11-24 18:16:42,896 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13-sources.jar
+2021-11-24 18:16:42,943 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-svgbrowser:1.13
+2021-11-24 18:16:43,879 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13-sources.jar
+2021-11-24 18:16:44,537 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13-sources.jar
+2021-11-24 18:16:45,197 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13-sources.jar
+2021-11-24 18:16:45,248 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-svggen:1.13
+2021-11-24 18:16:46,164 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13-sources.jar
+2021-11-24 18:16:46,891 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13-sources.jar
+2021-11-24 18:16:47,234 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13-sources.jar
+2021-11-24 18:16:47,318 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-svgpp:1.13
+2021-11-24 18:16:48,232 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13-sources.jar
+2021-11-24 18:16:48,892 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13-sources.jar
+2021-11-24 18:16:49,223 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13-sources.jar
+2021-11-24 18:16:49,353 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-svgrasterizer:1.13
+2021-11-24 18:16:49,785 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13-sources.jar
+2021-11-24 18:16:50,451 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13-sources.jar
+2021-11-24 18:16:50,872 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13-sources.jar
+2021-11-24 18:16:50,925 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-swing:1.13
+2021-11-24 18:16:51,339 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13-sources.jar
+2021-11-24 18:16:51,996 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13-sources.jar
+2021-11-24 18:16:52,421 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13-sources.jar
+2021-11-24 18:16:52,512 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-transcoder:1.13
+2021-11-24 18:16:52,831 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13-sources.jar
+2021-11-24 18:16:53,495 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13-sources.jar
+2021-11-24 18:16:53,928 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13-sources.jar
+2021-11-24 18:16:54,040 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-util:1.13
+2021-11-24 18:16:54,952 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13-sources.jar
+2021-11-24 18:16:55,637 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13-sources.jar
+2021-11-24 18:16:55,970 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13-sources.jar
+2021-11-24 18:16:56,016 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-ttf2svg:1.13
+2021-11-24 18:16:56,359 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13-sources.jar
+2021-11-24 18:16:56,948 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13-sources.jar
+2021-11-24 18:16:57,230 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13-sources.jar
+2021-11-24 18:16:57,329 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.xmlgraphics:batik-xml:1.13
+2021-11-24 18:16:57,782 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30-sources.jar
+2021-11-24 18:16:58,448 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30-sources.jar
+2021-11-24 18:16:58,876 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30-sources.jar
+2021-11-24 18:16:59,005 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for de.rototor.pdfbox:graphics2d:0.30
+2021-11-24 18:16:59,408 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22-sources.jar
+2021-11-24 18:16:59,983 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22-sources.jar
+2021-11-24 18:17:01,132 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22-sources.jar
+2021-11-24 18:17:01,185 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.pdfbox:pdfbox:2.0.22
+2021-11-24 18:17:01,600 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22-sources.jar
+2021-11-24 18:17:02,264 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22-sources.jar
+2021-11-24 18:17:03,451 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22-sources.jar
+2021-11-24 18:17:03,498 [Worker-325: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apache.pdfbox:fontbox:2.0.22
+2021-11-24 18:17:04,241 [Worker-324: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:17:04,243 [Worker-324: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:17:04,243 [Worker-324: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:17:04,245 [Worker-324: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:17:05,437 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0-javadoc.jar
+2021-11-24 18:17:06,101 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0-javadoc.jar
+2021-11-24 18:17:06,103 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download javadoc for org.apache.poi:poi-ooxml-lite:5.0.0
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.poi:poi-ooxml-lite:jar:javadoc:5.0.0
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:17:06,504 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13-javadoc.jar
+2021-11-24 18:17:07,161 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13-javadoc.jar
+2021-11-24 18:17:07,164 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download javadoc for org.apache.xmlgraphics:batik-all:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-all:jar:javadoc:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:17:07,513 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04-javadoc.jar
+2021-11-24 18:17:08,092 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04-javadoc.jar
+2021-11-24 18:17:08,094 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download javadoc for xml-apis:xml-apis-ext:1.3.04
+org.eclipse.core.runtime.CoreException: Could not resolve artifact xml-apis:xml-apis-ext:jar:javadoc:1.3.04
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:17:09,039 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13-javadoc.jar
+2021-11-24 18:17:09,731 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13-javadoc.jar
+2021-11-24 18:17:09,734 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download javadoc for org.apache.xmlgraphics:batik-rasterizer-ext:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-rasterizer-ext:jar:javadoc:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:17:10,696 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13-javadoc.jar
+2021-11-24 18:17:11,359 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13-javadoc.jar
+2021-11-24 18:17:11,362 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download javadoc for org.apache.xmlgraphics:batik-squiggle-ext:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-squiggle-ext:jar:javadoc:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:17:11,792 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://jitpack.io/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13-javadoc.jar
+2021-11-24 18:17:12,371 [Worker-325: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13-javadoc.jar
+2021-11-24 18:17:12,374 [Worker-325: Download sources and javadoc] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download javadoc for org.apache.xmlgraphics:batik-squiggle:1.13
+org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.xmlgraphics:batik-squiggle:jar:javadoc:1.13
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$4(MavenImpl.java:804)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:114)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:772)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:749)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:330)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:316)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:269)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:233)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:161)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-11-24 18:22:45,153 [Worker-331: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:22:45,157 [Worker-331: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 26 resources
+2021-11-24 18:22:45,161 [Worker-331: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:22:45,162 [Worker-331: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:24:48,268 [Worker-338: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:24:48,269 [Worker-338: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:24:48,269 [Worker-338: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:24:48,270 [Worker-338: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-24 18:26:19,359 [Worker-325: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:26:19,360 [Worker-325: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-24 18:26:19,363 [Worker-325: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-11-24 18:26:19,364 [Worker-325: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
