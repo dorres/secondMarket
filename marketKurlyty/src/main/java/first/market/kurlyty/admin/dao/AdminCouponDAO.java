@@ -1,11 +1,12 @@
 package first.market.kurlyty.admin.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminCouponVO;
-import first.market.kurlyty.user.vo.UserVO;
 
 @Repository
 public class AdminCouponDAO {
@@ -17,7 +18,11 @@ public class AdminCouponDAO {
 		
 	}
 
-	public AdminCouponVO getCoupon(AdminCouponVO couponVo) {
-		return sqlSession.selectOne("AdminDAO.selectCoupon", couponVo);
+	public List<AdminCouponVO> getCoupon() {
+		return sqlSession.selectList("AdminDAO.selectCoupon");
+	}
+	
+	public List<AdminCouponVO> getIssCoupon() {
+		return sqlSession.selectList("AdminDAO.selectIssCoupon");
 	}
 }

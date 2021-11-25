@@ -212,11 +212,16 @@
 	<!-- 관리자 1차카테고리 -->
 	<!-- 쿠폰 -->
  	<select id="selectCoupon" resultType="couponVO">
-		SELECT * FROM mk_coupon_test
+		SELECT * FROM mk_coupon_pub
 	</select>
 	<insert id="insertCoupon" parameterType="couponVO">
-		INSERT INTO mk_coupon_test VALUES ( DEFAULT, 
+		INSERT INTO mk_coupon_pub VALUES ( DEFAULT, 
 		#{coupon_name}, #{coupon_code}, #{coupon_expiry}, #{coupon_discount_price}, #{coupon_min_use}, #{coupon_max_bargain}, #{coupon_note});
 	</insert>
+	<select id="selectIssCoupon" resultType="couponVO">
+		SELECT * FROM mk_coupon_iss
+	</select><!-- 
+	<insert id="">
+	</insert> -->
 	<!-- 쿠폰 end -->
 </mapper>

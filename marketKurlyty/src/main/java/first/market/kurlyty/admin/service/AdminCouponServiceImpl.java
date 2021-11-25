@@ -1,5 +1,7 @@
 package first.market.kurlyty.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,11 @@ public class AdminCouponServiceImpl implements AdminCouponService{
 		couponDao.insertCoupon(couponVo);
 	}
 	@Override
-	public AdminCouponVO getCoupon(AdminCouponVO couponVo) {
-		return couponDao.getCoupon(couponVo);
+	public List<AdminCouponVO> getCoupon() {
+		return couponDao.getCoupon();
+	}
+	@Override
+	public List<AdminCouponVO> getIssCoupon() {
+		return couponDao.getIssCoupon();
 	}
 }

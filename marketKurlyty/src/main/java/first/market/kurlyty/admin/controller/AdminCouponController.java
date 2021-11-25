@@ -16,11 +16,27 @@ public class AdminCouponController {
 	
 	@RequestMapping("/admin_couponpub.mdo") // 쿠폰 발행 페이지
 	public String adminCouponPub(Model model){
+		model.addAttribute("getcoupon",adminCouponService.getCoupon());
 			return "coupon/admin_couponpub";
 	}
-	@RequestMapping("/admin_insertCoupon.mdo")
+	@RequestMapping("/admin_insertCoupon.mdo") // 쿠폰 발행 페이지
 	public String adminCouponInsert(AdminCouponVO couponVo, Model model) {
 		adminCouponService.insertCoupon(couponVo);
 		return "redirect:admin_couponpub.mdo";
+	}
+	@RequestMapping("/admin_couponiss.mdo")
+	public String adminCouponIss(Model model) {
+		model.addAttribute("getisscoupon",adminCouponService.getIssCoupon());
+		return "coupon/admin_couponiss";
+	}
+	@RequestMapping("/admin_couponpop.mdo") // 팝업
+	public String adminCouponPop(Model model) {
+		model.addAttribute("getcoupon",adminCouponService.getCoupon());
+		return "coupon/admin_couponpop";
+	}
+	@RequestMapping("/admin_couponpop2.mdo") // 팝업
+	public String adminCouponPop2(Model model) {
+		model.addAttribute("getcoupon",adminCouponService.getCoupon());
+		return "coupon/admin_couponpop2";
 	}
 }// end
