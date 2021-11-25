@@ -96,7 +96,12 @@
 								</a>
 								<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
+<<<<<<< HEAD
+										<a class="nav-link" href="getGoodsList.mdo">조회/수정</a>
+										<a class="nav-link" href="registration.mdo">등록</a>
+=======
 										<a class="nav-link" href="getGoodsList.mdo">상품조회/등록/수정</a>
+>>>>>>> Ben
 									</nav>
 								</div>
 								<!-- 판매 -->
@@ -120,9 +125,14 @@
 								<a class="nav-link" href="admin_orderWaitList.mdo">주문관리(결제완료)</a>
 								<a class="nav-link" href="admin_orderdeliveryList.mdo">주문관리(배송과정)</a>
 								<a class="nav-link" href="admin_orderFinishList.mdo">주문관리(구매완료)</a>
+<<<<<<< HEAD
+								<a class="nav-link" href="#">환불관리</a>
+								<a class="nav-link" href="#">취소관리</a>
+=======
 								<a class="nav-link" href="admin_orderRefundList.mdo">환불관리</a>
 								<a class="nav-link" href="admin_orderReturnList.mdo">반품관리</a>
 								<a class="nav-link" href="admin_orderCancleList.mdo">취소관리</a>
+>>>>>>> Ben
 							</nav>
 						</div>
 						
@@ -132,16 +142,26 @@
 							aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
+<<<<<<< HEAD
+							</div> 정산관리
+=======
 							</div> 매출/상품통계관리
+>>>>>>> Ben
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
 						<div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
+<<<<<<< HEAD
+								<a class="nav-link" href="#">정산내역</a>
+								<a class="nav-link" href="#">주별정산</a>
+								<a class="nav-link" href="#">월별정산</a>
+=======
 								<a class="nav-link" href="sales.mdo">매출통계관리</a>
 								<a class="nav-link" href="#">상품통계관리</a>
 								<a class="nav-link" href="#">회원통계</a>
+>>>>>>> Ben
 							</nav>
 						</div>
 						
@@ -178,9 +198,14 @@
 						</a>
 						<div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
+<<<<<<< HEAD
+								<a class="nav-link" href="layout-static.html">리뷰</a>
+								<a class="nav-link" href="layout-sidenav-light.html">문의</a>
+=======
 								<a class="nav-link" href="getReviewList.mdo">리뷰</a>
 								<a class="nav-link" href="gqnaList.mdo">상품문의(답변대기)</a>
 								<a class="nav-link" href="gqnaListSuc.mdo">상품문의(답변완료)</a>
+>>>>>>> Ben
 							</nav>
 						</div>
 						<!-- 리뷰관리 -->

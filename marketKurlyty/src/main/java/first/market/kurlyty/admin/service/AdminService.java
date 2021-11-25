@@ -14,10 +14,14 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+<<<<<<< HEAD
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+=======
 import first.market.kurlyty.admin.vo.AdminReviewVO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -53,7 +57,11 @@ public interface AdminService {
 	//약관 등록
 	int insertTerms(AdminTermsAgreementVO agree);
 	//약관 수정
+<<<<<<< HEAD
+	public int updateTerms(AdminTermsAgreementVO agree);
+=======
 	 int updateTerms(AdminTermsAgreementVO agree);
+>>>>>>> Ben
 	
 	//약관 정보
 	 AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree);
@@ -122,6 +130,29 @@ public interface AdminService {
 	//매출 날짜 
 	List<AdminSalesVO> getDate(AdminSalesVO sales);
 	
+	//상품 등록
+	public int inserGoods(AdminRegistVO regist);
+	
+	//상품조회리스트
+	public List<AdminRegistVO> goodsList(AdminRegistVO regist);
+	
+	//상품조회
+	public AdminRegistVO getGoods(AdminRegistVO regist);
+	
+	//상품 수정
+	public int updateGoods(AdminRegistVO regist);
+	
+	//상품 삭제
+	public int deleteGoods(AdminRegistVO regist);
+		
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock);
+	
+	//입고 수정
+	public int updateStock (AdminStockVO stock);
+	
+	//재고 합계
+	public AdminStockVO sumStock(AdminStockVO stock);
 	//=================================================================
 
 	//공지사항 리스트
@@ -268,6 +299,15 @@ public interface AdminService {
 	int updateOrderWait1(List<String> merchantList);
 	
 	List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList);
+<<<<<<< HEAD
+	
+	int updateStatus(List<String> merchantList);
+	//---------------------------------------------------------------------------
+	//주문관리 (배송과정)
+	List<AdminOrderVO> getOrderDeliveryList();
+	//주문관리 (구매완료)
+	List<AdminOrderVO> getOrderFinishList();
+=======
 	
 	int updateStatus(List<String> merchantList);
 	//---------------------------------------------------------------------------
@@ -283,6 +323,7 @@ public interface AdminService {
 	//반품관리
 	List<AdminOrderVO> getOrderReturnList();
 	int updateReturnWait(AdminQnaVO qna);
+>>>>>>> Ben
 	
 	//취소관리
 	List<AdminOrderVO> getOrderCancleList();

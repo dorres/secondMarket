@@ -125,7 +125,7 @@
                     $(this).nextAll("tr:eq(0)").find(".sub").css("display","table-cell");
                 }
             });
-        </script>
+    </script>
 	<script>
 		function fn_prev(page,
 			range, rangeSize) {

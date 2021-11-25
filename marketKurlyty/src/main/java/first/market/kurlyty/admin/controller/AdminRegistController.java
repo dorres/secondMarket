@@ -7,11 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
+
+import first.market.kurlyty.admin.service.AdminService;
+import first.market.kurlyty.admin.vo.AdminRegistVO;
+=======
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminStockVO;
 
 @Controller
@@ -41,6 +47,8 @@ public class AdminRegistController {
 	//상품조회리스트
 	@RequestMapping("getGoodsList.mdo")
 	public String getGoodsList(AdminRegistVO regist, AdminStockVO stock, Model model) {
+<<<<<<< HEAD
+=======
 		List<AdminRegistVO> list=adminService.goodsList(regist);
 		for(AdminRegistVO vo : list) {
 			if(vo.getGoods_detail_stock_quantity()<15) {
@@ -48,6 +56,7 @@ public class AdminRegistController {
 				break;
 			}
 		}
+>>>>>>> Ben
 		model.addAttribute("goodsList", adminService.goodsList(regist));
 		return "registration/admin_goodsList";
 	}
@@ -64,6 +73,14 @@ public class AdminRegistController {
 	public String updateGoods(int[] goods_detail_stock_notification,
 			int[] goods_detail_promotion_serial,
 			int[] goods_detail_status,
+<<<<<<< HEAD
+			int[] goods_detail_dicountrate,int index,int serial) {
+		int success = 0;
+		System.out.println(goods_detail_stock_notification[index]);
+		System.out.println(goods_detail_promotion_serial[index]);
+		System.out.println(goods_detail_status[index]);
+		System.out.println(goods_detail_dicountrate[index]);
+=======
 			int[] goods_detail_price,
 			int[] goods_detail_dicountrate,int index,int serial, AdminStockStockVO stockstcok) {
 		int success = 0;
@@ -73,16 +90,22 @@ public class AdminRegistController {
 //		System.out.println(goods_detail_promotion_serial[index]);
 //		System.out.println(goods_detail_status[index]);
 //		System.out.println(goods_detail_dicountrate[index]);
+>>>>>>> Ben
 		AdminRegistVO regist = new AdminRegistVO();
 		regist.setGoods_detail_serial(serial);
 		regist.setGoods_detail_stock_notification(goods_detail_stock_notification[index]);
 		regist.setGoods_detail_promotion_serial(goods_detail_promotion_serial[index]);
 		regist.setGoods_detail_status(goods_detail_status[index]);
 		regist.setGoods_detail_dicountrate(goods_detail_dicountrate[index]);
+<<<<<<< HEAD
+		success = adminService.updateGoods(regist);
+		if(success != 0) {
+=======
 		regist.setGoods_detail_price(goods_detail_price[index]);
 		success = adminService.updateGoods(regist);
 //		stock = adminService.stockstock(stockstcok);
 		if(success != 0 ) {
+>>>>>>> Ben
 			return "redirect:getGoodsList.mdo";
 		}else {
 			return "redirect:getGoodsList.mdo";
@@ -101,11 +124,19 @@ public class AdminRegistController {
 		}
 	}
 	
+<<<<<<< HEAD
+	//재고 조회
+		@RequestMapping("goodsDetail.mdo")
+		public String goodsDetail(AdminStockVO stock, Model model) {
+			model.addAttribute("stock", adminService.getStock(stock));
+			return "registration/admin_goodsDetails";
+=======
 	//입고 조회
 		@RequestMapping("stockList.mdo")
 		public String goodsDetail(AdminStockVO stock, Model model) {
 			model.addAttribute("stock", adminService.getStockList(stock));
 			return "registration/admin_StockList";
+>>>>>>> Ben
 		}
 		
 	//입고 수정
@@ -116,6 +147,11 @@ public class AdminRegistController {
 			if(success != 0) {
 				return "redirect:getGoodsList.mdo";
 			}else {
+<<<<<<< HEAD
+				return "redirect:goodsDetail.mdo";
+			}
+		}
+=======
 				return "redirect:stockList.mdo";
 			}
 		}
@@ -157,5 +193,6 @@ public class AdminRegistController {
 		 }
 		 
 		 
+>>>>>>> Ben
 }
 

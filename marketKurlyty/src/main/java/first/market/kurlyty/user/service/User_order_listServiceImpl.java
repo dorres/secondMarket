@@ -42,6 +42,10 @@ public class User_order_listServiceImpl implements User_order_listService{
 	public int point(String order_merchant_serial) {
 		return user_order_listDAO.point(order_merchant_serial);
 	}
+	@Override
+	public User_order_listVO getDate(User_order_listVO vo) {
+		return user_order_listDAO.getDate(vo);
+	}
 
 }
 

@@ -18,10 +18,14 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+<<<<<<< HEAD
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+=======
 import first.market.kurlyty.admin.vo.AdminReviewVO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -143,23 +147,40 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//상품조회
+<<<<<<< HEAD
+=======
 	@Override
+>>>>>>> Ben
 	public AdminRegistVO getGoods(AdminRegistVO regist) {
 		return adminDao.getGoods(regist);
 	}
 	
 	//상품 수정
+<<<<<<< HEAD
+=======
 	@Override
+>>>>>>> Ben
 	public int updateGoods(AdminRegistVO regist) {
 		return adminDao.updateGoods(regist);
 	}
 	
 	//상품 삭제
+<<<<<<< HEAD
+=======
 	@Override
+>>>>>>> Ben
 	public int deleteGoods(AdminRegistVO regist) {
 		return adminDao.deleteGoods(regist);
 	}
 	
+<<<<<<< HEAD
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock) {
+		return adminDao.getStock(stock);
+	}
+	
+	//입고 수정
+=======
 	//입고 조회
 	@Override
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {
@@ -168,10 +189,16 @@ public class AdminServiceImpl implements AdminService {
 	
 	//입고 수정
 	@Override
+>>>>>>> Ben
 	public int updateStock (AdminStockVO stock) {
 		return adminDao.updateStock(stock);
 	}
 	//재고 합계
+<<<<<<< HEAD
+	public AdminStockVO sumStock(AdminStockVO stock) {
+		return adminDao.sumStock(stock);
+	}
+=======
 	@Override
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return adminDao.sumStock(stock);
@@ -253,6 +280,7 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteReview(AdminReviewVO review) {
 		return adminDao.deleteReview(review);
 	}
+>>>>>>> Ben
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override
@@ -444,6 +472,7 @@ public class AdminServiceImpl implements AdminService {
 	public int updateCategory2(AdminCategorySubVO category2) {
 		return adminDao.updateCategory2(category2);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int deleteCategory2(AdminCategorySubVO category2) {
@@ -481,6 +510,45 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+=======
+
+	@Override
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return adminDao.deleteCategory2(category2);
+	}
+	//--------------------------------------------------------------
+	@Override
+	public List<AdminCategoryGoodsVO> getCategory3List() {
+		return adminDao.getCategory3List();
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategoryType(category3);
+	}
+	@Override
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3(category3);
+	}
+	@Override
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategory3(category3);
+	}
+
+	@Override
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.deleteCategory3(category3);
+	}
+	@Override
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.updateCategory3(category3);
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategory2Name() {
+		return adminDao.getCategory2Name();
+	}
+
+	@Override
+>>>>>>> Ben
 	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
 		return adminDao.insertCategory3Detail(category3);
 	}
@@ -553,6 +621,8 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminOrderVO> getOrderFinishList() {
 		return adminDao.getOrderFinishList();
 	}
+<<<<<<< HEAD
+=======
 	
 	//======================================================================
 	//환불관리
@@ -583,6 +653,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateCancleWait(qna);
 	}
 	
+>>>>>>> Ben
 
 }
 	

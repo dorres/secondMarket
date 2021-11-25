@@ -37,4 +37,7 @@ public class User_order_listDAO {
 	public int point(String order_merchant_serial) {
 		return sqlSession.selectOne("orderListDAO.point", order_merchant_serial);
 	}
+	public User_order_listVO getDate(User_order_listVO vo) {
+		return sqlSession.selectOne("orderListDAO.orderTime", vo);
+	}
 }

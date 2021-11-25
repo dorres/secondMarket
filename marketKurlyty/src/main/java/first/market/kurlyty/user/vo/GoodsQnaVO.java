@@ -24,6 +24,8 @@ public class GoodsQnaVO {
 	private boolean qna_goods_lock;
 	private String qna_goods_answer;
 	private Date qna_goods_answer_date;
+	private String qna_goods_name;
+	private String qna_goods_image_thumb;
 	
 	//상품 이름 join with ItemPageVO -DB에서 
 	String category_goods_name;

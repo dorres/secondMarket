@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+>>>>>>> Ben
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +14,8 @@
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<<<<<<< HEAD
+=======
  <script src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 		$(document).ready(function(){
@@ -60,6 +66,7 @@
 .btn1.btn-dark:hover{background-color:#5f0080;}
 .btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
  </style>
+>>>>>>> Ben
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -70,6 +77,94 @@
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
+<<<<<<< HEAD
+			<h2>상품등록</h2>  
+			<form method="post" action="*">
+  <table class="body">  
+   <tr>
+    <th class="tg-0pky">카테고리 </th>
+    <th class="tg-0pky"> 상위카테고리               중위카테고리               하위카테고리<br>
+    	
+    	<th>
+    	<select name="category_main_serial" id="category_main_serial">
+		<c:forEach var="goods" items="${category1 }">
+		<option value="${goods.category_main_serial }">${goods.category_main_name }</option>
+		</c:forEach>
+		</select>
+		</th>
+		
+		<th>
+        <select>
+        <option id="*"value="*">카테고리2</option>
+        <option value="*">카테고리2</option>
+        <option value="*">카테고리3</option>
+        </select>
+        </th>
+        
+        <th>
+        <select>
+        <option id="*"value="*">카테고리3</option>
+        <option value="*">카테고리2</option>
+        <option value="*">카테고리3</option>
+        </select>
+        </th>
+    </tr>
+    
+      <tr>  
+        <th>판매가격</th>
+        <th><input type="text" name="*"/>원</th>
+      </tr> 
+      
+      <tr>
+      <th>입고수량</th>
+       <th><input type="text" name="*">개</th>
+      </tr>
+      
+      <tr>
+		<th>재고알림</th>
+		<th><input type="text" name="*">개</th>      
+      </tr>
+      
+      <tr>
+		<th>프로모션</th>
+		<th><select>
+		<option value="*">프로모션1</option>
+		<option value="*">프로모션2</option>
+		<option value="*">프로모션3</option>
+		</select> </th>      
+      </tr>
+      
+      <tr>
+		<th>상태</th>
+		<th><select>
+		<option value="*">판매완료</option>
+		<option value="*">판매중</option>
+		<option value="*">판매중지</option>
+		</select> </th>      
+      </tr>
+      
+      <tr>
+		<th>입고일자</th>
+		<th><input type="date" name="*"></th>      
+      </tr>
+      
+      <tr>
+		<th>유통기한</th>
+		<th><input type="date" name="*"></th>      
+      </tr>
+      
+      <tr>
+		<th>할인</th>
+		<th><input type="text" name="*">%</th>      
+      </tr>
+      
+      <tr>
+      	<th><input type="submit" value="등록"/></th>
+      	<th><input type="button" value="목록"/></th>
+      </tr>
+  </table> 
+  </form> 		
+=======
 
 				<h1 class="mt-4">입고</h1>
 			
@@ -107,6 +202,7 @@
 				</div>
 
 
+>>>>>>> Ben
 			</div>
 		</main>
 
@@ -116,7 +212,11 @@
 	<!-- Main -->
 	
 	<!-- 건들지마세요 -->
+<<<<<<< HEAD
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstr44ap.bundle.min.js" crossorigin="anonymous"></script>
+=======
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+>>>>>>> Ben
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="assets/demo/chart-area-demo.js"></script>

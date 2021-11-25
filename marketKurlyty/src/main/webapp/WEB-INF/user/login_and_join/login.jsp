@@ -123,9 +123,9 @@ $(document).ready(function(){
 										
 										<div class="checkbox_save">
 											<div class="login_search">
-												<a href="/shop/member/find_id.php" class="link">아이디 찾기</a>
+												<a href="idFind.do" class="link">아이디 찾기</a>
 												<span class="bar"></span>
-												<a href="/shop/member/find_pwd.php" class="link">비밀번호 찾기</a>
+												<a href="pwFind.do" class="link">비밀번호 찾기</a>
 											</div>
 										</div>
 										<a class="btn_type1" onclick="javascript:formLoginSubmit()" href="#">

@@ -43,7 +43,7 @@ public class User_order_listController {
 		model.addAttribute("dp", user_order_listService.dcPrice(svo.getOrder_merchant_serial()));
 		model.addAttribute("op", user_order_listService.oldPrice(svo.getOrder_merchant_serial()));
 		model.addAttribute("point",user_order_listService.point(svo.getOrder_merchant_serial()));
-		 
+		model.addAttribute("orderTime",user_order_listService.getDate(vo));
 		
 		return "mykurly/order_detail";
 	}

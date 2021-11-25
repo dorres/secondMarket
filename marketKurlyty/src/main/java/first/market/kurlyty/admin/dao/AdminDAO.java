@@ -17,10 +17,14 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+<<<<<<< HEAD
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+=======
 import first.market.kurlyty.admin.vo.AdminReviewVO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
@@ -124,9 +128,15 @@ public class AdminDAO {
 		return sqlSession.delete("RegistDAO.deleteGoods", regist);
 	}
 	
+<<<<<<< HEAD
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock) {
+		return sqlSession.selectOne("RegistDAO.getStock", stock);
+=======
 	//입고 조회
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {
 		return sqlSession.selectList("RegistDAO.stockList", stock);
+>>>>>>> Ben
 	}
 	
 	//입고 수정
@@ -138,6 +148,8 @@ public class AdminDAO {
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return sqlSession.selectOne("RegistDAO.stockSum", stock);
 	}
+<<<<<<< HEAD
+=======
 	
 	//판매등록
 	public AdminStockVO getStock(int serial) {
@@ -204,6 +216,7 @@ public class AdminDAO {
 	}
 	
 	
+>>>>>>> Ben
 	//================================================================
 
 	//공지사항 목록	
@@ -362,6 +375,7 @@ public class AdminDAO {
 	}
 	public AdminCategorySubVO getCategory2(AdminCategorySubVO category2) {
 		return sqlSession.selectOne("categoryDAO.getCategory2",category2);
+<<<<<<< HEAD
 	}
 	public int updateCategory2(AdminCategorySubVO category2) {
 		return sqlSession.update("categoryDAO.updateCategory2",category2);
@@ -400,6 +414,46 @@ public class AdminDAO {
 	public List<AdminMembershipVO> getMembershipList(){
 		return sqlSession.selectList("membershipDAO.getMembershipList");
 	}
+=======
+	}
+	public int updateCategory2(AdminCategorySubVO category2) {
+		return sqlSession.update("categoryDAO.updateCategory2",category2);
+	}
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return sqlSession.delete("categoryDAO.deleteCategory2",category2);
+	}
+	//---------------------------------------------------------------------
+	//관리자 상품카테고리 리스트
+	public List<AdminCategoryGoodsVO> getCategory3List(){
+		return sqlSession.selectList("categoryDAO.getCategory3List");
+	}
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3){
+		return sqlSession.selectList("categoryDAO.getCategoryType",category3);
+	}
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("categoryDAO.insertCategory3",category3);
+	}
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.selectOne("categoryDAO.getCategory3",category3);
+	}
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.delete("categoryDAO.deleteCategory3",category3);
+	}
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.update("categoryDAO.updateCategory3",category3);
+	}
+	public List<AdminCategorySubVO> getCategory2Name(){
+		return sqlSession.selectList("categoryDAO.getCategory2Name");
+	}
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("categoryDAO.insertCategory3Detail",category3);
+	}
+	//================================================================
+	// 맴버쉽 리스트
+	public List<AdminMembershipVO> getMembershipList(){
+		return sqlSession.selectList("membershipDAO.getMembershipList");
+	}
+>>>>>>> Ben
 	public AdminMembershipVO getMembership(AdminMembershipVO membership) {
 		return sqlSession.selectOne("membershipDAO.getMembership",membership);
 	}
@@ -448,6 +502,8 @@ public class AdminDAO {
 		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
 	}
 	
+<<<<<<< HEAD
+=======
 	//환불관리
 	public List<AdminOrderVO> getOrderRefundList(){
 		return sqlSession.selectList("adminOrderDAO.getOrderRefundList");
@@ -470,6 +526,7 @@ public class AdminDAO {
 		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
 	}
 	
+>>>>>>> Ben
 	
 	
 }
