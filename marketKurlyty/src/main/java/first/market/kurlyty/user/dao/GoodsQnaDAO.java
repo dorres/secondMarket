@@ -16,12 +16,12 @@ public class GoodsQnaDAO {
 	
 	@Autowired
 		private SqlSessionTemplate sqlSession;
-
-	
-	// 가져와 글쓴이의 정보 String User_id
-	public UserVO getUser(UserVO vo) {
-		return sqlSession.selectOne("GoodsQnaDAO.getUser", vo);
-	}
+		
+	/*
+		 * 
+		 * // 가져와 글쓴이의 정보 String User_id public UserVO getUser(UserVO vo) { return
+		 * sqlSession.selectOne("ItemPageDAO.getUser", vo); }
+		 */
 	
 	// 중요 ! 가져와 상품의 정보 int category_goods_serial, 상품이름, 섬네일까지
 	public ItemPageVO getItemPage(ItemPageVO vo) {
@@ -39,7 +39,7 @@ public class GoodsQnaDAO {
 	}
 	
 	public int updateGoodsQna(GoodsQnaVO vo) {
-		return sqlSession.update("GoodsQnaDAO.updateGoodsQnai", vo);
+		return sqlSession.update("GoodsQnaDAO.updateGoodsQna", vo);
 	}			
 	
 	public int deleteGoodsQna(GoodsQnaVO vo) {
@@ -47,8 +47,8 @@ public class GoodsQnaDAO {
 	}
 	
 	//수정용
-	public GoodsQnaVO getGoodsQna(GoodsQnaVO vo) {
-		return sqlSession.selectOne("GoodsQnaDAO.getGoodsQna", vo);
+	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo) {
+		return sqlSession.selectOne("GoodsQnaDAO.getGoodsQnaContent", vo);
 	}
 
 }

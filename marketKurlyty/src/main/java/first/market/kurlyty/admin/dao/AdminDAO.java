@@ -17,11 +17,19 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+<<<<<<< HEAD
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+=======
+import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 
 @Repository
@@ -120,9 +128,15 @@ public class AdminDAO {
 		return sqlSession.delete("RegistDAO.deleteGoods", regist);
 	}
 	
+<<<<<<< HEAD
 	//재고 조회
 	public AdminStockVO getStock(AdminStockVO stock) {
 		return sqlSession.selectOne("RegistDAO.getStock", stock);
+=======
+	//입고 조회
+	public List<AdminStockVO> getStockList(AdminStockVO stock) {
+		return sqlSession.selectList("RegistDAO.stockList", stock);
+>>>>>>> Ben
 	}
 	
 	//입고 수정
@@ -134,6 +148,75 @@ public class AdminDAO {
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return sqlSession.selectOne("RegistDAO.stockSum", stock);
 	}
+<<<<<<< HEAD
+=======
+	
+	//판매등록
+	public AdminStockVO getStock(int serial) {
+		return sqlSession.selectOne("RegistDAO.getStock",  serial);
+	}
+	
+	public int insertStock(AdminStockVO stock) {
+		return sqlSession.insert("RegistDAO.insertStock",stock);
+	}
+	
+	// 리스트에 재고 출력
+	public int stockstock(AdminStockStockVO stockstock) {
+		return sqlSession.update("RegistDAO.stockstcok", stockstock);
+	}
+	//================================================================
+	
+	//리뷰 리스트
+	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
+		return sqlSession.selectList("reviewDAO.reviewList", review);
+	}
+	
+	
+	//리뷰 삭제
+	public int deleteReview(AdminReviewVO review) {
+		return sqlSession.delete("reviewDAO.deleteReview", review);
+	}
+	//===============================================================
+	
+	//상품문의 리스트(답변 대기)
+	public List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna){
+		return sqlSession.selectList("gqnaDAO.gqnaList", gqna);
+	}
+	
+	//상품문의 삭제(답변대기)
+	public int deleteGqna(GoodsQnaVO qgna) {
+		return sqlSession.delete("gqnaDAO.deleteGqna",qgna);
+	}
+	
+	//상품문의 답변 하기 전
+	public GoodsQnaVO gqnaOne(GoodsQnaVO gqna) {
+		return sqlSession.selectOne("gqnaDAO.gqnaOne", gqna);
+	}
+	
+	//상품문의 답변
+	public int updateGqna(GoodsQnaVO gqna) {
+		return sqlSession.update("gqnaDAO.updateGqna",gqna);
+	}
+	
+	//상품문의 리스트(답변 완료)
+	public List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna){
+		return sqlSession.selectList("gqnaDAO.gqnaListSuc", gqna);
+		}
+	
+	//상품문의 답변 수정
+	public int updateGqnaSuc(GoodsQnaVO gqna) {
+		return sqlSession.update("gqnaDAO.updateGqna",gqna);
+	}
+	
+	//================================================================
+	
+	//매출차트 날짜 
+	public List<AdminSalesVO> getDate (AdminSalesVO sales){
+		return sqlSession.selectList("SalesDAO.getDate", sales);
+	}
+	
+	
+>>>>>>> Ben
 	//================================================================
 
 	//공지사항 목록	
@@ -292,6 +375,7 @@ public class AdminDAO {
 	}
 	public AdminCategorySubVO getCategory2(AdminCategorySubVO category2) {
 		return sqlSession.selectOne("categoryDAO.getCategory2",category2);
+<<<<<<< HEAD
 	}
 	public int updateCategory2(AdminCategorySubVO category2) {
 		return sqlSession.update("categoryDAO.updateCategory2",category2);
@@ -330,6 +414,46 @@ public class AdminDAO {
 	public List<AdminMembershipVO> getMembershipList(){
 		return sqlSession.selectList("membershipDAO.getMembershipList");
 	}
+=======
+	}
+	public int updateCategory2(AdminCategorySubVO category2) {
+		return sqlSession.update("categoryDAO.updateCategory2",category2);
+	}
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return sqlSession.delete("categoryDAO.deleteCategory2",category2);
+	}
+	//---------------------------------------------------------------------
+	//관리자 상품카테고리 리스트
+	public List<AdminCategoryGoodsVO> getCategory3List(){
+		return sqlSession.selectList("categoryDAO.getCategory3List");
+	}
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3){
+		return sqlSession.selectList("categoryDAO.getCategoryType",category3);
+	}
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("categoryDAO.insertCategory3",category3);
+	}
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.selectOne("categoryDAO.getCategory3",category3);
+	}
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.delete("categoryDAO.deleteCategory3",category3);
+	}
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return sqlSession.update("categoryDAO.updateCategory3",category3);
+	}
+	public List<AdminCategorySubVO> getCategory2Name(){
+		return sqlSession.selectList("categoryDAO.getCategory2Name");
+	}
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return sqlSession.insert("categoryDAO.insertCategory3Detail",category3);
+	}
+	//================================================================
+	// 맴버쉽 리스트
+	public List<AdminMembershipVO> getMembershipList(){
+		return sqlSession.selectList("membershipDAO.getMembershipList");
+	}
+>>>>>>> Ben
 	public AdminMembershipVO getMembership(AdminMembershipVO membership) {
 		return sqlSession.selectOne("membershipDAO.getMembership",membership);
 	}
@@ -378,6 +502,8 @@ public class AdminDAO {
 		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
 	}
 	
+<<<<<<< HEAD
+=======
 	//환불관리
 	public List<AdminOrderVO> getOrderRefundList(){
 		return sqlSession.selectList("adminOrderDAO.getOrderRefundList");
@@ -400,6 +526,7 @@ public class AdminDAO {
 		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
 	}
 	
+>>>>>>> Ben
 	
 	
 }

@@ -92,12 +92,13 @@ public class PaymentController {
 		model.addAttribute("userInfo",userInfo);
 		model.addAttribute("membershipInfo",membershipInfo);
 		model.addAttribute("shippingAddress",addressVO);
+		model.addAttribute("userPoint",orderService.getUserDetails(userId).getUser_point());
 		return "cart_and_payment/payment";
 	}
 	
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
-	public String paymentSuccess(OrderVO order, ShippingVO shipping) {
+	public String paymentSuccess(OrderVO order, ShippingVO shipping,int usingPoint) {
 		order.setOrder_delivery_status("결제완료");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
@@ -113,7 +114,7 @@ public class PaymentController {
 			cartService.deleteCartItem(cartItem);
 		}
 		UserDetailsVO userDetail = orderService.getUserDetails(order.getUser_id());
-		int point = userDetail.getUser_point();
+		int point = userDetail.getUser_point()-usingPoint;
 		int totalPurchase = userDetail.getUser_total_purchase();
 		System.out.println(point);
 		userDetail.setUser_point(point+order.getUser_point());

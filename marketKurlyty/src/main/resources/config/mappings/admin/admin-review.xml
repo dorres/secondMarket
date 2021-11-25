@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+  <mapper namespace="reviewDAO">
+  	
+  	<select id="reviewList" resultType="review">
+  		SELECT * FROM MK_REVIEW
+  	</select>
+  	
+  	<delete id="deleteReview" parameterType="review">
+  		DELETE FORM MK_REVIEW WHERE REVIEW_SERIAL = #{review_serial}
+  	</delete>
+</mapper>

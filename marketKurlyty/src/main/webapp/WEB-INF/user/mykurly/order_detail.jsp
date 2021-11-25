@@ -203,7 +203,7 @@
 					</tr>
 					<tr>
 						<th>결제일시</th>
-						<td>2021-11-17 16:01:48</td>
+						<td><fmt:formatDate value="${orderTime.order_date }" pattern="yyyy.MM.dd(HH:mm)" /></td>
 					</tr>
 				</tbody>
 			</table>

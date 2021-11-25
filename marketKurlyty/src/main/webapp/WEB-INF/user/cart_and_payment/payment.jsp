@@ -43,6 +43,7 @@
 	<fmt:parseNumber var="oldReserves" type="number" integerOnly="true" value="${(orderPrice*(membershipInfo.user_membership_point_rate/100)+5)/10}"/>
 	<fmt:formatNumber var="afterReserves" type="number" maxFractionDigits="1" value="${oldReserves*10 }"/>
 	<input type="hidden" id="reserves" value="${oldReserves*10 }"/>
+	<input type="hidden" name="userPoint" value="${userPoint }">
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -214,7 +215,7 @@
 								<p class="screen_out">사람에게도 환경에도 더 이로운 배송 친환경 포장재 자세히 보기</p>
 							</div>
 
-							<div id="divFrozen" class="order_section order_pack">
+							<!-- <div id="divFrozen" class="order_section order_pack">
 								<h3 class="section_crux">냉동상품 포장*</h3>
 								<div class="section_full">
 									<input type="hidden" name="isFrozenPack" value=""> <label
@@ -226,7 +227,7 @@
 										name="frozen_product_packing_option" value="1"> <span
 										class="ico"></span> 스티로폼 박스 포장 </label>
 								</div>
-							</div>
+							</div> -->
 							<div class="tax_absolute">
 								<div class="inner_sticky" id="sticky" style="top: 0px;">
 									<h2 class="tit_section">결제금액</h2>
@@ -319,7 +320,7 @@
 																id="haveCoupon">1</span>개
 														</div>
 														<div id="popSelbox" class="layer_coupon">
-															<ul id="addpopSelList" class="list">
+															<!-- <ul id="addpopSelList" class="list">
 																<li class="fst checked ">
 																	<div class="inner_item">
 																		<span class="txt_tit default">쿠폰 적용 안 함</span>
@@ -350,14 +351,14 @@
 																		</div>
 																	</div>
 																</li>
-															</ul>
-															<div class="coupon_list_default" style="display: none;">
+															</ul> -->
+															<!-- <div class="coupon_list_default" style="display: none;">
 																<li class="fst checked ">
 																	<div class="inner_item">
 																		<span class="txt_tit default">쿠폰 적용 안 함</span>
 																	</div>
 																</li>
-															</div>
+															</div> -->
 															<div id="listItem" style="display: none">
 																<div class="inner_item">
 																	<div class="item_row">
@@ -396,9 +397,44 @@
 												<th class="no_emoney">적립금 적용 <input type="hidden"
 													value="0" name="checkEmoney">
 												</th>
-												<td>사용 가능한 적립금이 없습니다. <input type="hidden"
-													name="using_point" id="emoney" value="0">
-												</td>
+												<c:if test="${userPoint==0 }">
+													<td>사용 가능한 적립금이 없습니다.
+													<input type="hidden" name="using_point" id="emoney" value="0">
+													</td>
+												</c:if>
+												<c:if test="${userPoint>0 }">
+													<td>
+														<div id="ondealCheck">
+															<div class="emoney_reg">
+																<input type="text" name="using_point" id="usePoint"
+																	class="number_only" value="" placeholder="0"
+																	pattern="[0-9]*" inputmode="decimal"
+																	onblur=""
+																	onkeyup="javascript:inputPoint()"
+																	onkeydown="if (event.keyCode == 13) {return false}">
+																<div class="check">
+																	<label class="emoney_chkbox"> <input
+																		type="checkbox" name="allPoint" id="allPoint"> <span
+																		class="txt_checkbox">모두사용</span>
+																	</label>
+																</div>
+															</div>
+															<p class="possess">
+															<strong id="notMore" style="display:none; color:red;">결제할 금액보다 많은 적립금을 사용할 순 없습니다.<br/></strong>
+															<strong id="excessPoint" style="display:none; color:orange;">보유한 적립금을 초과하여 사용할 순 없습니다.</strong>
+																<fmt:formatNumber var="point" maxFractionDigits="3" value="${userPoint }"/>
+																보유 적립금 : <strong class="emph">${point }</strong>원 
+																
+																<strong id="not1Place" style="display:none; color:red;">10원 단위로 사용할 수 있습니다.</strong>
+															</p>
+															<ul class="list_notice">
+																<li>· 보유 적립금 100원 이상부터 사용가능</li>
+																<li>· 적립금 내역: 마이컬리 &gt; 적립금</li>
+															</ul>
+														</div>
+														<p id="msgNomoney"></p>
+													</td>
+												</c:if>
 											</tr>
 										</tbody>
 									</table>
@@ -582,6 +618,8 @@
 
 	<a href="#top" id="pageTop">맨 위로가기</a>
 <script>
+var originPayPrice=parseInt($("input#payment").val());
+var rePoint=0;
 $(document).ready(function(){
 	$("a#btn_dropup").click(function(){
 		if($("ul.list_product").css("display")=='none'){
@@ -594,10 +632,85 @@ $(document).ready(function(){
 			$(this).css("transform","rotate(180deg)");
 		}
 	})
+	$("input#allPoint").click(function(){
+		if(${userPoint}>=100){
+			if(${userPoint}<originPayPrice){
+				if($(this).is(":checked")){
+					$("input#usePoint").val(${userPoint});
+					$("input#payment").val(originPayPrice-${userPoint});
+					$("span#paper_settlement").text(parseInt(originPayPrice-${userPoint}).toLocaleString("ko-KR"))
+					$("span#paper_reserves").text((${userPoint}).toLocaleString("ko-KR")+"원");
+				}else{
+					$("input#usePoint").val('');
+					$("input#payment").val(originPayPrice);
+					$("span#paper_settlement").text(originPayPrice.toLocaleString("ko-KR"))
+					$("span#paper_reserves").text("0원");
+				}
+			}else{
+				$("strong#notMore").fadeIn();
+				$("strong#notMore").fadeOut(1000);
+			}
+		}
+	})
 })
+function inputPoint(){
+	if((/[^0-9]/gi).test($("input#usePoint").val())){
+		$("input#usePoint").val( $("input#usePoint").val().replace(/[^0-9]/gi,"") );
+	}else{
+		var point=$("input#usePoint").val();
+		if(point=='')point=0;
+		else point=parseInt(point);
+		if(point>${userPoint}){
+			$("input#usePoint").val(String(point).substring(0,String(rePoint).length));
+			$("strong#excessPoint").css("display","block");
+			return false;
+		}
+		$("strong#excessPoint").css("display","none");
+		if(point<originPayPrice && point>=100){
+			$("input#payment").val(originPayPrice-point);
+			$("span#paper_settlement").text(parseInt(originPayPrice-point).toLocaleString("ko-KR"))
+			$("span#paper_reserves").text(point.toLocaleString("ko-KR")+"원");
+			rePoint=point;
+			
+		}else{
+			if(point>=originPayPrice){
+				$("strong#notMore").fadeIn();
+				$("strong#notMore").fadeOut(1000);
+			}
+			$("input#payment").val(originPayPrice);
+			$("span#paper_settlement").text(parseInt(originPayPrice).toLocaleString("ko-KR"))
+			$("span#paper_reserves").text("0원");
+			rePoint=point;
+		}
+		if(point!=0){
+			if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
+				$("strong#not1Place").css("display","block");
+			}else{
+				$("strong#not1Place").css("display","none");
+			}
+		}else{
+			$("strong#not1Place").css("display","none");
+		}
+	}
+	
+}
 var IMP = window.IMP; // Can be omitted
 IMP.init("imp09497562"); // Example: imp00000000
 function reqeustPay(){
+	if($("input#usePoint").val()!="" && $("input#usePoint").val()!="0"){
+		if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
+			alert("적립금은 10원 단위로 사용할 수 있습니다.")
+			return false;
+		}
+		if(parseInt($("input#usePoint").val())<100){
+			alert("적립금은 100원 이상부터 사용가능합니다.");
+			return false;
+		}
+	}
+	if(parseInt($("input#usePoint").val())>=originPayPrice){
+		alert("결제금액보다 많은 적립금은 사용할 수 없습니다.");
+		return false;
+	}
 	var amount=$("input#payment").val();
 	var address = "${userInfo.user_address1}";
 	if(${userInfo.user_address2!=null}){
@@ -639,6 +752,8 @@ function reqeustPay(){
 				var recipiName=$("input#recipientName").val();
 				var recipiPhone=$("input#recipientPhone").val();
 				var amount=parseInt(data.amount)
+				var usingPoint=$("input#usePoint").val();
+				if(usingPoint=="")usingPoint=0;
 				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
 					$.ajax({
@@ -665,7 +780,8 @@ function reqeustPay(){
 							"shipping_door_password":doorPw,
 							"shipping_recipient_name":recipiName,
 							"shipping_recipient_phone":recipiPhone,
-							"order_point":point
+							"order_point":point,
+							"usingPoint":usingPoint
 						}
 					}).done(function(location){
 						window.location.href="index.do";

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
+import first.market.kurlyty.emailsend.EmailSendVO;
 import first.market.kurlyty.user.dao.UserDAO;
+import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.user.vo.UserVO;
 
 @Service
@@ -64,6 +66,31 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO getUser(UserVO user) {
 		return userDao.getUser(user);
+	}
+
+	@Override
+	public String idFind(UserVO user) {
+		return userDao.idFind(user);
+	}
+
+	@Override
+	public UserDetailsVO getUserStatus(String userId) {
+		return userDao.getUserStatus(userId);
+	}
+
+	@Override
+	public String pwFind(UserVO user) {
+		return userDao.pwFind(user);
+	}
+
+	@Override
+	public EmailSendVO getSendEmailKey() {
+		return userDao.getSendEmailKey();
+	}
+
+	@Override
+	public void newPw(UserVO user) {
+		userDao.newPw(user);
 	}
 
 //	@Override

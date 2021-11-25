@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -34,12 +35,9 @@
 									<div class="point_header">
 										<div class="point_view">
 											<h3 class="tit">현재 적립금</h3>
-											<strong class="point">??? <span class="won">원</span></strong>
+											<strong class="point"><fmt:formatNumber value="${totalPoint}" pattern="#,###" /> <span class="won">원</span></strong>
 										</div>
-										<span class="disappear">
-											<span class="subject no_day">소멸예정 적립금</span>
-											<span class="num">0 원</span>
-										</span>
+										
 									</div>
 									
 									<table class="tbl tbl_type1">
@@ -54,49 +52,37 @@
 											<tr>
 												<th>날짜</th>
 												<th class="info">내용</th>
-												<th>유효기간</th>
 												<th>금액</th>
 											</tr>
 										</thead>
 										
 										<!-- 적립금 없으면 ↓↓↓↓↓↓↓↓↓ -->
- 										<!--  <tbody>
-											<tr>
-												<td colspan="4" class="no_data">적립금 내역이 존재하지 않습니다.</td>
-											</tr>
-										</tbody> -->
 										
-										<!-- 적립금 있으면 ↓↓↓↓↓↓ -->
-										<tbody> 
+										<c:if test="${totalPoint eq 0 }">
+ 										 <tbody>
 											<tr>
-												<td>21.06.25</td>
-												<td class="info">
-													<span class="link">[적립금소멸] 적립금 유효기간 만료</span>
-												</td>
-												<td>
-													????
-												</td>
-												<td class="point minus">
-													-4,000 원
-												</td>
+												<td colspan="3" class="no_data">적립금 내역이 존재하지 않습니다.</td>
 											</tr>
-											<tr>
-												<td>21.06.22</td>
-												<td class="info">
-													<!----> <span class="link">[쇼핑지원금] 06/24까지 사용가능</span>
-												</td>
-												<td><span>21.06.24</span></td>
-												<td class="point"><span>+</span>4,000 원</td>
-											</tr>
-											<tr>
-												<td>21.06.05</td>
-												<td class="info"><a class="link">[구매적립]
-														주문(1622777251129) 5% 적립</a> <!----></td>
-												<td><span>22.06.30</span></td>
-												<td class="point"><span>+</span>648 원</td>
-											</tr>
-											<!---->
 										</tbody>
+										</c:if>
+										<!-- 적립금 있으면 ↓↓↓↓↓↓ -->
+										<c:if test="${totapPoint ne 0 }">
+										<tbody> 
+										<c:forEach var="point" items="${point }">
+											<tr>
+												<td><fmt:formatDate value="${point.order_date }" pattern="yyyy.MM.dd" /></td>
+												<td class="info">
+													<span class="link">[${point.order_merchant_serial }] &nbsp;구매적립</span>
+												</td>
+												<td class="point"><span>+</span>
+													${point.order_point } 원
+												</td>
+											</tr>
+											
+											<!---->
+											</c:forEach>
+										</tbody>
+										</c:if>
 									</table>
 									<div class="layout-pagination">
 										<div class="pagediv">
