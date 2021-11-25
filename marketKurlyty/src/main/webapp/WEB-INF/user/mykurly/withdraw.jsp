@@ -10,14 +10,38 @@
 </head>
 
 <script type="text/javascript">
+
+
 function withdraw(){
+
    if(document.confirmWithdraw.user_pw.value == ""){
 		alert("탈퇴를 위해서는 비밀번호 확인이 필요합니다.");
 		document.confirmWithdraw.user_pw.focus();
 		return false;
-   	}
+  	}
+   if(document.confirmWithdraw.user_withdraw_reason.value == ""){
+		alert("탈퇴를 위해서는 주요 탈퇴 사유 확인이 필요합니다.");
+		document.confirmWithdraw.user_pw.focus();
+		return false;
+ 	}
+   if(document.confirmWithdraw.user_withdraw_reason_detail.value == ""){
+		alert("고객님의 진심어린 충고의 말씀 입력을 부탁드립니다.");
+		document.confirmWithdraw.user_pw.focus();
+		return false;
+		
+	}
+	if(confirm("정말 탈퇴하시겠습니까?") == true){//확인
 	document.confirmWithdraw.submit();
+	 document.form.submit();
+	}else{//취소
+		return;
+	}
 }
+
+if(${FailMessage != null}){
+	alert("${FailMessage}");
+}
+
 
 </script>
 
@@ -128,7 +152,7 @@ function withdraw(){
 									<div id="formSubmit" class="form_footer">
 										<button type="button" class="btn default" onclick="location.href='infoModify1.do';">취소</button>
 										<input type="button" class="btn active" onclick="withdraw()" value="탈퇴">
-		
+										
 									</div>
 								</form>
 							</div>

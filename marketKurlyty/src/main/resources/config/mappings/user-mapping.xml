@@ -51,4 +51,25 @@
  	<select id="getDefaultAddress" resultType="addressListVO">
  		SELECT * FROM MK_USER_ADDRESS_LIST where user_id=#{value} AND address_default=true
  	</select>
+ 	<!-- emailSend key값 받아오기 -->
+ 	<select id="getEmailKey">
+ 		SELECT * FROM sendemail_key
+ 	</select>
+ 	<!-- FindID -->
+ 	<select id="getUserStatus" resultType="userDetails">
+ 		SELECT * FROM mk_user_details WHERE user_id=#{value}
+ 	</select>
+ 	<select id="idFind" resultType="String">
+ 		SELECT user_id FROM MK_USER WHERE user_name=#{user_name} AND user_email=#{user_email}
+ 	</select>
+ 	<!-- FindPW -->
+ 	<select id="pwFind" resultType="String">
+ 		SELECT user_email FROM MK_USER WHERE user_name=#{user_name} AND user_email=#{user_email} AND user_id=#{user_id}
+ 	</select>
+ 	<select id="getSendEmailKey" resultType="first.market.kurlyty.emailsend.EmailSendVO">
+ 		SELECT * FROM sendemail_key
+ 	</select>
+ 	<insert id="newPw">
+ 		UPDATE MK_USER SET user_pw=#{user_pw} WHERE user_id=#{user_id}
+ 	</insert>
 </mapper>

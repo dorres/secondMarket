@@ -191,14 +191,11 @@ ul.sub_on li.on{
 					href="login.do" class="link_menu">로그인</a> <!----></li>
 			</c:if>
 			<c:if test="${userId != null}">
-				<li class="menu menu_user"><a class="link_menu grade_comm" href="mykurly.do"><span
+				<li class="menu menu_user"><a class="link_menu grade_comm" href="order.do"><span
 						class="ico_grade grade6">웰컴</span> <span class="txt"><span
 							class="name">${userName }</span><span class="sir">님</span></span> <!----></a>
 					<ul class="sub">
 						<li><a href="order.do">주문 내역</a></li>
-						<li><a href="#none"
-							onclick="KurlyTrackerLink('/shop/mypage/mypage_gift.php', 'select_my_kurly_gift_list')">선물
-								내역</a></li>
 						<li><a href="user_address_list.do">배송지
 								관리</a></li>
 						<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
@@ -264,7 +261,7 @@ ul.sub_on li.on{
 						<li class="menu4"><a class="link bargain "
 							href="altleShopping.do"><span class="txt">알뜰쇼핑</span></a></li>
 						<li class="lst"><a class="link event "
-							href="/shop/goods/event.php?&"><span class="txt">특가/혜택</span></a></li>
+							href="recipeItemPage.do"><span class="txt">레시피</span></a></li>
 					</ul>
 					<div id="side_search" class="gnb_search">
 						<form action="/shop/goods/goods_search.php?&"
