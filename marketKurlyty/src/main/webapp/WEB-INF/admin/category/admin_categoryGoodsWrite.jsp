@@ -57,10 +57,6 @@ $(document).ready(function () {
 			success : function(result) {
 				$("#category_sub_serial").html("");
 				for(key in result){
-<<<<<<< HEAD
-					
-=======
->>>>>>> Ben
 					$('#category_sub_serial').append("<option value="+result[key].category_sub_serial+">"+result[key].category_sub_name+"</option>")
 				}
 		 }
