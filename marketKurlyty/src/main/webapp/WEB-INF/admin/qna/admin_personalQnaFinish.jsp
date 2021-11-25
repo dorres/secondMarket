@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -26,16 +26,7 @@ textarea {
     resize: none;
   }
 </style>
-<script type="text/javascript">
 
-	function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할꺼임?");
-		if (answer == true) {
-			location = url;
-		}
-	}
-//-->
-</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -49,44 +40,52 @@ textarea {
 
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">1:1문의</h1>
-				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">1:1 문의</a></li>
-					<li class="breadcrumb-item active">1:1문의 답변 대기 상세</li>
-				</ol>
+
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 1:1문의 내용
+						<i class="fas fa-table me-1"></i> 1:1문의
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
+
 							<table >
 								<tr>
-									<td width="200px" height="40px">문의종류</td>
-									<td width="300px" height="40px">
+									<th width="100px" height="40px">문의종류</th>
+									<td " height="40px">
 										<input type="text" style="width:100%; height:100%; border: none;"  value="${qnaFinish.qna_personal_category }" readonly="readonly">
 									</td>
 									
-									<td width="200px" height="40px">작성자</td>
-									<td width="300px" height="40px" >
-										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaFinish.user_id}(${qnaWait.user_name })"  >
+									<th width="100px" height="40px">작성자</th>
+									<td  height="40px" >
+										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaFinish.user_id}(${qnaFinish.user_name })" readonly="readonly" >
 									</td>
 								</tr>
 							
 								<tr>
-									<td width="200px" height="40px">제목</td>
-									<td width="300px" height="40px" >
+									<th width="100px" height="40px">제목</th>
+									<td  height="40px" >
 										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaFinish.qna_personal_title }" readonly="readonly">
 									</td>
 									
-									<td width="200px" height="40px">날짜</td>
-									<td width="300px" height="40px" >
+									<th width="100px" height="40px">날짜</th>
+									<td  height="40px" >
 										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${qnaFinish.qna_personal_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
+										
 									</td>
 								</tr>
 								
 								<tr>
-									<td width="200px" height="300px">내용</td>
-									<td colspan="3"  height="300px"><textarea readonly="readonly">${qnaFinish.qna_personal_content }</textarea>
+									<th width="100px" height="400px">내용</th>
+									<td colspan="3"  >
+										<c:if test="${qnaFinish.qna_personal_image1 != null}">
+											<img alt="1:1문의 이미지" src="${qnaFinish.qna_personal_image1}" width="300px" height="300px%">
+										</c:if>
+										<c:if test="${qnaFinish.qna_personal_image2 != null}">
+											<img alt="1:1문의 이미지" src="${qnaFinish.qna_personal_image2}" width="300px" height="300px%">
+										</c:if>
+										<br>
+										<textarea readonly="readonly" rows="10">${qnaFinish.qna_personal_content }</textarea>
+									</td>
 								</tr>
 							</table>
 					</div>
@@ -98,16 +97,21 @@ textarea {
 						<!-- 메인작업 -->
 						<form action="admin_personalQnaFinishUpdate.mdo" method="POST">
 							<table >
+							
 								<tr>
-								<td>답변</td>
+									<th width="100px" height="40px">제목</th>
+									<td  height="40px" >
+										<input type="text" style="width:100%; height:100%; border: none;" name="qna_personal_answer_title" value="${ qnaFinish.qna_personal_answer_title}">
+									</td>
 								</tr>
 								<tr>
-									<td width="200px" height="300px"><textarea  name="qna_personal_answer">${qnaFinish.qna_personal_answer }</textarea>
+									<th width="100px" height="300px">내용</th>
+									<td  height="300px"><textarea name="qna_personal_answer">${qnaFinish.qna_personal_answer }</textarea>
 								</tr>
+
 							</table>
 							<input type="hidden" name="qna_personal_serial" value="${qnaFinish.qna_personal_serial }">
-							<input type="submit" value="답변 수정하기" />
-							<input type="button" value="삭제" onclick="javascript:delete_check('admin_personalQnaFinishDelete.mdo?qna_personal_serial=${qnaFinish.qna_personal_serial}')"/>
+							<input type="submit" value="답변 수정하기" />			
 							<input type="button" value="1:1문의글 목록보기" onclick="location.href='admin_personalQnaFinishList.mdo'"/>
 						</form>
 					</div>

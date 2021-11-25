@@ -97,7 +97,6 @@ textarea {
 								</tr>
 							</table>
 							<input type="submit" value="수정하기" />
-							<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_FAQDelete.mdo?faq_serial=${faq.faq_serial}')"/>
 							<input type="button" value="목록보기" onclick="location.href='admin_FAQList.mdo'"/>
 						</form>
 					</div>

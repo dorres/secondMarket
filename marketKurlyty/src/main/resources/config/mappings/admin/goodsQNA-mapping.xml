@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="gqnaDAO">
+ 	
+ 	<!-- 제품문의 리스트 -->
+	<select id="gqnaList" resultType="gqna">
+		SELECT Q.qna_goods_serial, Q.user_id, Q.user_name, Q.category_main_serial, Q.category_sub_serial, Q.category_goods_serial,
+		Q.qna_goods_title, Q.qna_goods_content, Q.qna_goods_date, Q.qna_goods_answer_status, Q.qna_goods_lock, Q.qna_goods_answer,
+		Q.qna_goods_answer_date, C.category_goods_name
+		FROM MK_QNA_GOODS Q
+		JOIN MK_CATEGORY_GOODS C
+		ON Q.category_goods_serial = C.category_goods_serial
+		WHERE Q.qna_goods_answer_status = 0
+	</select>
+	
+	<!-- 제품문의 리스트 삭제(답변대기) -->
+	<delete id="deleteGqna" parameterType="gqna">
+		DELETE FROM MK_QNA_GOODS WHERE QNA_GOODS_SERIAL = #{qna_goods_serial}
+	</delete>
+	
+	<!-- 제푼문의 답변 하기 전  -->
+	<select id="gqnaOne" resultType="gqna">
+		SELECT * FROM MK_QNA_GOODS WHERE QNA_GOODS_SERIAL = #{qna_goods_serial}
+	</select>
+	
+	<!-- 제품문의 답변  -->
+	<update id="updateGqna" parameterType="gqna">
+		UPDATE MK_QNA_GOODS 
+		SET QNA_GOODS_ANSWER = #{qna_goods_answer}, QNA_GOODS_ANSWER_DATE = NOW(), QNA_GOODS_ANSWER_STATUS = 1
+		WHERE QNA_GOODS_SERIAL = #{qna_goods_serial}
+	</update>
+	
+	<!-- 제품문의 리스트 (답변완료) -->
+	<select id="gqnaListSuc" resultType="gqna">
+		SELECT Q.qna_goods_serial, Q.user_id, Q.user_name, Q.category_main_serial, Q.category_sub_serial, Q.category_goods_serial,
+		Q.qna_goods_title, Q.qna_goods_content, Q.qna_goods_date, Q.qna_goods_answer_status, Q.qna_goods_lock, Q.qna_goods_answer,
+		Q.qna_goods_answer_date, C.category_goods_name
+		FROM MK_QNA_GOODS Q
+		JOIN MK_CATEGORY_GOODS C
+		ON Q.category_goods_serial = C.category_goods_serial
+		WHERE Q.qna_goods_answer_status = 1
+	</select>
+	
+	
+ </mapper>

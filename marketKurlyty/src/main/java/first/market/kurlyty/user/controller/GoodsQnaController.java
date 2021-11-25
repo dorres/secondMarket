@@ -87,6 +87,7 @@ public class GoodsQnaController {
 		}
 	}
 		
+<<<<<<< HEAD
 	//업데이트를 위해 씌여진 글 받아오기 
 	@GetMapping("/updateGoodsQna.do")
 	public String updateGoodsQnaContent(GoodsQnaVO vo, Model model, RedirectAttributes redirect){
@@ -99,6 +100,19 @@ public class GoodsQnaController {
 		redirect.addAttribute("qna_goods_serial", vo.getQna_goods_serial());
 		return "redirect:itemPage.do";
 	}
+=======
+//	//업데이트를 위해 씌여진 글 받아오기 
+//	@GetMapping("/updateGoodsQna.do")
+//	public String updateGoodsQnaContent(GoodsQnaVO vo, Model model){
+//		GoodsQnaVO getGoodsQna = goodsqnaService.getGoodsQnaContent(vo);
+//	
+//		//모델에 담아준다.
+//		model.addAttribute("getGoodsQna", getGoodsQna);
+//	
+//		//받아온 후 글쓰기로 간다.
+//		return "customerCenter/goodsQnaWrite"; 
+//	}
+>>>>>>> Ben
 }
 
 	

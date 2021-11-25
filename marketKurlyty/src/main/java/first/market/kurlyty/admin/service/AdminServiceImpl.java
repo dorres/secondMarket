@@ -18,11 +18,19 @@ import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
+<<<<<<< HEAD
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+=======
+import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 @Repository
 @Service("AdminService")
@@ -139,33 +147,140 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//상품조회
+<<<<<<< HEAD
+=======
+	@Override
+>>>>>>> Ben
 	public AdminRegistVO getGoods(AdminRegistVO regist) {
 		return adminDao.getGoods(regist);
 	}
 	
 	//상품 수정
+<<<<<<< HEAD
+=======
+	@Override
+>>>>>>> Ben
 	public int updateGoods(AdminRegistVO regist) {
 		return adminDao.updateGoods(regist);
 	}
 	
 	//상품 삭제
+<<<<<<< HEAD
+=======
+	@Override
+>>>>>>> Ben
 	public int deleteGoods(AdminRegistVO regist) {
 		return adminDao.deleteGoods(regist);
 	}
 	
+<<<<<<< HEAD
 	//재고 조회
 	public AdminStockVO getStock(AdminStockVO stock) {
 		return adminDao.getStock(stock);
 	}
 	
 	//입고 수정
+=======
+	//입고 조회
+	@Override
+	public List<AdminStockVO> getStockList(AdminStockVO stock) {
+		return adminDao.getStockList(stock);
+	}
+	
+	//입고 수정
+	@Override
+>>>>>>> Ben
 	public int updateStock (AdminStockVO stock) {
 		return adminDao.updateStock(stock);
 	}
 	//재고 합계
+<<<<<<< HEAD
 	public AdminStockVO sumStock(AdminStockVO stock) {
 		return adminDao.sumStock(stock);
 	}
+=======
+	@Override
+	public AdminStockVO sumStock(AdminStockVO stock) {
+		return adminDao.sumStock(stock);
+	}
+	
+	//판매 등록
+	@Override
+	public AdminStockVO getStock(int serial) {
+		return adminDao.getStock(serial);
+	}
+	
+	@Override
+	public int insertStock(AdminStockVO stock) {
+		return adminDao.insertStock(stock);
+	}
+	
+	// 리스트에 재고 출력
+	@Override
+	public int stockstock(AdminStockStockVO stockstock) {
+		return adminDao.stockstock(stockstock);
+	}
+	
+	//----------------------------------------------------------------
+	
+	// 상품문의 리스트 (답변대기)
+	@Override
+	public List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna){
+		return adminDao.gqnaList(gqna);
+	}
+	
+	// 상품문의 리스트 삭제(답변대기)
+	@Override 
+	public int deleteGqna(GoodsQnaVO gqna) {
+		return adminDao.deleteGqna(gqna);
+	}
+	
+	//상품문의 답변 전 
+	@Override
+	public GoodsQnaVO gqnaOne(GoodsQnaVO gqna) {
+		return adminDao.gqnaOne(gqna);
+	}
+	
+	//상품 답변
+	public int updateGqna(GoodsQnaVO gqna) {
+		return adminDao.updateGqna(gqna);
+	}
+	
+	// 상품문의 리스트 (답변완료)
+	@Override
+	public List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna){
+		return adminDao.gqnaListSuc(gqna);
+	}
+	
+	//상품 답변 수정
+	@Override
+	public int updateGqnaSuc(GoodsQnaVO gqna) {
+		return adminDao.updateGqna(gqna);
+		}
+	
+	//----------------------------------------------------------------
+	
+	//매출차트 날짜 
+	@Override
+	public List<AdminSalesVO> getDate(AdminSalesVO sales){
+		return adminDao.getDate(sales);
+	}
+	
+	
+	//----------------------------------------------------------------
+	
+	//리뷰 리스트
+	@Override
+	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
+		return adminDao.getReviewList(review);
+	}
+	
+	//리뷰 삭제
+	@Override
+	public int deleteReview(AdminReviewVO review) {
+		return adminDao.deleteReview(review);
+	}
+>>>>>>> Ben
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override
@@ -357,6 +472,7 @@ public class AdminServiceImpl implements AdminService {
 	public int updateCategory2(AdminCategorySubVO category2) {
 		return adminDao.updateCategory2(category2);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int deleteCategory2(AdminCategorySubVO category2) {
@@ -394,6 +510,45 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+=======
+
+	@Override
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return adminDao.deleteCategory2(category2);
+	}
+	//--------------------------------------------------------------
+	@Override
+	public List<AdminCategoryGoodsVO> getCategory3List() {
+		return adminDao.getCategory3List();
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategoryType(category3);
+	}
+	@Override
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3(category3);
+	}
+	@Override
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategory3(category3);
+	}
+
+	@Override
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.deleteCategory3(category3);
+	}
+	@Override
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.updateCategory3(category3);
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategory2Name() {
+		return adminDao.getCategory2Name();
+	}
+
+	@Override
+>>>>>>> Ben
 	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
 		return adminDao.insertCategory3Detail(category3);
 	}
@@ -466,6 +621,39 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminOrderVO> getOrderFinishList() {
 		return adminDao.getOrderFinishList();
 	}
+<<<<<<< HEAD
+=======
+	
+	//======================================================================
+	//환불관리
+	@Override
+	public List<AdminOrderVO> getOrderRefundList() {
+		return adminDao.getOrderRefundList();
+	}
+	@Override
+	public int updateRefundWait(AdminQnaVO qna) {
+		return adminDao.updateRefundWait(qna);
+	}
+	//반품관리
+	@Override
+	public List<AdminOrderVO> getOrderReturnList() {
+		return adminDao.getOrderReturnList();
+	}
+	@Override
+	public int updateReturnWait(AdminQnaVO qna) {
+		return adminDao.updateReturnWait(qna);
+	}
+	//취소관리
+	@Override
+	public List<AdminOrderVO> getOrderCancleList() {
+		return adminDao.getOrderCancleList();
+	}
+	@Override
+	public int updateCancleWait(AdminQnaVO qna) {
+		return adminDao.updateCancleWait(qna);
+	}
+	
+>>>>>>> Ben
 
 }
 	

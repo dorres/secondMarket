@@ -47,9 +47,9 @@ private GoodsQnaDAO goodsqnaDao;
 		return goodsqnaDao.deleteGoodsQna(vo);
 	}
 
-	@Override
-	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo) {
-		return goodsqnaDao.getGoodsQnaContent(vo);
-	}
+//	@Override
+//	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo) {
+//		return goodsqnaDao.getGoodsQnaContent(vo);
+//	}
 	
 }
