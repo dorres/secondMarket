@@ -15,14 +15,13 @@ import first.market.kurlyty.user.vo.UserVO;
 @Service
 public class GoodsQnaServiceImpl implements GoodsQnaService {
 
-@Autowired 
+@Autowired  
 private GoodsQnaDAO goodsqnaDao;
 
-	@Override
-	public UserVO getUser(UserVO vo) {
-		return goodsqnaDao.getUser(vo);
-	}
-
+/*
+ * @Override public UserVO getUser(UserVO vo) { return itempageDao.getUser(vo);
+ * }
+ */
 	@Override
 	public ItemPageVO getItemPage(ItemPageVO vo) {
 		return goodsqnaDao.getItemPage(vo);
