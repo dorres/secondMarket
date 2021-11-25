@@ -60,7 +60,6 @@ $(document).ready(function(){
 	});
 });
 </script>
-
 	<div id="quickNavi" class="quick-navigation">
 	
 		<div class="bnr_qnb" id="brnQuick"></div>

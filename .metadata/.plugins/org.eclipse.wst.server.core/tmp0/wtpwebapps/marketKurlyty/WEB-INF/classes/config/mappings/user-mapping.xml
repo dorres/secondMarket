@@ -45,7 +45,7 @@
 	 	WHERE user_id = #{user_id}
  	</update>
  	<delete id="deleteUser" parameterType="user">
- 	<!-- sungyun in processing -->
+ 	
  	</delete>
  	<!-- userAddressList -->
  	<select id="getDefaultAddress" resultType="addressListVO">

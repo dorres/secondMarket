@@ -545,6 +545,8 @@ button, input, optgroup, select, textarea {
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
+=======
 .board-item-container.product .board-list>li.inquiry-item-expand .expand-question p, .board-item-container.product .inquiry-notice-list>li.inquiry-item-expand .expand-question p {
     min-height: auto;
 }
@@ -636,14 +638,19 @@ button, input, optgroup, select, textarea {
 
 <script>
 
+>>>>>>> main
 function quantity(count){
 	var currentCount=$("span.count").find("input.inp").val();
 	var changeCount = parseInt(currentCount)+count;
 	var price=$("input#oldPrice").val();
 	var discount=${getItemPage.goods_detail_dicountrate}
+<<<<<<< HEAD
+	var membership = ${membership.user_membership_point_rate};
+=======
 	var membership=-0;
 	if(${membership != null})
 		membership=parseInt("${membership.user_membership_point_rate}")+0;
+>>>>>>> main
 	if(changeCount<1)changeCount=1;
 	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
 	var point = parseInt((changePrice*(membership/100)+5)/10)*10

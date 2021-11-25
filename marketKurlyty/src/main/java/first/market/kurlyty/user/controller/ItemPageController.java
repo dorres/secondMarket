@@ -2,7 +2,6 @@ package first.market.kurlyty.user.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +23,19 @@ public class ItemPageController {
 	private ItemPageService itempageService;
 	@Autowired
 	private MembershipService membershipService;
+
 	@Autowired
 	private GoodsQnaService goodsqnaService;
 	
 	@RequestMapping("/itemPage.do")
 		public String getItemPage(ItemPageVO vo, GoodsQnaVO goodsqnavo, Model model, HttpSession session) {
+
 		ItemPageVO getItemInfo = itempageService.getItemPage(vo);
 		String userId = (String) session.getAttribute("userId");
 		
 		List<ItemPageVO> getCategoryItemPage = itempageService.getCategoryItemPage(vo);
 		List<GoodsQnaVO> GoodsQnaList = goodsqnaService.getGoodsQnaList(goodsqnavo);	
-		
+
 		if(userId!=null) {
 			String membership = membershipService.getMembershipOfUser(userId);
 			MembershipVO membershipData = membershipService.getMembershipData(membership);
