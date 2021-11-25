@@ -61,9 +61,12 @@ div, th, td, li, dt, dd, p {
 										<th width="12%">작성자</th>
 										<th width="12%">작성일</th>
 									</tr>
-								
+									
+									
 									<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
-										<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}" />
+										<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}"/>
+										
+									
 										<tr class="menu">
 											<td>${num.index+1}</td>
 											<td>${personalqna.qna_personal_category}</td>
@@ -71,7 +74,6 @@ div, th, td, li, dt, dd, p {
 											<td>${personalqna.user_id}</td>
 											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
 										</tr>
-										
 										<tr>
 											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
 												<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
@@ -79,6 +81,12 @@ div, th, td, li, dt, dd, p {
 											</td>
 										</tr>
 										
+									
+										<c:if test="${personalqna.qna_personal_answer_date == null}">
+											<tr class="menu"> </tr>
+										</c:if>	
+										
+										<c:if test="${personalqna.qna_personal_answer_date != null}">
 										<tr class="menu">
 											<td></td>
 											<td> ┖ 답변</td>
@@ -92,16 +100,19 @@ div, th, td, li, dt, dd, p {
 												<input type="hidden" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
 											</td>
 										</tr>
-									</c:forEach>
-								
-								</table>	   
-					   			 <c:if test="${num.index == null}">
-									<div class="no_data" style="border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6">
-										문의 내역이 존재하지 않습니다</div>
-									<div style="padding:1px; border-top:1px solid #e6e6e6"></div>
-								</c:if>
-							</form>
-
+										</c:if>
+									</c:forEach>		
+								</table>	
+						</form>		
+						
+						<!--  수정 중 . . . . . . . . . . . . . . . . . -->
+							<c:if test="${personalqnaboard == null}">
+							<div class="no_data" style="border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6">
+								 문의 하신 내역 존재하지 않습니다. </div>
+							 </c:if>
+			 
+					<div class="no_data" style="border-top:1px solid #e6e6e6">
+								</div>
 								<div style="position: relative">
 									<div style="position: absolute; right: 0; top: 60px;">
 										<a href="/kurlyty/personalQnaWrite.do">

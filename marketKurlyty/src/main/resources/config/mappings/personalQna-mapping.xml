@@ -12,7 +12,7 @@
  		
  <!-- insert 글 작성. 완료 -->
  	<insert id="insertPersonalQna" parameterType="personalQna">
- 		INSERT INTO mk_qna_personal VALUES (default, #{user_id}, #{admin_name}, #{order_details_order_serial},
+ 		INSERT INTO mk_qna_personal VALUES (default, #{user_id}, #{user_name}, #{order_details_order_serial},
  		#{qna_personal_title}, #{qna_personal_content}, now(), #{qna_personal_hit},
  		#{qna_personal_answer}, #{qna_personal_category}, #{qna_personal_phone}, #{qna_personal_email})
  	</insert>

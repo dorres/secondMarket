@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+ <mapper namespace="RegistDAO">
+ 	<!-- 상품등록 -->
+	<insert id="insertRegist" parameterType="regist">
+		INSERT INTO MK_GOODS_DETAIL VALUES(#{goods_detail_serial},#{category_main_serial},
+		#{category_sub_serial},#{category_goods_serial},#{goods_detail_price},#{goods_detail_stock_quantity},
+		#{goods_detail_stock_notification},#{goods_detail_promotion_serial},
+		#{goods_detail_status},#{goods_detail_dicountrate});
+	</insert> 
+	
+	<!-- 상품조회 
+	<select id="getGoods" resultType="regist">
+		SELECT (ROW_NUMBER() OVER(ORDER BY goods_detail_serial)) AS ROWNUM, * FROM MK_GOODS_DETAIL;
+	</select>-->
+	<select id="getGoodsList" resultType="regist">
+		SELECT D.goods_detail_serial,D.category_main_serial, D.category_sub_serial, 
+		D.category_goods_serial, D.goods_detail_price, D.goods_detail_stock_quantity,
+		D.goods_detail_stock_notification, D.goods_detail_promotion_serial, D.goods_detail_status,
+		D.goods_detail_dicountrate, S.goods_stock_stock_quantity, S.goods_stock_receiving_quantity
+		FROM MK_GOODS_DETAIL D
+		JOIN MK_GOODS_STOCK S
+		ON D.CATEGORY_GOODS_SERIAL = S.CATEGORY_GOODS_SERIAL
+		ORDER BY GOODS_DETAIL_SERIAL;
+		
+	</select>
+	
+	<!-- 상품 수정 -->
+	<update id="updateGoods" parameterType="regist">
+		UPDATE MK_GOODS_DETAIL 
+		SET GOODS_DETAIL_STOCK_NOTIFICATION=#{goods_detail_stock_notification}
+			,GOODS_DETAIL_PROMOTION_SERIAL=#{goods_detail_promotion_serial}
+			,GOODS_DETAIL_STATUS=#{goods_detail_status},GOODS_DETAIL_DICOUNTRATE=#{goods_detail_dicountrate}
+			WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="deleteGoods" parameterType="regist">
+	 	DELETE FROM MK_GOODS_DETAIL WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+	</delete>
+	
+	<!-- 재고 조회 -->
+	<select id="getStock" resultType="stock">
+		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</select>
+	
+	<!-- 입고 수정 -->
+	<update id="updateStock" parameterType="stock">
+		UPDATE MK_GOODS_STOCK 
+		SET GOODS_STOCK_RECEIVING_QUANTITY = #{goods_stock_receiving_quantity}
+		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</update>
+	<!-- 수량 합계 -->
+	<select id="stockSum" resultType="stock">
+	SELECT SUM(GOODS_STOCK_RECEIVING_QUANTITY+GOODS_STOCK_STOCK_QUANTITY) TOTAL
+	FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</select>
+ </mapper>

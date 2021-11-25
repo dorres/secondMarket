@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,21 @@
 		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
 		transition: border .25s linear, color .25s linear, background-color .25s linear;
 
-	}	
+	}
 .btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
 .btn1.btn-dark:hover{background-color:#5f0080;}
 .btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
  </style>
+ <script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -39,51 +50,62 @@
 
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
-						<!-- <input type="button"  onclick="location.href='admin_bannerWrite.mdo'"  > -->
 							<div class="col three">
-								<a href="#" class="btn1 btn-dark">상품 등록</a>
+								<a href="admin_categoryGoodsWrite.mdo" class="btn1 btn-dark">상품 등록</a>
 							</div>
 						</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>번호</th>
+									<th>1차 카테고리</th>
+									<th>2차 카테고리</th>
+									<th>상품명</th>
+									<th>상품명 서브</th>
+									<th>이미지</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+<<<<<<< HEAD
+								<th>번호</th>
+=======
+									<th>번호</th>
+>>>>>>> Ben
+									<th>1차 카테고리</th>
+									<th>2차 카테고리</th>
+									<th>상품명</th>
+									<th>상품명 서브</th>
+									<th>이미지</th>
 								</tr>
 							</tfoot>
 							<tbody>
-								<tr>
-									<td>Michael Bruce</td>
-									<td>Javascript Developer</td>
-									<td>Singapore</td>
-									<td>29</td>
-									<td>2011/06/27</td>
-									<td>$183,000</td>
-								</tr>
-								<tr>
-									<td>Donna Snider</td>
-									<td>Customer Support</td>
-									<td>New York</td>
-									<td>27</td>
-									<td>2011/01/25</td>
-									<td>$112,000</td>
-								</tr>
-							</tbody>
+									<c:forEach var="goods" items="${category3 }">
+										<tr>
+<<<<<<< HEAD
+											<td style="vertical-align: middle;">${goods.rownum }</td>
+											<td style="vertical-align: middle;">(${goods.category_main_serial }/${goods.category_main_name })</td>
+											<td style="vertical-align: middle;">(${goods.category_sub_serial }/${ goods.category_sub_name})</td>
+											<td style="vertical-align: middle;">${goods.category_goods_name }</td>
+											<td style="vertical-align: middle;">${goods.category_goods_name_subtext }</td>
+											<td style="vertical-align: middle;"><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }" width="100px" height="100px"> </td>
+											<td style="vertical-align: middle;">
+												<input type="button" onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" value="수정">
+=======
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.rownum }</td>
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">(${goods.category_main_serial }/${goods.category_main_name })</td>
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">(${goods.category_sub_serial }/${ goods.category_sub_name})</td>
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.category_goods_name }</td>
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.category_goods_name_subtext }</td>
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;"><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }" width="100px" height="100px"> </td>
+											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">
+>>>>>>> Ben
+												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryGoodsDelete.mdo?category_goods_serial=${goods.category_goods_serial }')"/>
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
 						</table>
 					</div>
 				</div>

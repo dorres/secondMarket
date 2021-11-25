@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
-import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.s3.AwsS3;
 
 @Controller

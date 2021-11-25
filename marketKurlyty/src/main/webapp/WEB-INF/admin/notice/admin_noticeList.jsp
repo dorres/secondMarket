@@ -21,6 +21,16 @@
 .btn1.btn-dark:hover{background-color:#5f0080;}
 .btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
  </style>
+  <script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -68,13 +78,13 @@
 							<tbody>
 							<c:forEach var="noticeList" items="${noticeList }">
 								<tr>
-									<td>${noticeList.rownum }</td>
-									<td>${noticeList.notice_id }</td>
-									<td>${noticeList.notice_title }</td>
-									<td><fmt:formatDate value="${noticeList.notice_date }" pattern="yyyy-MM-dd"/></td>
-									<td>${noticeList.notice_hit }</td>
+									<td onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'">${noticeList.rownum }</td>
+									<td onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'">${noticeList.notice_id }</td>
+									<td onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'">${noticeList.notice_title }</td>
+									<td onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'"><fmt:formatDate value="${noticeList.notice_date }" pattern="yyyy-MM-dd"/></td>
+									<td onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'">${noticeList.notice_hit }</td>
 									<td>
-										<input type="button" onclick="location.href='admin_notice.mdo?notice_serial=${noticeList.notice_serial}'" value="수정">
+										<input type="button" value="삭제" onclick="javascript:delete_check('admin_noticeDelete.mdo?notice_serial=${noticeList.notice_serial}')"/>
 									</td>
 									</tr>
 							</c:forEach>

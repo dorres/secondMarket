@@ -5,14 +5,28 @@ import java.util.List;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
+import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
-
+import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminRegistVO;
+<<<<<<< HEAD
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+=======
+import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
+>>>>>>> Ben
+import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 public interface AdminService {
 
@@ -35,23 +49,110 @@ public interface AdminService {
 	//회원 수정 출력
 	AdminUserVO getUser(AdminUserVO user);
 	//회원 수정
-	public int updateUser(AdminUserVO user);
+	int updateUser(AdminUserVO user);
 	//회원 삭제
-	public int deleteUser(AdminUserVO user);
+	 int deleteUser(AdminUserVO user);
 	//약관관리
-	public List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
+	 List<AdminTermsAgreementVO> getTermsAgree(AdminTermsAgreementVO agree);
 	//약관 등록
 	int insertTerms(AdminTermsAgreementVO agree);
-
 	//약관 수정
-	public int updateTeerms(AdminTermsAgreementVO agree);
+<<<<<<< HEAD
+	public int updateTerms(AdminTermsAgreementVO agree);
+=======
+	 int updateTerms(AdminTermsAgreementVO agree);
+>>>>>>> Ben
 	
 	//약관 정보
-	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree);
+	 AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree);
 	
 	//약관 삭제
-	public int deleteTerms(AdminTermsAgreementVO agree);
+	 int deleteTerms(AdminTermsAgreementVO agree);
 	
+	//상품 등록
+	 int inserGoods(AdminRegistVO regist);
+	
+	//상품조회리스트
+	 List<AdminRegistVO> goodsList(AdminRegistVO regist);
+	
+	//상품조회
+	 AdminRegistVO getGoods(AdminRegistVO regist);
+	
+	//상품 수정
+	 int updateGoods(AdminRegistVO regist);
+	
+	//상품 삭제
+	 int deleteGoods(AdminRegistVO regist);
+		
+	//재고 조회
+	 List<AdminStockVO> getStockList(AdminStockVO stock);
+	
+	//입고 수정
+	int updateStock (AdminStockVO stock);
+	
+	//재고 합계
+	AdminStockVO sumStock(AdminStockVO stock);
+	
+	//판매 등록
+	AdminStockVO getStock(int serial);
+	int insertStock(AdminStockVO stock);
+	
+	// 리스트에 재고 출력
+	int stockstock(AdminStockStockVO stockstock);
+	
+	//----------------------------------------------------------------
+	
+		//리뷰 리스트
+	List<AdminReviewVO> getReviewList(AdminReviewVO review);
+	//리뷰 삭제
+	int deleteReview(AdminReviewVO review); 
+	//=================================================================
+	
+	// 상품문의 리스트 (답변대기)
+	List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna);
+	
+	// 상품문의 리스트 삭제(답변대기)
+	int deleteGqna(GoodsQnaVO gqna);
+	
+	//상품문의 답변 전 
+	GoodsQnaVO gqnaOne(GoodsQnaVO gqna);
+	
+	//상품 답변
+	int updateGqna(GoodsQnaVO gqna);
+	
+	// 상품문의 리스트 (답변완료)
+	List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna);
+	
+	//상품 답변 수정
+	int updateGqnaSuc(GoodsQnaVO gqna);
+	//=================================================================
+	
+	//매출 날짜 
+	List<AdminSalesVO> getDate(AdminSalesVO sales);
+	
+	//상품 등록
+	public int inserGoods(AdminRegistVO regist);
+	
+	//상품조회리스트
+	public List<AdminRegistVO> goodsList(AdminRegistVO regist);
+	
+	//상품조회
+	public AdminRegistVO getGoods(AdminRegistVO regist);
+	
+	//상품 수정
+	public int updateGoods(AdminRegistVO regist);
+	
+	//상품 삭제
+	public int deleteGoods(AdminRegistVO regist);
+		
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock);
+	
+	//입고 수정
+	public int updateStock (AdminStockVO stock);
+	
+	//재고 합계
+	public AdminStockVO sumStock(AdminStockVO stock);
 	//=================================================================
 
 	//공지사항 리스트
@@ -130,7 +231,101 @@ public interface AdminService {
 	//관리자 1차카테고리 리스트
 	List<AdminCategoryMainVO> getCategory1List();
 	
-	int insertCategory1(AdminCategoryMainVO category1); 
+	String getCategory1Column();
 	
+	int insertCategory1(AdminCategoryMainVO category1);
 	
+	int deleteCategory1(AdminCategoryMainVO category1);
+	
+	AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1);
+	
+	int updateCategory1(AdminCategoryMainVO category1);
+	//------------------------------------------------------------------
+	//관리자 2차카테고리 리스트
+	List<AdminCategorySubVO> getCategory2List();
+	
+	String getCategory2Column();
+	
+	int insertCategory2(AdminCategorySubVO category2);
+	
+	AdminCategorySubVO getCategory2(AdminCategorySubVO category2);
+	
+	int updateCategory2(AdminCategorySubVO category2);
+	
+	int deleteCategory2(AdminCategorySubVO category2);
+	//---------------------------------------------------------------------
+	//관리자 3차카테고리 리스트
+	List<AdminCategoryGoodsVO> getCategory3List();
+	
+	List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3);
+	
+	int insertCategory3(AdminCategoryGoodsVO category3);
+	
+	int insertCategory3Detail(AdminCategoryGoodsVO category3);
+	
+	AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3);
+	
+	int deleteCategory3(AdminCategoryGoodsVO category3);
+	
+	int updateCategory3(AdminCategoryGoodsVO category);
+	
+	List<AdminCategorySubVO> getCategory2Name();
+	
+	//===========================================================================
+	//적립금
+	List<AdminMembershipVO> getMembershipList();
+	
+	AdminMembershipVO getMembership(AdminMembershipVO membership);
+	
+	int updateMembership(AdminMembershipVO membership);
+	
+	int insertMembership(AdminMembershipVO membership);
+	
+	int deleteMembership(AdminMembershipVO membership);
+	
+	//===========================================================================
+	//주문관리 (결제완료)
+	List<AdminOrderVO> getOrderWaitList();
+	
+	AdminOrderVO getOrderWait(AdminOrderVO order);
+	
+	AdminShippingInfoVO getShippingInfo(AdminOrderVO order);
+
+	List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order);
+	
+	int updateShippingInfo(AdminShippingInfoVO shipping);
+	
+	int updateOrderWait(AdminOrderVO order);
+	int updateOrderWait1(List<String> merchantList);
+	
+	List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList);
+<<<<<<< HEAD
+	
+	int updateStatus(List<String> merchantList);
+	//---------------------------------------------------------------------------
+	//주문관리 (배송과정)
+	List<AdminOrderVO> getOrderDeliveryList();
+	//주문관리 (구매완료)
+	List<AdminOrderVO> getOrderFinishList();
+=======
+	
+	int updateStatus(List<String> merchantList);
+	//---------------------------------------------------------------------------
+	//주문관리 (배송과정)
+	List<AdminOrderVO> getOrderDeliveryList();
+	//주문관리 (구매완료)
+	List<AdminOrderVO> getOrderFinishList();
+	
+	//환불관리
+	List<AdminOrderVO> getOrderRefundList();
+	int updateRefundWait(AdminQnaVO qna);
+	
+	//반품관리
+	List<AdminOrderVO> getOrderReturnList();
+	int updateReturnWait(AdminQnaVO qna);
+>>>>>>> Ben
+	
+	//취소관리
+	List<AdminOrderVO> getOrderCancleList();
+	int updateCancleWait(AdminQnaVO qna);
 }

@@ -23,15 +23,14 @@ public class PersonalQnaController {
 	@Autowired
 	private PersonalQnaService personalqnaService;
 	
-	
-// 
 	@RequestMapping("/personalQnaBoard.do")
 	public String getList(HttpServletRequest request, PersonalQnaVO vo, Model model) {
 		HttpSession session = request.getSession();
 		vo.setUser_id((String) session.getAttribute("userId"));
-		
 		List<PersonalQnaVO> boardList = personalqnaService.getPersonalQnaList(vo);
-		model.addAttribute("personalqnaboard", boardList);
+		if(boardList.size() > 0) {
+			model.addAttribute("personalqnaboard", boardList);
+		}
 		return "customerCenter/personalQnaBoard";
 	}
 	
@@ -73,13 +72,12 @@ public class PersonalQnaController {
 	 @GetMapping("/updatePersonalQna.do") 
 	 public String updatePersonalQna(PersonalQnaVO vo, Model model) {
 
-		
 		// System.out.println(vo.getQna_personal_serial());
 		 //1.call(get DB) to get SERIAL
-		 PersonalQnaVO getPersonalQna = personalqnaService.getPersonalQna(vo);
+		 PersonalQnaVO getPersonalQnaContent = personalqnaService.getPersonalQna(vo);
 		 //System.out.println(getPersonalQna.getQna_personal_title());
 		 //2. put Origianl DB in model(=percel Box)
-		 model.addAttribute("getPersonalQna", getPersonalQna);
+		 model.addAttribute("getPersonalQna", getPersonalQnaContent);
 		 //3. going to personalQnaWrite and start processing '.JSP'
 		 
 		 return "customerCenter/personalQnaWrite";

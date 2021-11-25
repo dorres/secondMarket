@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="qnaDAO">
+  	<!-- 1:1문의 답변 대기 쿼리 -->
+ 	<select id="getPersonalQnaWaitList" resultType="qna">
+ 		SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
+ 		* FROM MK_QNA_PERSONAL WHERE qna_personal_answer IS NULL OR qna_personal_answer = ''
+ 	</select>
+ 	
+ 	<select id="getPersonalQnaWait" resultType="qna" parameterType="qna">
+		SELECT * FROM MK_QNA_PERSONAL WHERE qna_personal_serial=#{qna_personal_serial};
+	</select>
+	
+	<update id="updateQnaWait" parameterType="qna">
+ 		UPDATE MK_QNA_PERSONAL SET 
+<<<<<<< HEAD
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+=======
+ 		QNA_PERSONAL_ANSWER_TITLE = #{qna_personal_answer_title},
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer},
+ 		QNA_PERSONAL_ANSWER_DATE = now()
+>>>>>>> Ben
+ 		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</update>
+ 	
+ 	 <delete id="deleteQnaWait" parameterType="qna">
+ 		DELETE FROM MK_QNA_PERSONAL WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</delete>
+ 	 <!-- 1:1문의 답변 대기 쿼리 -->
+ 	 
+ 	  	 <!-- 1:1문의 답변 완료 쿼리 -->
+ 	<select id="getPersonalQnaFinishList" resultType="qna">
+ 	 	SELECT (ROW_NUMBER() OVER(ORDER BY qna_personal_date)) AS ROWNUM , 
+ 		* FROM mk_qna_personal WHERE qna_personal_answer IS NOT NULL AND qna_personal_answer != ''
+ 	</select>
+ 	
+ 	<select id="getPersonalQnaFinish" resultType="qna" parameterType="qna">
+		SELECT * FROM MK_QNA_PERSONAL WHERE qna_personal_serial=#{qna_personal_serial};
+	</select>
+	
+	<update id="updateQnaFinish" parameterType="qna">
+ 		UPDATE MK_QNA_PERSONAL SET 
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+ 		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</update>
+ 	
+ 	 <delete id="deleteQnaFinish" parameterType="qna">
+ 		DELETE FROM MK_QNA_PERSONAL WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
+ 	</delete>
+ 	 <!-- 1:1문의 답변 완료 쿼리 -->
+ </mapper>

@@ -19,8 +19,6 @@ public class user_address_listController {
 	@Autowired
 	private user_address_listService user_address_listService;
 	HttpSession session;
-	
-	
 
 	@GetMapping("/user_address_list.do")
 	public String user_address_list( HttpSession session, user_address_listVO vo, Model model) throws Exception {
