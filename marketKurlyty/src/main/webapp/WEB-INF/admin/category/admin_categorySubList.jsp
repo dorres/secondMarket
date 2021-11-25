@@ -76,7 +76,7 @@
 									<tr>
 										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">${sub.rownum }</td>
 										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">(${ sub.category_main_serial} / ${sub.category_main_name })</td>
-										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">${ sub.category_sub_name}</td>
+										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">(${sub.category_sub_serial }/${ sub.category_sub_name})</td>
 										<td>
 											<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categorySubDelete.mdo?category_sub_serial=${sub.category_sub_serial }')"/>
 										</td>
