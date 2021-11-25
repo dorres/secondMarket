@@ -28,5 +28,11 @@ public class ReviewDAO {
 	public int insertReview(ReviewVO vo) {
 		return sqlSession.insert("reviewDAO.reviewInsert",vo);
 	}
+	public List<ReviewVO> reviewAfter(ReviewVO vo){
+		return sqlSession.selectList("reviewDAO.reviewAfter", vo);
+	}
+	public ReviewVO updateDate(ReviewVO vo) {
+		return sqlSession.selectOne("reviewDAO.updateDate", vo);
+	}
 
 }

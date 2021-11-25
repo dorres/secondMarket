@@ -77,16 +77,13 @@
 										</button>
 									</div>
 								</div>
-								<form name="form_review" id="form_review" method="post" action="reviewProc.do" enctype="multipart/form-data">
+								<form action="reviewProc.do" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="user_id" value="${goods.user_id }">
 									<input type="hidden" name="category_goods_serial" value="${goods.category_goods_serial }">
 									<div class="write_board">
 										<div class="goods_info">
 											<div class="thumb">
-												<img
-													src="${goods.category_goods_image_thumb}"
-													onerror="this.src='/shop/data/skin/designgj/img/common/noimg_100.gif'"
-													alt="상품 이미지">
+												<img src="${goods.category_goods_image_thumb}" onerror="" alt="상품 이미지">
 											</div>
 											<div class="desc">
 												<div class="inner_desc">
@@ -104,14 +101,14 @@
 											<tbody>
 												<tr>
 													<th>제목</th>
-													<td><input type="text" name="review_title" placeholder="제목을 입력해주세요." class="inp " value=""></td>
+													<td><input type="text" name="review_title" placeholder="제목을 입력해주세요." class="inp " value="${update.review_title }"></td>
 												</tr>
 												<tr>
 													<th>후기작성</th>
 													<td>
 														<div class="field_cmt">
-															<textarea id="fieldCmt" name="review_content" cols="100" 	rows="10" 
-															placeholder="자세한 후기는 다른 고객의 구매에 많은 도움이 되며, 일반식품의 효능이나 효과 등에 오해의 소지가 있는 내용을 작성 시 검토 후 비공개 조치될 수 있습니다. 반품/환불 문의는 1:1문의로 가능합니다."></textarea>
+															<textarea id="fieldCmt" name="review_content" cols="100" rows="10" 
+															placeholder="자세한 후기는 다른 고객의 구매에 많은 도움이 되며, 일반식품의 효능이나 효과 등에 오해의 소지가 있는 내용을 작성 시 검토 후 비공개 조치될 수 있습니다. 반품/환불 문의는 1:1문의로 가능합니다.">${update.review_content }</textarea>
 															<p class="txt_count">
 																<span class="num">0</span>자 / 최소 10자
 															</p>
@@ -122,14 +119,13 @@
 													<th>사진등록</th>
 													<td>
 														<div class="photo_add">															
-														<div class="inner_photo" id="photoZone" >		
-														<span class="photo" id="thisPoto"></span> 
+														<div class="inner_photo"  >
+														<div class="item_photo" id="photoZone" style="display: block;" ><img src="${update.review_image_main }"></div>		
+														<span class="btn_upload" id="thisPoto"></span> 
 														</div>
-														<span class="btn_upload"> 
-														<input type="file" name="review_image_main" class="file_upload"
-																onchange="setThumbnail(event)" value="사진등록하기"
-																accept="image/x-png,image/gif,image/jpeg">
-															</span>
+														
+														<input type="file" name="image" class="file_upload" onchange="setThumbnail(event)" >
+															
 														</div>
 														
 														<div class="file_count">
@@ -148,7 +144,8 @@
 												href="/shop/mypage/mypage_qna_register.php?mode=add_qna&amp;ordno=1637132460375">1:1
 												문의하기</a>
 										</p>
-										<button type="submit"  id="btnSubmit" class="btn_reg btn_disabled">등록하기</button>
+										<button type="submit"  id="btnSubmit" class="btn_reg" >등록하기</button>
+										
 									</div>
 								</form>
 							</div>
@@ -171,7 +168,12 @@
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		}
+		
+		
+
 	</script>
+
+
 
 	<a href="#top" id="pageTop">맨 위로가기</a>
 

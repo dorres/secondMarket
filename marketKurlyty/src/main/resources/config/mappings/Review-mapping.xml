@@ -32,4 +32,20 @@
 	default, #{user_id},#{review_title},#{review_content},now(),#{review_image_main},default,default,#{category_goods_serial}
 	)
  </insert>
+ <select id="reviewAfter" resultType="first.market.kurlyty.user.vo.ReviewVO">
+	select * from mk_review as r join
+	mk_category_goods as c
+	on r.category_goods_serial = c.category_goods_serial
+	join mk_order_details D
+	on r.category_goods_serial = D.category_goods_serial
+ </select>
+ <select id="updateDate" resultType="first.market.kurlyty.user.vo.ReviewVO">
+	select * from mk_review as r join 
+	mk_order_details as c
+	on r.category_goods_serial = c.category_goods_serial
+	where review_serial=#{review_serial} and order_details_serial=#{order_details_serial}
+ </select>
+ <update id="reviewUpdate">
+ 	up
+ </update>
  </mapper>

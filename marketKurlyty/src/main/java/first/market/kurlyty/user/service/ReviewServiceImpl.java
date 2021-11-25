@@ -35,4 +35,14 @@ public class ReviewServiceImpl implements ReviewService{
 		return reviewDAO.insertReview(vo);
 	}
 
+	@Override
+	public List<ReviewVO> reviewAfter(ReviewVO vo) {
+		return reviewDAO.reviewAfter(vo);
+	}
+
+	@Override
+	public ReviewVO updateDate(ReviewVO vo) {
+		return reviewDAO.updateDate(vo);
+	}
+
 }

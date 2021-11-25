@@ -10,4 +10,6 @@ public interface ReviewService {
 	public Integer count(String user_id);
 	public User_order_listVO reviewWrite(Integer order_details_serial);
 	public int insertReview(ReviewVO vo);
+	List<ReviewVO> reviewAfter(ReviewVO vo);
+	public ReviewVO updateDate(ReviewVO vo);
 }

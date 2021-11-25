@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet" href="style/ItemListStyle.css">
+
 <link rel="styleSheet"
 	href="${pageContext.request.contextPath }/resources/style/mykurly/order_detail.css">
 <link rel="styleSheet"
@@ -85,7 +86,9 @@
 																	</div>
 																</div>
 															</div>
-															<a href="revieWrite.do?order_details_serial=${review.order_details_serial }" class="btn_write">후기쓰기</a>
+															<a
+																href="reviewWrite.do?order_details_serial=${review.order_details_serial }"
+																class="btn_write">후기쓰기</a>
 														</div></li>
 												</ul>
 											</c:forEach>
@@ -103,24 +106,31 @@
 
 
 								<div id="viewAfterList" class="after_view">
+								<c:forEach var="reviewA" items="${reviewA }">
 									<ul class="list_after">
 										<li class="item_view">
-											<!---->
 											<div class="tit_after">
-												<a href="/shop/goods/goods_view.php?&amp;goodsno=9773"
-													class="main_name">제주 무농약 노지 감귤 3종 (800g, 1kg, 2kg)</a>
+											<a href="" class="main_name">${reviewA.category_goods_detail_name1 } (${reviewA.category_goods_detail_name2 })</a>
 											</div>
 											<div class="cont_after">
-												<a class="desc_after"><span class="subject">
-														맛있었어요 <!----> <span class="date">21.11.23 작성</span>
-												</span> <span class="desc">
-														<!----> <span class="txt">dddddddddddddddddddddddddddddd</span>
-												</span> <span class="view"><span class="img"></span> <span
-														class="txt">dddddddddddddddddddddddddddddd<br></span></span></a>
-												<div class="btn_after">
-													<button type="button" class="btn_help">도움이 돼요 0</button>
-													<a class="btn btn_modify">수정</a> <a class="btn btn_del">삭제하기</a>
-												</div>
+											<a class="desc_after">
+											<span class="subject"> ${reviewA.review_title } 
+											<span class="date"><fmt:formatDate value="${reviewA.review_date }" pattern="yy-MM-dd" /> 작성</span>
+											</span>
+											<span class="">
+											<span class="thumb">
+											<span class="photo" style="background-image: url(&quot;${reviewA.review_image_main}&quot;);" ></span>															
+											</span> 
+											<span class="txt">${reviewA.review_content }</span>
+											</span>
+											<span class="view"><span class="img"></span> 
+											<span class="txt"></span>
+											</span>
+											</a>
+											<div class="btn_after">
+											<button type="button" class="btn_help">도움이 돼요 0</button>
+											<a href="reviewWrite.do?review_serial=${reviewA.review_serial }&order_details_serial=${reviewA.order_details_serial}" class="btn btn_modify">수정</a> <a class="btn btn_del">삭제하기</a>
+											</div>
 											</div>
 											<div class="write_reply" style="display: none;">
 												<div class="inner_replay">
@@ -133,6 +143,7 @@
 										</li>
 										<!---->
 									</ul>
+									</c:forEach>
 									<ul class="list_after">
 										<li class="no_data">작성한 후기가 없습니다.</li>
 									</ul>
