@@ -19,6 +19,7 @@ import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -225,9 +226,20 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//상품 답변 수정
+	@Override
 	public int updateGqnaSuc(GoodsQnaVO gqna) {
 		return adminDao.updateGqna(gqna);
 		}
+	
+	//----------------------------------------------------------------
+	
+	//매출차트 날짜 
+	@Override
+	public List<AdminSalesVO> getDate(AdminSalesVO sales){
+		return adminDao.getDate(sales);
+	}
+	
+	
 	//----------------------------------------------------------------
 	
 	//리뷰 리스트

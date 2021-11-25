@@ -15,6 +15,7 @@ import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -117,7 +118,11 @@ public interface AdminService {
 	//상품 답변 수정
 	int updateGqnaSuc(GoodsQnaVO gqna);
 	//=================================================================
-		
+	
+	//매출 날짜 
+	List<AdminSalesVO> getDate(AdminSalesVO sales);
+	
+	//=================================================================
 
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);

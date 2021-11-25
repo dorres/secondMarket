@@ -18,6 +18,7 @@ import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -194,6 +195,15 @@ public class AdminDAO {
 	public int updateGqnaSuc(GoodsQnaVO gqna) {
 		return sqlSession.update("gqnaDAO.updateGqna",gqna);
 	}
+	
+	//================================================================
+	
+	//매출차트 날짜 
+	public List<AdminSalesVO> getDate (AdminSalesVO sales){
+		return sqlSession.selectList("SalesDAO.getDate", sales);
+	}
+	
+	
 	//================================================================
 
 	//공지사항 목록	
