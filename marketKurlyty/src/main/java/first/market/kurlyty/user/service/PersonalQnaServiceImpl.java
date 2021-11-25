@@ -51,4 +51,9 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 	public User_order_listVO getMerchantSerial(User_order_listVO vo) {
 		return personalqnaDAO.getMerchantSerial(vo);
 	}
+	
+	@Override
+	public List<User_order_listVO> getOrderSearch(UserVO vo) {
+		return personalqnaDAO.getOrderSearch(vo);
+	}
 }

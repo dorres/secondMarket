@@ -68,11 +68,7 @@
 							</thead>
 							<tfoot>
 								<tr>
-<<<<<<< HEAD
-								<th>번호</th>
-=======
 									<th>번호</th>
->>>>>>> Ben
 									<th>1차 카테고리</th>
 									<th>2차 카테고리</th>
 									<th>상품명</th>
@@ -83,16 +79,6 @@
 							<tbody>
 									<c:forEach var="goods" items="${category3 }">
 										<tr>
-<<<<<<< HEAD
-											<td style="vertical-align: middle;">${goods.rownum }</td>
-											<td style="vertical-align: middle;">(${goods.category_main_serial }/${goods.category_main_name })</td>
-											<td style="vertical-align: middle;">(${goods.category_sub_serial }/${ goods.category_sub_name})</td>
-											<td style="vertical-align: middle;">${goods.category_goods_name }</td>
-											<td style="vertical-align: middle;">${goods.category_goods_name_subtext }</td>
-											<td style="vertical-align: middle;"><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }" width="100px" height="100px"> </td>
-											<td style="vertical-align: middle;">
-												<input type="button" onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" value="수정">
-=======
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.rownum }</td>
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">(${goods.category_main_serial }/${goods.category_main_name })</td>
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">(${goods.category_sub_serial }/${ goods.category_sub_name})</td>
@@ -100,7 +86,6 @@
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.category_goods_name_subtext }</td>
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;"><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }" width="100px" height="100px"> </td>
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">
->>>>>>> Ben
 												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryGoodsDelete.mdo?category_goods_serial=${goods.category_goods_serial }')"/>
 											</td>
 										</tr>

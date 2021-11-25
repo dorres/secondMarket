@@ -45,8 +45,14 @@ public class PersonalQnaDAO {
 	public PersonalQnaVO getPersonalQna(PersonalQnaVO vo) {
 		return sqlSession.selectOne("PersonalQnaDAO.getPersonalQna", vo);
 	}
+	
 	public User_order_listVO getMerchantSerial(User_order_listVO vo) {
 		return sqlSession.selectOne("PersonalQnaDAO.order_merchant_serial", vo);	
 	}
+	
+	public List<User_order_listVO> getOrderSearch(UserVO vo) {
+		return sqlSession.selectList("PersonalQnaDAO.getOrderSearch", vo);
+	}
+	
 
 }

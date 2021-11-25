@@ -110,19 +110,19 @@ public class AdminCategoryController {
 		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
 		DecimalFormat df;
 		
-		//썸네일 이미지 등록하는경우
+		//블랙 이미지 등록하는경우
 		if(file1.getSize() !=0) {
 			uuid=UUID.randomUUID();
 			key1 = "categoryMain/" + uuid.toString() +file1.getOriginalFilename();
 			category1.setCategory_main_icon_black(path + key1);
 		}
-		//헤더 이미지 등록하는경우
+		//컬러 이미지 등록하는경우
 		if(file2.getSize() !=0) {
 			uuid=UUID.randomUUID();
 			key2 = "categoryMain/" + uuid.toString() +file2.getOriginalFilename();
 			category1.setCategory_main_icon_color(path+key2);
 		}
-		//3차 카테고리 상품 등록(db작업)
+		
 		df = new DecimalFormat("000");
 		result = Integer.parseInt(adminService.getCategory1Column().substring(1));
 		category1.setCategory_main_serial("M" + df.format(result+1) );	

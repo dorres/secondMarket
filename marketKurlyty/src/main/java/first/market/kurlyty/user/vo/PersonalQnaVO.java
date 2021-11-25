@@ -24,6 +24,5 @@ public class PersonalQnaVO {
 	private Date qna_personal_answer_date;
 	private String qna_personal_answer_title;
 	private String qna_personal_image1;
-	private String qna_personal_image2;
-		
+	private String qna_personal_image2;	
 }

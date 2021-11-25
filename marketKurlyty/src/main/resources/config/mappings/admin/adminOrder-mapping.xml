@@ -19,10 +19,7 @@
  		WHERE ORDER_DELIVERY_STATUS IN ('구매완료')
  		ORDER BY ORDER_DATE
  	</select>
-<<<<<<< HEAD
- 	
-=======
- 
+
   	<select id="getOrderRefundList" resultType="order">
  		SELECT * FROM MK_ORDER 
  		WHERE ORDER_DELIVERY_STATUS IN ('환불요청', '환불완료')
@@ -40,7 +37,6 @@
  		WHERE ORDER_DELIVERY_STATUS IN ('취소요청','취소완료')
  		ORDER BY ORDER_DATE
  	</select>	
->>>>>>> Ben
  	<!-- mk_order 테이블 가져오는 쿼리  -->
  	<select id="getOrderWait" resultType="order">
 		SELECT * FROM MK_ORDER WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
@@ -120,9 +116,7 @@
             #{merchant}
         </foreach>
  	</update>
- 	
-<<<<<<< HEAD
-=======
+
  	<update id="updateRefundWait" parameterType="qna">
  		UPDATE MK_ORDER SET 
  		ORDER_DELIVERY_STATUS = '환불요청'
@@ -141,8 +135,4 @@
  		WHERE ORDER_MERCHANT_SERIAL = #{order_details_order_serial}
  	</update>
  	
- 	
- 	
->>>>>>> Ben
-
  </mapper>
