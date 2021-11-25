@@ -33,8 +33,7 @@ public class WithdrawServiceImpl implements WithdrawService {
 		public int updateWithdraw(String user_id) {
 			return withdrawDAO.updateWithdraw(user_id);
 		}
-
-	
+		
 		@Override
 		public int deleteWithdrawCart(String user_id) {
 			return withdrawDAO.deleteWithdrawCart(user_id);

@@ -60,6 +60,7 @@
 										action="insertPersonalQna.do" style="height: 100%;">  -->
 							           
 										<input type="hidden" name="user_id" value="${userId}">
+										<input type="text" name="user_name" value="${userName}">
 								<c:if test="${getPersonalQna != null }">
 										<input type="hidden" name="qna_personal_serial" value="${getPersonalQna.qna_personal_serial}"/>
 								</c:if>
@@ -121,6 +122,7 @@
 													<!-- UPDATE -->
 											
 												
+														
 									
 												<c:if test="${getPersonalQna == null }">
 												<tr>												 
