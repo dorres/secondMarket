@@ -1,15 +1,11 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
-
-<!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 <link rel="styleSheet" href="style/ItemListStyle.css">
-
+<jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 <style>
 element.style {
     border-top: 1px solid #e6e6e6;
@@ -30,9 +26,7 @@ div, th, td, li, dt, dd, p {
     word-break: break-all;
 }
 </style>
-
 </head>
-
 <body class="main-index" oncontextmenu="return false" ondragstart="return false" >
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
@@ -49,61 +43,56 @@ div, th, td, li, dt, dd, p {
 								<div class="head_aticle">
 									<h2 class="tit">1:1 문의</h2>
 								</div>
-					
-					<form name="delete" id="deleteform" method="get" action="deletePersonalQna.do">
-						<input type="hidden" name="deletePersonalQna" value="delete"/>
-					 
-								<table class="xans-board-listheader" width="100%" style="table-layout:fixed;">
-									<tr class="input_txt">
-										<th width="8%">번호</th>
-										<th width="15%">카테고리</th>
-										<th>제목</th>
-										<th width="12%">작성자</th>
-										<th width="12%">작성일</th>
-									</tr>
-									
-									
-									<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
-										<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}"/>
-										
-									
-										<tr class="menu">
-											<td>${num.index+1}</td>
-											<td>${personalqna.qna_personal_category}</td>
-											<td>${personalqna.qna_personal_title}</td>
-											<td>${personalqna.user_id}</td>
-											<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
-										</tr>
-										<tr>
-											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
-												<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-												<input type="button" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-											</td>
-										</tr>
-										
-									
-										<c:if test="${personalqna.qna_personal_answer_date == null}">
-											<tr class="menu"> </tr>
-										</c:if>	
-										
-										<c:if test="${personalqna.qna_personal_answer_date != null}">
-										<tr class="menu">
-											<td></td>
-											<td> ┖ 답변</td>
-											<td>안녕하세요. 고객님! 답변드립니다.</td>
-											<td>Kurlyty</td>
-											<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-mm-dd"/> </td>
-										</tr>
-										<tr>
-											<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_answer}
-												<input type="hidden" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-												<input type="hidden" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-											</td>
-										</tr>
-										</c:if>
-									</c:forEach>		
-								</table>	
-						</form>		
+								<form name="delete" id="deleteform" method="get" action="deletePersonalQna.do">
+									<input type="hidden" name="deletePersonalQna" value="delete"/>
+										<table class="xans-board-listheader" width="100%" style="table-layout:fixed;">
+											<tr class="input_txt">
+												<th width="8%">번호</th>
+												<th width="15%">카테고리</th>
+												<th>제목</th>
+												<th width="12%">작성자</th>
+												<th width="12%">작성일</th>
+											</tr>									
+											
+											<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
+												<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}"/>													<tr class="menu">
+													<td>${num.index+1}</td>
+													<td>${personalqna.qna_personal_category}</td>
+													<td>${personalqna.qna_personal_title}</td>
+													<td>${personalqna.user_id}</td>
+													<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
+												</tr>
+											
+												<tr>
+													<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
+														<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+														<input type="button" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+													</td>
+												</tr>
+												
+												<c:if test="${personalqna.qna_personal_answer_date == null}">
+													<tr class="menu"> </tr>
+												</c:if>				
+												
+												<c:if test="${personalqna.qna_personal_answer_date != null}">
+													<tr class="menu">
+														<td></td>
+														<td> ┖ 답변</td>
+														<td>안녕하세요. 고객님! 답변드립니다.</td>
+														<td>Kurlyty</td>
+														<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-mm-dd"/> </td>
+													</tr>
+													<tr>
+														<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_answer}
+															<input type="hidden" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+															<input type="hidden" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+														</td>
+													</tr>
+												</c:if>
+											
+											</c:forEach>		
+										</table>	
+									</form>		
 						
 						<!--  수정 중 . . . . . . . . . . . . . . . . . -->
 							<c:if test="${personalqnaboard == null}">
@@ -138,25 +127,14 @@ div, th, td, li, dt, dd, p {
 		</div>	
 		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>
-
-	<script>
-		$(".menu")
-				.click(
-						function() {
-							if ($(this).nextAll("tr:eq(0)").find(".sub").is(
-									":visible")) {
-								$(this).nextAll("tr:eq(0)").find(".sub").css(
-										"display", "none");
-							} else {
-								$(this).nextAll("tr:eq(0)").find(".sub").css(
-										"display", "table-cell");
-							}
-						})
-	</script>
-
-	<a href="#top" id="pageTop">맨 위로가기</a>
-
-
-		<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe>
+<script>
+	$(".menu").click( function() {
+		if ($(this).nextAll("tr:eq(0)").find(".sub").is(":visible")) {
+			$(this).nextAll("tr:eq(0)").find(".sub").css("display","none");
+		} else {
+			$(this).nextAll("tr:eq(0)").find(".sub").css("display","table-cell");
+		}
+	})
+</script>
 </body>
 </html>

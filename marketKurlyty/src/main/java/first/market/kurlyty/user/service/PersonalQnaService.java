@@ -23,6 +23,8 @@ public interface PersonalQnaService {
 	
 	public User_order_listVO getMerchantSerial(User_order_listVO vo);
 	
+	public List<User_order_listVO> getOrderSearch(UserVO vo);
+	
 	//Controller >> service >> DAO
 
 }

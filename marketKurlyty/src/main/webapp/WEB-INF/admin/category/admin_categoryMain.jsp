@@ -68,7 +68,7 @@ table.type01 td {
 									</tr>
 									<tr>
 										<th scope="row"  style="font-size: 20px">icon(color)</th>
-										<td><input type="file" name="iconImage1" /></td>
+										<td><input type="file" name="iconImage2" /></td>
 										<td><img alt="아이콘 컬러" src="${category.category_main_icon_color }"></td>
 									</tr>
 								</table>
