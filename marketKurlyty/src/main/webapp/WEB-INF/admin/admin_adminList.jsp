@@ -41,6 +41,17 @@
 		}
 	}
 	</script>
+ <style type="text/css">
+.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+ </style>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -57,16 +68,13 @@
 					<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
+
 				<div class="card mb-4">
-					<div class="card-body">
-						여기내용 수정
-						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
-					</div>
-				</div>
-				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 매니저 목록
-					</div>
+					<div class="card-header"  align="right">
+							<div class="col three">
+								<a href="admin_join.mdo" class="btn1 btn-dark">관리자 등록</a>
+							</div>
+						</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>

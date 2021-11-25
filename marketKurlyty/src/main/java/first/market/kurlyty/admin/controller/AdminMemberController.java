@@ -111,14 +111,13 @@ public class AdminMemberController {
 		@RequestMapping("termsDetails.mdo")
 		public String getTerms(AdminTermsAgreementVO agree, Model model) {
 			model.addAttribute("getTerms", adminService.getTerms(agree));
-			System.out.println(agree.getTerms_serial());
 			return "admin_termsDetails";
 		}
 		//약관 수정
 		@RequestMapping("updateTerms.mdo")
 		public String updateTerms(AdminTermsAgreementVO agree) {
 				int success = 0;
-				success = adminService.deleteTerms(agree);
+				success = adminService.updateTerms(agree);
 				if(success != 0) {
 					return "redirect:terms_agreeList.mdo";
 				}else {
@@ -136,8 +135,6 @@ public class AdminMemberController {
 				return "redirect:termDetail.mdo";
 			}
 		}
-		@RequestMapping("registration.mdo")
-		public String registration() {
-			return "admin_registration";
-		}
+		
+		
 }
