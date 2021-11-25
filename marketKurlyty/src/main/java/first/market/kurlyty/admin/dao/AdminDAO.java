@@ -432,6 +432,44 @@ public class AdminDAO {
 	public int updateOrderWait(AdminOrderVO order) {
 		return sqlSession.update("adminOrderDAO.updateOrderWait",order);
 	}
+	public int updateOrderWait1(List<String> merchantList) {
+		return sqlSession.update("adminOrderDAO.updateOrderWait1",merchantList);
+	}
+	public List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList) {
+		return sqlSession.selectList("adminOrderDAO.getShippingInfoList",merchantList);
+	}
+	public int updateStatus(List<String> merchantList) {
+		return sqlSession.update("adminOrderDAO.updateStatus",merchantList);
+	}
+	public List<AdminOrderVO> getOrderDeliveryList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderDeliveryList");
+	}
+	public List<AdminOrderVO> getOrderFinishList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
+	}
+	
+	//券阂包府
+	public List<AdminOrderVO> getOrderRefundList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderRefundList");
+	}
+	public int updateRefundWait(AdminQnaVO qna) {
+		return sqlSession.update("adminOrderDAO.updateRefundWait",qna);
+	}
+	//馆前包府
+	public List<AdminOrderVO> getOrderReturnList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderReturnList");
+	}
+	public int updateReturnWait(AdminQnaVO qna) {
+		return sqlSession.update("adminOrderDAO.updateReturnWait",qna);
+	}
+	//秒家包府
+	public List<AdminOrderVO> getOrderCancleList(){
+		return sqlSession.selectList("adminOrderDAO.getOrderCancleList");
+	}
+	public int updateCancleWait(AdminQnaVO qna) {
+		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
+	}
+	
 	
 	
 }

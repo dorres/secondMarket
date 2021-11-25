@@ -20,6 +20,16 @@
 .btn1.btn-dark:hover{background-color:#5f0080;}
 .btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
  </style>
+<script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -62,11 +72,11 @@
 							<tbody>
 								<c:forEach var="faq" items="${faqList }">
 								<tr>
-									<td>${faq.rownum }</td>
-									<td>${faq.faq_category }</td>
-									<td>${faq.faq_title }</td>
+									<td onclick="location.href='admin_FAQ.mdo?faq_serial=${faq.faq_serial}'">${faq.rownum }</td>
+									<td onclick="location.href='admin_FAQ.mdo?faq_serial=${faq.faq_serial}'">${faq.faq_category }</td>
+									<td onclick="location.href='admin_FAQ.mdo?faq_serial=${faq.faq_serial}'">${faq.faq_title }</td>
 									<td>
-										<input type="button" onclick="location.href='admin_FAQ.mdo?faq_serial=${faq.faq_serial}'" value="수정">
+										<input type="button" value="삭제" onclick="javascript:delete_check('admin_FAQDelete.mdo?faq_serial=${faq.faq_serial}')"/>
 									</td>
 								</tr>
 							</c:forEach>

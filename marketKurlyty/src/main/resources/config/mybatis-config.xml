@@ -36,7 +36,9 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminReviewVO" alias="review"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.GoodsQnaVO" alias="gqna"/>
 		<typeAlias type="first.market.kurlyty.user.vo.WithdrawInfoVO" alias="withdraw"/> <!-- sungy -->
-		<typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
+		<typeAlias type="first.market.kurlyty.user.vo.User_order_listVO" alias="orderListVO"/> 
+ 		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
+ 		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -60,5 +62,7 @@
 		<mapper resource="config/mappings/admin/goodsQNA-mapping.xml"/>
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/admin/sales-mapping.xml"/>
+		<mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
+		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
  	</mappers>
  </configuration>

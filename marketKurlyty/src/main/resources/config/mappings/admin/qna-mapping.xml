@@ -16,7 +16,9 @@
 	
 	<update id="updateQnaWait" parameterType="qna">
  		UPDATE MK_QNA_PERSONAL SET 
- 		QNA_PERSONAL_ANSWER = #{qna_personal_answer}
+ 		QNA_PERSONAL_ANSWER_TITLE = #{qna_personal_answer_title},
+ 		QNA_PERSONAL_ANSWER = #{qna_personal_answer},
+ 		QNA_PERSONAL_ANSWER_DATE = now()
  		WHERE QNA_PERSONAL_SERIAL = #{qna_personal_serial}
  	</update>
  	

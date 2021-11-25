@@ -175,8 +175,10 @@ $("#updateBtn").on("click",function(){
 		success: function(result) {
 			if(result != 0){
 				alert("성공적으로 수정하였습니다.")
+				location.reload();
 			}else{
 				alert("수정에 실패했습니다.")
+				location.reload();
 			}
 		}
 	}) 

@@ -17,8 +17,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import first.market.kurlyty.user.service.CartService;
+import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.user.vo.UserVO;
 
 @Controller
@@ -29,6 +31,8 @@ public class UserLoginController {
 	private UserService userService;
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private OrderService orderService;
 	
 	@GetMapping("/login.do")
 	public String login() {
@@ -39,13 +43,24 @@ public class UserLoginController {
 	@PostMapping("/login.do")
 	public String login(UserVO user, Model model, RedirectAttributes redirect, HttpServletRequest request) {
 		String securityPw = null;
+		int withdrawStatus = 0;
 		//db에 등록된 회원 비밀번호를 가지고옴
 		// 이때 가지고온 비밀번호는 암호화임
 		UserVO userInfo = userService.loginGetUser(user);
+		UserDetailsVO details = orderService.getUserDetails(user.getUser_id());
+		
+				
 		if(userInfo==null) {
 			redirect.addFlashAttribute("FailMessage","존재하지 않는 회원정보입니다. 다시 입력해주세요");
 			return "redirect:login.do";
+		}else {
+			withdrawStatus = details.getUser_status();
+			if(withdrawStatus == 0) {
+				redirect.addFlashAttribute("FailMessage","존재하지 않는 회원정보입니다. 다시 입력해주세요");
+				return "redirect:login.do";
+			}
 		}
+		
 		String dbPw = userInfo.getUser_pw();
 		
 		//유저가 입력한 비밀번호를 암호화 시킴
@@ -74,7 +89,7 @@ public class UserLoginController {
 			}
 			model.addAttribute("userId",user.getUser_id());
 			model.addAttribute("userName", userInfo.getUser_name());
-			return "mainPage/index";
+			return "redirect:index.do";
 		}else {
 			redirect.addFlashAttribute("FailMessage", "비밀번호가 틀렸습니다. 다시 입력해주세요.");
 			return "redirect:login.do";

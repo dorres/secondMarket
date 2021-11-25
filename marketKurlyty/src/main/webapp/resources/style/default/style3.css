@@ -6938,7 +6938,7 @@ input[type=search]::-webkit-clear-button, input[type=email]::-webkit-clear-butto
 }
 
 #sectionView .goods_info .txt:before {
-	content: "- ";
+	content: "";
 	display: inline
 }
 

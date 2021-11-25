@@ -184,25 +184,6 @@
 								style="">
 								<h3 class="section_crux">상세 정보</h3>
 								<div class="section_full">
-								<!-- <div class="section_full">
-
-									<div class="receiving" id="receiverInfo">최현호, 010-4453-4548</div>
-									<div class="way" id="wayPlace" style="">
-									<span class="place" id="areaInfo" style="">경비실</span>
-									
-									<span class="txt off" id="meanType" style="display: none;">받으실 장소를 입력해 주세요</span>
-									
-									
-									
-									<div class="message" id="deliveryMessage" style="">
-									<span class="place" id="deliveryMessageTitle">배송완료 메시지</span>
-									<span class="txt" id="deliveryMessageDetail">배송 직후</span>
-									</div>
-									</div>
-									<button type="button" id="btnUpdateSubAddress" data-address-no="" class="btn default">수정</button>
-									
-								</div> -->
-
 									<c:if test="${shippingAddress.user_name==''||shippingAddress.user_name==null }">
 										<div class="receiving off" id="receiverInfo">받으실 분 정보를
 										입력해 주세요</div>
@@ -214,9 +195,6 @@
 										<span class="place" id="areaInfo" style="display: none; float:left;"></span>
 
 										<span class="txt off" id="meanType"></span>
-
-
-
 										<div class="message" id="deliveryMessage" style="display: none;">
 											<span class="place" id="deliveryMessageTitle">배송완료 메시지</span>
 											<span class="txt" id="deliveryMessageDetail">배송 직후</span>
@@ -304,9 +282,8 @@
 										<dl class="amount">
 											<dt class="tit">적립금사용</dt>
 											<dd class="price">
-												<span class="num pay_sum" id="paper_reserves">0 원</span> <input
-													type="hidden" name="coupon_emoney" size="12" value="0"
-													readonly="">
+												<span class="num pay_sum" id="paper_reserves">0 원</span>
+												<input type="hidden" name="coupon_emoney" size="12" value="0" readonly="">
 											</dd>
 										</dl>
 										<dl class="amount lst">

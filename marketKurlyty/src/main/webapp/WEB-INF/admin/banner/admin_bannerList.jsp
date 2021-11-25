@@ -65,13 +65,10 @@
 							<tbody>
 								<c:forEach var="banner" items="${bannerList }">
 								<tr>
-									<td>${banner.banner_serial }</td>
-									<td>${banner.banner_title }</td>
-									<td>${banner.banner_contents }</td>
-									<td><img src="${banner.banner_filepath }" height="150" width="1000"></td>
-									<td>
-										<input type="button" onclick="location.href='admin_banner.mdo?banner_serial=${banner.banner_serial}'" value="수정">
-									</td>
+									<td onclick="location.href='admin_banner.mdo?banner_serial=${banner.banner_serial}'">${banner.banner_serial }</td>
+									<td onclick="location.href='admin_banner.mdo?banner_serial=${banner.banner_serial}'">${banner.banner_title }</td>
+									<td onclick="location.href='admin_banner.mdo?banner_serial=${banner.banner_serial}'">${banner.banner_contents }</td>
+									<td onclick="location.href='admin_banner.mdo?banner_serial=${banner.banner_serial}'"><img src="${banner.banner_filepath }" height="150" width="1000"></td>
 									</tr>
 							</c:forEach>
 							</tbody>

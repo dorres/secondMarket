@@ -29,4 +29,14 @@ public class HeaderServiceImpl implements HeaderService {
 	public List<BannerVO> getBanner() {
 		return headerDao.getBanner();
 	}
+
+	@Override
+	public List<ProductVO> getHotDealProduct() {
+		return headerDao.getHotDeal();
+	}
+
+	@Override
+	public List<ProductVO> getNewGoods() {
+		return headerDao.getNewGoods();
+	}
 }

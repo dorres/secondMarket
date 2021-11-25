@@ -5,8 +5,38 @@
  
  <mapper namespace="adminOrderDAO">
  	<select id="getOrderWaitList" resultType="order">
- 		SELECT * FROM MK_ORDER WHERE ORDER_DELIVERY_STATUS != '구매완료' ORDER BY ORDER_DATE
+ 		SELECT * FROM MK_ORDER
+ 		WHERE ORDER_DELIVERY_STATUS IN ('결제완료','배송준비중') 
+ 		ORDER BY ORDER_DATE
  	</select>
+ 	<select id="getOrderDeliveryList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('배송중','배송완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 	<select id="getOrderFinishList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('구매완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 
+  	<select id="getOrderRefundList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('환불요청', '환불완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 
+  	<select id="getOrderReturnList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('반품요청', '반품완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>
+ 
+  	<select id="getOrderCancleList" resultType="order">
+ 		SELECT * FROM MK_ORDER 
+ 		WHERE ORDER_DELIVERY_STATUS IN ('취소요청','취소완료')
+ 		ORDER BY ORDER_DATE
+ 	</select>	
  	<!-- mk_order 테이블 가져오는 쿼리  -->
  	<select id="getOrderWait" resultType="order">
 		SELECT * FROM MK_ORDER WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
@@ -37,6 +67,28 @@
  		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
  	</select>
  	
+ 	 <select id="getShippingInfoList" resultType="shipping" parameterType="java.util.List">
+ 		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</select>
+ 	
+ 	<select id="updateShippingInfoList" resultType="shipping" parameterType="java.util.List">
+ 		SELECT * FROM MK_SHIPPING_INFO WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</select>
+ 	
+ 	 <update id="updateStatus" parameterType="java.util.List">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '배송준비중' WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</update>
+ 	
  	<!-- 받는사람 배송지 수정 -->
  	<update id="updateShippingInfo" parameterType="shipping">
  		UPDATE MK_SHIPPING_INFO SET 
@@ -50,9 +102,40 @@
  	</update>
  	
  	<!-- 리스트 페이지에서 배송상태 변경 -->
- 	 	<update id="updateOrderWait" parameterType="order">
+ 	<update id="updateOrderWait" parameterType="order">
  		UPDATE MK_ORDER SET 
  		ORDER_DELIVERY_STATUS = #{order_delivery_status}
  		WHERE ORDER_MERCHANT_SERIAL = #{order_merchant_serial}
  	</update>
+ 	
+ 	<update id="updateOrderWait1" parameterType="java.util.List">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '배송중'
+ 		WHERE ORDER_MERCHANT_SERIAL IN
+ 		<foreach collection="list" item="merchant"  open="(" close=")" separator=",">
+            #{merchant}
+        </foreach>
+ 	</update>
+ 	
+ 	<update id="updateRefundWait" parameterType="qna">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '환불요청'
+ 		WHERE ORDER_MERCHANT_SERIAL = #{order_details_order_serial}
+ 	</update>
+ 	
+ 	 <update id="updateReturnWait" parameterType="qna">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '반품요청'
+ 		WHERE ORDER_MERCHANT_SERIAL = #{order_details_order_serial}
+ 	</update>
+ 	
+ 	 <update id="updateCancleWait" parameterType="qna">
+ 		UPDATE MK_ORDER SET 
+ 		ORDER_DELIVERY_STATUS = '취소요청'
+ 		WHERE ORDER_MERCHANT_SERIAL = #{order_details_order_serial}
+ 	</update>
+ 	
+ 	
+ 	
+
  </mapper>
