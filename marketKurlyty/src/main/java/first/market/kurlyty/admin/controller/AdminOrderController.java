@@ -27,10 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
-<<<<<<< HEAD
-=======
 import first.market.kurlyty.admin.vo.AdminQnaVO;
->>>>>>> Ben
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 
 @Controller
@@ -177,12 +174,6 @@ public class AdminOrderController {
 		public String orderFinishList(Model model) {
 			model.addAttribute("orderList",adminService.getOrderFinishList());
 			return "order/admin_orderFinishList";
-<<<<<<< HEAD
-		}		
-		//주문관리 구매완료 세부사항
-		//주문관리 구매완료 삭제
-		//주문관리 구매완료 수정
-=======
 		}	
 //========================================================================		
 		//환불관리 리스트
@@ -247,5 +238,4 @@ public class AdminOrderController {
 			}
 			
 		}
->>>>>>> Ben
 }

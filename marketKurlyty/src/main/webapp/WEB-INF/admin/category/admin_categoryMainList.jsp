@@ -75,20 +75,11 @@
 							<tbody>
 								<c:forEach var="main" items="${mainList }">
 								<tr>
-<<<<<<< HEAD
-									<td>${main.rownum }</td>
-									<td>${main.category_main_name }</td>
-									<td align="center"><img alt="메인 카테고리 아이콘 검정" src=" ${main.category_main_icon_black }"></td>
-									<td align="center"><img alt="메인 카테고리 아이콘 컬러" src="${main.category_main_icon_color }"></td>
-									<td>
-										<input type="button" onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" value="수정">
-=======
 									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'">${main.rownum }</td>
 									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'">${main.category_main_name }</td>
 									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" align="center"><img alt="메인 카테고리 아이콘 검정" src=" ${main.category_main_icon_black }"></td>
 									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" align="center"><img alt="메인 카테고리 아이콘 컬러" src="${main.category_main_icon_color }"></td>
 									<td>
->>>>>>> Ben
 										<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryMainDelete.mdo?category_main_serial=${main.category_main_serial }')"/>
 									</td>
 								</tr>
