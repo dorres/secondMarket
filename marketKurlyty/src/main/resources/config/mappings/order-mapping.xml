@@ -24,6 +24,7 @@
 		UPDATE MK_USER_DETAILS SET user_total_purchase=#{user_total_purchase},
 		user_point=#{user_point} WHERE user_id=#{user_id}
 	</update>
+	<!-- userDetail 정보 얻어오기 -->
 	<select id="getUserDetails" resultType="userDetails">
 		SELECT * FROM mk_user_details WHERE user_id=#{value}
 	</select>
@@ -38,4 +39,5 @@
 		#{shipping_door_password},#{shipping_sender_name},
 		#{shipping_sender_phone},#{order_merchant_serial})
 	</insert>
+	
 </mapper>

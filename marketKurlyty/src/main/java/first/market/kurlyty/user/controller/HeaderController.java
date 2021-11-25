@@ -28,7 +28,7 @@ import first.market.kurlyty.vo.ProductVO;
 public class HeaderController {
 //	@Autowired
 //	private JdbcTemplate jdbc;
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	@Autowired
@@ -91,6 +91,10 @@ public class HeaderController {
 	public String altleShopping() {
 		return "mainPage/altleShopping"; 
 	}
+	@RequestMapping("/recipeItemPage.do")
+	public String recipeItemPage() {
+		return "mainPage/recipe";
+	}
 	
 	@RequestMapping("/fileUploadTest.do")
 	public String fileUploadTest() {
@@ -116,7 +120,8 @@ public class HeaderController {
 			
 			System.out.println(SecurityUtil.bytesToHex(key.getEncoded()));
 			
-			System.out.println(SecurityUtil.encrypt("AES/CBC/PKCS5Padding", key, iv, "fvvnZoM2XNLkBal2g718Djt/F0ooiCLtN9pwEz2d"));
+			System.out.println(SecurityUtil.encrypt("AES/CBC/PKCS5Padding", key, iv, "sodlfdms56@gmail.com"));
+			System.out.println(SecurityUtil.encrypt("AES/CBC/PKCS5Padding", key, iv, "phgksmffhTkd56@"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
