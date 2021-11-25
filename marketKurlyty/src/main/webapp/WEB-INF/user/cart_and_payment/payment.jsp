@@ -633,21 +633,23 @@ $(document).ready(function(){
 		}
 	})
 	$("input#allPoint").click(function(){
-		if(${userPoint}<originPayPrice){
-			if($(this).is(":checked")){
-				$("input#usePoint").val(${userPoint});
-				$("input#payment").val(originPayPrice-${userPoint});
-				$("span#paper_settlement").text(parseInt(originPayPrice-${userPoint}).toLocaleString("ko-KR"))
-				$("span#paper_reserves").text((${userPoint}).toLocaleString("ko-KR")+"원");
+		if(${userPoint}>=100){
+			if(${userPoint}<originPayPrice){
+				if($(this).is(":checked")){
+					$("input#usePoint").val(${userPoint});
+					$("input#payment").val(originPayPrice-${userPoint});
+					$("span#paper_settlement").text(parseInt(originPayPrice-${userPoint}).toLocaleString("ko-KR"))
+					$("span#paper_reserves").text((${userPoint}).toLocaleString("ko-KR")+"원");
+				}else{
+					$("input#usePoint").val('');
+					$("input#payment").val(originPayPrice);
+					$("span#paper_settlement").text(originPayPrice.toLocaleString("ko-KR"))
+					$("span#paper_reserves").text("0원");
+				}
 			}else{
-				$("input#usePoint").val('');
-				$("input#payment").val(originPayPrice);
-				$("span#paper_settlement").text(originPayPrice.toLocaleString("ko-KR"))
-				$("span#paper_reserves").text("0원");
+				$("strong#notMore").fadeIn();
+				$("strong#notMore").fadeOut(1000);
 			}
-		}else{
-			$("strong#notMore").fadeIn();
-			$("strong#notMore").fadeOut(1000);
 		}
 	})
 })
@@ -680,8 +682,12 @@ function inputPoint(){
 			$("span#paper_reserves").text("0원");
 			rePoint=point;
 		}
-		if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
-			$("strong#not1Place").css("display","block");
+		if(point!=0){
+			if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
+				$("strong#not1Place").css("display","block");
+			}else{
+				$("strong#not1Place").css("display","none");
+			}
 		}else{
 			$("strong#not1Place").css("display","none");
 		}
@@ -691,9 +697,15 @@ function inputPoint(){
 var IMP = window.IMP; // Can be omitted
 IMP.init("imp09497562"); // Example: imp00000000
 function reqeustPay(){
-	if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
-		alert("적립금은 10원 단위로 사용할 수 있습니다.")
-		return false;
+	if($("input#usePoint").val()!="" && $("input#usePoint").val()!="0"){
+		if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
+			alert("적립금은 10원 단위로 사용할 수 있습니다.")
+			return false;
+		}
+		if(parseInt($("input#usePoint").val())<100){
+			alert("적립금은 100원 이상부터 사용가능합니다.");
+			return false;
+		}
 	}
 	if(parseInt($("input#usePoint").val())>=originPayPrice){
 		alert("결제금액보다 많은 적립금은 사용할 수 없습니다.");

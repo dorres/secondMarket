@@ -44,6 +44,9 @@ position:relative;
 }
 </style>
 <script>
+$(document).ready(function(){
+	console.log($("button.cartBt").position().left);
+});
 function openCart(serial,name,lastprice,price,discount){
 	var totalprice = parseInt(lastprice)
 	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);

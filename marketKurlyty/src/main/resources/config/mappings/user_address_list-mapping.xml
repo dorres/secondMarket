@@ -12,6 +12,15 @@
 </insert>
 <update id="address_update">
 		UPDATE MK_USER_ADDRESS_LIST SET user_address2=#{user_address2},user_name=#{user_name},user_phone=#{user_phone}
-		WHERE user_address1=#{user_address1}
+		WHERE address_serial=#{address_serial}
 </update>
+<update id="setDefaultAddress">
+	UPDATE mk_user_address_list SET address_default=true WHERE address_serial=#{address_serial}
+</update>
+<update id="setDefaultAllFalse">
+	UPDATE mk_user_address_list SET address_default=false WHERE user_id=#{user_id}
+</update>
+<delete id="deleteAddress">
+	DELETE FROM mk_user_address_list WHERE address_serial=#{address_serial}
+</delete>
 </mapper>

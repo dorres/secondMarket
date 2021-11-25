@@ -91,6 +91,10 @@ public class HeaderController {
 	public String altleShopping() {
 		return "mainPage/altleShopping"; 
 	}
+	@RequestMapping("/recipeItemPage.do")
+	public String recipeItemPage() {
+		return "mainPage/recipe";
+	}
 	
 	@RequestMapping("/fileUploadTest.do")
 	public String fileUploadTest() {
