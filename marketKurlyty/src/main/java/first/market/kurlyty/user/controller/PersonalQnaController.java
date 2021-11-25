@@ -78,10 +78,10 @@ public class PersonalQnaController {
 		
 		// System.out.println(vo.getQna_personal_serial());
 		 //1.call(get DB) to get SERIAL
-		 PersonalQnaVO getPersonalQna = personalqnaService.getPersonalQna(vo);
+		 PersonalQnaVO getPersonalQnaContent = personalqnaService.getPersonalQna(vo);
 		 //System.out.println(getPersonalQna.getQna_personal_title());
 		 //2. put Origianl DB in model(=percel Box)
-		 model.addAttribute("getPersonalQna", getPersonalQna);
+		 model.addAttribute("getPersonalQna", getPersonalQnaContent);
 		 //3. going to personalQnaWrite and start processing '.JSP'
 		 
 		 return "customerCenter/personalQnaWrite";

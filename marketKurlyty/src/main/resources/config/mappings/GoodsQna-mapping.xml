@@ -23,28 +23,32 @@
   </select>
  
   <!-- 게시판 보기 (상품 SERIAL로 불러오기 (해당 상품의 모든 문의) -->
+  <!--  작업중 -->
   <select id="getGoodsQnaList"  resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
-  SELECT * FROM mk_qna_goods WHERE qna_goods_serial = #{qna_goods_serial}
+  SELECT * FROM mk_qna_goods WHERE category_goods_serial = #{category_goods_serial}
   </select>
- 
-    <!-- 수정용으로 글을 눌러서 정보를 받아오기  ?? + UPDATE용 이미 작성된 글 불러오기 -->
-  <select id="getGoodsQnaContent" resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
-  	SELECT * FROM mk_qna_goods WHERE qna_goods_serial = #{qna_goods_serial}
-  </select> 
- 
-  <insert id="insertGoodsQna">
-  INSERT INTO mk_qna_goods VALUES (default, #{user_id}, #{user_name}, 
+
+ <!-- SUCCESS 11.24 -->
+  <insert id="insertGoodsQna"> 
+  INSERT INTO mk_qna_goods VALUES (default, #{user_id}, #{user_name},
   				#{category_main_serial}, #{category_sub_serial}, #{category_goods_serial}, 
   				#{qna_goods_title}, #{qna_goods_content}, now(), 0, #{qna_goods_lock},
- 				#{qna_goods_name}, #{qna_goods_image_thumb})
+ 				#{qna_goods_answer}, #{qna_goods_answer_date}, #{qna_goods_name}, #{qna_goods_image_thumb})
   </insert>
  
- 
+ <!-- SUCCESS 11.24 -->
   <delete id="deleteGoodsQna">
   	DELETE FROM mk_qna_goods WHERE qna_goods_serial = #{qna_goods_serial}
   </delete>
  	
  	
+ 	
+ 	 
+    <!-- 수정용으로 글을 눌러서 정보를 받아오기  ?? + UPDATE용 이미 작성된 글 불러오기 -->
+  <select id="getGoodsQnaContent" resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
+  	SELECT * FROM mk_qna_goods WHERE qna_goods_serial = #{qna_goods_serial}
+  </select> 
+ 
   <update id="updateGoodsQna">
  	 UPDATE mk_qna_goods SET qna_goods_title = #{qna_goods_title}, 
  	  						 qna_goods_content = #{qna_goods_content}, qna_goods_date = now()

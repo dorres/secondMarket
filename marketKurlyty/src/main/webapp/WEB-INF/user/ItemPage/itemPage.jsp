@@ -3,30 +3,636 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet" href="${pageContext.request.contextPath}/resources/style/itemPage.css">
 <link rel="styleSheet" href="${pageContext.request.contextPath}/resources/style/ItemListStyle.css">
 
-</head>
-
 <style>
-.alert-window{
-width:450px;
-position: absolute;
-    z-index: 9999;
-    background-color: #fff;
-   	top: 0;
-    bottom: 0;
-    right:0;
-    left: 0;
-    margin: auto;
+.xans-product-additional table.xans-board-listheader {
+    margin: 15px 0 0;
+    color: #353535;
+    font-size: 12px;
+    line-height: 140%;
+    table-layout: fixed;
 }
+.xans-board-listheader {
+    border-top: 2px solid #522772;
+ }
+  
+body * {
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    letter-spacing: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+form {
+    display: block;
+}
+div {
+    display: block;
+    word-break: break-all;
+}	
+
+script {
+    display: none;
+}
+
+.xans-product-additional table.tbl_newtype1 td {
+    height: auto;
+    padding: 22px 3px 23px;
+}
+.xans-product-additional table.xans-board-listheaderd td {
+
+    border-top: 1px solid #e3e3e3;
+    text-align: center;
+    vertical-align: middle;
+}
+
+element.style {
+    display: block;
+}
+
+.goods_board .review_view {
+    padding: 10px 10px 11px;
+    border-top: 1px solid #e3e3e3;
+}
+.goods_board .review_view .inner_review {
+    width: 100%;
+    padding: 20px 9px 9px;
+    line-height: 25px;
+}
+.goods_board .review_notice .name_purchase {
+    display: none;
+}
+.goods_board .review_notice .review_photo {
+    display: none;
+}
+.goods_board .review_photo {
+    padding-top: 30px;
+    line-height: 16px;
+}
+
+.xans-product-additional div.board .btnArea {
+    padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    display: table;
+}
+.xans-product-additional div.board>.btnArea {
+    border-top: 1px solid #6a3664;
+}
+.xans-product-additional div.board .btnArea a {
+    display: inline-block;
+}
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+.xans-product-additional div.board .btnArea {
+    padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    display: table;
+}
+.goods_board .board_pg_area {
+    clear: both;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.layout-pagination-button:first-child {
+    border-left: 1px solid #ddd;
+}
+.layout-pagination-first-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
+}
+.layout-pagination-prev-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png);
+}
+.layout-pagination-first-page, .layout-pagination-prev-page, .layout-pagination-next-page, .layout-pagination-last-page {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    text-indent: -9999px;
+}
+.layout-pagination-next-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png);
+}
+.layout-pagination-last-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);
+}
+.layout-pagination-button {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ddd;
+    border-left: 0;
+    vertical-align: top;
+}
+
+.layout-pagination-first-page, .layout-pagination-prev-page, .layout-pagination-next-page, .layout-pagination-last-page {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    text-indent: -9999px;
+}
+.layout-pagination-button {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ddd;
+    border-left: 0;
+    vertical-align: top;
+}
+.layout-pagination-number:hover, .layout-pagination-number.__active {
+    background-color: #f7f7f7;
+    color: #5f0080;
+}
+.layout-pagination-number {
+    font-weight: 700;
+    line-height: 34px;
+}
+.goods-review-grp-btn {
+    text-align: right;
+}
+.goods_board .goods-review-grp-btn .styled-button {
+    height: 32px;
+}
+
+.goods-review-grp-btn .styled-button {
+    width: auto;
+    min-width: 75px;
+    padding: 0 15px;
+    line-height: 28px;
+    font-size: 12px;
+}
+.styled-button {
+    display: inline-block;
+    width: 175px;
+    height: 50px;
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    font-size: 14px;
+    color: #5f0080;
+    line-height: 50px;
+    text-align: center;
+}
+body {
+    color: #4c4c4c;
+    font-size: 12px;
+    max-width: 100%;
+}
+button {
+    outline: none;
+}
+.xans-product-additional div.board .btnArea a {
+    display: inline-block;
+}
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+element.style {
+    line-height: 30px;
+    width: 130px;
+}
+.xans-product-additional .btnArea .bhs_button {
+    margin: 20px 0 20px 5px;
+}
+.bhs_button {
+    display: inline-block;
+    text-align: center;
+    background-color: #795b8f;
+    border: 1px solid #5f0080;
+    color: #fff;
+    float: right;
+    font-size: 13px;
+}
+.goods_board .board_pg_area {
+    clear: both;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+<!-- 상품 문의  -->
+#goods-infomation, #goods-review, #goods-qna {
+    padding-top: 100px;
+    margin-bottom: 0;
+}
+.goods-view-infomation-content {
+    padding-top: 40px;
+    min-height: 500px;
+    margin-bottom: 50px;
+}
+
+.board-container {
+    height: 100%;
+}
+.board-header-container {
+    padding-bottom: 38px;
+    font-family: Noto Sans;
+}
+.board-header-container strong {
+    display: block;
+    padding-bottom: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #333;
+}
+
+.list-description {
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #999;
+}
+.list-description li {
+    padding-left: 12px;
+}
+.list-description a {
+    font-weight: 700;
+    color: #999;
+    text-decoration: underline;
+}
+
+.board-item-container.product {
+    width: 1010px;
+}
+.board-item-container {
+    position: relative;
+    font-family: Noto Sans;
+    border-top: 2px solid #333;
+}
+.board-item-container .inquiry-board-header {
+    display: table;
+    table-layout: fixed;
+    border-bottom: 1px solid #333;
+}
+.board-item-container .inquiry-board-header>div {
+    display: table-cell;
+    text-align: center;
+    padding: 18px 0 20px;
+    width: 100px;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    color: #333;
+}
+
+.board-item-container .inquiry-notice-list {
+    position: relative;
+}
+ul {
+    list-style-type: none;
+}
+.board-item-container.product .board-list>li, .board-item-container.product .inquiry-notice-list>li {
+    padding: 0;
+    height: 61px;
+}
+.board-item-container .board-list>li, .board-item-container .inquiry-notice-list>li {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    padding: 16px 0;
+    font-family: Noto Sans;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.board-item-container .board-list>li .item-cell, .board-item-container .inquiry-notice-list>li .item-cell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+}
+
+.board-item-container.product .board-list>li .notice-cell span, .board-item-container.product .inquiry-notice-list>li .notice-cell span {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-right: 12px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #666;
+    background: hsla(0,0%,40%,.06);
+    vertical-align: top;
+}
+.board-item-container.product .board-list>li .notice-cell strong, .board-item-container.product .inquiry-notice-list>li .notice-cell strong {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 613px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+.board-item-container.product .board-list>li .notice-cell, .board-item-container.product .board-list>li>div.inquiry-item:first-child, .board-item-container.product .inquiry-notice-list>li .notice-cell, .board-item-container.product .inquiry-notice-list>li>div.inquiry-item:first-child {
+    width: 710px;
+    text-align: left;
+    padding: 0 20px;
+    min-height: 22px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.txt_sub.text_medium {
+    color: #999;
+}
+.board-item-container.product .board-list>li, .board-item-container.product .inquiry-notice-list>li {
+    padding: 0;
+    height: 61px;
+}
+.board-item-container .board-list, .board-item-container .inquiry-notice-list {
+    position: relative;
+}
+
+ol, ul {
+    list-style-type: none;
+}
+
+.board-item-container.product .board-list>li .product-detail, .board-item-container.product .inquiry-notice-list>li .product-detail {
+    height: 100%;
+    padding: 0 0 0 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.board-item-container .board-list>li .product-detail, .board-item-container .inquiry-notice-list>li .product-detail {
+    min-height: 44px;
+    text-align: left;
+    padding: 8px 20px 0 0;
+    font-weight: 400;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.board-item-container.product .board-list>li .product-detail strong, .board-item-container.product .inquiry-notice-list>li .product-detail strong {
+    max-width: 640px;
+    vertical-align: top;
+    font-weight: 400;
+}
+.board-item-container .board-list>li .product-detail strong, .board-item-container .inquiry-notice-list>li .product-detail strong {
+    display: inline-block;
+    max-width: 500px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+}
+.board-item-container .board-list>li .product-detail .product-name, .board-item-container .board-list>li .product-detail strong, .board-item-container .inquiry-notice-list>li .product-detail .product-name, .board-item-container .inquiry-notice-list>li .product-detail strong {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.txt_sub.kurlyPurple {
+    color: #5f0080;
+}
+.layout-wrapper.goods-view-area {
+    padding-right: 40px;
+}
+.layout-wrapper {
+    position: relative;
+    width: 1050px;
+    height: 100%;
+    margin: 0 auto;
+}
+.board-inquiry-area {
+    position: relative;
+}
+.paging-navigation {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.paging-navigation>button:disabled.paging-prev {
+    margin-right: 12px;
+    background-image: url(https://res.kurly.com/kurly/img/2021/direction_prev_disabled_24_44_gray.svg);
+}
+.paging-navigation>button.paging-prev {
+    margin-right: 12px;
+    background: url(https://res.kurly.com/kurly/img/2021/direction_prev_24_44_black.svg) 50% 0 no-repeat;
+}
+.paging-navigation>button:disabled {
+    border-color: #eee;
+    cursor: default;
+}
+.paging-navigation>button {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    background: 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    cursor: pointer;
+}
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+button {
+    outline: none;
+}
+body, input, select, textarea, button {
+    font-family: noto sans,malgun gothic,AppleGothic,dotum;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: #4c4c4c;
+    font-size: 12px;
+    max-width: 100%;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+    border-radius: 0;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+.paging-navigation>button.paging-next {
+    background: url(https://res.kurly.com/kurly/img/2021/direction_next_24_44_black.svg) 50% 0 no-repeat;
+}
+.paging-navigation>button {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    background: 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.paging-navigation>button span {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0,0,0,0);
+}
+.board-item-container .board-list>li.inquiry-item-expand .expand-question, .board-item-container .inquiry-notice-list>li.inquiry-item-expand .expand-question {
+    position: relative;
+    padding: 20px 26px 30px 36px;
+}
+
+.board-item-container .board-list>li.inquiry-item-expand>div, .board-item-container .inquiry-notice-list>li.inquiry-item-expand>div {
+    display: block;
+}
+.board-item-container.product .board-list>li.inquiry-item-expand, .board-item-container.product .inquiry-notice-list>li.inquiry-item-expand {
+    padding: 0 0 10px 20px;
+}
+.board-item-container .board-list>li.inquiry-item-expand, .board-item-container .inquiry-notice-list>li.inquiry-item-expand {
+    padding: 0 0 10px 100px;
+    background: #fafafa;
+    text-align: left;
+    color: #333;
+    box-sizing: border-box;
+}
+.board-item-container .board-list>li.inquiry-item-expand [class^=icon-].icon-question, .board-item-container .inquiry-notice-list>li.inquiry-item-expand [class^=icon-].icon-question {
+    background: url(https://res.kurly.com/kurly/ico/2021/question_24_24_purple.svg) 0 0 no-repeat;
+}
+.board-item-container .board-list>li.inquiry-item-expand [class^=icon-].icon-answer, .board-item-container .inquiry-notice-list>li.inquiry-item-expand [class^=icon-].icon-answer {
+    background: url(https://res.kurly.com/kurly/ico/2021/answer_24_24_purple.svg) 0 0 no-repeat;
+}
+
+.board-item-container .board-list>li.inquiry-item-expand [class^=icon-], .board-item-container .inquiry-notice-list>li.inquiry-item-expand [class^=icon-] {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.board-item-container .board-list>li.inquiry-item-expand .expand-answer .created-time, .board-item-container .inquiry-notice-list>li.inquiry-item-expand .expand-answer .created-time {
+    display: block;
+    padding-top: 20px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #999;
+}
+.board-item-container .board-list>li.inquiry-item-expand, .board-item-container .inquiry-notice-list>li.inquiry-item-expand {
+    padding: 0 0 10px 100px;
+    background: #fafafa;
+    text-align: left;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.board-item-container.product .board-list>li.inquiry-item-expand .expand-question p, .board-item-container.product .inquiry-notice-list>li.inquiry-item-expand .expand-question p {
+    min-height: auto;
+}
+.board-item-container .board-list>li.inquiry-item-expand .expand-question p, .board-item-container .inquiry-notice-list>li.inquiry-item-expand .expand-question p {
+    margin: 2px 0 0;
+    min-height: 60px;
+}
+
+.board-item-container .board-list>li.inquiry-item-expand [class^=icon-].icon-answer, .board-item-container .inquiry-notice-list>li.inquiry-item-expand [class^=icon-].icon-answer {
+    background: url(https://res.kurly.com/kurly/ico/2021/answer_24_24_purple.svg) 0 0 no-repeat;
+}
+.board-item-container .board-list>li.inquiry-item-expand .expand-answer p *, .board-item-container .inquiry-notice-list>li.inquiry-item-expand .expand-answer p * {
+    background: 0 0!important;
+    font-family: Noto Sans!important;
+    font-size: 14px!important;
+    line-height: 20px!important;
+    color: #333!important;
+}
+.board-item-container .board-list>li.inquiry-item-expand>div, .board-item-container .inquiry-notice-list>li.inquiry-item-expand>div {
+    display: block;
+}
+
+.board-inquiry-area .btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    height: 44px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    line-height: 1;
+}
+.btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+}
+.btn {
+    width: 100%;
+    height: 52px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+}
+button {
+    outline: none;
+}
+body, input, select, textarea, button {
+    font-family: noto sans,malgun gothic,AppleGothic,dotum;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: #4c4c4c;
+    font-size: 12px;
+    max-width: 100%;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+    border-radius: 0;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+.board-inquiry-area .btn span {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+
+
+
+
 </style>
+
+</head>
 
 <script>
 
@@ -35,7 +641,9 @@ function quantity(count){
 	var changeCount = parseInt(currentCount)+count;
 	var price=$("input#oldPrice").val();
 	var discount=${getItemPage.goods_detail_dicountrate}
-	var membership = ${membership.user_membership_point_rate};
+	var membership=-0;
+	if(${membership != null})
+		membership=parseInt("${membership.user_membership_point_rate}")+0;
 	if(changeCount<1)changeCount=1;
 	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
 	var point = parseInt((changePrice*(membership/100)+5)/10)*10
@@ -58,6 +666,22 @@ function inputCart(){
 			alert("담기에 실패했습니다.");
 		}
 	});
+}
+
+//보이기
+function div_show() {
+	$("#write_div").fadeIn(300);
+ //document.getElementById("write_div").style.display = "block";
+}
+function div_show_update() {
+	$("#update_div").fadeIn(300);
+}
+//숨기기
+function div_hide() {
+	$("input[name=qna_goods_title]").val("");
+	$("textarea[name=qna_goods_content]").val("");
+	$("#write_div").fadeOut(300);
+ //document.getElementById("write_div").style.display = "none";
 }
 </script>
 
@@ -1055,93 +1679,215 @@ function inputCart(){
 											</div>
 
 											<!-- 제품 문의 게시판을 작업 후 데이를 첨부합니다. -->
-										<div class="goods-view-infomation-content" id="goods-qna">
-											<div class="board-container">
-												<div id="productInquiryBoard" data-productno="81562"
-													data-boardpagesize="10" data-boardtype="product"
-													data-devicetype="pc">
-													<div class="board-header-container">
-														<strong>PRODUCT Q&amp;A</strong>
-														<ul class="list-description">
-															<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이
-																담당 게시판으로 이동될 수 있습니다.</li>
-															<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 
-															<a href="/shop/mypage/mypage_qna.php">1:1 문의</a>에 남겨주세요.
-															</li>
-														</ul>
-													</div>
-													<div class="board-item-container product">
-														<div class="inquiry-board-header">
-															<div style="width: 710px;">제목</div>
-															<div>작성자</div>
-															<div>작성일</div>
-															<div>답변상태</div>
+											<div class="goods-view-infomation-content" id="goods-qna">
+												<div class="board-container">
+													<div id="productInquiryBoard" data-productno="81562"
+														data-boardpagesize="10" data-boardtype="product"
+														data-devicetype="pc">
+														<div class="board-header-container">
+															<strong>PRODUCT Q&amp;A</strong>
+															<ul class="list-description">
+																<li>상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이
+																	담당 게시판으로 이동될 수 있습니다.</li>
+																<li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 <a
+																	href="/shop/mypage/mypage_qna.php">1:1 문의</a>에 남겨주세요.
+																</li>
+															</ul>
 														</div>
-														<ul class="inquiry-notice-list">
-															<li class="inquiry-item notice-item"><div
-																	class="item-cell notice-cell">
-																	<span>공지</span><strong>판매 (일시)중단 제품 안내
-																		(21.11.12 업데이트)</strong>
+														<div class="board-item-container product">
+															<div class="inquiry-board-header" style="table-layout:fixed;">
+																<div style="width: 710px;">제목</div>
+																<div>작성자</div>
+																<div>작성일</div>
+																<div>답변상태</div>
+															</div>
+															<!-- <ul class="inquiry-notice-list">
+																<li class="inquiry-item notice-item"><div
+																		class="item-cell notice-cell">
+																		<span>공지 -</span><strong> 판매 (일시)중단 제품 안내 (21.11.12 업데이트)</strong>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub text_medium normal ">Marketkurly</p>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub text_medium normal ">2021.11.12</p>
+																	</div>
+																	<div class="item-cell">
+																	<p class="txt_sub kurlyPurple normal ">공지사항</p>
+																	</div>
+																</li>
+															</ul> -->
+															
+										<c:forEach var="goodsqnalist" items="${goodsqnalist}">
+											<input type="hidden" name="category_goods_serial" value="${goodsqnalist.category_goods_serial}" />
+											<input type="hidden" name="qna_goods_answer_date" value="${goodsqnalist.qna_goods_answer_date}" />
+											
+															<ul class="board-list">
+																<li class="inquiry-item">
+																	<div class="product-detail ">
+																		<strong>${goodsqnalist.qna_goods_title}</strong>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub text_medium normal">${goodsqnalist.user_name}</p>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub text_medium normal"><fmt:formatDate value="${goodsqnalist.qna_goods_date}" pattern="yyyy-mm-dd"/></p>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub kurlyPurple normal">${goodsqnalist.qna_goods_answer_status}</p>
+																	</div>
+																</li>
+																	<li class="inquiry-item-expand " style="align:center; display:block; width:100%;"> 
+																		
+																<c:if test="${goodsqnalist.qna_goods_answer_date == null}">
+																	<div class="expand-question">
+																			<span class="icon-question"><span>질문</span></span>
+																			<p>
+																				<span>${goodsqnalist.qna_goods_title} </span>
+																			</p><br><br>
+																		
+																		<div class="inquiry-content-footer">
+																			<input type="button" class="bhs_button yb" value="수정" onclick="javascript:div_show_update()" style="align:center; line-height: 25px; width: 60px;">
+																			<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deleteGoodsQna.do?qna_goods_serial=${goodsqnalist.qna_goods_serial}&category_goods_serial=${goodsqnalist.category_goods_serial}'" style="align:center; line-height: 25px; width: 60px;">
+																		<br><br><!-- -->
+																		</div>
+																	</div>
+																</c:if>
+																		<!--  답변이 없을 때 !  -->
+																	<c:if test="${goodsqnalist.qna_goods_answer_date != null}">	 
+																		<div class="expand-question">
+																			<span class="icon-question"><span>질문</span></span>
+																			<p>
+																				<span>${goodsqnalist.qna_goods_title} </span>
+																			</p><br>
+																		</div>
+																		<div class="expand-answer">
+																			<span class="icon-answer"><span>답변</span></span>
+																			<p>Love food, Love life!<br>
+																				${goodsqnalist.qna_goods_answer}
+																				<br>혹여 컬리 이용하심에 상품으로 불편을 겪으시거나 다른 어려움이 있으실 경우<br>언제든
+																				컬리 고객행복센터 및 카카오톡, 1:1게시판으로 문의 부탁드립니다.<br>
+																				<br>마켓컬리 드림.
+																			</p>	
+																			<span class="created-time">${goodsqnalist.qna_goods_answer_date}</span>
+																		
+																		</div>
+																	</c:if>	
+																</li>
+															</ul>
+											</c:forEach> 
+													
+													<!-- <ul>
+																<li class="inquiry-item"><div
+																		class="product-detail is-secret">
+																		<strong>비밀글입니다.</strong><span class="icon-secret"><span
+																			class="screen_out">비밀글</span></span>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub text_medium normal ">노*석</p>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub text_medium normal ">2021.08.06</p>
+																	</div>
+																	<div class="item-cell">
+																		<p class="txt_sub kurlyPurple normal ">답변완료</p>
+																	</div></li>
+															</ul>
+ 																		-->
+															<div class="board-inquiry-area">
+																<div class="paging-navigation">
+																	<button type="button" class="paging-prev" disabled="disabled">
+																		<span>이전</span>
+																	</button>
+																	<button type="button" class="paging-next">
+																		<span>다음</span>
+																	</button>
 																</div>
-																<div class="item-cell">
-																	<p class="txt_sub text_medium normal ">Marketkurly</p>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub text_medium normal ">2017.02.01</p>
-																</div>
-																<div class="item-cell">-</div></li>
-														</ul>
-														<ul class="board-list">
-															<li class="inquiry-item">
-															<div class="product-detail ">
-																	<strong>뼈 제거했나요</strong>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub text_medium normal ">정*빈</p>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub text_medium normal ">2021.08.11</p>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub kurlyPurple normal ">답변완료</p>
-																</div></li>
-															<li class="inquiry-item"><div
-																	class="product-detail is-secret">
-																	<strong>비밀글입니다.</strong><span class="icon-secret"><span
-																		class="screen_out">비밀글</span></span>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub text_medium normal ">노*석</p>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub text_medium normal ">2021.08.06</p>
-																</div>
-																<div class="item-cell">
-																	<p class="txt_sub kurlyPurple normal ">답변완료</p>
-																</div></li>
-														</ul>
+																<!--  문의 하기 버튼 누르면 창을 띄움.  -->
+																<button class="btn active"
+																	onclick="javascript:div_show()">
+																	<span>문의하기</span>
+																</button>
+															</div>
 
-													<div class="board-inquiry-area">
-														<div class="paging-navigation">
-															<button type="button" class="paging-prev" disabled="disabled">
-																<span>이전</span>
-															</button>
-															<button type="button" class="paging-next">
-																<span>다음</span>
-															</button>
 														</div>
-														<button class="btn active">
-															<span>문의하기</span>
-														</button>
-													</div>
-
-												</div>
 													</div>
 												</div>
 											</div>
-								
-						<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-								
+
+
+											<div class="modal-container" id="write_div" style="display:none;">
+												<form name="insert" id="insertgoodsqna" method="post" style="height: 100%;" action="insertGoodsQna.do">
+													<input type="hidden" name="user_id" value="${userId}">
+													<input type="hidden" name="user_name" value="${userName}">
+													<input type="hidden" name="category_main_serial" value="${getItemPage.category_main_serial}"/>
+													<input type="hidden" name="category_sub_serial" value="${getItemPage.category_sub_serial}"/>
+													<input type="hidden" name="category_goods_serial" value="${getItemPage.category_goods_serial}"/>
+													<input type="hidden" name="category_goods_name" value="${getItemPage.category_goods_name}"/>
+													<input type="hidden" name="category_goods_image_thumb" value="${getItemPage.category_goods_image_thumb}"/>
+										
+													<div class="dimmed-layer">
+														<div class="inner-layer">
+															<div class="inquiry-modal" style="margin-bottom: 20px; margin-top: 20px;">												
+																<div class="modal-header">
+																	<strong>상품 문의하기</strong>
+																	<button type="button" class="btn-close" onclick="location.href='itemPage.do?category_goods_serial=${getItemPage.category_goods_serial}'">
+																		<span class="screen_out">닫기</span>
+																	</button>
+																</div>
+													
+																<div class="modal-body">
+																	<div class="product-item">
+																		<span class="frame-img" style="background-image: url(${getItemPage.category_goods_image_thumb});"></span>
+																		<div class="cell">
+																			<strong>${getItemPage.category_goods_name}</strong>
+																		</div>
+																	</div>
+																	<div class="inquiry-form">
+																		<div class="inquiry-row">
+																			<span>제목</span>
+																			<div class="inquiry-cell">
+																				<div class="input-comm type_form">
+																					<input type="text" placeholder="제목을 입력해주세요"
+																						name="qna_goods_title" maxlength="50" value="">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="inquiry-row">
+																			<span>내용</span>
+																			<div class="inquiry-cell">
+																				<div class="inquiry-text-area ">
+																					<span class="txt-byte"><span></span></span>
+																					<div class="input-comm type_form">
+																						<textarea name="qna_goods_content" maxlength="5000" placeholder="상품문의를 작성해주세요."></textarea>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="inquiry-row">
+																			<span><span class="screen_out">비밀글 여부</span></span>
+																			<div class="inquiry-cell">
+																				<label class="check_agree label_block">
+																				<input type="radio" name="qna_goods_lock" value="true"> <!-- 기본값 false -->
+																				<span class="ico"></span>비밀글로 문의하기</label>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+													
+																<div class="modal-footer">
+																	<button type="button" class="btn normal" onclick="javascript:div_hide();">취소</button>
+																
+																	<button type="submit" class="btn active" onclick="insertGoodsQna.do">등록</button>
+																	
+																	<button type="submit" class="btn active" onclick="updateGoodsQna.do">수정</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+									<!----------------------------- -->
 								</div>
 								
 							</div>
@@ -1159,17 +1905,29 @@ function inputCart(){
 
 		</div>		<!-- content -->
 		
+		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>   	<!-- main -->
 
 	<!-- 이하 footer -->
-		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div> <!-- Container -->
  </div><!-- Wrap -->
-</div>
+ </div>
 <a href="#top" id="pageTop">맨 위로가기</a>
 
+
 <script>
-	
-</script>
+		$(".inquiry-item-expand")
+				.click(
+						function() {
+							if ($(this).nextAll("tr:eq(0)").find(".sub").is(
+									":visible")) {
+								$(this).nextAll("tr:eq(0)").find(".sub").css(
+										"display", "none");
+							} else {
+								$(this).nextAll("tr:eq(0)").find(".sub").css(
+										"display", "table-cell");
+							}
+						})
+	</script>
 </body>
 </html>

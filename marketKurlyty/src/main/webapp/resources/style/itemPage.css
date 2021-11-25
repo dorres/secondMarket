@@ -1,21 +1,5 @@
 @charset "UTF-8";
 
-.board-header-container strong {
-    display: block;
-    padding-bottom: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #333;
-}
-.list-description li {
-    padding-left: 12px;
-    font-family: Noto Sans;
-    font-size: 14px;
-    line-height: 24px;
-    font-weight: 400;
-    color: #999;
-}
 .board-header-container {
     padding-bottom: 38px;
     font-family: Noto Sans;
@@ -63,42 +47,6 @@
     position: relative;
 }
 
-.board-item-container .board-list>li, 
-.board-item-container .inquiry-notice-list>li {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    padding: 16px 0;
-    font-family: Noto Sans;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    border-bottom: 1px solid #f4f4f4;
-  }
-  
-.board-item-container.product .board-list>li .notice-cell, .board-item-container.product .board-list>li>div.inquiry-item:first-child, .board-item-container.product .inquiry-notice-list>li .notice-cell, .board-item-container.product .inquiry-notice-list>li>div.inquiry-item:first-child {
-    width: 710px;
-    text-align: left;
-    padding: 0 20px;
-    min-height: 22px;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-
-
-.board-item-container.product .board-list>li .product-detail, .board-item-container.product .inquiry-notice-list>li .product-detail {
-    height: 100%;
-    padding: 0 0 0 20px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.board-item-container .board-list>li .item-cell, .board-item-container .inquiry-notice-list>li .item-cell {
-    display: table-cell;
-    vertical-align: middle;
-    width: 100px;
-}
 
 .xans-product-additional table.tbl_newtype1 td {
     height: auto;
@@ -110,63 +58,6 @@
 
 .txt_sub.kurlyPurple {
     color: #5f0080;
-}
-
-.board-item-container .board-list>li, .board-item-container .inquiry-notice-list>li {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    padding: 16px 0;
-    font-family: Noto Sans;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    border-bottom: 1px solid #f4f4f4;
-}
-
-.board-item-container.product .board-list>li .product-detail, .board-item-container.product .inquiry-notice-list>li .product-detail {
-    height: 100%;
-    padding: 0 0 0 20px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-.board-item-container .board-list>li .product-detail, .board-item-container .inquiry-notice-list>li .product-detail {
-    min-height: 44px;
-    text-align: left;
-    padding: 8px 20px 0 0;
-    font-weight: 400;
-    box-sizing: border-box;
-    vertical-align: top;
-}
-
-
-.board-item-container .board-list>li .product-detail.is-secret, .board-item-container .inquiry-notice-list>li .product-detail.is-secret {
-    cursor: default;
-}
-
-.board-item-container .board-list>li .product-detail.is-secret strong, .board-item-container .inquiry-notice-list>li .product-detail.is-secret strong {
-    color: #b5b5b5;
-}
-
-.board-item-container.product .board-list>li .product-detail strong, .board-item-container.product .inquiry-notice-list>li .product-detail strong {
-    max-width: 640px;
-    vertical-align: top;
-    font-weight: 400;
-}
-
-.board-item-container .board-list>li .product-detail strong, .board-item-container .inquiry-notice-list>li .product-detail strong {
-    display: inline-block;
-    max-width: 500px;
-    font-size: 14px;
-    line-height: 22px;
-    color: #333;
-}
-.board-item-container .board-list>li .product-detail .product-name, .board-item-container .board-list>li .product-detail strong, .board-item-container .inquiry-notice-list>li .product-detail .product-name, .board-item-container .inquiry-notice-list>li .product-detail strong {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 .paging-navigation {
     padding-top: 20px;
@@ -250,15 +141,6 @@ color: #fff;
 button {
     appearance: auto;
     -webkit-writing-mode: horizontal-tb !important;
-    font-style: ;
-    font-variant-ligatures: ;
-    font-variant-caps: ;
-    font-variant-numeric: ;
-    font-variant-east-asian: ;
-    font-weight: ;
-    font-stretch: ;
-    font-size: ;
-    font-family: ;
     text-rendering: auto;
     color: -internal-light-dark(black, white);
     letter-spacing: normal;
@@ -443,6 +325,8 @@ button {
     background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);
 }
 
+<!-- -->
+
 .alert-window{
 width:450px;
 position: absolute;
@@ -455,3 +339,345 @@ position: absolute;
     margin: auto;
 }
 
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .input-placeholder {
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 16px 16px 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    cursor: pointer;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .input-comm {
+    position: relative;
+}
+
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .input-comm input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px 1px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .inquiry-text-area textarea {
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    min-height: 226px;
+    padding: 16px 16px 0;
+    resize: none;
+    border: 0;
+    vertical-align: top;
+}
+.type_form textarea {
+    height: auto;
+    padding-top: 13px;
+    resize: none;
+}
+
+body, input, select, textarea, button {
+    font-family: noto sans,malgun gothic,AppleGothic,dotum;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: #4c4c4c;
+    font-size: 12px;
+    max-width: 100%;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+.dimmed-layer {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    z-index: 500;
+}
+.dimmed-layer .inner-layer {
+    min-width: 320px;
+    min-height: 620px;
+}
+.inquiry-modal {
+    overflow: hidden;
+    width: 800px;
+    height: 690px;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 30px;
+    background: #fff;
+    box-sizing: border-box;
+}
+element.style {
+    margin-top: 106px;
+}
+.inquiry-modal {
+    overflow: hidden;
+    width: 800px;
+    height: 690px;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 30px;
+    background: #fff;
+    box-sizing: border-box;
+}
+.inquiry-modal .modal-header {
+    position: relative;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #f4f4f4;
+}
+.inquiry-modal .modal-header strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #333;
+}
+
+.inquiry-modal .modal-header .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: url(https://res.kurly.com/kurly/ico/2021/close_32_32_gray.svg) 0 0 no-repeat;
+}
+button {
+    outline: none;
+}
+body, input, select, textarea, button {
+    font-family: noto sans,malgun gothic,AppleGothic,dotum;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: #4c4c4c;
+    font-size: 12px;
+    max-width: 100%;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+    border-radius: 0;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+
+.screen_out {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0,0,0,0);
+}
+.screen_out {
+    display: block;
+    left: -9999px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+.screen_out {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+.inquiry-modal .modal-header .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: url(https://res.kurly.com/kurly/ico/2021/close_32_32_gray.svg) 0 0 no-repeat;
+}
+
+.inquiry-modal .modal-header {
+    position: relative;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.inquiry-modal .modal-body {
+    height: 500px;
+    overflow-y: auto;
+}
+.inquiry-modal .modal-body .product-item {
+    position: relative;
+    overflow: hidden;
+    padding: 16px 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+.inquiry-modal .modal-body .product-item .frame-img {
+    overflow: hidden;
+    float: left;
+    width: 72px;
+    height: 72px;
+    border-radius: 4px;
+    background-color: #fafafa;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.inquiry-modal .modal-body .product-item span {
+    overflow: hidden;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.inquiry-modal .modal-body .product-item .cell {
+    display: flex;
+    align-items: center;
+}
+.inquiry-modal .modal-body .product-item div {
+    float: right;
+    width: 640px;
+    height: 72px;
+    padding-right: 20px;
+}
+
+.inquiry-modal .modal-body .inquiry-form {
+    padding-top: 15px;
+}
+.inquiry-modal .modal-body {
+    height: 500px;
+    overflow-y: auto;
+}
+.inquiry-modal .modal-footer {
+    border-top: 1px solid #f4f4f4;
+    text-align: center;
+    padding-top: 20px;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row>span {
+    width: 100px;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 44px;
+    font-weight: 700;
+    color: #333;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .inquiry-cell {
+    width: 640px;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .inquiry-text-area {
+    position: relative;
+    padding-bottom: 32px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .inquiry-text-area .txt-byte {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 11px;
+    line-height: 16px;
+    color: #ccc;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .inquiry-text-area .txt-byte span {
+    color: #333;
+}
+
+
+.inquiry-modal .modal-body .inquiry-form .inquiry-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row+.inquiry-row {
+    margin-top: 16px;
+}
+.inquiry-modal .modal-body .inquiry-form .inquiry-row .inquiry-cell .check_agree {
+    display: inline-block;
+    font-size: 14px;
+}
+label.label_block {
+    display: block;
+}
+label {
+    font-size: 16px;
+    line-height: 24px;
+}
+label {
+    cursor: default;
+}
+.inquiry-modal .modal-footer {
+    border-top: 1px solid #f4f4f4;
+    text-align: center;
+    padding-top: 20px;
+}
+.inquiry-modal {
+    overflow: hidden;
+    width: 800px;
+    height: 690px;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 30px;
+    background: #fff;
+    box-sizing: border-box;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.board-container {
+    height: 100%;
+}
