@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-=======
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
->>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -55,16 +50,6 @@
 											<!-- 여기 값을 수정 -->
 											
 												<c:forEach var="order" items="${orderList }">
-<<<<<<< HEAD
-												<tr height="25" align="center">
-													<td>${order.order_merchant_serial }</td>
-													<td>${order.order_date }</td>
-													<td>${order.category_goods_name } </td>
-													<td align="right">${order.order_goods_count }개</td>
-													<td align="right">${order.order_goods_price }원</td>
-													<td>
-													<input type="radio" name="ordernoSelect" onclick=""></td>
-=======
 													<tr height="25" align="center">
 														<td id="merchant">${order.order_merchant_serial }</td>
 														<td><fmt:formatDate value="${order.order_date  }" pattern="yyyy-MM-dd"/></td>
@@ -73,7 +58,6 @@
 														<td >${order.order_goods_price }원</td>
 														<td>
 														<input type="radio" name="ordernoSelect"></td>
->>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 													</tr>
 												</c:forEach>
 											
@@ -115,16 +99,11 @@
 		</tbody>
 	</table>
 <script>
-<<<<<<< HEAD
-$("input[name=ordernoSelect]").click(function(){	
-	opener.$("input#user_address1").val(address1);
-=======
 $("input[name=ordernoSelect]").click(function(){
 	var checkBtn = $(this);
 	var tr = checkBtn.closest("tr")
 	var merchant = tr.find("#merchant").text();
 	opener.$("input#order_details_order_serial").val(merchant);
->>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 	
 	self.close();
 })
