@@ -39,7 +39,7 @@
 		<typeAlias type="first.market.kurlyty.user.vo.User_order_listVO" alias="orderListVO"/> 
  		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
  		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/>
- 		 		<typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
+ 		 <typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
