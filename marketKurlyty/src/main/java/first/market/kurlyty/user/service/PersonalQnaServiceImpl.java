@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import first.market.kurlyty.user.dao.PersonalQnaDAO;
-import first.market.kurlyty.user.dao.UserDAO;
 import first.market.kurlyty.user.vo.PersonalQnaVO;
 import first.market.kurlyty.user.vo.UserVO;
 import first.market.kurlyty.user.vo.User_order_listVO;
@@ -34,7 +33,7 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 	}
 
 
-	 @Override public int updatePersonalQna(PersonalQnaVO vo) { 
+	@Override public int updatePersonalQna(PersonalQnaVO vo) { 
 		 return personalqnaDAO.updatePersonalQna(vo); }
 	
 
@@ -51,5 +50,10 @@ public class PersonalQnaServiceImpl implements PersonalQnaService {
 	@Override
 	public User_order_listVO getMerchantSerial(User_order_listVO vo) {
 		return personalqnaDAO.getMerchantSerial(vo);
+	}
+	
+	@Override
+	public List<User_order_listVO> getOrderSearch(UserVO vo) {
+		return personalqnaDAO.getOrderSearch(vo);
 	}
 }

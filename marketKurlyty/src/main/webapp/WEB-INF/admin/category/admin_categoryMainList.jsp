@@ -6,10 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>??????????????</title>
- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
- 
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 <style type="text/css">
 .btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
 		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
@@ -66,12 +75,12 @@
 							<tbody>
 								<c:forEach var="main" items="${mainList }">
 								<tr>
-									<td>${main.category_main_serial }</td>
-									<td>${main.category_main_name }</td>
-									<td>${main.category_main_icon_black }</td>
-									<td>${main.category_main_icon_color }</td>
+									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'">${main.rownum }</td>
+									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'">${main.category_main_name }</td>
+									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" align="center"><img alt="메인 카테고리 아이콘 검정" src=" ${main.category_main_icon_black }"></td>
+									<td onclick="location.href='admin_categoryMain.mdo?category_main_serial=${main.category_main_serial }'" align="center"><img alt="메인 카테고리 아이콘 컬러" src="${main.category_main_icon_color }"></td>
 									<td>
-										<input type="button" onclick="location.href='admin_FAQ.mdo?faq_serial=${main.category_main_serial }'" value="수정">
+										<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryMainDelete.mdo?category_main_serial=${main.category_main_serial }')"/>
 									</td>
 								</tr>
 								</c:forEach>

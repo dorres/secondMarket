@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,7 @@
 	<div class="section_destination">
 		<div id="inputForm" class="">
 			<div class="modify only_pc">
+				<input type="hidden" name="address_serial" value="${address_serial }">
 				<input type="hidden" name="user_address1" value="${user_address1 }">
 				<div class="field">
 					<span class="badge_default">기본 배송지</span>
@@ -42,6 +44,9 @@
 						inputmode="decimal" placeholder="번호를 입력해주세요" value="${user_phone }">
 				</div>
 				<button type="submit" class="btn active" id="UUpdate">저장</button>
+				<c:if test="${!address_default }">
+					<button type="button" class="btn normal" id="deleteBt">삭제</button>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -67,6 +72,23 @@
                }
 
         });
+    });
+    $("button#deleteBt").click(function(){
+    	var serial = $("input[name=address_serial]").val();
+    	$.ajax({
+    		url:"deleteAddress.do",
+    		data:{"address_serial":serial},
+    		type:"post",
+    		dataType:"text",
+    		success:function(res){
+    			alert(res);
+    			window.opener.location.replace("user_address_list.do");
+            	self.close();
+    		},
+    		error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+    	})
     });
 </script>
 </body>

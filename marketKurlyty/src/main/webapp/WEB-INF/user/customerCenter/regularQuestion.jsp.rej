@@ -1,9 +1,0 @@
-diff a/marketKurlyty/src/main/webapp/WEB-INF/user/customerCenter/regularQuestion.jsp b/marketKurlyty/src/main/webapp/WEB-INF/user/customerCenter/regularQuestion.jsp	(rejected hunks)
-@@ -3,6 +3,7 @@
- <!DOCTYPE html>
- <html lang="ko">
- <head>
-+ 
- <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
- 
- <!-- 여기부터 해당 페이지의 css 추가하면 됨-->

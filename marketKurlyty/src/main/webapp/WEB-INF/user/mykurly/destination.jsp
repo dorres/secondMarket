@@ -16,7 +16,21 @@
 <link rel="styleSheet" href="style/ItemListStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/mykurly/destination.css">
 </head>
-
+<style>
+.newBtn {
+    position: absolute;
+    right: 3px;
+    bottom: 7px;
+    border: 0 none;
+    background-color: #f7f7f7;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    text-align: right;
+}
+</style>
 <body class="main-index" oncontextmenu="return false" ondragstart="return false" >
 
 	<div id="wrap" class="">
@@ -41,7 +55,7 @@
 									<span id="addrListInfo" class="tit_sub"> 배송지에 따라상품정보가 달라질 수 있습니다. </span>
 								</h2>
 								<div class="new_address">
-									<button onclick="hi_zip();" target="_self">
+									<button onclick="hi_zip();" class="newBtn">
 										<img src="https://res.kurly.com/pc/ico/2006/ico_add_16x16.svg" alt="" class="ico"> 새 배송지 추가
 									</button>
 								</div>
@@ -61,12 +75,14 @@
 											<th class="tit_modify">수정</th>
 										</tr>
 									</thead>
-									<c:forEach var="list" items="${list }">
+									<c:forEach var="list" items="${list }" varStatus="index">
 									<tbody id="addrList"> <!-- 저장된 주소지가 있는경우인데 처음 회원가입할 경우 주소를 입력하므로 주문 내역처럼 db가 없는 html은 따로 없다 -->
 										<tr>
 											<td class="select type_radio">
+												<input type="hidden" id="address_serial" value="${list.address_serial }"/>
+												<input type="hidden" id="address_default" value="${list.address_default }"/>
 												<label class="skin_checkbox"> 
-													<input type="radio" name="addrNo" data-delivery-type="direct" value="9622171" > 
+													<input type="radio" name="addrNo" data-delivery-type="direct" value="9622171" ${list.address_default? 'checked':'' } > 
 													<span class="ico"  >
 													
 													</span> 
@@ -77,7 +93,7 @@
 											<td class="address">
 												<span class="badge_default"><c:set var="base" value="기본배송지"/>
 													<c:if test="${list.address_default eq true }" >
-													<c:out value="${base }"/>
+														<c:out value="${base }"/>
 													</c:if></span>
 													<input type="hidden" id="idU" value="${list.user_id }">
 												<p class="addr"><span id="uadd1">${list.user_address1 }</span> &nbsp;<span id="uadd2"> ${list.user_address2 }</span></p>
@@ -86,7 +102,7 @@
 											<td class="phone" id="uuserp">${list.user_phone }</td>
 											<td><span class="delivery star"></span></td>
 											<td>
-												<button type="button" class="ico modify" onclick="upDate();">수정하기</button>
+												<button type="button" class="ico modify" onclick="upDate('${index.index}','${list.address_serial }','${list.user_address1 }',' ${list.user_address2 }','${list.user_phone }','${list.user_name }');">수정하기</button>
 											</td>
 										</tr>
 									</tbody>
@@ -131,15 +147,31 @@ function popUp(myZipcode,myAddress,star){
 	window.open(url,'new','width=450,height=500,location=no,status=no,scrollbars=yes');
 }
 
-function upDate(user_address1,user_address2,user_phone,user_name){
-	var user_address1 = document.getElementById('uadd1').innerHTML;
-	var user_address2 = document.getElementById('uadd2').innerHTML;
-	var user_name = document.getElementById('uusern').innerHTML;
-	var user_phone = document.getElementById('uuserp').innerHTML;
-	
-	var url="destination_update.do?user_address1="+user_address1+"&user_address2="+user_address2+"&user_name="+user_name+"&user_phone="+user_phone;
+function upDate(index,address_serial,user_address1,user_address2,user_phone,user_name){
+	var address_default=$("input#address_default").eq(index).val();
+	var url="destination_update.do?address_default="+address_default+"&address_serial="+address_serial+"&user_address1="+user_address1+"&user_address2="+user_address2+"&user_name="+user_name+"&user_phone="+user_phone;
 	window.open(url,'update','width=450,height=500,location=no,status=no,scrollbars=yes');
 }
+$("input[name=addrNo]").click(function(){
+	var serial = $(this).closest("td").find("input#address_serial").val();
+	var element=$(this);
+	$.ajax({
+		url:"updateDefaulAddress.do",
+		type:"post",
+		data:{"address_serial":serial},
+		dataType:"text",
+		success:function(res){
+			alert(res);
+			$("span.badge_default").text("");
+			$("input#address_default").val(false);
+			element.closest("td").find("input#address_default").val(true);
+			element.closest("tr").find("span.badge_default").text("기본배송지");
+		},
+		error:function(error){
+			alert("에러가 발생하였습니다.")
+		}
+	})
+})
 </script>
 	<a href="#top" id="pageTop">맨 위로가기</a>
 

@@ -9,13 +9,24 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
+import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
+import first.market.kurlyty.admin.vo.AdminOrderVO;
 import first.market.kurlyty.admin.vo.AdminQnaVO;
+import first.market.kurlyty.admin.vo.AdminRegistVO;
+import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
+import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSalesVO;
+import first.market.kurlyty.admin.vo.AdminStockStockVO;
+import first.market.kurlyty.admin.vo.AdminStockVO;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 @Repository
 @Service("AdminService")
@@ -102,18 +113,148 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	//약관 수정
-	public int updateTeerms(AdminTermsAgreementVO agree) {
+	@Override
+	public int updateTerms(AdminTermsAgreementVO agree) {
 		return adminDao.updateTerms(agree);
 	}
 	
 	//약관 정보
+	@Override
 	public AdminTermsAgreementVO getTerms(AdminTermsAgreementVO agree) {
 		return adminDao.getTerms(agree);
 	}
 	
 	//약관 삭제
+	@Override
 	public int deleteTerms(AdminTermsAgreementVO agree) {
 		return adminDao.deleteTerms(agree);
+	}
+	
+	//상품 등록
+	@Override
+	public int inserGoods(AdminRegistVO regist) {
+		return adminDao.insertGoods(regist);
+	}
+	
+	//상품조회리스트
+	@Override
+	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
+		return adminDao.goodsList(regist);
+	}
+	
+	//상품조회
+	@Override
+	public AdminRegistVO getGoods(AdminRegistVO regist) {
+		return adminDao.getGoods(regist);
+	}
+	
+	//상품 수정
+	@Override
+	public int updateGoods(AdminRegistVO regist) {
+		return adminDao.updateGoods(regist);
+	}
+	
+	//상품 삭제
+	@Override
+	public int deleteGoods(AdminRegistVO regist) {
+		return adminDao.deleteGoods(regist);
+	}
+
+	//재고 조회
+	public AdminStockVO getStock(AdminStockVO stock) {
+		return adminDao.getStock(stock);
+	}
+	
+	//입고 조회
+	@Override
+	public List<AdminStockVO> getStockList(AdminStockVO stock) {
+		return adminDao.getStockList(stock);
+	}
+	
+	//입고 수정
+	@Override
+	public int updateStock (AdminStockVO stock) {
+		return adminDao.updateStock(stock);
+	}
+	
+	//재고 합계
+	@Override
+	public AdminStockVO sumStock(AdminStockVO stock) {
+		return adminDao.sumStock(stock);
+	}
+	
+	//판매 등록
+	@Override
+	public AdminStockVO getStock(int serial) {
+		return adminDao.getStock(serial);
+	}
+	
+	@Override
+	public int insertStock(AdminStockVO stock) {
+		return adminDao.insertStock(stock);
+	}
+	
+	// 리스트에 재고 출력
+	@Override
+	public int stockstock(AdminStockStockVO stockstock) {
+		return adminDao.stockstock(stockstock);
+	}
+	//----------------------------------------------------------------
+	// 상품문의 리스트 (답변대기)
+	@Override
+	public List<GoodsQnaVO> gqnaList(GoodsQnaVO gqna){
+		return adminDao.gqnaList(gqna);
+	}
+	
+	// 상품문의 리스트 삭제(답변대기)
+	@Override 
+	public int deleteGqna(GoodsQnaVO gqna) {
+		return adminDao.deleteGqna(gqna);
+	}
+	
+	//상품문의 답변 전 
+	@Override
+	public GoodsQnaVO gqnaOne(GoodsQnaVO gqna) {
+		return adminDao.gqnaOne(gqna);
+	}
+	
+	//상품 답변
+	public int updateGqna(GoodsQnaVO gqna) {
+		return adminDao.updateGqna(gqna);
+	}
+	
+	// 상품문의 리스트 (답변완료)
+	@Override
+	public List<GoodsQnaVO> gqnaListSuc(GoodsQnaVO gqna){
+		return adminDao.gqnaListSuc(gqna);
+	}
+	
+	//상품 답변 수정
+	@Override
+	public int updateGqnaSuc(GoodsQnaVO gqna) {
+		return adminDao.updateGqna(gqna);
+		}
+	
+	//----------------------------------------------------------------
+	//매출차트 날짜 
+	@Override
+	public List<AdminSalesVO> getDate(AdminSalesVO sales){
+		return adminDao.getDate(sales);
+	}
+	
+	
+	//----------------------------------------------------------------
+	
+	//리뷰 리스트
+	@Override
+	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
+		return adminDao.getReviewList(review);
+	}
+	
+	//리뷰 삭제
+	@Override
+	public int deleteReview(AdminReviewVO review) {
+		return adminDao.deleteReview(review);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
@@ -260,10 +401,190 @@ public class AdminServiceImpl implements AdminService {
 	public int insertCategory1(AdminCategoryMainVO category1) {
 		return adminDao.insertCategory1(category1);
 	}
-	
-	
 
+	@Override
+	public String getCategory1Column() {
+		return adminDao.getCategory1Column();
+	}
 
+	@Override
+	public int deleteCategory1(AdminCategoryMainVO category1) {
+		return adminDao.deleteCategory1(category1);
+	}
+
+	@Override
+	public AdminCategoryMainVO getCategory1(AdminCategoryMainVO category1) {
+		return adminDao.getCategory1(category1);
+	}
+	@Override
+	public int updateCategory1(AdminCategoryMainVO category1) {
+		return adminDao.updateCategory1(category1);
+	}
+	
+	//-------------------------------------------------------------
+	//관리자 2차 카테고리
+	@Override
+	public List<AdminCategorySubVO> getCategory2List() {
+		return adminDao.getCategory2List();
+	}
+
+	@Override
+	public int insertCategory2(AdminCategorySubVO category2) {
+		return adminDao.insertCategory2(category2);
+	}
+
+	@Override
+	public String getCategory2Column() {
+		return adminDao.getCategory2Column();
+	}
+
+	@Override
+	public AdminCategorySubVO getCategory2(AdminCategorySubVO category2) {
+		return adminDao.getCategory2(category2);
+	}
+	
+	@Override
+	public int updateCategory2(AdminCategorySubVO category2) {
+		return adminDao.updateCategory2(category2);
+	}
+	
+	@Override
+	public int deleteCategory2(AdminCategorySubVO category2) {
+		return adminDao.deleteCategory2(category2);
+	}
+	//--------------------------------------------------------------
+
+	@Override
+	public List<AdminCategoryGoodsVO> getCategory3List() {
+		return adminDao.getCategory3List();
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategoryType(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategoryType(category3);
+	}
+	@Override
+	public int insertCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3(category3);
+	}
+	@Override
+	public AdminCategoryGoodsVO getCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.getCategory3(category3);
+	}
+
+	@Override
+	public int deleteCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.deleteCategory3(category3);
+	}
+	@Override
+	public int updateCategory3(AdminCategoryGoodsVO category3) {
+		return adminDao.updateCategory3(category3);
+	}
+	@Override
+	public List<AdminCategorySubVO> getCategory2Name() {
+		return adminDao.getCategory2Name();
+	}
+
+	@Override
+	public int insertCategory3Detail(AdminCategoryGoodsVO category3) {
+		return adminDao.insertCategory3Detail(category3);
+	}
+	//================================================================
+	// 맴버쉽 리스트
+	@Override
+	public List<AdminMembershipVO> getMembershipList() {
+		return adminDao.getMembershipList();
+	}
+	@Override
+	public AdminMembershipVO getMembership(AdminMembershipVO membership) {
+		return adminDao.getMembership(membership);
+	}
+	@Override
+	public int updateMembership(AdminMembershipVO membership) {
+		return adminDao.updateMembership(membership);
+	}
+	@Override
+	public int insertMembership(AdminMembershipVO membership) {
+		return adminDao.insertMembership(membership);
+	}
+	@Override
+	public int deleteMembership(AdminMembershipVO membership) {
+		return adminDao.deleteMembership(membership);
+	}
+	@Override
+	public List<AdminOrderVO> getOrderWaitList() {
+		return adminDao.getOrderWaitList();
+	}
+	@Override
+	public AdminOrderVO getOrderWait(AdminOrderVO order) {
+		return adminDao.getOrderWait(order);
+	}
+	@Override
+	public AdminShippingInfoVO getShippingInfo(AdminOrderVO order) {
+		return adminDao.getShippingInfo(order);
+	}
+	@Override
+	public List<AdminOrderVO> getOrderWaitDetail(AdminOrderVO order) {
+		return adminDao.getOrderWaitDetail(order);
+	}
+
+	@Override
+	public int updateShippingInfo(AdminShippingInfoVO shipping) {
+		return adminDao.updateShippingInfo(shipping);
+	}
+	@Override
+	public int updateOrderWait(AdminOrderVO order) {
+		return adminDao.updateOrderWait(order);
+	}
+	@Override
+	public int updateOrderWait1(List<String> merchantList) {
+		return adminDao.updateOrderWait1(merchantList);
+	}
+	
+	@Override
+	public List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList) {
+		return adminDao.getShippingInfoList(merchantList);
+	}
+	@Override
+	public int updateStatus(List<String> merchantList) {
+		return adminDao.updateStatus(merchantList);
+	}
+
+	@Override
+	public List<AdminOrderVO> getOrderDeliveryList() {
+		return adminDao.getOrderDeliveryList();
+	}
+	@Override
+	public List<AdminOrderVO> getOrderFinishList() {
+		return adminDao.getOrderFinishList();
+	}
+	//======================================================================
+	//환불관리
+	@Override
+	public List<AdminOrderVO> getOrderRefundList() {
+		return adminDao.getOrderRefundList();
+	}
+	@Override
+	public int updateRefundWait(AdminQnaVO qna) {
+		return adminDao.updateRefundWait(qna);
+	}
+	//반품관리
+	@Override
+	public List<AdminOrderVO> getOrderReturnList() {
+		return adminDao.getOrderReturnList();
+	}
+	@Override
+	public int updateReturnWait(AdminQnaVO qna) {
+		return adminDao.updateReturnWait(qna);
+	}
+	//취소관리
+	@Override
+	public List<AdminOrderVO> getOrderCancleList() {
+		return adminDao.getOrderCancleList();
+	}
+	@Override
+	public int updateCancleWait(AdminQnaVO qna) {
+		return adminDao.updateCancleWait(qna);
+	}
 
 }
 	

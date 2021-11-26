@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="GoodsQnaDAO">
+ 
+ <!-- 질문들
+ 	INSERT INTO myboard (seq, title, writer, content)
+	VALUES((select nvl(max(seq), 0)+1 from myboard), #{title}, #{writer}, #{content})
+  -->
+ 
+ <!-- 첫 문의 작성할 떄 상품의 SERIAL+thumb 데이터를 불러온다. -->
+  <select id="getItemPage" resultType="itemPage" parameterType="itemPage">
+ 	 SELECT A.category_main_serial,
+	        A.category_sub_serial,
+	        A.category_goods_serial,
+	        A.category_goods_name,   
+	 		A.category_goods_image_thumb,
+      FROM mk_category_goods AS A 
+      INNER JOIN mk_qna_goods AS B
+      ON A.category_goods_serial = B.category_goods_serial	   		 
+      WHERE A.category_goods_serial = #{category_goods_serial}
+  </select>
+ 
+  <!-- 게시판 보기 (상품 SERIAL로 불러오기 (해당 상품의 모든 문의) -->
+  <!--  작업중 -->
+  <select id="getGoodsQnaList"  resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
+  SELECT * FROM mk_qna_goods WHERE category_goods_serial = #{category_goods_serial}
+  </select>
+
+ <!-- SUCCESS 11.24 -->
+  <insert id="insertGoodsQna"> 
+  INSERT INTO mk_qna_goods VALUES (default, #{user_id}, #{user_name},
+  				#{category_main_serial}, #{category_sub_serial}, #{category_goods_serial}, 
+  				#{qna_goods_title}, #{qna_goods_content}, now(), 0, #{qna_goods_lock},
+ 				#{qna_goods_answer}, #{qna_goods_answer_date}, #{qna_goods_name}, #{qna_goods_image_thumb})
+  </insert>
+ 
+ <!-- SUCCESS 11.24 -->
+  <delete id="deleteGoodsQna">
+  	DELETE FROM mk_qna_goods WHERE qna_goods_serial = #{qna_goods_serial}
+  </delete>
+ 	
+ 	
+ 	
+ 	 
+    <!-- 수정용으로 글을 눌러서 정보를 받아오기  ?? + UPDATE용 이미 작성된 글 불러오기 -->
+  <select id="getGoodsQnaContent" resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
+  	SELECT * FROM mk_qna_goods WHERE qna_goods_serial = #{qna_goods_serial}
+  </select> 
+ 
+  <update id="updateGoodsQna">
+ 	 UPDATE mk_qna_goods SET qna_goods_title = #{qna_goods_title}, 
+ 	  						 qna_goods_content = #{qna_goods_content}, qna_goods_date = now()
+					   WHERE qna_goods_serial = #{qna_goods_serial} 
+  </update>
+  
+
+ 
+ </mapper> 

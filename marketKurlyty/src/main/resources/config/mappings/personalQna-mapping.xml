@@ -12,9 +12,17 @@
  		
  <!-- insert 글 작성. 완료 -->
  	<insert id="insertPersonalQna" parameterType="personalQna">
- 		INSERT INTO mk_qna_personal VALUES (default, #{user_id}, #{admin_name}, #{order_details_order_serial},
- 		#{qna_personal_title}, #{qna_personal_content}, now(), #{qna_personal_hit},
- 		#{qna_personal_answer}, #{qna_personal_category}, #{qna_personal_phone}, #{qna_personal_email})
+ 		INSERT INTO mk_qna_personal 
+ 			(qna_personal_serial, user_id, user_name, order_details_order_serial,
+ 			 qna_personal_title, qna_personal_content, qna_personal_date,
+ 			 qna_personal_hit,qna_personal_category, qna_personal_phone,
+ 			 qna_personal_email, qna_personal_image1, qna_personal_image2 )
+ 		VALUES (
+	 		default, #{user_id}, #{user_name}, #{order_details_order_serial},
+	 		#{qna_personal_title}, #{qna_personal_content}, now(),
+	 		#{qna_personal_hit}, #{qna_personal_category}, #{qna_personal_phone},
+	 		#{qna_personal_email}, #{qna_personal_image1}, #{qna_personal_image2}
+ 		)
  	</insert>
 	
 <!-- 글 수정하기. 11월 6일 시작. -->
@@ -46,6 +54,15 @@
 	
 	<select id="order_merchant_serial" resultType="orderListVO">
 		select order_merchant_serial from mk_order where order_merchant_serial=#{order_merchant_serial}
+	</select>
+	
+	<select id="getOrderSearch" resultType="orderListVO" parameterType="user">
+		SELECT (ROW_NUMBER() OVER(ORDER by A.order_date)) AS ROWNUM,
+		A.order_merchant_serial , A.order_date, B.category_goods_name, A.order_goods_count, A.order_goods_price
+		FROM mk_order A 
+		JOIN mk_category_goods B
+		on a.master_goods_serial = b.category_goods_serial
+		where user_id = #{user_id}
 	</select>
 
  </mapper> 
