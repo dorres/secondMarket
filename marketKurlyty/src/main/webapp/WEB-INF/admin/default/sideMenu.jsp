@@ -201,7 +201,7 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="admin_bannerList.mdo">배너</a>
-								<a class="nav-link" href="layout-sidenav-light.html">쿠폰</a>	
+								<a class="nav-link" href="admin_couponList.mdo">쿠폰</a>	
 								<a class="nav-link" href="admin_membershipList.mdo">적립금</a>														
 							</nav>
 						</div>

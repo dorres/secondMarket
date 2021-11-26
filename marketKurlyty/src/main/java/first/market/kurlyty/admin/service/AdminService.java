@@ -8,6 +8,7 @@ import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
+import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -285,4 +286,6 @@ public interface AdminService {
 	//취소관리
 	List<AdminOrderVO> getOrderCancleList();
 	int updateCancleWait(AdminQnaVO qna);
+//============================================================================
+	List<AdminCouponVO> getCouponList();
 }

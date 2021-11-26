@@ -11,6 +11,7 @@ import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
+import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -471,6 +472,10 @@ public class AdminDAO {
 	}
 	public int updateCancleWait(AdminQnaVO qna) {
 		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
+	}
+	//----------------------------------------------------
+	public List<AdminCouponVO> getCouponList(){
+		return sqlSession.selectList("couponDAO.getCouponList");
 	}
 	
 }
