@@ -10,14 +10,7 @@
 		SELECT (ROW_NUMBER() OVER(ORDER BY goods_detail_serial)) AS ROWNUM, * FROM MK_GOODS_DETAIL;
 	</select>-->
 	<select id="getGoodsList" resultType="regist">
-		SELECT D.goods_detail_serial,D.category_main_serial, D.category_sub_serial, 
-		D.category_goods_serial, D.goods_detail_price, D.goods_detail_stock_quantity,
-		D.goods_detail_stock_notification, D.goods_detail_promotion_serial, D.goods_detail_status,
-		D.goods_detail_dicountrate, S.goods_stock_stock_quantity, S.goods_stock_receiving_quantity
-		FROM MK_GOODS_DETAIL D
-		JOIN MK_GOODS_STOCK S
-		ON D.CATEGORY_GOODS_SERIAL = S.CATEGORY_GOODS_SERIAL
-		ORDER BY GOODS_DETAIL_SERIAL;
+		SELECT * FROM MK_GOODS_DETAIL
 	</select>
 	
 	<!-- 상품 수정 -->
