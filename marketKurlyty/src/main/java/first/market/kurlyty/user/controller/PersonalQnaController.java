@@ -108,25 +108,67 @@ public class PersonalQnaController {
 		}
     
 	}
-//	//1:1문의 수정 페이지
-//	 @GetMapping("/updatePersonalQna.do") 
-//	 public String updatePersonalQna(PersonalQnaVO vo, Model model) {
-//		 PersonalQnaVO getPersonalQna = personalqnaService.getPersonalQna(vo);
-//		 model.addAttribute("getPersonalQna", getPersonalQna);
-//		 
-//		 return "customerCenter/personalQnaWrite";
-//	 }
-//	 //1:1문의 수정(update)
-//	 @PostMapping("/updatePersonalQna.do")
-//	 public String updatePostPersonalQna(PersonalQnaVO vo) {
-//		 int success = 0; 
-//		 success = personalqnaService.updatePersonalQna(vo);
-//		 if(success != 0) {
-//			 return "redirect:personalQnaBoard.do";
-//		 }else {
-//			 return "customerCenter/personalQnaWrite";
-//		 }
-//	 }
+	//1:1문의 수정 페이지
+	 @GetMapping("/updatePersonalQna.do") 
+	 public String updatePersonalQna(PersonalQnaVO vo, Model model) {
+		 PersonalQnaVO getPersonalQna = personalqnaService.getPersonalQna(vo);
+		 model.addAttribute("getPersonalQna", getPersonalQna);
+		 
+		 return "customerCenter/personalQnaWrite";
+	 }
+	 //1:1문의 수정(update)
+	 @PostMapping("/updatePersonalQna.do")
+	 public String updatePostPersonalQna(@RequestParam("file1") MultipartFile file1,
+				@RequestParam("file2") MultipartFile file2, PersonalQnaVO vo) {
+		int success =0;
+		String key1 = null, key2 =null;
+		UUID uuid;
+		String awsPath ="https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
+		 
+		//S3작업
+		//첫번째 이미지 수정싶은경우
+		if(file1.getSize() != 0) {
+			//기존 등록되어있던 이미지의 경로를 불러와서 S3에 이미지를 삭제한다.
+			if(personalqnaService.getPersonalQna(vo).getQna_personal_image1() !=null) {
+				String deleteKey1 = personalqnaService.getPersonalQna(vo).getQna_personal_image1().substring(49);
+				awsS3.delete(deleteKey1);
+			}
+			try {
+				uuid = UUID.randomUUID();
+				key1 = "personalQna/" +uuid + file1.getOriginalFilename();
+				InputStream is = file1.getInputStream();
+				String contentType = file1.getContentType(); 
+				long contentLength = file1.getSize();
+				awsS3.upload(is, key1, contentType, contentLength);
+			}catch (IOException e) { e.printStackTrace();}
+			//db작업을 위한 값 
+			vo.setQna_personal_image1(awsPath+key1);
+		}
+		//컬러 이미지 수정하고 싶은경우
+		if(file2.getSize() !=0){
+			if(personalqnaService.getPersonalQna(vo).getQna_personal_image2() != null) {
+				String deleteKey2 =  personalqnaService.getPersonalQna(vo).getQna_personal_image2().substring(49);
+				awsS3.delete(deleteKey2);
+			}
+			try {
+				uuid = UUID.randomUUID();
+				key2 =  "personalQna/" +uuid + file2.getOriginalFilename();
+				InputStream is = file2.getInputStream();
+				String contentType = file2.getContentType(); 
+				long contentLength = file2.getSize();
+				awsS3.upload(is, key2, contentType, contentLength);
+			} catch (IOException e) { e.printStackTrace();}
+			//db작업을 위한 값 
+			vo.setQna_personal_image2(awsPath+key2);
+		}		 
+
+		 success = personalqnaService.updatePersonalQna(vo);
+		 if(success != 0) {
+			 return "redirect:personalQnaBoard.do";
+		 }else {
+			 return "customerCenter/personalQnaWrite";
+		 }
+	 }
 	
 	//1:1문의 삭제(delete)
 	@RequestMapping("/deletePersonalQna.do")
@@ -136,10 +178,14 @@ public class PersonalQnaController {
 		PersonalQnaVO personal = personalqnaService.getPersonalQna(vo);
 		
 		// 2. 칼럼의 데이터에서 파일 경로를 deletePath에 담는다.
-		String deletePath = personal.getQna_personal_image1().substring(49);
-		awsS3.delete(deletePath);
-		String deletePath1 = personal.getQna_personal_image2().substring(49);
-		awsS3.delete(deletePath1);
+		if(personal.getQna_personal_image1() != null) {
+			String deletePath = personal.getQna_personal_image1().substring(49);
+			awsS3.delete(deletePath);
+		}
+		if(personal.getQna_personal_image2() !=null) {
+			String deletePath1 = personal.getQna_personal_image2().substring(49);
+			awsS3.delete(deletePath1);
+		}
 		
 		int success = 0;
 		success = personalqnaService.deletePersonalQna(vo);

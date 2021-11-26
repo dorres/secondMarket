@@ -142,7 +142,7 @@
  	</update>
  	
  	<select id="getCategory2Name" resultType="category2">
- 		SELECT CATEGORY_SUB_NAME FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_FIRST_NO = 'M001'
+ 		SELECT * FROM MK_CATEGORY_SUB WHERE CATEGORY_SUB_FIRST_NO = 'M001'
  	</select>
  	 
 	
