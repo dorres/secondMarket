@@ -99,15 +99,22 @@
 												<tr>												 
 													<th class="input_txt">주문번호</th>
 													<td>
+<<<<<<< HEAD
 													<input type="text" name="order_details_order_serial" style="width: 25%"
 														value="${order_merchant_serial.order_merchant_serial }">
+=======
+														<input type="text" name="order_details_order_serial" id="order_details_order_serial" style="width: 25%" >
+>>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 														<input type="button" onclick="popup()" class="bhs_button yb" value="주문조회" style="float: none; line-height: 27px; width: 100px;"/>
 													</td>
 												</tr>
 												
+<<<<<<< HEAD
 												
 												
 												
+=======
+>>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 												<tr>
 													<th class="input_txt">이메일</th>
 													<td><input type="text" name="qna_personal_email"
@@ -128,11 +135,8 @@
 												<tr>												 
 													<th class="input_txt">주문번호</th>
 													<td><input type="text"
-														name="order_details_order_serial" style="width: 25%"
-														value="${getPersonalQna.order_details_order_serial}">
-														<input type="button" class="bhs_button yb"
-														value="주문조회"
-														style="float: none; line-height: 27px; width: 100px;">
+														name="order_details_order_serial" id="order_details_order_serial" style="width: 25%" value="${getPersonalQna.order_details_order_serial}" readonly="readonly">
+														<input type="button" onclick="popup()" class="bhs_button yb" value="주문조회" style="float: none; line-height: 27px; width: 100px;"/>
 													</td>
 												</tr>
 												<tr>
@@ -236,13 +240,30 @@
 																	<td width="100%">
 																		<input type="file" name="file1" style="width: 50%" class="linebg">
 																	</td>
+<<<<<<< HEAD
+=======
+																	<c:if test = "${getPersonalQna.qna_personal_image1 != null}" >
+																	<td>
+																		<img alt="문의 이미지" src="${getPersonalQna.qna_personal_image1 }" width="70" height="70">
+																	</td>
+																	</c:if>
+>>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 																</tr>
 																 
 																<tr id="tr_1">
 																	<td width="20" nowrap="" align="center">2</td>
 																	<td width="100%">
 																		<input type="file" name="file2" style="width: 50%" class="linebg">
+<<<<<<< HEAD
 																	</td>
+=======
+																	</td>
+																	<c:if test = "${getPersonalQna.qna_personal_image2 != null}" >
+																	<td>
+																		<img alt="문의 이미지" src="${getPersonalQna.qna_personal_image2 }" width="70" height="70">
+																	</td>
+																	</c:if>
+>>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 																</tr>
 															</tbody>
 														</table>
@@ -264,12 +285,23 @@
 												<td align="LEFT" style="padding-top: 5px; border: none;" id="avoidDbl"></td>
 												<td align="right" style="padding-top: 5px; border: none;">
 													<c:if test = "${getPersonalQna == null}">
+<<<<<<< HEAD
 														<input type="submit" class="bhs_button yb" value="저장" style="float: none;"> 
 													</c:if>
 													
 													<c:if test = "${getPersonalQna != null}">
 														<input type="button" class="bhs_button yb" value="수정하기" style="float: none;"> 
 													</c:if> 
+=======
+														<input type="submit" id="insert" class="bhs_button yb" value="저장" style="float: none;"> 
+													</c:if>
+													
+													<c:if test = "${getPersonalQna != null}">
+														<input type="hidden" value="${getPersonalQna.qna_personal_image1 }" name="qna_personal_image1">
+														<input type="hidden" value="${getPersonalQna.qna_personal_image2 }" name="qna_personal_image2">
+														<input type="submit" id="update" class="bhs_button yb" value="수정하기" style="float: none;"> 
+													</c:if>												
+>>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 												</td>
 											</tr>
 											</tbody>
@@ -292,6 +324,18 @@ function popup(){
 	var url="orderSearch.do?&user_id="+user_id;
 	window.open(url,'new','width=800,height=500,location=no,status=no,scrollbars=yes');
 }
+<<<<<<< HEAD
+=======
+
+$("#insert").click(function () {
+    $("form").attr("action", "insertPersonalQna.do");
+});
+
+$("#update").click(function () {
+    $("form").attr("action", "updatePersonalQna.do");
+});
+
+>>>>>>> bc261849dbb821747c283345c1b36e853be526a3
 </script>
 </body>
 </html>

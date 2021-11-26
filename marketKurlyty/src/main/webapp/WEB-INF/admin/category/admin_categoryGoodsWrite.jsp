@@ -165,7 +165,6 @@ function formGoodsSubmit() {
 												</c:forEach>
 											</select>
 										</td>
-										
 										<th>상품명</th>
 										<td colspan="2"><input type="text" name="category_goods_name" style="width: 100%; height: 100%" placeholder="ex) 친환경 당근 500g"></td>
 									</tr>

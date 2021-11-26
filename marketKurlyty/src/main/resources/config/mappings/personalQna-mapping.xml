@@ -27,9 +27,16 @@
 	
 <!-- 글 수정하기. 11월 6일 시작. -->
 	<update id="updatePersonalQna" parameterType="personalQna">
-		UPDATE mk_qna_personal SET qna_personal_serial = #{qna_personal_serial}, qna_personal_title = #{qna_personal_title}, qna_personal_content = #{qna_personal_content}, 
-		qna_personal_date = now(), qna_personal_category = #{qna_personal_category}
-		WHERE qna_personal_serial = #{qna_personal_serial} 
+		UPDATE mk_qna_personal SET 
+			order_details_order_serial = #{order_details_order_serial},
+			qna_personal_title = #{qna_personal_title},
+			qna_personal_content = #{qna_personal_content}, 
+			qna_personal_date = now(),
+			qna_personal_category = #{qna_personal_category},
+			qna_personal_image1 = #{qna_personal_image1},
+			qna_personal_image2 = #{qna_personal_image2}
+		WHERE 
+			qna_personal_serial = #{qna_personal_serial} 
 	</update>
 	
 <!-- 글 삭제하기 11월 6일 시작1  -->
