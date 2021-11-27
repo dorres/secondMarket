@@ -84,7 +84,7 @@
 																
 																<input type="hidden" id="price" value="${item.goods_last_price }"/>
 																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
-																
+																<input type="hidden" id="isStock" value="${item.okStock }"/>
 																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
@@ -94,6 +94,7 @@
 																	<div class="name">
 																		<div class="inner_name">
 																			<a href="#" class="package ">${item.category_goods_name }</a>
+																			<strong style="color:red;fond-weight:bold;"><c:if test="${!item.okStock }">재고부족</c:if></strong>
 																			<div class="info"></div>
 																		</div>
 																	</div>
@@ -149,6 +150,7 @@
 																	<div class="name">
 																		<div class="inner_name">
 																			<a href="#" class="package ">${item.category_goods_name }</a>
+																			<strong style="color:red;fond-weight:bold;"><c:if test="${!item.okStock }">재고부족</c:if></strong>
 																			<div class="info"></div>
 																		</div>
 																	</div>
@@ -204,6 +206,7 @@
 																	<div class="name">
 																		<div class="inner_name">
 																			<a href="#" class="package ">${item.category_goods_name }</a>
+																			<strong style="color:red;fond-weight:bold;"><c:if test="${!item.okStock }">재고부족</c:if></strong>
 																			<div class="info"></div>
 																		</div>
 																	</div>
@@ -355,6 +358,9 @@
 		<!-- <iframe name="ifrmHidden" id="ifrmHidden" src="about:blank" style="display: none; width: 100%; height: 600px;"></iframe> -->
 <script>
 $(document).ready(function(){
+	if(${NotStock != null}){
+		alert("재고가 부족한 상품이 있습니다.");
+	}
 	$("button.minus").click(function(){
 		var count=parseInt($(this).siblings("#cartCount").val());
 		var serial=parseInt($(this).siblings("#goodsSerial").val());

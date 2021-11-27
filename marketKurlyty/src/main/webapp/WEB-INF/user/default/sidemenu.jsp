@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 div.quick-navigation{
 	position: absolute;
     z-index: 1;
-    left: 1420px;
+    right: 20px;
     top: 330px;
     width: 80px;
     font: normal 12px/16px "Noto Sans";
@@ -37,13 +38,18 @@ div#quickNavi .link_menu:hover{
 div.quickNaviFixed{
 	position: fixed;
     z-index: 1;
-    left: 1420px;
+    right: 20px;
     top: 330px;
     width: 80px;
     font: normal 12px/16px "Noto Sans";
     color: #333;
     letter-spacing: -0.3px;
     transition: top 0.2s;
+}
+
+strong.tit{   
+    padding: 22px 0 6px;
+    text-align: center;
 }
 </style>
 <script>
@@ -59,6 +65,14 @@ $(document).ready(function(){
 		}
 	});
 });
+$(window).on("resize",function(){
+	var windowWidth=window.innerWidth;
+	if(windowWidth<=1286){
+		$("div#quickNavi").css("display","none");
+	}else{
+		$("div#quickNavi").css("display","block");
+	}
+})
 </script>
 	<div id="quickNavi" class="quick-navigation">
 	
@@ -72,13 +86,29 @@ $(document).ready(function(){
 				href="/shop/goods/goods_review_best.php" class="link_menu ">베스트
 				후기</a>
 		</div>
-		<div class="side_recent" style="display: none">
+		<c:if test="${recentList!=null }">
+			<div class="side_recent" style="display:block">
+				<strong class="tit">최근 본 상품</strong>
+				<div class="list_goods" style="height:100px;">
+					<ul class="list" style="height:100px; overflow:auto;">
+						<c:forEach var="recentItem" items="${recentList }">
+							<li>
+								<a class="link_goods" href="itemPage.do?category_goods_serial=${recentItem.category_goods_serial }">
+									<img src="${recentItem.category_goods_image_thumb}">
+								</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+		</c:if>
+		<!-- <div class="side_recent" style="display: none">
 			<strong class="tit">최근 본 상품</strong>
 			<div class="list_goods" data-height="209">
 				<ul class="list"></ul>
 			</div>
 			<button type="button" class="btn btn_up off">최근 본 상품 위로 올리기</button>
 			<button type="button" class="btn btn_down">최근 본 상품 아래로 내리기</button>
-		</div>
+		</div> -->
 	
 	</div>

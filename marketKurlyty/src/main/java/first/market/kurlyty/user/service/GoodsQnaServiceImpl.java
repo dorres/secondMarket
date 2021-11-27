@@ -10,6 +10,7 @@ import first.market.kurlyty.user.vo.GoodsQnaVO;
 import first.market.kurlyty.user.vo.ItemPageVO;
 import first.market.kurlyty.user.vo.UserVO;
 
+
 //CONTROLLER - service - DAO 
 
 @Service
@@ -18,10 +19,22 @@ public class GoodsQnaServiceImpl implements GoodsQnaService {
 @Autowired  
 private GoodsQnaDAO goodsqnaDao;
 
-/*
- * @Override public UserVO getUser(UserVO vo) { return itempageDao.getUser(vo);
- * }
- */
+	@Override
+	public List<GoodsQnaVO> getGoodsQnaUserList(GoodsQnaVO vo) {
+		List<GoodsQnaVO> qnaList=goodsqnaDao.GoodsQnaUserList(vo);
+		for(GoodsQnaVO qna: qnaList) {
+			System.out.println(qna.getCategory_goods_serial());
+			String image = goodsqnaDao.getGoodsImage(qna.getCategory_goods_serial());
+			qna.setCategory_goods_image_thumb(image);
+		}
+		return qnaList;
+	}
+
+	@Override 
+	public UserVO getUser(UserVO vo) { 
+		return goodsqnaDao.getUser(vo);
+	}
+	
 	@Override
 	public ItemPageVO getItemPage(ItemPageVO vo) {
 		return goodsqnaDao.getItemPage(vo);
@@ -47,9 +60,9 @@ private GoodsQnaDAO goodsqnaDao;
 		return goodsqnaDao.deleteGoodsQna(vo);
 	}
 
-//	@Override
-//	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo) {
-//		return goodsqnaDao.getGoodsQnaContent(vo);
-//	}
+	@Override
+	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo) {
+		return goodsqnaDao.getGoodsQnaContent(vo);
+	}
 	
 }

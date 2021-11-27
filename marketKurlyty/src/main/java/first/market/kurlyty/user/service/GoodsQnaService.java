@@ -2,14 +2,16 @@ package first.market.kurlyty.user.service;
 
 import java.util.List;
 
+import first.market.kurlyty.user.vo.GoodsQnaVO;
 import first.market.kurlyty.user.vo.ItemPageVO;
 import first.market.kurlyty.user.vo.UserVO;
-import first.market.kurlyty.user.vo.GoodsQnaVO;
 
 public interface GoodsQnaService {
-	/*
-	 * // 가져와 글쓴이의 정보 String User_id public UserVO getUser(UserVO vo);
-	 */
+
+	List<GoodsQnaVO> getGoodsQnaUserList(GoodsQnaVO vo);
+	
+	public UserVO getUser(UserVO vo);
+	
 	// 중요 ! 가져와 상품의 정보 int category_goods_serial, 상품이름, 섬네일까지
 	public ItemPageVO getItemPage(ItemPageVO vo);
 	
@@ -24,7 +26,7 @@ public interface GoodsQnaService {
 	public int deleteGoodsQna(GoodsQnaVO vo);
 	 
 	//수정용
-//	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo);
+	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo); 
 	
 	//Controller >> service >> DAO
 

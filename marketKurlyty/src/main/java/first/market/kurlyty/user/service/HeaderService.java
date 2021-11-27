@@ -13,4 +13,5 @@ public interface HeaderService {
 	List<BannerVO> getBanner();
 	List<ProductVO> getHotDealProduct();
 	List<ProductVO> getNewGoods();
+	List<ProductVO> getSearchGoods(String searchKeyword);
 }
