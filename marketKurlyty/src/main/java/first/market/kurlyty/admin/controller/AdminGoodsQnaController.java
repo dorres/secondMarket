@@ -9,7 +9,7 @@ import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.GoodsQnaVO;
 
 @Controller
-public class GoodsQnaController {
+public class AdminGoodsQnaController {
 	
 	@Autowired 
 	private AdminService adminService;

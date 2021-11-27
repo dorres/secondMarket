@@ -31,4 +31,7 @@ public class HeaderDAO {
 	public List<ProductVO> getNewGoods(){
 		return sqlSession.selectList("CategoryDAO.getNewGoods");
 	}
+	public List<ProductVO> getSearch(String searchKeyword){
+		return sqlSession.selectList("CategoryDAO.getSearchList",searchKeyword);
+	}
 }

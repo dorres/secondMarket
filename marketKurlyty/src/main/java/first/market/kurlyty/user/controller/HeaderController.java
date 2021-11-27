@@ -95,7 +95,13 @@ public class HeaderController {
 	public String recipeItemPage() {
 		return "mainPage/recipe";
 	}
-	
+	@RequestMapping("/searchItemPage.do")
+	public String searchItemPage(String searchKeyword,Model model) {
+		List<ProductVO> searchList = headerService.getSearchGoods(searchKeyword);
+		model.addAttribute("searchList",searchList);
+		model.addAttribute("searchKeyword", searchKeyword);
+		return "mainPage/searchGoodsPage";
+	}
 	@RequestMapping("/fileUploadTest.do")
 	public String fileUploadTest() {
 //		awsS3.upload(new File("C:\\pmProject\\ico_cart.svg"), "kurlyImage/ico_cart3.svg");

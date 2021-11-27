@@ -12,15 +12,19 @@
 </head>
 <script>
 var index=1;
+var bannerDivWidth=window.innerWidth*${bannerCount+2};
+var bannerWidth=window.innerWidth;
 $(document).ready(function(){
-	$("ul.banner").css("width","${(bannerCount+2)*1520}px")
+	console.log(bannerDivWidth);
+	console.log(bannerWidth);
+	$("ul.banner").css("width",String(bannerDivWidth)+"px")
 	$("ul.banner").css("transition","1ms");
-	$("ul.banner").css("transform","translate3d(-1520px,0px,0px)");
+	$("ul.banner").css("transform","translate3d(-"+String(bannerWidth)+"px,0px,0px)");
 	
 	$("button.bx-next").click(function(){
 		console.log("fur:",index);
 		index=index+1;
-		var move = "translate3d(-"+String(1520*index)+"px,0px,0px)";
+		var move = "translate3d(-"+String(bannerWidth*index)+"px,0px,0px)";
 		$("ul.banner").css("transition","1000ms");
 		$("ul.banner").css("transform",move);
 		console.log("dd",index);
@@ -28,14 +32,14 @@ $(document).ready(function(){
 			index=1;
 			setTimeout(function(){
 				$("ul.banner").css("transition","1ms");
-				$("ul.banner").css("transform","translate3d(-1520px,0px,0px)");
+				$("ul.banner").css("transform","translate3d(-"+String(bannerWidth)+"px,0px,0px)");
 			},1000)
 		}
 	});
 	$("button.bx-prev").click(function(){
 		console.log("fur:",index);
 		index=index-1;
-		var move = "translate3d(-"+String(1520*index)+"px,0px,0px)";
+		var move = "translate3d(-"+String(bannerWidth*index)+"px,0px,0px)";
 		$("ul.banner").css("transition","1000ms");
 		$("ul.banner").css("transform",move);
 		
@@ -43,7 +47,7 @@ $(document).ready(function(){
 		if(index-1<0){
 			index=${bannerCount};
 			setTimeout(function(){
-				move = "translate3d(-"+String(${(bannerCount)*1520})+"px,0px,0px)";
+				move = "translate3d(-"+String(${bannerCount}*bannerWidth)+"px,0px,0px)";
 				$("ul.banner").css("transition","1ms");
 				$("ul.banner").css("transform",move);
 			},1000)
@@ -51,24 +55,40 @@ $(document).ready(function(){
 		}
 		
 	});
-	TSlide(4000);
+	TSlide(5000);
+})
+$(window).on("load",function(){
+	$("li.banner").css("width",String(bannerWidth)+"px");
+	$("div.bx-controls-direction").css("width",String(bannerWidth)+"px");
+	//$("li.banner").css("width",String(100/7)+"%");
+})
+$(window).on("resize",function(){
+	var changeBannerDivWidth=window.innerWidth*${bannerCount+2};
+	var changeBannerWidth=window.innerWidth;
+	$("ul.banner").css("width",String(changeBannerDivWidth)+"px")
+	$("li.banner").css("width",String(changeBannerWidth)+"px");
+	$("div.bx-controls-direction").css("width",String(changeBannerWidth)+"px");
+	$("ul.banner").css("transition","1ms");
+	$("ul.banner").css("transform","translate3d(-"+String(changeBannerWidth*index)+"px,0px,0px)");
+	bannerDivWidth=changeBannerDivWidth;
+	bannerWidth=changeBannerWidth;
+	
 })
 function TSlide(time){
-	
 	setTimeout(function(){
 		index=index+1;
-		var move = "translate3d(-"+String(1520*index)+"px,0px,0px)";
+		var move = "translate3d(-"+String(bannerWidth*index)+"px,0px,0px)";
 		$("ul.banner").css("transition","1000ms");
 		$("ul.banner").css("transform",move);
 		if(index==${bannerCount+1}){
 			index=1;
 			setTimeout(function(){
 				$("ul.banner").css("transition","1ms");
-				$("ul.banner").css("transform","translate3d(-1520px,0px,0px)");
+				$("ul.banner").css("transform","translate3d(-"+String(bannerWidth)+"px,0px,0px)");
 			},1000)
-			TSlide(3000);
+			TSlide(4000);
 		}else{
-			TSlide(4000);	
+			TSlide(5000);	
 		}
 	},time);
 	
@@ -78,7 +98,6 @@ function TSlide(time){
 <style>
 div.bx-controls-direction {
     position: relative;
-    width: 1520px;
     margin: 0 auto;
 }
 button.bx-prev{

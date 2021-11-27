@@ -36,4 +36,5 @@ public class ProductVO {
 
 	//notDB
 	private int goods_last_price;
+	private boolean okStock;
 }
