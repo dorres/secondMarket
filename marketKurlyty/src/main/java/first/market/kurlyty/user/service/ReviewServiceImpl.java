@@ -36,13 +36,28 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public List<ReviewVO> reviewAfter(ReviewVO vo) {
-		return reviewDAO.reviewAfter(vo);
+	public ReviewVO updateDate(ReviewVO vo) {
+		return reviewDAO.updateDate(vo);
 	}
 
 	@Override
-	public ReviewVO updateDate(ReviewVO vo) {
-		return reviewDAO.updateDate(vo);
+	public Integer updateReview(ReviewVO vo) {
+		return reviewDAO.updateReview(vo);
+	}
+
+	@Override
+	public List<ReviewVO> reviewAfterList(String user_id) {
+		return reviewDAO.reviewAfterList(user_id);
+	}
+
+	@Override
+	public Integer reviewCount(String user_id) {
+		return reviewDAO.reviewCount(user_id);
+	}
+
+	@Override
+	public int deleteReview(int review_serial) {
+		return reviewDAO.deleteReview(review_serial);
 	}
 
 }
