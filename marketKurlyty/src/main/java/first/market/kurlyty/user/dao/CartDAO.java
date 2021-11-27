@@ -42,4 +42,7 @@ public class CartDAO {
 	public List<CartVO> getPurchaseGoods(String userId) {
 		return sqlSession.selectList("CategoryDAO.getPurchaseGoods",userId);
 	}
+	public ProductVO getGoodsStock(CartVO cartVO) {
+		return sqlSession.selectOne("CategoryDAO.getStock", cartVO);
+	}
 }

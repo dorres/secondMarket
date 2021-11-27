@@ -2,16 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet"
-	href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
 </head>
 <style>
 .cartBt {
@@ -98,8 +97,52 @@ function inputCart(){
 	});
 }
 </script>
+<style>
+div.search_box{
+overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 26px;
+    border-top: 2px solid #5f0080;
+    border-bottom: 1px solid #5f0080;
+ }
+ div.search_box .tit{
+ float: left;
+ padding: 39px 0 0 26px;
+ font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 18px;
+    letter-spacing: -1px;
+}
+div.search_box .desc{
+float: right;
+    width: 841px;
+    padding: 26px 0 0;
+}
+.search_box .inp {
+    float: left;
+    width: 607px;
+    height: 45px;
+    margin-right: 16px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: -1px;
+}
+.search_box .btn_search {
+    float: left;
+    width: 175px;
+    height: 45px;
+    border-radius: 3px;
+    background-color: #5f0080;
+    color: #fff;
+    line-height: 45px;
+}
+</style>
 <body class="main-index" oncontextmenu="return false"
-	ondragstart="return false">
+	ondragstart="return false" onselectstart="return !disableSelection">
 	<div class="cartNone"></div>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
@@ -112,48 +155,40 @@ function inputCart(){
 
 					<jsp:include page="../default/sidemenu.jsp"></jsp:include><!-- sidemenu부분 -->
 
-					<div style="margin: 0 auto; width: 1050px;">
-						<div id="lnbMenu">
-							<div class="inner_lnb">
-								<h3 class="tit">${categoryRoot.category_main_name}</h3>
-								<ul class="list on">
-										<c:if test="${subSerial == null }">
-											<li><a class="on" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}">전체보기</a></li>
-										</c:if>
-										<c:if test="${subSerial != null }">
-											<li><a class="" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}">전체보기</a></li>
-										</c:if>
-									<c:forEach var="categorySub" items="${categorySub}">
-										<c:if test="${subSerial == categorySub.category_sub_serial }">
-											<li><a class="on" 
-												href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${categorySub.category_sub_serial}">
-												${categorySub.category_sub_name}
-												</a>
-											</li>
-										</c:if>
-										<c:if test="${subSerial != categorySub.category_sub_serial }">
-											<li><a class="" 
-												href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${categorySub.category_sub_serial}">
-												${categorySub.category_sub_name}
-												</a>
-											</li>
-										</c:if>
-									</c:forEach>
-									<li class="bg"></li>
-								</ul>
+					<div style="margin:0 auto; width: 1050px;">
+						<!-- 베스트 -->
+						<div style="padding-top: 26px;">
+							<div class="MainIntroTitle">
+								<div class="TitleDiv" align="center">
+									<span>상품검색</span>
+								</div>
 							</div>
 						</div>
+						<form name="frmList" action="searchItemPage.do">
+							<input type="hidden" name="searched" value="Y">
+							<div class="search_box">
+								<div class="tit">
+									<label for="sword">검색조건</label>
+								</div>
+								<div class="desc">
+									<input type="text" name="searchKeyword" id="sword" class="inp"
+										value="${searchKeyword }">
+									<input type="submit"
+										class="styled-button btn_search" value="검색하기">
+								</div>
+							</div>
+						</form>
 
 						<div id="sortbar">
 							<div class="list_ability">
 								<div class="sort_menu">
 									<div class="">
 										<p class="count">
-											<span class="inner_count"> 총 ${itemCount }건 </span>
+											<span class="inner_count"> 총 ${fn:length(searchList) }건 </span>
 										</p>
 										<div class="select_type user_sort">
 											<!---->
-											<a class="name_select">| 신상품순</a>
+											<a class="name_select">신상품순</a>
 											<ul class="list">
 												<li><a class="">추천순</a></li>
 												<li><a class="on">신상품순</a></li>
@@ -166,7 +201,8 @@ function inputCart(){
 								</div>
 							</div>
 						</div>
-
+						
+						
 						<div id="cartPut">
 							<div class="cart_option cartList cart_type3" style="opacity: 0; display:none;">
 							<!--  -->
@@ -234,7 +270,7 @@ function inputCart(){
 
 						<div class="MainIntroContain">
 							<ul class="foodList">
-								<c:forEach var="item" items="${categoryProductList }">
+								<c:forEach var="item" items="${searchList }">
 									<li>
 										<input type="hidden" class="goodsSerial" value="${item.category_goods_serial}"/>
 										<div class="foodImg">
@@ -265,6 +301,7 @@ function inputCart(){
 	</div>
 
 	<a href="#top" id="pageTop">맨 위로가기</a>
+
 
 	<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank"
 		style="display: none; width: 100%; height: 600px;"></iframe>

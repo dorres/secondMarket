@@ -296,57 +296,7 @@ function zip(){
 												</p>
 											</td>
 										</tr>
-												<tr>
-													<th>선택약관 동의</th>
-													<td class="reg_agree">
-														<div class="check_view">
-															<input type="hidden" id="consentHidden" name="consent[1]" value="y">
-															<label class="label_block check_agree checked">
-															<input type="checkbox" name="hiddenCheck" value="y" checked="checked"> 
-															<span class="ico"></span>개인정보 수집·이용 동의 <span class="sub">(선택)</span>
-															</label> <a href="#none" class="link btn_link btn_choice">약관보기</a>
-														</div>
-
-														<div class="layer layer_choice">
-															<div class="inner_layer">
-																<div class="in_layer">
-																	<h4 class="tit_layer">
-																		개인정보 수집·이용 동의 <span class="sub">(선택)</span>
-																	</h4>
-																	<div class="box_tbl">
-																		<table cellpadding="0" cellspacing="0" width="100%">
-																			<caption class="screen_out">개인정보의 수집 및 이용목적</caption>
-																			<thead>
-																				<tr>
-																					<th scope="row" class="tit1">수집 목적</th>
-																					<th scope="row" class="tit2">수집 항목</th>
-																					<th scope="row" class="tit3">보유 기간</th>
-																				</tr>
-																			</thead>
-																			<tbody>
-																				<tr>
-																					<td>맞춤형 회원 서비스 제공</td>
-																					<td>성별, 생년월일</td>
-																					<td class="emph">회원 탈퇴<br> 즉시 파기
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</div>
-																	<p class="txt_service">동의를 거부하시는 경우에도 서비스는 이용하실 수
-																		있습니다.</p>
-																</div>
-																<button type="button" class="btn_ok">
-																	<span class="txt_type">확인</span>
-																</button>
-																<button type="button" class="btn_close">
-																	<span class="screen_out">레이어 닫기</span>
-																</button>
-															</div>
-														</div>
-
-													</td>
-												</tr>
+												
 												<tr style="display: none">
 													
 												</tr>
