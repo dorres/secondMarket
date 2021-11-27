@@ -7,7 +7,7 @@
  	<select id="getOrderWaitList" resultType="order">
  		SELECT * FROM MK_ORDER
  		WHERE ORDER_DELIVERY_STATUS IN ('결제완료','배송준비중') 
- 		ORDER BY ORDER_DATE
+ 		ORDER BY ORDER_SERIAL
  	</select>
  	<select id="getOrderDeliveryList" resultType="order">
  		SELECT * FROM MK_ORDER 

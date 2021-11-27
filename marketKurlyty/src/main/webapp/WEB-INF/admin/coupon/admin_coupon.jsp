@@ -98,15 +98,16 @@ table.type02 td {
 									
 									<tr>
 										<th scope="row"  >쿠폰 시작일</th>
-										<td><input type="date" name="coupon_start" value="${coupon.coupon_start }"/></td>
+										<td><input type="date" name="coupon_start" value="${start }"/></td>
 									</tr>
 									
 									<tr>
 										<th scope="row" >쿠폰 만료일</th>
-										<td><input type="date" name="coupon_end" value="${coupon.coupon_end }"/></td>
+										<td><input type="date" name="coupon_end" value="${end }"/></td>
 									</tr>
 									
 								</table>
+							<input type="hidden" value="${coupon.coupon_serial }" name="coupon_serial">
 							<input type="submit" value="수정하기" />
 							<input type="button" value="목록보기" onclick="location.href='admin_couponList.mdo'"/>
 						</form>

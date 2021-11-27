@@ -588,6 +588,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateCancleWait(qna);
 	}
 	//======================================================
+	//쿠폰 종류 등록
 	@Override
 	public List<AdminCouponVO> getCouponList() {
 		return 	adminDao.getCouponList();
@@ -609,6 +610,30 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteCoupon(AdminCouponVO coupon) {
 		return adminDao.deleteCoupon(coupon);
 	}
+	//====================================================
+	//쿠폰 사용현황
+	@Override
+	public List<AdminCouponVO> getCouponUseList() {
+		return 	adminDao.getCouponUseList();
+	}
+	@Override
+	public AdminCouponVO getCouponUse(AdminCouponVO coupon) {
+		return adminDao.getCouponUse(coupon);
+	}
+	
+	@Override
+	public int insertCouponUse(AdminCouponVO coupon) {
+		return adminDao.insertCouponUse(coupon);
+	}
+	@Override
+	public int deleteCouponUse(AdminCouponVO coupon) {
+		return adminDao.deleteCouponUse(coupon);
+	}
+	@Override
+	public List<AdminCouponVO> getUserId(AdminCouponVO coupon) {
+		return adminDao.getUserId(coupon);
+	}
+	
 	
 
 }

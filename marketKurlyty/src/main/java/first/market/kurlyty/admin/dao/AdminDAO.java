@@ -474,6 +474,7 @@ public class AdminDAO {
 		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
 	}
 	//----------------------------------------------------
+	//쿠폰 종류 등록
 	public List<AdminCouponVO> getCouponList(){
 		return sqlSession.selectList("couponDAO.getCouponList");
 	}
@@ -489,6 +490,27 @@ public class AdminDAO {
 	}
 	public int deleteCoupon(AdminCouponVO coupon) {
 		return sqlSession.delete("couponDAO.deleteCoupon",coupon);
+	}
+	//----------------------------------------------------
+	//쿠폰 사용현황
+	public List<AdminCouponVO> getCouponUseList(){
+		return sqlSession.selectList("couponDAO.getCouponUseList");
+	}
+	
+	public AdminCouponVO getCouponUse(AdminCouponVO coupon) {
+		return sqlSession.selectOne("couponDAO.getCouponUse",coupon);
+	}
+	public int updateCouponUse(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCouponUse",coupon);
+	}
+	public int insertCouponUse(AdminCouponVO coupon) {
+		return sqlSession.insert("couponDAO.insertCouponUse",coupon);
+	}
+	public int deleteCouponUse(AdminCouponVO coupon) {
+		return sqlSession.delete("couponDAO.deleteCouponUse",coupon);
+	}
+	public List<AdminCouponVO> getUserId(AdminCouponVO coupon){
+		return sqlSession.selectList("couponDAO.getUserId",coupon);
 	}
 	
 }

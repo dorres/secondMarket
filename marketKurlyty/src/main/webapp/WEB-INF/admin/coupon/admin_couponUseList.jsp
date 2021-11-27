@@ -24,7 +24,7 @@
  <script type="text/javascript">
 
 	function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		var answer = confirm("쿠폰을 삭제할꺼임?");
 		if (answer == true) {
 			location = url;
 		}
@@ -44,11 +44,11 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">쿠폰</h1>
+				<h1 class="mt-4">쿠폰 사용 현항</h1>
 				<div class="card mb-4">
 					<div class="card-header"  align="right">
 							<div class="col three">
-								<a href="admin_couponWrite.mdo" class="btn1 btn-dark">쿠폰 등록</a>
+								<a onclick="pop()" class="btn1 btn-dark">쿠폰 발급</a>
 							</div>
 						</div>
 					<div class="card-body">
@@ -56,45 +56,40 @@
 							<thead>
 								<tr>
 									<th>번호</th>
-									<th>쿠폰 코드</th>
+									<th>유저 아이디</th>
 									<th>쿠폰 이름</th>
-									<th>쿠폰 최소 사용 금액</th>
-									<th>쿠폰 할인금액</th>
-									<th>쿠폰 시작일</th>
-									<th>쿠폰 만료일</th>
+									<th>쿠폰 상태</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>번호</th>
-									<th>쿠폰 코드</th>
+									<th>유저 아이디</th>
 									<th>쿠폰 이름</th>
-									<th>쿠폰 최소 사용 금액</th>
-									<th>쿠폰 할인금액</th>
-									<th>쿠폰 시작일</th>
-									<th>쿠폰 만료일</th>
+									<th>쿠폰 상태</th>
 								</tr>
 							</tfoot>
 							<tbody>
 									<c:forEach var="coupon" items="${couponList }">
 										<tr>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.rownum }</td>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.coupon_code }</td>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.coupon_name }</td>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.coupon_min }</td>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">
-												<c:if test="${coupon.coupon_type ==0 }">
-													${coupon.coupon_discount }%
+											<td >${coupon.rownum }</td>
+											<td >${coupon.coupon_use_userid }</td>
+											<td >${coupon.coupon_name }</td>
+											<td >
+												<c:if test="${coupon.coupon_use_status == 0  }">
+													사용한 쿠폰
 												</c:if>
-												
-												<c:if test="${coupon.coupon_type ==1 }">
-													<fmt:formatNumber value="${coupon.coupon_discount }" pattern="#,###"/>원
+												<c:if test="${coupon.coupon_use_status == 1  }">
+													사용가능한 쿠폰
+												</c:if>
+												<c:if test="${coupon.coupon_use_status == 2  }">
+													유효기간 만료 쿠폰
 												</c:if>
 											</td>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'"><fmt:formatDate value="${coupon.coupon_start}" pattern="yyyy-MM-dd"/></td>
-											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'"><fmt:formatDate value="${coupon.coupon_end}" pattern="yyyy-MM-dd"/></td>
+
+										
 											<td>
-												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_couponDelete.mdo?coupon_serial=${coupon.coupon_serial }')"/>
+												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_couponUseDelete.mdo?coupon_use_serial=${coupon.coupon_use_serial }')"/>
 											</td>
 										</tr>
 									</c:forEach>
@@ -109,7 +104,12 @@
 	</div>
 	</div>
 	<!-- Main -->
-	
+<script>
+function pop(){
+	var url="admin_couponUse.mdo?";
+	window.open(url,'new','width=500,height=210,location=no,status=no,scrollbars=yes');
+}
+</script>	
 	<!-- 건들지마세요 -->
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>

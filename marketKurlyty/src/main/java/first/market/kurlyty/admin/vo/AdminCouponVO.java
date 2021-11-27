@@ -36,12 +36,13 @@ public class AdminCouponVO {
 	//쿠폰 유효기간
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_start;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_end;
 	
 	//mk_coupon_use
 	//쿠폰 상태 시리얼
-	private int counpon_use_serial;
+	private int coupon_use_serial;
 	
 	//쿠푼을 가지고 있는 아이디
 	private String coupon_use_userid;
@@ -52,5 +53,8 @@ public class AdminCouponVO {
 	//유저가 쿠폰을 사용했는지 안했느지 (0:사용못함-이미 사용한 쿠폰 1:사용가능 2:사용함-만료일이 지난 쿠폰)
 	private int coupon_use_status;
 	
+	private String user_membership_name;
+	
+	private String user_id;
 	
 }

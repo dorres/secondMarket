@@ -4,7 +4,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
  
   <mapper namespace="couponDAO">
-  	
+  	<!-- 쿠폰 종류등록 -->
   	<select id="getCouponList" resultType="coupon">
   		SELECT(ROW_NUMBER() OVER(Order by coupon_start)) AS ROWNUM, *  FROM MK_COUPON
   	</select>
@@ -12,9 +12,8 @@
 	<select id="getCoupon"	resultType="coupon" parameterType="coupon">
 		SELECT * FROM MK_COUPON 
 		WHERE coupon_serial = #{coupon_serial}
-	</select> 
-	 
-	 <update id="getCoupon" parameterType="coupon">
+	</select>  
+	 <update id="updateCoupon" parameterType="coupon">
  		UPDATE MK_COUPON SET 
  		coupon_code = #{coupon_code},
  		coupon_name = #{coupon_name},
@@ -26,19 +25,46 @@
  		coupon_end = #{coupon_end}
  		WHERE coupon_serial = #{coupon_serial}
  	</update>
- 	
  	 <insert id="insertCoupon" parameterType="coupon">
 	 	 INSERT INTO MK_COUPON VALUES (
 	 	 	DEFAULT, #{coupon_code}, #{coupon_name}, #{coupon_type}, #{coupon_min},
 	 	 	#{coupon_discount}, #{coupon_max}, #{coupon_start}, #{coupon_end}
 	 	 );
  	</insert>
- 	
  	<delete id="deleteCoupon" parameterType="coupon">
- 	 	DELETE FROM MK_COUPON 
+ 	 	DELETE FROM MK_COUPON_USE
  	 	WHERE 
  	 	coupon_serial = #{coupon_serial}
  	</delete>
-  	
+  	<!-- 쿠폰 종류등록 -->
+
+  	<!-- 쿠폰 사용현황 -->
+  	<select id="getCouponUseList" resultType="coupon">
+		SELECT(ROW_NUMBER() OVER(Order by coupon_use_userid)) AS ROWNUM, A.coupon_use_serial, 
+  		A.coupon_use_userid, B.coupon_name, A.coupon_use_coupon_serial, A.coupon_use_status
+  		FROM mk_coupon_use A
+  		JOIN mk_coupon B
+  		ON A.coupon_use_coupon_serial = B.coupon_serial;
+  	</select>
+
+	<select id="getCouponUse"	resultType="coupon" parameterType="coupon">
+		SELECT * FROM MK_COUPON_USE 
+		WHERE coupon_use_serial = #{coupon_use_serial}
+	</select>  
+
+ 	 <insert id="insertCouponUse" parameterType="coupon">
+	 	 INSERT INTO MK_COUPON_USE VALUES (
+	 	 	DEFAULT, #{coupon_use_userid}, #{coupon_serial}, DEFAULT
+	 	 );
+ 	</insert>
+ 	<delete id="deleteCouponUse" parameterType="coupon">
+ 	 	DELETE FROM MK_COUPON_USE 
+ 	 	WHERE 
+ 	 	coupon_use_serial = #{coupon_use_serial}
+ 	</delete>
+ 	<select id="getUserId" parameterType="coupon" resultType="coupon">
+ 		select user_id from mk_user_details where user_membership_name in (#{user_membership_name})
+ 	</select>
+  	<!-- 쿠폰 사용현황 -->
   	
 </mapper>

@@ -287,6 +287,7 @@ public interface AdminService {
 	List<AdminOrderVO> getOrderCancleList();
 	int updateCancleWait(AdminQnaVO qna);
 //============================================================================
+	//ÄíÆùµî·Ï
 	List<AdminCouponVO> getCouponList();
 	
 	AdminCouponVO getCoupon(AdminCouponVO coupon);
@@ -296,4 +297,17 @@ public interface AdminService {
 	int insertCoupon(AdminCouponVO coupon);
 	
 	int deleteCoupon(AdminCouponVO coupon);
+	
+	//============================================================================
+	//ÄíÆù»ç¿ë
+	List<AdminCouponVO> getCouponUseList();
+	
+	AdminCouponVO getCouponUse(AdminCouponVO coupon);
+		
+	int insertCouponUse(AdminCouponVO coupon);
+		
+	int deleteCouponUse(AdminCouponVO coupon);
+	
+	List<AdminCouponVO> getUserId(AdminCouponVO coupon);
+	
 }
