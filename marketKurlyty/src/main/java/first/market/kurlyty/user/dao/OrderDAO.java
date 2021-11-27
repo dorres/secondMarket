@@ -1,12 +1,16 @@
 package first.market.kurlyty.user.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import first.market.kurlyty.user.vo.GoodsStockVO;
 import first.market.kurlyty.user.vo.ShippingVO;
 import first.market.kurlyty.user.vo.UserDetailsVO;
 import first.market.kurlyty.vo.OrderVO;
+import first.market.kurlyty.vo.ProductVO;
 
 @Repository
 public class OrderDAO {
@@ -27,5 +31,14 @@ public class OrderDAO {
 	}
 	public void insertShippingInfo(ShippingVO shipping) {
 		sqlSession.insert("orderDAO.insertShippingInfo",shipping);
+	}
+	public List<GoodsStockVO> getGoodsStocks(int goodsSerial){
+		return sqlSession.selectList("orderDAO.getGoodsStocks",goodsSerial);
+	}
+	public void reduceDetailStock(ProductVO goodsStock) {
+		sqlSession.update("orderDAO.reduceDetailStock", goodsStock);
+	}
+	public void reduceStock(GoodsStockVO goodsStock) {
+		sqlSession.update("orderDAO.reduceStock", goodsStock);
 	}
 }

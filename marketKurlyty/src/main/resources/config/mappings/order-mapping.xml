@@ -39,5 +39,21 @@
 		#{shipping_door_password},#{shipping_sender_name},
 		#{shipping_sender_phone},#{order_merchant_serial})
 	</insert>
-	
+	<!-- 재고관리 -->
+	<select id="getGoodsStocks" resultType="first.market.kurlyty.user.vo.GoodsStockVO">
+ 		SELECT * FROM mk_goods_stock
+ 		WHERE category_goods_serial=#{value}
+ 		AND goods_stock_stock_quantity>0
+ 		ORDER BY goods_stock_serial ASC
+ 	</select>
+ 	<update id="reduceDetailStock">
+ 		UPDATE mk_goods_detail
+ 		SET goods_detail_stock_quantity=#{goods_detail_stock_quantity}
+ 		WHERE category_goods_serial=#{category_goods_serial}
+ 	</update>
+ 	<update id="reduceStock">
+ 		UPDATE mk_goods_stock
+ 		SET goods_stock_stock_quantity=#{goods_stock_stock_quantity}
+ 		WHERE goods_stock_serial=#{goods_stock_serial}
+ 	</update>
 </mapper>

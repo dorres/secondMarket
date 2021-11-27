@@ -11,9 +11,9 @@ public class GoodsQnaVO {
 	private String user_id;
 	private String user_name;
 	//1차 카테고리
-	String category_main_serial;
+	private String category_main_serial;
 	//2차 카테고리
-	String category_sub_serial;
+	private String category_sub_serial;
 	//3차 카테고리(상품) pk
 	int category_goods_serial;
 	
@@ -28,8 +28,10 @@ public class GoodsQnaVO {
 	private String qna_goods_image_thumb;
 	
 	//상품 이름 join with ItemPageVO -DB에서 
-	String category_goods_name;
+	private String category_goods_name;
 	//상품 썸네일 이미지(ex..장바구니, 상세페이지 맨위)
-	String category_goods_image_thumb;	
+	private String category_goods_image_thumb;
+	//행 번호
+	private int rnum;
 	
 }

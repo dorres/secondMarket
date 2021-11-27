@@ -33,10 +33,19 @@ public class CartServiceImpl implements CartService {
 		cartDao.updateCartItem(cartVO);
 	}
 	@Override
-	public boolean overlapCartItem(List<CartVO> cartList, CartVO cartVO) {
+	public boolean overlapCartItem(List<CartVO> cartList, CartVO cartVO) throws IllegalArgumentException {
 		CartVO item = new CartVO();
 		for(CartVO cartItem:cartList) {
 			if(cartItem.getCategory_goods_serial()==cartVO.getCategory_goods_serial()) {
+				
+				CartVO checkStock = new CartVO();
+				checkStock.setCategory_goods_serial(cartItem.getCategory_goods_serial());
+				checkStock.setGoods_cart_count(cartItem.getGoods_cart_count()+cartVO.getGoods_cart_count());
+				
+				if(!isStock(checkStock)) {
+					throw new IllegalArgumentException("재고수량을 넘김");
+				}
+				
 				item=cartItem;
 				item.setGoods_cart_count(cartItem.getGoods_cart_count()+cartVO.getGoods_cart_count());
 				cartDao.updateCartItem(item);
@@ -64,5 +73,13 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<CartVO> getPurchaseGoods(String userId) {
 		return cartDao.getPurchaseGoods(userId);
+	}
+	@Override
+	public Boolean isStock(CartVO cartVO) {
+		int stock = cartDao.getGoodsStock(cartVO).getGoods_detail_stock_quantity();
+		if(cartVO.getGoods_cart_count()>stock)
+			return false;
+		else
+			return true;
 	}
 }

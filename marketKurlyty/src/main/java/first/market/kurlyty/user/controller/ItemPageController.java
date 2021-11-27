@@ -1,5 +1,6 @@
 package first.market.kurlyty.user.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -27,8 +28,9 @@ public class ItemPageController {
 	@Autowired
 	private GoodsQnaService goodsqnaService;
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/itemPage.do")
-		public String getItemPage(ItemPageVO vo, GoodsQnaVO goodsqnavo, Model model, HttpSession session) {
+	public String getItemPage(ItemPageVO vo, GoodsQnaVO goodsqnavo, Model model, HttpSession session) {
 
 		ItemPageVO getItemInfo = itempageService.getItemPage(vo);
 		String userId = (String) session.getAttribute("userId");
@@ -41,8 +43,25 @@ public class ItemPageController {
 			MembershipVO membershipData = membershipService.getMembershipData(membership);
 			model.addAttribute("membership",membershipData);
 		}
+		if(session.getAttribute("recentList")==null) {
+			session.setAttribute("recentList", new ArrayList<ItemPageVO>());
+		}
+		List<ItemPageVO> recentList=(List<ItemPageVO>)session.getAttribute("recentList");
+		for(ItemPageVO item:recentList) {
+			if(item.getCategory_goods_serial() == vo.getCategory_goods_serial()) {
+				recentList.remove(item);
+				break;
+			}
+		}
+		
+		recentList.add(0,getItemInfo);
+		if(recentList.size()==4)
+			recentList.remove(3);
 		model.addAttribute("getCategoryItemPage", getCategoryItemPage);
 		model.addAttribute("getItemPage", getItemInfo);
+		for(GoodsQnaVO qna:GoodsQnaList) {
+			qna.setQna_goods_content(qna.getQna_goods_content().replace("\r\n", "ln"));
+		}
 		model.addAttribute("goodsqnalist", GoodsQnaList);
 		
 		return "/ItemPage/itemPage";

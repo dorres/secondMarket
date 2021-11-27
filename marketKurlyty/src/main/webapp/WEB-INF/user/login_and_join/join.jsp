@@ -446,8 +446,8 @@ function hiddenPassword(){
 												<div class="bg_dim" style="display: none;"></div>
 												<div class="check">
 													<label class="check_agree label_all_check label_block">
-														<input type="checkbox" name="agree_allcheck"> <span
-														class="ico"></span>전체 동의합니다.
+														<input type="checkbox" name="agree_allcheck">
+														<span class="ico"></span>전체 동의합니다.
 													</label>
 													<p class="sub">선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수
 														있습니다.</p>
@@ -460,7 +460,7 @@ function hiddenPassword(){
 												</div>
 
 												<div class="layer layer_agreement"
-													style="display: none; margin-top: -299.5px;">
+													style="display: block; border:4px solid; margin-top: -299.5px;">
 													<div class="inner_layer">
 														<h4 class="tit_layer">
 															이용약관 <span class="sub">(필수)</span>
@@ -875,14 +875,14 @@ function hiddenPassword(){
 												</div>
 
 												<div class="check_view">
-													<label class="check_agree label_block"> <inputtype
-															="checkbox" id="private1" name="private1" value=""
+													<label class="check_agree label_block">
+													<input type="checkbox" id="private1" name="private1" value=""
 															required="" label="개인정보 수집·이용"> <span
 															class="ico"></span>개인정보수집·이용 동의 <span class="sub">(필수)</span></label>
 													<a href="#none" class="link btn_link btn_essential">약관보기</a>
 												</div>
 
-												<div class="layer layer_essential" style="display: none;">
+												<div class="layer layer_essential" style="display: block;">
 													<div class="inner_layer">
 														<div class="in_layer">
 															<h4 class="tit_layer">
@@ -941,72 +941,12 @@ function hiddenPassword(){
 														<span class="screen_out">레이어 닫기</span>
 													</button>
 												</div>
-
-												<div class="check_view">
-													<input type="hidden" id="consentHidden" name="consent[1]"
-														value=""> <label class=" check_agree label_block">
-														<input type="checkbox" name="hiddenCheck"> <span
-														class="ico"></span>개인정보 수집·이용 동의 <span class="sub">(선택)</span>
-													</label> <a href="#none" class="link btn_link btn_choice">약관보기</a>
-												</div>
-
-												<div class="layer layer_choice" style="display: none;">
-													<div class="inner_layer">
-														<div class="in_layer">
-															<h4 class="tit_layer">
-																개인정보 수집·이용 동의 <span class="sub">(선택)</span>
-															</h4>
-															<div class="box_tbl">
-																<table cellpadding="0" cellspacing="0" width="100%">
-																	<caption class="screen_out">개인정보의 수집 및 이용목적</caption>
-																	<thead>
-																		<tr>
-																			<th scope="row" class="tit1">수집 목적</th>
-																			<th scope="row" class="tit2">수집 항목</th>
-																			<th scope="row" class="tit3">보유 기간</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr>
-																			<td>맞춤형 회원 서비스 제공</td>
-																			<td>성별, 생년월일</td>
-																			<td class="emph">회원 탈퇴<br> 즉시 파기
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</div>
-															<p class="txt_service">동의를 거부하시는 경우에도 서비스는 이용하실 수
-																있습니다.</p>
-														</div>
-														<button type="button" class="btn_ok">
-															<span class="txt_type">확인</span>
-														</button>
-														<button type="button" class="btn_close">
-															<span class="screen_out">레이어 닫기</span>
-														</button>
-													</div>
-												</div>
-
 												<div class="check_view">
 													<label class="label_block check_agree "> <input
 														type="checkbox" name="marketing"> <span
-														class="ico"></span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의 <span
+														class="ico"></span>무료배송, 할인쿠폰 등 혜택/정보 이메일 수신 동의 <span
 														class="sub">(선택)</span>
 													</label>
-													<div class="check_event email_sms">
-														<label class="label_block check_agree "> <input
-															type="checkbox" name="sms" value="n"> <span
-															class="ico"></span>SMS
-														</label> <label class="label_block check_agree "> <input
-															type="checkbox" name="mailling" value="n"> <span
-															class="ico"></span>이메일
-														</label>
-													</div>
-													<p class="sms_info">
-														동의 시 한 달간 [5% 적립] + [무제한 무료배송] <span class="sub">(첫
-															주문 후 적용)</span>
-													</p>
 												</div>
 												<div class="check_view">
 													<label class=" check_agree label_block"> <input
