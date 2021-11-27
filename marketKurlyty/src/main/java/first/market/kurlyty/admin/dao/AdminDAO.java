@@ -478,4 +478,17 @@ public class AdminDAO {
 		return sqlSession.selectList("couponDAO.getCouponList");
 	}
 	
+	public AdminCouponVO getCoupon(AdminCouponVO coupon) {
+		return sqlSession.selectOne("couponDAO.getCoupon",coupon);
+	}
+	public int updateCoupon(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCoupon",coupon);
+	}
+	public int insertCoupon(AdminCouponVO coupon) {
+		return sqlSession.insert("couponDAO.insertCoupon",coupon);
+	}
+	public int deleteCoupon(AdminCouponVO coupon) {
+		return sqlSession.delete("couponDAO.deleteCoupon",coupon);
+	}
+	
 }

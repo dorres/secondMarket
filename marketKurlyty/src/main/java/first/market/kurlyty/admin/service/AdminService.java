@@ -288,4 +288,12 @@ public interface AdminService {
 	int updateCancleWait(AdminQnaVO qna);
 //============================================================================
 	List<AdminCouponVO> getCouponList();
+	
+	AdminCouponVO getCoupon(AdminCouponVO coupon);
+	
+	int updateCoupon(AdminCouponVO coupon);
+	
+	int insertCoupon(AdminCouponVO coupon);
+	
+	int deleteCoupon(AdminCouponVO coupon);
 }

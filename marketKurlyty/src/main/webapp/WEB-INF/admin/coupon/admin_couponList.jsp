@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +55,7 @@
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
+									<th>번호</th>
 									<th>쿠폰 코드</th>
 									<th>쿠폰 이름</th>
 									<th>쿠폰 최소 사용 금액</th>
@@ -64,10 +66,11 @@
 							</thead>
 							<tfoot>
 								<tr>
+									<th>번호</th>
 									<th>쿠폰 코드</th>
 									<th>쿠폰 이름</th>
 									<th>쿠폰 최소 사용 금액</th>
-									<th>쿠폰 할인금액(금액,퍼센트(최대할인금액))</th>
+									<th>쿠폰 할인금액()</th>
 									<th>쿠폰 시작일</th>
 									<th>쿠폰 만료일</th>
 								</tr>
@@ -75,22 +78,23 @@
 							<tbody>
 									<c:forEach var="coupon" items="${couponList }">
 										<tr>
-											<td>${coupon.coupon_code }</td>
-											<td>${coupon.coupon_name }</td>
-											<td>${coupon.coupon_min_use }</td>
-											<td>
-												<c:if test="${coupon.coupon_discount_price !=null }">
-													${coupon.coupon_discount_price }
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.rownum }</td>
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.coupon_code }</td>
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.coupon_name }</td>
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">${coupon.coupon_min }</td>
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'">
+												<c:if test="${coupon.coupon_type ==0 }">
+													${coupon.coupon_discount }%
 												</c:if>
-												<c:if test="${coupon.coupon_discount_rate !=null }">
-													${coupon.coupon_discount_rate }(${coupon.coupon_discount_max })
+												
+												<c:if test="${coupon.coupon_type ==1 }">
+													<fmt:formatNumber value="${coupon.coupon_discount }" pattern="#,###"/>원
 												</c:if>
 											</td>
-											<td>${coupon.coupon_start}</td>
-											<td>${coupon.coupon_end}</td>
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'"><fmt:formatDate value="${coupon.coupon_start}" pattern="yyyy-MM-dd"/></td>
+											<td onclick="location.href='admin_coupon.mdo?coupon_serial=${coupon.coupon_serial }'"><fmt:formatDate value="${coupon.coupon_end}" pattern="yyyy-MM-dd"/></td>
 											<td>
-												<input type="button" onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'" value="수정">
-												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_membershipDelete.mdo?user_membership_name=${mem.user_membership_name }')"/>
+												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_membershipDelete.mdo?coupon_serial=${coupon.coupon_serial }')"/>
 											</td>
 										</tr>
 									</c:forEach>

@@ -2,11 +2,14 @@ package first.market.kurlyty.admin.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
 public class AdminCouponVO {
 	
+	private int rownum;
 	//mk_coupon
 	//쿠폰pk
 	private int coupon_serial;
@@ -21,19 +24,19 @@ public class AdminCouponVO {
 	private int coupon_type;
 	
 	//쿠폰 최소 사용 금액
-	private int coupon_min_use;
+	private int coupon_min;
 	
-	//쿠폰 할인 금액
-	private int coupon_discount_price;
+	//쿠폰 할인율/금액
+	private int coupon_discount;
 	
-	//쿠폰 할인 퍼센트
-	private int coupon_discount_rate;
 	
 	//쿠폰 최대 할인금액(%\일경우)
-	private int coupon_discount_max;
+	private int coupon_max;
 	
 	//쿠폰 유효기간
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_start;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_end;
 	
 	//mk_coupon_use

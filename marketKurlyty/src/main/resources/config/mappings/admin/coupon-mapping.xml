@@ -6,7 +6,39 @@
   <mapper namespace="couponDAO">
   	
   	<select id="getCouponList" resultType="coupon">
-  		SELECT * FROM MK_COUPON
+  		SELECT(ROW_NUMBER() OVER(Order by coupon_start)) AS ROWNUM, *  FROM MK_COUPON
   	</select>
+  		
+	<select id="getCoupon"	resultType="coupon" parameterType="coupon">
+		SELECT * FROM MK_COUPON 
+		WHERE coupon_serial = #{coupon_serial}
+	</select> 
+	 
+	 <update id="getCoupon" parameterType="coupon">
+ 		UPDATE MK_COUPON SET 
+ 		coupon_code = #{coupon_code},
+ 		coupon_name = #{coupon_name},
+ 		coupon_type = #{coupon_type},
+ 		coupon_min = #{coupon_min},
+ 		coupon_discount = #{coupon_discount},
+ 		coupon_max = #{coupon_max},
+ 		coupon_start = #{coupon_start},
+ 		coupon_end = #{coupon_end}
+ 		WHERE coupon_serial = #{coupon_serial}
+ 	</update>
+ 	
+ 	 <insert id="insertCoupon" parameterType="coupon">
+	 	 INSERT INTO MK_COUPON VALUES (
+	 	 	DEFAULT, #{coupon_code}, #{coupon_name}, #{coupon_type}, #{coupon_min},
+	 	 	#{coupon_discount}, #{coupon_max}, #{coupon_start}, #{coupon_end}
+	 	 );
+ 	</insert>
+ 	
+ 	<delete id="deleteCoupon" parameterType="coupon">
+ 	 	DELETE FROM MK_COUPON 
+ 	 	WHERE 
+ 	 	coupon_serial = #{coupon_serial}
+ 	</delete>
+  	
   	
 </mapper>

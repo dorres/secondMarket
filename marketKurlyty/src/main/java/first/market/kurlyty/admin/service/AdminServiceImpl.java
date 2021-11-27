@@ -511,6 +511,7 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteMembership(AdminMembershipVO membership) {
 		return adminDao.deleteMembership(membership);
 	}
+	//=====================================================
 	@Override
 	public List<AdminOrderVO> getOrderWaitList() {
 		return adminDao.getOrderWaitList();
@@ -590,6 +591,23 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<AdminCouponVO> getCouponList() {
 		return 	adminDao.getCouponList();
+	}
+	@Override
+	public AdminCouponVO getCoupon(AdminCouponVO coupon) {
+		return adminDao.getCoupon(coupon);
+	}
+	
+	@Override
+	public int updateCoupon(AdminCouponVO coupon) {
+		return adminDao.updateCoupon(coupon);
+	}
+	@Override
+	public int insertCoupon(AdminCouponVO coupon) {
+		return adminDao.insertCoupon(coupon);
+	}
+	@Override
+	public int deleteCoupon(AdminCouponVO coupon) {
+		return adminDao.deleteCoupon(coupon);
 	}
 	
 

@@ -1,12 +1,15 @@
 package first.market.kurlyty.admin.controller;
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import first.market.kurlyty.admin.service.AdminService;
-import first.market.kurlyty.admin.vo.AdminMembershipVO;
+import first.market.kurlyty.admin.vo.AdminCouponVO;
 
 @Controller
 public class AdminCouponController {
@@ -21,25 +24,26 @@ public class AdminCouponController {
 		return "coupon/admin_couponList";
 	}
 	
-//	//적립금 세부페이지
-//	@RequestMapping("admin_membership.mdo")
-//	public String adminMembership(Model model, AdminMembershipVO membership) {
-//		model.addAttribute("membership", adminService.getMembership(membership));
-//		return "membership/admin_membership";
-//	}
-//	//적립금 수정
-//	@RequestMapping("admin_membershipUpdate.mdo")
-//	public String adminMembershipUpdate(AdminMembershipVO membership) {
-//		int success =0;
-//		
-//		success =adminService.updateMembership(membership);
-//		
-//		if(success != 0) 
-//			return "redirect:admin_membershipList.mdo";
-//		else 
-//			return "redirect:admin_membership.mdo";
-//		
-//	}
+	//쿠폰 세부페이지
+	@RequestMapping("admin_coupon.mdo")
+	public String adminCoupon(Model model, AdminCouponVO coupon) {
+		model.addAttribute("coupon", adminService.getCoupon(coupon));
+		return "coupon/admin_coupon";
+	}
+	
+	//적립금 수정
+	@RequestMapping("admin_couponUpdate.mdo")
+	public String adminMembershipUpdate(AdminCouponVO coupon) {
+		int success =0;
+		
+		success =adminService.updateCoupon(coupon);
+		
+		if(success != 0) 
+			return "redirect:admin_couponList.mdo";
+		else 
+			return "redirect:admin_coupon.mdo";
+		
+	}
 	
 	//쿠폰 등록
 	@RequestMapping("admin_couponWrite.mdo")
@@ -47,29 +51,28 @@ public class AdminCouponController {
 		return "coupon/admin_couponWrite";
 	}
 	
-//	//적립금 등록(insert)
-//	@RequestMapping("admin_membershipInsert.mdo")
-//	public String adminMembershipInsert(AdminMembershipVO membership) {
-//		int success =0;
-//		
-//		success = adminService.insertMembership(membership);
-//		
-//		if(success != 0) 
-//			return "redirect:admin_membershipList.mdo";
-//		else 
-//			return "admin_membershipWrite";
-//	}
-//	//적립금 삭제
-//	@RequestMapping("admin_membershipDelete.mdo")
-//	public String adminMembershipDelete(AdminMembershipVO membership) {
-//		int success=0;
-//		
-//		success = adminService.deleteMembership(membership);
-//		if(success != 0) 
-//			return "redirect:admin_membershipList.mdo";
-//		else 
-//			return "redirect:admin_membershipList.mdo";
-//		
-//	}
+	//쿠폰 등록(insert)
+	@RequestMapping("admin_couponInsert.mdo")
+	public String adminCouponInsert(AdminCouponVO coupon) {
+		int success =0;
+		success = adminService.insertCoupon(coupon);
+		
+		if(success != 0) 
+			return "redirect:admin_couponList.mdo";
+		else 
+			return "admin_couponWrite";
+	}
+	//쿠폰 삭제
+	@RequestMapping("admin_CouponDelete.mdo")
+	public String adminCouponDelete(AdminCouponVO coupon) {
+		int success=0;
+		
+		success = adminService.deleteCoupon(coupon);
+		if(success != 0) 
+			return "redirect:admin_couponList.mdo";
+		else 
+			return "redirect:admin_couponList.mdo";
+		
+	}
 	
 }

@@ -55,59 +55,59 @@ table.type02 td {
 
 				<div class="card mb-4">
 					<div class="card-header">
-						쿠폰 등록
+						쿠폰 상세페이지
 					</div>
 					<div class="card-body">
-						<form action="admin_couponInsert.mdo" method="POST" >
+						<form action="admin_couponUpdate.mdo" method="POST" >
 								<table class="type02">
 									<tr>
 										<th scope="row" >쿠폰 이름</th>
-										<td><input type="text" name="coupon_name" placeholder="ex) 20% 특별 쿠폰"/></td>
+										<td><input type="text" name="coupon_name" value="${coupon.coupon_name }" placeholder="ex) 20% 특별 쿠폰"/></td>
 									</tr>
 									<tr>
 										<th scope="row" >쿠폰 코드</th>
 										<td>
-											<input type="text" name="coupon_code" id="coupon_code"/>
+											<input type="text" name="coupon_code" id="coupon_code" value="${coupon.coupon_code }"/>
 											<input type="button" id="codeUpdate" value="코드 생성">
 										</td>
 									</tr>	
 									<tr>
 										<th scope="row" >쿠폰 타입</th>
 										<td>
-											<select name="coupon_type" id="coupon_type" style="width: 190px ">
-												<option value="0">할인율</option>
-												<option value="1">금액</option>
+											<select name="coupon_type" id="coupon_type"  style="width: 190px ">
+												<option value="0" <c:if test ="${coupon.coupon_type == 0 } ">selected="selected"</c:if> >할인율</option>
+												<option value="1" <c:if test ="${coupon.coupon_type == 1} ">selected="selected"</c:if> >금액</option>
 											</select>
 										</td>
 									</tr>
 									
 									<tr>
 										<th scope="row" >쿠폰 최소 사용 금액</th>
-										<td><input type="text" name="coupon_min" value="0"/></td>
+										<td><input type="text" name="coupon_min" value="${coupon.coupon_min }"/></td>
 									</tr>
 									
 									<tr>
 										<th scope="row"  >쿠폰 금액/할인율</th>
-										<td><input type="text" name="coupon_discount" id="coupon_discount"/></td>
+										<td><input type="text" name="coupon_discount" id="coupon_discount" value="${coupon.coupon_discount }"/></td>
 									</tr>
 									<!-- 퍼센트 일경우 최대 할인금액 입력할수있게 readonly 상태를 변경? -->
 									<tr>
 										<th scope="row" >쿠폰 최대 할인금액</th>
-										<td><input type="text" name="coupon_max" id="coupon_max"/></td>
+										<td><input type="text" name="coupon_max" id="coupon_max" value="${coupon.coupon_max }"/></td>
 									</tr>
 									
 									<tr>
 										<th scope="row"  >쿠폰 시작일</th>
-										<td><input type="date" name="coupon_start"/></td>
+										<td><input type="date" name="coupon_start" value="${coupon.coupon_start }"/></td>
 									</tr>
 									
 									<tr>
 										<th scope="row" >쿠폰 만료일</th>
-										<td><input type="date" name="coupon_end"/></td>
+										<td><input type="date" name="coupon_end" value="${coupon.coupon_end }"/></td>
 									</tr>
 									
 								</table>
-							<input type="submit" value="등록하기" />
+							<input type="submit" value="수정하기" />
 							<input type="button" value="목록보기" onclick="location.href='admin_couponList.mdo'"/>
 						</form>
 					</div>
