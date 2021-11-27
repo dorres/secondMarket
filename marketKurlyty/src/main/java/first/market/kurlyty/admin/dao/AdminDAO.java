@@ -11,6 +11,7 @@ import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
+import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -471,6 +472,45 @@ public class AdminDAO {
 	}
 	public int updateCancleWait(AdminQnaVO qna) {
 		return sqlSession.update("adminOrderDAO.updateCancleWait",qna);
+	}
+	//----------------------------------------------------
+	//쿠폰 종류 등록
+	public List<AdminCouponVO> getCouponList(){
+		return sqlSession.selectList("couponDAO.getCouponList");
+	}
+	
+	public AdminCouponVO getCoupon(AdminCouponVO coupon) {
+		return sqlSession.selectOne("couponDAO.getCoupon",coupon);
+	}
+	public int updateCoupon(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCoupon",coupon);
+	}
+	public int insertCoupon(AdminCouponVO coupon) {
+		return sqlSession.insert("couponDAO.insertCoupon",coupon);
+	}
+	public int deleteCoupon(AdminCouponVO coupon) {
+		return sqlSession.delete("couponDAO.deleteCoupon",coupon);
+	}
+	//----------------------------------------------------
+	//쿠폰 사용현황
+	public List<AdminCouponVO> getCouponUseList(){
+		return sqlSession.selectList("couponDAO.getCouponUseList");
+	}
+	
+	public AdminCouponVO getCouponUse(AdminCouponVO coupon) {
+		return sqlSession.selectOne("couponDAO.getCouponUse",coupon);
+	}
+	public int updateCouponUse(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCouponUse",coupon);
+	}
+	public int insertCouponUse(AdminCouponVO coupon) {
+		return sqlSession.insert("couponDAO.insertCouponUse",coupon);
+	}
+	public int deleteCouponUse(AdminCouponVO coupon) {
+		return sqlSession.delete("couponDAO.deleteCouponUse",coupon);
+	}
+	public List<AdminCouponVO> getUserId(AdminCouponVO coupon){
+		return sqlSession.selectList("couponDAO.getUserId",coupon);
 	}
 	
 }
