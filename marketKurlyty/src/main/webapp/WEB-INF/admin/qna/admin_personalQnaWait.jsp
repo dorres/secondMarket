@@ -195,7 +195,7 @@ $(document).on("click", "#return", function(){
 	} 
 	
 	if(confirm(serial2 +' 주문건을 반품요청으로 처리하시겠습니까?')) {
-		$.ajax({
+		$.ajax({"#"
 		    type: 'post',
 		    url: 'admin_orderReturnUpdate.mdo',
 		    dataType: 'text',

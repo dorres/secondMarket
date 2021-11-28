@@ -40,7 +40,7 @@
  		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
  		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
- 		<typeAlias type="first.market.kurlyty.admin.vo.AdminSales2VO" alias="sales2"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminCouponVO" alias="coupon"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -68,5 +68,6 @@
 		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
 		<mapper resource="config/mappings/point-mapping.xml"/>
 		<mapper resource="config/mappings/Review-mapping.xml"/>
+		<mapper resource="config/mappings/admin/coupon-mapping.xml"/>
  	</mappers>
  </configuration>

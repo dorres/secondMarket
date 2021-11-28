@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
@@ -26,6 +27,7 @@ import first.market.kurlyty.user.service.MembershipService;
 import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
 import first.market.kurlyty.user.vo.CartVO;
+import first.market.kurlyty.user.vo.GoodsStockVO;
 import first.market.kurlyty.user.vo.MembershipVO;
 import first.market.kurlyty.user.vo.ShippingVO;
 import first.market.kurlyty.user.vo.UserDetailsVO;
@@ -70,7 +72,7 @@ public class PaymentController {
 	}
 	
 	@RequestMapping("/paymentPage.do")
-	public String paymentPage(user_address_listVO addressVO,int totalPrice,int dcPrice, Model model, HttpSession session) {
+	public String paymentPage(user_address_listVO addressVO,int totalPrice,int dcPrice, Model model, HttpSession session, RedirectAttributes redirect) {
 		String userId = (String)session.getAttribute("userId");
 		UserVO userVO = new UserVO();
 		userVO.setUser_id(userId);
@@ -82,6 +84,10 @@ public class PaymentController {
 		System.out.println(membership);
 		MembershipVO membershipInfo = membershipService.getMembershipData(membership);
 		for(CartVO goods:purchaseGoods) {
+			if(!cartService.isStock(goods)) {
+				redirect.addFlashAttribute("NotStock", true);
+				return "redirect:cartPage.do";
+			}
 			ProductVO product = cartService.getCartItem(goods);
 			product.setGoods_cart_count(goods.getGoods_cart_count());
 			purchaseList.add(product);
@@ -103,6 +109,14 @@ public class PaymentController {
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
 		for(CartVO cartItem : purchaseGoods) {
+			
+			//제품 재고 변경
+			GoodsStockVO stock = new GoodsStockVO();
+			stock.setCategory_goods_serial(cartItem.getCategory_goods_serial());
+			stock.setGoods_stock_stock_quantity(cartItem.getGoods_cart_count());
+			orderService.reduceGoodsStock(stock);
+			
+			//제품주문 내역 저장하기
 			ProductVO productInfo = cartService.getCartItem(cartItem);
 			int goods_price = cartItem.getGoods_cart_count()*productInfo.getGoods_last_price();
 			int goods_old_price = cartItem.getGoods_cart_count()*productInfo.getGoods_detail_price();

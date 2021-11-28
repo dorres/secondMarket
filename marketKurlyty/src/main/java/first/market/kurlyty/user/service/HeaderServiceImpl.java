@@ -39,4 +39,9 @@ public class HeaderServiceImpl implements HeaderService {
 	public List<ProductVO> getNewGoods() {
 		return headerDao.getNewGoods();
 	}
+
+	@Override
+	public List<ProductVO> getSearchGoods(String searchKeyword) {
+		return headerDao.getSearch(searchKeyword);
+	}
 }

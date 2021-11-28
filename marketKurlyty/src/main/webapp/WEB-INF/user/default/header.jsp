@@ -81,14 +81,14 @@ $(document).ready(function(){
 	
 	$("#userMenu .menu_user").hover(function(){
 		$(this).find(".sub").css("display","block").css("opacity","1");
-		$(this).find(".sub").css("height","225px").css("z-index","200").css("position","absolute");
+		$(this).find(".sub").css("height","200px").css("z-index","200").css("position","absolute");
 	});
 	$("#userMenu .menu_user").mouseleave(function(){
 		$(this).find(".sub").css("display","none");
 	});
 	$("#userMenu .lst").hover(function(){
 		$(this).find(".sub").css("display","block").css("opacity","1");
-		$(this).find(".sub").css("height","156px").css("z-index","200").css("position","absolute");
+		$(this).find(".sub").css("height","86px").css("z-index","200").css("position","absolute");
 	});
 	$("#userMenu .lst").mouseleave(function(){
 		$(this).find(".sub").css("display","none");
@@ -151,8 +151,9 @@ ul.sub_on{
 }
 .gnb_sub ul.gnb_menu li ul li {
 	width: 100px;
-	height: 24px;
+	height: 25px;
 	margin-left: 10px;
+	margin-top:2px;
 	font-family: sans-serif;
 	font-weight: bold;
 	font-size: 14px;
@@ -198,8 +199,8 @@ ul.sub_on li.on{
 						<li><a href="order.do">주문 내역</a></li>
 						<li><a href="user_address_list.do">배송지
 								관리</a></li>
-						<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
-						<li><a>상품 문의</a></li>
+						<li><a href="review.do">상품 후기</a></li>
+						<li><a href="goodsQna.do">상품 문의</a></li>
 						<li><a href="point.do">적립금</a>
 							<!----></li>
 						<li><a href="#none"
@@ -217,18 +218,10 @@ ul.sub_on li.on{
 					</li>
 					<li><a href="faq.do">자주하는
 							질문</a></li>
-					<li><a href="personalQnaBoard.do">1:1
-							문의</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/main/html.php?htmid=mypage/bulk_order.htm', 'select_my_kurly_bulk_order')">대량주문
-							문의</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/offer.php', 'select_my_kurly_product_offer')">상품
-							제안</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/echo_packing.php', 'select_my_kurly_eco_packing_feedback')">에코포장
-							피드백</a></li>
-				</ul></li>
+					<li><a href="personalQnaBoard.do">1:1문의</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 
@@ -264,17 +257,10 @@ ul.sub_on li.on{
 							href="recipeItemPage.do"><span class="txt">레시피</span></a></li>
 					</ul>
 					<div id="side_search" class="gnb_search">
-						<form action="/shop/goods/goods_search.php?&"
-							onsubmit="return searchTracking(this)">
-							<input type=hidden name=searched value="Y"> <input
-								type=hidden name=log value="1"> <input type=hidden
-								name=skey value="all"> <input type="hidden"
-								name="hid_pr_text" value=""> <input type="hidden"
-								name="hid_link_url" value=""> <input type="hidden"
-								id="edit" name="edit" value=""> <input name="sword"
-								type="text" id="sword" class="inp_search" value="" required
-								label="검색어" placeholder="검색어를 입력해주세요."> <input
-								type=image
+						<form action="searchItemPage.do">
+							<input name="searchKeyword"	type="text" id="sword" class="inp_search" value="" required
+							label="검색어" placeholder="검색어를 입력해주세요.">
+							<input type="image"
 								src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png"
 								class="btn_search">
 							<div class="init">
@@ -312,7 +298,7 @@ ul.sub_on li.on{
 				<div class="gnb_sub">
 					<div class="inner_sub">
 						<ul id="categoryMain"
-							class="gnb_menu size_over" style="height: 200.833px;">
+							class="gnb_menu size_over" style="height: 300.833px;">
 						</ul>
 					</div>
 				</div>

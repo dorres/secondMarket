@@ -13,9 +13,10 @@ public interface CartService {
 	void insertCartItem(CartVO cartVO);
 	void updateCartItem(CartVO cartVO);
 	void deleteCartItem(CartVO cartVO);
-	boolean overlapCartItem(List<CartVO> cartList, CartVO cartVO);
+	boolean overlapCartItem(List<CartVO> cartList, CartVO cartVO)throws IllegalArgumentException ; 
 	user_address_listVO getDefaultAddress(String userId);
 	void allCheckItem(CartVO cartVO);
 	void updateCheckStatus(CartVO cartVO);
 	List<CartVO> getPurchaseGoods(String userId);
+	Boolean isStock(CartVO cartVO);
 }

@@ -80,6 +80,9 @@ public class CartController {
 				ProductVO product = cartService.getCartItem(cartItem);
 				//productList.add(product);
 				if(product!=null) {
+					if(cartItem.getGoods_cart_count()>product.getGoods_detail_stock_quantity())
+						product.setOkStock(false);
+					else product.setOkStock(true);
 					if(product.getCategory_goods_packaging_type().contains("냉장")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
 						coldList.add(product);
@@ -113,6 +116,10 @@ public class CartController {
 	public String cartInput(HttpServletRequest request,CartVO cartVO) {
 		HttpSession session = request.getSession();
 		boolean overlap=false;
+		
+		if(!cartService.isStock(cartVO))
+			return "재고가 부족합니다.";
+		
 		if(session.getAttribute("userId")==null) {
 			if(session.getAttribute("cartList")==null) {
 				session.setAttribute("cartList",new ArrayList<CartVO>());
@@ -120,6 +127,14 @@ public class CartController {
 			ArrayList<CartVO> cartList = (ArrayList<CartVO>)session.getAttribute("cartList");
 			for(CartVO cartItem:cartList) {
 				if(cartItem.getCategory_goods_serial()==cartVO.getCategory_goods_serial()) {
+					CartVO checkStock = new CartVO();
+					checkStock.setCategory_goods_serial(cartItem.getCategory_goods_serial());
+					checkStock.setGoods_cart_count(cartItem.getGoods_cart_count()+cartVO.getGoods_cart_count());
+					
+					if(!cartService.isStock(checkStock)) {
+						return "재고가 부족합니다.";
+					}
+					
 					cartItem.setGoods_cart_count(cartItem.getGoods_cart_count()+cartVO.getGoods_cart_count());
 					overlap=true;
 					break;
@@ -130,7 +145,11 @@ public class CartController {
 		}else {
 			CartVO item = new CartVO();
 			List<CartVO> cartList = cartService.getCartList((String)session.getAttribute("userId"));
-			overlap=cartService.overlapCartItem(cartList, cartVO);
+			try {
+				overlap=cartService.overlapCartItem(cartList, cartVO);
+			} catch (IllegalArgumentException e) {
+				return "재고가 부족합니다.";
+			}
 			if(!overlap){
 				item=cartVO;
 				item.setUser_id((String)session.getAttribute("userId"));
