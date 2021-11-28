@@ -4,16 +4,29 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
  
  <mapper namespace="SalesDAO">
- <!-- 매출차트 날짜 -->
-	<select id="getDate" resultType="sales">
-			SELECT 	sum(m.order_goods_price) as sales_amount,  
+ <!-- 매출차트 일별 -->
+	<select id="getDay" resultType="sales">
+			SELECT sum(m.order_goods_price) as sales_amount,  
   			COUNT(*) as sales_count,
-  			TO_CHAR(order_date,'MM-dd') as daily_chart
+  			TO_CHAR(order_date,'yyyy-MM-dd') as daily_chart
 			FROM mk_order as m 
-			WHERE 1=1 and order_delivery_status='결제완료' 
+			WHERE 1=1 and order_delivery_status='배송중' 
 			and TO_CHAR(order_date, 'yyyy-MM-dd')
 			between #{startdate} and #{enddate}
-  			GROUP BY TO_CHAR(order_date,'MM-dd') 
+  			GROUP BY TO_CHAR(order_date,'yyyy-MM-dd') 
 			ORDER BY  daily_chart;
+	</select>
+	
+	<!-- 매출차트 월별 -->
+	<select id="getMonth" resultType="sales2">
+		select sum(m.order_goods_price) as sales_amount,
+			COUNT(*) as sales_count,
+			TO_CHAR(m.order_date,'yyyy-MM') as month_chart
+			FROM mk_order as m 
+			where m.order_delivery_status='배송중'
+			and TO_CHAR(m.order_date, 'yyyy-MM')
+			between #{startdate2} and #{enddate2}
+			group by to_char(m.order_date,'yyyy-MM')
+			order by month_chart;
 	</select>
  </mapper>

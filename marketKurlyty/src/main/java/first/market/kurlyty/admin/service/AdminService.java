@@ -16,6 +16,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -118,8 +119,11 @@ public interface AdminService {
 	int updateGqnaSuc(GoodsQnaVO gqna);
 	//=================================================================
 	
-	//매출 날짜 
+	//매출차트 일별
 	List<AdminSalesVO> getDate(AdminSalesVO sales);
+	
+	//매출 차트 월별
+	List<AdminSales2VO> getMonth(AdminSales2VO sales);
 	//=================================================================
 
 	//공지사항 리스트

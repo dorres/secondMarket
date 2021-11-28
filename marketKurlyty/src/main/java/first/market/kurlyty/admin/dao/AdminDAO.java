@@ -19,6 +19,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -200,11 +201,15 @@ public class AdminDAO {
 	
 	//================================================================
 	
-	//매출차트 날짜 
+	//매출차트 일별 
 	public List<AdminSalesVO> getDate (AdminSalesVO sales){
-		return sqlSession.selectList("SalesDAO.getDate", sales);
+		return sqlSession.selectList("SalesDAO.getDay", sales);
 	}
 	
+	//매출차트 월별
+	public List<AdminSales2VO> getMonth(AdminSales2VO sales){
+		return sqlSession.selectList("SalesDAO.getMonth", sales);
+	}
 	//================================================================
 
 	//공지사항 목록	

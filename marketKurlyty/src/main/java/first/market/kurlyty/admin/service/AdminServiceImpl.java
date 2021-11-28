@@ -20,6 +20,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -236,13 +237,18 @@ public class AdminServiceImpl implements AdminService {
 		}
 	
 	//----------------------------------------------------------------
-	//매출차트 날짜 
+	
+	//매출차트 일별
 	@Override
 	public List<AdminSalesVO> getDate(AdminSalesVO sales){
 		return adminDao.getDate(sales);
 	}
 	
-	
+	//매출 차트 월별
+	@Override
+	public List<AdminSales2VO> getMonth(AdminSales2VO sales){
+		return adminDao.getMonth(sales);
+	}
 	//----------------------------------------------------------------
 	
 	//리뷰 리스트
