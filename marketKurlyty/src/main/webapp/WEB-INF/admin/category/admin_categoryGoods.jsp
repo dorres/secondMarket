@@ -11,38 +11,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
-table{
-	border-collapse: collapse;
-	text-align: left;
-	width: 1200px;
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
 }
-th {
-	width: 200px;
-	font-weight: bold;
-	border: 3px solid #5F0080;
-	height: 50px;
-	font-size: 20px;
-	color: #5F0080
+table.type02 th {
+  width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
 }
-td {
-	width: 200px;
-	border: 3px solid #5F0080;
-	
+table.type02 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
-td >input{
+table.type02 td >input{
 	width: 100%;
 	height: 100%;
 	border: none;
 	resize: none;
-	font-style: italic;
 }
-
 textarea {
 	width: 100%;
 	height: 100%;
 	border: none;
 	resize: none;
-	font-style: italic;
 }
 textarea:focus, input:focus{
     outline: none;
@@ -85,17 +91,19 @@ $(document).ready(function () {
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">카테고리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">3차카테고리 등록(상품)</a></li>
-					<li class="breadcrumb-item active">등록</li>
+					<li class="breadcrumb-item">3차카테고리(상품)</li>
+					<li class="breadcrumb-item active">상세</li>
 				</ol>
 
 				<div class="card mb-4">
 					<div class="card-header">
-						3차 카테고리 등록
+						<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+							3차 카테고리 상세
+						</div>
 					</div>
 					<div class="card-body">
 						<form action="admin_categoryGoodsUpdate.mdo" method="POST" enctype="multipart/form-data">
-								<table>
+								<table class="type02">
 									<tr>
 										<th>1차카테고리</th>
 										<td><input type="text" name="${goods.category_main_serial }" value="${goods.category_main_name }" disabled></td>
@@ -181,7 +189,7 @@ $(document).ready(function () {
 																		
 								</table>
 								<br>
-								<div align="right" style="width: 1200px">
+								<div style="margin-left:10px">
 									<input type="hidden" name="category_goods_image_thumb" value="${goods.category_goods_image_thumb }">
 									<input type="hidden" name="category_goods_image_detail_header" value="${goods.category_goods_image_detail_header }">
 									<input type="hidden" name="category_goods_image_detail_main" value="${goods.category_goods_image_detail_main }">

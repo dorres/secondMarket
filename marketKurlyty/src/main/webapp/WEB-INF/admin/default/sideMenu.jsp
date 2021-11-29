@@ -73,7 +73,7 @@
 								
 								<!-- 카테고리 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									카테고리<br>조회/등록/수정
+									상품<br>조회/등록/수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
@@ -89,7 +89,7 @@
 								
 								<!-- 판매 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-									상품<br>조회/등록/수정
+									판매<br>조회/등록/수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>

@@ -43,13 +43,20 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">주문관리 목록</h1>
+				<h1 class="mt-4">주문관리</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">결제완료</li>
+					<li class="breadcrumb-item active">목록</li>
+				</ol>
+				
 				<div class="card mb-4">
 					<div class="card-header">
 						<div class="col three">
-							<div>결제완료, 배송준비중</div>
-							<a href="#" class="btn1 btn-dark" id="down">송장출력</a>
-							<a href="#" class="btn1 btn-dark" id="update">배송상태 변경(배송중)</a>
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									결제완료 / 배송준비중
+									<a href="#" class="btn1 btn-dark" id="down" style="float:right;">송장출력</a>
+									<a href="#" class="btn1 btn-dark" id="update" style="float:right; margin-right: 10px">배송상태 변경(배송중)</a>
+								</div>
 						</div>
 					</div>
 					<div class="card-body">
@@ -96,7 +103,9 @@
 											<option value="배송중" <c:if test ="${order.order_delivery_status eq '배송중'}">selected="selected"</c:if> >배송중</option>
 											<option value="배송완료" <c:if test ="${order.order_delivery_status eq '배송완료'}">selected="selected"</c:if> >배송완료</option>
 											<option value="취소요청" <c:if test ="${order.order_delivery_status eq '취소요청'}">selected="selected"</c:if> >취소요청</option>
-											<option value="취소완료" <c:if test ="${order.order_delivery_status eq '취소완료'}">selected="selected"</c:if> >취소완료</option>											
+											<option value="취소완료" <c:if test ="${order.order_delivery_status eq '취소완료'}">selected="selected"</c:if> >취소완료</option>
+											<option value="반품요청" <c:if test ="${order.order_delivery_status eq '반품요청'}">selected="selected"</c:if> >반품요청</option>
+											<option value="반품완료" <c:if test ="${order.order_delivery_status eq '반품완료'}">selected="selected"</c:if> >반품완료</option>											
 											<option value="환불요청" <c:if test ="${order.order_delivery_status eq '환불요청'}">selected="selected"</c:if> >환불요청</option>
 											<option value="환불완료" <c:if test ="${order.order_delivery_status eq '환불완료'}">selected="selected"</c:if> >환불완료</option>
 											<option value="구매완료" <c:if test ="${order.order_delivery_status eq '구매완료'}">selected="selected"</c:if> >구매완료</option>										
@@ -134,11 +143,14 @@
 			dataType : "json",
 			data : {"order_merchant_serial" : serial, "order_delivery_status" : status},
 			success: function(result) {
-				if(result != 0){
+				if(result == 1){
 					alert("배송 상태를 성공적으로 수정하였습니다.")
 					location.reload();
-				}else{
+				}else if(result == 0){
 					alert("배송 상태 수정에 실패했습니다.")
+					location.reload();
+				}else if(result ==2){
+					alert("주문건을 선택해주세요")
 					location.reload();
 				}
 			}
@@ -152,22 +164,24 @@
 			 checkArr.push($(this).val());
 		});
 		
-		 if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
-		$.ajax({
-		    type: 'post',
-		    url: 'admin_excelDown.mdo',
-		    dataType: 'text',
-		    data: { "merchant": checkArr },
-		    success: function(result) {
-				if(result != 0){
-					alert("송장 출력 성공.")
-					 location.reload();
-				}else{
-					alert("송장 출력 실패.")
-					
-				}
-			}
-		});
+		if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
+			 if(checkArr.length >0){
+				$.ajax({
+				    type: 'post',
+				    url: 'admin_excelDown.mdo',
+				    dataType: 'text',
+				    data: { "merchant": checkArr },
+				    success: function(result) {
+						if(result != 0){
+							alert("송장 출력 성공.")
+							 location.reload();
+						}else{
+							alert("송장 출력 실패.")
+							
+						}
+					}
+				});
+			 }
 		}
 	});
 	
@@ -178,21 +192,26 @@
 		});
 		
 		 if(confirm('체크한 주문건 배송상태를 (배송중)으로 수정하시겠습니까?')) {
-		$.ajax({
-		    type: 'post',
-		    url: 'admin_orderWaitUpdate1.mdo',
-		    dataType: 'text',
-		    data: { "merchant": checkArr },
-		    success: function(result) {
-				if(result != 0){
-					alert("배송 상태 수정을 성공 하였습니다.")
-					 location.reload();
-				}else{
-					alert("배송 상태 수정을 실패 하였습니다.")
-					
-				}
-			}
-		});
+			 if(checkArr.length >0){
+				$.ajax({
+				    type: 'post',
+				    url: 'admin_orderWaitUpdate1.mdo',
+				    dataType: 'text',
+				    data: { "merchant": checkArr },
+				    success: function(result) {
+						if(result != 0){
+							alert("배송 상태 수정을 성공 하였습니다.")
+							 location.reload();
+						}else{
+							alert("배송 상태 수정을 실패 하였습니다.")
+							
+						}
+					}
+				});
+			 }else{
+				 alert("주문건을 체크해주세요.");
+				 location.reload();
+			 }
 		}
 	});
 </script>

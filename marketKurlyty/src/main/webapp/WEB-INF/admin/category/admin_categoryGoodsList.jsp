@@ -42,18 +42,21 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">카테고리</h1>
+				<h1 class="mt-4">상품</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">3차 카테고리(상품)</a></li>
+					<li class="breadcrumb-item">3차 카테고리(상품)</li>
 					<li class="breadcrumb-item active">목록</li>
 				</ol>
 
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
-							<div class="col three">
-								<a href="admin_categoryGoodsWrite.mdo" class="btn1 btn-dark">상품 등록</a>
-							</div>
+					<div class="card-header"  >
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									3차 카테고리 목록
+									<a href="admin_categoryGoodsWrite.mdo" class="btn1 btn-dark" style="float: right;">상품 등록</a>
+								</div>							
 						</div>
+					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>

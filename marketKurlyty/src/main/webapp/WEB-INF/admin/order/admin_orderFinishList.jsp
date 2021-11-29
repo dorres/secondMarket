@@ -47,11 +47,17 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">주문관리 리스트</h1>
+				<h1 class="mt-4">주문관리</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">구매완료</li>
+					<li class="breadcrumb-item active">목록</li>
+				</ol>
 				<div class="card mb-4">
 					<div class="card-header">
 						<div class="col three">
-							<div>구매완료</div>
+							<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+								구매완료
+							</div>
 						</div>
 					</div>
 					<div class="card-body">
@@ -98,7 +104,9 @@
 											<option value="배송중" <c:if test ="${order.order_delivery_status eq '배송중'}">selected="selected"</c:if> >배송중</option>
 											<option value="배송완료" <c:if test ="${order.order_delivery_status eq '배송완료'}">selected="selected"</c:if> >배송완료</option>
 											<option value="취소요청" <c:if test ="${order.order_delivery_status eq '취소요청'}">selected="selected"</c:if> >취소요청</option>
-											<option value="취소완료" <c:if test ="${order.order_delivery_status eq '취소완료'}">selected="selected"</c:if> >취소완료</option>											
+											<option value="취소완료" <c:if test ="${order.order_delivery_status eq '취소완료'}">selected="selected"</c:if> >취소완료</option>
+											<option value="반품요청" <c:if test ="${order.order_delivery_status eq '반품요청'}">selected="selected"</c:if> >반품요청</option>
+											<option value="반품완료" <c:if test ="${order.order_delivery_status eq '반품완료'}">selected="selected"</c:if> >반품완료</option>											
 											<option value="환불요청" <c:if test ="${order.order_delivery_status eq '환불요청'}">selected="selected"</c:if> >환불요청</option>
 											<option value="환불완료" <c:if test ="${order.order_delivery_status eq '환불완료'}">selected="selected"</c:if> >환불완료</option>
 											<option value="구매완료" <c:if test ="${order.order_delivery_status eq '구매완료'}">selected="selected"</c:if> >구매완료</option>

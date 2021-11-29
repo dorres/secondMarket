@@ -151,7 +151,7 @@ public class AdminOrderController {
 				LocalDate date = LocalDate.now();
 				LocalTime time = LocalTime.now();
 				
-				File xlsFile = new File("D:/"+date+"."+time.getHour()+":"+time.getMinute()+".xls");
+				File xlsFile = new File("D:/"+date+"("+time.getHour()+"시"+time.getMinute()+"분"+")"+".xls");
 	            FileOutputStream fileOut = new FileOutputStream(xlsFile);
 	            wb.write(fileOut);
 	            //db작업
