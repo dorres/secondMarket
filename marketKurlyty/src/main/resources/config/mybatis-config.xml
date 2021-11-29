@@ -41,6 +41,10 @@
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCouponVO" alias="coupon"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminBestGoodsVO" alias="best"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminMemberChartVO" alias="memch"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.GoodsQnaVO" alias="gqna"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminReviewVO" alias="review"/>
+ 		
+ 		
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -69,5 +73,7 @@
 		<mapper resource="config/mappings/admin/Recipe-mapping.xml"/>
 		<mapper resource="config/mappings/admin/coupon-mapping.xml"/>
 		<mapper resource="config/mappings/admin/bestGoods-mapping.xml"/>
+		<mapper resource="config/mappings/admin/goodsQNA-mapping.xml"/>
+		<mapper resource="config/mappings/admin/admin-review.xml"/>
  	</mappers>
  </configuration>
