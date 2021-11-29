@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import first.market.kurlyty.s3.AwsS3;
@@ -31,10 +33,12 @@ public class ReviewController {
 	public String review(HttpSession session, ReviewVO ro,User_order_listVO vo, Model model) {
 		String user_id = (String)session.getAttribute("userId");
 		Integer count = reviewservice.count(user_id) == null ? 0:reviewservice.count(user_id);
+		Integer rcount = reviewservice.reviewCount(user_id) == null ? 0:reviewservice.reviewCount(user_id);
 		
-		model.addAttribute("reviewA", reviewservice.reviewAfter(ro));
+		model.addAttribute("reviewAA", reviewservice.reviewAfterList(user_id));		
 		model.addAttribute("review", reviewservice.reviewList(user_id));
 		model.addAttribute("count", count);
+		model.addAttribute("rcount", rcount);
 		return "mykurly/review";
 	}
 	
@@ -46,36 +50,37 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("reviewProc.do")
-	public String reviewInsert(@RequestParam("image") MultipartFile file1,@RequestParam("review_title") String review_title,ReviewVO vo) {
-		
-		int success =0;
+	public String reviewInsert(@RequestParam("image") MultipartFile file1,@RequestParam(value="review_serial1",required=false,defaultValue="0") Integer review_serial,HttpServletRequest request,ReviewVO vo) {
+		int success =0;		
 		String key1 = null;
-		UUID uuid;
-		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";
-		System.out.println(file1);
-		//썸네일 이미지 등록하는경우
-		if(file1.getSize() !=0 && review_title!=null) {
+		UUID uuid;		
+		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";				
+		if(file1.getSize() !=0 && review_serial == 0) {
 			uuid=UUID.randomUUID();
 			key1 = "reviewImage/" + uuid.toString() +file1.getOriginalFilename();
-			System.out.println(key1);
 			vo.setReview_image_main(path + key1);
-			System.out.println(vo.getReview_image_main());
-			success=reviewservice.insertReview(vo);
-			System.out.println(success);
+			success=reviewservice.insertReview(vo);			
+		}
+		if(review_serial != 0) {
+			reviewservice.updateReview(vo);		
 		}
 		if(success!=0) {
-		try {
-			//썸네일 업로드
+		try {		
 			InputStream is = file1.getInputStream();
 			String contentType = file1.getContentType(); 
 			long contentLength = file1.getSize();
-			awsS3.upload(is, key1, contentType, contentLength);
-			
-			
+			awsS3.upload(is, key1, contentType, contentLength);	
 		}catch (IOException e) {e.printStackTrace();}
+		}		
+		return "redirect:review.do";
 		}
+	@RequestMapping("/reviewDelete.do")
+	@ResponseBody
+	public int reviewDelete(ReviewVO vo,@RequestParam("review_serial2") int review_serial2) {
 		
-		return "mykurly/review";
+		System.out.println(review_serial2);
+		int success = reviewservice.deleteReview(review_serial2);
+		return success;
+		
 	}
-
 }

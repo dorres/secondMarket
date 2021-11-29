@@ -3,18 +3,23 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="reviewDAO">
+ <!-- 리뷰작성가능리스트 -->
  <select id="reviewList" resultType="orderListVO">
   select * from
 		mk_order_details as o join mk_category_goods as c
 		on
 		o.category_goods_serial=c.category_goods_serial
 		where o.user_id=#{user_id}
+		and o.order_details_serial not in (select order_details_serial from mk_review)
  </select>
+ <!-- 리뷰작성가능개수 -->
  <select id="count" resultType="Integer">
   select count(*) as listCnt from
 		mk_order_details
 		where user_id=#{user_id}
+		and order_details_serial not in (select order_details_serial from mk_review)
  </select>
+ <!-- 후기작성 눌렀을때 상품정보 물고가는 리스트-->
  <select id="reviewWrite" resultType="orderListVO">
 	SELECT * FROM
 	mk_category_goods C JOIN mk_goods_detail G
@@ -26,26 +31,42 @@
 	G.category_goods_serial = O.category_goods_serial
 	where
 	O.order_details_serial = #{order_details_serial}
+	
  </select>
+ <!-- 리뷰작성 -->
  <insert id="reviewInsert">
 	insert into mk_review values(
-	default, #{user_id},#{review_title},#{review_content},now(),#{review_image_main},default,default,#{category_goods_serial}
+	default, #{user_id},#{review_title},#{review_content},now(),#{review_image_main},default,default,#{category_goods_serial},#{order_details_serial}
 	)
- </insert>
- <select id="reviewAfter" resultType="first.market.kurlyty.user.vo.ReviewVO">
-	select * from mk_review as r join
-	mk_category_goods as c
+ </insert> 
+ <!-- 작성된리뷰리스트 -->
+ <select id="reviewAfterList" resultType="first.market.kurlyty.user.vo.ReviewVO">
+	select * from mk_review r
+	left join mk_category_goods c
 	on r.category_goods_serial = c.category_goods_serial
-	join mk_order_details D
-	on r.category_goods_serial = D.category_goods_serial
+	where user_id=#{user_id}
+	order by review_serial
  </select>
+ <!-- 리뷰수정눌렀을때 물고갈 데이터리스트 -->
  <select id="updateDate" resultType="first.market.kurlyty.user.vo.ReviewVO">
 	select * from mk_review as r join 
-	mk_order_details as c
+	mk_category_goods as c
 	on r.category_goods_serial = c.category_goods_serial
-	where review_serial=#{review_serial} and order_details_serial=#{order_details_serial}
+	where r.review_serial=#{review_serial} and c.category_goods_serial=#{category_goods_serial}
  </select>
+ <!-- 수정해서 저장 -->
  <update id="reviewUpdate">
- 	up
+	update mk_review set
+	review_title=#{review_title},review_content=#{review_content},review_date=now()
+	where review_serial=#{review_serial}
  </update>
+<!-- 작성한 리뷰 갯수 -->
+<select id="reviewCount" resultType="Integer">
+	select count(*) from mk_review
+	where user_id=#{user_id}
+</select>
+<delete id="reviewDelete">
+	delete from mk_review where review_serial=#{review_serial}
+</delete>
+ 
  </mapper>
