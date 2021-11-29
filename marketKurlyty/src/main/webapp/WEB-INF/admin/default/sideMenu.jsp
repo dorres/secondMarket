@@ -34,6 +34,7 @@
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="admin_userList.mdo">회원관리</a>
 										<a class="nav-link" href="terms_agreeList.mdo">약관관리</a>
+										<a class="nav-link" href="admin_membershipList.mdo">등급관리</a>	
 									</nav>
 								</div>
 								<!--회원 -->
@@ -73,7 +74,7 @@
 								
 								<!-- 카테고리 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									카테고리<br>조회/등록/수정
+									상품<br>조회/등록/수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
@@ -89,7 +90,7 @@
 								
 								<!-- 판매 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-									상품<br>조회/등록/수정
+									판매<br>조회/등록/수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
@@ -202,8 +203,7 @@
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="admin_bannerList.mdo">배너</a>
 								<a class="nav-link" href="admin_couponList.mdo">쿠폰등록</a>	
-								<a class="nav-link" href="admin_couponUseList.mdo">쿠폰발급</a>	
-								<a class="nav-link" href="admin_membershipList.mdo">적립금</a>														
+								<a class="nav-link" href="admin_couponUseList.mdo">쿠폰발급</a>														
 							</nav>
 						</div>
 						<!-- 마케팅 관리 -->

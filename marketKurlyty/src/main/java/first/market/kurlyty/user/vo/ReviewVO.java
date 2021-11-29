@@ -21,6 +21,7 @@ public class ReviewVO {
 	private String category_goods_detail_name1;
 	private String category_goods_detail_name2;
 	private int order_details_serial;
+	private String category_goods_image_thumb;
 	
 	
 }

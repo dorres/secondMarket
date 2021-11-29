@@ -5,6 +5,7 @@ import java.sql.Date;
 import lombok.Data;
 @Data
 public class AdminTermsAgreementVO {
+	private int rownum;
 	private int terms_agreement_serial;
 	private int terms_serial;
 	private String terms_id;

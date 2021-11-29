@@ -52,7 +52,7 @@ public class AdminCategoryController {
 	//메인 카테고리(update)
 	@RequestMapping("admin_categoryMainUpdate.mdo") //메인 카테고리 세부사항에서 수정하는거 봐야함
 	public String categoryMainUpdate(@RequestParam("iconImage1") MultipartFile file1,
-			@RequestParam("iconImage1") MultipartFile file2,  AdminCategoryMainVO category1) {
+			@RequestParam("iconImage2") MultipartFile file2,  AdminCategoryMainVO category1) {
 		int success =0;
 		String key1 = null, key2 =null;
 		UUID uuid;

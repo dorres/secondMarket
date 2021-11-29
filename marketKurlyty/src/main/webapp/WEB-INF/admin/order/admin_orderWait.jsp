@@ -12,35 +12,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
-table{
-	border-collapse: collapse;
-	text-align: left;
-	width: 1200px;
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
 }
-th {
-	width: 100px;
-	height: 50px;
-	font-size: 15px;
-	border: 1px solid #ccc;
+table.type02 th {
+  width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
 }
-td {
-	width: 200px;
-	border: 1px solid #ccc;
+table.type02 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
-td >input{
+table.type02 td >input{
 	width: 100%;
 	height: 100%;
 	border: none;
 	resize: none;
-	font-style: italic;
 }
-
 textarea {
 	width: 100%;
 	height: 100%;
 	border: none;
 	resize: none;
-	font-style: italic;
 }
 textarea:focus, input:focus{
     outline: none;
@@ -61,15 +70,20 @@ textarea:focus, input:focus{
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">주문내역</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item">주문내역 세부사항</li>
+					<li class="breadcrumb-item">결제완료</li>
+					<li class="breadcrumb-item active">상세</li>
 				</ol>
-
+				
 				<div class="card mb-4">
-					<div class="card-header">주문내역 <fmt:formatDate value="${orderWait.order_date  }" pattern="yyyy-MM-dd"/></div>
+					<div class="card-header">
+						<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+							주문내역
+						</div>
+					</div>
 					<div class="card-body">
 						<form action="admin_categoryGoodsUpdate.mdo" method="POST" >
-								<h3>주문자 정보</h3>${orderWait.order_merchant_serial }
-								<table>
+								<h3 style="margin-left: 10px">주문자 정보</h3>
+								<table class="type02">
 									<tr>
 										<th>이름</th>
 										<td><input type="text" name="user_name" value="${orderWait.user_name }" readonly="readonly"></td>
@@ -82,6 +96,13 @@ textarea:focus, input:focus{
 									<tr>
 										<th>주소</th>
 										<td colspan="5"><input type="text" name="user_address1" value="${ orderWait.user_address1 } ${orderWait.user_address2}" readonly="readonly"></td>
+									</tr>
+									<tr>	
+										<th>주문 날짜</th>
+										<td><input type="text" value="<fmt:formatDate value="${orderWait.order_date  }" pattern="yyyy-MM-dd"/>" readonly="readonly"></td>
+										
+										<th>주문 번호</th>
+										<td><input type="text" value="${orderWait.order_merchant_serial }" readonly="readonly"></td>
 									</tr>
 		
 									<tr>	
@@ -105,8 +126,8 @@ textarea:focus, input:focus{
 									</tr>					
 								</table>
 								<br>
-								<h3>받으실 분</h3>
-								<table>
+								<h3 style="margin-left: 10px">받으실 분</h3>
+								<table class="type02">
 									<tr>
 										<th>이름</th>
 										<td><input type="text" name="shipping_recipient_name" id="shipping_recipient_name" value="${shippingInfo.shipping_recipient_name }" ></td>
@@ -134,9 +155,7 @@ textarea:focus, input:focus{
 				
 								</table>
 								
-								<div align="right" style="width: 1200px">
-									<input type="button" value="송장" />
-<!-- 									<input type="button" value="받는사람 수정하기" onclick="popup()"/> -->
+								<div style="margin-left: 10px">
 									<input type="button" value="받는사람 수정하기" id="updateBtn"  /> 
 									<input type="hidden" value="${orderWait.order_merchant_serial }" name="order_merchant_serial">
 									<input type="button" value="목록보기" onclick="location.href='admin_orderWaitList.mdo'"/>

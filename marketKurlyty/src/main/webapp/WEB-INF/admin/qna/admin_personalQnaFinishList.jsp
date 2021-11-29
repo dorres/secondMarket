@@ -32,7 +32,18 @@
 
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">1:1문의</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">답변완료</li>
+					<li class="breadcrumb-item active">목록</li>
+				</ol>
 				<div class="card mb-4">
+				<div class="card-header">
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									답변완료 목록
+								</div>
+							</div>
+					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
