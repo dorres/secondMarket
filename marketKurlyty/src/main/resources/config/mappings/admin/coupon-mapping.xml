@@ -67,4 +67,13 @@
  	</select>
   	<!-- 쿠폰 사용현황 -->
   	
+  	<!-- 쿠폰 유효기간 지나면 업데이트하기 위한 코드들(쿼츠) -->
+  	<select id="getCouponDate" resultType="coupon">
+  		select * from mk_coupon
+  	</select>
+  	
+  	<update id="updateCouponDate" parameterType="coupon">
+  		update mk_coupon_use set coupon_use_status = 2 where coupon_use_coupon_serial = #{coupon_serial}
+  	</update>
+  	
 </mapper>

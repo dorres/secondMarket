@@ -529,5 +529,12 @@ public class AdminDAO {
 	public List<AdminCouponVO> getUserId(AdminCouponVO coupon){
 		return sqlSession.selectList("couponDAO.getUserId",coupon);
 	}
+	//쿠폰 유효기간(쿼츠? )이용해보자
+	public List<AdminCouponVO> getCouponDate(){
+		return sqlSession.selectList("couponDAO.getCouponDate");
+	}
+	public int updateCouponDate(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCouponDate",coupon);
+	}
 	
 }
