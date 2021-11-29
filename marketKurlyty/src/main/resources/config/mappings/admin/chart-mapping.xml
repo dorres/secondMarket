@@ -29,4 +29,13 @@
 			group by to_char(m.order_date,'yyyy-MM')
 			order by month_chart;
 	</select>
+	
+	<!-- 멤버차트  -->
+	<select id="getmemch" resultType="memch">
+		SELECT user_membership_name as membership, 
+		COUNT(*)AS count 
+		FROM mk_user_details 
+		GROUP BY user_membership_name 
+		ORDER BY user_membership_name 
+	</select>
  </mapper>

@@ -9,11 +9,13 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminBestGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMemberChartVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
@@ -239,6 +241,12 @@ public class AdminServiceImpl implements AdminService {
 	
 	//----------------------------------------------------------------
 	
+	//베스트 상품
+	@Override
+	public List<AdminBestGoodsVO> bestList(AdminBestGoodsVO best){
+		return adminDao.bestList(best);
+	}
+	//----------------------------------------------------------------
 	//매출차트 일별
 	@Override
 	public List<AdminSalesVO> getDate(AdminSalesVO sales){
@@ -249,6 +257,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<AdminSales2VO> getMonth(AdminSales2VO sales){
 		return adminDao.getMonth(sales);
+	}
+	
+	//멤버등급 차트
+	@Override
+	public List<AdminMemberChartVO> getMemChart(AdminMemberChartVO memch){
+		return adminDao.getMemChart(memch);
 	}
 	//----------------------------------------------------------------
 	
