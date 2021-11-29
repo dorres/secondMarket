@@ -117,4 +117,32 @@
  		AND PRODUCT.GOODS_DETAIL_STATUS=1
  		ORDER BY PRODUCT.category_goods_serial
  	</select>
+ 	<!-- recipe -->
+ 	<select id="getRecipeList" resultType="first.market.kurlyty.user.vo.RecipeVO">
+ 		SELECT * FROM MK_RECIPE ORDER BY recipe_serial DESC
+ 	</select>
+ 	<select id="getRecipeBook" resultType="first.market.kurlyty.user.vo.RecipeVO">
+ 		SELECT * FROM mk_recipe WHERE recipe_serial=#{value}
+ 	</select>
+ 	<select id="getBestIngredient" resultType="first.market.kurlyty.user.vo.RecipeVO">
+ 		SELECT category_goods_serial, sum(order_goods_count)sellCount
+		FROM mk_order_details
+		WHERE category_goods_serial
+		IN((select category_goods_serial from mk_category_goods where category_goods_name like '%'||#{value}||'%'))
+		GROUP BY category_goods_serial
+		ORDER BY sellCount DESC, category_goods_serial DESC;
+ 	</select>
+ 	<update id="hitPlus">
+ 		UPDATE mk_recipe set recipe_hit=(recipe_hit+1) WHERE recipe_serial=#{value}
+ 	</update>
+ 	<select id="getIngredients" resultType="itempage">
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.category_goods_name LIKE '%'||#{value}||'%'
+ 		ORDER BY PRODUCT.category_goods_serial DESC
+ 		LIMIT 1;
+ 	</select>
  </mapper>

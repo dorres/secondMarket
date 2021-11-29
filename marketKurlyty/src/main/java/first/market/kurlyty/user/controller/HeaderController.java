@@ -1,11 +1,6 @@
 package first.market.kurlyty.user.controller;
 
-import java.io.File;
 import java.util.List;
-
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.s3.AwsS3;
 import first.market.kurlyty.user.service.HeaderService;
+import first.market.kurlyty.user.service.RecipeService;
 import first.market.kurlyty.user.service.UserService;
+import first.market.kurlyty.user.vo.ItemPageVO;
+import first.market.kurlyty.user.vo.RecipeVO;
 import first.market.kurlyty.vo.BannerVO;
 import first.market.kurlyty.vo.CategoryMainVO;
 import first.market.kurlyty.vo.CategorySubVO;
@@ -33,8 +31,12 @@ public class HeaderController {
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private AwsS3 awsS3;
-	@Autowired HeaderService headerService;
-	@Autowired UserService userService;
+	@Autowired
+	private HeaderService headerService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private RecipeService recipeService;
 	
 	@RequestMapping(value="categoryData.do", produces="application/json; charset=utf-8")
 	@ResponseBody
@@ -92,7 +94,11 @@ public class HeaderController {
 		return "mainPage/altleShopping"; 
 	}
 	@RequestMapping("/recipeItemPage.do")
-	public String recipeItemPage() {
+	public String recipeItemPage(Model model) {
+		List<List<RecipeVO>> recipeList = recipeService.getRecipeList();
+		System.out.println("what!");
+		System.out.println(recipeList);
+		model.addAttribute("recipeList",recipeList);
 		return "mainPage/recipe";
 	}
 	@RequestMapping("/searchItemPage.do")
@@ -102,58 +108,16 @@ public class HeaderController {
 		model.addAttribute("searchKeyword", searchKeyword);
 		return "mainPage/searchGoodsPage";
 	}
-	@RequestMapping("/fileUploadTest.do")
-	public String fileUploadTest() {
-//		awsS3.upload(new File("C:\\pmProject\\ico_cart.svg"), "kurlyImage/ico_cart3.svg");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_veggies_black.png"), "categoryMain/icon_veggies_black.png");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_veggies_color.png"), "categoryMain/icon_veggies_color.png");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_meat_black.png"), "categoryMain/icon_meat_black.png");
-		awsS3.upload(new File("C:\\Users\\최현호\\Desktop\\icon_meat_color.png"), "categoryMain/icon_meat_color.png");
-		
-		System.out.println("파일 업로드");
-
-		return "redirect:index.do";
-		
-	}
 	
-	@RequestMapping("/Encry.do")
-	public String encry() {
-		try {
-			String initKey = "shplab123456789abcdefghijklmnopq";
-			SecretKey key = new SecretKeySpec(initKey.getBytes(), "AES");
-			String initIv = "1234567891234567";
-			IvParameterSpec iv = new IvParameterSpec(initIv.getBytes());
-			
-			System.out.println(SecurityUtil.bytesToHex(key.getEncoded()));
-			
-			System.out.println(SecurityUtil.encrypt("AES/CBC/PKCS5Padding", key, iv, "sodlfdms56@gmail.com"));
-			System.out.println(SecurityUtil.encrypt("AES/CBC/PKCS5Padding", key, iv, "phgksmffhTkd56@"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "redirect:index.do";
-	}
 	
-	@RequestMapping("Decry.do")
-	public String decry() {
-		String key = "shplab123456789abcdefghijklmnopq";
-		String iv = "1234567891234567";
-		
-		SecretKey decKey = new SecretKeySpec(key.getBytes(),"AES");
-		IvParameterSpec deIv = new IvParameterSpec(iv.getBytes());
-		
-		  try { 
-			  System.out.println(SecurityUtil.decrypt("AES/CBC/PKCS5Padding",
-				  decKey, deIv,
-				  "xjBsXMxm4Pg6w8c38FhsIGkvPVuy7rHXyCjZUJrS5bQ=")); 
-			  System.out.println(SecurityUtil.decrypt("AES/CBC/PKCS5Padding",
-					  decKey, deIv,
-					  "IvqwFUGqP+BYjDg270mctD4pAFzy7vt9tOPJRfwpcuYejXm+eSbiyAETg28WvJhd")); 
-		  }catch(Exception e) {
-			  e.printStackTrace();
-		  }
-		 
-		return "redirect:index.do";
+	@RequestMapping("/recipeBookItemPage.do")
+	public String recipeBookPage(int recipe_serial, Model model) {
+		System.out.println(recipe_serial);
+		RecipeVO recipeBook = recipeService.getRecipeBook(recipe_serial);
+		List<ItemPageVO> ingredList = recipeService.getIngredient(recipeBook);
+		model.addAttribute("recipeBook", recipeBook);
+		model.addAttribute("ingredList",ingredList);
+		return "mainPage/recipeBook";
 	}
 	
 }

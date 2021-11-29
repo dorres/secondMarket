@@ -214,20 +214,6 @@
 									alt="All Paper Challenge">
 								<p class="screen_out">사람에게도 환경에도 더 이로운 배송 친환경 포장재 자세히 보기</p>
 							</div>
-
-							<!-- <div id="divFrozen" class="order_section order_pack">
-								<h3 class="section_crux">냉동상품 포장*</h3>
-								<div class="section_full">
-									<input type="hidden" name="isFrozenPack" value=""> <label
-										class="label_radio checked"> <input type="radio"
-										name="frozen_product_packing_option" value="0"
-										checked="checked"> <span class="ico"></span> 종이박스 포장
-										(기본)
-									</label> <label class="label_radio"><input type="radio"
-										name="frozen_product_packing_option" value="1"> <span
-										class="ico"></span> 스티로폼 박스 포장 </label>
-								</div>
-							</div> -->
 							<div class="tax_absolute">
 								<div class="inner_sticky" id="sticky" style="top: 0px;">
 									<h2 class="tit_section">결제금액</h2>
@@ -315,83 +301,39 @@
 												<th>쿠폰 적용</th>
 												<td>
 													<div class="view_popselbox">
+													사용 가능 쿠폰 <span id="useCoupon">${fn:length(myCoupon) }</span>개
 														<div id="popselboxView" class="select_box">
-															사용 가능 쿠폰 <span id="useCoupon">0</span>개 / 전체 <span
-																id="haveCoupon">1</span>개
+														<select id="selectCoupon" style="opacity:1;" onchange="javascript:changeCoupon();">
+															<option value="-1">쿠폰 적용 안 함</option>
+															<c:forEach var="coupon" items="${myCoupon }" varStatus="index">
+																<option value="${index.index }">${coupon.coupon_name }
+																<c:if test="${coupon.coupon_type==1 }">
+																	&nbsp;&nbsp;${coupon.coupon_discount }원 할인,
+																</c:if>
+																<c:if test="${coupon.coupon_type==0 }">
+																	&nbsp;&nbsp;${coupon.coupon_discount }원 할인,
+																	최대 ${coupon.coupon_max }원 할인적용
+																</c:if>
+																최소 주문 금액:${coupon.coupon_min }원
+																</option>
+															</c:forEach>
+														</select>
 														</div>
-														<div id="popSelbox" class="layer_coupon">
-															<!-- <ul id="addpopSelList" class="list">
-																<li class="fst checked ">
-																	<div class="inner_item">
-																		<span class="txt_tit default">쿠폰 적용 안 함</span>
-																	</div>
-																</li>
-																<li style="pointer-events: none;">
-																	<div class="inner_item">
-																		<div class="item_row">
-																			<div class="item_td left">
-																				<span class="txt_apr coupon_na">사용불가</span><span
-																					class="txt_is_dc" style="display: none;">원
-																					할인</span>
-																			</div>
-																			<div class="item_td">
-																				<span class="txt_tit coupon_na">1만원 쿠폰(2만원 이상
-																					주문, 만료일 24시까지)</span> <span class="txt_desc coupon_na">2만원
-																					이상 주문 시 1만원 할인</span> <span class="txt_expire coupon_na">유효기간
-																					2021-11-15 까지</span>
-																				<div id="apply_delivery_coupon"
-																					class="is_delivery_coupon" style="display: none;">0</div>
-																				<div class="txt_apply_coupon" style="display: none;">776814782</div>
-																				<ul id="payment_gateways" style="display: none;">
-																					<li>ALL</li>
-																				</ul>
-																				<div id="point_allowed" style="display: none;">true</div>
-																				<span class="credit_card_id" style="display: none;"></span>
-																			</div>
-																		</div>
-																	</div>
-																</li>
-															</ul> -->
-															<!-- <div class="coupon_list_default" style="display: none;">
-																<li class="fst checked ">
-																	<div class="inner_item">
-																		<span class="txt_tit default">쿠폰 적용 안 함</span>
-																	</div>
-																</li>
-															</div> -->
-															<div id="listItem" style="display: none">
-																<div class="inner_item">
-																	<div class="item_row">
-																		<div class="item_td left">
-																			<span class="txt_apr"></span>
-																		</div>
-																		<div class="item_td">
-																			<span class="txt_tit"></span> <span class="txt_desc"></span>
-																			<span class="txt_expire"></span>
-																			<div id="apply_delivery_coupon"
-																				class="is_delivery_coupon" style="display: none;"></div>
-																			<div class="txt_apply_coupon" style="display: none;"></div>
-																			<ul id="payment_gateways" style="display: none;"></ul>
-																			<div id="point_allowed" style="display: none;"></div>
-																			<span class="credit_card_id" style="display: none;"></span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<button id="popSelboxCancel" type="button"
-																class="btn btn_cancel screen_out">취소</button>
-															<button id="popSelboxSelect" type="button"
-																class="btn btn_conf screen_out">확인</button>
-															<button id="popSelboxClose" type="button"
-																class="btn_close screen_out">닫기</button>
+														
+														<div id="selBox" style="display:none;">
+														<c:forEach var="coupon" items="${myCoupon }">
+															<input type="hidden" id="couponserial" value="${coupon.coupon_use_serial }">
+															<input type="hidden" id="couponMax" value="${coupon.coupon_max }">
+															<input type="hidden" id="couponMin" value="${coupon.coupon_min }">
+															<input type="hidden" id="couponDiscount" value="${coupon.coupon_discount }">
+														</c:forEach>
 														</div>
 													</div>
-													<div id="notavailableMsg" class="txt_notavailable"
-														style="display: none;"></div>
-													<p class="txt_inquiry">
-														<a href="#none" class="link" id="happyTalk">쿠폰사용문의(카카오톡)</a>
-													</p>
 												</td>
+											</tr>
+											<tr>
+												<th></th>
+												<td><span id="couponFalse" style="color:red"></span></td>
 											</tr>
 											<tr class="emoney_use ">
 												<th class="no_emoney">적립금 적용 <input type="hidden"
@@ -606,7 +548,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<input type="button" value="${payPrice }원 결제하기" onclick="javascript:reqeustPay()" class="btn_payment">
+							<input type="button" id="payBt" value="${payPrice }원 결제하기" onclick="javascript:reqeustPay()" class="btn_payment">
 						</form>
 					</div>
 				</div>
@@ -620,6 +562,8 @@
 <script>
 var originPayPrice=parseInt($("input#payment").val());
 var rePoint=0;
+var keepPayPrice=parseInt($("input#payment").val());
+var couponIndex=-1;
 $(document).ready(function(){
 	$("a#btn_dropup").click(function(){
 		if($("ul.list_product").css("display")=='none'){
@@ -651,8 +595,59 @@ $(document).ready(function(){
 				$("strong#notMore").fadeOut(1000);
 			}
 		}
+		$("input#payBt").val($("span#paper_settlement").text()+" 결제하기")
 	})
 })
+function changeCoupon(){
+	var index=parseInt(document.getElementById("selectCoupon").value);
+	var discount;
+	var max;
+	var min;
+	var payment=parseInt($("input#payment").val());
+	var point=$("input#usePoint").val();
+	originPayPrice=keepPayPrice;
+	$("span#couponFalse").text("")
+	if(index>=0){
+		discount=$("input#couponDiscount").eq(index).val();
+		max=$("input#couponMax").eq(index).val();
+		min=$("input#couponMin").eq(index).val();
+		couponIndex=index;
+		if(payment<min){
+			couponIndex=-1;
+			$("select#selectCoupon").val("-1").prop("selected",true);
+			$("span#couponFalse").text("최소 주문 금액 이상이어야 할인이 적용됩니다.")
+			$("input#payment").val(originPayPrice-point);
+			$("span#paper_settlement").text(parseInt(originPayPrice-point).toLocaleString("ko-KR"))
+			$("span#apr_coupon_data").text("0");
+			$("input#payBt").val($("span#paper_settlement").text()+" 결제하기")
+			return false;
+		}
+		if(discount<100){
+			discount=parseInt(originPayPrice*((100-discount)/100));
+			discount=parseInt(discount/10)*10;
+			if(discount>max)discount=max;
+		}
+		if(payment<discount){
+			couponIndex=-1;
+			$("select#selectCoupon").val("-1").prop("selected",true);
+			$("span#couponFalse").text("주문을 초과 적용되는 쿠폰은 사용할 수 없습니다.")
+			$("input#payment").val(originPayPrice-point);
+			$("span#paper_settlement").text(parseInt(originPayPrice-point).toLocaleString("ko-KR"))
+			$("span#apr_coupon_data").text("0");
+			$("input#payBt").val($("span#paper_settlement").text()+" 결제하기")
+			return false;
+		}
+		$("input#payment").val(originPayPrice-discount-point);
+		$("span#paper_settlement").text(parseInt(originPayPrice-discount-point).toLocaleString("ko-KR"))
+		$("span#apr_coupon_data").text(parseInt(discount).toLocaleString("ko-KR"));
+		originPayPrice=originPayPrice-discount;
+	}else{
+		$("input#payment").val(originPayPrice-point);
+		$("span#paper_settlement").text(parseInt(originPayPrice-point).toLocaleString("ko-KR"))
+		$("span#apr_coupon_data").text("0");
+	}
+	$("input#payBt").val($("span#paper_settlement").text()+" 결제하기")
+}
 function inputPoint(){
 	if((/[^0-9]/gi).test($("input#usePoint").val())){
 		$("input#usePoint").val( $("input#usePoint").val().replace(/[^0-9]/gi,"") );
@@ -663,6 +658,7 @@ function inputPoint(){
 		if(point>${userPoint}){
 			$("input#usePoint").val(String(point).substring(0,String(rePoint).length));
 			$("strong#excessPoint").css("display","block");
+			$("input#payBt").val($("span#paper_settlement").text()+" 결제하기")
 			return false;
 		}
 		$("strong#excessPoint").css("display","none");
@@ -692,7 +688,7 @@ function inputPoint(){
 			$("strong#not1Place").css("display","none");
 		}
 	}
-	
+	$("input#payBt").val($("span#paper_settlement").text()+" 결제하기")
 }
 var IMP = window.IMP; // Can be omitted
 IMP.init("imp09497562"); // Example: imp00000000
@@ -754,6 +750,8 @@ function reqeustPay(){
 				var amount=parseInt(data.amount)
 				var usingPoint=$("input#usePoint").val();
 				if(usingPoint=="")usingPoint=0;
+				var coupon=0;
+				if(couponIndex>=0)coupon=$("input#couponserial").eq(couponIndex).val();
 				if(req.paid_amount==data.response.amount){
 					alert("성공적으로 결제되었습니다.");
 					$.ajax({
@@ -781,7 +779,8 @@ function reqeustPay(){
 							"shipping_recipient_name":recipiName,
 							"shipping_recipient_phone":recipiPhone,
 							"order_point":point,
-							"usingPoint":usingPoint
+							"usingPoint":usingPoint,
+							"coupon_serial":coupon
 						}
 					}).done(function(location){
 						window.location.href="index.do";

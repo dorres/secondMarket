@@ -43,6 +43,62 @@ li.inquiry-item div{
     vertical-align: top;
     float:left;
 }
+.expand-question{
+    position: relative;
+    padding: 20px 26px 30px 36px;
+}
+div.expand-question span.icon-question{
+    background: url(https://res.kurly.com/kurly/ico/2021/question_24_24_purple.svg) 0 0 no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+}
+div.expand-question span.icon-question span{
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.expand-answer{
+    position: relative;
+    padding: 20px 26px 30px 36px;
+}
+div.expand-answer span.icon-answer{
+    background: url(https://res.kurly.com/kurly/ico/2021/answer_24_24_purple.svg) 0 0 no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+}
+div.expand-answer span.icon-answer span{
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+}   
+
+.created-time{
+	display: block;
+    padding-top: 20px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #999;
+}
+
+.itemNavFixed{
+	position: fixed;
+    z-index: 300;
+    width: 100%;
+    display:flex;
+}
 </style>
 <script>
 
@@ -93,7 +149,7 @@ function div_show_update(serial,title,content,lock) {
 	$("button#updateBt").css("display","block");
 	$("input[name=qna_goods_serial]").val(serial);
 	$("input[name=qna_goods_title]").val(title);
-	$("textarea[name=qna_goods_content]").val(content.replace("ln","\r\n"));
+	$("textarea[name=qna_goods_content]").val(content.replaceAll("ln","\r\n"));
 	$("input[name=qna_goods_lock]").prop('checked',lock);
 	$("#write_div").fadeIn(300);
 }
@@ -104,6 +160,30 @@ function div_hide() {
 	$("#write_div").fadeOut(300);
  //document.getElementById("write_div").style.display = "none";
 }
+
+$(document).ready(function(){
+	var topset = $("#gnb").height();
+	var itemPgNavi=$("div.goods-view-tab").offset();
+	$(window).scroll(function(){
+		console.log("topset:",topset);
+		console.log("windowToe",$(document).scrollTop());
+		console.log(itemPgNavi.top);
+		if($(document).scrollTop()+103>itemPgNavi.top){
+			$("div.goods-view-tab").addClass("itemNavFixed");	
+			$("div.goods-view-tab").css("top",String(topset-1)+"px");
+			$("div#underCartShow").fadeIn(400);
+		}
+		else{
+			$("div.goods-view-tab").removeClass("itemNavFixed");
+			$("div.goods-view-tab").css("top","0px");
+			$("div#underCartShow").fadeOut(400);
+		}
+	});
+	$("li.goods-view-infomation-tab").click(function(){
+		$("li.goods-view-infomation-tab").find("a").removeClass("__active");
+		$(this).find("a").addClass("__active");
+	})
+});
 </script>
 
 <body class="main-index" oncontextmenu="return false"
@@ -136,29 +216,6 @@ function div_hide() {
 						style="width: 100%;">
 
 						<div class="section_view">
-							<div id="shareLayer">
-								<div class="layer_share">
-									<div class="inner_layersns">
-										<h3 class="screen_out">SNS 공유하기</h3>
-										<ul class="list_share">
-											<li><a class="btn btn_fb" data-sns-name="페이스북"
-												data-sns="facebook" href="#none"><img
-													src="https://res.kurly.com/mobile/service/goodsview/1804/ico_facebook.png"
-													alt="페이스북"><span class="txt">공유하기</span></a></li>
-											<li><a class="btn btn_tw" data-sns-name="트위터"
-												data-sns="twitter" href="#none"><img
-													src="https://res.kurly.com/mobile/service/goodsview/1804/ico_twitter.png"
-													alt="트위터"><span class="txt">트윗하기</span></a></li>
-											<li class="btn_url"><input type="text" class="inp"
-												value="" readonly="readonly"> <a
-												class="btn_copy off" data-sns-name="링크 복사" data-sns="copy"
-												href="#none">URL 복사<img
-													src="https://res.kurly.com/mobile/service/goodsview/1804/ico_checked_x2.png"
-													alt=""></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 
 							<div id="sectionView">
 								<div class="inner_view">
@@ -167,11 +224,11 @@ function div_hide() {
 											alt="상품 대표 이미지" class="bg" />
 									</div>
 									<p class="goods_name">
-										<span class="btn_share"><button id="btnShare">공유하기</button></span>
+									
 										<input type="hidden" name="category_goods_serial"
-											value="${getItemPage.category_goods_serial}" /> <strong
-											class="name">${getItemPage.category_goods_name}</strong> <span
-											class="short_desc">${getItemPage.category_goods_name_subtext}</span>
+											value="${getItemPage.category_goods_serial}" />
+										<strong	class="name">${getItemPage.category_goods_name}</strong>
+										<span class="short_desc">${getItemPage.category_goods_name_subtext}</span>
 									</p>
 									<p class="goods_dcinfo">회원할인가</p>
 									<p class="goods_price">
@@ -326,7 +383,7 @@ function div_hide() {
 
 								<!-- 이너, 상품 선택 click으로 숨기기 보이기  -->
 								<!-- 				<div class="wrap"> -->
-								<div class="cart_option cartList cart_type1 on" style="">
+								<div id="underCartShow" class="cart_option cartList cart_type1" style="">
 									<form name="cartInput" action="cartInput.do">
 										<div class="inner_option">
 											<div class="in_option">
@@ -436,10 +493,9 @@ function div_hide() {
 													items="${getCategoryItemPage }">
 													<li class="goods-add-product-item __slide-item">
 														<div class="goods-add-product-item-figure">
-															<a href="#"
-																onclick="KurlyTrackerLink('../goods/goods_view.php?goodsno=3327', 'select_related_product', {origin_price: 5400, package_id: 3327, package_name: '[남향푸드] 우리밀 또띠아 (냉동)'}, {openWindow: true})">
+															<a href="itemPage.do?category_goods_serial=${categoryItemPage.category_goods_serial }">
 																<img
-																src="//img-cf.kurly.com/shop/data/goods/1486128824798m0.jpg"
+																src="${categoryItemPage.category_goods_image_thumb }"
 																class="goods-add-product-item-image"
 																onerror="this.src='https://res.kurly.com/mobile/service/common/bg_1x1.png'">
 															</a>
@@ -1021,7 +1077,7 @@ function div_hide() {
 																			<p class="txt_sub text_medium normal">
 																				<fmt:formatDate
 																					value="${goodsqnalist.qna_goods_date}"
-																					pattern="yyyy-mm-dd" />
+																					pattern="yyyy-MM-dd" />
 																			</p>
 																		</div>
 																		<div class="item-cell">
@@ -1035,7 +1091,7 @@ function div_hide() {
 																		
 																	</li>
 																	<li class="inquiry-item-expand "
-																		style="align: center; display: none; width: 100%;">
+																		style="align: center; display: none; width: 100%; background-color:#f9f9ef">
 
 																		<c:if test="${goodsqnalist.qna_goods_answer_date == null}">
 																			<div class="expand-question">
@@ -1060,48 +1116,27 @@ function div_hide() {
 																				</c:if>
 																			</div>
 																		</c:if> <!--  답변이 없을 때 !  --> 
-																		<c:if
-																			test="${goodsqnalist.qna_goods_answer_date != null}">
+																		<c:if test="${goodsqnalist.qna_goods_answer_date != null}">
 																			<div class="expand-question">
 																				<span class="icon-question"><span>질문</span></span>
 																				<p>
-																					<span>${goodsqnalist.qna_goods_content} </span>
+																					<span>${fn:replace(goodsqnalist.qna_goods_content,"ln","<br>")} </span>
 																				</p>
 																				<br>
 																			</div>
-																			<%-- <div class="expand-answer">
+																			<div class="expand-answer">
 																				<span class="icon-answer"><span>답변</span></span>
 																				<p>
-																					Love food, Love life!<br>
-																					${goodsqnalist.qna_goods_answer} <br>혹여 컬리
-																					이용하심에 상품으로 불편을 겪으시거나 다른 어려움이 있으실 경우<br>언제든 컬리
-																					고객행복센터 및 카카오톡, 1:1게시판으로 문의 부탁드립니다.<br> <br>마켓컬리
-																					드림.
-																				</p>
-																				<span class="created-time">${goodsqnalist.qna_goods_answer_date}</span>
-																			</div> --%>
+																					${goodsqnalist.qna_goods_answer}
+																				<span class="created-time">
+																					답변일:<fmt:formatDate value="${goodsqnalist.qna_goods_answer_date}" pattern="yyyy-MM-dd" />
+																				</span>
+																			</div>
 																		</c:if>
 																	</li>
 																</ul>
 															</c:forEach>
 
-															<!-- <ul>
-																<li class="inquiry-item"><div
-																		class="product-detail is-secret">
-																		<strong>비밀글입니다.</strong><span class="icon-secret"><span
-																			class="screen_out">비밀글</span></span>
-																	</div>
-																	<div class="item-cell">
-																		<p class="txt_sub text_medium normal ">노*석</p>
-																	</div>
-																	<div class="item-cell">
-																		<p class="txt_sub text_medium normal ">2021.08.06</p>
-																	</div>
-																	<div class="item-cell">
-																		<p class="txt_sub kurlyPurple normal ">답변완료</p>
-																	</div></li>
-															</ul>
- 																		-->
 															<div class="board-inquiry-area">
 																<div class="paging-navigation">
 																	<button type="button" class="paging-prev"

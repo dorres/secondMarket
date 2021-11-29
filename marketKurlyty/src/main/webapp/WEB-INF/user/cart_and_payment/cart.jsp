@@ -85,6 +85,7 @@
 																<input type="hidden" id="price" value="${item.goods_last_price }"/>
 																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
 																<input type="hidden" id="isStock" value="${item.okStock }"/>
+																<input type="hidden" id="stock" value="${item.goods_detail_stock_quantity }"/>
 																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
@@ -94,7 +95,12 @@
 																	<div class="name">
 																		<div class="inner_name">
 																			<a href="#" class="package ">${item.category_goods_name }</a>
-																			<strong style="color:red;fond-weight:bold;"><c:if test="${!item.okStock }">재고부족</c:if></strong>
+																			<c:if test="${!item.okStock }">
+																				<strong style="color:red;fond-weight:bold;" id="currentStock">재고부족 (현재 재고:${item.goods_detail_stock_quantity }개)</strong>
+																			</c:if>
+																			<c:if test="${item.okStock }">
+																				<strong style="color:red;fond-weight:bold;display:none" id="currentStock">재고부족 (현재 재고:${item.goods_detail_stock_quantity }개)</strong>
+																			</c:if>
 																			<div class="info"></div>
 																		</div>
 																	</div>
@@ -141,6 +147,8 @@
 																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price }" var="usuallyPrice"/>
 																<input type="hidden" id="price" value="${item.goods_last_price }"/>
 																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
+																<input type="hidden" id="isStock" value="${item.okStock }"/>
+																<input type="hidden" id="stock" value="${item.goods_detail_stock_quantity }"/>
 																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
@@ -150,7 +158,12 @@
 																	<div class="name">
 																		<div class="inner_name">
 																			<a href="#" class="package ">${item.category_goods_name }</a>
-																			<strong style="color:red;fond-weight:bold;"><c:if test="${!item.okStock }">재고부족</c:if></strong>
+																			<c:if test="${!item.okStock }">
+																				<strong style="color:red;fond-weight:bold;" id="currentStock">재고부족 (현재 재고:${item.goods_detail_stock_quantity }개)</strong>
+																			</c:if>
+																			<c:if test="${item.okStock }">
+																				<strong style="color:red;fond-weight:bold;display:none" id="currentStock">재고부족 (현재 재고:${item.goods_detail_stock_quantity }개)</strong>
+																			</c:if>
 																			<div class="info"></div>
 																		</div>
 																	</div>
@@ -197,6 +210,8 @@
 																<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_detail_price }" var="usuallyPrice"/>
 																<input type="hidden" id="price" value="${item.goods_last_price }"/>
 																<input type="hidden" id="oldPrice" value="${item.goods_detail_price }"/>
+																<input type="hidden" id="isStock" value="${item.okStock }"/>
+																<input type="hidden" id="stock" value="${item.goods_detail_stock_quantity }"/>
 																<div class="item">
 																	<label class="check"><input
 																		type="checkbox"
@@ -206,7 +221,12 @@
 																	<div class="name">
 																		<div class="inner_name">
 																			<a href="#" class="package ">${item.category_goods_name }</a>
-																			<strong style="color:red;fond-weight:bold;"><c:if test="${!item.okStock }">재고부족</c:if></strong>
+																			<c:if test="${!item.okStock }">
+																				<strong style="color:red;fond-weight:bold;" id="currentStock">재고부족 (현재 재고:${item.goods_detail_stock_quantity }개)</strong>
+																			</c:if>
+																			<c:if test="${item.okStock }">
+																				<strong style="color:red;fond-weight:bold;display:none" id="currentStock">재고부족 (현재 재고:${item.goods_detail_stock_quantity }개)</strong>
+																			</c:if>
 																			<div class="info"></div>
 																		</div>
 																	</div>
@@ -369,6 +389,8 @@ $(document).ready(function(){
 		var price=parseInt(part.closest("li").find("input#price").val());
 		var oldPrice=parseInt(part.closest("li").find("input#oldPrice").val());
 		
+		var stock=parseInt(part.closest("li").find("input#stock").val());
+		
 		var rootLi=$(this).closest("li");
 		var totalPrice = parseInt($("div#cartItemList").find("input[name='totalPrice']").val());
 		var dcPrice=parseInt($("div#cartItemList").find("input[name='dcPrice']").val());
@@ -386,6 +408,9 @@ $(document).ready(function(){
 					if(rootLi.find("input[name='chkItem']").is(":checked")){
 						cartResult(totalPrice-oldPrice, dcPrice-price )
 					}
+					if(parseInt(res)<=stock){
+						part.closest("li").find("strong#currentStock").css("display","none");
+					}
 				},
 				error:function(res){
 					alert("예상치 못한 오류 발생");
@@ -400,6 +425,8 @@ $(document).ready(function(){
 		
 		var price=parseInt(part.closest("li").find("input#price").val());
 		var oldPrice=parseInt(part.closest("li").find("input#oldPrice").val());
+		
+		var stock=parseInt(part.closest("li").find("input#stock").val());
 		
 		var rootLi=$(this).closest("li");
 		var totalPrice = parseInt($("div#cartItemList").find("input[name='totalPrice']").val());
@@ -419,6 +446,9 @@ $(document).ready(function(){
 						rootLi.find("div.price").find("span.cost").text((oldPrice*parseInt(res)).toLocaleString("ko-KR")+"원");
 					if(rootLi.find("input[name='chkItem']").is(":checked")){
 						cartResult(totalPrice+oldPrice, dcPrice+price)
+					}
+					if(parseInt(res)>stock){
+						part.closest("li").find("strong#currentStock").css("display","block");
 					}
 				},
 				error : function(res) {

@@ -72,4 +72,23 @@
  	<insert id="newPw">
  		UPDATE MK_USER SET user_pw=#{user_pw} WHERE user_id=#{user_id}
  	</insert>
+ 	<!-- 쿠폰 -->
+ 	<select id="getMyCoupon" resultType="first.market.kurlyty.user.vo.CouponVO">
+ 		SELECT * FROM mk_coupon_use
+ 		WHERE coupon_use_userid=#{value}
+ 		AND coupon_use_status=1
+ 	</select>
+ 	<select id="getAllMyCoupon" resultType="first.market.kurlyty.user.vo.CouponVO">
+ 		SELECT * FROM mk_coupon_use
+ 		WHERE coupon_use_userid=#{value}
+ 	</select>
+ 	<select id="getCouponInfo" resultType="first.market.kurlyty.user.vo.CouponVO">
+ 		SELECT * FROM mk_coupon
+ 		WHERE coupon_serial=#{value}
+ 	</select>
+ 	<update id="useCoupon">
+ 		UPDATE mk_coupon_use
+ 		SET coupon_use_status=0
+ 		WHERE coupon_use_serial=#{value}
+ 	</update>
 </mapper>

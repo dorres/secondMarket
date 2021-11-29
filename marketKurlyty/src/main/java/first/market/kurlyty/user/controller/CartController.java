@@ -44,6 +44,9 @@ public class CartController {
 				
 				for(CartVO cartItem : cartList) {
 					ProductVO product = cartService.getCartItem(cartItem);
+					if(cartItem.getGoods_cart_count()>product.getGoods_detail_stock_quantity())
+						product.setOkStock(false);
+					else product.setOkStock(true);
 					//productList.add(product);
 					if(product.getCategory_goods_packaging_type().contains("≥√¿Â")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());

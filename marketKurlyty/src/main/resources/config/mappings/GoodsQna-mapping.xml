@@ -29,7 +29,7 @@
  	 WHERE category_goods_serial = #{category_goods_serial} ORDER BY qna_goods_serial DESC
   </select>
   <select id="GoodsQnaUserList"  resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
- 	 SELECT * FROM mk_qna_goods WHERE user_id = #{user_id}
+ 	 SELECT * FROM mk_qna_goods WHERE user_id = #{user_id} ORDER BY qna_goods_serial DESC
   </select>
  <!-- SUCCESS 11.24 -->
   <insert id="insertGoodsQna"> 

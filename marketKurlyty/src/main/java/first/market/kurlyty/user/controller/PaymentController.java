@@ -23,6 +23,7 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 import first.market.kurlyty.user.service.CartService;
+import first.market.kurlyty.user.service.CouponService;
 import first.market.kurlyty.user.service.MembershipService;
 import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
@@ -46,6 +47,8 @@ public class PaymentController {
 	private OrderService orderService;
 	@Autowired
 	private MembershipService membershipService;
+	@Autowired
+	private CouponService couponService;
 	
 	private IamportClient api;
 	
@@ -98,13 +101,14 @@ public class PaymentController {
 		model.addAttribute("userInfo",userInfo);
 		model.addAttribute("membershipInfo",membershipInfo);
 		model.addAttribute("shippingAddress",addressVO);
+		model.addAttribute("myCoupon",couponService.getMyCoupons(userId));
 		model.addAttribute("userPoint",orderService.getUserDetails(userId).getUser_point());
 		return "cart_and_payment/payment";
 	}
 	
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
-	public String paymentSuccess(OrderVO order, ShippingVO shipping,int usingPoint) {
+	public String paymentSuccess(OrderVO order, ShippingVO shipping,int usingPoint,int coupon_serial) {
 		order.setOrder_delivery_status("결제완료");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
@@ -142,6 +146,8 @@ public class PaymentController {
 		shipping.setShipping_sender_name(order.getUser_name());
 		shipping.setShipping_sender_phone(order.getUser_phone());
 		orderService.insertShippingInfo(shipping);
+		if(coupon_serial!=0)
+			couponService.useCoupon(coupon_serial);
 		return "index.do";
 	}
 	

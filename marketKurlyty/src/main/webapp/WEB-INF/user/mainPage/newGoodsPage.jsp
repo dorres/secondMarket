@@ -11,8 +11,91 @@
 <link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
 </head>
+<style>
+.cartBt {
+	background:
+		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/ico_cart.svg)
+		no-repeat 50% 50%;
+	background-size: 50px 50px;
+	width: 50px;
+	height: 50px;
+	margin-top: 15px;
+	border: 0;
+	position:absolute;
+	z-index:2;
+	right:15px;
+	bottom:15px;
+	opacity:0.9;
+}
+/* .foodImg{
+position:relative;
+} */
+.cartClick{
+	position: fixed;
+	z-index: 9998;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: .5
+}
+</style>
+<script>
+function openCart(serial,name,lastprice,price,discount){
+	var totalprice = parseInt(lastprice)
+	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
+	$(".cartNone").attr("class","cartClick");
+	$(".cart_option").css("opacity","1").fadeIn(400);
+	$("#cartPut .in_option").find("span.name").text(name);
+	$("#cartPut .in_option").find("span.dc_price").text(totalprice.toLocaleString("ko-KR")+"원");
+	$("#cartPut .in_option").find("span.sum").find("span.num").text(totalprice.toLocaleString("ko-KR"));
+	$("#cartPut .in_option").find("input.hprice").val(price);
+	$("#cartPut .in_option").find("input.hdiscount").val(discount);
+	$("#cartPut .in_option").find("input.hserial").val(serial);
+	
+}
+function cancelCart(){
+	$(".cartClick").attr("class","cartNone");
+	$(".cart_option").css("opacity","1").fadeOut(100);
+}
+function closeCart(){
+	$(".cartClick").attr("class","cartNone");
+	$(".cart_option").css("opacity","1").fadeOut(100);
+}
+function quantity(count){
+	var currentCount=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	var changeCount = parseInt(currentCount)+count;
+	var price=$("#cartPut .in_option").find("input.hprice").val();
+	var discount=$("#cartPut .in_option").find("input.hdiscount").val();
+	if(changeCount<1)changeCount=1;
+	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
+	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(changeCount);
+	$("#cartPut .in_option").find("div.total").find("span.num").text(changePrice.toLocaleString("ko-KR"));
+}
+function inputCart(){
+	var serial=$("#cartPut .in_option").find("input.hserial").val();
+	var count=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	$.ajax({
+		url:"cartInput.do",
+		type:"post",
+		data:{"category_goods_serial":serial,"goods_cart_count":count},
+		datatype:"text",
+		success:function(res){
+			if(res!="good"){
+				alert(res);
+			}
+			closeCart();
+		},
+		error:function(res){
+			alert("담기에 실패했습니다.");
+		}
+	});
+}
+</script>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return !disableSelection">
+	<div class="cartNone"></div>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
@@ -68,7 +151,7 @@
 							</div>
 						</div>
 						
-						
+						<jsp:include page="cartPopup.jsp"></jsp:include>
 						
 						<div class="MainIntroContain">
 							<ul class="foodList">
@@ -78,6 +161,9 @@
 											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }">
 												<img src="${item.category_goods_image_thumb }">
 											</a>
+											<button type="button" class="cartBt"
+											onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })">
+											</button>
 										</div>
 											<a class="info" href="itemPage.do?category_goods_serial=${item.category_goods_serial }"> 
 											<span class="name">${item.category_goods_name }</span>

@@ -43,6 +43,9 @@ public class GoodsQnaController {
 	    HttpSession session = request.getSession();
 		vo.setUser_id((String)session.getAttribute("userId"));
 		List<GoodsQnaVO> boardList = goodsqnaService.getGoodsQnaUserList(vo);
+		for(GoodsQnaVO qna:boardList) {
+			qna.setQna_goods_content(qna.getQna_goods_content().replace("\r\n", "ln"));
+		}
 		model.addAttribute("goodsqnaboard", boardList);
 		return "mykurly/goodsQna"; 
 	 }
@@ -67,41 +70,57 @@ public class GoodsQnaController {
 	public String deleteGoodsQna(GoodsQnaVO vo, RedirectAttributes redirect) {	
 			int success = 0; 
 			success = goodsqnaService.deleteGoodsQna(vo);
-			System.out.println("delete:"+vo.getCategory_goods_serial());
+			
 			if(success != 0) {
-				redirect.addAttribute("category_goods_serial", vo.getCategory_goods_serial());
-				return "redirect:itemPage.do";
+				if(vo.getCategory_goods_serial()!=0) {
+					redirect.addAttribute("category_goods_serial", vo.getCategory_goods_serial());
+					return "redirect:itemPage.do";
+				}else {
+					return "redirect:goodsQna.do";
+				}
 			}else {	
-				redirect.addAttribute("category_goods_serial", vo.getCategory_goods_serial());
-				return "redirect:itemPage.do";
+				if(vo.getCategory_goods_serial()!=0) {
+					redirect.addAttribute("category_goods_serial", vo.getCategory_goods_serial());
+					return "redirect:itemPage.do";
+				}else {
+					return "redirect:goodsQna.do";
+				}
 		}
 	}
 			                                       
 	@PostMapping("/updateGoodsQna.do")
 	public String updateGoodsQna(GoodsQnaVO vo,RedirectAttributes redirect) {
-		System.out.println(vo.isQna_goods_lock());
 		int success = 0;
 		success = goodsqnaService.updateGoodsQna(vo);
 		if(success !=0) {
-			redirect.addAttribute("Category_goods_serial", vo.getCategory_goods_serial());
-			return "redirect:itemPage.do";
+			if(vo.getCategory_goods_serial()!=0) {
+				redirect.addAttribute("category_goods_serial", vo.getCategory_goods_serial());
+				return "redirect:itemPage.do";
+			}else {
+				return "redirect:goodsQna.do";
+			}
 		}else {
-			return "redirect:goodsQnaWrite.do";
+			if(vo.getCategory_goods_serial()!=0) {
+				redirect.addAttribute("category_goods_serial", vo.getCategory_goods_serial());
+				return "redirect:itemPage.do";
+			}else {
+				return "redirect:goodsQna.do";
+			}
 		}
 	}
 
 	//업데이트를 위해 씌여진 글 받아오기 
-	@GetMapping("/updateGoodsQna.do")
-	public String updateGoodsQnaContent(GoodsQnaVO vo, Model model, RedirectAttributes redirect){
-		GoodsQnaVO getGoodsQnaContent = goodsqnaService.getGoodsQnaContent(vo);
-	
-		//모델에 담아준다.
-		model.addAttribute("getGoodsQnaContent", getGoodsQnaContent);
-		
-		//받아온 후 글쓰기로 간다.
-		redirect.addAttribute("qna_goods_serial", vo.getQna_goods_serial());
-		return "redirect:itemPage.do";
-	}
+//	@GetMapping("/updateGoodsQna.do")
+//	public String updateGoodsQnaContent(GoodsQnaVO vo, Model model, RedirectAttributes redirect){
+//		GoodsQnaVO getGoodsQnaContent = goodsqnaService.getGoodsQnaContent(vo);
+//	
+//		//모델에 담아준다.
+//		model.addAttribute("getGoodsQnaContent", getGoodsQnaContent);
+//		
+//		//받아온 후 글쓰기로 간다.
+//		redirect.addAttribute("qna_goods_serial", vo.getQna_goods_serial());
+//		return "redirect:itemPage.do";
+//	}
 
 }
 

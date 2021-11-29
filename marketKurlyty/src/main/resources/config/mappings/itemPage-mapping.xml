@@ -23,8 +23,9 @@
 	         B.goods_detail_price
       FROM mk_category_goods AS A 
       INNER JOIN mk_goods_detail AS B
-      ON A.category_goods_serial = B.category_goods_serial	   		 
-      ORDER BY RANDOM() LIMIT 10
+      ON A.category_goods_serial = B.category_goods_serial	 
+      WHERE B.goods_detail_status=1  
+      ORDER BY RANDOM() LIMIT 5
  	<!-- 	SELECT * FROM mk_category_goods WHERE category_goods_serial = #{category_goods_serial} --> 
 	 </select> 
  

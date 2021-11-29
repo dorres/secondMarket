@@ -203,8 +203,7 @@ ul.sub_on li.on{
 						<li><a href="goodsQna.do">상품 문의</a></li>
 						<li><a href="point.do">적립금</a>
 							<!----></li>
-						<li><a href="#none"
-							onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'dropdown'})">쿠폰</a>
+						<li><a href="couponPage.do">쿠폰</a>
 							<!----></li>
 						<li><a href="infoModify1.do">개인 정보 수정</a></li>
 						<li><a href="logoutProc.do">로그아웃</a></li>
