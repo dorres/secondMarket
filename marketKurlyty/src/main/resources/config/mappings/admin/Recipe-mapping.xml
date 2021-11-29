@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="recipeDAO">
+ <!-- 레시피등록 -->
+ <insert id="recipeIn">
+ 	insert into mk_recipe values(
+ 	default,#{recipe_title},#{recipe_content},now(),#{recipe_image_main},default,#{recipe_key_ingredients}
+ 	)
+ </insert>
+ <!-- 레시피조회 -->
+ <select id="recipeList" resultType="first.market.kurlyty.admin.vo.AdminRecipeVO">
+ 	select*from mk_recipe order by recipe_serial
+ </select>
+ <!-- 수정 페이지 -->
+ <select id="recipeUpDetail" resultType="first.market.kurlyty.admin.vo.AdminRecipeVO">
+ 	select * from mk_recipe where recipe_serial = #{recipe_serial}
+ </select>
+ <update id="recipeUpdate">
+ 	update mk_recipe set recipe_title=#{recipe_title},recipe_key_ingredients=#{recipe_key_ingredients},recipe_date=now()
+ 	where recipe_serial=#{recipe_serial}
+ </update>
+ <delete id="recipeDelete">
+ 	delete from mk_recipe where recipe_serial = #{recipe_serial}
+ </delete>
+ </mapper>

@@ -60,6 +60,7 @@
 		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
 		<mapper resource="config/mappings/point-mapping.xml"/>
 		<mapper resource="config/mappings/Review-mapping.xml"/>
+		<mapper resource="config/mappings/admin/Recipe-mapping.xml"/>
 
  	</mappers>
  </configuration>
