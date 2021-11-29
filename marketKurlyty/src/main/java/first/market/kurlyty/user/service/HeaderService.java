@@ -12,6 +12,9 @@ public interface HeaderService {
 	List<CategoryMainVO> getCategoryMain();
 	List<BannerVO> getBanner();
 	List<ProductVO> getHotDealProduct();
+	List<ProductVO> getAltlePage(String sort);
 	List<ProductVO> getNewGoods();
+	List<ProductVO> getNewGoodsPage(String sort);
+	List<ProductVO> getBestPage(String sort);
 	List<ProductVO> getSearchGoods(String searchKeyword);
 }

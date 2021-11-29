@@ -13,4 +13,7 @@ public class UserDetailsVO {
 	private int user_point;
 	private int user_status;
 	private int user_total_purchase;
+	//mykurlyty ¿ë
+	private String pointRate;
+	private String couponCount;
 }

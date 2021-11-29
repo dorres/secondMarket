@@ -128,7 +128,11 @@ function inputCart(){
 		data:{"category_goods_serial":serial,"goods_cart_count":count},
 		datatype:"text",
 		success:function(res){
-			alert("장바구니에 담았습니다.");
+			if(res!="good"){
+				alert(res);
+			}else{
+				alert("장바구니에 담았습니다.");
+			}
 		},
 		error:function(res){
 			alert("담기에 실패했습니다.");
@@ -444,8 +448,8 @@ $(document).ready(function(){
 
 														<div class="group_btn">
 															<div class="view_function">
-																<button type="button" class="btn btn_alarm">재입고
-																	알림</button>
+																<!-- <button type="button" class="btn btn_alarm">재입고
+																	알림</button> -->
 															</div>
 															<span class="btn_type1"> <input type="button"
 																class="txt_type" value="장바구니 담기"
@@ -537,7 +541,7 @@ $(document).ready(function(){
 												<li class="goods-view-infomation-tab goods-view-review-tab">
 													<a href="#goods-review"
 													class="goods-view-infomation-tab-anchor">후기 <span
-														class="count_review">XXXXXXXXXX</span></a>
+														class="count_review">(${fn:length(reviews) })</span></a>
 												</li>
 
 												<li class="goods-view-infomation-tab qna-show"><a
@@ -875,12 +879,7 @@ $(document).ready(function(){
 																					</p></li>
 																			</ul>
 																			<div class="sort" style="bottom: -9px">
-																				<select
-																					onchange="this.form.sort.value=this.value;this.form.submit()">
-																					<option value="1">최근등록순</option>
-																					<option value="2">좋아요많은순</option>
-																					<option value="3">조회많은순</option>
-																				</select>
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -893,7 +892,7 @@ $(document).ready(function(){
 																			<col style="width: 51px;">
 																			<col style="width: 77px;">
 																			<col style="width: 100px;">
-																			<col style="width: 40px;">
+																			<%-- <col style="width: 40px;"> --%>
 																			<col style="width: 80px;">
 																		</colgroup>
 																		<tbody>
@@ -904,16 +903,17 @@ $(document).ready(function(){
 																					class="screen_out">회원 등급</span></th>
 																				<th scope="col" class="input_txt" align="left">작성자</th>
 																				<th scope="col" class="input_txt">작성일</th>
-																				<th scope="col" class="input_txt">도움</th>
+																			<!-- 	<th scope="col" class="input_txt">도움</th> -->
 																				<th scope="col" class="input_txt">조회</th>
 																			</tr>
 																		</tbody>
 																	</table>
-
+																	
+																	<c:forEach var="review" items="${reviews }">
 																	<div class="tr_line">
 																		<table class="xans-board-listheaderd tbl_newtype1"
 																			width="100%" cellpadding="0" cellspacing="0"
-																			onclick="view_content(this,event,false)">
+																			id="reviewClick">
 																			<caption style="display: none">구매후기 내용</caption>
 																			<colgroup>
 																				<col style="width: 70px;">
@@ -921,7 +921,7 @@ $(document).ready(function(){
 																				<col style="width: 51px;">
 																				<col style="width: 77px;">
 																				<col style="width: 100px;">
-																				<col style="width: 40px;">
+																				
 																				<col style="width: 80px;">
 																			</colgroup>
 																			<tbody>
@@ -933,86 +933,64 @@ $(document).ready(function(){
 																					<input type="hidden" name="best" value="true">
 																					<input type="hidden" name="pNo" value="">
 
-																					<td align="center">BEST</td>
+																					<td align="center">${review.rnum }</td>
 																					<td class="subject">
 																						<div class="fst">
+																							${review.review_title }
+																						</div>
+																						<!-- <div class="snd">
 																							촉촉한 존쿡백립은 진리입니다 <img
 																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
 																								alt="이미지가 첨부됨">
-																						</div>
-																						<div class="snd">
-																							촉촉한 존쿡백립은 진리입니다 <img
-																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
-																								alt="이미지가 첨부됨">
-																						</div>
+																						</div> -->
 																					</td>
 																					<td class="user_grade grade_comm"></td>
-																					<td class="user_grade">백*성</td>
-																					<td class="time">2019-06-15</td>
-																					<td><span class="review-like-cnt"
-																						data-sno="4389757">0</span></td>
+																					<td class="user_grade">${review.user_id }</td>
+																					<td class="time">
+																						<fmt:formatDate value="${review.review_date }"
+																							pattern="yyyy-MM-dd"/>
+																					</td>
+																					
 																					<td><span class="review-hit-cnt"
-																						data-sno="4389757">2330</span></td>
+																						data-sno="4389757">${review.review_hit }</span></td>
 																				</tr>
 																			</tbody>
 																		</table>
-																		<div data-sno="4389757" class="review_view">
+																		<div data-sno="4389757" class="review_view" style="display:none;background-color:#f9f9ef"
+																			id="reviewContent">
 																			<div class="inner_review">
 																				<div class="name_purchase">
-																					<strong class="name">[존쿡 델리미트] 바베큐 백립 450g
-																						(냉동)</strong>
+																					<strong class="name">${getItemPage.category_goods_name}</strong>
 																					<p class="package"></p>
 																				</div>
-																				<div class="review_photo"></div>
-																				맛 4.5 / 식감 5 / 양 3 / 배송 5<br> 안녕하세요~! 컬리 이용한지
-																				얼마 안된 신입입니다ㅎㅎ<br> 제가 초딩때부터 입맛이 비싸진 이유가 이
-																				백립때문이라고 해도 무방할 정도로 아웃백에 가면 꼭 먹었던 음식이거든요! 그래서 주문한 것
-																				중에 제일 기대했던 제품이기도 하네요@-@<br> 일단 맛만 보자면 어릴 때 대부분
-																				한번은 드셔보셨을텐데 급식에 나오는 합박스테이크의 소스에서 케찹맛이 조금만 들어간 듯한
-																				맛이였어요. 저는 원래 돈가스 먹기전에 돈가스 소스를 먼저 먹어보고 설렁탕 먹기전에 깍두기를
-																				먹어보는 그런 사람이였는데 소스에 엄청난 기대를 하고 있던 저는 많은 아쉬움을 느꼈죠ㅠ.ㅠ항상
-																				먹어보던 맛이였으니깐요....근데 또 조아하긴 해서ㅋㅋㅋㅋ괜찮았습니당<br> 근데
-																				여기서부터 매우 중요합니다!!! 일단 뼈 사이사이를 잘랐는데 오마이갓.... 이미 보기에도
-																				엄청난 부드러움이 보이길래 한번 씹었는데 얼마 씹지 않고 넘겼을정도로 정말 부드러워서 저를
-																				지금 당장 누가 뺨을 치더라도 웃을정도로 맛있는 맛이였어요ㅎㅎㅎㅎㅎ헤헤<br> 양은
-																				음...살 쬐금 먹다보면 얼마안가 뼈를 빨아먹고 있는 제 자신이 보여서 많이 아쉬웠답니다
-																				흐규ㅠㅠ<br> 배송은 역시 컬리배송!!! 타 업체에선 느낄 수 없을정도로
-																				식품배송에대한 언제올지 걱정도 안되고 너무 빨라서 정말 대단하다 생각했습니다ㅎㅎ<br>
-																				암튼 컬리 만세 !__(^~^)__!
-																			</div>
-																			<div class="goods-review-grp-btn">
-																				<button type="button"
-																					class="styled-button review-like-btn"
-																					data-sno="4389757"
-																					onclick="review_like('4389757',$(this));">
-																					도움이 돼요 <span class="num">0</span>
-																				</button>
+																				<div class="review_photo">
+																				<c:if test="${review.review_image_main!=null }">
+																				<img
+																					src="${review.review_image_main}"
+																					alt="이미지가 첨부됨">
+																				</c:if>
+																				</div>
+																				${fn:replace(review.review_content,"ln","<br>")} 
 																			</div>
 																		</div>
 																	</div>
+																	</c:forEach>
 																</form>
-																<p class="btnArea after">
+															<!--<p class="btnArea after">
 																	<a href="#none"
 																		onclick="popup_register( 'add_review', '5051' )"><span
 																		class="bhs_button"
 																		style="line-height: 30px; width: 130px;">후기쓰기</span></a>
-																</p>
+																</p> -->
 															</div>
 														</div>
 														<div class="board_pg_area">
-															<a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=1"
-																class="layout-pagination-button layout-pagination-first-page">맨
-																처음 페이지로 가기</a><a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=1"
-																class="layout-pagination-button layout-pagination-prev-page">이전
-																페이지로 가기</a> <a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=2"
-																class="layout-pagination-button layout-pagination-next-page">다음
-																페이지로 가기</a><a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=4261"
-																class="layout-pagination-button layout-pagination-last-page">맨
-																끝 페이지로 가기</a>
+															<a href="#goods-review" class="layout-pagination-button layout-pagination-prev-page"
+																onclick="javascript:reviewPaging(-1);">이전
+																페이지로 가기</a>
+															<a href="#goods-review" class="layout-pagination-button layout-pagination-next-page"
+																onclick="javascript:reviewPaging(1);">다음
+																페이지로 가기</a>
 														</div>
 													</div>
 												</div>
@@ -1140,10 +1118,10 @@ $(document).ready(function(){
 															<div class="board-inquiry-area">
 																<div class="paging-navigation">
 																	<button type="button" class="paging-prev"
-																		disabled="disabled">
+																		onclick="javascript:qnaPaging(-1)">
 																		<span>이전</span>
 																	</button>
-																	<button type="button" class="paging-next">
+																	<button type="button" class="paging-next" onclick="javascript:qnaPaging(1)">
 																		<span>다음</span>
 																	</button>
 																</div>
@@ -1276,6 +1254,34 @@ $(document).ready(function(){
 
 
 <script>
+var goodsSerial=${getItemPage.category_goods_serial};
+var qnaMaxPage = ${qnaPaging};
+var qnaPage=${currentPage};
+
+var reviewMaxPage=${reviewPaging};
+var reviewPage=${reviewCuPage};
+$(document).ready(function(){
+	if(${isQnaPaging}){
+		var element=document.getElementById("goods-qna");
+		element.scrollIntoView(true);
+	}
+	if(${isReviewPaging}){
+		var  element=document.getElementById("goods-review");
+		element.scrollIntoView(true);
+	}
+})
+function qnaPaging(pageMv){
+	
+	if(qnaPage+pageMv>=0&&qnaPage+pageMv<qnaMaxPage){
+		location.href="itemPage.do?category_goods_serial="+String(goodsSerial)+"&anaPage="+String(qnaPage+pageMv);
+	}
+}
+function reviewPaging(pageMv){
+	
+	if(reviewPage+pageMv>=0&&reviewPage+pageMv<reviewMaxPage){
+		location.href="itemPage.do?category_goods_serial="+String(goodsSerial)+"&reviewPage="+String(qnaPage+pageMv);
+	}
+}
 	$("li.inquiry-item").hover(function(){
 		$(this).css("background-color","#f1f1f1");
 	});
@@ -1303,6 +1309,14 @@ $(document).ready(function(){
 					$(this).nextAll("li").css("display","block");
 				}
 			}
+		}
+	})
+	$("table#reviewClick").click(function(){
+		if($(this).nextAll("div").is(":visible")){
+			$(this).nextAll("div").css("display","none");
+		}else{
+			$("div.reviewContent").css("display","none");
+			$(this).nextAll("div").css("display","block");
 		}
 	})
 function goodsQnaAction(direction){

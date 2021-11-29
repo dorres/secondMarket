@@ -10,7 +10,7 @@ import first.market.kurlyty.user.vo.ItemPageVO;
 import first.market.kurlyty.user.vo.RecipeVO;
 
 @Repository
-public class RecipeDAO {
+public class UserRecipeDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	

@@ -7,15 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import first.market.kurlyty.user.dao.ItemPageDAO;
-import first.market.kurlyty.user.dao.RecipeDAO;
+import first.market.kurlyty.user.dao.UserRecipeDAO;
 import first.market.kurlyty.user.vo.ItemPageVO;
 import first.market.kurlyty.user.vo.RecipeVO;
-import first.market.kurlyty.vo.ProductVO;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
 	@Autowired
-	private RecipeDAO recipeDao;
+	private UserRecipeDAO recipeDao;
 	@Autowired
 	private ItemPageDAO itemDao;
 	

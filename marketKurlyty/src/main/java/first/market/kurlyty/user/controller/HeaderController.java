@@ -55,9 +55,12 @@ public class HeaderController {
 	
 	@RequestMapping("categoryItemPage.do")
 	public String categoryGoods(ProductVO product, Model model) {
-		System.out.println(product.getCategory_main_serial());
-		System.out.println(product.getCategory_sub_serial());
 		List<ProductVO> categoryProductList = headerService.getCategoryProduct(product);
+		for(ProductVO products:categoryProductList) {
+			if(products.getGoods_detail_promotion_serial()==1) {
+				products.setGoods_detail_dicountrate(products.getGoods_detail_dicountrate()+10);
+			}
+		}
 		CategoryMainVO categoryRoot = sqlSession.selectOne("CategoryDAO.getCategoryRoot",product);
 		List<CategorySubVO> categorySub = sqlSession.selectList("CategoryDAO.getCategorySub",categoryRoot);
 		
@@ -74,30 +77,52 @@ public class HeaderController {
 	public String index(Model model) {
 		List<BannerVO> banner = headerService.getBanner();
 		List<ProductVO> hotDeal = headerService.getHotDealProduct();
+		List<ProductVO> howAbout = headerService.getNewGoods();
 		model.addAttribute("banners", banner);
 		model.addAttribute("bannerCount", banner.size());
 		model.addAttribute("hotDeal",hotDeal);
+		model.addAttribute("howAbout",howAbout);
 		return "mainPage/index";
 	}
 	@RequestMapping("/BestItemPage.do")
-	public String BestGoods() {
+	public String BestGoods(String sort, Model model) {
+		List<ProductVO> bestList = headerService.getBestPage(sort);
+		for(ProductVO best:bestList) {
+			if(best.getGoods_detail_promotion_serial()==1) {
+				best.setGoods_detail_dicountrate(best.getGoods_detail_dicountrate()+10);
+			}
+		}
+		model.addAttribute("bestList",bestList);
+		model.addAttribute("sort",sort);
 		return "mainPage/BestGoodsPage"; 
 	}
 	@RequestMapping("/newItemPage.do")
-	public String newGoodsPage(Model model) {
-		List<ProductVO> newGoodsList = headerService.getNewGoods();
+	public String newGoodsPage(String sort,Model model) {
+		List<ProductVO> newGoodsList = headerService.getNewGoodsPage(sort);
+		for(ProductVO newItem:newGoodsList) {
+			if(newItem.getGoods_detail_promotion_serial()==1) {
+				newItem.setGoods_detail_dicountrate(newItem.getGoods_detail_dicountrate()+10);
+			}
+		}
 		model.addAttribute("newGoodsList",newGoodsList);
+		model.addAttribute("sort",sort);
 		return "mainPage/newGoodsPage"; 
 	}
-	@RequestMapping("/altleShopping.do")
-	public String altleShopping() {
+	@RequestMapping("/altleItemPage.do")
+	public String altleShopping(String sort, Model model) {
+		List<ProductVO> altleList = headerService.getAltlePage(sort);
+		for(ProductVO altle:altleList) {
+			if(altle.getGoods_detail_promotion_serial()==1) {
+				altle.setGoods_detail_dicountrate(altle.getGoods_detail_dicountrate()+10);
+			}
+		}
+		model.addAttribute("altleList", altleList);
+		model.addAttribute("sort",sort);
 		return "mainPage/altleShopping"; 
 	}
 	@RequestMapping("/recipeItemPage.do")
 	public String recipeItemPage(Model model) {
 		List<List<RecipeVO>> recipeList = recipeService.getRecipeList();
-		System.out.println("what!");
-		System.out.println(recipeList);
 		model.addAttribute("recipeList",recipeList);
 		return "mainPage/recipe";
 	}
@@ -112,7 +137,6 @@ public class HeaderController {
 	
 	@RequestMapping("/recipeBookItemPage.do")
 	public String recipeBookPage(int recipe_serial, Model model) {
-		System.out.println(recipe_serial);
 		RecipeVO recipeBook = recipeService.getRecipeBook(recipe_serial);
 		List<ItemPageVO> ingredList = recipeService.getIngredient(recipeBook);
 		model.addAttribute("recipeBook", recipeBook);

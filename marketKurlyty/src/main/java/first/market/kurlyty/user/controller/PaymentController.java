@@ -61,8 +61,6 @@ public class PaymentController {
 	@RequestMapping("/iamport.do")
 	public IamportResponse<Payment> paymentByImUid(Model model, Locale locale, HttpSession session,
 			@RequestParam(value="imp_uid")String imp_uid) throws IamportResponseException, IOException{
-		System.out.println(imp_uid);
-		System.out.println(api.paymentByImpUid(imp_uid));
 		Map<String,String> payMap = new HashMap<String,String>();
 		payMap.put("Uid", api.paymentByImpUid(imp_uid).getResponse().getMerchantUid());
 		payMap.put("amount",api.paymentByImpUid(imp_uid).getResponse().getAmount().toString());
@@ -84,7 +82,6 @@ public class PaymentController {
 		
 		UserVO userInfo = userService.getUser(userVO);
 		String membership = membershipService.getMembershipOfUser(userId);
-		System.out.println(membership);
 		MembershipVO membershipInfo = membershipService.getMembershipData(membership);
 		for(CartVO goods:purchaseGoods) {
 			if(!cartService.isStock(goods)) {
