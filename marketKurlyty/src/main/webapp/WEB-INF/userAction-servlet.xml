@@ -15,8 +15,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<context:component-scan base-package="first.market.kurlyty.user"></context:component-scan>
-
+	<context:component-scan
+		base-package="first.market.kurlyty.user"></context:component-scan>
 		
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="200000000" />
@@ -49,7 +49,6 @@
 			<mvc:exclude-mapping path="/joinProc.do" />
 			<mvc:exclude-mapping path="/cart*.do" />
 			<mvc:exclude-mapping path="/*temPage.do"/>
-			<mvc:exclude-mapping path="/*Find.do"/>
 			<bean id="LoginInterceptor"
 				class="first.market.kurlyty.interceptor.UserLoginInterceptor" />
 		</mvc:interceptor>

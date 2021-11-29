@@ -9,8 +9,7 @@
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
 
-<link rel="styleSheet"
-	href="${pageContext.request.contextPath }/resources/style/mykurly/order_detail.css">
+
 <link rel="styleSheet"
 	href="${pageContext.request.contextPath }/resources/style/default/style.css">
 <link rel="styleSheet"
@@ -31,7 +30,7 @@
 </style>
 </head>
 <body class="main-index" oncontextmenu="return false"
-	ondragstart="return false" onselectstart="return !disableSelection">
+	ondragstart="return false" >
 
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
@@ -80,15 +79,24 @@
 								<form action="reviewProc.do" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="user_id" value="${goods.user_id }">
 									<input type="hidden" name="category_goods_serial" value="${goods.category_goods_serial }">
+									<input type="hidden" name="review_serial1" value="${update.review_serial }">
+									<input type="hidden" name="order_details_serial" value="${goods.order_details_serial }">
 									<div class="write_board">
 										<div class="goods_info">
 											<div class="thumb">
+											<c:choose>
+											<c:when test="${goods.category_goods_image_thumb ne null }">
 												<img src="${goods.category_goods_image_thumb}" onerror="" alt="상품 이미지">
+											</c:when>
+											<c:otherwise>
+												<img src="${update.category_goods_image_thumb}" onerror="" alt="상품 이미지">
+											</c:otherwise>
+											</c:choose>
 											</div>
 											<div class="desc">
 												<div class="inner_desc">
-													<div class="name_desc">${goods.category_goods_detail_name2 }</div>
-													<div class="name_main">${goods.category_goods_detail_name1 }</div>
+													<div class="name_desc">${goods.category_goods_detail_name2 }${update.category_goods_detail_name2 }</div>
+													<div class="name_main">${goods.category_goods_detail_name1 }${update.category_goods_detail_name1 }</div>
 												</div>
 											</div>
 										</div>
@@ -121,11 +129,11 @@
 														<div class="photo_add">															
 														<div class="inner_photo"  >
 														<div class="item_photo" id="photoZone" style="display: block;" ><img src="${update.review_image_main }"></div>		
-														<span class="btn_upload" id="thisPoto"></span> 
+														<span class=" id="thisPoto"></span> 
 														</div>
+														<label for="image"></label>
+														<input type="file" name="image" class="btn_upload" onchange="setThumbnail(event)">
 														
-														<input type="file" name="image" class="file_upload" onchange="setThumbnail(event)" >
-															
 														</div>
 														
 														<div class="file_count">
@@ -167,11 +175,10 @@
 				document.querySelector("div#photoZone").appendChild(img);
 			};
 			reader.readAsDataURL(event.target.files[0]);
-		}
-		
-		
+		}		
 
 	</script>
+
 
 
 

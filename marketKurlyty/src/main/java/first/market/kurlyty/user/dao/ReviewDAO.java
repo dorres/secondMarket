@@ -28,11 +28,21 @@ public class ReviewDAO {
 	public int insertReview(ReviewVO vo) {
 		return sqlSession.insert("reviewDAO.reviewInsert",vo);
 	}
-	public List<ReviewVO> reviewAfter(ReviewVO vo){
-		return sqlSession.selectList("reviewDAO.reviewAfter", vo);
+	
+	public List<ReviewVO> reviewAfterList(String user_id){
+		return sqlSession.selectList("reviewDAO.reviewAfterList", user_id);
 	}
 	public ReviewVO updateDate(ReviewVO vo) {
 		return sqlSession.selectOne("reviewDAO.updateDate", vo);
+	}
+	public Integer updateReview(ReviewVO vo) {
+		return sqlSession.update("reviewDAO.reviewUpdate",vo);
+	}
+	public Integer reviewCount(String user_id) {
+		return sqlSession.selectOne("reviewDAO.reviewCount", user_id);
+	}
+	public int deleteReview(int review_serial) {
+		return sqlSession.delete("reviewDAO.reviewDelete", review_serial);
 	}
 
 }
