@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminBestGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMemberChartVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
@@ -17,6 +19,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -119,10 +122,20 @@ public interface AdminService {
 	int updateGqnaSuc(GoodsQnaVO gqna);
 	//=================================================================
 	
-	//매출 날짜 
+	//매출차트 일별
 	List<AdminSalesVO> getDate(AdminSalesVO sales);
+	
+	//매출 차트 월별
+	List<AdminSales2VO> getMonth(AdminSales2VO sales);
+	
+	//멤버등급 차트
+	List<AdminMemberChartVO> getMemChart(AdminMemberChartVO memch);
 	//=================================================================
 
+	//베스트 상품
+	List<AdminBestGoodsVO> bestList(AdminBestGoodsVO best);
+	
+	//=================================================================
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
 	

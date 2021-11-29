@@ -142,8 +142,8 @@
 						<div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="sales.mdo">매출통계관리</a>
-								<a class="nav-link" href="#">상품통계관리</a>
-								<a class="nav-link" href="#">회원통계</a>
+								<a class="nav-link" href="bestList.mdo">베트스상품</a>
+								<a class="nav-link" href="memberChart.mdo">회원통계</a>
 							</nav>
 						</div>
 						

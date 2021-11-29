@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminBestGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMemberChartVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
@@ -20,6 +22,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -162,7 +165,6 @@ public class AdminDAO {
 		return sqlSession.selectList("adminReviewDAO.reviewList", review);
 	}
 	
-	
 	//리뷰 삭제
 	public int deleteReview(AdminReviewVO review) {
 		return sqlSession.delete("adminReviewDAO.deleteReview", review);
@@ -201,11 +203,26 @@ public class AdminDAO {
 	
 	//================================================================
 	
-	//매출차트 날짜 
+	//매출차트 일별 
 	public List<AdminSalesVO> getDate (AdminSalesVO sales){
-		return sqlSession.selectList("SalesDAO.getDate", sales);
+		return sqlSession.selectList("SalesDAO.getDay", sales);
 	}
 	
+	//매출차트 월별
+	public List<AdminSales2VO> getMonth(AdminSales2VO sales){
+		return sqlSession.selectList("SalesDAO.getMonth", sales);
+	}
+	
+	//멤버등급 차트
+	public List<AdminMemberChartVO> getMemChart(AdminMemberChartVO memch){
+		return sqlSession.selectList("SalesDAO.getmemch", memch);
+	}
+	//================================================================
+	
+	//베스트 상품
+	public List<AdminBestGoodsVO> bestList(AdminBestGoodsVO best){
+		return sqlSession.selectList("bestGoodsDAO.bestList", best);
+	}
 	//================================================================
 
 	//공지사항 목록	

@@ -37,7 +37,10 @@
  		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
  		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminSales2VO" alias="sales2"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCouponVO" alias="coupon"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminBestGoodsVO" alias="best"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminMemberChartVO" alias="memch"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -58,10 +61,13 @@
 		<mapper resource="config/mappings/admin/adminOrder-mapping.xml"/>
 		<mapper resource="config/mappings/common/membership-mapping.xml"/>
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
+		<mapper resource="config/mappings/admin/chart-mapping.xml"/>
+		<mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
 		<mapper resource="config/mappings/point-mapping.xml"/>
 		<mapper resource="config/mappings/Review-mapping.xml"/>
 		<mapper resource="config/mappings/admin/Recipe-mapping.xml"/>
 		<mapper resource="config/mappings/admin/coupon-mapping.xml"/>
+		<mapper resource="config/mappings/admin/bestGoods-mapping.xml"/>
  	</mappers>
  </configuration>
