@@ -22,7 +22,7 @@ public class AdminJoinController {
 	//관리자 회원가입페이지
 	@RequestMapping("admin_join.mdo")
 	public String adminJoin(Model model) {
-		return "admin_join";
+		return "manager/admin_join";
 	}
 	
 	//관리자 회원가입 처리

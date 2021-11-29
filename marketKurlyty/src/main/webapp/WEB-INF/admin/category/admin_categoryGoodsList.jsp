@@ -88,7 +88,7 @@
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.category_goods_name }</td>
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">${goods.category_goods_name_subtext }</td>
 											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;"><img alt="썸네일 이미지" src="${goods.category_goods_image_thumb }" width="100px" height="100px"> </td>
-											<td onclick="location.href='admin_categoryGoods.mdo?category_goods_serial=${goods.category_goods_serial }'" style="vertical-align: middle;">
+											<td  style="vertical-align: middle;">
 												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categoryGoodsDelete.mdo?category_goods_serial=${goods.category_goods_serial }')"/>
 											</td>
 										</tr>

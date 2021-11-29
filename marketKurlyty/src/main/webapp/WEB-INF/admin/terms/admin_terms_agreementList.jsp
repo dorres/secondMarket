@@ -11,43 +11,40 @@
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
  <script src="jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-		$(document).ready(function(){
-			var formObj = $("form[name='readForm']");
-			
-			// 수정 
-			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/board/updateView");
-				formObj.attr("method", "get");
-				formObj.submit();				
-			})
-			
-			// 삭제
-			$(".delete_btn").on("click", function(){
-				formObj.attr("action", "/board/delete");
-				formObj.attr("method", "post");
-				formObj.submit();
-			})
-			
-			// 취소
-			$(".list_btn").on("click", function(){
-				
-				location.href = "/board/list";
-			})
-		})
-		function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할까요?");
+ <script>
+	function delete_check(url) {
+		var answer = confirm("선택한 회원 정보를 삭제하시겠습니까?");
 		if (answer == true) {
 			location = url;
 		}
 	}
-	</script>
-	
+ </script>
+ <style type="text/css">
+.btn1 {font-size: 15px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+ </style>
+  <script type="text/javascript">
+
+	function delete_check(url) {
+		var answer = confirm("선택하신 약관을 삭제하시겠습니까?");
+		if (answer == true) {
+			location = url;
+		}
+	}
+//-->
+</script>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
@@ -56,55 +53,59 @@
 
 				<h1 class="mt-4">약관관리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">약관 약간?</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					<li class="breadcrumb-item">관리자에서 약관관리를 하는 페이지 입니다.</li>
 				</ol>
 				<div class="card mb-4">
-					<div class="card-body">
-						여기내용 수정
-						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
-					</div>
-				</div>
-				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 약관 목록
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									약관 목록
+									<a href="admin_terms.mdo" class="btn1 btn-dark" style="float: right;">약관 등록</a>
+								</div>							
+						</div>
 					</div>
 					<div class="card-body">
-					<form method="post">
 						<table id="datatablesSimple">
 							<thead>
-							<tr>
+								<tr>
 									<th>번호</th>
-									<th>약관번호</th>
 									<th>약관이름</th>
 									<th>약관필수여부</th>
 									<th>약관등록일</th>
-									<th>마지막수정일</th>
-									
+									<th>마지막수정일</th>	
 								</tr>
 							</thead>
+							<tfoot>
+								<tr>
+									<th>번호</th>
+									<th>약관이름</th>
+									<th>약관필수여부</th>
+									<th>약관등록일</th>
+									<th>마지막수정일</th>	
+								</tr>
+							</tfoot>
 							<tbody>
-								<c:forEach var="agreeList" items="${agreeList}">
+								<c:forEach var="agree" items="${agreeList}">
 									<tr>
-										<td>${agreeList.terms_agreement_serial }</td>
-										<td>${agreeList.terms_serial }</td>
-										<td><a href="termsDetails.mdo?terms_serial=${agreeList.terms_serial}">${agreeList.terms_id }</a></td>
-										<td>${agreeList.terms_agree_status }</td>
-										<td><fmt:formatDate value="${agreeList.terms_agree_date}" pattern="yyyy-MM-dd"/></td>
-										<td><fmt:formatDate value="${agreeList.terms_agree_date_modified}" pattern="yyyy-MM-dd"/></td>
+										<td onclick="location.href='termsDetails.mdo?terms_agreement_serial=${agree.terms_agreement_serial}'" >${agree.rownum}</td>
+										<td onclick="location.href='termsDetails.mdo?terms_agreement_serial=${agree.terms_agreement_serial}'">${agree.terms_id }</td>
+										<td onclick="location.href='termsDetails.mdo?terms_agreement_serial=${agree.terms_agreement_serial}'">${agree.terms_agree_status }</td>
+										<td onclick="location.href='termsDetails.mdo?terms_agreement_serial=${agree.terms_agreement_serial}'"><fmt:formatDate value="${agree.terms_agree_date}" pattern="yyyy-MM-dd"/></td>
+										<td onclick="location.href='termsDetails.mdo?terms_agreement_serial=${agree.terms_agreement_serial}'"><fmt:formatDate value="${agree.terms_agree_date_modified}" pattern="yyyy-MM-dd"/></td>
+										<td>
+											<input type="button" value="삭제하기" onclick="javascript:delete_check('deleteTerms.mdo?terms_agreement_serial=${agree.terms_agreement_serial }')"/>
+										</td>
 									</tr>
 								</c:forEach>
 								
 							</tbody>
 						</table>
-						<input type="button" value="등록" onclick="location.href='admin_terms.mdo'"/>
-						</form>
 					</div>
 				</div>
 			</div>
 		</main>
 
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
 	</div>
 	<!-- Main -->
