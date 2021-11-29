@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
 table.type02 {
   border-collapse: separate;
@@ -105,7 +106,7 @@ function zip(){
 									<tr>
 										<th scope="row">매니저 직급</th>
 										<td>
-											<select name="admin_postion" id="position-select" style="width:150px">
+											<select name="admin_position" id="position-select" style="width:150px">
 												<option value="master" <c:if test ="${update.admin_position eq 'master' }">selected="selected"</c:if> >Master</option>
 												<option value="senior" <c:if test ="${update.admin_position eq 'senior' }">selected="selected"</c:if> >Senior</option>
 												<option value="junior" <c:if test ="${update.admin_position eq 'junior' }">selected="selected"</c:if> >Junior</option>								
@@ -121,14 +122,14 @@ function zip(){
 										<td><input type="text" name="admin_phone" value="${update.admin_phone}"/></td>
 									</tr>
 									<tr>
-										<th scope="row">매니저 주소<button onclick="javascript:zip()" style="float: right;">검색</button></th>
+										<th scope="row">매니저 주소<input type="button" value="검색" onclick="javascript:zip()" style="float: right;"></th>
 										<td>
 											<input type="text" name="admin_address1" id="admin_address1" value="${update.admin_address1}"/>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row">매니저 상세주소</th>
-										<td><input type="text" name="admin_address1" id="admin_address2" value="${update.admin_address2}"/></td>
+										<td><input type="text" name="admin_address2" id="admin_address2" value="${update.admin_address2}"/></td>
 									</tr>									
 								</table>
 							<input type="submit" value="수정하기" style="margin-left: 10px"/>

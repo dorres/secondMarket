@@ -37,7 +37,7 @@ public class AdminJoinController {
 		}
 		success = adminService.joinProc(admin);
 		if(success==1) {
-			return "admin_index";
+			return "redirect:manager/admin_adminList";
 		}else {
 			return "redirect:join.mdo";
 		}

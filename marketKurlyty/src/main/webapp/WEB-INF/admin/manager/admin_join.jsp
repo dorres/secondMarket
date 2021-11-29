@@ -86,11 +86,12 @@ textarea:focus, input:focus{
 						</div>
 					</div>
 					<div class="card-body">
-						<form id="frmAdmin" action="joinProc.mdo" method="POST">
+						<form name="frmAdmin" action="joinProc.mdo" method="POST">
 							<table class="type02">
 									<tr>
-										<th scope="row">아이디</th>
+										<th scope="row">아이디<input type="button" value="중복체크" onclick="javascript:chkId()" style="float: right;"></th>
 										<td>
+											<input id="posibleId" type="hidden" name="chk_id" label="아이디중복체크" value="불가능">
 											<input type="text" name="admin_id" maxlength="16" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합">
 										</td>
 									</tr>
@@ -133,22 +134,24 @@ textarea:focus, input:focus{
 									<tr>
 										<th scope="row">매니저 직급</th>
 										<td >
-											<input type="radio" id="inpupu" name="admin_position" value="master">Master
-											<input type="radio" id="inpupu" name="admin_position" value="senior">Senior
-											<input type="radio" id="inpupu" name="admin_position" value="junior" checked="checked">Junior										
+										<select id="admin_position" name="admin_position" style="width: 150px">
+											<option value="master" >Master</option>
+											<option value="senior" >Senior</option>
+											<option value="junior" >Junior</option>
+										</select>
 										</td>
 									</tr>
 									
 									<tr>
 										<th scope="row">매니저 주소<input type="button" value="검색" onclick="javascript:zip()" style="float: right;"></th>
 										<td>
-											<input type="text" name="admin_address1" id="admin_address1"/>
+											<input type="text" name="admin_address1" id="admin_address1" readonly="readonly"/>
 										</td>
 									</tr>
 									
 									<tr>
 										<th scope="row">매니저 상세주소</th>
-										<td><input type="text" name="admin_address1" id="admin_address2"/></td>
+										<td><input type="text" name="admin_address2" id="admin_address2"/></td>
 									</tr>									
 								</table>
 							<input type="button" onclick="formJoinSubmit()" value="등록하기" style="margin-left: 10px"/>
@@ -157,8 +160,6 @@ textarea:focus, input:focus{
 					</div>
 				</div>
 				<!-- 여기만 수정해서 사용하세요!! -->
-
-
 			</div>
 		</main>
 		<jsp:include page="../default/footer.jsp"></jsp:include>
@@ -172,10 +173,15 @@ function zip(){
 		oncomplete:function(data){
 			myAddress=data.address;
 			myZipcode=data.zonecode;
+			$("#zip").val(myZipcode)
 			$("#admin_address1").val(myAddress);
 			$(".hid").attr("class",".addressShow");
 		}
 	}).open();
+}
+function validateEmail(email){
+	var emailReg = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+	return emailReg.test(email);
 }
 function formJoinSubmit(){
 
@@ -187,7 +193,7 @@ function formJoinSubmit(){
 	
 	if(document.frmAdmin.chk_id.value=="불가능"){
 		alert("중복된 아이디는 사용할 수 없습니다.");
-		document.frmAdmin.user_id.focus();
+		document.frmAdmin.admin_id.focus();
 		return;
 	}
 
