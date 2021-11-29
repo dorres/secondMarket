@@ -12,6 +12,7 @@ import first.market.kurlyty.admin.vo.AdminBannerVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
+import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
@@ -510,6 +511,7 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteMembership(AdminMembershipVO membership) {
 		return adminDao.deleteMembership(membership);
 	}
+	//=====================================================
 	@Override
 	public List<AdminOrderVO> getOrderWaitList() {
 		return adminDao.getOrderWaitList();
@@ -585,6 +587,54 @@ public class AdminServiceImpl implements AdminService {
 	public int updateCancleWait(AdminQnaVO qna) {
 		return adminDao.updateCancleWait(qna);
 	}
+	//======================================================
+	//쿠폰 종류 등록
+	@Override
+	public List<AdminCouponVO> getCouponList() {
+		return 	adminDao.getCouponList();
+	}
+	@Override
+	public AdminCouponVO getCoupon(AdminCouponVO coupon) {
+		return adminDao.getCoupon(coupon);
+	}
+	
+	@Override
+	public int updateCoupon(AdminCouponVO coupon) {
+		return adminDao.updateCoupon(coupon);
+	}
+	@Override
+	public int insertCoupon(AdminCouponVO coupon) {
+		return adminDao.insertCoupon(coupon);
+	}
+	@Override
+	public int deleteCoupon(AdminCouponVO coupon) {
+		return adminDao.deleteCoupon(coupon);
+	}
+	//====================================================
+	//쿠폰 사용현황
+	@Override
+	public List<AdminCouponVO> getCouponUseList() {
+		return 	adminDao.getCouponUseList();
+	}
+	@Override
+	public AdminCouponVO getCouponUse(AdminCouponVO coupon) {
+		return adminDao.getCouponUse(coupon);
+	}
+	
+	@Override
+	public int insertCouponUse(AdminCouponVO coupon) {
+		return adminDao.insertCouponUse(coupon);
+	}
+	@Override
+	public int deleteCouponUse(AdminCouponVO coupon) {
+		return adminDao.deleteCouponUse(coupon);
+	}
+	@Override
+	public List<AdminCouponVO> getUserId(AdminCouponVO coupon) {
+		return adminDao.getUserId(coupon);
+	}
+	
+	
 
 }
 	
