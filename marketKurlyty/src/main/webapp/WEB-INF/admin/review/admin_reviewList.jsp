@@ -45,30 +45,6 @@
 			alert("재고 부족한 재품이 있습니다.")
 		}
 	
-	function stock(index,serial){
-	document.updateForm.action="insertStock.mdo?index="+String(index)+"&serial="+String(serial);
-	document.updateForm.submit();
-}
-	$(document).ready(function(){ 
-		$('checkbox').click(function(e){
-			var id = e.target.getAttribute('name');
-			if ( ( name != '') && (name != null))  
-			alert(name);
-		});
-		
-		$("tr").each(function(){
-			$(this).click(function(){
-				if($(this).attr("style")){
-					$(this).attr("style","background:white;");
-				} else
-					 $(this).attr("style","background:pink;");
-				var text = $(this).find("#serial").text();
-				var serial = $(this).find("#hiSerial").val();
-				$("#a").attr("href","insertStock.mdo?serial="+serial);
-			})
-		});
-		
-	});
 	</script>
 	<style type="text/css">
 .btn1 {font-size: 20px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
@@ -92,17 +68,12 @@
 		<main>
 			<div class="container-fluid px-4">
 
-				<h1 class="mt-4">상품조회/수정</h1>
+				<h1 class="mt-4">리뷰</h1>
 				
-
+				<div style="margin:2%;"></div>
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
-							<div class="col three">
-								<a href="#" id="a" class ="btn1 btn-dark">버튼</a>
-							</div>
-						</div>
 					<div class="card-body">
-					<form name="" method="post" action="">
+					<form method="post" action="">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
@@ -112,7 +83,7 @@
 									<th>작성일</th>
 									<th>조회</th>
 									<th>베스트리뷰</th>
-									<th>삭제</th>
+									<th>수정/삭제</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -122,15 +93,16 @@
 										<td>${review.review_title }</td>
 										<td>${review.user_id }</td>
 										<td><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
-										<td>${review.review.hit }</td>
+										<td>${review.review_hit }</td>
 										<td>
 										<select name="review_best_up">
-										<option value="0" ${review.review_best_up == 0 ? "selected='selected" : '' }>일반리뷰</option>
-										<option value="1" ${review.review_best_up == 1 ? "selected='selected" : '' }>베스트리뷰</option>
+										<option value="0" ${review.review_best_up == 'false' ? "selected='selected" : '' }>일반리뷰</option>
+										<option value="1" ${review.review_best_up == 'true' ? "selected='selected" : '' }>베스트리뷰</option>
 										</select>
 										</td>
 										<td>
-											<input type="button" value="삭제" onclick="deleteReview.mdo?review_serial=${review.review_serial}"/>
+											<input type="submit" value="수정"/>
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteReview.mdo?review_serial=${review.review_serial}')"/>
 										</td>
 									</tr>
 								</c:forEach>

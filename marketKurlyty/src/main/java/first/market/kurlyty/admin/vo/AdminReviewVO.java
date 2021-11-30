@@ -14,4 +14,6 @@ public class AdminReviewVO {
 	private String review_image_main;
 	private int review_hit;
 	private boolean review_best_up;
+	private int category_goods_serial;
+	private int order_details_serial;
 }
