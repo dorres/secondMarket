@@ -24,22 +24,24 @@
 						<li class="breadcrumb-item active">Dashboard</li>
 					</ol>
 					<div class="row">
+						<!-- primary Card -->
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-primary text-white mb-4">
-								<div class="card-body">Primary Card</div>
-								<div
-									class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link" href="#">View
-										Details</a>
+								<div class="card-body">이번달 매출</div>
+								<div class="card-footer d-flex align-items-center justify-content-between">
+									<a class="small text-white stretched-link" href="#">View Details</a>
 									<div class="small text-white">
 										<i class="fas fa-angle-right"></i>
 									</div>
 								</div>
 							</div>
 						</div>
+						<!-- primary Card -->
+						
+						<!-- Warning Card -->
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-warning text-white mb-4">
-								<div class="card-body">Warning Card</div>
+								<div class="card-body">이번주 매출</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-white stretched-link" href="#">View
@@ -50,9 +52,12 @@
 								</div>
 							</div>
 						</div>
+						<!-- Warning Card -->
+						
+						<!--  Success Card -->
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-success text-white mb-4">
-								<div class="card-body">Success Card</div>
+								<div class="card-body">주문 요청(결제완료)</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-white stretched-link" href="#">View
@@ -63,9 +68,13 @@
 								</div>
 							</div>
 						</div>
+						<!--  Success Card -->
+						
+						
+						<!-- Danger Card -->
 						<div class="col-xl-3 col-md-6">
 							<div class="card bg-danger text-white mb-4">
-								<div class="card-body">Danger Card</div>
+								<div class="card-body">1:1 문의/상품 문의</div>
 								<div
 									class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-white stretched-link" href="#">View
@@ -77,7 +86,11 @@
 							</div>
 						</div>
 					</div>
+					<!-- Danger Card -->
+					
+					
 					<div class="row">
+						<!-- Area Chart Example -->
 						<div class="col-xl-6">
 							<div class="card mb-4">
 								<div class="card-header">
@@ -88,6 +101,9 @@
 								</div>
 							</div>
 						</div>
+						<!-- Area Chart Example -->
+						
+						<!-- Bar Chart Example-->
 						<div class="col-xl-6">
 							<div class="card mb-4">
 								<div class="card-header">
@@ -98,7 +114,10 @@
 								</div>
 							</div>
 						</div>
+						
 					</div>
+					
+					<!-- 리스트 형태 -->
 					<div class="card mb-4">
 						<div class="card-header">
 							<i class="fas fa-table me-1"></i> DataTable Example

@@ -109,8 +109,8 @@ public class AdminDAO {
 	}
 	
 	//상품조회리스트
-	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
-		return sqlSession.selectList("RegistDAO.getGoodsList", regist);
+	public List<AdminRegistVO> goodsList(){
+		return sqlSession.selectList("RegistDAO.getGoodsList");
 	}
 	
 	//상품 조회
@@ -532,6 +532,13 @@ public class AdminDAO {
 	}
 	public List<AdminCouponVO> getUserId(AdminCouponVO coupon){
 		return sqlSession.selectList("couponDAO.getUserId",coupon);
+	}
+	//쿠폰 유효기간(쿼츠? )이용해보자
+	public List<AdminCouponVO> getCouponDate(){
+		return sqlSession.selectList("couponDAO.getCouponDate");
+	}
+	public int updateCouponDate(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCouponDate",coupon);
 	}
 	
 }
