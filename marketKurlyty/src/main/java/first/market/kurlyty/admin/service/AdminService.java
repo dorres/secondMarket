@@ -69,7 +69,7 @@ public interface AdminService {
 	 int inserGoods(AdminRegistVO regist);
 	
 	//상품조회리스트
-	 List<AdminRegistVO> goodsList(AdminRegistVO regist);
+	 List<AdminRegistVO> goodsList();
 	
 	//상품조회
 	 AdminRegistVO getGoods(AdminRegistVO regist);

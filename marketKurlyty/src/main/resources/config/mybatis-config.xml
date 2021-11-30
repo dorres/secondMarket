@@ -28,6 +28,7 @@
  		<typeAlias type="first.market.kurlyty.user.vo.user_address_listVO" alias="addressListVO"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminRegistVO" alias="regist"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminStockVO" alias="stock"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminStockStockVO" alias="stockstock"/>
  		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminMembershipVO" alias="membership"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminOrderVO" alias="order"/>
@@ -54,7 +55,7 @@
  		<mapper resource="config/mappings/regular-mapping.xml"/>	<!-- bk -->
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
  		<mapper resource="config/mappings/user_address_list-mapping.xml"/>
- 		<mapper resource="config/mappings/registration-mapping.xml"/>
+ 		<mapper resource="config/mappings/admin/registration-mapping.xml"/>
  		<mapper resource="config/mappings/order-mapping.xml"/>
 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/admin/banner-mapping.xml"/>

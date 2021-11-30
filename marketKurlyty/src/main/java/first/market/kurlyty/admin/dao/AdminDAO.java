@@ -109,8 +109,8 @@ public class AdminDAO {
 	}
 	
 	//상품조회리스트
-	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
-		return sqlSession.selectList("RegistDAO.getGoodsList", regist);
+	public List<AdminRegistVO> goodsList(){
+		return sqlSession.selectList("RegistDAO.getGoodsList");
 	}
 	
 	//상품 조회

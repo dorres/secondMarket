@@ -26,7 +26,7 @@ public class AdminRegistController {
       return "registration/admin_registration";
    }
    
-   //상품등록
+   //상품등록 
    @RequestMapping("insertGoods.mdo")
    public String insertGoods(AdminRegistVO regist) {
       int success = 0;
@@ -41,18 +41,24 @@ public class AdminRegistController {
    //상품조회리스트
    @RequestMapping("getGoodsList.mdo")
    public String getGoodsList(AdminRegistVO regist, AdminStockVO stock, Model model) {
-      List<AdminRegistVO> list=adminService.goodsList(regist);
+      
+	   List<AdminRegistVO> list= adminService.goodsList();
+      for(AdminRegistVO vo : list) {
+    	  System.out.println(vo.getCategory_goods_serial());
+       }
+      
       for(AdminRegistVO vo : list) {
          if(vo.getGoods_detail_stock_quantity()<15) {
             model.addAttribute("notification",true);
             break;
          }
       }
-      model.addAttribute("goodsList", adminService.goodsList(regist));
+
+      model.addAttribute("goodsList", list);
       return "registration/admin_goodsList";
    }
    
-   //상품조회
+   //상품조회 재고 조회
    @RequestMapping("getGoods.mdo")
    public String getGoods(AdminRegistVO regist, Model model) {
       model.addAttribute("goods", adminService.getGoods(regist));

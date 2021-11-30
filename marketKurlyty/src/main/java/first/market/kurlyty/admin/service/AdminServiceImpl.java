@@ -142,8 +142,8 @@ public class AdminServiceImpl implements AdminService {
 	
 	//상품조회리스트
 	@Override
-	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
-		return adminDao.goodsList(regist);
+	public List<AdminRegistVO> goodsList(){
+		return adminDao.goodsList();
 	}
 	
 	//상품조회

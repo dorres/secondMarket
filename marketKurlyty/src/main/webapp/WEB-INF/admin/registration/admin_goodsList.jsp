@@ -140,12 +140,12 @@
                      <tbody>
                         <c:forEach var="goodsList" items="${goodsList}" varStatus="index">
                            <tr id="${index.index}">
-                              <td>${goodsList.goods_detail_serial}</td>
-                              <td>${goodsList.category_main_serial}</td>
-                              <td>${goodsList.category_sub_serial}</td>
+                              <td>${goodsList.rownum}</td>
+                              <td>${goodsList.category_main_name}</td>
+                              <td>${goodsList.category_sub_name}</td>
                               <td id="serial">
                                  <input type="hidden" id="hiSerial" value="${goodsList.category_goods_serial }"/>
-                                 ${goodsList.category_goods_serial}
+                                 ${goodsList.category_goods_name}
                               </td>
                               <td>${goodsList.goods_detail_stock_quantity}</td>
                               <td><input type="text" name="goods_detail_price" value="${goodsList.goods_detail_price}" size="4"/>원</td>
