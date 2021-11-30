@@ -17,6 +17,7 @@ $(document).ready(function(){
 			$("strong#pointRate").text("적립"+res.pointRate+"%");
 			$("p#myPoint").text(parseInt(res.user_point).toLocaleString("ko-KR")+"원");
 			$("p#myCouponCount").text(res.couponCount+"개");
+			$("strong#pointPagePoints").text(parseInt(res.user_point).toLocaleString("ko-KR")+"원");
 		}
 	})
 })
@@ -48,7 +49,7 @@ $(document).ready(function(){
 			
 			<div class="list_mypage">
 				<div class="list">
-					<a href="#none" class="link_wrap">
+					<a href="point.do" class="link_wrap">
 						<div class="link_title">적립금
 							<img src="https://res.kurly.com/kurly/ico/2021/arrow_right_gray_56_56.png" alt="" class="arrow_right">
 						</div>
@@ -56,7 +57,7 @@ $(document).ready(function(){
 							<p class="info" id="myPoint"></p>
 					</a> 
 					
-					<a href="#none" class="link_wrap">
+					<a href="couponPage.do" class="link_wrap">
 						<div class="link_title">쿠폰
 							<img src="https://res.kurly.com/kurly/ico/2021/arrow_right_gray_56_56.png" alt="" class="arrow_right">
 						</div>
