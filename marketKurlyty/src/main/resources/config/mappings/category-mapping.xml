@@ -29,7 +29,15 @@
  			AND PRODUCT.category_sub_serial=#{category_sub_serial}
  		</if>
  		AND PRODUCT.GOODS_DETAIL_STATUS=1
- 		ORDER BY PRODUCT.category_goods_serial
+ 		<if test='sort=="0"'>
+ 			ORDER BY PRODUCT.category_goods_serial DESC
+ 		</if>
+ 		<if test='sort=="1"'>
+ 			ORDER BY PRODUCT.goods_last_price ASC
+ 		</if>
+ 		<if test='sort=="2"'>
+ 			ORDER BY PRODUCT.goods_last_price DESC
+ 		</if>
  	</select>
  	<select id="getCategoryRoot" resultType="categoryMain" parameterType="product">
  		SELECT * FROM mk_category_main WHERE category_main_serial=#{category_main_serial}
@@ -85,7 +93,7 @@
  	<select id="getHotDeal" resultType="product">
  	SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
  		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
  		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
@@ -96,7 +104,7 @@
  	<select id="getNewGoods" resultType="product">
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
  		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
  		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
@@ -109,7 +117,7 @@
  		SELECT * FROM (
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
  		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
  		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
@@ -131,7 +139,7 @@
  		SELECT * FROM(
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
  		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
  		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
@@ -152,7 +160,7 @@
  	<select id="getBestPage" resultType="product">
  	SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
  		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
  		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT

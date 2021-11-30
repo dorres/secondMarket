@@ -55,6 +55,10 @@ public class HeaderController {
 	
 	@RequestMapping("categoryItemPage.do")
 	public String categoryGoods(ProductVO product, Model model) {
+		if(product.getSort()==null||product.getSort()=="") {
+			product.setSort("0");
+		}
+
 		List<ProductVO> categoryProductList = headerService.getCategoryProduct(product);
 		for(ProductVO products:categoryProductList) {
 			if(products.getGoods_detail_promotion_serial()==1) {
@@ -70,6 +74,7 @@ public class HeaderController {
 		model.addAttribute("mainSerial", product.getCategory_main_serial());
 		model.addAttribute("subSerial",product.getCategory_sub_serial());
 		model.addAttribute("itemCount",categoryProductList.size());
+		model.addAttribute("sort", product.getSort());
 		return "mainPage/categoryGoods";
 	}
 	
