@@ -40,7 +40,7 @@
 															쿠폰은 적용 가능한 상품이 따로 적용되어 있는 경우 해당 상품 구매 시에만 사용이 가능합니다.
 														</span>
 													</div>
-													<span class="availableCoupon">사용가능쿠폰: 0장</span>
+													<!-- <span class="availableCoupon">사용가능쿠폰: 0장</span> -->
 												</div>
 												<table id="lacoupon_table">
 													<caption>쿠폰 상세 내역</caption>
@@ -107,6 +107,11 @@
 																<c:if test="${coupons.coupon_use_status==0 }">
 																	<td class="available" style="color:gray;">
 																		사용
+																	</td>
+																</c:if>
+																<c:if test="${coupons.coupon_use_status==2 }">
+																	<td class="available" style="color:red;">
+																		유효기간 만료
 																	</td>
 																</c:if>
 															</tr>

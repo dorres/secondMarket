@@ -6,6 +6,7 @@
 	<select id="getCouponCount" resultType="String">
 		SELECT count(*) FROM mk_coupon_use
 		WHERE coupon_use_userid=#{value}
+		AND coupon_use_status=1
 	</select>
 	<select id="getUserDetail" resultType="userDetails">
 		SELECT * FROM MK_USER_DETAILS
