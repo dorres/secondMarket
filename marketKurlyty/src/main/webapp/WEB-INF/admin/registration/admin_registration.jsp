@@ -72,16 +72,15 @@
          <div class="container-fluid px-4">
 
             <h1 class="mt-4">입고</h1>
-         
-            
+       		<form method="post" id="form">
+       		
             <div class="card mb-4">
                <div class="card-header"  align="right">
                      <div class="col three">
-                        <a href="#" onclick="javascript:document.insertstock.submit();" class="btn1 btn-dark">입고합니다</a>
+                        <a href="#" id="comeIn"  class="btn1 btn-dark">입고합니다</a>
                      </div>
                   </div>
                <div class="card-body">
-               <form method="post" id="insertstock" name="insertstock" action="insertStocks.mdo">
                   <table id="datatablesSimple">
                      <thead>
                         <tr>
@@ -93,19 +92,23 @@
                         </tr>
                      </thead>
                      <tbody>
-                           <tr>
-                              <td><input type="text" name="category_goods_serial" value="${serial}" readonly="readonly"/></td>
-                              <td><input type="text" name="goods_stock_receiving_quantity"/>개</td>
-                              <td><input type="text" name="goods_stock_stock_quantity"/>
-                              <td><input type="date" name="goods_stock_receiving_date"/></td>
-                              <td><input type="date" name="goods_stock_exp_date"/></td>
-                           </tr>
+                           <c:forEach var="category" items="${categoryList }">
+                           	  <tr>
+                           	  	<td>
+                           	  		<input type="text" value="${category.category_goods_name }" readonly="readonly"/>
+                           	  		<input type="hidden" name="category_goods_serial" value="${category.category_goods_serial }">
+                           	  	</td>
+                                <td><input type="text" name="goods_stock_receiving_quantity"/>개</td>
+                                <td><input type="text" name="goods_stock_stock_quantity"/>
+                                <td><input type="date" name="goods_stock_receiving_date"/></td>
+                                <td><input type="date" name="goods_stock_exp_date"/></td>
+                           	  </tr>
+                           	</c:forEach>
                      </tbody>
                   </table>
-                  </form>
                </div>
             </div>
-
+			</form>
 
          </div>
       </main>
@@ -114,7 +117,12 @@
    </div>
    </div>
    <!-- Main -->
-   
+<script type="text/javascript">
+$("#comeIn").click(function() {	
+	$("#form").attr("action", "insertStock.mdo");  
+	$("#form").submit();
+});
+</script>   
    <!-- 건들지마세요 -->
    <script   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
    <script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>

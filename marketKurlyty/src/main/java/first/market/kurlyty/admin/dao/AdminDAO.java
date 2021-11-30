@@ -103,61 +103,66 @@ public class AdminDAO {
 		return sqlSession.delete("AdminDAO.deleteTerms", agree);
 	}
 	
-	//상품등록
-	public int insertGoods(AdminRegistVO regist) {
-		return sqlSession.insert("RegistDAO.insertRegist", regist);
-	}
+//	//상품등록
+//	public int insertGoods(AdminRegistVO regist) {
+//		return sqlSession.insert("RegistDAO.insertRegist", regist);
+//	}
 	
 	//상품조회리스트
 	public List<AdminRegistVO> goodsList(){
 		return sqlSession.selectList("RegistDAO.getGoodsList");
 	}
-	
-	//상품 조회
-	public AdminRegistVO getGoods(AdminRegistVO regist) {
-		return sqlSession.selectOne("RegistDAO.getGoods", regist);
-	}
-	
 	//상품 수정..
 	public int updateGoods(AdminStockStockVO stockstock) {
 		return sqlSession.update("RegistDAO.updateGoods", stockstock);
 	}
-	
-	//상품 삭제
-	public int deleteGoods(AdminRegistVO regist) {
-		return sqlSession.delete("RegistDAO.deleteGoods", regist);
+	public List<AdminStockStockVO> getCategory3Names(List<Integer> goodsList) {
+		return sqlSession.selectList("RegistDAO.getCategory3Names",goodsList);
 	}
-	
-	//재고 조회
-	public AdminStockVO getStock(AdminStockVO stock) {
-		return sqlSession.selectOne("RegistDAO.getStock", stock);
+	public int insertStock(AdminStockVO stock) {
+		return sqlSession.insert("RegistDAO.insertStock",stock);
 	}
 	//입고 조회
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {
 		return sqlSession.selectList("RegistDAO.stockList", stock);
 	}
-	//입고 수정
-	public int updateStock(AdminStockVO stock) {
-		return sqlSession.update("RegistDAO.updateStock", stock);
-	}
 	
-	//수량 합계
-	public AdminStockVO sumStock(AdminStockVO stock) {
-		return sqlSession.selectOne("RegistDAO.stockSum", stock);
-	}
-	//판매등록
-	public AdminStockVO getStock(int serial) {
-		return sqlSession.selectOne("RegistDAO.getStock",  serial);
-	}
 	
-	public int insertStock(AdminStockStockVO stockstock) {
-		return sqlSession.insert("RegistDAO.insertStock",stockstock);
-	}
-	
-	// 리스트에 재고 출력
-	public int stockstock(AdminStockStockVO stockstock) {
-		return sqlSession.update("RegistDAO.stockstcok", stockstock);
-	}
+//	//상품 조회
+//	public AdminRegistVO getGoods(AdminRegistVO regist) {
+//		return sqlSession.selectOne("RegistDAO.getGoods", regist);
+//	}
+//	
+//	//상품 삭제
+//	public int deleteGoods(AdminRegistVO regist) {
+//		return sqlSession.delete("RegistDAO.deleteGoods", regist);
+//	}
+//	
+//	//재고 조회
+//	public AdminStockVO getStock(AdminStockVO stock) {
+//		return sqlSession.selectOne("RegistDAO.getStock", stock);
+//	}
+
+//	//입고 수정
+//	public int updateStock(AdminStockVO stock) {
+//		return sqlSession.update("RegistDAO.updateStock", stock);
+//	}
+//	
+//	//수량 합계
+//	public AdminStockVO sumStock(AdminStockVO stock) {
+//		return sqlSession.selectOne("RegistDAO.stockSum", stock);
+//	}
+//	//판매등록
+//	public AdminStockVO getStock(int serial) {
+//		return sqlSession.selectOne("RegistDAO.getStock",  serial);
+//	}
+//	
+
+//	
+//	// 리스트에 재고 출력
+//	public int stockstock(AdminStockStockVO stockstock) {
+//		return sqlSession.update("RegistDAO.stockstcok", stockstock);
+//	}
 	//================================================================
 	
 	//리뷰 리스트

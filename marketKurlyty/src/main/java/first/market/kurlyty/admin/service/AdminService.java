@@ -65,36 +65,45 @@ public interface AdminService {
 	//약관 삭제
 	 int deleteTerms(AdminTermsAgreementVO agree);
 	
-	//상품 등록
-	 int inserGoods(AdminRegistVO regist);
-	
+
 	//상품조회리스트
 	 List<AdminRegistVO> goodsList();
 	
-	//상품조회
-	 AdminRegistVO getGoods(AdminRegistVO regist);
-	
-	//상품 수정..
+	 //상품 수정..
 	 int updateGoods(AdminStockStockVO stockstock);
-	
-	//상품 삭제
-	 int deleteGoods(AdminRegistVO regist);
-		
-	//재고 조회
+	 
+	 //3차 카테고리이름
+	 List<AdminStockStockVO> getCategory3Names(List<Integer> goodsList);
+	 
+	 public int insertStock(AdminStockVO stock);
+	 
+		//재고 조회
 	 List<AdminStockVO> getStockList(AdminStockVO stock);
+
+	 
+//		//상품 등록
+//	 int inserGoods(AdminRegistVO regist);
 	
-	//입고 수정
-	int updateStock (AdminStockVO stock);
+//	//상품조회
+//	 AdminRegistVO getGoods(AdminRegistVO regist);
 	
-	//재고 합계
-	AdminStockVO sumStock(AdminStockVO stock);
-	
-	//판매 등록
-	AdminStockVO getStock(int serial);
-	int insertStock(AdminStockStockVO stockstock);
-	
-	// 리스트에 재고 출력
-	int stockstock(AdminStockStockVO stockstock);
+//	//상품 삭제
+//	 int deleteGoods(AdminRegistVO regist);
+//		
+
+//	
+//	//입고 수정
+//	int updateStock (AdminStockVO stock);
+//	
+//	//재고 합계
+//	AdminStockVO sumStock(AdminStockVO stock);
+//	
+//	//판매 등록
+//	AdminStockVO getStock(int serial);
+//	int insertStock(AdminStockStockVO stockstock);
+//	
+//	// 리스트에 재고 출력
+//	int stockstock(AdminStockStockVO stockstock);
 	
 	//----------------------------------------------------------------
 	//리뷰 리스트

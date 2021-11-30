@@ -134,75 +134,81 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.deleteTerms(agree);
 	}
 	
-	//상품 등록
-	@Override
-	public int inserGoods(AdminRegistVO regist) {
-		return adminDao.insertGoods(regist);
-	}
+//	//상품 등록
+//	@Override
+//	public int inserGoods(AdminRegistVO regist) {
+//		return adminDao.insertGoods(regist);
+//	}
 	
 	//상품조회리스트
 	@Override
 	public List<AdminRegistVO> goodsList(){
 		return adminDao.goodsList();
 	}
-	
-	//상품조회
-	@Override
-	public AdminRegistVO getGoods(AdminRegistVO regist) {
-		return adminDao.getGoods(regist);
-	}
-	
 	//상품 수정..
 	@Override
 	public int updateGoods(AdminStockStockVO stockstock) {
 		return adminDao.updateGoods(stockstock);
 	}
-	
-	//상품 삭제
 	@Override
-	public int deleteGoods(AdminRegistVO regist) {
-		return adminDao.deleteGoods(regist);
+	public List<AdminStockStockVO> getCategory3Names(List<Integer> goodsList) {
+		return adminDao.getCategory3Names(goodsList);
 	}
-
-	//재고 조회
-	public AdminStockVO getStock(AdminStockVO stock) {
-		return adminDao.getStock(stock);
+	@Override
+	public int insertStock(AdminStockVO stock) {
+		return adminDao.insertStock(stock);
 	}
-	
 	//입고 조회
 	@Override
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {
 		return adminDao.getStockList(stock);
 	}
 	
-	//입고 수정
-	@Override
-	public int updateStock (AdminStockVO stock) {
-		return adminDao.updateStock(stock);
-	}
 	
-	//재고 합계
-	@Override
-	public AdminStockVO sumStock(AdminStockVO stock) {
-		return adminDao.sumStock(stock);
-	}
+//	//상품조회
+//	@Override
+//	public AdminRegistVO getGoods(AdminRegistVO regist) {
+//		return adminDao.getGoods(regist);
+//	}
+//	
+//	//상품 삭제
+//	@Override
+//	public int deleteGoods(AdminRegistVO regist) {
+//		return adminDao.deleteGoods(regist);
+//	}
+
+//	//재고 조회
+//	public AdminStockVO getStock(AdminStockVO stock) {
+//		return adminDao.getStock(stock);
+//	}
 	
-	//판매 등록
-	@Override
-	public AdminStockVO getStock(int serial) {
-		return adminDao.getStock(serial);
-	}
-	
-	@Override
-	public int insertStock(AdminStockStockVO stockstock) {
-		return adminDao.insertStock(stockstock);
-	}
-	
-	// 리스트에 재고 출력
-	@Override
-	public int stockstock(AdminStockStockVO stockstock) {
-		return adminDao.stockstock(stockstock);
-	}
+
+//	
+//	//입고 수정
+//	@Override
+//	public int updateStock (AdminStockVO stock) {
+//		return adminDao.updateStock(stock);
+//	}
+//	
+//	//재고 합계
+//	@Override
+//	public AdminStockVO sumStock(AdminStockVO stock) {
+//		return adminDao.sumStock(stock);
+//	}
+//	
+//	//판매 등록
+//	@Override
+//	public AdminStockVO getStock(int serial) {
+//		return adminDao.getStock(serial);
+//	}
+//	
+
+//	
+//	// 리스트에 재고 출력
+//	@Override
+//	public int stockstock(AdminStockStockVO stockstock) {
+//		return adminDao.stockstock(stockstock);
+//	}
 	//----------------------------------------------------------------
 	// 상품문의 리스트 (답변대기)
 	@Override

@@ -6,66 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>??????????????</title>
+<title></title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
- <script src="jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-      $(document).ready(function(){
-         var formObj = $("form[name='readForm']");
-         
-         // 수정 
-         $(".update_btn").on("click", function(){
-            formObj.attr("action", "/board/updateView");
-            formObj.attr("method", "get");
-            formObj.submit();            
-         })
-         
-         // 삭제
-         $(".delete_btn").on("click", function(){
-            formObj.attr("action", "/board/delete");
-            formObj.attr("method", "post");
-            formObj.submit();
-         })
-         
-         // 취소
-         $(".list_btn").on("click", function(){
-            
-            location.href = "/board/list";
-         })
-      })
-           
-      if(${notification!=null}){
+ <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">        
+/*       if(${notification!=null}){
          alert("재고 부족한 재품이 있습니다.")
-      }
-
-   function stock(index,serial){
-	   document.updateForm.action="insertStock.mdo?index="+String(index)+"&serial="+String(serial);
-	   document.updateForm.submit();
-	}
-  	
-   $(document).ready(function(){ 
-      $('checkbox').click(function(e){
-         var id = e.target.getAttribute('name');
-         if ( ( name != '') && (name != null))  
-         alert(name);
-      });
-      
-      
-      $("tr").each(function(){
-         $(this).click(function(){
-            if($(this).attr("style")){
-               $(this).attr("style","background:white;");
-            } else
-                $(this).attr("style","background:pink;");
-            var text = $(this).find("#serial").text();
-            var serial = $(this).find("#hiSerial").val();
-            $("#a").attr("href","insertStock.mdo?serial="+serial);
-         })
-      });
-      
-   });
+      };  */	
+    
 </script>
 <style type="text/css">
 .btn1 {font-size: 20px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
@@ -77,6 +27,11 @@
 .btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
 .btn1.btn-dark:hover{background-color:#5f0080;}
 .btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+.highlight { background-color: pink; }
+
+ .do{
+ 	text-align: center;
+ }
  </style>
 </head>
 <body class="sb-nav-fixed">
@@ -90,11 +45,12 @@
          <div class="container-fluid px-4">
 
             <h1 class="mt-4">상품조회/수정</h1>
-            
+            <form id="form" method="post">
             <div class="card mb-4">
-               <div class="card-header"  align="right">
+               <div class="card-header">
                      <div class="col three">
-                        <a href="#" id="a" class ="btn1 btn-dark">입고</a>
+                        <a href="#" id="comeIn" class ="btn1 btn-dark" style="float: right;">입고</a>
+                        <input type="hidden" id="arrayParam" name="arrayParam"/>
                      </div>
                      <div>
 <%--                         <button type="button" class="btm_image" id="img_btn" onclick="stockstock.mdo?goods_detail_serial">
@@ -103,10 +59,12 @@
                      </div>
                   </div>
                <div class="card-body">
-               <form name="updateForm" method="post" action="updateGoods.mdo?goods_detail_serial=${goods.goods_detail_serial}">
                   <table id="datatablesSimple">
                      <thead>
                         <tr>
+                        	<th class="do" style="text-align: center; vertical-align: middle;">
+								<input type="checkbox" name="checkall" id="checkall"/>
+							</th>
                            <th>상품번호</th>
                            <th>1차카테고리</th>
                            <th>2차카테고리</th>
@@ -118,12 +76,13 @@
                            <th>상태</th>
                            <th>할인</th>
                            <th>재고</th>
-                           <th>수정/삭제</th>
+                           <th>수정</th>
                         </tr>
                      </thead>
                      <tbody>
                         <c:forEach var="goodsList" items="${goodsList}">
-                           <tr>
+                           <tr id="rowBtn" >
+                           	  <td class="do"><input type="checkbox" name="chk" value="${goodsList.category_goods_serial}"/></td>
                               <td>${goodsList.rownum}</td>
                               <td>${goodsList.category_main_name}</td>
                               <td>${goodsList.category_sub_name}</td>
@@ -169,9 +128,9 @@
                         </c:forEach>
                      </tbody>
                   </table>
-                  </form>
                </div>
             </div>
+            </form>
          </div>
       </main>
       <jsp:include page="../default/footer.jsp"></jsp:include>
@@ -188,13 +147,6 @@ $(document).on("click", "#updateBtn", function(){
 	var status = tr.find("#goods_detail_status option:selected").val();
 	var rate = tr.find("#goods_detail_dicountrate").val();
 	var serial = tr.find("#goods_detail_serial").val();
-	console.log(price)
-	console.log(price)
-	console.log(noti)
-	console.log(promotion)
-	console.log(status)
-	console.log(rate)
-	console.log(serial)
      if(confirm('판매 정보를 수정하시겠습니까?')) {
 	$.ajax({
 		type:"POST",
@@ -216,6 +168,31 @@ $(document).on("click", "#updateBtn", function(){
 	}) 
 	}  
 });
+
+$("#comeIn").click(function() {
+	var array = [];
+	$('input:checkbox[name=chk]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+	    array.push(this.value);
+	});
+	
+	if(confirm('체크한 상품 재고를 입고하시겠습니까?')) {
+		 if(array.length >0){
+			$("#arrayParam").val(array);
+			$("#form").attr("action", "registration.mdo");  
+			$("#form").submit();
+		 }else{
+			 alert("상품을 체크해주세요.");
+			 location.reload();
+		 }
+	}
+	
+	
+	
+	
+	
+	
+});
+
 </script> 
    <!-- 건들지마세요 -->
    <script   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -226,12 +203,23 @@ $(document).on("click", "#updateBtn", function(){
    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
    <script src="${pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
    <!-- 건들지마세요 -->
-<script>
-function update(index,serial){
-   document.updateForm.action="updateGoods.mdo?index="+String(index)+"&serial="+String(serial);
-   document.updateForm.submit();
-}
-
+<script type="text/javascript">
+	$(window).load(function(){
+		$("input#checkall").unwrap();
+		
+		$("#checkall").click(function(){
+	        //클릭되었으면
+	        if($("#checkall").prop("checked")){
+	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+	            $("input[name=chk]").prop("checked",true);
+	            //클릭이 안되있으면
+	        }else{
+	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+	            $("input[name=chk]").prop("checked",false);
+	        }
+	    })
+		
+	});
 </script>
 </body>
 </html>

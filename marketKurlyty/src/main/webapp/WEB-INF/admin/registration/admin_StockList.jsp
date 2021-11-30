@@ -91,7 +91,7 @@
 							<tbody>
 							<c:forEach var="stock" items="${stock}">
 									<tr>
-										<td>${stock.category_goods_serial}</td>
+										<td>${stock.category_goods_name}</td>
 										<td><fmt:formatDate value="${stock.goods_stock_receiving_date}" pattern="yyyy-MM-dd"/></td>
 										<td><input type="text" name="goods_stock_receiving_quantity" value="${stock.goods_stock_receiving_quantity}"/></td>
 										<td><fmt:formatDate value="${stock.goods_stock_exp_date}" pattern="yyyy-MM-dd"/></td>
