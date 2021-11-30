@@ -23,6 +23,7 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 import first.market.kurlyty.user.service.CartService;
+import first.market.kurlyty.user.service.CouponService;
 import first.market.kurlyty.user.service.MembershipService;
 import first.market.kurlyty.user.service.OrderService;
 import first.market.kurlyty.user.service.UserService;
@@ -46,6 +47,8 @@ public class PaymentController {
 	private OrderService orderService;
 	@Autowired
 	private MembershipService membershipService;
+	@Autowired
+	private CouponService couponService;
 	
 	private IamportClient api;
 	
@@ -58,8 +61,6 @@ public class PaymentController {
 	@RequestMapping("/iamport.do")
 	public IamportResponse<Payment> paymentByImUid(Model model, Locale locale, HttpSession session,
 			@RequestParam(value="imp_uid")String imp_uid) throws IamportResponseException, IOException{
-		System.out.println(imp_uid);
-		System.out.println(api.paymentByImpUid(imp_uid));
 		Map<String,String> payMap = new HashMap<String,String>();
 		payMap.put("Uid", api.paymentByImpUid(imp_uid).getResponse().getMerchantUid());
 		payMap.put("amount",api.paymentByImpUid(imp_uid).getResponse().getAmount().toString());
@@ -81,7 +82,6 @@ public class PaymentController {
 		
 		UserVO userInfo = userService.getUser(userVO);
 		String membership = membershipService.getMembershipOfUser(userId);
-		System.out.println(membership);
 		MembershipVO membershipInfo = membershipService.getMembershipData(membership);
 		for(CartVO goods:purchaseGoods) {
 			if(!cartService.isStock(goods)) {
@@ -98,13 +98,14 @@ public class PaymentController {
 		model.addAttribute("userInfo",userInfo);
 		model.addAttribute("membershipInfo",membershipInfo);
 		model.addAttribute("shippingAddress",addressVO);
+		model.addAttribute("myCoupon",couponService.getMyCoupons(userId));
 		model.addAttribute("userPoint",orderService.getUserDetails(userId).getUser_point());
 		return "cart_and_payment/payment";
 	}
 	
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
-	public String paymentSuccess(OrderVO order, ShippingVO shipping,int usingPoint) {
+	public String paymentSuccess(OrderVO order, ShippingVO shipping,int usingPoint,int coupon_serial) {
 		order.setOrder_delivery_status("결제완료");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
@@ -142,6 +143,8 @@ public class PaymentController {
 		shipping.setShipping_sender_name(order.getUser_name());
 		shipping.setShipping_sender_phone(order.getUser_phone());
 		orderService.insertShippingInfo(shipping);
+		if(coupon_serial!=0)
+			couponService.useCoupon(coupon_serial);
 		return "index.do";
 	}
 	

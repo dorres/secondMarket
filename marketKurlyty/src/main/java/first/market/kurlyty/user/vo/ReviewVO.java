@@ -23,5 +23,7 @@ public class ReviewVO {
 	private int order_details_serial;
 	private String category_goods_image_thumb;
 	
+	//วเน๘ศฃ
+	private int rnum;
 	
 }

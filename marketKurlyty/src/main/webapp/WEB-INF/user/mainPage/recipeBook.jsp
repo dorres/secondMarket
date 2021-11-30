@@ -1,26 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <jsp:include page="../default/top.jsp"></jsp:include><!-- 기본 필요 meta, css는 include로 받아옴 -->
 
 <!-- 여기부터 해당 페이지의 css 추가하면 됨-->
-<link rel="styleSheet"
-	href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
+<link rel="styleSheet" href="${pageContext.request.contextPath}/resources/style/ItemListStyle.css">
 </head>
 <style>
 .cartBt {
 	background:
 		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/ico_cart.svg)
 		no-repeat 50% 50%;
-	background-size: 50px 50px;
-	width: 50px;
-	height: 50px;
+	background-size: 46px 46px;
+	width: 46px;
+	height: 46px;
 	margin-top: 15px;
 	border: 0;
 	position:absolute;
@@ -42,17 +39,8 @@ position:relative;
 	background-color: #000;
 	opacity: .5
 }
-.global_sticker {
-    display: block;
-    position:absolute;
-    height: 0;
-    top:0px;
-}
 </style>
 <script>
-$(document).ready(function(){
-	console.log($("button.cartBt").position().left);
-});
 function openCart(serial,name,lastprice,price,discount){
 	var totalprice = parseInt(lastprice)
 	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
@@ -106,74 +94,143 @@ function inputCart(){
 </script>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false">
+	<a href="#top" id="gotoTop">맨 위로 가기</a>
 	<div class="cartNone"></div>
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
 		<div id="container">
-
+		
 			<jsp:include page="../default/header.jsp"></jsp:include><!-- header부분 -->
-
+			<div class="tit_page">
+				<h2 class="tit">레시피</h2>
+			</div>
 			<div id="main">
 				<div id="content">
-
+				
 					<jsp:include page="../default/sidemenu.jsp"></jsp:include><!-- sidemenu부분 -->
-
-					<div style="margin: 0 auto; width: 1050px;">
-						<div id="lnbMenu">
-							<div class="inner_lnb">
-								<h3 class="tit">${categoryRoot.category_main_name}</h3>
-								<ul class="list on">
-										<c:if test="${subSerial == null }">
-											<li><a class="on" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}">전체보기</a></li>
-										</c:if>
-										<c:if test="${subSerial != null }">
-											<li><a class="" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}">전체보기</a></li>
-										</c:if>
-									<c:forEach var="categorySub" items="${categorySub}">
-										<c:if test="${subSerial == categorySub.category_sub_serial }">
-											<li><a class="on" 
-												href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${categorySub.category_sub_serial}">
-												${categorySub.category_sub_name}
-												</a>
-											</li>
-										</c:if>
-										<c:if test="${subSerial != categorySub.category_sub_serial }">
-											<li><a class="" 
-												href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${categorySub.category_sub_serial}">
-												${categorySub.category_sub_name}
-												</a>
-											</li>
-										</c:if>
-									</c:forEach>
-									<li class="bg"></li>
-								</ul>
-							</div>
-						</div>
-
-						<div id="sortbar">
-							<div class="list_ability">
-								<div class="sort_menu">
-									<div class="">
-										<p class="count">
-											<span class="inner_count"> 총 ${itemCount }건 </span>
-										</p>
-										<div class="select_type user_sort">
-											<!---->
-											<a class="name_select">| 신상품순</a>
-											<ul class="list">
-												<li><a class="">추천순</a></li>
-												<li><a class="on">신상품순</a></li>
-												<li><a class="">인기상품순</a></li>
-												<li><a class="">낮은 가격순</a></li>
-												<li><a class="">높은 가격순</a></li>
-											</ul>
+					<div class="layout-wrapper">
+						<table width="100%" align="center">
+							<tbody>
+								<tr>
+									<td>
+										<table width="100%">
+											<tbody>
+												<tr>
+													<td>
+														<table class="boardView" width="100%">
+															<tbody>
+																<tr>
+																	<th scope="row" style="border: none;">제목</th>
+																	<td>${recipeBook.recipe_title}</td>
+																</tr>
+																<tr>
+																	<th scope="row">작성자</th>
+																	<td>MarketKurly</td>
+																</tr>
+																<tr class="etcArea">
+																	<td colspan="2">
+																		<ul>
+																			<li class="date"><strong class="th">작성일</strong>
+																				<span class="td">
+																					<fmt:formatDate value="${recipeBook.recipe_date}"
+																						pattern="yyyy-MM-dd" />
+																				</span>
+																			</li>
+																			<li class="hit"><strong class="th">조회수</strong>
+																				<span class="td">${recipeBook.recipe_hit }</span></li>
+																		</ul>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="200" valign="top" id="contents"
+														class="view_recipe">
+														<table width="100%" style="table-layout: fixed"
+															class="goods_wrap">
+															<tbody>
+																<tr>
+																	<td valign="top">
+																		<div class="goods_recipe">
+																			<div class="context">
+																				<div class="pic">
+																					<img
+																						src="${recipeBook.recipe_content }">
+																				</div>
+																				
+																			</div>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td id="recipe_view" align="center"><script
+											src="/shop/data/skin/designgj/autoslider.js"></script>
+										<div class="goods-add-product">
+											<h3 class="goods-add-product-title">RECIPE ITEMS</h3>
+											<div class="goods-add-product-wrapper __slide-wrapper"
+												data-slide-item="5">
+												<div class="goods-add-product-list-wrapper"
+													style="height: 310px">
+													<ul class="goods-add-product-list __slide-mover">
+														<c:forEach var="ingredItem" items="${ingredList }">
+															<li class="goods-add-product-item __slide-item">
+																<div class="goods-add-product-item-figure">
+																	<a href="itemPage.do?category_goods_serial=${ingredItem.category_goods_serial}">
+																		<img src="${ingredItem.category_goods_image_thumb }"
+																		alt="" class="goods-add-product-item-image">
+																	</a>
+																	<button type="button" class="cartBt"
+																	onclick="javascript:openCart(${ingredItem.category_goods_serial},'${ingredItem.category_goods_name }','${ingredItem.goods_last_price}',${ingredItem.goods_detail_price },${ingredItem.goods_detail_dicountrate })">
+																	</button>
+																</div>
+																<div class="goods-add-product-item-content">
+																	<div class="goods-add-product-item-content-wrapper">
+																		<a href="/shop/goods/goods_view.php?&amp;goodsno=27778">
+																			<p class="goods-add-product-item-name">${ingredItem.category_goods_name }</p>
+																			<p class="goods-add-product-item-price" style="left: 35%;">${ingredItem.goods_last_price }원</p>
+																		</a>
+																	</div>
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div id="cartPut">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table width="100%"
+							style="table-layout: fixed; border-top: 1px solid #795c90; height: 80px;">
+							<tbody>
+								<tr>
+									<td align="center" style="padding-top: 10px;">
+										<table width="100%">
+											<tbody>
+												<tr>
+													<td></td>
+													<td align="right"><a href="recipeItemPage.do"><span
+															class="bhs_button yb" style="float: none;">목록</span></a></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="cartPut">
 							<div class="cart_option cartList cart_type3" style="opacity: 0; display:none;">
 							<!--  -->
 								<form name="cartInput" action="cartInput.do">
@@ -237,45 +294,6 @@ function inputCart(){
 								<!--  -->
 							</div>
 						</div>
-
-						<div class="MainIntroContain">
-							<ul class="foodList">
-								<c:forEach var="item" items="${categoryProductList }">
-									<li>
-										<input type="hidden" class="goodsSerial" value="${item.category_goods_serial}"/>
-										<div class="foodImg">
-											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }"><img
-												src="${item.category_goods_image_thumb}">
-											</a>
-											<c:if test="${item.goods_detail_promotion_serial>0 }">
-											<span class="global_sticker">
-												<span class="inner_sticker">
-													<span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-													<span class="txt_sticker">
-														<span>
-															<span class="emph_sticker">&nbsp;&nbsp;&nbsp;FLEX 10% 추가할인&nbsp;&nbsp;&nbsp;</span>
-														</span>
-													</span>
-												</span>
-											</span>
-											</c:if>
-											<button type="button" class="cartBt"
-												onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>
-										</div>
-										<a class="info" href="itemPage.do?category_goods_serial=${item.category_goods_serial }"> <span class="name">${item.category_goods_name }</span>
-											<span class="cost"> <span class="dc">${item.goods_detail_dicountrate }%</span> <span
-												class="price">&nbsp;
-												<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price }" var="lastPrice"/>												
-												${lastPrice}원</span> 
-												<span class="origin">${item.goods_detail_price }</span>
-												<span class="desc">${item.category_goods_name_subtext }</span>
-										</span>
-									</a>
-									</li>
-								</c:forEach>
-							</ul>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -283,6 +301,7 @@ function inputCart(){
 	</div>
 
 	<a href="#top" id="pageTop">맨 위로가기</a>
+
 
 	<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank"
 		style="display: none; width: 100%; height: 600px;"></iframe>

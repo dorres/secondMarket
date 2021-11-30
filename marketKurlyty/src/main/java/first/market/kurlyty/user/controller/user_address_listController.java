@@ -33,7 +33,6 @@ public class user_address_listController {
 		model.addAttribute("myAddress", myAddress);
 		model.addAttribute("star", star);
 		model.addAttribute("user_id", user_id);
-		System.out.println(whatsPage);
 		if(whatsPage!=null)
 			model.addAttribute("whatsPage", whatsPage);
 		return "mykurly/destination_new";
@@ -58,8 +57,6 @@ public class user_address_listController {
 		String user_address1 = request.getParameter("user_address1");
 		String user_address2 = request.getParameter("user_address2");
 		
-		System.out.println(user_id+user_zipcode+user_address1+user_address2);
-		System.out.println();
 		user_address_listService.insert(vo);
 		model.addAttribute("list");
 		
@@ -84,7 +81,6 @@ public class user_address_listController {
 	@RequestMapping(value="/deleteAddress.do", produces="html/text; charset=UTF-8")
 	@ResponseBody
 	public String deleteAddress(user_address_listVO vo) {
-		System.out.println(vo.getAddress_serial());
 		user_address_listService.deleteAddress(vo);
 		return "삭제가 완료되었습니다.";
 	}

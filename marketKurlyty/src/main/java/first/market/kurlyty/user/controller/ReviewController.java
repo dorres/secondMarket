@@ -78,7 +78,6 @@ public class ReviewController {
 	@ResponseBody
 	public int reviewDelete(ReviewVO vo,@RequestParam("review_serial2") int review_serial2) {
 		
-		System.out.println(review_serial2);
 		int success = reviewservice.deleteReview(review_serial2);
 		return success;
 		

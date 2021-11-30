@@ -784,7 +784,7 @@
 	vertical-align: top
 }
 
-.data_payment .select_box:after {
+/* .data_payment .select_box:after {
 	content: "";
 	position: absolute;
 	right: 16px;
@@ -795,7 +795,7 @@
 		url(https://res.kurly.com/pc/ico/2011/ico_selectbox_arrow.svg)
 		no-repeat 50% 50%;
 	background-size: 12px 8px
-}
+} */
 
 .data_payment .select_box.off {
 	background-color: #fafafa;

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -30,11 +32,6 @@
 											<div class="title">
 												<h2>쿠폰</h2>
 											</div>
-											<section class="couponRegister">
-												<input type="text" placeholder="쿠폰을 입력해주세요" value="">
-												<button type="submit">쿠폰 등록</button>
-												<span>쿠폰에 하이픈("-")이 포함되어 있을 경우 하이픈("-")을 반드시 입력해주세요.</span>
-											</section>
 											<section class="couponList">
 												<div id="lacoupon_table_description">
 													<div>
@@ -65,25 +62,57 @@
 													</thead>
 													
 													<!-- 쿠폰이 없는경우↓↓↓↓↓↓ -->
-												<!--<tbody class="couponList"> 
+													<c:if test="${fn:length(myCoupon)==0 }">
+													<tbody class="couponList"> 
 														<tr>
 															<td class="noCoupon" colspan="5">쿠폰 내역이 존재하지 않습니다.</td>
 														</tr>
-													</tbody> --> 
-													
+													</tbody> 
+													</c:if>
 													<!-- 쿠폰이 있는경우↓↓↓↓↓↓↓↓↓-->
-													<tbody class="couponList"> 
-														<tr id="lacoupon_pc" class="">
-															<td class="couponName"><span class="name">LG디오스
-																	5% (~10/28 오전 11시)</span><span class="hurdle">최대
-																	1,000,000,000원 할인</span><span class="hurdle">특정상품 한정</span><span
-																class="showCondition" disabled="">사용조건 보기</span></td>
-															<td>할인</td>
-															<td>5%</td>
-															<td>21.10.28 11시까지</td>
-															<td class="available">미사용</td>
-														</tr>
-													</tbody>
+													<c:if test="${fn:length(myCoupon)>0 }">
+														<tbody class="couponList"> 
+															<c:forEach var="coupons" items="${myCoupon }">
+															<tr id="lacoupon_pc" class="">
+																<td class="couponName">
+																	<span class="name">${coupons.coupon_name}
+																	<c:if test="${coupons.coupon_type==0 }">
+																		${coupons.coupon_discount }%
+																	</c:if>
+																	<c:if test="${coupons.coupon_type==1 }">
+																		${coupons.coupon_discount }원
+																	</c:if>
+																	</span>
+																	<span class="hurdle">최대 ${coupons.coupon_max }원 할인</span>
+																	<span class="hurdle"></span>
+																</td>
+																<td>할인</td>
+																<td>
+																	<c:if test="${coupons.coupon_type==0 }">
+																		${coupons.coupon_discount }%
+																	</c:if>
+																	<c:if test="${coupons.coupon_type==1 }">
+																		${coupons.coupon_discount }원
+																	</c:if>
+																</td>
+																<td>
+																	<fmt:formatDate value="${coupons.coupon_end}"
+																	pattern="yyyy-MM-dd" />까지
+																</td>
+																<c:if test="${coupons.coupon_use_status==1 }">
+																	<td class="available">
+																		미사용
+																	</td>
+																</c:if>
+																<c:if test="${coupons.coupon_use_status==0 }">
+																	<td class="available" style="color:gray;">
+																		사용
+																	</td>
+																</c:if>
+															</tr>
+															</c:forEach>
+														</tbody>
+													</c:if>
 												</table>
 											</section>
 										</div>

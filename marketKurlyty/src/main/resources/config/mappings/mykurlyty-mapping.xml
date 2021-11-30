@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myKurlytyDAO">
+	<select id="getCouponCount" resultType="String">
+		SELECT count(*) FROM mk_coupon_use
+		WHERE coupon_use_userid=#{value}
+	</select>
+	<select id="getUserDetail" resultType="userDetails">
+		SELECT * FROM MK_USER_DETAILS
+		WHERE user_id=#{value};
+	</select>
+	<select id="getPointRate" resultType="String">
+		SELECT user_membership_point_rate FROM mk_user_membership 
+		WHERE user_membership_name=#{value}
+	</select>
+</mapper>

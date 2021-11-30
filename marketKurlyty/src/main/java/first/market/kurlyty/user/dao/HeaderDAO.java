@@ -28,9 +28,19 @@ public class HeaderDAO {
 	public List<ProductVO> getHotDeal(){
 		return sqlSession.selectList("CategoryDAO.getHotDeal");
 	}
+	public List<ProductVO> getAltlePage(String sort){
+		return sqlSession.selectList("CategoryDAO.getAltlePage", sort);
+	}
 	public List<ProductVO> getNewGoods(){
 		return sqlSession.selectList("CategoryDAO.getNewGoods");
 	}
+	public List<ProductVO> getNewGoodsPage(String sort){
+		return sqlSession.selectList("CategoryDAO.getNewGoodsPage",sort);
+	}
+	public List<ProductVO> getBestPage(String sort){
+		return sqlSession.selectList("CategoryDAO.getBestPage",sort);
+	}
+	
 	public List<ProductVO> getSearch(String searchKeyword){
 		return sqlSession.selectList("CategoryDAO.getSearchList",searchKeyword);
 	}
