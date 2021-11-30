@@ -118,9 +118,9 @@ public class AdminDAO {
 		return sqlSession.selectOne("RegistDAO.getGoods", regist);
 	}
 	
-	//상품 수정
-	public int updateGoods(AdminRegistVO regist) {
-		return sqlSession.update("RegistDAO.updateGoods", regist);
+	//상품 수정..
+	public int updateGoods(AdminStockStockVO stockstock) {
+		return sqlSession.update("RegistDAO.updateGoods", stockstock);
 	}
 	
 	//상품 삭제
@@ -150,8 +150,8 @@ public class AdminDAO {
 		return sqlSession.selectOne("RegistDAO.getStock",  serial);
 	}
 	
-	public int insertStock(AdminStockVO stock) {
-		return sqlSession.insert("RegistDAO.insertStock",stock);
+	public int insertStock(AdminStockStockVO stockstock) {
+		return sqlSession.insert("RegistDAO.insertStock",stockstock);
 	}
 	
 	// 리스트에 재고 출력

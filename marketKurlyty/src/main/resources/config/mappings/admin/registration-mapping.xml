@@ -8,6 +8,7 @@
 	<!-- 상품조회  -->
 	<select id="getGoodsList" resultType="regist">
 		SELECT (ROW_NUMBER() OVER(ORDER by M.CATEGORY_MAIN_SERIAL,S.CATEGORY_SUB_SERIAL)) AS ROWNUM, 
+			GD.goods_detail_serial,
 			GD.category_main_serial, M.category_main_name, GD.category_sub_serial, S.category_sub_name ,GD.category_goods_serial, G.category_goods_name,
 			GD.goods_detail_price, GD.goods_detail_stock_quantity, 
 			GD.goods_detail_stock_notification, GD.goods_detail_promotion_serial, 
@@ -22,13 +23,16 @@
 	</select> -->
 	
 	<!-- 상품 수정 -->
-	<update id="updateGoods" parameterType="regist">
+	<update id="updateGoods" parameterType="stockstock">
 		UPDATE MK_GOODS_DETAIL 
-		SET GOODS_DETAIL_STOCK_NOTIFICATION=#{goods_detail_stock_notification}
-			,GOODS_DETAIL_PROMOTION_SERIAL=#{goods_detail_promotion_serial}
-			,GOODS_DETAIL_STATUS=#{goods_detail_status},GOODS_DETAIL_DICOUNTRATE=#{goods_detail_dicountrate}
-			,GOODS_DETAIL_PRICE = #{goods_detail_price}
-			WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+		SET 
+			GOODS_DETAIL_PRICE = #{goods_detail_price}
+			,GOODS_DETAIL_STOCK_NOTIFICATION = #{goods_detail_stock_notification}
+			,GOODS_DETAIL_PROMOTION_SERIAL = #{goods_detail_promotion_serial}
+			,GOODS_DETAIL_STATUS = #{goods_detail_status}
+			,GOODS_DETAIL_DICOUNTRATE = #{goods_detail_dicountrate}
+		WHERE 
+			GOODS_DETAIL_SERIAL = #{goods_detail_serial};
 	</update>
 	
 	<!-- 상품 삭제 -->
@@ -55,7 +59,7 @@
 		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{serial}
 	</select>
 	
-	<insert id="insertStock" parameterType="stock">
+	<insert id="insertStock" parameterType="stockstock">
 		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
 		#{goods_stock_receiving_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date})
 	</insert>

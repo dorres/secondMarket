@@ -74,8 +74,8 @@ public interface AdminService {
 	//상품조회
 	 AdminRegistVO getGoods(AdminRegistVO regist);
 	
-	//상품 수정
-	 int updateGoods(AdminRegistVO regist);
+	//상품 수정..
+	 int updateGoods(AdminStockStockVO stockstock);
 	
 	//상품 삭제
 	 int deleteGoods(AdminRegistVO regist);
@@ -91,7 +91,7 @@ public interface AdminService {
 	
 	//판매 등록
 	AdminStockVO getStock(int serial);
-	int insertStock(AdminStockVO stock);
+	int insertStock(AdminStockStockVO stockstock);
 	
 	// 리스트에 재고 출력
 	int stockstock(AdminStockStockVO stockstock);

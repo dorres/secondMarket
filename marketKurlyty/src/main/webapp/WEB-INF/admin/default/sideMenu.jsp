@@ -204,6 +204,7 @@
 								<a class="nav-link" href="admin_bannerList.mdo">배너</a>
 								<a class="nav-link" href="admin_couponList.mdo">쿠폰등록</a>	
 								<a class="nav-link" href="admin_couponUseList.mdo">쿠폰발급</a>														
+								<a class="nav-link" href="recipe.mdo">레시피</a>														
 							</nav>
 						</div>
 						<!-- 마케팅 관리 -->

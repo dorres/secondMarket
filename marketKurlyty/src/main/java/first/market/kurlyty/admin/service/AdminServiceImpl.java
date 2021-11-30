@@ -152,10 +152,10 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getGoods(regist);
 	}
 	
-	//상품 수정
+	//상품 수정..
 	@Override
-	public int updateGoods(AdminRegistVO regist) {
-		return adminDao.updateGoods(regist);
+	public int updateGoods(AdminStockStockVO stockstock) {
+		return adminDao.updateGoods(stockstock);
 	}
 	
 	//상품 삭제
@@ -194,8 +194,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public int insertStock(AdminStockVO stock) {
-		return adminDao.insertStock(stock);
+	public int insertStock(AdminStockStockVO stockstock) {
+		return adminDao.insertStock(stockstock);
 	}
 	
 	// 리스트에 재고 출력
