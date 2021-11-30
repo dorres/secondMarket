@@ -58,6 +58,7 @@ public class HeaderController {
 		if(product.getSort()==null||product.getSort()=="") {
 			product.setSort("0");
 		}
+
 		List<ProductVO> categoryProductList = headerService.getCategoryProduct(product);
 		for(ProductVO products:categoryProductList) {
 			if(products.getGoods_detail_promotion_serial()==1) {
