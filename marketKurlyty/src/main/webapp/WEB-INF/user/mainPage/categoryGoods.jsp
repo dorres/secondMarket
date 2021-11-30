@@ -42,6 +42,12 @@ position:relative;
 	background-color: #000;
 	opacity: .5
 }
+.global_sticker {
+    display: block;
+    position:absolute;
+    height: 0;
+    top:0px;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -153,13 +159,26 @@ function inputCart(){
 										</p>
 										<div class="select_type user_sort">
 											<!---->
-											<a class="name_select">| 신상품순</a>
+											<c:if test="${sort==0 }">
+												<a class="name_select">| &nbsp;신상품순</a>
+											</c:if>
+											<c:if test="${sort==1 }">
+												<a class="name_select">| &nbsp;낮은 가격순</a>
+											</c:if>
+											<c:if test="${sort==2 }">
+												<a class="name_select">| &nbsp;높은 가격순</a>
+											</c:if>
 											<ul class="list">
-												<li><a class="">추천순</a></li>
-												<li><a class="on">신상품순</a></li>
-												<li><a class="">인기상품순</a></li>
-												<li><a class="">낮은 가격순</a></li>
-												<li><a class="">높은 가격순</a></li>
+												<c:if test="${subSerial == null }">
+													<li><a class="on" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&sort=0">신상품순</a></li>
+													<li><a class="" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&sort=1">낮은 가격순</a></li>
+													<li><a class="" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&sort=2">높은 가격순</a></li>
+												</c:if>
+												<c:if test="${subSerial != null }">
+													<li><a class="on" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${subSerial}&sort=0">신상품순</a></li>
+													<li><a class="" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${subSerial}&sort=1">낮은 가격순</a></li>
+													<li><a class="" href="categoryItemPage.do?category_main_serial=${categoryRoot.category_main_serial}&category_sub_serial=${subSerial}&sort=2">높은 가격순</a></li>
+												</c:if>
 											</ul>
 										</div>
 									</div>
@@ -241,6 +260,18 @@ function inputCart(){
 											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }"><img
 												src="${item.category_goods_image_thumb}">
 											</a>
+											<c:if test="${item.goods_detail_promotion_serial>0 }">
+											<span class="global_sticker">
+												<span class="inner_sticker">
+													<span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
+													<span class="txt_sticker">
+														<span>
+															<span class="emph_sticker">&nbsp;&nbsp;&nbsp;FLEX 10% 추가할인&nbsp;&nbsp;&nbsp;</span>
+														</span>
+													</span>
+												</span>
+											</span>
+											</c:if>
 											<button type="button" class="cartBt"
 												onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })"></button>
 										</div>

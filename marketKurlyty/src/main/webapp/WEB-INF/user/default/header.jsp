@@ -168,18 +168,6 @@ ul.sub_on li.on{
 	<!-- 헤더부분 -->
 	
 	<div class="bnr_header" id="top-message">
-		<a
-			href="https://www.kurly.com/shop/event/kurlyEvent.php?htmid=event/join/join_211006"
-			id="eventLanding"> 지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img
-			src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png"
-			class="bnr_arr">
-			<div class="bnr_top">
-				<div class="inner_top_close">
-					<button id="top-message-close" class="btn_top_bnr">가입하고
-						혜택받기</button>
-				</div>
-			</div>
-		</a>
 
 	</div>
 	<!-- 우측 최상단 메뉴 -->
@@ -203,8 +191,7 @@ ul.sub_on li.on{
 						<li><a href="goodsQna.do">상품 문의</a></li>
 						<li><a href="point.do">적립금</a>
 							<!----></li>
-						<li><a href="#none"
-							onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'dropdown'})">쿠폰</a>
+						<li><a href="couponPage.do">쿠폰</a>
 							<!----></li>
 						<li><a href="infoModify1.do">개인 정보 수정</a></li>
 						<li><a href="logoutProc.do">로그아웃</a></li>
@@ -247,12 +234,19 @@ ul.sub_on li.on{
 					<ul class="gnb">
 						<li class="menu1" class="on"><a href="#none"><span
 								class="ico"></span><span class="txt">전체 카테고리</span></a></li>
-						<li class="menu2"><a class="link new "
-							href="newItemPage.do"><span class="txt">신상품</span></a></li>
-						<li class="menu3"><a class="link best " href="BestItemPage.do"><span
-								class="txt">베스트</span></a></li>
+						<li class="menu2">
+							<a class="link new "
+								href="newItemPage.do?sort=0">
+								<span class="txt">신상품</span>
+							</a>
+						</li>
+						<li class="menu3">
+							<a class="link best " href="BestItemPage.do?sort=0">
+								<span class="txt">베스트</span>
+							</a>
+						</li>
 						<li class="menu4"><a class="link bargain "
-							href="altleShopping.do"><span class="txt">알뜰쇼핑</span></a></li>
+							href="altleItemPage.do?sort=0"><span class="txt">알뜰쇼핑</span></a></li>
 						<li class="lst"><a class="link event "
 							href="recipeItemPage.do"><span class="txt">레시피</span></a></li>
 					</ul>

@@ -86,8 +86,13 @@ public class UserLoginController {
 					
 					for(CartVO cartItem : tempCartList) {
 						cartItem.setUser_id(user.getUser_id());
-						boolean overlap=cartService.overlapCartItem(myCartList, cartItem);
-						if(!overlap)cartService.insertCartItem(cartItem);
+						try {
+							boolean overlap=cartService.overlapCartItem(myCartList, cartItem);
+							if(!overlap)cartService.insertCartItem(cartItem);
+						} catch (IllegalArgumentException e) {
+							
+						}
+						
 					}
 				}
 				session.removeAttribute("cartList");
@@ -177,7 +182,7 @@ public class UserLoginController {
 					
 					emailKey.setSendEmail(user.getUser_email());
 					emailKey.setSubject("마켓컬리티 새 비밀번호 발급");
-					emailKey.setContent("새 비밀번호는 "+newPassword.substring(0,8)+"입니다.");
+					emailKey.setContent("새 비밀번호는 ["+newPassword.substring(0,8)+"] 입니다.");
 					EmailSend.gmailSend(FromEmail, password, emailKey);
 					model.addAttribute("sendEmailSuccess", true);
 					

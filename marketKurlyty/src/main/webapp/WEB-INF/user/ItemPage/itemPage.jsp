@@ -43,6 +43,62 @@ li.inquiry-item div{
     vertical-align: top;
     float:left;
 }
+.expand-question{
+    position: relative;
+    padding: 20px 26px 30px 36px;
+}
+div.expand-question span.icon-question{
+    background: url(https://res.kurly.com/kurly/ico/2021/question_24_24_purple.svg) 0 0 no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+}
+div.expand-question span.icon-question span{
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.expand-answer{
+    position: relative;
+    padding: 20px 26px 30px 36px;
+}
+div.expand-answer span.icon-answer{
+    background: url(https://res.kurly.com/kurly/ico/2021/answer_24_24_purple.svg) 0 0 no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+}
+div.expand-answer span.icon-answer span{
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+}   
+
+.created-time{
+	display: block;
+    padding-top: 20px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #999;
+}
+
+.itemNavFixed{
+	position: fixed;
+    z-index: 300;
+    width: 100%;
+    display:flex;
+}
 </style>
 <script>
 
@@ -72,7 +128,11 @@ function inputCart(){
 		data:{"category_goods_serial":serial,"goods_cart_count":count},
 		datatype:"text",
 		success:function(res){
-			alert("장바구니에 담았습니다.");
+			if(res!="good"){
+				alert(res);
+			}else{
+				alert("장바구니에 담았습니다.");
+			}
 		},
 		error:function(res){
 			alert("담기에 실패했습니다.");
@@ -93,7 +153,7 @@ function div_show_update(serial,title,content,lock) {
 	$("button#updateBt").css("display","block");
 	$("input[name=qna_goods_serial]").val(serial);
 	$("input[name=qna_goods_title]").val(title);
-	$("textarea[name=qna_goods_content]").val(content.replace("ln","\r\n"));
+	$("textarea[name=qna_goods_content]").val(content.replaceAll("ln","\r\n"));
 	$("input[name=qna_goods_lock]").prop('checked',lock);
 	$("#write_div").fadeIn(300);
 }
@@ -104,6 +164,30 @@ function div_hide() {
 	$("#write_div").fadeOut(300);
  //document.getElementById("write_div").style.display = "none";
 }
+
+$(document).ready(function(){
+	var topset = $("#gnb").height();
+	var itemPgNavi=$("div.goods-view-tab").offset();
+	$(window).scroll(function(){
+		console.log("topset:",topset);
+		console.log("windowToe",$(document).scrollTop());
+		console.log(itemPgNavi.top);
+		if($(document).scrollTop()+103>itemPgNavi.top){
+			$("div.goods-view-tab").addClass("itemNavFixed");	
+			$("div.goods-view-tab").css("top",String(topset-1)+"px");
+			$("div#underCartShow").fadeIn(400);
+		}
+		else{
+			$("div.goods-view-tab").removeClass("itemNavFixed");
+			$("div.goods-view-tab").css("top","0px");
+			$("div#underCartShow").fadeOut(400);
+		}
+	});
+	$("li.goods-view-infomation-tab").click(function(){
+		$("li.goods-view-infomation-tab").find("a").removeClass("__active");
+		$(this).find("a").addClass("__active");
+	})
+});
 </script>
 
 <body class="main-index" oncontextmenu="return false"
@@ -136,29 +220,6 @@ function div_hide() {
 						style="width: 100%;">
 
 						<div class="section_view">
-							<div id="shareLayer">
-								<div class="layer_share">
-									<div class="inner_layersns">
-										<h3 class="screen_out">SNS 공유하기</h3>
-										<ul class="list_share">
-											<li><a class="btn btn_fb" data-sns-name="페이스북"
-												data-sns="facebook" href="#none"><img
-													src="https://res.kurly.com/mobile/service/goodsview/1804/ico_facebook.png"
-													alt="페이스북"><span class="txt">공유하기</span></a></li>
-											<li><a class="btn btn_tw" data-sns-name="트위터"
-												data-sns="twitter" href="#none"><img
-													src="https://res.kurly.com/mobile/service/goodsview/1804/ico_twitter.png"
-													alt="트위터"><span class="txt">트윗하기</span></a></li>
-											<li class="btn_url"><input type="text" class="inp"
-												value="" readonly="readonly"> <a
-												class="btn_copy off" data-sns-name="링크 복사" data-sns="copy"
-												href="#none">URL 복사<img
-													src="https://res.kurly.com/mobile/service/goodsview/1804/ico_checked_x2.png"
-													alt=""></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 
 							<div id="sectionView">
 								<div class="inner_view">
@@ -167,11 +228,11 @@ function div_hide() {
 											alt="상품 대표 이미지" class="bg" />
 									</div>
 									<p class="goods_name">
-										<span class="btn_share"><button id="btnShare">공유하기</button></span>
+									
 										<input type="hidden" name="category_goods_serial"
-											value="${getItemPage.category_goods_serial}" /> <strong
-											class="name">${getItemPage.category_goods_name}</strong> <span
-											class="short_desc">${getItemPage.category_goods_name_subtext}</span>
+											value="${getItemPage.category_goods_serial}" />
+										<strong	class="name">${getItemPage.category_goods_name}</strong>
+										<span class="short_desc">${getItemPage.category_goods_name_subtext}</span>
 									</p>
 									<p class="goods_dcinfo">회원할인가</p>
 									<p class="goods_price">
@@ -326,7 +387,7 @@ function div_hide() {
 
 								<!-- 이너, 상품 선택 click으로 숨기기 보이기  -->
 								<!-- 				<div class="wrap"> -->
-								<div class="cart_option cartList cart_type1 on" style="">
+								<div id="underCartShow" class="cart_option cartList cart_type1" style="">
 									<form name="cartInput" action="cartInput.do">
 										<div class="inner_option">
 											<div class="in_option">
@@ -387,8 +448,8 @@ function div_hide() {
 
 														<div class="group_btn">
 															<div class="view_function">
-																<button type="button" class="btn btn_alarm">재입고
-																	알림</button>
+																<!-- <button type="button" class="btn btn_alarm">재입고
+																	알림</button> -->
 															</div>
 															<span class="btn_type1"> <input type="button"
 																class="txt_type" value="장바구니 담기"
@@ -436,10 +497,9 @@ function div_hide() {
 													items="${getCategoryItemPage }">
 													<li class="goods-add-product-item __slide-item">
 														<div class="goods-add-product-item-figure">
-															<a href="#"
-																onclick="KurlyTrackerLink('../goods/goods_view.php?goodsno=3327', 'select_related_product', {origin_price: 5400, package_id: 3327, package_name: '[남향푸드] 우리밀 또띠아 (냉동)'}, {openWindow: true})">
+															<a href="itemPage.do?category_goods_serial=${categoryItemPage.category_goods_serial }">
 																<img
-																src="//img-cf.kurly.com/shop/data/goods/1486128824798m0.jpg"
+																src="${categoryItemPage.category_goods_image_thumb }"
 																class="goods-add-product-item-image"
 																onerror="this.src='https://res.kurly.com/mobile/service/common/bg_1x1.png'">
 															</a>
@@ -481,7 +541,7 @@ function div_hide() {
 												<li class="goods-view-infomation-tab goods-view-review-tab">
 													<a href="#goods-review"
 													class="goods-view-infomation-tab-anchor">후기 <span
-														class="count_review">XXXXXXXXXX</span></a>
+														class="count_review">(${fn:length(reviews) })</span></a>
 												</li>
 
 												<li class="goods-view-infomation-tab qna-show"><a
@@ -819,12 +879,7 @@ function div_hide() {
 																					</p></li>
 																			</ul>
 																			<div class="sort" style="bottom: -9px">
-																				<select
-																					onchange="this.form.sort.value=this.value;this.form.submit()">
-																					<option value="1">최근등록순</option>
-																					<option value="2">좋아요많은순</option>
-																					<option value="3">조회많은순</option>
-																				</select>
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -837,7 +892,7 @@ function div_hide() {
 																			<col style="width: 51px;">
 																			<col style="width: 77px;">
 																			<col style="width: 100px;">
-																			<col style="width: 40px;">
+																			<%-- <col style="width: 40px;"> --%>
 																			<col style="width: 80px;">
 																		</colgroup>
 																		<tbody>
@@ -848,16 +903,17 @@ function div_hide() {
 																					class="screen_out">회원 등급</span></th>
 																				<th scope="col" class="input_txt" align="left">작성자</th>
 																				<th scope="col" class="input_txt">작성일</th>
-																				<th scope="col" class="input_txt">도움</th>
+																			<!-- 	<th scope="col" class="input_txt">도움</th> -->
 																				<th scope="col" class="input_txt">조회</th>
 																			</tr>
 																		</tbody>
 																	</table>
-
+																	
+																	<c:forEach var="review" items="${reviews }">
 																	<div class="tr_line">
 																		<table class="xans-board-listheaderd tbl_newtype1"
 																			width="100%" cellpadding="0" cellspacing="0"
-																			onclick="view_content(this,event,false)">
+																			id="reviewClick">
 																			<caption style="display: none">구매후기 내용</caption>
 																			<colgroup>
 																				<col style="width: 70px;">
@@ -865,7 +921,7 @@ function div_hide() {
 																				<col style="width: 51px;">
 																				<col style="width: 77px;">
 																				<col style="width: 100px;">
-																				<col style="width: 40px;">
+																				
 																				<col style="width: 80px;">
 																			</colgroup>
 																			<tbody>
@@ -877,86 +933,64 @@ function div_hide() {
 																					<input type="hidden" name="best" value="true">
 																					<input type="hidden" name="pNo" value="">
 
-																					<td align="center">BEST</td>
+																					<td align="center">${review.rnum }</td>
 																					<td class="subject">
 																						<div class="fst">
+																							${review.review_title }
+																						</div>
+																						<!-- <div class="snd">
 																							촉촉한 존쿡백립은 진리입니다 <img
 																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
 																								alt="이미지가 첨부됨">
-																						</div>
-																						<div class="snd">
-																							촉촉한 존쿡백립은 진리입니다 <img
-																								src="https://res.kurly.com/pc/ico/1910/ico_attach2.gif"
-																								alt="이미지가 첨부됨">
-																						</div>
+																						</div> -->
 																					</td>
 																					<td class="user_grade grade_comm"></td>
-																					<td class="user_grade">백*성</td>
-																					<td class="time">2019-06-15</td>
-																					<td><span class="review-like-cnt"
-																						data-sno="4389757">0</span></td>
+																					<td class="user_grade">${review.user_id }</td>
+																					<td class="time">
+																						<fmt:formatDate value="${review.review_date }"
+																							pattern="yyyy-MM-dd"/>
+																					</td>
+																					
 																					<td><span class="review-hit-cnt"
-																						data-sno="4389757">2330</span></td>
+																						data-sno="4389757">${review.review_hit }</span></td>
 																				</tr>
 																			</tbody>
 																		</table>
-																		<div data-sno="4389757" class="review_view">
+																		<div data-sno="4389757" class="review_view" style="display:none;background-color:#f9f9ef"
+																			id="reviewContent">
 																			<div class="inner_review">
 																				<div class="name_purchase">
-																					<strong class="name">[존쿡 델리미트] 바베큐 백립 450g
-																						(냉동)</strong>
+																					<strong class="name">${getItemPage.category_goods_name}</strong>
 																					<p class="package"></p>
 																				</div>
-																				<div class="review_photo"></div>
-																				맛 4.5 / 식감 5 / 양 3 / 배송 5<br> 안녕하세요~! 컬리 이용한지
-																				얼마 안된 신입입니다ㅎㅎ<br> 제가 초딩때부터 입맛이 비싸진 이유가 이
-																				백립때문이라고 해도 무방할 정도로 아웃백에 가면 꼭 먹었던 음식이거든요! 그래서 주문한 것
-																				중에 제일 기대했던 제품이기도 하네요@-@<br> 일단 맛만 보자면 어릴 때 대부분
-																				한번은 드셔보셨을텐데 급식에 나오는 합박스테이크의 소스에서 케찹맛이 조금만 들어간 듯한
-																				맛이였어요. 저는 원래 돈가스 먹기전에 돈가스 소스를 먼저 먹어보고 설렁탕 먹기전에 깍두기를
-																				먹어보는 그런 사람이였는데 소스에 엄청난 기대를 하고 있던 저는 많은 아쉬움을 느꼈죠ㅠ.ㅠ항상
-																				먹어보던 맛이였으니깐요....근데 또 조아하긴 해서ㅋㅋㅋㅋ괜찮았습니당<br> 근데
-																				여기서부터 매우 중요합니다!!! 일단 뼈 사이사이를 잘랐는데 오마이갓.... 이미 보기에도
-																				엄청난 부드러움이 보이길래 한번 씹었는데 얼마 씹지 않고 넘겼을정도로 정말 부드러워서 저를
-																				지금 당장 누가 뺨을 치더라도 웃을정도로 맛있는 맛이였어요ㅎㅎㅎㅎㅎ헤헤<br> 양은
-																				음...살 쬐금 먹다보면 얼마안가 뼈를 빨아먹고 있는 제 자신이 보여서 많이 아쉬웠답니다
-																				흐규ㅠㅠ<br> 배송은 역시 컬리배송!!! 타 업체에선 느낄 수 없을정도로
-																				식품배송에대한 언제올지 걱정도 안되고 너무 빨라서 정말 대단하다 생각했습니다ㅎㅎ<br>
-																				암튼 컬리 만세 !__(^~^)__!
-																			</div>
-																			<div class="goods-review-grp-btn">
-																				<button type="button"
-																					class="styled-button review-like-btn"
-																					data-sno="4389757"
-																					onclick="review_like('4389757',$(this));">
-																					도움이 돼요 <span class="num">0</span>
-																				</button>
+																				<div class="review_photo">
+																				<c:if test="${review.review_image_main!=null }">
+																				<img
+																					src="${review.review_image_main}"
+																					alt="이미지가 첨부됨">
+																				</c:if>
+																				</div>
+																				${fn:replace(review.review_content,"ln","<br>")} 
 																			</div>
 																		</div>
 																	</div>
+																	</c:forEach>
 																</form>
-																<p class="btnArea after">
+															<!--<p class="btnArea after">
 																	<a href="#none"
 																		onclick="popup_register( 'add_review', '5051' )"><span
 																		class="bhs_button"
 																		style="line-height: 30px; width: 130px;">후기쓰기</span></a>
-																</p>
+																</p> -->
 															</div>
 														</div>
 														<div class="board_pg_area">
-															<a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=1"
-																class="layout-pagination-button layout-pagination-first-page">맨
-																처음 페이지로 가기</a><a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=1"
-																class="layout-pagination-button layout-pagination-prev-page">이전
-																페이지로 가기</a> <a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=2"
-																class="layout-pagination-button layout-pagination-next-page">다음
-																페이지로 가기</a><a
-																href="/shop/goods/goods_review_list.php?goodsno=5051&amp;page=4261"
-																class="layout-pagination-button layout-pagination-last-page">맨
-																끝 페이지로 가기</a>
+															<a href="#goods-review" class="layout-pagination-button layout-pagination-prev-page"
+																onclick="javascript:reviewPaging(-1);">이전
+																페이지로 가기</a>
+															<a href="#goods-review" class="layout-pagination-button layout-pagination-next-page"
+																onclick="javascript:reviewPaging(1);">다음
+																페이지로 가기</a>
 														</div>
 													</div>
 												</div>
@@ -1021,7 +1055,7 @@ function div_hide() {
 																			<p class="txt_sub text_medium normal">
 																				<fmt:formatDate
 																					value="${goodsqnalist.qna_goods_date}"
-																					pattern="yyyy-mm-dd" />
+																					pattern="yyyy-MM-dd" />
 																			</p>
 																		</div>
 																		<div class="item-cell">
@@ -1035,7 +1069,7 @@ function div_hide() {
 																		
 																	</li>
 																	<li class="inquiry-item-expand "
-																		style="align: center; display: none; width: 100%;">
+																		style="align: center; display: none; width: 100%; background-color:#f9f9ef">
 
 																		<c:if test="${goodsqnalist.qna_goods_answer_date == null}">
 																			<div class="expand-question">
@@ -1060,55 +1094,34 @@ function div_hide() {
 																				</c:if>
 																			</div>
 																		</c:if> <!--  답변이 없을 때 !  --> 
-																		<c:if
-																			test="${goodsqnalist.qna_goods_answer_date != null}">
+																		<c:if test="${goodsqnalist.qna_goods_answer_date != null}">
 																			<div class="expand-question">
 																				<span class="icon-question"><span>질문</span></span>
 																				<p>
-																					<span>${goodsqnalist.qna_goods_content} </span>
+																					<span>${fn:replace(goodsqnalist.qna_goods_content,"ln","<br>")} </span>
 																				</p>
 																				<br>
 																			</div>
-																			<%-- <div class="expand-answer">
+																			<div class="expand-answer">
 																				<span class="icon-answer"><span>답변</span></span>
 																				<p>
-																					Love food, Love life!<br>
-																					${goodsqnalist.qna_goods_answer} <br>혹여 컬리
-																					이용하심에 상품으로 불편을 겪으시거나 다른 어려움이 있으실 경우<br>언제든 컬리
-																					고객행복센터 및 카카오톡, 1:1게시판으로 문의 부탁드립니다.<br> <br>마켓컬리
-																					드림.
-																				</p>
-																				<span class="created-time">${goodsqnalist.qna_goods_answer_date}</span>
-																			</div> --%>
+																					${goodsqnalist.qna_goods_answer}
+																				<span class="created-time">
+																					답변일:<fmt:formatDate value="${goodsqnalist.qna_goods_answer_date}" pattern="yyyy-MM-dd" />
+																				</span>
+																			</div>
 																		</c:if>
 																	</li>
 																</ul>
 															</c:forEach>
 
-															<!-- <ul>
-																<li class="inquiry-item"><div
-																		class="product-detail is-secret">
-																		<strong>비밀글입니다.</strong><span class="icon-secret"><span
-																			class="screen_out">비밀글</span></span>
-																	</div>
-																	<div class="item-cell">
-																		<p class="txt_sub text_medium normal ">노*석</p>
-																	</div>
-																	<div class="item-cell">
-																		<p class="txt_sub text_medium normal ">2021.08.06</p>
-																	</div>
-																	<div class="item-cell">
-																		<p class="txt_sub kurlyPurple normal ">답변완료</p>
-																	</div></li>
-															</ul>
- 																		-->
 															<div class="board-inquiry-area">
 																<div class="paging-navigation">
 																	<button type="button" class="paging-prev"
-																		disabled="disabled">
+																		onclick="javascript:qnaPaging(-1)">
 																		<span>이전</span>
 																	</button>
-																	<button type="button" class="paging-next">
+																	<button type="button" class="paging-next" onclick="javascript:qnaPaging(1)">
 																		<span>다음</span>
 																	</button>
 																</div>
@@ -1241,6 +1254,34 @@ function div_hide() {
 
 
 <script>
+var goodsSerial=${getItemPage.category_goods_serial};
+var qnaMaxPage = ${qnaPaging};
+var qnaPage=${currentPage};
+
+var reviewMaxPage=${reviewPaging};
+var reviewPage=${reviewCuPage};
+$(document).ready(function(){
+	if(${isQnaPaging}){
+		var element=document.getElementById("goods-qna");
+		element.scrollIntoView(true);
+	}
+	if(${isReviewPaging}){
+		var  element=document.getElementById("goods-review");
+		element.scrollIntoView(true);
+	}
+})
+function qnaPaging(pageMv){
+	
+	if(qnaPage+pageMv>=0&&qnaPage+pageMv<qnaMaxPage){
+		location.href="itemPage.do?category_goods_serial="+String(goodsSerial)+"&anaPage="+String(qnaPage+pageMv);
+	}
+}
+function reviewPaging(pageMv){
+	
+	if(reviewPage+pageMv>=0&&reviewPage+pageMv<reviewMaxPage){
+		location.href="itemPage.do?category_goods_serial="+String(goodsSerial)+"&reviewPage="+String(qnaPage+pageMv);
+	}
+}
 	$("li.inquiry-item").hover(function(){
 		$(this).css("background-color","#f1f1f1");
 	});
@@ -1268,6 +1309,14 @@ function div_hide() {
 					$(this).nextAll("li").css("display","block");
 				}
 			}
+		}
+	})
+	$("table#reviewClick").click(function(){
+		if($(this).nextAll("div").is(":visible")){
+			$(this).nextAll("div").css("display","none");
+		}else{
+			$("div.reviewContent").css("display","none");
+			$(this).nextAll("div").css("display","block");
 		}
 	})
 function goodsQnaAction(direction){

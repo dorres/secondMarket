@@ -64,5 +64,10 @@ private GoodsQnaDAO goodsqnaDao;
 	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo) {
 		return goodsqnaDao.getGoodsQnaContent(vo);
 	}
+
+	@Override
+	public String getQnaCount(int serial) {
+		return goodsqnaDao.getQnaCount(serial);
+	}
 	
 }

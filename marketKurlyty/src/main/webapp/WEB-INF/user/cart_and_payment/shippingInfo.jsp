@@ -189,7 +189,7 @@
 							</div>
 							<div class="submit double">
 								<button type="button" class="btn default" onclick="javascript:self.close();">취소</button>
-								<button id="btnSubmit" class="btn active" onclick="javascript:finish()">저장</button>
+								<button type="button" id="btnSubmit" class="btn active" onclick="javascript:finish()">저장</button>
 							</div>
 						</form>
 					</div>
@@ -224,11 +224,34 @@ function finish(){
 		alert("받는 분 전화번호를 입력해주세요.");
 		return;
 	}
-	
 	var name = $("input#receiverName").val();
 	var phone = $("input#receiverPhoneNumber").val();
 	var pickUpType = $("input[name=pickUpType]:checked").val();
 	var meansType=$("input[name=meansType]:checked").val();
+	
+	if(pickUpType==1){
+		if(meansType==1){
+			if($("input#means").val().trim()==""){
+				alert("현관 비밀번호를 입력해주세요.")
+				return false;
+			}
+		}else if(meansType==7){
+			if($("textarea#means").val().trim()==""){
+				alert("기타사항을 기재헤주세요.")
+				return false;
+			}
+		}
+	}else if(pickUpType==2){
+		if($("textarea#pickUpDetail").val().trim()==""){
+			alert("경비실 특이사항을 기재해주세요.");
+			return false;
+		}
+	}else{
+		if($("textarea#pickUpDetailOther").val().trim()==""){
+			alert("기타장소의 정보를 입력해주세요.")
+			return false;
+		}
+	}
 	
 	var typeMessage="";
 	var pickUpDetail="";
@@ -272,6 +295,7 @@ function finish(){
 	opener.$("input#recipientName").val(name);
 	opener.$("input#recipientPhone").val(phone);
 	opener.$("input#doorPassword").val(password);
+	opener.$("input#isShipping").val("true");
 	
 	
 	

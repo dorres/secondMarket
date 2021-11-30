@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,6 +12,94 @@
 <link rel="styleSheet" href="${pageContext.request.contextPath }/resources/style/ItemListStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/sortMenu.css">
 </head>
+<style>
+.cartBt {
+	background:
+		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/ico_cart.svg)
+		no-repeat 50% 50%;
+	background-size: 50px 50px;
+	width: 50px;
+	height: 50px;
+	margin-top: 15px;
+	border: 0;
+	position:absolute;
+	z-index:2;
+	right:15px;
+	bottom:15px;
+	opacity:0.9;
+}
+/* .foodImg{
+position:relative;
+} */
+.cartClick{
+	position: fixed;
+	z-index: 9998;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: .5
+}
+.global_sticker {
+    display: block;
+    position:absolute;
+    height: 0;
+    top:0px;
+}
+</style>
+<script>
+function openCart(serial,name,lastprice,price,discount){
+	var totalprice = parseInt(lastprice)
+	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(1);
+	$(".cartNone").attr("class","cartClick");
+	$(".cart_option").css("opacity","1").fadeIn(400);
+	$("#cartPut .in_option").find("span.name").text(name);
+	$("#cartPut .in_option").find("span.dc_price").text(totalprice.toLocaleString("ko-KR")+"원");
+	$("#cartPut .in_option").find("span.sum").find("span.num").text(totalprice.toLocaleString("ko-KR"));
+	$("#cartPut .in_option").find("input.hprice").val(price);
+	$("#cartPut .in_option").find("input.hdiscount").val(discount);
+	$("#cartPut .in_option").find("input.hserial").val(serial);
+	
+}
+function cancelCart(){
+	$(".cartClick").attr("class","cartNone");
+	$(".cart_option").css("opacity","1").fadeOut(100);
+}
+function closeCart(){
+	$(".cartClick").attr("class","cartNone");
+	$(".cart_option").css("opacity","1").fadeOut(100);
+}
+function quantity(count){
+	var currentCount=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	var changeCount = parseInt(currentCount)+count;
+	var price=$("#cartPut .in_option").find("input.hprice").val();
+	var discount=$("#cartPut .in_option").find("input.hdiscount").val();
+	if(changeCount<1)changeCount=1;
+	var changePrice = parseInt(price*((100-discount)/100))*changeCount;
+	$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val(changeCount);
+	$("#cartPut .in_option").find("div.total").find("span.num").text(changePrice.toLocaleString("ko-KR"));
+}
+function inputCart(){
+	var serial=$("#cartPut .in_option").find("input.hserial").val();
+	var count=$("#cartPut .in_option").find("div.option").find("span.count").find(".inp").val();
+	$.ajax({
+		url:"cartInput.do",
+		type:"post",
+		data:{"category_goods_serial":serial,"goods_cart_count":count},
+		datatype:"text",
+		success:function(res){
+			if(res!="good"){
+				alert(res);
+			}
+			closeCart();
+		},
+		error:function(res){
+			alert("담기에 실패했습니다.");
+		}
+	});
+}
+</script>
 <body class="main-index" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return !disableSelection">
 
@@ -40,18 +130,23 @@
 								<div class="sort_menu">
 									<div class="">
 										<p class="count">
-											<span class="inner_count"> 총 463건 </span>
+											<span class="inner_count"> 총 ${fn:length(bestList) }건 </span>
 										</p>
 										<div class="select_type user_sort">
-											<!---->
-											<a class="name_select">신상품순</a>
+											
+											<c:if test="${sort==0 }">
+												<a class="name_select">| &nbsp;인기순</a>
+											</c:if>
+											<c:if test="${sort==1 }">
+												<a class="name_select">| &nbsp;낮은 가격순</a>
+											</c:if>
+											<c:if test="${sort==2 }">
+												<a class="name_select">| &nbsp;높은 가격순</a>
+											</c:if>
 											<ul class="list">
-												<li><a class="">추천순</a></li>
-												<li><a class="on">신상품순</a></li>
-												<li><a class="">인기상품순</a></li>
-												<li><a class="">혜택순</a></li>
-												<li><a class="">낮은 가격순</a></li>
-												<li><a class="">높은 가격순</a></li>
+												<li><a class="" href="BestItemPage.do?sort=0">인기순</a></li>
+												<li><a class="" href="BestItemPage.do?sort=1">낮은 가격순</a></li>
+												<li><a class="" href="BestItemPage.do?sort=2">높은 가격순</a></li>
 											</ul>
 										</div>
 									</div>
@@ -59,21 +154,42 @@
 							</div>
 						</div>
 						
-						
+						<jsp:include page="cartPopup.jsp"></jsp:include>
 						
 						<div class="MainIntroContain">
 							<ul class="foodList">
-								<c:forEach begin="1" end="50" step="1">
+								<c:forEach var="item" items="${bestList }">
 									<li>
 										<div class="foodImg">
-											<a href="#"><img src="${pageContext.request.contextPath }/resources/images/Item/cream.png"></a>
-										</div> <a class="info" href="#">
-												<span class="name">[바이오] 크림치즈</span>
-												<span class="cost"> <span class="dc">12%</span>
-												<span class="price">6,500원</span> <span class="origin">1,800원</span>
-												<span class="desc">꾸덕한 치즈크림</span>
-										</span>
-									</a>
+											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }">
+												<img src="${item.category_goods_image_thumb }">
+											</a>
+											<c:if test="${item.goods_detail_promotion_serial>0 }">
+											<span class="global_sticker">
+												<span class="inner_sticker">
+													<span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
+													<span class="txt_sticker">
+														<span>
+															<span class="emph_sticker">&nbsp;&nbsp;&nbsp;FLEX 10% 추가할인&nbsp;&nbsp;&nbsp;</span>
+														</span>
+													</span>
+												</span>
+											</span>
+											</c:if>
+											<button type="button" class="cartBt"
+											onclick="javascript:openCart(${item.category_goods_serial},'${item.category_goods_name }','${item.goods_last_price}',${item.goods_detail_price },${item.goods_detail_dicountrate })">
+											</button>
+										</div>
+											<a class="info" href="itemPage.do?category_goods_serial=${item.category_goods_serial }"> 
+											<span class="name">${item.category_goods_name }</span>
+											<span class="cost">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price }" var="lastPrice"/>
+												<span class="dc">${item.goods_detail_dicountrate }%</span>
+												<span class="price">${lastPrice}원</span>
+												<span class="origin">${item.goods_detail_price }</span>
+												<span class="desc">${item.category_goods_name_subtext }</span>
+											</span>
+										</a>
 									</li>
 								</c:forEach>
 							</ul>

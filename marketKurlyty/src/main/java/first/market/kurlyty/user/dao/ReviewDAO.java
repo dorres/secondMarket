@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import first.market.kurlyty.user.vo.GoodsQnaVO;
 import first.market.kurlyty.user.vo.ReviewVO;
 import first.market.kurlyty.user.vo.User_order_listVO;
 
@@ -44,5 +45,10 @@ public class ReviewDAO {
 	public int deleteReview(int review_serial) {
 		return sqlSession.delete("reviewDAO.reviewDelete", review_serial);
 	}
-
+	public List<ReviewVO> getGoodsReview(GoodsQnaVO vo){
+		return sqlSession.selectList("reviewDAO.getGoodsReview", vo);
+	}
+	public String getReviewCount(int goodsSerial) {
+		return sqlSession.selectOne("reviewDAO.getReviewCount",goodsSerial);
+	}
 }

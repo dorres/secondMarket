@@ -44,6 +44,9 @@ public class CartController {
 				
 				for(CartVO cartItem : cartList) {
 					ProductVO product = cartService.getCartItem(cartItem);
+					if(cartItem.getGoods_cart_count()>product.getGoods_detail_stock_quantity())
+						product.setOkStock(false);
+					else product.setOkStock(true);
 					//productList.add(product);
 					if(product.getCategory_goods_packaging_type().contains("≥√¿Â")) {
 						product.setGoods_cart_count(cartItem.getGoods_cart_count());
@@ -190,7 +193,6 @@ public class CartController {
 	public String deleteCount(@RequestParam(value="category_goods_serial")List<Integer> category_goods_serial, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int returnSerial = 0;
-		System.out.println(category_goods_serial);
 		for(int serial:category_goods_serial) {
 			System.out.println(serial);
 			CartVO cartVO = new CartVO();
@@ -228,7 +230,6 @@ public class CartController {
 	
 	@RequestMapping("/shippingAddressPage.do")
 	public String ShippingAddressPage(String user_id, int addressSerial, Model model) {
-		System.out.println("shipping");
 		try {
 			List<user_address_listVO> addressList = addressService.getBoard(user_id);
 			model.addAttribute("addressList",addressList);

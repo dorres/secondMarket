@@ -35,7 +35,7 @@
 									<div class="point_header">
 										<div class="point_view">
 											<h3 class="tit">현재 적립금</h3>
-											<strong class="point"><fmt:formatNumber value="${totalPoint}" pattern="#,###" /> <span class="won">원</span></strong>
+											<strong class="point" id="pointPagePoints"><%-- <fmt:formatNumber value="${totalPoint}" pattern="#,###" /> --%> <span class="won">원</span></strong>
 										</div>
 										
 									</div>

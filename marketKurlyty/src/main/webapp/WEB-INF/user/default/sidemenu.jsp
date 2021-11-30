@@ -82,9 +82,8 @@ $(window).on("resize",function(){
 		<div class="side_menu">
 			<a href="/shop/main/html.php?htmid=event/kurly.htm&name=lovers"
 				class="link_menu ">등급별 혜택</a> <a
-				href="/shop/board/list.php?id=recipe" class="link_menu ">레시피</a> <a
-				href="/shop/goods/goods_review_best.php" class="link_menu ">베스트
-				후기</a>
+				href="recipeItemPage.do" class="link_menu ">레시피</a> <a
+				href="user_address_list.do" class="link_menu ">배송지 관리</a>
 		</div>
 		<c:if test="${recentList!=null }">
 			<div class="side_recent" style="display:block">
