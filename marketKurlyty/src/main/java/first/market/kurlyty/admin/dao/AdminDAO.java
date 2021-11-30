@@ -159,6 +159,10 @@ public class AdminDAO {
 		return sqlSession.update("RegistDAO.stockstcok", stockstock);
 	}
 	//================================================================
+	//리뷰있는 상품
+	public List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review){
+		return sqlSession.selectList("adminReviewDAO.reviewGoodsName", review);
+	}
 	
 	//리뷰 리스트
 	public List<AdminReviewVO> getReviewList(AdminReviewVO review){

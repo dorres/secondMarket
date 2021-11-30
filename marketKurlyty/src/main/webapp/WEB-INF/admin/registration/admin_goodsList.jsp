@@ -154,10 +154,8 @@
                               value="${goodsList.goods_detail_stock_notification}" size="3"/>개</td>
                               
                               <td><select name="goods_detail_promotion_serial" id="promotion">
-                                 <option value="1" ${goodsList.goods_detail_promotion_serial == 1 ? "selected='selected'" : '' }>1번프로</option>
-                                 <option value="2" ${goodsList.goods_detail_promotion_serial == 2 ? "selected='selected'" : '' }>2번프로</option>
-                                 <option value="3" ${goodsList.goods_detail_promotion_serial == 3 ? "selected='selected'" : '' }>3번프로</option>
-                                 <option value="4" ${goodsList.goods_detail_promotion_serial == 4 ? "selected='selected'" : '' }>4번프로</option>
+                                 <option value="1" ${goodsList.goods_detail_promotion_serial == 1 ? "selected='selected'" : '' }>FLEX</option>
+                                 <option value="0" ${goodsList.goods_detail_promotion_serial == 0 ? "selected='selected'" : '' }>미적용</option>
                               </select></td>
                               
                               <td><select name="goods_detail_status" id="status">

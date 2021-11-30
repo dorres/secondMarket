@@ -6,10 +6,19 @@
   <mapper namespace="adminReviewDAO">
   	
   	<select id="reviewList" resultType="review">
-  		SELECT * FROM MK_REVIEW
+  		SELECT * FROM MK_REVIEW WHERE REVIEW_SERIAL = #{review_serial}
   	</select>
   	
   	<delete id="deleteReview" parameterType="review">
   		DELETE FORM MK_REVIEW WHERE REVIEW_SERIAL = #{review_serial}
   	</delete>
+  	
+  	<select id="reviewGoodsName" resultType="review">
+  		select R.category_goods_serial, R.review_serial, C.category_goods_name 
+  		from mk_category_goods C
+  		JOIN MK_REVIEW R
+  		ON R.CATEGORY_GOODS_SERIAL = C.CATEGORY_GOODS_SERIAL
+  	</select>
+  	
+  	
 </mapper>

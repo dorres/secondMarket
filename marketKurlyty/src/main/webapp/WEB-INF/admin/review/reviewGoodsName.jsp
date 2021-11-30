@@ -77,33 +77,16 @@
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>조회</th>
-									<th>베스트리뷰</th>
-									<th>수정/삭제</th>
+									<th style="background:#CCCCCC;">카테고리번호</th>
+									<th style="background:#CCCCCC;">상품명</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="review" items="${reviewList}">
+								<c:forEach var="review" items="${reviewgoodsname}">
 									<tr>
-										<td>${review.review_serial }</td>
-										<td>${review.review_title }</td>
-										<td>${review.user_id }</td>
-										<td><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
-										<td>${review.review_hit }</td>
-										<td>
-										<select name="review_best_up">
-										<option value="0" ${review.review_best_up == 'false' ? "selected='selected'" : '' }>일반리뷰</option>
-										<option value="1" ${review.review_best_up == 'true' ? "selected='selected'" : '' }>베스트리뷰</option>
-										</select>
-										</td>
-										<td>
-											<input type="submit" value="수정"/>
-											<input type="button" value="삭제" onclick="javascript:delete_check('deleteReview.mdo?review_serial=${review.review_serial}')"/>
-										</td>
+										<td style="background:#CCCCCC;" onclick="location.href='getReviewList.mdo?review_serial=${review.review_serial}'">
+										${review.category_goods_serial }<input type="hidden" value="${review.review_serial}"></td>
+										<td onclick="location.href='getReviewList.mdo?review_serial=${review.review_serial}'">${review.category_goods_name }</td>
 									</tr>
 								</c:forEach>
 							</tbody>

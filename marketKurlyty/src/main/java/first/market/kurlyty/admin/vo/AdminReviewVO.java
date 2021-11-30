@@ -16,4 +16,5 @@ public class AdminReviewVO {
 	private boolean review_best_up;
 	private int category_goods_serial;
 	private int order_details_serial;
+	private String category_goods_name;
 }

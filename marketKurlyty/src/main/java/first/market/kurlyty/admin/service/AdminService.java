@@ -97,6 +97,9 @@ public interface AdminService {
 	int stockstock(AdminStockStockVO stockstock);
 	
 	//----------------------------------------------------------------
+	
+	//府轰乐绰 惑前
+	List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review);
 	//府轰 府胶飘
 	List<AdminReviewVO> getReviewList(AdminReviewVO review);
 	//府轰 昏力

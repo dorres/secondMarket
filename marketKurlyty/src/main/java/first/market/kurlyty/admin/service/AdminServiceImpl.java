@@ -266,6 +266,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 	//----------------------------------------------------------------
 	
+	//리뷰있는 상품
+	@Override
+	public List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review){
+		return adminDao.getReviewGoodsName(review);
+	}
+	
 	//리뷰 리스트
 	@Override
 	public List<AdminReviewVO> getReviewList(AdminReviewVO review){

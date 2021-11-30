@@ -104,7 +104,7 @@ public class AdminMemberController {
 		@RequestMapping("termsDetails.mdo")
 		public String getTerms(AdminTermsAgreementVO agree, Model model) {
 			model.addAttribute("getTerms", adminService.getTerms(agree));
-			return "admin_termsDetails";
+			return "terms/admin_termsDetails";
 		}
 		//약관 수정
 		@RequestMapping("updateTerms.mdo")

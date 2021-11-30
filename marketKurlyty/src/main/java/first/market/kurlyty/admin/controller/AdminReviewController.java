@@ -14,6 +14,12 @@ public class AdminReviewController {
 	@Autowired
 	private AdminService adminService;
 	
+	//리뷰있는 상품
+	@RequestMapping("getReviewGoodsName.mdo")
+	public String getReviewGoodsName(AdminReviewVO review, Model model) {
+		model.addAttribute("reviewgoodsname", adminService.getReviewGoodsName(review));
+		return "review/reviewGoodsName";
+	}
 	//리뷰 리스트
 	@RequestMapping("getReviewList.mdo")
 	public String getReviewList(AdminReviewVO review, Model model) {
