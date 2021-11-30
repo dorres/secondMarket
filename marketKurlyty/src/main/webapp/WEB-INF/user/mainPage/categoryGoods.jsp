@@ -95,6 +95,8 @@ function inputCart(){
 		success:function(res){
 			if(res!="good"){
 				alert(res);
+			}else{
+				alert("장바구니에 담았습니다.");
 			}
 			closeCart();
 		},

@@ -56,10 +56,10 @@ function formUpdateSubmit(){
 		}
 	}
 	
-	/* if(document.frmMember.okCerCheck.value=="불가능"){
+	if(document.frmMember.okCerCheck.value=="불가능"){
 		alert("문자 인증을 해주세요.");
 		return;
-	} */
+	}
 	if(document.frmMember.user_year.value==""){
 		alert("생년월일을 입력하세요.");
 		document.frmMember.user_year.focus();
@@ -105,7 +105,7 @@ function chkEmail(){
 	})
 }
 function smsResponse(){
-	alert("문자 ㄱㄱ");
+	alert("인증번호를 발송했습니다.");
 	var phone = document.frmMember.user_phone.value;
 	$.ajax({
 		url:"smsCheck.do?user_phone="+phone,

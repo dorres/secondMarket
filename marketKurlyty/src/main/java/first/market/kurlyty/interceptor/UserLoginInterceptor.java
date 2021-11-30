@@ -14,7 +14,7 @@ public class UserLoginInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		Object loginStatus = session.getAttribute("userId");
 		if(loginStatus==null) {
-			response.sendRedirect("/kurlyty/login.do");
+			response.sendRedirect("login.do");
 			return false;
 		}
 		return true;
