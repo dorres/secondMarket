@@ -72,7 +72,7 @@
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/admin/chart-mapping.xml"/>
 		<mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
-		<mapper resource="config/mappings/admin/sales-mapping.xml"/>
+		<!-- <mapper resource="config/mappings/admin/sales-mapping.xml"/> -->
         <mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
 		<mapper resource="config/mappings/point-mapping.xml"/>

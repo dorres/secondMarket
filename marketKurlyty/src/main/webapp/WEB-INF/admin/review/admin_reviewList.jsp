@@ -105,14 +105,14 @@
 		
 		console.log(review);
 		console.log(serial);
-	    if(confirm('배송상태를 수정하시겠습니까?')) {
+	    if(confirm('리뷰상태를 수정하시겠습니까?')) {
 		$.ajax({
 			type:"POST",
 			url:"updateReview.mdo",
-			dataType : "json",
+			dataType : "text",
 			data : {"review_best_up" : review, "review_serial" : serial},
 			success: function(result) {
-				if(result != 0){
+				if(result != "0"){
 					alert("수정 성공!")
 					location.reload()
 				}else{

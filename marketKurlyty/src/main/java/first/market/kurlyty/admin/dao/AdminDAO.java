@@ -172,11 +172,6 @@ public class AdminDAO {
 		return sqlSession.selectList("adminReviewDAO.reviewGoodsName", review);
 	}
 	
-	//¸®ºä ¸®½ºÆ®
-	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
-		return sqlSession.selectList("adminReviewDAO.reviewList", review);
-	}
-	
 	//¸®ºä »èÁ¦
 	public int deleteReview(AdminReviewVO review) {
 		return sqlSession.delete("adminReviewDAO.deleteReview", review);
@@ -184,8 +179,10 @@ public class AdminDAO {
 	
 	//¸®ºä³»¿ë
 	public AdminReviewVO getReviewContent(AdminReviewVO review) {
-		return sqlSession.selectOne("adminReviewDAO.reviewGoodsName", review);
+		return sqlSession.selectOne("adminReviewDAO.reviewContent", review);
 	}
+	
+	//º£½ºÆ® ¸®ºä
 	public int updateReview(AdminReviewVO review) {
 		return sqlSession.update("adminReviewDAO.updateReview",review);
 	}

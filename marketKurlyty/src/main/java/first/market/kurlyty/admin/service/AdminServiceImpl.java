@@ -287,12 +287,6 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getReviewGoodsName(review);
 	}
 	
-	//府轰 府胶飘
-	@Override
-	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
-		return adminDao.getReviewList(review);
-	}
-	
 	//府轰 昏力
 	@Override
 	public int deleteReview(AdminReviewVO review) {
@@ -304,6 +298,8 @@ public class AdminServiceImpl implements AdminService {
 	public AdminReviewVO getReviewContent(AdminReviewVO review) {
 		return adminDao.getReviewContent(review);
 	}
+	
+	//海胶飘 府轰
 	@Override
 	public int updateReview(AdminReviewVO review) {
 		return adminDao.updateReview(review);

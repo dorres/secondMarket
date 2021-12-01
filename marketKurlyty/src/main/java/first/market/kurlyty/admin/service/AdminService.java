@@ -114,15 +114,13 @@ public interface AdminService {
 	//府轰乐绰 惑前
 	List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review);
 	
-	//府轰 府胶飘
-	List<AdminReviewVO> getReviewList(AdminReviewVO review);
-	
 	//府轰 昏力
 	int deleteReview(AdminReviewVO review); 
 	
 	//府轰郴侩
 	AdminReviewVO getReviewContent(AdminReviewVO review);
 	
+	//海胶飘府轰
 	int updateReview(AdminReviewVO review);
 	//=================================================================
 	
