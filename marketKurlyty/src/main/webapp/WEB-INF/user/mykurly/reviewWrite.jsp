@@ -78,9 +78,9 @@
 								</div>
 								<form action="reviewProc.do" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="user_id" value="${goods.user_id }">
-									<input type="hidden" name="category_goods_serial" value="${goods.category_goods_serial }">
+									<input type="hidden" name="category_goods_serial1" value="${goods.category_goods_serial }">
 									<input type="hidden" name="review_serial1" value="${update.review_serial }">
-									<input type="hidden" name="order_details_serial" value="${goods.order_details_serial }">
+									<input type="hidden" name="order_details_serial1" value="${goods.order_details_serial }">
 									<div class="write_board">
 										<div class="goods_info">
 											<div class="thumb">

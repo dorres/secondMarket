@@ -50,7 +50,7 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("reviewProc.do")
-	public String reviewInsert(@RequestParam("image") MultipartFile file1,@RequestParam(value="review_serial1",required=false,defaultValue="0") Integer review_serial,HttpServletRequest request,ReviewVO vo) {
+	public String reviewInsert(@RequestParam("image") MultipartFile file1,@RequestParam(value="review_serial1",required=false,defaultValue="0") Integer review_serial,HttpServletRequest request,ReviewVO vo,@RequestParam("category_goods_serial1") int category_goods_serial,@RequestParam("order_details_serial1")int order_details_serial) {
 		int success =0;		
 		String key1 = null;
 		UUID uuid;		
