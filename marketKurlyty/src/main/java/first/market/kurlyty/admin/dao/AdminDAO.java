@@ -122,6 +122,9 @@ public class AdminDAO {
 	public int insertStock(AdminStockVO stock) {
 		return sqlSession.insert("RegistDAO.insertStock",stock);
 	}
+	public int updateStockQuantity(AdminStockVO stock) {
+		return sqlSession.update("RegistDAO.updateStockQuantity",stock);
+	}
 	//입고 조회
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {
 		return sqlSession.selectList("RegistDAO.stockList", stock);

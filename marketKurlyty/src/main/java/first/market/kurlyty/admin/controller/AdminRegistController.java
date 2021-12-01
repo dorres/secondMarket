@@ -63,7 +63,6 @@ public class AdminRegistController {
    public String insertStock(AdminStockVO stock, 
 		   @RequestParam List<Integer> category_goods_serial,
 		   @RequestParam List<Integer> goods_stock_receiving_quantity,
-		   @RequestParam List<Integer> goods_stock_stock_quantity,
 		   @RequestParam @DateTimeFormat(iso = ISO.DATE) List<Date> goods_stock_receiving_date,
 		   @RequestParam @DateTimeFormat(iso = ISO.DATE) List<Date> goods_stock_exp_date) {
 	   
@@ -72,10 +71,11 @@ public class AdminRegistController {
 	   for(int i=0; i<category_goods_serial.size(); i++) {
 		   stock.setCategory_goods_serial(category_goods_serial.get(i));
 		   stock.setGoods_stock_receiving_quantity(goods_stock_receiving_quantity.get(i));
-		   stock.setGoods_stock_stock_quantity(goods_stock_stock_quantity.get(i));
+		   stock.setGoods_stock_stock_quantity(goods_stock_receiving_quantity.get(i));
 		   stock.setGoods_stock_receiving_date(goods_stock_receiving_date.get(i));
 		   stock.setGoods_stock_exp_date(goods_stock_exp_date.get(i));
 	       success = adminService.insertStock(stock);
+	       adminService.updateStockQuantity(stock);
 
 	   }
 	  

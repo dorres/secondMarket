@@ -44,18 +44,22 @@
       <main>
          <div class="container-fluid px-4">
 
-            <h1 class="mt-4">상품조회/수정</h1>
+            <h1 class="mt-4">판매</h1>
+            <ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">판매 등록하는 페이지 입니다.</li>
+				</ol>
             <form id="form" method="post">
             <div class="card mb-4">
                <div class="card-header">
                      <div class="col three">
-                        <a href="#" id="comeIn" class ="btn1 btn-dark" style="float: right;">입고</a>
-                        <input type="hidden" id="arrayParam" name="arrayParam"/>
+                     	<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									판매 목록
+									 <a href="#" id="comeIn" class ="btn1 btn-dark" style="float: right;">입고</a>
+                       				 <input type="hidden" id="arrayParam" name="arrayParam"/>
+								</div>	
+                       
                      </div>
                      <div>
-<%--                         <button type="button" class="btm_image" id="img_btn" onclick="stockstock.mdo?goods_detail_serial">
-                        <img src="${pageContext.request.contextPath }/resources/images/Admin/Re.png" style="width:25px; height:25px; border:0">
-                        </button> --%>
                      </div>
                   </div>
                <div class="card-body">

@@ -97,8 +97,7 @@
 								</a>
 								<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="getGoodsList.mdo">조회/수정</a>
-										<a class="nav-link" href="registration.mdo">등록</a>
+										<a class="nav-link" href="getGoodsList.mdo">조회/등록/수정</a>
 									</nav>
 								</div>
 								<!-- 판매 -->

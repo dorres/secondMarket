@@ -158,6 +158,10 @@ public class AdminServiceImpl implements AdminService {
 	public int insertStock(AdminStockVO stock) {
 		return adminDao.insertStock(stock);
 	}
+	@Override
+	public int updateStockQuantity(AdminStockVO stock) {
+		return adminDao.updateStockQuantity(stock);
+	}
 	//입고 조회
 	@Override
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {

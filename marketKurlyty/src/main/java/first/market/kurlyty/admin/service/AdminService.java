@@ -75,10 +75,14 @@ public interface AdminService {
 	 //3차 카테고리이름
 	 List<AdminStockStockVO> getCategory3Names(List<Integer> goodsList);
 	 
-	 public int insertStock(AdminStockVO stock);
+	 int insertStock(AdminStockVO stock);
+	 int updateStockQuantity(AdminStockVO stock);
 	 
-		//재고 조회
+	 //재고 조회
 	 List<AdminStockVO> getStockList(AdminStockVO stock);
+	 
+
+	 
 
 	 
 //		//상품 등록

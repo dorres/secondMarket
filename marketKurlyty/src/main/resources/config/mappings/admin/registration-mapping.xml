@@ -47,11 +47,27 @@
 			#{goods_stock_exp_date}
 		)
 	</insert>
+	<update id="updateStockQuantity" parameterType="stock">
+		update 
+			mk_goods_detail 
+		set 
+			goods_detail_stock_quantity =
+			(select 
+				goods_detail_stock_quantity 
+			 from 
+			 	mk_goods_detail 
+			 where 
+			 	category_goods_serial = #{category_goods_serial}
+			 ) + #{goods_stock_receiving_quantity}
+		where 
+			category_goods_serial = #{category_goods_serial}
+	</update>
 
 	<select id="stockList" resultType="stock">
 		SELECT 
 			GS.CATEGORY_GOODS_SERIAL,
 			 G.category_goods_name,
+			GS.GOODS_STOCK_STOCK_QUANTITY,
 			GS.GOODS_STOCK_RECEIVING_QUANTITY,
 			GS.GOODS_STOCK_RECEIVING_DATE,
 			GS.GOODS_STOCK_EXP_DATE
