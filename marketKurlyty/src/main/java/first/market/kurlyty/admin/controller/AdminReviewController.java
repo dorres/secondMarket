@@ -14,6 +14,12 @@ public class AdminReviewController {
 	@Autowired
 	private AdminService adminService;
 	
+	//¸®ºäÀÖ´Â »óÇ°
+	@RequestMapping("getReviewGoodsName.mdo")
+	public String getReviewGoodsName(AdminReviewVO review, Model model) {
+		model.addAttribute("reviewgoodsname", adminService.getReviewGoodsName(review));
+		return "review/reviewGoodsName";
+	}
 	//¸®ºä ¸®½ºÆ®
 	@RequestMapping("getReviewList.mdo")
 	public String getReviewList(AdminReviewVO review, Model model) {
@@ -31,5 +37,12 @@ public class AdminReviewController {
 		}else {
 			return "redirect:getReviewList.mdo";
 		}
+	}
+	
+	//¸®ºä ³»¿ë
+	@RequestMapping("getReviewContent.mdo")
+	public String getReviewContent(AdminReviewVO review, Model model) {
+		model.addAttribute("reviewcon", adminService.getReviewContent(review));
+		return "review/admin_reviewContent";
 	}
 }

@@ -42,7 +42,7 @@ public class AdminSalesController {
 		// 일별
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar day = Calendar.getInstance();
-		day.add(Calendar.DATE, -7);
+		day.add(Calendar.DATE, -30);
 		String startDate = date.format(day.getTime());
 		sales.setStartdate(startDate);
 		sales.setEnddate(date.format(new Date()));
@@ -50,7 +50,7 @@ public class AdminSalesController {
 		// 월별
 		SimpleDateFormat date2 = new SimpleDateFormat("yyyy-MM");
 		Calendar month = Calendar.getInstance();
-		month.add(Calendar.DATE, -3);
+		month.add(Calendar.DATE, -100);
 		String startDate2 = date2.format(month.getTime());
 		sales2.setStartdate2(startDate2);
 		sales2.setEnddate2(date2.format(new Date()));
@@ -214,4 +214,6 @@ public class AdminSalesController {
 			}
 		}
 	}
+	
+	
 }

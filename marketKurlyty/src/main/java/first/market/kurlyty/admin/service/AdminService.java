@@ -110,10 +110,18 @@ public interface AdminService {
 //	int stockstock(AdminStockStockVO stockstock);
 	
 	//----------------------------------------------------------------
+	
+	//리뷰있는 상품
+	List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review);
+	
 	//리뷰 리스트
 	List<AdminReviewVO> getReviewList(AdminReviewVO review);
+	
 	//리뷰 삭제
 	int deleteReview(AdminReviewVO review); 
+	
+	//리뷰내용
+	AdminReviewVO getReviewContent(AdminReviewVO review);
 	//=================================================================
 	
 	// 상품문의 리스트 (답변대기)
@@ -133,6 +141,9 @@ public interface AdminService {
 	
 	//상품 답변 수정
 	int updateGqnaSuc(GoodsQnaVO gqna);
+	
+	//상품문의 카운트
+	GoodsQnaVO gqnaCount(GoodsQnaVO gqna);
 	//=================================================================
 	
 	//매출차트 일별
@@ -295,6 +306,8 @@ public interface AdminService {
 	List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList);
 
 	int updateStatus(List<String> merchantList);
+	
+	AdminOrderVO orderCount(AdminOrderVO order);
 	//---------------------------------------------------------------------------
 	//주문관리 (배송과정)
 	List<AdminOrderVO> getOrderDeliveryList();

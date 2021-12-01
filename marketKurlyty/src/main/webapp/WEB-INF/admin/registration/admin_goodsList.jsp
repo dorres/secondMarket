@@ -107,7 +107,6 @@
 	                                 	<option value="4" ${goodsList.goods_detail_promotion_serial == 4 ? "selected='selected'" : '' }>4번프로</option>
                               		</select>
                               </td>
-                              
                               <td>
                               	<select name="goods_detail_status" id="goods_detail_status">
                                 	<option value="0" ${goodsList.goods_detail_status == 0 ? "selected='selected'" : '' }>판매완료</option>
@@ -115,7 +114,7 @@
                                  	<option value="2" ${goodsList.goods_detail_status == 2 ? "selected='selected'" : '' }>판매중지</option>
                               	</select>
                               </td>
-                              
+
                               <td>
                               		<input type="text" name="goods_detail_dicountrate" id="goods_detail_dicountrate" value="${goodsList.goods_detail_dicountrate}" size="3"/>%
                               </td>

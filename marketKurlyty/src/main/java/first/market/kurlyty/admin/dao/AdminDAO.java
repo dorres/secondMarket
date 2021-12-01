@@ -167,6 +167,10 @@ public class AdminDAO {
 //		return sqlSession.update("RegistDAO.stockstcok", stockstock);
 //	}
 	//================================================================
+	//리뷰있는 상품
+	public List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review){
+		return sqlSession.selectList("adminReviewDAO.reviewGoodsName", review);
+	}
 	
 	//리뷰 리스트
 	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
@@ -176,6 +180,11 @@ public class AdminDAO {
 	//리뷰 삭제
 	public int deleteReview(AdminReviewVO review) {
 		return sqlSession.delete("adminReviewDAO.deleteReview", review);
+	}
+	
+	//리뷰내용
+	public AdminReviewVO getReviewContent(AdminReviewVO review) {
+		return sqlSession.selectOne("adminReviewDAO.reviewGoodsName", review);
 	}
 	//===============================================================
 	
@@ -209,6 +218,10 @@ public class AdminDAO {
 		return sqlSession.update("gqnaDAO.updateGqna",gqna);
 	}
 	
+	//상품문의 카운트
+	public GoodsQnaVO gqnaCount(GoodsQnaVO gqna) {
+		return sqlSession.selectOne("gqnaDAO.gqnaCount", gqna);
+	}
 	//================================================================
 	
 	//매출차트 일별 
@@ -475,6 +488,10 @@ public class AdminDAO {
 	}
 	public List<AdminOrderVO> getOrderFinishList(){
 		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
+	}
+	//카운트
+	public AdminOrderVO orderCount(AdminOrderVO order) {
+		return sqlSession.selectOne("adminOrderDAO.count", order);
 	}
 	
 	//환불관리

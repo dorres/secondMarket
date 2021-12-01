@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>??????????????</title>
+<title>차트</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
@@ -23,9 +23,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-	crossorigin="anonymous"></script>
 <!--  -->
 <script src="https://kit.fontawesome.com/d0b304acae.js"
 	crossorigin="anonymous"></script>
@@ -132,7 +129,6 @@
 					<div class="card mb-4">
 						<div class="card-header">
 							<i class="fas fa-chart-area me-1"></i> 일별 매출 관리
-
 						</div>
 						<div class="card-body">
 							<div style="text-align: center;">
@@ -180,10 +176,6 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
-	<%-- <script src="${pageContext.request.contextPath }/resources/js/chart-area.js"></script> --%>
-	<%--<script src="${pageContext.request.contextPath }/resources/js/chart-bar.js"></script>--%>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/chart-pie.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 		crossorigin="anonymous"></script>
 	<script
@@ -268,7 +260,6 @@
     });
  function filterData(){
 	    const labels2 = [...labels];
-	    console.log(labels2);
 	    const startdate = document.getElementById('startdate');
 	    const enddate = document.getElementById('enddate');
 	    
@@ -287,7 +278,6 @@
 	    myLineChart.data.datasets[0].data = filterDatapoints;
 	    
 	    myLineChart.update();
-	    
 	    if(filterDate ==0)
 	    	alert('매출이 있는 날짜를 선택해주세요');
 	 }
@@ -302,7 +292,7 @@
  var max2 =0;
 
  var jsonChart2 =  ${chartMonth};
-
+	console.log(jsonChart2);
  var labels2 = jsonChart2.map(function(e){
     return e.month_chart;
  })
@@ -384,7 +374,6 @@
 	    
 	    const filterDate2 = labels3.slice(indexstartdate2,indexenddate2 +1);
 	    myBarChart.data.labels = filterDate2;
-	    console.log(filterDate2);
 	    
 	    const data3 = [...data2];
 	    const filterDatapoints2 = data2.slice(indexstartdate2,indexenddate2 +1);
