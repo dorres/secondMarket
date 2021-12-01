@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Board_Pagination {
-	private int listSize = 2;               //珥덇린媛믪쑝濡� 紐⑸줉媛쒖닔瑜� 10�쑝濡� �뀑�똿
+	private int listSize = 10;               //珥덇린媛믪쑝濡� 紐⑸줉媛쒖닔瑜� 10�쑝濡� �뀑�똿
 	private int rangeSize = 5;            //珥덇린媛믪쑝濡� �럹�씠吏�踰붿쐞瑜� 10�쑝濡� �뀑�똿
 	private int page;
 	private int range;
