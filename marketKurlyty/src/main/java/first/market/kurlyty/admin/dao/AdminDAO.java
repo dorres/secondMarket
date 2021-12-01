@@ -186,6 +186,9 @@ public class AdminDAO {
 	public AdminReviewVO getReviewContent(AdminReviewVO review) {
 		return sqlSession.selectOne("adminReviewDAO.reviewGoodsName", review);
 	}
+	public int updateReview(AdminReviewVO review) {
+		return sqlSession.update("adminReviewDAO.updateReview",review);
+	}
 	//===============================================================
 	
 	//상품문의 리스트(답변 대기)

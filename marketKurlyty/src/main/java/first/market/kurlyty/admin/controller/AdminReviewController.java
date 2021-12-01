@@ -45,4 +45,13 @@ public class AdminReviewController {
 		model.addAttribute("reviewcon", adminService.getReviewContent(review));
 		return "review/admin_reviewContent";
 	}
+	
+	@RequestMapping("updateReview.mdo")
+	public int updateReview(AdminReviewVO review) {
+		int success =0;
+		review.isReview_best_up();
+		
+		success = adminService.updateReview(review);
+		return success;
+	}
 }

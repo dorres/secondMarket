@@ -19,6 +19,13 @@
   		JOIN MK_REVIEW R
   		ON R.CATEGORY_GOODS_SERIAL = C.CATEGORY_GOODS_SERIAL
   	</select>
-  	
+  	<update id="updateReview" parameterType="review">
+  		UPDATE 
+  			MK_REVIEW
+  		SET
+  			review_best_up = #{review_best_up}
+  		WHERE
+  			REVIEW_SERIAL = #{review_serial}
+  	</update>
   	
 </mapper>

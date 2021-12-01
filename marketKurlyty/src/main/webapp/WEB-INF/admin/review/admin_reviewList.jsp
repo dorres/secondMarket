@@ -12,39 +12,12 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
  <script src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-		$(document).ready(function(){
-			var formObj = $("form[name='readForm']");
-			
-			// 수정 
-			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/board/updateView");
-				formObj.attr("method", "get");
-				formObj.submit();				
-			})
-			
-			// 삭제
-			$(".delete_btn").on("click", function(){
-				formObj.attr("action", "/board/delete");
-				formObj.attr("method", "post");
-				formObj.submit();
-			})
-			
-			// 취소
-			$(".list_btn").on("click", function(){
-				
-				location.href = "/board/list";
-			})
-		})
 		function delete_check(url) {
 			var answer = confirm("게시글를 정말로 삭제할까요?");
 			if (answer == true) {
 				location = url;
 			}
 		}
-		if(${notification!=null}){
-			alert("재고 부족한 재품이 있습니다.")
-		}
-	
 	</script>
 	<style type="text/css">
 .btn1 {font-size: 20px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
@@ -90,19 +63,19 @@
 								<c:forEach var="review" items="${reviewList}">
 									<tr>
 										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_serial }
-										<input type="hidden" value="${review.review_serial }"></td>
 										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_title }</td>
 										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.user_id }</td>
 										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'"><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
 										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_hit }</td>
-										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">
-										<select name="review_best_up">
-										<option value="0" ${review.review_best_up == 'false' ? "selected='selected'" : '' }>일반리뷰</option>
-										<option value="1" ${review.review_best_up == 'true' ? "selected='selected'" : '' }>베스트리뷰</option>
-										</select>
+										<td >
+											<select name="review_best_up" id="review_best_up">
+												<option value="false" <c:if test ="${review.review_best_up eq 'false'}">selected="selected"</c:if> >일반리뷰</option>
+												<option value="true" <c:if test ="${review.review_best_up eq 'true'}">selected="selected"</c:if> >베스트리뷰</option>
+											</select>
 										</td>
-										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">
-											<input type="submit" value="수정" id="updateBtn"/>
+										<td>
+											<input type="hidden" id="review_serial" value="${review.review_serial }">
+											<input type="button" value="수정" id="updateBtn"/>
 											<input type="button" value="삭제" onclick="javascript:delete_check('deleteReview.mdo?review_serial=${review.review_serial}')"/>
 										</td>
 									</tr>
@@ -127,25 +100,24 @@
 	$(document).on("click", "#updateBtn", function(){
 		var checkBtn = $(this);
 		var tr = checkBtn.closest("tr");
-		var status = tr.find("#deleveryStatus-select option:selected").val();
-		var serial = tr.find("#order_merchant_serial").val();
+		var review = tr.find("#review_best_up option:selected").val();
+		var serial = tr.find("#review_serial").val();
 		
+		console.log(review);
+		console.log(serial);
 	    if(confirm('배송상태를 수정하시겠습니까?')) {
 		$.ajax({
 			type:"POST",
-			url:"admin_orderWaitUpdate.mdo",
+			url:"updateReview.mdo",
 			dataType : "json",
-			data : {"order_merchant_serial" : serial, "order_delivery_status" : status},
+			data : {"review_best_up" : review, "review_serial" : serial},
 			success: function(result) {
-				if(result == 1){
-					alert("배송 상태를 성공적으로 수정하였습니다.")
-					location.reload();
-				}else if(result == 0){
-					alert("배송 상태 수정에 실패했습니다.")
-					location.reload();
-				}else if(result ==2){
-					alert("주문건을 선택해주세요")
-					location.reload();
+				if(result != 0){
+					alert("수정 성공!")
+					location.reload()
+				}else{
+					alert("수정 실패!")
+					location.reload()
 				}
 			}
 		}) 

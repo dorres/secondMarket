@@ -122,6 +122,8 @@ public interface AdminService {
 	
 	//리뷰내용
 	AdminReviewVO getReviewContent(AdminReviewVO review);
+	
+	int updateReview(AdminReviewVO review);
 	//=================================================================
 	
 	// 상품문의 리스트 (답변대기)

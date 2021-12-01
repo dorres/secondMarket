@@ -304,6 +304,10 @@ public class AdminServiceImpl implements AdminService {
 	public AdminReviewVO getReviewContent(AdminReviewVO review) {
 		return adminDao.getReviewContent(review);
 	}
+	@Override
+	public int updateReview(AdminReviewVO review) {
+		return adminDao.updateReview(review);
+	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
 	@Override
