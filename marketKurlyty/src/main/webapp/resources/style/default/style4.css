@@ -121,13 +121,13 @@
 	width: 36px;
 	height: 36px;
 	background:
-		url(https://res.kurly.com/pc/service/common/2011/ico_cart.svg)
+		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/ico_topcart.svg)
 		no-repeat 50% 50%
 }
 
 #gnb .cart_count .btn_cart:hover {
 	background:
-		url(https://res.kurly.com/pc/service/common/2011/ico_cart_on.svg?v=1)
+		url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/ico_cart_on.svg)
 		no-repeat 50% 50%
 }
 

@@ -75,11 +75,11 @@ function inputCart(serial){
 							</td>
 							<td class="info">
 								<div class="name">
-									<a href="/shop/goods/goods_view.php?&amp;goodsno=9773"
+									<a
 										class="link">${detail.category_goods_detail_name1 }</a>
 								</div>
 								<div class="name_package">
-									<a href="/shop/goods/goods_view.php?&amp;goodsno=9773"
+									<a
 										class="link">${detail.category_goods_detail_name2 }</a>
 								</div>
 								<div class="desc">

@@ -104,6 +104,28 @@ function formJoinSubmit(){
 		document.frmMember.user_birth.focus();
 		return;
 	}
+	if(document.frmMember.birth_year.value>2030){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_year.focus();
+		return;
+	}
+	if(document.frmMember.birth_month.value>12){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_month.focus();
+		return;
+	}
+	if(document.frmMember.birth_month.value==2){
+		if(document.frmMember.birth_day.value>29){
+			alert("생년월일을 다시 확인해주세요.");
+			document.frmMember.user_day.focus();
+			return;
+		}
+	}
+	if(document.frmMember.birth_day.value>31){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_day.focus();
+		return;
+	}
 	if($("input[type=checkbox]").eq(1).is(":checked")==false){
 		alert("필수 약관에 동의해주세요.");
 		return;
