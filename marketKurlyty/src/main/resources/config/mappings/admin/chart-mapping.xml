@@ -10,7 +10,7 @@
   			COUNT(*) as sales_count,
   			TO_CHAR(order_date,'yyyy-MM-dd') as daily_chart
 			FROM mk_order as m 
-			WHERE 1=1 and order_delivery_status='배송중' 
+			WHERE 1=1 and order_delivery_status IN ('구매완료','배송중','배송준비중','결재완료')
 			and TO_CHAR(order_date, 'yyyy-MM-dd')
 			between #{startdate} and #{enddate}
   			GROUP BY TO_CHAR(order_date,'yyyy-MM-dd') 
@@ -23,7 +23,7 @@
 			COUNT(*) as sales_count,
 			TO_CHAR(m.order_date,'yyyy-MM') as month_chart
 			FROM mk_order as m 
-			where m.order_delivery_status='배송중'
+			where m.order_delivery_status IN ('구매완료','배송중','배송준비중','결재완료')
 			and TO_CHAR(m.order_date, 'yyyy-MM')
 			between #{startdate2} and #{enddate2}
 			group by to_char(m.order_date,'yyyy-MM')

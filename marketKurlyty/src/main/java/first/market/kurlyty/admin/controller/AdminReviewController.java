@@ -38,4 +38,11 @@ public class AdminReviewController {
 			return "redirect:getReviewList.mdo";
 		}
 	}
+	
+	//¸®ºä ³»¿ë
+	@RequestMapping("getReviewContent.mdo")
+	public String getReviewContent(AdminReviewVO review, Model model) {
+		model.addAttribute("reviewcon", adminService.getReviewContent(review));
+		return "review/admin_reviewContent";
+	}
 }

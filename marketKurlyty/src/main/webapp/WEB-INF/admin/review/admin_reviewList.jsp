@@ -89,19 +89,20 @@
 							<tbody>
 								<c:forEach var="review" items="${reviewList}">
 									<tr>
-										<td>${review.review_serial }</td>
-										<td>${review.review_title }</td>
-										<td>${review.user_id }</td>
-										<td><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
-										<td>${review.review_hit }</td>
-										<td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_serial }
+										<input type="hidden" value="${review.review_serial }"></td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_title }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.user_id }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'"><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_hit }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">
 										<select name="review_best_up">
 										<option value="0" ${review.review_best_up == 'false' ? "selected='selected'" : '' }>일반리뷰</option>
 										<option value="1" ${review.review_best_up == 'true' ? "selected='selected'" : '' }>베스트리뷰</option>
 										</select>
 										</td>
-										<td>
-											<input type="submit" value="수정"/>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">
+											<input type="submit" value="수정" id="updateBtn"/>
 											<input type="button" value="삭제" onclick="javascript:delete_check('deleteReview.mdo?review_serial=${review.review_serial}')"/>
 										</td>
 									</tr>
@@ -122,6 +123,35 @@
 	<!-- Main -->
 	
 	<!-- 건들지마세요 -->
+	<script type="text/javascript"><!-- 동적 테이블은 이렇게 해야 버튼 이벤트가 먹힘-->
+	$(document).on("click", "#updateBtn", function(){
+		var checkBtn = $(this);
+		var tr = checkBtn.closest("tr");
+		var status = tr.find("#deleveryStatus-select option:selected").val();
+		var serial = tr.find("#order_merchant_serial").val();
+		
+	    if(confirm('배송상태를 수정하시겠습니까?')) {
+		$.ajax({
+			type:"POST",
+			url:"admin_orderWaitUpdate.mdo",
+			dataType : "json",
+			data : {"order_merchant_serial" : serial, "order_delivery_status" : status},
+			success: function(result) {
+				if(result == 1){
+					alert("배송 상태를 성공적으로 수정하였습니다.")
+					location.reload();
+				}else if(result == 0){
+					alert("배송 상태 수정에 실패했습니다.")
+					location.reload();
+				}else if(result ==2){
+					alert("주문건을 선택해주세요")
+					location.reload();
+				}
+			}
+		}) 
+		}
+	});
+	</script>
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

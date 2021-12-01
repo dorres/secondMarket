@@ -173,6 +173,11 @@ public class AdminDAO {
 	public int deleteReview(AdminReviewVO review) {
 		return sqlSession.delete("adminReviewDAO.deleteReview", review);
 	}
+	
+	//리뷰내용
+	public AdminReviewVO getReviewContent(AdminReviewVO review) {
+		return sqlSession.selectOne("adminReviewDAO.reviewGoodsName", review);
+	}
 	//===============================================================
 	
 	//상품문의 리스트(답변 대기)
@@ -205,6 +210,10 @@ public class AdminDAO {
 		return sqlSession.update("gqnaDAO.updateGqna",gqna);
 	}
 	
+	//상품문의 카운트
+	public GoodsQnaVO gqnaCount(GoodsQnaVO gqna) {
+		return sqlSession.selectOne("gqnaDAO.gqnaCount", gqna);
+	}
 	//================================================================
 	
 	//매출차트 일별 
@@ -471,6 +480,10 @@ public class AdminDAO {
 	}
 	public List<AdminOrderVO> getOrderFinishList(){
 		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
+	}
+	//카운트
+	public AdminOrderVO orderCount(AdminOrderVO order) {
+		return sqlSession.selectOne("adminOrderDAO.count", order);
 	}
 	
 	//환불관리

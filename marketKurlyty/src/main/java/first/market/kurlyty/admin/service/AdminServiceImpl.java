@@ -239,6 +239,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateGqna(gqna);
 		}
 	
+	//상품문의 카운트
+	@Override
+	public GoodsQnaVO gqnaCount(GoodsQnaVO gqna) {
+		return adminDao.gqnaCount(gqna);
+	}
 	//----------------------------------------------------------------
 	
 	//베스트 상품
@@ -282,6 +287,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int deleteReview(AdminReviewVO review) {
 		return adminDao.deleteReview(review);
+	}
+	
+	//리뷰내용
+	@Override
+	public AdminReviewVO getReviewContent(AdminReviewVO review) {
+		return adminDao.getReviewContent(review);
 	}
 	//----------------------------------------------------------------
 	//관리자-공지사항리스트
@@ -584,6 +595,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<AdminOrderVO> getOrderFinishList() {
 		return adminDao.getOrderFinishList();
+	}
+	
+	//카운트
+	@Override
+	public AdminOrderVO orderCount(AdminOrderVO order) {
+		return adminDao.orderCount(order);
 	}
 	//======================================================================
 	//환불관리
