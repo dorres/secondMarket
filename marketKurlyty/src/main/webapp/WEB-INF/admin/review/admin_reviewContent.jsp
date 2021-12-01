@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>??????????????</title>
+<title>리뷰</title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -76,7 +76,7 @@ textarea:focus, input:focus{
 					<div class="card-header">
 						<div class="col three">
 								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
-									1:1문의 내용
+									리뷰
 								</div>
 							</div>
 					</div>
@@ -84,9 +84,9 @@ textarea:focus, input:focus{
 						<!-- 메인작업 -->
 							<table class="type02">
 								<tr>
-									<th scope="row">리뷰번호</th>
+									<th scope="row">제목</th>
 									<td>
-										<input type="text" style="width:100%; height:100%; border: none;"  value="${reviewcon.review_serial}" readonly="readonly">
+										<input type="text" style="width:100%; height:100%; border: none;"  value="${reviewcon.review_title}" readonly="readonly">
 									</td>
 									
 									<th scope="row">작성자</th>
@@ -96,16 +96,32 @@ textarea:focus, input:focus{
 								</tr>
 							
 								<tr>
-									<th scope="row">제목</th>
+									<th scope="row">조회수</th>
 									<td>
-										<input type="text"style="width:100%; height:100%; border: none;" value="${reviewcon.review_title}" readonly="readonly">
+										<input type="text"style="width:100%; height:100%; border: none;"  value="${reviewcon.review_hit}" readonly="readonly" >
 									</td>
 									
-									<th scope="row">날짜</th>
+									<th scope="row">작성일</th>
 									<td  height="40px" >
 										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${reviewcon.review_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
 										
 									</td>
+								</tr>
+								<tr>
+									<th scope="row">베스트리뷰</th>
+									<td>
+										<select name="review_best_up" id="review_best_up">
+												<option value="false" <c:if test ="${reviewcon.review_best_up eq 'false'}">selected="selected"</c:if> >일반리뷰</option>
+												<option value="true" <c:if test ="${reviewcon.review_best_up eq 'true'}">selected="selected"</c:if> >베스트리뷰</option>
+											</select>
+									</td>
+									<th scope="row">수정/삭제</th>
+									<td>
+											<input type="hidden" id="review_serial" value="${reviewcon.review_serial }">
+											<input type="button" value="수정" id="updateBtn"/>
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteReview.mdo?review_serial=${reviewcon.review_serial}')"/>
+										</td>
+							
 								</tr>
 								<tr>
 									<th scope="row">내용</th>
@@ -115,6 +131,7 @@ textarea:focus, input:focus{
 										</c:if>
 										<textarea readonly="readonly" rows="10%">${reviewcon.review_content }</textarea>
 									</td>
+									
 								</tr>
 							</table>
 					</div>
@@ -129,15 +146,41 @@ textarea:focus, input:focus{
 	</div>	
 	<!-- Main -->
 
-</script>
 	<!-- 건들지마세요 -->
+	<script type="text/javascript"><!-- 동적 테이블은 이렇게 해야 버튼 이벤트가 먹힘-->
+	$(document).on("click", "#updateBtn", function(){
+		var checkBtn = $(this);
+		var tr = checkBtn.closest("tr");
+		var review = tr.find("#review_best_up option:selected").val();
+		var serial = tr.find("#review_serial").val();
+		
+		console.log(review);
+		console.log(serial);
+	    if(confirm('리뷰상태를 수정하시겠습니까?')) {
+		$.ajax({
+			type:"POST",
+			url:"updateReview.mdo",
+			dataType : "text",
+			data : {"review_best_up" : review, "review_serial" : serial},
+			success: function(result) {
+				if(result != "0"){
+					alert("수정 성공!")
+					location.reload()
+				}else{
+					alert("수정 실패!")
+					location.reload()
+				}
+			}
+		}) 
+		}
+	});
+	</script>
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="assets/demo/chart-area-demo.js"></script>
 	<script src="assets/demo/chart-bar-demo.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
 	<!-- 건들지마세요 -->
 </body>
 </html>

@@ -78,15 +78,17 @@
 							<thead>
 								<tr>
 									<th style="background:#CCCCCC;">카테고리번호</th>
+									<th style="background:#CCCCCC;">리뷰번호</th>
 									<th style="background:#CCCCCC;">상품명</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="review" items="${reviewgoodsname}">
 									<tr>
-										<td style="background:#CCCCCC;" onclick="location.href='getReviewList.mdo?review_serial=${review.review_serial}'">
-										${review.category_goods_serial }<input type="hidden" value="${review.review_serial}"></td>
-										<td onclick="location.href='getReviewList.mdo?review_serial=${review.review_serial}'">${review.category_goods_name }</td>
+										<td style="background:#CCCCCC;" onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">
+										${review.category_goods_serial }<input type="hidden" name="review_serial" value="${review.review_serial}"></td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_serial }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.category_goods_name }</td>
 									</tr>
 								</c:forEach>
 							</tbody>

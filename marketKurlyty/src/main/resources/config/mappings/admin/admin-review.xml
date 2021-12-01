@@ -5,8 +5,8 @@
  
   <mapper namespace="adminReviewDAO">
   	
-  	<select id="reviewList" resultType="review">
-  		SELECT * FROM MK_REVIEW WHERE REVIEW_SERIAL = #{review_serial}
+  	<select id="reviewContent" resultType="review">
+  		SELECT * FROM MK_REVIEW WHERE REVIEW_SERIAL = #{review_serial} 
   	</select>
   	
   	<delete id="deleteReview" parameterType="review">
@@ -18,6 +18,7 @@
   		from mk_category_goods C
   		JOIN MK_REVIEW R
   		ON R.CATEGORY_GOODS_SERIAL = C.CATEGORY_GOODS_SERIAL
+  		ORDER BY REVIEW_DATE DESC
   	</select>
   	<update id="updateReview" parameterType="review">
   		UPDATE 

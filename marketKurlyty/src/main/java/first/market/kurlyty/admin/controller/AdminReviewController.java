@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
@@ -20,13 +21,7 @@ public class AdminReviewController {
 		model.addAttribute("reviewgoodsname", adminService.getReviewGoodsName(review));
 		return "review/reviewGoodsName";
 	}
-	//府轰 府胶飘
-	@RequestMapping("getReviewList.mdo")
-	public String getReviewList(AdminReviewVO review, Model model) {
-		model.addAttribute("reviewList", adminService.getReviewList(review));
-		return "review/admin_reviewList";
-	}
-	
+
 	//府轰 昏力
 	@RequestMapping("deleteReview.mdo")
 	public String deleteReview(AdminReviewVO review) {
@@ -47,6 +42,7 @@ public class AdminReviewController {
 	}
 	
 	@RequestMapping("updateReview.mdo")
+	@ResponseBody
 	public int updateReview(AdminReviewVO review) {
 		int success =0;
 		review.isReview_best_up();
