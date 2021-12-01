@@ -133,7 +133,7 @@
 						<div class="card-body">
 							<div style="text-align: center;">
 								From: <input type="date" id="startdate" onchange="filterData()"
-									value="2021-11-22"> To: <input type="date" id="enddate"
+									value="2021-11-20"> To: <input type="date" id="enddate"
 									onchange="filterData()">
 							</div>
 							<canvas id="myAreaChart" width="50%" height="8"></canvas>
@@ -271,13 +271,14 @@
 	    
 	    const filterDate = labels2.slice(indexstartdate,indexenddate +1);
 	    myLineChart.data.labels = filterDate;
-	    console.log(filterDate);
 	    
 	    const data2 = [...data];
 	    const filterDatapoints = data2.slice(indexstartdate,indexenddate +1);
 	    myLineChart.data.datasets[0].data = filterDatapoints;
 	    
-	    myLineChart.update();
+	    myLineChart.update(chartData);
+	    console.log(data);
+	    console.log(labels);
 	    if(filterDate ==0)
 	    	alert('매출이 있는 날짜를 선택해주세요');
 	 }
@@ -292,7 +293,6 @@
  var max2 =0;
 
  var jsonChart2 =  ${chartMonth};
-	console.log(jsonChart2);
  var labels2 = jsonChart2.map(function(e){
     return e.month_chart;
  })
