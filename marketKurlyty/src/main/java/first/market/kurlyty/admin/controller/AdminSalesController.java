@@ -42,7 +42,7 @@ public class AdminSalesController {
 		// ¿œ∫∞
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar day = Calendar.getInstance();
-		day.add(Calendar.DATE, -30);
+		day.add(Calendar.DATE, -31);
 		String startDate = date.format(day.getTime());
 		sales.setStartdate(startDate);
 		sales.setEnddate(date.format(new Date()));
