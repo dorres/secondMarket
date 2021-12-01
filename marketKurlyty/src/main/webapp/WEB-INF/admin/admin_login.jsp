@@ -50,9 +50,6 @@
             </div>
         </form>
         
-        <div class="caption">
-            <a href="#"><p onclick="alert('회원가입은 010-8954-4440번으로 문의바랍니다.')">회원가입 문의</p></a>
-        </div>
     </section>
 </body>
 </html>
