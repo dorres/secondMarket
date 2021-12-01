@@ -21,37 +21,32 @@
 	href="${pageContext.request.contextPath }/resources/style/default/style4.css">
 <title>Insert title here</title>
 </head>
+<script>
+function inputCart(serial){
+	var goodsSerial=serial;
+	$.ajax({
+		url:"cartInput.do",
+		type:"post",
+		data:{"category_goods_serial":goodsSerial,"goods_cart_count":1},
+		datatype:"text",
+		success:function(res){
+			if(res!="good"){
+				alert(res);
+			}else{
+				alert("장바구니에 담았습니다.");
+			}
+			closeCart();
+		},
+		error:function(res){
+			alert("담기에 실패했습니다.");
+		}
+	});
+}
+</script>
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
 	<div class="page_aticle aticle_type2">
-		<div id="snb" class="snb_my">
-			<h2 class="tit_snb">마이컬리</h2>
-			<div class="inner_snb">
-				<ul class="list_menu">
-					<li class="on"><a href="/shop/mypage/mypage_orderlist.php">주문
-							내역</a></li>
-
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/mypage_gift.php', 'select_my_kurly_gift_list')">선물
-							내역</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/destination/list.php', 'select_shipping_address_list')">배송지
-							관리</a></li>
-					<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
-					<li><a href="/shop/mypage/product_inquiry.php">상품 문의</a></li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/mypage_emoney.php', 'select_my_kurly_point_history', {selection_type: 'mypage'})">적립금</a>
-					</li>
-					<li><a href="#none"
-						onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'mypage'})">쿠폰</a>
-					</li>
-					<li><a href="/shop/member/myinfo.php">개인 정보 수정</a></li>
-				</ul>
-			</div>
-			<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna"
-				class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span> 1:1
-				문의하기</a>
-		</div>
+		<jsp:include page="default/mainLeft.jsp"></jsp:include>
 		
 		<div class="page_section section_orderview">
 			<div class="head_aticle">
@@ -59,10 +54,7 @@
 			</div>
 			<div class="head_section link_type">
 				<h3 class="tit">${shipping.order_merchant_serial }</h3>
-				<span class="link"> 배송 또는 상품에 문제가 있나요? <a
-					href="/shop/mypage/mypage_qna_register.php?mode=add_qna&amp;ordno=1637132460375">1:1
-						문의하기</a>
-				</span>
+				
 			</div>
 			<form name="frmOrdView" method="post">
 				<input type="hidden" name="mode"> <input type="checkbox"
@@ -83,11 +75,11 @@
 							</td>
 							<td class="info">
 								<div class="name">
-									<a href="/shop/goods/goods_view.php?&amp;goodsno=9773"
+									<a
 										class="link">${detail.category_goods_detail_name1 }</a>
 								</div>
 								<div class="name_package">
-									<a href="/shop/goods/goods_view.php?&amp;goodsno=9773"
+									<a
 										class="link">${detail.category_goods_detail_name2 }</a>
 								</div>
 								<div class="desc">
@@ -96,39 +88,15 @@
 										원</span> <span class="ea">${detail.order_goods_count }개</span>
 								</div>
 							</td>
-							<td class="progress "><span class="end"> 배송완료 </span></td>
-							<td class="action"><span class="btn write_conf">후기완료</span>
+							<td class="progress "><span class="end"> 재구매 > </span></td>
+							<td class="action">
 								<button type="button" class="btn btn_cart ga_tracking_event"
-									onclick="cartLayerOpenAction('9773')">장바구니 담기</button></td>
+									onclick="javascript:inputCart(${detail.category_goods_serial})">장바구니 담기</button></td>
 						</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</form>
-			<div id="orderCancel" class="order_cancel">
-				<span class="inner_cancel">
-
-					<button type="button" id="cartPutAll" class="btn btn_cart">전체
-						상품 다시 담기</button>
-					<button type="button" class="btn btn_cancel off">전체 상품 주문
-						취소</button>
-				</span>
-				<p class="cancel_notice">직접 주문취소는 ‘입금확인’ 상태일 경우에만 가능합니다.</p>
-			</div>
-
-			<div class="order_delivery">				
-				<ul class="list_status">
-					<li>
-						<div class="subject">
-							<span class="type">.</span>
-						</div>
-						<div class="state"></div>
-						<div class="detail">
-							<span class="maker">프레시솔루션</span> 
-						</div>
-					</li>
-				</ul>
-			</div>
 
 			<div class="head_section">
 				<h3 class="tit">결제정보</h3>

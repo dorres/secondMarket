@@ -10,6 +10,7 @@ import first.market.kurlyty.user.dao.ItemPageDAO;
 import first.market.kurlyty.user.dao.UserRecipeDAO;
 import first.market.kurlyty.user.vo.ItemPageVO;
 import first.market.kurlyty.user.vo.RecipeVO;
+import first.market.kurlyty.vo.ProductVO;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
@@ -22,13 +23,10 @@ public class RecipeServiceImpl implements RecipeService {
 	public List<List<RecipeVO>> getRecipeList(){
 		List<List<RecipeVO>> recipeList=new ArrayList<List<RecipeVO>>();
 		List<RecipeVO> recipes=recipeDao.getRecipeList();
-		System.out.println(recipes);
 		int count=0;
 		List<RecipeVO> recipeBox=new ArrayList<RecipeVO>();
 		for(RecipeVO recipe:recipes) {
 			if(count==2){
-				System.out.println(recipeList);
-				System.out.println(recipeBox);
 				recipeList.add(recipeBox);
 				count=0;
 				recipeBox=new ArrayList<RecipeVO>();
@@ -71,5 +69,9 @@ public class RecipeServiceImpl implements RecipeService {
 			listIndex++;
 		}
 		return itemList;
+	}
+	@Override
+	public List<ProductVO> getRecipeSearch(String search) {
+		return recipeDao.getRecipeSearch(search);
 	}
 }

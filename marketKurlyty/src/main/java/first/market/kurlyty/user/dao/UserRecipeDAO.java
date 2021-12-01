@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.user.vo.ItemPageVO;
 import first.market.kurlyty.user.vo.RecipeVO;
+import first.market.kurlyty.vo.ProductVO;
 
 @Repository
 public class UserRecipeDAO {
@@ -28,5 +29,8 @@ public class UserRecipeDAO {
 	}
 	public ItemPageVO getIngredients(String ingredient){
 		return sqlSession.selectOne("CategoryDAO.getIngredients", ingredient);
+	}
+	public List<ProductVO> getRecipeSearch(String search){
+		return sqlSession.selectList("CategoryDAO.getRecipeSearch",search);
 	}
 }

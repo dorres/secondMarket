@@ -39,6 +39,48 @@ position:relative;
 	background-color: #000;
 	opacity: .5
 }
+div.search_box{
+overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 26px;
+    border-top: 2px solid #5f0080;
+    border-bottom: 1px solid #5f0080;
+ }
+ div.search_box .tit{
+ float: left;
+ padding: 39px 0 0 26px;
+ font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 18px;
+    letter-spacing: -1px;
+}
+div.search_box .desc{
+float: right;
+    width: 841px;
+    padding: 26px 0 0;
+}
+.search_box .inp {
+    float: left;
+    width: 607px;
+    height: 45px;
+    margin-right: 16px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: -1px;
+}
+.search_box .btn_search {
+    float: left;
+    width: 175px;
+    height: 45px;
+    border-radius: 3px;
+    background-color: #5f0080;
+    color: #fff;
+    line-height: 45px;
+}
 </style>
 <script>
 function openCart(serial,name,lastprice,price,discount){
@@ -83,6 +125,8 @@ function inputCart(){
 		success:function(res){
 			if(res!="good"){
 				alert(res);
+			}else{
+				alert("장바구니에 담았습니다.");
 			}
 			closeCart();
 		},
@@ -195,7 +239,7 @@ function inputCart(){
 																</div>
 																<div class="goods-add-product-item-content">
 																	<div class="goods-add-product-item-content-wrapper">
-																		<a href="/shop/goods/goods_view.php?&amp;goodsno=27778">
+																		<a href="#">
 																			<p class="goods-add-product-item-name">${ingredItem.category_goods_name }</p>
 																			<p class="goods-add-product-item-price" style="left: 35%;">${ingredItem.goods_last_price }원</p>
 																		</a>
@@ -203,6 +247,41 @@ function inputCart(){
 																</div>
 															</li>
 														</c:forEach>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div style="margin:0 auto; width: 1050px;">
+											<input type="hidden" name="searched" value="Y">
+											<div class="search_box">
+												<div class="tit">
+													<label for="sword">검색조건</label>
+												</div>
+												<div class="desc">
+													<input type="text" name="searchKeyword" id="recipeSword" class="inp"
+																value="">
+													<input type="button"
+															class="styled-button btn_search" value="검색하기" onclick="javascript:recipeSearch();">
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td id="recipe_view" align="center"><script
+											src="/shop/data/skin/designgj/autoslider.js"></script>
+										<div class="goods-add-product">
+											<h3 class="goods-add-product-title">RECIPE SEARCH</h3>
+											<div class="goods-add-product-wrapper __slide-wrapper"
+												data-slide-item="5">
+												<div class="goods-add-product-list-wrapper"
+													style="height: 310px">
+													<ul class="goods-add-product-list __slide-mover" id="searchs">
+														
 													</ul>
 												</div>
 											</div>
@@ -301,7 +380,41 @@ function inputCart(){
 	</div>
 
 	<a href="#top" id="pageTop">맨 위로가기</a>
-
+<script>
+function recipeSearch(){
+	var search=$("input#recipeSword").val();
+	console.log(search);
+	$.ajax({
+		url:"recipeSearchItemPage.do",
+		data:{"search":search},
+		dataType:"JSON",
+		type:"post",
+		success:function(res){
+			var index=0;
+			$("ul#searchs").html("");
+			
+			for(key in res){
+				var opencart="javascript:openCart("+String(res[key].category_goods_serial)+",'"+String(res[key].category_goods_name)+"',"+String(res[key].goods_last_price)+","+String(res[key].goods_detail_price)+","+String(res[key].goods_detail_dicountrate)+")";
+				$("ul#searchs").append("<li class='goods-add-product-item __slide-item'>");
+				$("ul#searchs").find("li").eq(index).append("<div class='goods-add-product-item-figure'>"
+				+"<a href='itemPage.do?category_goods_serial="+String(res[key].category_goods_serial)+"'>"
+				+"<img src='"+String(res[key].category_goods_image_thumb)+"'"+"class='goods-add-product-item-image'></a>"
+				+"<button type='button' class='cartBt' id='recipeSearchBt'> </button>"
+				+"</div><div class='goods-add-product-item-content'><div class='goods-add-product-item-content-wrapper'><a href='#'>"
+				+"<p class='goods-add-product-item-name'>"+String(res[key].category_goods_name)+"</p>"
+				+"<p class='goods-add-product-item-price' style='left: 35%;'>"+String(res[key].goods_last_price)+"원</p>"
+				+"</a></div></div></li>");
+				$("button#recipeSearchBt").eq(index).attr("onclick",opencart);
+				index=index+1;
+			}
+		},
+		error:function(error,errors){
+			console.log(error);
+			console.log(errors);
+		}
+	})
+}
+</script>
 
 	<iframe name="ifrmHidden" id="ifrmHidden" src="about:blank"
 		style="display: none; width: 100%; height: 600px;"></iframe>

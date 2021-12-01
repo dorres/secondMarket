@@ -90,10 +90,10 @@ function formJoinSubmit(){
 		document.frmMember.user_phone.focus();
 		return;
 	}
-	/* if(document.frmMember.okCerCheck.value=="불가능"){
+	if(document.frmMember.okCerCheck.value=="불가능"){
 		alert("문자 인증을 해주세요.");
 		return;
-	} */
+	}
 	if(document.frmMember.user_zipcode.value==""){
 		alert("주소를 입력하세요.");
 		document.frmMember.user_zipcode.focus();
@@ -102,6 +102,28 @@ function formJoinSubmit(){
 	if(document.frmMember.user_birth.value==""){
 		alert("생년월일을 입력하세요.");
 		document.frmMember.user_birth.focus();
+		return;
+	}
+	if(document.frmMember.birth_year.value>2030){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_year.focus();
+		return;
+	}
+	if(document.frmMember.birth_month.value>12){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_month.focus();
+		return;
+	}
+	if(document.frmMember.birth_month.value==2){
+		if(document.frmMember.birth_day.value>29){
+			alert("생년월일을 다시 확인해주세요.");
+			document.frmMember.user_day.focus();
+			return;
+		}
+	}
+	if(document.frmMember.birth_day.value>31){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_day.focus();
 		return;
 	}
 	if($("input[type=checkbox]").eq(1).is(":checked")==false){
@@ -143,20 +165,18 @@ function chkEmail(){
 	})
 }
 function smsResponse(){
+	alert("인증번호를 발송했습니다.");
+	var phone = document.frmMember.user_phone.value;
+	$.ajax({
+		url:"smsCheck.do?user_phone="+phone,
+		datatype:"json",
+		success:function(res){
+			const data = JSON.parse(res);
+			$("#checkNum").val(data.checkNum);
+			$(".phoneHid").attr("class","addressShow");
+		}
+	});
 	
-	if(false){
-		alert("문자 ㄱㄱ");
-		var phone = document.frmMember.user_phone.value;
-		$.ajax({
-			url:"smsCheck.do?user_phone="+phone,
-			datatype:"json",
-			success:function(res){
-				const data = JSON.parse(res);
-				$("#checkNum").val(data.checkNum);
-				$(".phoneHid").attr("class","addressShow");
-			}
-		});
-	}
 	$(".phoneHid").attr("class","addressShow");
 }
 function certCheck(){
