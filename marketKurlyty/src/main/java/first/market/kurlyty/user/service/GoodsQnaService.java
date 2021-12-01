@@ -29,5 +29,7 @@ public interface GoodsQnaService {
 	public GoodsQnaVO getGoodsQnaContent(GoodsQnaVO vo); 
 	
 	//Controller >> service >> DAO
+	//페이징 용 문의 수량 들고오기
+	public String getQnaCount(int serial);
 
 }

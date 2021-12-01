@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import first.market.kurlyty.user.dao.ReviewDAO;
+import first.market.kurlyty.user.vo.GoodsQnaVO;
 import first.market.kurlyty.user.vo.ReviewVO;
 import first.market.kurlyty.user.vo.User_order_listVO;
 
@@ -58,6 +59,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int deleteReview(int review_serial) {
 		return reviewDAO.deleteReview(review_serial);
+	}
+
+	@Override
+	public List<ReviewVO> getGoodsReview(GoodsQnaVO vo) {
+		return reviewDAO.getGoodsReview(vo);
+	}
+
+	@Override
+	public String getReviewCount(int goodsSerial) {
+		return reviewDAO.getReviewCount(goodsSerial);
 	}
 
 }

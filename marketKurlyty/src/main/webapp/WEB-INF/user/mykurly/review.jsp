@@ -53,8 +53,8 @@
 									</div>
 									<ul class="tab_menu">
 																			
-										<li class="" id="beforeRc"><div id="beforeR"> <a href="#viewBeforeList" >작성가능 후기 (<span id="BBC" >${count }</span>)</a></div></li>
-										<li class="on" id="afterRc"><div id="afterR"><a href="#viewAfterList" >작성완료 후기 <span id="AAC">(${rcount })</span></a></div></li>
+										<li class="on" id="beforeRc"><div id="beforeR"> <a href="#viewBeforeList" >작성가능 후기 (<span id="BBC" >${count }</span>)</a></div></li>
+										<li class="" id="afterRc"><div id="afterR"><a href="#viewAfterList" >작성완료 후기 <span id="AAC">(${rcount })</span></a></div></li>
 									</ul>
 								</div>
 

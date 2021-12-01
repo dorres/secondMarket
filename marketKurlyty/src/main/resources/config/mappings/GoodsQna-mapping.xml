@@ -8,7 +8,10 @@
  	INSERT INTO myboard (seq, title, writer, content)
 	VALUES((select nvl(max(seq), 0)+1 from myboard), #{title}, #{writer}, #{content})
   -->
- 
+ <!-- 문의 수 -->
+ <select id="getQnaCount" resultType="String">
+ SELECT count(*) FROM mk_qna_goods WHERE category_goods_serial=#{value}
+ </select>
  <!-- 첫 문의 작성할 떄 상품의 SERIAL+thumb 데이터를 불러온다. -->
   <select id="getItemPage" resultType="itemPage" parameterType="itemPage">
  	 SELECT A.category_main_serial,
@@ -24,12 +27,12 @@
  
   <!-- 게시판 보기 (상품 SERIAL로 불러오기 (해당 상품의 모든 문의) -->
   <!--  작업중 -->
-  <select id="getGoodsQnaList"  resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
+  <select id="getQnaList"  resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
  	 SELECT (row_number() over(order by qna_goods_serial ASC)) as rnum, * FROM mk_qna_goods
- 	 WHERE category_goods_serial = #{category_goods_serial} ORDER BY qna_goods_serial DESC
+ 	 WHERE category_goods_serial = #{category_goods_serial} ORDER BY qna_goods_serial DESC LIMIT 5 OFFSET #{start}
   </select>
   <select id="GoodsQnaUserList"  resultType="first.market.kurlyty.user.vo.GoodsQnaVO" parameterType="first.market.kurlyty.user.vo.GoodsQnaVO">
- 	 SELECT * FROM mk_qna_goods WHERE user_id = #{user_id}
+ 	 SELECT * FROM mk_qna_goods WHERE user_id = #{user_id} ORDER BY qna_goods_serial DESC
   </select>
  <!-- SUCCESS 11.24 -->
   <insert id="insertGoodsQna"> 

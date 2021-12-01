@@ -55,11 +55,12 @@ function formUpdateSubmit(){
 			}
 		}
 	}
-	
-	/* if(document.frmMember.okCerCheck.value=="불가능"){
-		alert("문자 인증을 해주세요.");
-		return;
-	} */
+	if(document.frmMember.user_phone.value!=""){
+		if(document.frmMember.okCerCheck.value=="불가능"){
+			alert("문자 인증을 해주세요.");
+			return;
+		}
+	}
 	if(document.frmMember.user_year.value==""){
 		alert("생년월일을 입력하세요.");
 		document.frmMember.user_year.focus();
@@ -105,7 +106,7 @@ function chkEmail(){
 	})
 }
 function smsResponse(){
-	alert("문자 ㄱㄱ");
+	alert("인증번호를 발송했습니다.");
 	var phone = document.frmMember.user_phone.value;
 	$.ajax({
 		url:"smsCheck.do?user_phone="+phone,
@@ -229,7 +230,7 @@ function zip(){
 													<input type="text" value="" pattern="[0-9]*" id="user_phone" name="user_phone" placeholder="휴대폰 번호를 바꿀시 입력하세요." class="inp">
 													<button id="btn_cert" class="btn default enabled" onclick="smsResponse()" type="button">인증번호 받기</button>
 												</div>
-												<!-- <div id="codeNum" class="code_num">
+												<div id="codeNum" class="code_num">
 													<input type="text" name="auth_code" id="auth_code" value=""
 														size="6" maxlength="6" pattern="[0-9]*" label="인증번호 확인"
 														disabled="" class="inp_confirm"
@@ -238,7 +239,7 @@ function zip(){
 													<button id="btn_cert_confirm" class="btn default disabled"
 														type="button">인증번호 확인</button>
 													<p id="countdown" class="count_down"></p>
-												</div> -->
+												</div>
 												<p class="txt_guide">
 													<span class="txt txt_case1"></span>
 												</p>

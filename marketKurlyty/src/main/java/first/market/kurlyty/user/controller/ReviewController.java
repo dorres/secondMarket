@@ -50,11 +50,11 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("reviewProc.do")
-	public String reviewInsert(@RequestParam("image") MultipartFile file1,@RequestParam(value="review_serial1",required=false,defaultValue="0") Integer review_serial,HttpServletRequest request,ReviewVO vo) {
+	public String reviewInsert(@RequestParam("image") MultipartFile file1,@RequestParam(value="review_serial1",required=false,defaultValue="0") int review_serial,HttpServletRequest request,ReviewVO vo) {
 		int success =0;		
 		String key1 = null;
 		UUID uuid;		
-		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";				
+		String path = "https://kurlybuc.s3.ap-northeast-2.amazonaws.com/";	
 		if(file1.getSize() !=0 && review_serial == 0) {
 			uuid=UUID.randomUUID();
 			key1 = "reviewImage/" + uuid.toString() +file1.getOriginalFilename();
@@ -62,6 +62,7 @@ public class ReviewController {
 			success=reviewservice.insertReview(vo);			
 		}
 		if(review_serial != 0) {
+			vo.setReview_serial(review_serial);
 			reviewservice.updateReview(vo);		
 		}
 		if(success!=0) {
@@ -78,7 +79,6 @@ public class ReviewController {
 	@ResponseBody
 	public int reviewDelete(ReviewVO vo,@RequestParam("review_serial2") int review_serial2) {
 		
-		System.out.println(review_serial2);
 		int success = reviewservice.deleteReview(review_serial2);
 		return success;
 		

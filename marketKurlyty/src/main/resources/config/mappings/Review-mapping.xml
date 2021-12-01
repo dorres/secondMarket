@@ -3,6 +3,17 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="reviewDAO">
+ 
+ <!-- 제품페이지용 리뷰 리스트 -->
+ <select id="getGoodsReview" resultType="first.market.kurlyty.user.vo.ReviewVO">
+ 	SELECT (row_number() over(order by review_serial ASC)) as rnum,* FROM MK_REVIEW
+ 	WHERE category_goods_serial=#{category_goods_serial}
+ 	ORDER BY review_serial ASC
+ 	LIMIT 5 OFFSET #{start}
+ </select>
+ <select id="getReviewCount" resultType="String">
+ SELECT count(*) FROM MK_REVIEW WHERE category_goods_serial=#{value}
+ </select>
  <!-- 리뷰작성가능리스트 -->
  <select id="reviewList" resultType="orderListVO">
   select * from

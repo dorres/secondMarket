@@ -33,5 +33,8 @@ public class GoodsQnaVO {
 	private String category_goods_image_thumb;
 	//青 锅龋
 	private int rnum;
+	//其捞隆贸府
+	private int start;
+	private int end;
 	
 }

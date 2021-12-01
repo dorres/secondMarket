@@ -28,7 +28,7 @@ public class GoodsQnaDAO {
 	
 	//게시판 리스트 
 	public List<GoodsQnaVO> getGoodsQnaList(GoodsQnaVO vo){
-		return sqlSession.selectList("GoodsQnaDAO.getGoodsQnaList", vo);
+		return sqlSession.selectList("GoodsQnaDAO.getQnaList", vo);
 	}
 	
 	//문의 글쓰기, 수정하기, 삭제하기
@@ -54,5 +54,7 @@ public class GoodsQnaDAO {
 	public String getGoodsImage(int goodsSerial) {
 		return sqlSession.selectOne("GoodsQnaDAO.getGoodsImage",goodsSerial);
 	}
-
+	public String getQnaCount(int goodsSerial) {
+		return sqlSession.selectOne("GoodsQnaDAO.getQnaCount",goodsSerial);
+	}
 }

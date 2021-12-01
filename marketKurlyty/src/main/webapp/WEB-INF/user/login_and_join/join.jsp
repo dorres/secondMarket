@@ -90,10 +90,10 @@ function formJoinSubmit(){
 		document.frmMember.user_phone.focus();
 		return;
 	}
-	/* if(document.frmMember.okCerCheck.value=="불가능"){
+	if(document.frmMember.okCerCheck.value=="불가능"){
 		alert("문자 인증을 해주세요.");
 		return;
-	} */
+	}
 	if(document.frmMember.user_zipcode.value==""){
 		alert("주소를 입력하세요.");
 		document.frmMember.user_zipcode.focus();
@@ -104,7 +104,37 @@ function formJoinSubmit(){
 		document.frmMember.user_birth.focus();
 		return;
 	}
-	if($("input:checkbox[name=agree_allcheck]").is(":checked")==false){
+	if(document.frmMember.birth_year.value>2030){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_year.focus();
+		return;
+	}
+	if(document.frmMember.birth_month.value>12){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_month.focus();
+		return;
+	}
+	if(document.frmMember.birth_month.value==2){
+		if(document.frmMember.birth_day.value>29){
+			alert("생년월일을 다시 확인해주세요.");
+			document.frmMember.user_day.focus();
+			return;
+		}
+	}
+	if(document.frmMember.birth_day.value>31){
+		alert("생년월일을 다시 확인해주세요.");
+		document.frmMember.user_day.focus();
+		return;
+	}
+	if($("input[type=checkbox]").eq(1).is(":checked")==false){
+		alert("필수 약관에 동의해주세요.");
+		return;
+	}
+	if($("input[type=checkbox]").eq(2).is(":checked")==false){
+		alert("필수 약관에 동의해주세요.");
+		return;
+	}
+	if($("input[type=checkbox]").eq(4).is(":checked")==false){
 		alert("필수 약관에 동의해주세요.");
 		return;
 	}
@@ -135,20 +165,18 @@ function chkEmail(){
 	})
 }
 function smsResponse(){
+	alert("인증번호를 발송했습니다.");
+	var phone = document.frmMember.user_phone.value;
+	$.ajax({
+		url:"smsCheck.do?user_phone="+phone,
+		datatype:"json",
+		success:function(res){
+			const data = JSON.parse(res);
+			$("#checkNum").val(data.checkNum);
+			$(".phoneHid").attr("class","addressShow");
+		}
+	});
 	
-	if(false){
-		alert("문자 ㄱㄱ");
-		var phone = document.frmMember.user_phone.value;
-		$.ajax({
-			url:"smsCheck.do?user_phone="+phone,
-			datatype:"json",
-			success:function(res){
-				const data = JSON.parse(res);
-				$("#checkNum").val(data.checkNum);
-				$(".phoneHid").attr("class","addressShow");
-			}
-		});
-	}
 	$(".phoneHid").attr("class","addressShow");
 }
 function certCheck(){
@@ -209,7 +237,7 @@ function hiddenPassword(){
 }
 </style>
 <body class="main-index" oncontextmenu="return false"
-	ondragstart="return false" onselectstart="return !disableSelection">
+	ondragstart="return false">
 
 	<div id="wrap" class="">
 		<div id="pos_scroll"></div>
@@ -271,10 +299,8 @@ function hiddenPassword(){
 												<input class="btn default" type="button" onmousedown="javascript:showPassword()" 
 													onmouseup="javascript:hiddenPassword()" value="암호보기">
 												<p class="txt_guide square">
-													<span class="txt txt_case1">10자 이상 입력</span> <span
-														class="txt txt_case2">영문/숫자/특수문자(공백 제외)만 허용하며, 2개이상
-														조합</span>
-													<span class="txt txt_case3">동일한 숫자 3개 이상 연속사용 불가</span>
+													<span class="txt txt_case2" style="display:block">영문/숫자/특수문자(공백 제외)만 허용</span>
+													<span class="txt txt_case3" style="display:block">영대문자 1개 이상 입력</span>
 												</p></td>
 										</tr>
 
@@ -456,11 +482,11 @@ function hiddenPassword(){
 													<label class="check_agree label_block"> <input type="checkbox" value="" name="agree" required=""
 															label="이용약관"> <span class="ico"></span>이용약관
 														동의 <span class="sub">(필수)</span></label> <a href="#none"
-														class="link btn_link btn_agreement">약관보기 </a>
+														class="link btn_link btn_agreement" id="agreementShow1">약관보기 </a>
 												</div>
 
-												<div class="layer layer_agreement"
-													style="display: block; border:4px solid; margin-top: -299.5px;">
+												<div class="layer layer_agreement" id="agreement1"
+													style="display: none; border:4px solid; margin-top: -299.5px;">
 													<div class="inner_layer">
 														<h4 class="tit_layer">
 															이용약관 <span class="sub">(필수)</span>
@@ -867,8 +893,8 @@ function hiddenPassword(){
 															</div>
 														</div>
 
-														<button type="button" class="btn_ok">확인</button>
-														<button type="button" class="btn_close">
+														<button type="button" class="btn_ok" onclick="javascript:agree1Close();">확인</button>
+														<button type="button" class="btn_close" onclick="javascript:agree1Close();">
 															<span class="screen_out">레이어 닫기</span>
 														</button>
 													</div>
@@ -879,10 +905,10 @@ function hiddenPassword(){
 													<input type="checkbox" id="private1" name="private1" value=""
 															required="" label="개인정보 수집·이용"> <span
 															class="ico"></span>개인정보수집·이용 동의 <span class="sub">(필수)</span></label>
-													<a href="#none" class="link btn_link btn_essential">약관보기</a>
+													<a href="#none" class="link btn_link btn_essential" id="agreementShow2">약관보기</a>
 												</div>
 
-												<div class="layer layer_essential" style="display: block;">
+												<div class="layer layer_essential" style="display: none; top:40px;border:4px solid;" id="agreement2">
 													<div class="inner_layer">
 														<div class="in_layer">
 															<h4 class="tit_layer">
@@ -930,16 +956,13 @@ function hiddenPassword(){
 																동의를 해 주셔야 서비스를 이용하실 수 있으며, 동의하지 않으실 경우 서비스에 제한이 있을 수
 																있습니다.</p>
 														</div>
-														<button type="button" class="btn_ok">
+														<button type="button" class="btn_ok" onclick="javascript:agree2Close()">
 															<span class="txt_type">확인</span>
 														</button>
-														<button type="button" class="btn_close">
+														<button type="button" class="btn_close" onclick="javascript:agree2Close()">
 															<span class="screen_out">레이어 닫기</span>
 														</button>
 													</div>
-													<button type="button" class="btn_close">
-														<span class="screen_out">레이어 닫기</span>
-													</button>
 												</div>
 												<div class="check_view">
 													<label class="label_block check_agree "> <input
@@ -974,7 +997,27 @@ function hiddenPassword(){
 		</div>
 		<jsp:include page="../default/footer.jsp"></jsp:include><!-- footer부분 -->
 	</div>
-
+<script>
+$("input[name=agree_allcheck]").click(function(){
+	if($(this).is(":checked")==true){
+		$("input[type=checkbox]").prop("checked",true);
+	}else{
+		$("input[type=checkbox]").prop("checked",false);
+	}
+})
+$("a#agreementShow1").click(function(){
+	$("div#agreement1").css("display","block");
+})
+$("a#agreementShow2").click(function(){
+	$("div#agreement2").css("display","block");
+})
+function agree1Close(){
+	$("div#agreement1").fadeOut(200);
+}
+function agree2Close(){
+	$("div#agreement2").fadeOut(200);
+}
+</script>
 	<a href="#top" id="pageTop">맨 위로가기</a>
 
 

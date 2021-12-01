@@ -105,7 +105,7 @@ button.bx-prev{
  	bottom: 220px;
     width: 52px;
     height: 52px;
-	background: url(https://res.kurly.com/pc/service/main/1908/ico_prev1_x1.png) no-repeat 50% 50%;
+	background: url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/arrow_banner_left_52_52.svg) no-repeat 50% 50%;
     transition: opacity 0.5s;
     border:0;
     left:80px;
@@ -116,7 +116,7 @@ button.bx-next{
  	bottom: 220px;
     width: 52px;
     height: 52px;
-	background: url(https://res.kurly.com/pc/service/main/1908/ico_next1_x1.png) no-repeat 50% 50%;
+	background: url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/arrow_banner_right_52_52.svg) no-repeat 50% 50%;
     transition: opacity 0.5s;
     border:0;
     right:80px;
@@ -172,16 +172,23 @@ button.bx-next{
 						</div>
 						<div class="MainIntroContain">
 							<ul class="foodList">
-								<c:forEach begin="1" end="3" step="1">
+								<c:forEach var="item" items="${howAbout}">
 									<li>
 										<div class="foodImg">
-											<a href="#"><img src="${pageContext.request.contextPath }/resources/images/Item/foodItem.png"></a>
-										</div> <a class="info" href="#"> <span class="name">[네이처]
-												오이 묶음</span> <span class="cost"> <span class="dc">36%</span>
-												<span class="price">7,500원</span> <span class="origin">11,800원</span>
-												<span class="desc">오이는 별로 맛없음</span>
-										</span>
-									</a>
+											<a href="itemPage.do?category_goods_serial=${item.category_goods_serial }">
+												<img src="${item.category_goods_image_thumb}">
+											</a>
+										</div>
+										<a class="info" href="itemPage.do?category_goods_serial=${item.category_goods_serial }">
+											<span class="name">${item.category_goods_name }</span>
+											<span class="cost">
+												<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.goods_last_price }" var="lastPrice"/>
+												<span class="dc">${item.goods_detail_dicountrate }%</span>
+												<span class="price">${lastPrice}원</span>
+												<span class="origin">${item.goods_detail_price }</span>
+												<span class="desc">${item.category_goods_name_subtext }</span>
+											</span>
+										</a>
 									</li>
 								</c:forEach>
 							</ul>
@@ -216,7 +223,7 @@ button.bx-next{
 							</ul>
 						</div>
 						<!-- MD -->
-						<div class="Maincategory">
+						<%-- <div class="Maincategory">
 							<div class="MainIntroTitle">
 								<div class="TitleDiv" align="center">
 									<span>MD추천</span>
@@ -246,7 +253,7 @@ button.bx-next{
 									</c:forEach>
 								</ul>
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 			</div>

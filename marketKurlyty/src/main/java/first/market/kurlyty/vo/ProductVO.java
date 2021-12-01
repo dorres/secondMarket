@@ -37,4 +37,7 @@ public class ProductVO {
 	//notDB
 	private int goods_last_price;
 	private boolean okStock;
+	
+	//Á¤·Ä¼ø
+	private String sort;
 }

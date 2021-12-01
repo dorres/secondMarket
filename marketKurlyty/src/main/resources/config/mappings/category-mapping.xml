@@ -17,8 +17,9 @@
  	<select id="getCategoryProductList" resultType="product" parameterType="product">
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE 1=1
  		<if test="category_main_serial != null">
@@ -28,7 +29,15 @@
  			AND PRODUCT.category_sub_serial=#{category_sub_serial}
  		</if>
  		AND PRODUCT.GOODS_DETAIL_STATUS=1
- 		ORDER BY PRODUCT.category_goods_serial
+ 		<if test='sort=="0"'>
+ 			ORDER BY PRODUCT.category_goods_serial DESC
+ 		</if>
+ 		<if test='sort=="1"'>
+ 			ORDER BY PRODUCT.goods_last_price ASC
+ 		</if>
+ 		<if test='sort=="2"'>
+ 			ORDER BY PRODUCT.goods_last_price DESC
+ 		</if>
  	</select>
  	<select id="getCategoryRoot" resultType="categoryMain" parameterType="product">
  		SELECT * FROM mk_category_main WHERE category_main_serial=#{category_main_serial}
@@ -43,7 +52,8 @@
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
  		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE 1=1
  		AND PRODUCT.category_goods_serial=#{category_goods_serial}
@@ -83,8 +93,9 @@
  	<select id="getHotDeal" resultType="product">
  	SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE PRODUCT.GOODS_DETAIL_STATUS=1
  		ORDER BY PRODUCT.goods_detail_dicountrate DESC, PRODUCT.category_goods_serial ASC
@@ -93,13 +104,85 @@
  	<select id="getNewGoods" resultType="product">
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE PRODUCT.GOODS_DETAIL_STATUS=1
  		ORDER BY PRODUCT.category_goods_serial DESC
  		LIMIT 3
  	</select>
+ 	<!-- 신상품 -->
+ 	<select id="getNewGoodsPage" resultType="product" parameterType="String">
+ 		SELECT * FROM (
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.category_goods_serial DESC
+ 		LIMIT 20) AS NewGoods
+ 		<if test='sort=="0"'>
+ 			ORDER BY NewGoods.category_goods_serial DESC
+ 		</if>
+ 		<if test='sort=="1"'>
+ 			ORDER BY NewGoods.goods_last_price ASC
+ 		</if>
+ 		<if test='sort=="2"'>
+ 			ORDER BY NewGoods.goods_last_price DESC
+ 		</if>
+ 	</select>
+ 	<!-- 알뜰쇼핑 -->
+ 	<select id="getAltlePage" resultType="product">
+ 		SELECT * FROM(
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.goods_detail_dicountrate DESC, PRODUCT.category_goods_serial ASC
+ 		LIMIT 20) as AlteGoods
+ 		<if test='sort=="0"'>
+ 			ORDER BY AlteGoods.goods_detail_dicountrate DESC
+ 		</if>
+ 		<if test='sort=="1"'>
+ 			ORDER BY AlteGoods.goods_last_price ASC
+ 		</if>
+ 		<if test='sort=="2"'>
+ 			ORDER BY AlteGoods.goods_last_price DESC
+ 		</if>
+ 	</select>
+ 	<!-- 베스트  -->
+ 	<select id="getBestPage" resultType="product">
+ 	SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,second.goods_detail_promotion_serial,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		JOIN (SELECT category_goods_serial, sum(order_goods_count)sellCount
+			FROM mk_order_details
+			GROUP BY category_goods_serial
+			ORDER BY sellCount DESC, category_goods_serial DESC
+			LIMIT 20) as Best
+		ON PRODUCT.category_goods_serial=Best.category_goods_serial
+ 		WHERE 1=1
+ 		<if test='sort=="0"'>
+ 			ORDER BY Best.sellCount DESC
+ 		</if>
+ 		<if test='sort=="1"'>
+ 			ORDER BY goods_last_price ASC
+ 		</if>
+ 		<if test='sort=="2"'>
+ 			ORDER BY goods_last_price DESC
+ 		</if>
+ 		
+ 	</select>
+ 	
  	<!-- 재고수량 -->
  	<select id="getStock" resultType="product">
  		SELECT * FROM mk_goods_detail
@@ -111,10 +194,52 @@
  		SELECT * FROM 
  		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
  		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		(second.goods_detail_price*(((100-second.goods_detail_DICOUNTRATE)/100.0))) as goods_last_price
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
  		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
  		WHERE PRODUCT.category_goods_name LIKE '%'||#{value}||'%'
  		AND PRODUCT.GOODS_DETAIL_STATUS=1
  		ORDER BY PRODUCT.category_goods_serial
+ 	</select>
+ 	<select id="getRecipeSearch" resultType="product">
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.category_goods_name LIKE '%'||#{value}||'%'
+ 		AND PRODUCT.GOODS_DETAIL_STATUS=1
+ 		ORDER BY PRODUCT.category_goods_serial
+ 		LIMIT 5
+ 	</select>
+ 	<!-- recipe -->
+ 	<select id="getRecipeList" resultType="first.market.kurlyty.user.vo.RecipeVO">
+ 		SELECT * FROM MK_RECIPE ORDER BY recipe_serial DESC
+ 	</select>
+ 	<select id="getRecipeBook" resultType="first.market.kurlyty.user.vo.RecipeVO">
+ 		SELECT * FROM mk_recipe WHERE recipe_serial=#{value}
+ 	</select>
+ 	<select id="getBestIngredient" resultType="first.market.kurlyty.user.vo.RecipeVO">
+ 		SELECT category_goods_serial, sum(order_goods_count)sellCount
+		FROM mk_order_details
+		WHERE category_goods_serial
+		IN((select category_goods_serial from mk_category_goods where category_goods_name like '%'||#{value}||'%'))
+		GROUP BY category_goods_serial
+		ORDER BY sellCount DESC, category_goods_serial DESC;
+ 	</select>
+ 	<update id="hitPlus">
+ 		UPDATE mk_recipe set recipe_hit=(recipe_hit+1) WHERE recipe_serial=#{value}
+ 	</update>
+ 	<select id="getIngredients" resultType="itempage">
+ 		SELECT * FROM 
+ 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
+ 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
+ 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
+ 		)/100.0))) as goods_last_price
+ 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
+ 		WHERE PRODUCT.category_goods_name LIKE '%'||#{value}||'%'
+ 		ORDER BY PRODUCT.category_goods_serial DESC
+ 		LIMIT 1;
  	</select>
  </mapper>

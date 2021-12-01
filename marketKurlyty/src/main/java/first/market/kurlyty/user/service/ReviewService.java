@@ -2,6 +2,7 @@ package first.market.kurlyty.user.service;
 
 import java.util.List;
 
+import first.market.kurlyty.user.vo.GoodsQnaVO;
 import first.market.kurlyty.user.vo.ReviewVO;
 import first.market.kurlyty.user.vo.User_order_listVO;
 
@@ -15,4 +16,6 @@ public interface ReviewService {
 	public List<ReviewVO> reviewAfterList(String user_id);
 	public Integer reviewCount(String user_id);
 	public int deleteReview(int review_serial);
+	List<ReviewVO> getGoodsReview(GoodsQnaVO vo);
+	String getReviewCount(int goodsSerial);
 }

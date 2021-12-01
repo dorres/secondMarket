@@ -120,7 +120,7 @@ div, th, td, li, dt, dd, p {
 								</div>
 								<div style="position: relative">
 									<div style="position: absolute; right: 0; top: 60px;">
-										<a href="/kurlyty/personalQnaWrite.do">
+										<a href="personalQnaWrite.do">
 									<!-- <a href="javascript:popup_register( '/personalQnaWrite.jsp' );">-->
 											<span class="bhs_buttonsm yb" style="float: none;">글쓰기</span>
 										</a>
