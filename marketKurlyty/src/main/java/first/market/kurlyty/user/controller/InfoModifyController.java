@@ -65,6 +65,6 @@ public class InfoModifyController {
 		}
 		// 쿼리문 실행
 		infoModifyService.updateUser(user);
-		return "mainPage/index";
+		return "redirect:index.do";
 	}
 }

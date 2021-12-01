@@ -149,4 +149,11 @@ public class HeaderController {
 		return "mainPage/recipeBook";
 	}
 	
+	@RequestMapping(value="recipeSearchItemPage.do", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public List<ProductVO> getRecipeSearch(String search){
+		List<ProductVO> list = recipeService.getRecipeSearch(search);
+		return list;
+	}
+	
 }

@@ -105,7 +105,7 @@ button.bx-prev{
  	bottom: 220px;
     width: 52px;
     height: 52px;
-	background: url(https://res.kurly.com/pc/service/main/1908/ico_prev1_x1.png) no-repeat 50% 50%;
+	background: url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/arrow_banner_left_52_52.svg) no-repeat 50% 50%;
     transition: opacity 0.5s;
     border:0;
     left:80px;
@@ -116,7 +116,7 @@ button.bx-next{
  	bottom: 220px;
     width: 52px;
     height: 52px;
-	background: url(https://res.kurly.com/pc/service/main/1908/ico_next1_x1.png) no-repeat 50% 50%;
+	background: url(https://kurlybuc.s3.ap-northeast-2.amazonaws.com/kurlyImage/arrow_banner_right_52_52.svg) no-repeat 50% 50%;
     transition: opacity 0.5s;
     border:0;
     right:80px;
