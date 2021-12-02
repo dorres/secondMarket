@@ -10,21 +10,48 @@
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <style type="text/css">
-table {
-    width: 1400px;
-    border: 1px solid #444444;
-    margin: 0 auto;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-  
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
+}
+table.type02 th {
+  width: 100px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+}
+table.type02 td {
+  width: 500px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+table.type02 td >input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
 textarea {
-    width: 100%;
-    height: 99%;
-    border: none;
-    resize: none;
-  }
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+} 
 </style>
 
 </head>
@@ -40,42 +67,50 @@ textarea {
 
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">1:1문의</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">답변완료</li>
+					<li class="breadcrumb-item active">상세</li>
+				</ol>
 
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 1:1문의
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									1:1문의 내용
+								</div>
+							</div>
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
 
-							<table >
+							<table class="type02">
 								<tr>
-									<th width="100px" height="40px">문의종류</th>
-									<td " height="40px">
+									<th scope="row">문의종류</th>
+									<td >
 										<input type="text" style="width:100%; height:100%; border: none;"  value="${qnaFinish.qna_personal_category }" readonly="readonly">
 									</td>
 									
-									<th width="100px" height="40px">작성자</th>
-									<td  height="40px" >
+									<th scope="row">작성자</th>
+									<td>
 										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaFinish.user_id}(${qnaFinish.user_name })" readonly="readonly" >
 									</td>
 								</tr>
 							
 								<tr>
-									<th width="100px" height="40px">제목</th>
-									<td  height="40px" >
+									<th scope="row">제목</th>
+									<td>
 										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaFinish.qna_personal_title }" readonly="readonly">
 									</td>
 									
-									<th width="100px" height="40px">날짜</th>
-									<td  height="40px" >
+									<th scope="row">날짜</th>
+									<td>
 										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${qnaFinish.qna_personal_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
 										
 									</td>
 								</tr>
 								
 								<tr>
-									<th width="100px" height="400px">내용</th>
+									<th scope="row">내용</th>
 									<td colspan="3"  >
 										<c:if test="${qnaFinish.qna_personal_image1 != null}">
 											<img alt="1:1문의 이미지" src="${qnaFinish.qna_personal_image1}" width="300px" height="300px%">
@@ -96,11 +131,11 @@ textarea {
 					<div class="card-body">
 						<!-- 메인작업 -->
 						<form action="admin_personalQnaFinishUpdate.mdo" method="POST">
-							<table >
+							<table class="type02">
 							
 								<tr>
 									<th width="100px" height="40px">제목</th>
-									<td  height="40px" >
+									<td>
 										<input type="text" style="width:100%; height:100%; border: none;" name="qna_personal_answer_title" value="${ qnaFinish.qna_personal_answer_title}">
 									</td>
 								</tr>

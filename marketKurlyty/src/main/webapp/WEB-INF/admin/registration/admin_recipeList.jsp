@@ -50,14 +50,13 @@
             
 
             <div class="card mb-4">
-               <div class="card-header"  align="right">
-                     <div class="col three">                       
-                     </div>
-                     <div>
-                        <button type="button" class="btm_image" id="img_btn" onclick="stockstock.mdo?goods_detail_serial">
-                        <img src="${pageContext.request.contextPath }/resources/images/Admin/Re.png" style="width:25px; height:25px; border:0">
-                        </button>
-                     </div>
+               <div class="card-header">
+                     <div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									레시피 목록
+									<a href="insertRecipe.mdo" class="btn1 btn-dark" style="float:right;">레시피 등록</a>
+								</div>
+						</div>
                   </div>
                <div class="card-body">
                <form id="recipeF" method="post" action="recipeDel.mdo">

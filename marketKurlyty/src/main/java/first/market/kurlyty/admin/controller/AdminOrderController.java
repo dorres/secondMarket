@@ -1,7 +1,9 @@
 package first.market.kurlyty.admin.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -77,88 +79,102 @@ public class AdminOrderController {
 			success =adminService.updateOrderWait1(merchantList);
 			return success;
 		}
+		//주문관리 결제완료 ->배송준비중 선택한거 Update
+		@ResponseBody
+		@RequestMapping("admin_orderWaitUpdate2.mdo")
+		public int orderWaitUpdate2(@RequestParam(value = "merchant[]") List<String> merchantList){
+			int success = 0;
+			success = adminService.updateStatus(merchantList);
+			return success;
+		}
 		
 		//송장 출력
-		@ResponseBody
 		@RequestMapping("admin_excelDown.mdo")
-		public int excelDown(@RequestParam(value = "merchant[]") List<String> merchantList,HttpServletResponse response){
-			int result = 0;
-			//체크한 주문번호를 통해서 받는사람 정보를 list 들고옴
-			List<AdminShippingInfoVO> shippingList = adminService.getShippingInfoList(merchantList);
+		public void excelDown(@RequestParam List<String> merchant,HttpServletResponse response) throws IOException{
+			FileOutputStream fileOut= null;
+
+//			체크한 주문번호를 통해서 받는사람 정보를 list 들고옴
+			List<AdminShippingInfoVO> shippingList = adminService.getShippingInfoList(merchant);
 			
-			try {
-				// 워크북 생성
-				Workbook wb = new HSSFWorkbook();
-				Sheet sheet = wb.createSheet("게시판");
-				Row row = null;
-				Cell cell = null;
-				int rowNo = 0;
-				// 테이블 헤더용 스타일
-				CellStyle headStyle = wb.createCellStyle();
-				// 가는 경계선을 가집니다.
-				headStyle.setBorderTop(BorderStyle.THIN);
-				headStyle.setBorderBottom(BorderStyle.THIN);
-				headStyle.setBorderLeft(BorderStyle.THIN);
-				headStyle.setBorderRight(BorderStyle.THIN);
-				
-				// 배경색은 노란색입니다.
-				headStyle.setFillForegroundColor(HSSFColorPredefined.YELLOW.getIndex());
-				headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-				
-				// 데이터는 가운데 정렬합니다.
-				headStyle.setAlignment(HorizontalAlignment.CENTER);
+			// 워크북 생성
+			Workbook wb = new HSSFWorkbook();
+			Sheet sheet = wb.createSheet("게시판");
+			Row row = null;
+			Cell cell = null;
+			int rowNo = 0;
+			// 테이블 헤더용 스타일
+			CellStyle headStyle = wb.createCellStyle();
+			// 가는 경계선을 가집니다.
+			headStyle.setBorderTop(BorderStyle.THIN);
+			headStyle.setBorderBottom(BorderStyle.THIN);
+			headStyle.setBorderLeft(BorderStyle.THIN);
+			headStyle.setBorderRight(BorderStyle.THIN);
+			
+			// 배경색은 노란색입니다.
+			headStyle.setFillForegroundColor(HSSFColorPredefined.YELLOW.getIndex());
+			headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			
+			// 데이터는 가운데 정렬합니다.
+			headStyle.setAlignment(HorizontalAlignment.CENTER);
 	
-				// 데이터용 경계 스타일 테두리만 지정
-				CellStyle bodyStyle = wb.createCellStyle();
-				bodyStyle.setBorderTop(BorderStyle.THIN);
-				bodyStyle.setBorderBottom(BorderStyle.THIN);
-				bodyStyle.setBorderLeft(BorderStyle.THIN);
-				bodyStyle.setBorderRight(BorderStyle.THIN);
+			// 데이터용 경계 스타일 테두리만 지정
+			CellStyle bodyStyle = wb.createCellStyle();
+			bodyStyle.setBorderTop(BorderStyle.THIN);
+			bodyStyle.setBorderBottom(BorderStyle.THIN);
+			bodyStyle.setBorderLeft(BorderStyle.THIN);
+			bodyStyle.setBorderRight(BorderStyle.THIN);
+			
+			// 헤더 생성
+			row = sheet.createRow(rowNo++);
+			
+			cell = row.createCell(0);
+			cell.setCellStyle(headStyle);
+			cell.setCellValue("이름");
+			
+			cell = row.createCell(1);
+			cell.setCellStyle(headStyle);
+			cell.setCellValue("번호");
 				
-				// 헤더 생성
+			cell = row.createCell(2);
+			cell.setCellStyle(headStyle);
+			cell.setCellValue("주소");
+			
+			for(AdminShippingInfoVO shipping : shippingList) {
 				row = sheet.createRow(rowNo++);
 				
 				cell = row.createCell(0);
-				cell.setCellStyle(headStyle);
-				cell.setCellValue("이름");
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(shipping.getShipping_recipient_name());
 				
 				cell = row.createCell(1);
-				cell.setCellStyle(headStyle);
-				cell.setCellValue("번호");
-				
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(shipping.getShipping_recipient_phone());
+					
 				cell = row.createCell(2);
-				cell.setCellStyle(headStyle);
-				cell.setCellValue("주소");
-				
-				for(AdminShippingInfoVO shipping : shippingList) {
-					row = sheet.createRow(rowNo++);
-					
-					cell = row.createCell(0);
-					cell.setCellStyle(bodyStyle);
-					cell.setCellValue(shipping.getShipping_recipient_name());
-					
-					cell = row.createCell(1);
-					cell.setCellStyle(bodyStyle);
-					cell.setCellValue(shipping.getShipping_recipient_phone());
-					
-					cell = row.createCell(2);
-					cell.setCellStyle(bodyStyle);
-					cell.setCellValue(shipping.getShipping_address1() + " " + shipping.getShipping_address2());
-				}
-				// 컨텐츠 타입과 파일명 지정
-				response.setContentType("ms-vnd/excel");
-				response.setHeader("Content-Disposition", "attachment;filename=송장.xls");
-				LocalDate date = LocalDate.now();
-				LocalTime time = LocalTime.now();
-				
-				File xlsFile = new File("D:/"+date+"."+time.getHour()+":"+time.getMinute()+".xls");
-	            FileOutputStream fileOut = new FileOutputStream(xlsFile);
-	            wb.write(fileOut);
-	            //db작업
-	           result = adminService.updateStatus(merchantList);
-	            
-				}catch (Exception e) {e.printStackTrace(); }
-			return result;
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(shipping.getShipping_address1() + " " + shipping.getShipping_address2());
+			}
+		
+			// 컨텐츠 타입과 파일명 지정
+			response.setContentType("application/octet-stream;");
+			response.setHeader("Content-Disposition", "attachment; filename=\"송장.xls");
+			response.setHeader("Pragma", "no-cache;");
+			response.setHeader("Expires", "-1;");
+	       
+			// excel 파일 저장
+	        try {
+	            fileOut = new FileOutputStream("test.xls");
+	            wb.write(response.getOutputStream());
+	            fileOut.flush();
+	        } catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } finally {
+	            if(fileOut != null) {
+	                fileOut.close();
+	            }
+	        }
 		}
 		
 		//주문관리 배송과정 리스트

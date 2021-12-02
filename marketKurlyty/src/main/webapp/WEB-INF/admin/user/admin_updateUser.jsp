@@ -6,12 +6,56 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Index</title>
-<jsp:include page="../user/default/top.jsp"></jsp:include>
+<%-- <jsp:include page="../user/default/top.jsp"></jsp:include> --%>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
+<style type="text/css">
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
+}
+table.type02 th {
+  width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+}
+table.type02 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+table.type02 td >input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
+textarea {
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+</style>
 <script>
 function zip(){
 	var myAddress;
@@ -116,9 +160,9 @@ function formJoinSubmit(){
 </script>
 
 <body class="sb-nav-fixed">
-<div id="layoutSidenav">
+<%-- <div id="layoutSidenav">
 	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<jsp:include page="default/sideMenu.jsp"></jsp:include> --%>
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
@@ -130,29 +174,29 @@ function formJoinSubmit(){
 							<br>
 							<h2 align="center">유저 수정</h2>
 							<table class="tbl_comm">
-								<tr class="fst">
+								<tr class="type02">
 								<tr>
-									<th>아이디</th>
+									<th scope="row">아이디</th>
 									<td><input type="text" name="user_id" readonly="readonly" value="${getUser.user_id}"></td>  
 								</tr>
 															
 								<tr>
-									<th>이름</th>
+									<th scope="row">이름</th>
 									<td><input type="text" name="user_name" readonly="readonly" value="${getUser.user_name}"></td>
 								</tr>
 								
 								<tr>
-									<th>전화번호</th>
+									<th scope="row">전화번호</th>
 									<td><input type="text" name="user_phone" readonly="readonly" value="${getUser.user_phone }"></td>
 								</tr>
 
 								<tr>
-									<th>회원등급</th>
+									<th scope="row">회원등급</th>
 									<td><input type="text" name="user_membersip_name" readonly="readonly" value="${getUser.user_membership_name }"></td>
 								</tr>
 								
 								<tr>
-									<th>상태</th>
+									<th scope="row">상태</th>
 									<td><input type="text" name="user_status" placeholder="상태를 수정 해주세요."></td>
 								</tr>
 							</table>
@@ -164,7 +208,7 @@ function formJoinSubmit(){
 				</div>
 			</div>
 		</main>
-		<jsp:include page="default/footer.jsp"></jsp:include>
+<%-- 		<jsp:include page="default/footer.jsp"></jsp:include> --%>
 	</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

@@ -22,7 +22,7 @@ public class AdminJoinController {
 	//관리자 회원가입페이지
 	@RequestMapping("admin_join.mdo")
 	public String adminJoin(Model model) {
-		return "admin_join";
+		return "manager/admin_join";
 	}
 	
 	//관리자 회원가입 처리
@@ -37,7 +37,7 @@ public class AdminJoinController {
 		}
 		success = adminService.joinProc(admin);
 		if(success==1) {
-			return "admin_index";
+			return "redirect:manager/admin_adminList";
 		}else {
 			return "redirect:join.mdo";
 		}

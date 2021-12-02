@@ -44,13 +44,16 @@
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">자주하는질문</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">자주하는 질문 목록</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					<li class="breadcrumb-item">관리자</li>
+					<li class="breadcrumb-item active">목록</li>
 				</ol>
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
-							<div class="col three">
-								<a href="admin_FAQWrite.mdo" class="btn1 btn-dark">자주하는질문 등록</a>
+					<div class="card-header" >
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									자주하는질문 목록
+									<a href="admin_FAQWrite.mdo" class="btn1 btn-dark" style="float: right;">자주하는질문 등록</a>
+								</div>
 							</div>
 						</div>
 					<div class="card-body">

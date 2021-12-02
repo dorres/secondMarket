@@ -19,7 +19,7 @@ public class GoodsQnaVO {
 	private String qna_goods_answer;
 	private Date qna_goods_answer_date;
 	private String category_goods_name;
-	
+	private int count;
 }
 
 

@@ -11,20 +11,48 @@
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
-table {
-    width: 1000px;
-    border: 1px solid #444444;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-  
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
+}
+table.type02 th {
+  width: 100px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+}
+table.type02 td {
+  width: 500px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+table.type02 td >input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
 textarea {
-    width: 100%;
-    height: 99%;
-    border: none;
-    resize: none;
-  }
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+} 
 </style>
 
 </head>
@@ -40,52 +68,60 @@ textarea {
 
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">1:1문의</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">답변대기</li>
+					<li class="breadcrumb-item active">상세</li>
+				</ol>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 1:1문의 내용
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									1:1문의 내용
+								</div>
+							</div>
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-							<table >
+							<table class="type02">
 								<tr>
-									<th width="100px" height="40px">문의종류</th>
-									<td height="40px">
+									<th scope="row">문의종류</th>
+									<td>
 										<input type="text" style="width:100%; height:100%; border: none;"  value="${qnaWait.qna_personal_category }" readonly="readonly">
 									</td>
 									
-									<th width="100px" height="40px">작성자</th>
-									<td  height="40px" >
+									<th scope="row">작성자</th>
+									<td>
 										<input type="text"style="width:100%; height:100%; border: none;"  value="${qnaWait.user_id}(${qnaWait.user_name })" readonly="readonly" >
 									</td>
 								</tr>
 							
 								<tr>
-									<th width="100px" height="40px">주문번호</th>
-									<td  height="40px" >
+									<th scope="row">주문번호</th>
+									<td>
 										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaWait.order_details_order_serial}" readonly="readonly">
 									</td>
 									
-									<th width="100px" height="40px">날짜</th>
+									<th scope="row">날짜</th>
 									<td  height="40px" >
 										<input type="text"style="width:100%; height:100%; border: none;" value="<fmt:formatDate value="${qnaWait.qna_personal_date }" pattern="yyyy-MM-dd"/>" readonly="readonly" >
 										
 									</td>
 								</tr>
 								<tr>
-									<th width="100px" height="40px">제목</th>
-									<td height="40px" colspan="3">
+									<th scope="row">제목</th>
+									<td colspan="3">
 										<input type="text"style="width:100%; height:100%; border: none;" value="${qnaWait.qna_personal_title }" readonly="readonly">
 									</td>
 								</tr>
 								
 								<tr>
-									<th width="100px" height="400px">내용</th>
+									<th scope="row">내용</th>
 									<td colspan="3" >
 										<c:if test="${qnaWait.qna_personal_image1 != null}">
-											<img alt="1:1문의 이미지" src="${qnaWait.qna_personal_image1}" width="300px" height="500px%">
+											<img alt="1:1문의 이미지" src="${qnaWait.qna_personal_image1}" width="40%" height="60%">
 										</c:if>
 										<c:if test="${qnaWait.qna_personal_image2 != null}">
-											<img alt="1:1문의 이미지" src="${qnaWait.qna_personal_image2}" width="300px" height="300px%">
+											<img alt="1:1문의 이미지" src="${qnaWait.qna_personal_image2}" width="40%" height="60%">
 										</c:if>
 										<textarea readonly="readonly" rows="10%">${qnaWait.qna_personal_content }</textarea>
 									</td>
@@ -94,28 +130,32 @@ textarea {
 					</div>
 					
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 1:1문의 답변
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									1:1문의 답변
+								</div>
+							</div>
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
 						<form action="admin_personalQnaWaitUpdate.mdo" method="POST" id="subForm" name="subForm">
-							<table >
+							<table class="type02">
 								<tr>
-									<th width="100px" height="40px">제목</th>
-									<td height="40px">
+									<th scope="row">제목</th>
+									<td>
 										<input type="text" style="width:100%; height:100%; border: none;" name="qna_personal_answer_title" id="qna_personal_answer_title" value="${qnaWait.qna_personal_answer_title }">
 									</td>
 								</tr>
 								<tr>
-									<th width="100px" height="300px">내용</th>
-									<td  height="300px"><textarea name="qna_personal_answer" id="qna_personal_answer">${qnaWait.qna_personal_answer }</textarea>
+									<th scope="row">내용</th>
+									<td ><textarea name="qna_personal_answer" id="qna_personal_answer" rows="10%">${qnaWait.qna_personal_answer }</textarea>
 								</tr>
 							</table>
 							<input type="hidden" name="qna_personal_serial" id="qna_personal_serial" value="${qnaWait.qna_personal_serial }" >
 							<input type="hidden" name="order_details_order_serial" value="${qnaWait.order_details_order_serial}" id="order_details_order_serial">
-							<input type="submit" value="답변 등록하기" />
+							<input type="submit" value="답변 등록하기" style="margin-left: 10px"/>
 							<c:if test="${qnaWait.qna_personal_category == '환불문의'}">
-								<input type="button" value="환불요청 처리" id="refund"/>
+								<input type="button" value="환불요청 처리" id="refund" />
 							</c:if>
 							<c:if test="${qnaWait.qna_personal_category == '반품문의'}">
 								<input type="button" value="반품요청 처리" id="return"/>

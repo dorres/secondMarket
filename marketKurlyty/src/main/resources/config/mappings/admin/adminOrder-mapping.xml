@@ -135,4 +135,9 @@
  		WHERE ORDER_MERCHANT_SERIAL = #{order_details_order_serial}
  	</update>
  	
+ 	<!-- 결제완료 건수 -->
+ 	<select id="count" resultType="order">
+ 		select count(*) from mk_order where order_delivery_status in('결제완료','배송준비중');
+ 	</select>
+ 	
  </mapper>

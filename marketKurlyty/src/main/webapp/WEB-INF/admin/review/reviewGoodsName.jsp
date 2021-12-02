@@ -36,75 +36,72 @@
 			})
 		})
 		function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할까요?");
-		if (answer == true) {
-			location = url;
+			var answer = confirm("게시글를 정말로 삭제할까요?");
+			if (answer == true) {
+				location = url;
+			}
 		}
-	}
-	</script>
+		if(${notification!=null}){
+			alert("재고 부족한 재품이 있습니다.")
+		}
 	
+	</script>
+	<style type="text/css">
+.btn1 {font-size: 20px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
+		line-height:10px; display: inline-block;zoom: 1; color: #fff; text-align: center; position:relative;
+		-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+		transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+	}	
+.btn1.btn-dark{background-color: #8f3cab; border-color: #8f3cab; -webkit-box-shadow: 0 3px 0 #8f3cab; box-shadow: 0 3px 0 #8f3cab;}
+.btn1.btn-dark:hover{background-color:#5f0080;}
+.btn1.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+ </style>
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
-	<jsp:include page="default/top.jsp"></jsp:include>
-	<jsp:include page="default/sideMenu.jsp"></jsp:include>
+	<jsp:include page="../default/top.jsp"></jsp:include>
+	<jsp:include page="../default/sideMenu.jsp"></jsp:include>
 
 	<!-- Main -->
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
 
-				<h1 class="mt-4">약관관리</h1>
-				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">약관 약간?</a></li>
-					<li class="breadcrumb-item active">Tables</li>
-				</ol>
+				<h1 class="mt-4">리뷰</h1>
+				
+				<div style="margin:2%;"></div>
 				<div class="card mb-4">
 					<div class="card-body">
-						여기내용 수정
-						<a target="_blank" href="https://datatables.net/">???필요해??</a> .
-					</div>
-				</div>
-				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 약관 목록
-					</div>
-					<div class="card-body">
-					<form method="post">
+					<form method="post" action="">
 						<table id="datatablesSimple">
 							<thead>
-							<tr>
-									<th>번호</th>
-									<th>약관번호</th>
-									<th>약관이름</th>
-									<th>약관필수여부</th>
-									<th>약관등록일</th>
-									<th>마지막수정일</th>
-									
+								<tr>
+									<th style="background:#CCCCCC;">카테고리번호</th>
+									<th style="background:#CCCCCC;">리뷰번호</th>
+									<th style="background:#CCCCCC;">상품명</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="agreeList" items="${agreeList}">
+								<c:forEach var="review" items="${reviewgoodsname}">
 									<tr>
-										<td>${agreeList.terms_agreement_serial }</td>
-										<td>${agreeList.terms_serial }</td>
-										<td><a href="termsDetails.mdo?terms_serial=${agreeList.terms_serial}">${agreeList.terms_id }</a></td>
-										<td>${agreeList.terms_agree_status }</td>
-										<td><fmt:formatDate value="${agreeList.terms_agree_date}" pattern="yyyy-MM-dd"/></td>
-										<td><fmt:formatDate value="${agreeList.terms_agree_date_modified}" pattern="yyyy-MM-dd"/></td>
+										<td style="background:#CCCCCC;" onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">
+										${review.category_goods_serial }<input type="hidden" name="review_serial" value="${review.review_serial}"></td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_serial }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.category_goods_name }</td>
 									</tr>
 								</c:forEach>
-								
 							</tbody>
 						</table>
-						<input type="button" value="등록" onclick="location.href='admin_terms.mdo'"/>
 						</form>
 					</div>
 				</div>
+
+
 			</div>
 		</main>
 
-		<jsp:include page="default/footer.jsp"></jsp:include>
+		<jsp:include page="../default/footer.jsp"></jsp:include>
 	</div>
 	</div>
 	<!-- Main -->
@@ -118,5 +115,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
 	<!-- 건들지마세요 -->
+<script>
+function update(index,serial){
+	document.updateForm.action="updateGoods.mdo?index="+String(index)+"&serial="+String(serial);
+	document.updateForm.submit();
+}
+
+</script>
 </body>
 </html>
