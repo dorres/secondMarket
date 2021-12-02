@@ -999,6 +999,7 @@ function changeCoupon(){
 		$("span#apr_coupon_data").text(parseInt(discount).toLocaleString("ko-KR"));
 		originPayPrice=originPayPrice-discount;
 	}else{
+		couponIndex=-1;
 		$("input#payment").val(originPayPrice-point);
 		$("span#paper_settlement").text(parseInt(originPayPrice-point).toLocaleString("ko-KR"))
 		$("span#apr_coupon_data").text("0");
