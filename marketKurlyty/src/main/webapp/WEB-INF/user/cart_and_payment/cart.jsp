@@ -39,7 +39,7 @@
 									<input type="hidden" id="user_address2" name="user_address2" value="${defaultAddress.user_address2 }"/>
 									<input type="hidden" id="user_zipcode" name="user_zipcode" value="${defaultAddress.user_zipcode }"/>
 									<input type="hidden" id="user_name" name="user_name" value="${defaultAddress.user_name }"/>
-									<input type="hidden" id="user_name" name="user_phone" value="${defaultAddress.user_phone }"/>
+									<input type="hidden" id="user_phone" name="user_phone" value="${defaultAddress.user_phone }"/>
 									<input type="hidden" id="address_serial" name="address_serial" value="${defaultAddress.address_serial }"/>
 									<div class="empty">
 										<div class="cart_item no_item">

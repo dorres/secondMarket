@@ -61,9 +61,10 @@ public class HeaderController {
 
 		List<ProductVO> categoryProductList = headerService.getCategoryProduct(product);
 		for(ProductVO products:categoryProductList) {
-			if(products.getGoods_detail_promotion_serial()==1) {
-				products.setGoods_detail_dicountrate(products.getGoods_detail_dicountrate()+10);
+			if(products.getGoods_detail_promotion_serial()>0) {
+				products.setGoods_detail_dicountrate(products.getGoods_detail_dicountrate()+(10*products.getGoods_detail_promotion_serial()));
 			}
+			products.setCategory_goods_name(products.getCategory_goods_name().replaceAll("'", "`"));
 		}
 		CategoryMainVO categoryRoot = sqlSession.selectOne("CategoryDAO.getCategoryRoot",product);
 		List<CategorySubVO> categorySub = sqlSession.selectList("CategoryDAO.getCategorySub",categoryRoot);
@@ -93,9 +94,10 @@ public class HeaderController {
 	public String BestGoods(String sort, Model model) {
 		List<ProductVO> bestList = headerService.getBestPage(sort);
 		for(ProductVO best:bestList) {
-			if(best.getGoods_detail_promotion_serial()==1) {
-				best.setGoods_detail_dicountrate(best.getGoods_detail_dicountrate()+10);
+			if(best.getGoods_detail_promotion_serial()>0) {
+				best.setGoods_detail_dicountrate(best.getGoods_detail_dicountrate()+(10*best.getGoods_detail_promotion_serial()));
 			}
+			best.setCategory_goods_name(best.getCategory_goods_name().replaceAll("'", "`"));
 		}
 		model.addAttribute("bestList",bestList);
 		model.addAttribute("sort",sort);
@@ -105,9 +107,10 @@ public class HeaderController {
 	public String newGoodsPage(String sort,Model model) {
 		List<ProductVO> newGoodsList = headerService.getNewGoodsPage(sort);
 		for(ProductVO newItem:newGoodsList) {
-			if(newItem.getGoods_detail_promotion_serial()==1) {
-				newItem.setGoods_detail_dicountrate(newItem.getGoods_detail_dicountrate()+10);
+			if(newItem.getGoods_detail_promotion_serial()>0) {
+				newItem.setGoods_detail_dicountrate(newItem.getGoods_detail_dicountrate()+(10*newItem.getGoods_detail_promotion_serial()));
 			}
+			newItem.setCategory_goods_name(newItem.getCategory_goods_name().replaceAll("'", "`"));
 		}
 		model.addAttribute("newGoodsList",newGoodsList);
 		model.addAttribute("sort",sort);
@@ -117,9 +120,10 @@ public class HeaderController {
 	public String altleShopping(String sort, Model model) {
 		List<ProductVO> altleList = headerService.getAltlePage(sort);
 		for(ProductVO altle:altleList) {
-			if(altle.getGoods_detail_promotion_serial()==1) {
-				altle.setGoods_detail_dicountrate(altle.getGoods_detail_dicountrate()+10);
+			if(altle.getGoods_detail_promotion_serial()>0) {
+				altle.setGoods_detail_dicountrate(altle.getGoods_detail_dicountrate()+(10*altle.getGoods_detail_promotion_serial()));
 			}
+			altle.setCategory_goods_name(altle.getCategory_goods_name().replaceAll("'", "`"));
 		}
 		model.addAttribute("altleList", altleList);
 		model.addAttribute("sort",sort);
@@ -134,6 +138,9 @@ public class HeaderController {
 	@RequestMapping("/searchItemPage.do")
 	public String searchItemPage(String searchKeyword,Model model) {
 		List<ProductVO> searchList = headerService.getSearchGoods(searchKeyword);
+		for(ProductVO search:searchList) {
+			search.setCategory_goods_name(search.getCategory_goods_name().replaceAll("'", "`"));
+		}
 		model.addAttribute("searchList",searchList);
 		model.addAttribute("searchKeyword", searchKeyword);
 		return "mainPage/searchGoodsPage";
@@ -144,6 +151,11 @@ public class HeaderController {
 	public String recipeBookPage(int recipe_serial, Model model) {
 		RecipeVO recipeBook = recipeService.getRecipeBook(recipe_serial);
 		List<ItemPageVO> ingredList = recipeService.getIngredient(recipeBook);
+		for(ItemPageVO ingred:ingredList) {
+			if(ingred!=null) {
+				ingred.setCategory_goods_name(ingred.getCategory_goods_name().replaceAll("'", "`"));
+			}
+		}
 		model.addAttribute("recipeBook", recipeBook);
 		model.addAttribute("ingredList",ingredList);
 		return "mainPage/recipeBook";
@@ -153,6 +165,9 @@ public class HeaderController {
 	@ResponseBody
 	public List<ProductVO> getRecipeSearch(String search){
 		List<ProductVO> list = recipeService.getRecipeSearch(search);
+		for(ProductVO product:list) {
+			product.setCategory_goods_name(product.getCategory_goods_name().replaceAll("'", "`"));
+		}
 		return list;
 	}
 	
