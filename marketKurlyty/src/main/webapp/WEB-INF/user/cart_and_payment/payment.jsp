@@ -25,11 +25,11 @@
 	<input type="hidden" id="doorPassword" value=""/>
 	<input type="hidden" id="recipientName" value=""/>
 	<input type="hidden" id="recipientPhone" value=""/>
-	<c:if test="${orderPrice >= 400 }">
+	<c:if test="${orderPrice >= 40000 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
 	</c:if>
-	<c:if test="${orderPrice < 400 }">
+	<c:if test="${orderPrice < 40000 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice+3000}"/>
 		<input type="hidden" id="payment" value="${orderPrice+3000 }">
 	</c:if>
@@ -255,10 +255,10 @@
 											<dt class="tit">배송비</dt>
 											<dd class="price delivery_area">
 												<div id="paper_delivery_msg1">
-													<c:if test="${orderPrice>=400 }">
+													<c:if test="${orderPrice>=40000 }">
 														<span id="paper_delivery" class="">0</span>
 													</c:if>
-													<c:if test="${orderPrice<400 }">
+													<c:if test="${orderPrice<40000 }">
 														<span id="paper_delivery" class="">+3,000</span>
 													</c:if>
 													원
@@ -1078,6 +1078,10 @@ function reqeustPay(){
 	}
 	if(parseInt($("input#usePoint").val())>=originPayPrice){
 		alert("결제금액보다 많은 적립금은 사용할 수 없습니다.");
+		return false;
+	}
+	if($("input[name=ordAgree]").is(":checked")==false){
+		alert("결제약관에 동의해주세요.")
 		return false;
 	}
 	var amount=$("input#payment").val();
