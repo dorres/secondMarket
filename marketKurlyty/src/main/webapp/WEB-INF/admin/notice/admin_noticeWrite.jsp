@@ -108,7 +108,7 @@ function formGoodsSubmit() {
 									<td colspan="3"  height="500px"><textarea name="notice_content" id="notice_content"></textarea>
 								</tr>
 							</table>
-							<input type="button" value="등록하기" onclick="formGoodsSubmit()" style="margin-left: 10px"/>
+							<input type="submit" value="등록하기" onclick="formGoodsSubmit()" style="margin-left: 10px"/>
 							<input type="button" value="목록보기" onclick="location.href='admin_noticeList.mdo'"/>
 						</form>
 					</div>

@@ -70,14 +70,14 @@ textarea:focus, input:focus{
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">주문내역</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item">결제완료</li>
+					<li class="breadcrumb-item">주문정보</li>
 					<li class="breadcrumb-item active">상세</li>
 				</ol>
 				
 				<div class="card mb-4">
 					<div class="card-header">
 						<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
-							주문내역
+							주문정보 상세 페이지
 						</div>
 					</div>
 					<div class="card-body">
@@ -158,7 +158,24 @@ textarea:focus, input:focus{
 								<div style="margin-left: 10px">
 									<input type="button" value="받는사람 수정하기" id="updateBtn"  /> 
 									<input type="hidden" value="${orderWait.order_merchant_serial }" name="order_merchant_serial">
-									<input type="button" value="목록보기" onclick="location.href='admin_orderWaitList.mdo'"/>
+									<c:if test="${orderWait.order_delivery_status eq '결제완료' or orderWait.order_delivery_status eq '배송준비중' }">
+										<input type="button" value="목록보기" onclick="location.href='admin_orderWaitList.mdo'"/>
+									</c:if>
+									<c:if test="${orderWait.order_delivery_status eq '배송중' or orderWait.order_delivery_status eq '배송완료' }">
+										<input type="button" value="목록보기" onclick="location.href='admin_orderdeliveryList.mdo'"/>
+									</c:if>
+									<c:if test="${orderWait.order_delivery_status eq '구매완료' }">
+										<input type="button" value="목록보기" onclick="location.href='admin_orderFinishList.mdo'"/>
+									</c:if>
+									<c:if test="${orderWait.order_delivery_status eq '환불요청' or orderWait.order_delivery_status eq '환불완료' }">
+										<input type="button" value="목록보기" onclick="location.href='admin_orderRefundList.mdo'"/>
+									</c:if>
+									<c:if test="${orderWait.order_delivery_status eq '반품요청' or orderWait.order_delivery_status eq '반품완료' }">
+										<input type="button" value="목록보기" onclick="location.href='admin_orderReturnList.mdo'"/>
+									</c:if>
+									<c:if test="${orderWait.order_delivery_status eq '취소요청' or orderWait.order_delivery_status eq '취소완료' }">
+										<input type="button" value="목록보기" onclick="location.href='admin_orderCancleList.mdo'"/>
+									</c:if>									
 								</div>
 						</form>
 						

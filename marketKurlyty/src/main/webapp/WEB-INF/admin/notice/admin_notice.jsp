@@ -101,7 +101,7 @@ textarea:focus, input:focus{
 									
 									<th scope="row" >조회수</th>
 									<td width="400px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;" name="notice_hit" value="${notice.notice_hit }" readonly="readonly">
+										<input type="text" style="width:100%; height:100%; border: none;"  value="${notice.notice_hit }" readonly="readonly">
 									</td>
 								</tr>
 								<tr>
@@ -115,6 +115,7 @@ textarea:focus, input:focus{
 
 								</tr>
 							</table>
+							<input type="hidden" value="${notice.notice_serial }" name="notice_serial">
 							<input type="submit" value="수정하기" style="margin-left: 10px"/>
 							<input type="button" value="목록보기" onclick="location.href='admin_noticeList.mdo'"/>
 						</form>

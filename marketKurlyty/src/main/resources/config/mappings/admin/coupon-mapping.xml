@@ -32,7 +32,7 @@
 	 	 );
  	</insert>
  	<delete id="deleteCoupon" parameterType="coupon">
- 	 	DELETE FROM MK_COUPON_USE
+ 	 	DELETE FROM MK_COUPON
  	 	WHERE 
  	 	coupon_serial = #{coupon_serial}
  	</delete>
