@@ -63,6 +63,7 @@ public class AdminSalesController {
 	public void salesExel(HttpServletResponse response, AdminSalesVO sales) throws Exception {
 		// 게시판 목록조회
 		List<AdminSalesVO> list = adminService.getDate(sales);
+		System.out.println(sales.getStartdate());
 		// 워크북 생성
 		Workbook wb = new HSSFWorkbook();
 		Sheet sheet = wb.createSheet("일별매출");

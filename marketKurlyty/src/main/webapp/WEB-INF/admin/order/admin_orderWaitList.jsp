@@ -48,14 +48,15 @@
 					<li class="breadcrumb-item">결제완료</li>
 					<li class="breadcrumb-item active">목록</li>
 				</ol>
-				
+				<form id="form">
 				<div class="card mb-4">
 					<div class="card-header">
 						<div class="col three">
 								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
 									결제완료 / 배송준비중
 									<a href="#" class="btn1 btn-dark" id="down" style="float:right;">송장출력</a>
-									<a href="#" class="btn1 btn-dark" id="update" style="float:right; margin-right: 10px">배송상태 변경(배송중)</a>
+									<a href="#" class="btn1 btn-dark" id="update" style="float:right; margin-right: 10px">배송중으로 변경</a>
+									<a href="#" class="btn1 btn-dark" id="update1" style="float:right; margin-right: 10px">배송준비중으로 변경</a>
 								</div>
 						</div>
 					</div>
@@ -89,7 +90,7 @@
 							<tbody>
 							<c:forEach var="order" items="${orderWaitList }">
 								<tr>
-									<td><input type="checkbox" name="chk" value="${order.order_merchant_serial}"/></td>
+									<td><input type="checkbox" name="merchant" id="merchant" value="${order.order_merchant_serial}"/></td>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 200px" >${order.order_merchant_serial }</td>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 100px"><fmt:formatDate value="${order.order_date }" pattern="yyyy-MM-dd"/></td>
 									<td onClick="location.href='admin_orderWait.mdo?order_merchant_serial=${order.order_merchant_serial}'" style="width: 150px">${order.user_name }/(${order.user_id })</td>
@@ -112,15 +113,17 @@
 										</select>
 									</td>
 									<td>
+										
 										<input type="hidden" id="order_merchant_serial" value="${order.order_merchant_serial}">
 										<input type="button" value="수정" id="updateBtn"/>
 									</td>
 								</tr>
 							</c:forEach>
-							</tbody>
+							</tbody>		
 						</table>
 					</div>
 				</div>
+				</form>
 				<!-- 여기만 수정해서 사용하세요!! -->
 			</div>
 		</main>
@@ -163,8 +166,10 @@
 		$("input[name=chk]:checked").each(function(){
 			 checkArr.push($(this).val());
 		});
+		$("#form").attr("action", "admin_excelDown.mdo");  
+		$("#form").submit();
 		
-		if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
+/* 		if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
 			 if(checkArr.length >0){
 				$.ajax({
 				    type: 'post',
@@ -182,12 +187,12 @@
 					}
 				});
 			 }
-		}
+		} */
 	});
 	
 	$("#update").click(function() {
 		var checkArr = [];
-		$("input[name=chk]:checked").each(function(){
+		$("input[name=merchant]:checked").each(function(){
 			 checkArr.push($(this).val());
 		});
 		
@@ -196,6 +201,35 @@
 				$.ajax({
 				    type: 'post',
 				    url: 'admin_orderWaitUpdate1.mdo',
+				    dataType: 'text',
+				    data: { "merchant": checkArr },
+				    success: function(result) {
+						if(result != 0){
+							alert("배송 상태 수정을 성공 하였습니다.")
+							 location.reload();
+						}else{
+							alert("배송 상태 수정을 실패 하였습니다.")
+							
+						}
+					}
+				});
+			 }else{
+				 alert("주문건을 체크해주세요.");
+				 location.reload();
+			 }
+		}
+	});
+	$("#update1").click(function() {
+		var checkArr = [];
+		$("input[name=merchant]:checked").each(function(){
+			 checkArr.push($(this).val());
+		});
+		
+		 if(confirm('체크한 주문건 배송상태를 (배송준비중)으로 수정하시겠습니까?')) {
+			 if(checkArr.length >0){
+				$.ajax({
+				    type: 'post',
+				    url: 'admin_orderWaitUpdate2.mdo',
 				    dataType: 'text',
 				    data: { "merchant": checkArr },
 				    success: function(result) {
@@ -230,11 +264,11 @@
 	        //클릭되었으면
 	        if($("#checkall").prop("checked")){
 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-	            $("input[name=chk]").prop("checked",true);
+	            $("input[name=merchant]").prop("checked",true);
 	            //클릭이 안되있으면
 	        }else{
 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-	            $("input[name=chk]").prop("checked",false);
+	            $("input[name=merchant]").prop("checked",false);
 	        }
 	    })
 		
