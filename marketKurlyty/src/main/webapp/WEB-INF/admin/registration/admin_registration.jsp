@@ -84,7 +84,7 @@
    </div>
    <!-- Main -->
 <script type="text/javascript">
-$("#comeIn").click(function() {	
+$("#comeIn").click(function() {
 	$("#form").attr("action", "insertStock.mdo");  
 	$("#form").submit();
 });

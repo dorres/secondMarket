@@ -235,7 +235,7 @@ $(document).on("click", "#return", function(){
 	} 
 	
 	if(confirm(serial2 +' 주문건을 반품요청으로 처리하시겠습니까?')) {
-		$.ajax({"#"
+		$.ajax({
 		    type: 'post',
 		    url: 'admin_orderReturnUpdate.mdo',
 		    dataType: 'text',
@@ -260,7 +260,6 @@ $(document).on("click", "#cancle", function(){
 	var serial2 = tr.find("#order_details_order_serial").val();
 	var title = tr.find("#qna_personal_answer_title").val();
 	var content = tr.find("#qna_personal_answer").val();
-	
 	if(document.subForm.qna_personal_answer_title.value==""){
 		alert("답변 제목을 입력하세요.");
 		document.subForm.qna_personal_answer_title.focus();
@@ -272,7 +271,7 @@ $(document).on("click", "#cancle", function(){
 		return;
 	} 
 	
-	if(confirm(serial2 +' 주문건을 취소요청으로 처리하시겠습니까?')) {
+	 if(confirm(serial2 +' 주문건을 취소요청으로 처리하시겠습니까?')) {
 		$.ajax({
 		    type: 'post',
 		    url: 'admin_orderCancleUpdate.mdo',
