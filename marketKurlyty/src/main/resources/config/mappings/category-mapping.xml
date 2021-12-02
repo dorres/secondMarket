@@ -213,18 +213,6 @@
  		ORDER BY PRODUCT.category_goods_serial
  		LIMIT 5
  	</select>
- 	<select id="getRecipeSearch" resultType="product">
- 		SELECT * FROM 
- 		(SELECT first.*, second.GOODS_DETAIL_SERIAL, second.goods_detail_price, second.GOODS_DETAIL_DICOUNTRATE,
- 		second.GOODS_DETAIL_STATUS, second.GOODS_DETAIL_STOCK_QUANTITY,
- 		(second.goods_detail_price*(((100-(second.goods_detail_DICOUNTRATE+(coalesce(NULLIF(second.goods_detail_promotion_serial,0),0)*10))
- 		)/100.0))) as goods_last_price
- 		FROM MK_CATEGORY_GOODS as first JOIN MK_GOODS_DETAIL as second ON first.CATEGORY_GOODS_SERIAL=second.CATEGORY_GOODS_SERIAL) as PRODUCT
- 		WHERE PRODUCT.category_goods_name LIKE '%'||#{value}||'%'
- 		AND PRODUCT.GOODS_DETAIL_STATUS=1
- 		ORDER BY PRODUCT.category_goods_serial
- 		LIMIT 5
- 	</select>
  	<!-- recipe -->
  	<select id="getRecipeList" resultType="first.market.kurlyty.user.vo.RecipeVO">
  		SELECT * FROM MK_RECIPE ORDER BY recipe_serial DESC
