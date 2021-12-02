@@ -36,7 +36,8 @@ public class AdminOrderVO {
 	private String order_merchant_serial;
 	//주문했을때 주문내역에 대표 이미지 띄우기 위해서
 	private int master_goods_serial;
-	
+	//카운트
+	private int count;
 	
 	// join에 필요한 컬럼
 	private String category_goods_name;

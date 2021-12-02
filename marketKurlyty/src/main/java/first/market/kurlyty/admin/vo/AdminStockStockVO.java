@@ -8,6 +8,7 @@ public class AdminStockStockVO {
 	private String category_main_serial;
 	private String category_sub_serial;
 	private int category_goods_serial;
+	private String category_goods_name;
 	private int goods_detail_price;
 	private int goods_detail_stock_quantity;
 	private int goods_detail_stock_notification;

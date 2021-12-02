@@ -372,7 +372,7 @@ $(document).ready(function(){
 											</div>
 											<div class="group_btn off">
 												<div class="view_function">
-													<button type="button" class="btn btn_alarm">재입고 알림</button>
+													
 												</div>
 												<span class="btn_type1"> <input type="button"
 													class="txt_type" value="장바구니 담기"

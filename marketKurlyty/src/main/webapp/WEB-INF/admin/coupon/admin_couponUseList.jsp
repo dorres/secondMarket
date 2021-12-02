@@ -24,7 +24,7 @@
  <script type="text/javascript">
 
 	function delete_check(url) {
-		var answer = confirm("쿠폰을 삭제할꺼임?");
+		var answer = confirm("쿠폰을 삭제 하시겠습니까?");
 		if (answer == true) {
 			location = url;
 		}
@@ -44,13 +44,20 @@
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">쿠폰 사용 현항</h1>
+				<h1 class="mt-4">쿠폰</h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">쿠폰 사용</li>
+					<li class="breadcrumb-item active">목록</li>
+				</ol>
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
-							<div class="col three">
-								<a onclick="pop()" class="btn1 btn-dark">쿠폰 발급</a>
-							</div>
+					<div class="card-header">
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									쿠폰 사용 목록
+									<a onclick="pop()" class="btn1 btn-dark" style="float: right">쿠폰 발급</a>
+								</div>
 						</div>
+					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
 							<thead>
@@ -86,8 +93,6 @@
 													유효기간 만료 쿠폰
 												</c:if>
 											</td>
-
-										
 											<td>
 												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_couponUseDelete.mdo?coupon_use_serial=${coupon.coupon_use_serial }')"/>
 											</td>

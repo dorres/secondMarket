@@ -11,29 +11,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style type="text/css">
-table{
-	border-collapse: collapse;
-	text-align: left;
-	width: 1300px;
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
 }
-th {
-	width: 130px;
-	font-weight: bold;
-	border: 1px solid #ccc;
-	height: 50px;
-
+table.type02 th {
+  width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
 }
-td {
-	width: 200px;
-	border: 1px solid #ccc;
+table.type02 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
-td >input{
+table.type02 td >input{
 	width: 100%;
 	height: 100%;
 	border: none;
 	resize: none;
 }
-
 textarea {
 	width: 100%;
 	height: 100%;
@@ -42,7 +52,7 @@ textarea {
 }
 textarea:focus, input:focus{
     outline: none;
-}
+} 
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
@@ -135,21 +145,25 @@ function formGoodsSubmit() {
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">카테고리</h1>
+				<h1 class="mt-4">상품</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">3차카테고리 등록(상품)</a></li>
+					<li class="breadcrumb-item">3차카테고리(상품)</li>
 					<li class="breadcrumb-item active">등록</li>
 				</ol>
 
 				<div class="card mb-4">
 					<div class="card-header">
-						3차 카테고리 등록
+						<div class="col three">
+							<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+								3차 카테고리 등록
+							</div>							
+						</div>
 					</div>
 					<div class="card-body">
 						<form action="admin_categoryGoodsInsert.mdo" name="goodsForm" method="POST" enctype="multipart/form-data">
-								<table>
+								<table class="type02">
 									<tr>
-										<th>카테고리</th>
+										<th scope="row">카테고리</th>
 										<td colspan="3" >
 											<b>1차</b>
 											<select name="category_main_serial" id="category_main_serial">
@@ -165,29 +179,29 @@ function formGoodsSubmit() {
 												</c:forEach>
 											</select>
 										</td>
-										<th>상품명</th>
+										<th scope="row">상품명</th>
 										<td colspan="2"><input type="text" name="category_goods_name" style="width: 100%; height: 100%" placeholder="ex) 친환경 당근 500g"></td>
 									</tr>
 										
 									<tr>
 
-										<th>상품명 설명</th>
+										<th scope="row">상품명 설명</th>
 										<td colspan="5"><input type="text" name="category_goods_name_subtext" placeholder="ex) 껍질째 먹을 수 있는 친환경 흙당근 (500g 내외)" ></td>
 									</tr>
 									
 									<tr>
-										<th>상품 단위</th>
+										<th scope="row">상품 단위</th>
 										<td><input type="text" name="category_goods_unit"  placeholder="ex) 1봉지"></td>
 										
-										<th>상품 무게</th>
+										<th scope="row">상품 무게</th>
 										<td><input type="text" name="category_goods_weight" placeholder="ex) 500g(2~4개입)"></td>
 										
-										<th>원산지</th>
+										<th scope="row">원산지</th>
 										<td><input type="text" name="category_goods_origin" placeholder="ex) 국내산"></td>
 									</tr>
 		
 									<tr>
-										<th>포장 타입</th>
+										<th scope="row">포장 타입</th>
 										<td>
 											<select name="category_goods_packaging_type" style="width: 200px">
 													<option value="냉동/종이포장" selected="selected">냉동/종이포장</option>
@@ -197,7 +211,7 @@ function formGoodsSubmit() {
 											</select>
 										</td>
 										
-										<th>배송 유형</th>
+										<th scope="row">배송 유형</th>
 										<td>
 											<select name="category_goods_delivery_type" style="width: 200px">
 												<option value="샛별배송/택배배송" selected="selected">샛별배송/택배배송</option>
@@ -205,32 +219,32 @@ function formGoodsSubmit() {
 											</select>
 										</td>
 										
-										<th>유통기한</th>
+										<th scope="row">유통기한</th>
 										<td><input type="text" name="category_goods_exp_date"></td>
 									</tr>
 									
 									<tr>
-										<th>안내사항</th>
+										<th scope="row">안내사항</th>
 										<td colspan="5"><textarea rows="5" style="width: 100%" name="category_goods_info"></textarea></td>
 									</tr>
 									
 									<tr>
-										<th>참조사항</th>
+										<th scope="row">참조사항</th>
 										<td colspan="5"><textarea rows="5"  style="width: 100%" name="category_goods_ref"></textarea></td>
 									</tr>
 									
 									<tr>
-										<th>알레르기</th>
+										<th scope="row">알레르기</th>
 										<td colspan="5"><textarea rows="5"  style="width: 100%" name="category_goods_allergy"></textarea></td>
 									</tr>
 									
 									<tr>
-										<th>상품 정보 제목</th>
+										<th scope="row">상품 정보 제목</th>
 										<td colspan="5"><input type="text" name="category_goods_detail_name1" placeholder="ex) 친환경 당근"></td>
 									</tr>
 									
 									<tr>
-										<th>상품 정보 소제목</th>
+										<th scope="row">상품 정보 소제목</th>
 										<td colspan="5"><input type="text" name="category_goods_detail_name2" placeholder="ex) 베타카로틴이 풍부한 주황빛 채소"></td>
 									</tr>
 									
@@ -242,25 +256,25 @@ function formGoodsSubmit() {
 									</tr>
 									
 									<tr>
-										<th>썸네일 이미지</th>
+										<th scope="row">썸네일 이미지</th>
 										<td colspan="5"><input type="file" name="goodsImage1" /></td>
 									</tr>
 									
 									<tr>
-										<th>상품 정보 상단 이미지</th>
+										<th scope="row">상품 정보 상단 이미지</th>
 										<td colspan="5"><input type="file" name="goodsImage2" /></td>
 									</tr>
 									
 									<tr>
-										<th>상품 정보 메인 이미지</th>
+										<th scope="row">상품 정보 메인 이미지</th>
 										<td colspan="5"><input type="file" name="goodsImage3" /></td>
 									</tr>
 																		
 								</table>
 								<br>
-								<div align="right" style="width: 1200px">
+								<div style="margin-left:10px">
 									<input type="button" value="등록하기" onclick="formGoodsSubmit()"/>
-									<input type="button" value="목록보기" onclick="location.href='admin_categoryGoodsList.mdo'"/>
+									<input type="button" value="목록보기" onclick="location.href='admin_categoryGoodsList.mdo'" style="margin-right:10px;"/>
 								</div>
 						</form>
 						

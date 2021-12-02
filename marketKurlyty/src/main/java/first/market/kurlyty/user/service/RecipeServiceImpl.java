@@ -64,7 +64,10 @@ public class RecipeServiceImpl implements RecipeService {
 				}
 			}
 			if(itemList.size()==listIndex) {
-				itemList.add(recipeDao.getIngredients(ingredients[listIndex]));
+				ItemPageVO newItem = recipeDao.getIngredients(ingredients[listIndex]);
+				if(newItem!=null) {
+					itemList.add(newItem);
+				}
 			}
 			listIndex++;
 		}

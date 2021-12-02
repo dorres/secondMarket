@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminBestGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMemberChartVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
@@ -20,6 +22,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -100,72 +103,88 @@ public class AdminDAO {
 		return sqlSession.delete("AdminDAO.deleteTerms", agree);
 	}
 	
-	//상품등록
-	public int insertGoods(AdminRegistVO regist) {
-		return sqlSession.insert("RegistDAO.insertRegist", regist);
-	}
+//	//상품등록
+//	public int insertGoods(AdminRegistVO regist) {
+//		return sqlSession.insert("RegistDAO.insertRegist", regist);
+//	}
 	
 	//상품조회리스트
-	public List<AdminRegistVO> goodsList(AdminRegistVO regist){
-		return sqlSession.selectList("RegistDAO.getGoodsList", regist);
+	public List<AdminRegistVO> goodsList(){
+		return sqlSession.selectList("RegistDAO.getGoodsList");
 	}
-	
-	//상품 조회
-	public AdminRegistVO getGoods(AdminRegistVO regist) {
-		return sqlSession.selectOne("RegistDAO.getGoods", regist);
+	//상품 수정..
+	public int updateGoods(AdminStockStockVO stockstock) {
+		return sqlSession.update("RegistDAO.updateGoods", stockstock);
 	}
-	
-	//상품 수정
-	public int updateGoods(AdminRegistVO regist) {
-		return sqlSession.update("RegistDAO.updateGoods", regist);
+	public List<AdminStockStockVO> getCategory3Names(List<Integer> goodsList) {
+		return sqlSession.selectList("RegistDAO.getCategory3Names",goodsList);
 	}
-	
-	//상품 삭제
-	public int deleteGoods(AdminRegistVO regist) {
-		return sqlSession.delete("RegistDAO.deleteGoods", regist);
+	public int insertStock(AdminStockVO stock) {
+		return sqlSession.insert("RegistDAO.insertStock",stock);
 	}
-	
-	//재고 조회
-	public AdminStockVO getStock(AdminStockVO stock) {
-		return sqlSession.selectOne("RegistDAO.getStock", stock);
+	public int updateStockQuantity(AdminStockVO stock) {
+		return sqlSession.update("RegistDAO.updateStockQuantity",stock);
 	}
 	//입고 조회
 	public List<AdminStockVO> getStockList(AdminStockVO stock) {
 		return sqlSession.selectList("RegistDAO.stockList", stock);
 	}
-	//입고 수정
-	public int updateStock(AdminStockVO stock) {
-		return sqlSession.update("RegistDAO.updateStock", stock);
-	}
 	
-	//수량 합계
-	public AdminStockVO sumStock(AdminStockVO stock) {
-		return sqlSession.selectOne("RegistDAO.stockSum", stock);
-	}
-	//판매등록
-	public AdminStockVO getStock(int serial) {
-		return sqlSession.selectOne("RegistDAO.getStock",  serial);
-	}
 	
-	public int insertStock(AdminStockVO stock) {
-		return sqlSession.insert("RegistDAO.insertStock",stock);
-	}
-	
-	// 리스트에 재고 출력
-	public int stockstock(AdminStockStockVO stockstock) {
-		return sqlSession.update("RegistDAO.stockstcok", stockstock);
-	}
+//	//상품 조회
+//	public AdminRegistVO getGoods(AdminRegistVO regist) {
+//		return sqlSession.selectOne("RegistDAO.getGoods", regist);
+//	}
+//	
+//	//상품 삭제
+//	public int deleteGoods(AdminRegistVO regist) {
+//		return sqlSession.delete("RegistDAO.deleteGoods", regist);
+//	}
+//	
+//	//재고 조회
+//	public AdminStockVO getStock(AdminStockVO stock) {
+//		return sqlSession.selectOne("RegistDAO.getStock", stock);
+//	}
+
+//	//입고 수정
+//	public int updateStock(AdminStockVO stock) {
+//		return sqlSession.update("RegistDAO.updateStock", stock);
+//	}
+//	
+//	//수량 합계
+//	public AdminStockVO sumStock(AdminStockVO stock) {
+//		return sqlSession.selectOne("RegistDAO.stockSum", stock);
+//	}
+//	//판매등록
+//	public AdminStockVO getStock(int serial) {
+//		return sqlSession.selectOne("RegistDAO.getStock",  serial);
+//	}
+//	
+
+//	
+//	// 리스트에 재고 출력
+//	public int stockstock(AdminStockStockVO stockstock) {
+//		return sqlSession.update("RegistDAO.stockstcok", stockstock);
+//	}
 	//================================================================
-	
-	//리뷰 리스트
-	public List<AdminReviewVO> getReviewList(AdminReviewVO review){
-		return sqlSession.selectList("adminReviewDAO.reviewList", review);
+	//리뷰있는 상품
+	public List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review){
+		return sqlSession.selectList("adminReviewDAO.reviewGoodsName", review);
 	}
-	
 	
 	//리뷰 삭제
 	public int deleteReview(AdminReviewVO review) {
 		return sqlSession.delete("adminReviewDAO.deleteReview", review);
+	}
+	
+	//리뷰내용
+	public AdminReviewVO getReviewContent(AdminReviewVO review) {
+		return sqlSession.selectOne("adminReviewDAO.reviewContent", review);
+	}
+	
+	//베스트 리뷰
+	public int updateReview(AdminReviewVO review) {
+		return sqlSession.update("adminReviewDAO.updateReview",review);
 	}
 	//===============================================================
 	
@@ -199,13 +218,32 @@ public class AdminDAO {
 		return sqlSession.update("gqnaDAO.updateGqna",gqna);
 	}
 	
+	//상품문의 카운트
+	public GoodsQnaVO gqnaCount(GoodsQnaVO gqna) {
+		return sqlSession.selectOne("gqnaDAO.gqnaCount", gqna);
+	}
 	//================================================================
 	
-	//매출차트 날짜 
+	//매출차트 일별 
 	public List<AdminSalesVO> getDate (AdminSalesVO sales){
-		return sqlSession.selectList("SalesDAO.getDate", sales);
+		return sqlSession.selectList("SalesDAO.getDay", sales);
 	}
 	
+	//매출차트 월별
+	public List<AdminSales2VO> getMonth(AdminSales2VO sales){
+		return sqlSession.selectList("SalesDAO.getMonth", sales);
+	}
+	
+	//멤버등급 차트
+	public List<AdminMemberChartVO> getMemChart(AdminMemberChartVO memch){
+		return sqlSession.selectList("SalesDAO.getmemch", memch);
+	}
+	//================================================================
+	
+	//베스트 상품
+	public List<AdminBestGoodsVO> bestList(AdminBestGoodsVO best){
+		return sqlSession.selectList("bestGoodsDAO.bestList", best);
+	}
 	//================================================================
 
 	//공지사항 목록	
@@ -451,6 +489,10 @@ public class AdminDAO {
 	public List<AdminOrderVO> getOrderFinishList(){
 		return sqlSession.selectList("adminOrderDAO.getOrderFinishList");
 	}
+	//카운트
+	public AdminOrderVO orderCount(AdminOrderVO order) {
+		return sqlSession.selectOne("adminOrderDAO.count", order);
+	}
 	
 	//환불관리
 	public List<AdminOrderVO> getOrderRefundList(){
@@ -511,6 +553,13 @@ public class AdminDAO {
 	}
 	public List<AdminCouponVO> getUserId(AdminCouponVO coupon){
 		return sqlSession.selectList("couponDAO.getUserId",coupon);
+	}
+	//쿠폰 유효기간(쿼츠? )이용해보자
+	public List<AdminCouponVO> getCouponDate(){
+		return sqlSession.selectList("couponDAO.getCouponDate");
+	}
+	public int updateCouponDate(AdminCouponVO coupon) {
+		return sqlSession.update("couponDAO.updateCouponDate",coupon);
 	}
 	
 }

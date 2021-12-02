@@ -323,7 +323,7 @@
 																	&nbsp;&nbsp;${coupon.coupon_discount }원 할인,
 																</c:if>
 																<c:if test="${coupon.coupon_type==0 }">
-																	&nbsp;&nbsp;${coupon.coupon_discount }원 할인,
+																	&nbsp;&nbsp;${coupon.coupon_discount }% 할인,
 																	최대 ${coupon.coupon_max }원 할인적용
 																</c:if>
 																최소 주문 금액:${coupon.coupon_min }원
@@ -402,9 +402,7 @@
 								<input type="hidden" name="escrow" value="N">
 								<div class="type_form" style="display: block;">
 									<input type="hidden" name="save_payment_method" value="false">
-									<label> <input type="checkbox"
-										name="check_save_payment_method"> <span class="ico"></span>
-										선택한 결제 수단을 다음에도 사용
+									<label> 
 									</label>
 								</div>
 								<table class="goodsinfo_table tbl_left">
@@ -952,6 +950,7 @@ $(document).ready(function(){
 	})
 })
 function changeCoupon(){
+	$("input#payment").val(originPayPrice-point);
 	var index=parseInt(document.getElementById("selectCoupon").value);
 	var discount;
 	var max;
@@ -976,7 +975,7 @@ function changeCoupon(){
 			return false;
 		}
 		if(discount<100){
-			discount=parseInt(originPayPrice*((100-discount)/100));
+			discount=parseInt(originPayPrice*discount/100);
 			discount=parseInt(discount/10)*10;
 			if(discount>max)discount=max;
 		}

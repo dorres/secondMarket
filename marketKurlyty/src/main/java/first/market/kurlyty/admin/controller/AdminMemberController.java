@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
@@ -15,26 +16,25 @@ public class AdminMemberController {
 	
 	@Autowired
 	private AdminService adminService;
-	
+	//유저목록 리스트
 	@RequestMapping("admin_userList.mdo")
 	public String adminuserList(AdminUserVO adminUser, Model model) {
 		model.addAttribute("userList", adminService.userList(adminUser));
-		return "admin_userList";
+		return "user/admin_userList";
 	}
-	
+	//매니저 목록 리스트
 	@RequestMapping("admin_adminList.mdo")
 	public String memberAdmin(AdminVO admin, Model model) {
 		model.addAttribute("adminList", adminService.adminList(admin));
-		return "admin_adminList";
+		return "manager/admin_adminList";
 	}
-	
+	//매니저 목록 수정페이지
 	@RequestMapping("update.mdo")
 	public String update(AdminVO admin, Model model) {
-		System.out.println(admin.getAdmin_id());
 			model.addAttribute("update", adminService.loginGetUser(admin));
-		return "admin_update";
+		return "manager/admin_update";
 	}
-	
+	//수정
 	@RequestMapping("updateProc.mdo")
 	public String updateManager(AdminVO admin) {
 		int sucess = 0;
@@ -42,10 +42,10 @@ public class AdminMemberController {
 		if(sucess!=0) {
 			return "redirect:admin_adminList.mdo";
 		}else {
-			return "admin_update";
+			return "manager/admin_update";
 		}
 	}
-	
+	//삭제
 		@RequestMapping("deleteMember.mdo") 
 		public String deleteManager(AdminVO admin) {
 			int sucess = 0;
@@ -56,24 +56,17 @@ public class AdminMemberController {
 				return "update.mdo";
 			}
 		}
-		
-		@RequestMapping("getUser.mdo")
-		public String getUser(AdminUserVO user, Model model) {
-			model.addAttribute("getUser", adminService.getUser(user));
-			return "admin_updateUser";
-		}
-		
+
 		//회원 수정
 		@RequestMapping("updateUser.mdo")
-		public String updateUser(AdminUserVO user) {
+		@ResponseBody
+		public int updateUser(AdminUserVO user) {
 			int success = 0;
 			success = adminService.updateUser(user);
-			if(success !=0) {
-				return "redirect:admin_userList.mdo";
-		}else {
-			return "redirect:getUser.mdo";
+			
+			return success;
+
 		}
-}
 		//회원 삭제
 		@RequestMapping("deleteUser.mdo")
 		public String deleteUser(AdminUserVO user) {
@@ -89,12 +82,12 @@ public class AdminMemberController {
 		@RequestMapping("terms_agreeList.mdo")
 		public String getTermsAgreeList(AdminTermsAgreementVO agree, Model model) {
 			model.addAttribute("agreeList", adminService.getTermsAgree(agree));
-			return "admin_terms_agreementList";
+			return "terms/admin_terms_agreementList";
 		}
 		//약관 등록 이동
 		@RequestMapping("admin_terms.mdo")
 		public String terms(AdminTermsAgreementVO agree) {
-			return "admin_terms";
+			return "terms/admin_terms";
 		}
 		//약관 등록 
 		@RequestMapping("insertTerms.mdo")
@@ -111,7 +104,7 @@ public class AdminMemberController {
 		@RequestMapping("termsDetails.mdo")
 		public String getTerms(AdminTermsAgreementVO agree, Model model) {
 			model.addAttribute("getTerms", adminService.getTerms(agree));
-			return "admin_termsDetails";
+			return "terms/admin_termsDetails";
 		}
 		//약관 수정
 		@RequestMapping("updateTerms.mdo")

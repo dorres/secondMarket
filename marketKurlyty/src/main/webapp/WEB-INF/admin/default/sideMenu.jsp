@@ -34,6 +34,7 @@
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="admin_userList.mdo">회원관리</a>
 										<a class="nav-link" href="terms_agreeList.mdo">약관관리</a>
+										<a class="nav-link" href="admin_membershipList.mdo">등급관리</a>	
 									</nav>
 								</div>
 								<!--회원 -->
@@ -73,7 +74,7 @@
 								
 								<!-- 카테고리 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									카테고리<br>조회/등록/수정
+									상품<br>조회/등록/수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
@@ -89,15 +90,14 @@
 								
 								<!-- 판매 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-									상품<br>조회/등록/수정
+									판매<br>조회/등록/수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
 								</a>
 								<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="getGoodsList.mdo">조회/수정</a>
-										<a class="nav-link" href="registration.mdo">등록</a>
+										<a class="nav-link" href="getGoodsList.mdo">조회/등록/수정</a>
 									</nav>
 								</div>
 								<!-- 판매 -->
@@ -141,8 +141,8 @@
 						<div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="sales.mdo">매출통계관리</a>
-								<a class="nav-link" href="#">상품통계관리</a>
-								<a class="nav-link" href="#">회원통계</a>
+								<a class="nav-link" href="bestList.mdo">베트스상품</a>
+								<a class="nav-link" href="memberChart.mdo">회원통계</a>
 							</nav>
 						</div>
 						
@@ -179,7 +179,7 @@
 						</a>
 						<div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="getReviewList.mdo">리뷰</a>
+								<a class="nav-link" href="getReviewGoodsName.mdo">리뷰</a>
 								<a class="nav-link" href="gqnaList.mdo">상품문의(답변대기)</a>
 								<a class="nav-link" href="gqnaListSuc.mdo">상품문의(답변완료)</a>
 							</nav>
@@ -202,8 +202,8 @@
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="admin_bannerList.mdo">배너</a>
 								<a class="nav-link" href="admin_couponList.mdo">쿠폰등록</a>	
-								<a class="nav-link" href="admin_couponUseList.mdo">쿠폰발급</a>	
-								<a class="nav-link" href="admin_membershipList.mdo">적립금</a>														
+								<a class="nav-link" href="admin_couponUseList.mdo">쿠폰발급</a>														
+								<a class="nav-link" href="recipe.mdo">레시피</a>														
 							</nav>
 						</div>
 						<!-- 마케팅 관리 -->

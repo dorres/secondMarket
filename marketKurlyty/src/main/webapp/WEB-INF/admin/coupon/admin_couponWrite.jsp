@@ -38,6 +38,21 @@ table.type02 td {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
+table.type02 td >input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
+textarea {
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+}
+textarea:focus, input:focus{
+    outline: none;
+} 
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -52,10 +67,17 @@ table.type02 td {
 
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">쿠폰</h1>
-
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item">쿠폰 종류</li>
+					<li class="breadcrumb-item active">등록</li>
+				</ol>
 				<div class="card mb-4">
 					<div class="card-header">
-						쿠폰 등록
+						<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									쿠폰 종류 등록
+								</div>
+						</div>
 					</div>
 					<div class="card-body">
 						<form action="admin_couponInsert.mdo" method="POST" >

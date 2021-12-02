@@ -12,63 +12,12 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
  <script src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-		$(document).ready(function(){
-			var formObj = $("form[name='readForm']");
-			
-			// 수정 
-			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/board/updateView");
-				formObj.attr("method", "get");
-				formObj.submit();				
-			})
-			
-			// 삭제
-			$(".delete_btn").on("click", function(){
-				formObj.attr("action", "/board/delete");
-				formObj.attr("method", "post");
-				formObj.submit();
-			})
-			
-			// 취소
-			$(".list_btn").on("click", function(){
-				
-				location.href = "/board/list";
-			})
-		})
 		function delete_check(url) {
 			var answer = confirm("게시글를 정말로 삭제할까요?");
 			if (answer == true) {
 				location = url;
 			}
 		}
-		if(${notification!=null}){
-			alert("재고 부족한 재품이 있습니다.")
-		}
-	
-	function stock(index,serial){
-	document.updateForm.action="insertStock.mdo?index="+String(index)+"&serial="+String(serial);
-	document.updateForm.submit();
-}
-	$(document).ready(function(){ 
-		$('checkbox').click(function(e){
-			var id = e.target.getAttribute('name');
-			if ( ( name != '') && (name != null))  
-			alert(name);
-		});
-		
-		$("tr").each(function(){
-			$(this).click(function(){
-				if($(this).attr("style")){
-					$(this).attr("style","background:white;");
-				} else
-					 $(this).attr("style","background:pink;");
-				var text = $(this).find("#serial").text();
-				var serial = $(this).find("#hiSerial").val();
-				$("#a").attr("href","insertStock.mdo?serial="+serial);
-			})
-		});
-		
-	});
 	</script>
 	<style type="text/css">
 .btn1 {font-size: 20px; white-space:nowrap; width:200px; padding:.8em 1.5em; font-family: Open Sans, Helvetica,Arial,sans-serif; text-decoration-line: none;
@@ -92,17 +41,12 @@
 		<main>
 			<div class="container-fluid px-4">
 
-				<h1 class="mt-4">상품조회/수정</h1>
+				<h1 class="mt-4">리뷰</h1>
 				
-
+				<div style="margin:2%;"></div>
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
-							<div class="col three">
-								<a href="#" id="a" class ="btn1 btn-dark">버튼</a>
-							</div>
-						</div>
 					<div class="card-body">
-					<form name="" method="post" action="">
+					<form method="post" action="">
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
@@ -112,25 +56,27 @@
 									<th>작성일</th>
 									<th>조회</th>
 									<th>베스트리뷰</th>
-									<th>삭제</th>
+									<th>수정/삭제</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="review" items="${reviewList}">
 									<tr>
-										<td>${review.review_serial }</td>
-										<td>${review.review_title }</td>
-										<td>${review.user_id }</td>
-										<td><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
-										<td>${review.review.hit }</td>
-										<td>
-										<select name="review_best_up">
-										<option value="0" ${review.review_best_up == 0 ? "selected='selected" : '' }>일반리뷰</option>
-										<option value="1" ${review.review_best_up == 1 ? "selected='selected" : '' }>베스트리뷰</option>
-										</select>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_serial }
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_title }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.user_id }</td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'"><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></td>
+										<td onclick="location.href='getReviewContent.mdo?review_serial=${review.review_serial}'">${review.review_hit }</td>
+										<td >
+											<select name="review_best_up" id="review_best_up">
+												<option value="false" <c:if test ="${review.review_best_up eq 'false'}">selected="selected"</c:if> >일반리뷰</option>
+												<option value="true" <c:if test ="${review.review_best_up eq 'true'}">selected="selected"</c:if> >베스트리뷰</option>
+											</select>
 										</td>
 										<td>
-											<input type="button" value="삭제" onclick="deleteReview.mdo?review_serial=${review.review_serial}"/>
+											<input type="hidden" id="review_serial" value="${review.review_serial }">
+											<input type="button" value="수정" id="updateBtn"/>
+											<input type="button" value="삭제" onclick="javascript:delete_check('deleteReview.mdo?review_serial=${review.review_serial}')"/>
 										</td>
 									</tr>
 								</c:forEach>
@@ -150,6 +96,34 @@
 	<!-- Main -->
 	
 	<!-- 건들지마세요 -->
+	<script type="text/javascript"><!-- 동적 테이블은 이렇게 해야 버튼 이벤트가 먹힘-->
+	$(document).on("click", "#updateBtn", function(){
+		var checkBtn = $(this);
+		var tr = checkBtn.closest("tr");
+		var review = tr.find("#review_best_up option:selected").val();
+		var serial = tr.find("#review_serial").val();
+		
+		console.log(review);
+		console.log(serial);
+	    if(confirm('리뷰상태를 수정하시겠습니까?')) {
+		$.ajax({
+			type:"POST",
+			url:"updateReview.mdo",
+			dataType : "text",
+			data : {"review_best_up" : review, "review_serial" : serial},
+			success: function(result) {
+				if(result != "0"){
+					alert("수정 성공!")
+					location.reload()
+				}else{
+					alert("수정 실패!")
+					location.reload()
+				}
+			}
+		}) 
+		}
+	});
+	</script>
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

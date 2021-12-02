@@ -44,5 +44,9 @@
 		WHERE Q.qna_goods_answer_status = 1
 	</select>
 	
+	<select id="gqnaCount" resultType="gqna">
+		select count(*) from mk_qna_goods where qna_goods_answer_status = 0
+	</select>
+	
 	
  </mapper>
