@@ -61,7 +61,7 @@ div, th, td, li, dt, dd, p {
 													<td>${personalqna.qna_personal_category}</td>
 													<td>${personalqna.qna_personal_title}</td>
 													<td>${personalqna.user_id}</td>
-													<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
+													<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-MM-dd"/> </td>
 												</tr>
 												<c:if test="${personalqna.qna_personal_image1 != null}">
 												<tr>
