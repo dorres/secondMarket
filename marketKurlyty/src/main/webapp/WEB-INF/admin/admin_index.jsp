@@ -54,9 +54,9 @@
 					</ol>
 					<div class="row">
 						<!-- primary Card -->
-						<div class="col-xl-3 col-md-6">
-							<div class="card bg-primary text-white mb-4">
-								<div class="card-body">금 주 매출</div>
+						<div class="col-xl-3 col-md-6" >
+							<div class="card bg-primary text-white mb-4" >
+								<div class="card-body" >금 주 매출</div>
 								<div class="card-footer d-flex align-items-center justify-content-between">
 									<a class="small text-white stretched-link" href="sales.mdo">자세히보기</a>
 									<div class="small text-white">
@@ -314,7 +314,7 @@
     total2 += e.sales_amount;
     
     if(e.sales_amount>max2)
-       max = e.sales_amount;
+       max2 = e.sales_amount;
     
     return e.sales_amount;
  })
@@ -329,14 +329,14 @@
                  display: false
                },
                ticks: {
-                 maxTicksLimit: 7
+                 maxTicksLimit:12
                }
              }],
              yAxes: [{
                ticks: {
                  min: 0,
-                 max: (max),
-                 maxTicksLimit: 6
+                 max: (max2),
+                 maxTicksLimit: 8
                },
                gridLines: {
                  color: "rgba(0, 0, 0, .125)",

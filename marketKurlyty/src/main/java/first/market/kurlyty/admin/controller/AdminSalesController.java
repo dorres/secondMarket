@@ -47,6 +47,7 @@ public class AdminSalesController {
 		sales.setStartdate(startDate);
 		sales.setEnddate(date.format(new Date()));
 		model.addAttribute("chartList", JSONArray.fromObject(adminService.getDate(sales)));
+		
 		// 월별
 		SimpleDateFormat date2 = new SimpleDateFormat("yyyy-MM");
 		Calendar month = Calendar.getInstance();
@@ -58,11 +59,12 @@ public class AdminSalesController {
 		return "chart/sales";
 	}
 
-	// 일별 월별 엑셀
+	// 일별 엑셀
 	@RequestMapping("salesExel1.mdo")
 	public void salesExel(HttpServletResponse response, AdminSalesVO sales) throws Exception {
 		// 게시판 목록조회
 		List<AdminSalesVO> list = adminService.getDate(sales);
+		
 		// 워크북 생성
 		Workbook wb = new HSSFWorkbook();
 		Sheet sheet = wb.createSheet("일별매출");
@@ -133,6 +135,81 @@ public class AdminSalesController {
 		}
 	}
 	
+	// 월별 엑셀
+		@RequestMapping("salesExel2.mdo")
+		public void salesExel(HttpServletResponse response, AdminSales2VO sales2) throws Exception {
+			// 게시판 목록조회
+			List<AdminSales2VO> list2 = adminService.getMonth(sales2);
+			
+			// 워크북 생성
+			Workbook wb = new HSSFWorkbook();
+			Sheet sheet = wb.createSheet("월별매출");
+			Row row = null;
+			Cell cell = null;
+			int rowNo = 0;
+			// 테이블 헤더용 스타일
+			CellStyle headStyle = wb.createCellStyle();
+			// 가는 경계선을 가집니다.
+			headStyle.setBorderTop(BorderStyle.THIN);
+			headStyle.setBorderBottom(BorderStyle.THIN);
+			headStyle.setBorderLeft(BorderStyle.THIN);
+			headStyle.setBorderRight(BorderStyle.THIN);
+			// 배경색
+			headStyle.setFillForegroundColor(HSSFColorPredefined.BLUE.getIndex());
+			headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+			// 데이터는 가운데 정렬합니다.
+			headStyle.setAlignment(HorizontalAlignment.CENTER);
+			// 데이터용 경계 스타일 테두리만 지정
+			CellStyle bodyStyle = wb.createCellStyle();
+			bodyStyle.setBorderTop(BorderStyle.THIN);
+			bodyStyle.setBorderBottom(BorderStyle.THIN);
+			bodyStyle.setBorderLeft(BorderStyle.THIN);
+			bodyStyle.setBorderRight(BorderStyle.THIN);
+
+			// 헤더 생성
+			row = sheet.createRow(rowNo++);
+			cell = row.createCell(0);
+			cell.setCellStyle(headStyle);
+			cell.setCellValue("날짜");
+			cell = row.createCell(1);
+			cell.setCellStyle(headStyle);
+			cell.setCellValue("매출");
+
+			// 데이터 부분 생성
+			for (AdminSales2VO vo : list2) {
+				row = sheet.createRow(rowNo++);
+				cell = row.createCell(0);
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(vo.getMonth_chart());
+				cell = row.createCell(1);
+				cell.setCellStyle(bodyStyle);
+				cell.setCellValue(vo.getSales_amount());
+			}
+			// 컨텐츠 타입과 파일명 지정
+			String filename = "월매출.xls";
+			FileOutputStream fileOut = null;
+			response.setContentType("application/octet-stream;");
+			response.setHeader("Content-Disposition",
+					"attachment; filename=\"" + new String(filename.getBytes(), "UTF-8") + "\"");
+			response.setHeader("Pragma", "no-cache;");
+			response.setHeader("Expires", "-1;");
+
+			// excel 파일 저장
+			try {
+				fileOut = new FileOutputStream("월매출.xls");
+				wb.write(response.getOutputStream());
+				fileOut.flush();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (fileOut != null) {
+					fileOut.close();
+				}
+			}
+		}
 	//회원등급 차트
 	@RequestMapping("memberChart.mdo")
 	public String memberchart(AdminMemberChartVO memch, Model model) {
@@ -140,14 +217,14 @@ public class AdminSalesController {
 		return "chart/member_chart";
 	}
 	
-	// 일별 월별 엑셀
+	// 회원등급 엑셀
 	@RequestMapping("memchExel.mdo")
 	public void salesExel(HttpServletResponse response, AdminMemberChartVO memch) throws Exception {
 		// 게시판 목록조회
 		List<AdminMemberChartVO> list = adminService.getMemChart(memch);
 		// 워크북 생성
 		Workbook wb = new HSSFWorkbook();
-		Sheet sheet = wb.createSheet("일별매출");
+		Sheet sheet = wb.createSheet("회원등급");
 		Row row = null;
 		Cell cell = null;
 		int rowNo = 0;
