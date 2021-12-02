@@ -52,7 +52,21 @@ textarea:focus, input:focus{
     outline: none;
 } 
 </style>
-
+<script type="text/javascript">
+function formGoodsSubmit() {
+	if(document.noticeForm.notice_title.value==""){
+		alert("제목을 입력하세요.");
+		document.noticeForm.notice_title.focus();
+		return;
+	}
+	if(document.noticeForm.notice_content.value==""){
+		alert("내용을 입력하세요.");
+		document.noticeForm.notice_content.focus();
+		return;
+	}
+	document.form.submit();
+}
+</script>	
 </head>
 <body class="sb-nav-fixed">
 <div id="layoutSidenav">
@@ -80,21 +94,21 @@ textarea:focus, input:focus{
 					</div>
 					<div class="card-body">
 						<!-- 메인작업 -->
-						<form action="admin_noticeInsert.mdo" method="POST">
+						<form action="admin_noticeInsert.mdo" method="POST" id="noticeForm">
 							<input type="hidden" name="notice_id" value="${adminId }">
 							<table class="type02">
 								<tr>
 									<th scope="row" >제목</th>
 									<td width="800px" height="40px">
-										<input type="text" style="width:100%; height:100%; border: none;"name="notice_title">
+										<input type="text" style="width:100%; height:100%; border: none;" name="notice_title" id="notice_title">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row" >내용</th>
-									<td colspan="3"  height="500px"><textarea name="notice_content" ></textarea>
+									<td colspan="3"  height="500px"><textarea name="notice_content" id="notice_content"></textarea>
 								</tr>
 							</table>
-							<input type="submit" value="등록하기" style="margin-left: 10px"/>
+							<input type="button" value="등록하기" onclick="formGoodsSubmit()" style="margin-left: 10px"/>
 							<input type="button" value="목록보기" onclick="location.href='admin_noticeList.mdo'"/>
 						</form>
 					</div>
@@ -106,7 +120,7 @@ textarea:focus, input:focus{
 	</div>
 	</div>
 	<!-- Main -->
-	
+
 	<!-- 건들지마세요 -->
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/scripts.js"></script>

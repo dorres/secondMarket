@@ -100,7 +100,7 @@
 
 .btn1.btn-dark:hover {
 	background-color: #6633CC;
-	color:#330033;
+	color: #330033;
 }
 
 .btn1.btn-dark:active {
@@ -120,53 +120,104 @@
 		<!-- Main -->
 		<div id="layoutSidenav_content">
 			<main>
+			
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">매출통계관리</h1>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item"><a href="index.html">매출</a></li>
 						<li class="breadcrumb-item active">Charts</li>
 					</ol>
-					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-chart-area me-1"></i> 일별 매출 관리
+					
+					
+					<form method="post" id="form1">
+						<div class="row" style="flex-wrap: nowrap;">
+							<div class="col-lg-6" style="float:left">
+								<div class="card mb-4">
+									<div class="card-header" style="background:#FF6384;">
+										<i class="fas fa-chart-area me-1"></i> 일별 매출 관리
+									</div>
+									<div class="card-body">
+										<div style="text-align: center;">
+											From: 
+											<input type="date" name="startdate" id="startdate" onchange="filterData()" value="2021-11-20"> 
+											To: <input type="date" name="enddate" id="enddate" onchange="filterData()">
+										</div>
+										<div align="center">
+											<input type="button" id="ben1" class="btn1" value="Exel" style="margin-top:2%;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						
+						&nbsp;&nbsp;&nbsp;
+						<form method="post" id="form2">
+						<div class="col-lg-6">
+							<div class="card mb-4">
+								<div class="card-header" style="background:#660099; color:white">
+									<i class="fas fa-chart-bar me-1"></i> 월별 매출 관리
+								</div>
+								<div class="card-body" >
+									<div style="text-align: center;">
+										From: <input type="month" id="startdate2" name="startdate2"
+											onchange="filter2Data()" value="2021-11"> To: <input
+											type="month" id="enddate2" name="enddate2" onchange="filter2Data()">
+									</div>
+									<div align="center">
+										<input type="submit" id="ben2" class="btn1" value="Exel" style="margin-top:2%;">
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="card-body">
-							<div style="text-align: center;">
-								From: <input type="date" id="startdate" onchange="filterData()"
-									value="2021-11-20"> To: <input type="date" id="enddate"
-									onchange="filterData()">
+						</form>
+					</div>
+						
+					
+					
+					<div class="row" style="flex-wrap: nowrap;">
+						<div class="col-lg-6" style="float:left;" >
+							<div class="card mb-4"  style="height:92%">
+								<div class="card-header" style="background:#FF6384;">
+									<i class="fas fa-chart-area me-1"></i> 일별 매출 차트
+								</div>
+								<div class="card-body">
+									<canvas id="myAreaChart" width="50%" height="23%"></canvas>
+									<hr>
+								</div>
 							</div>
-							<canvas id="myAreaChart" width="50%" height="8"></canvas>
-							<hr>
-							<div align="center">
-								<input type="button" class="btn1" value="Exel" onclick="location.href='salesExel1.mdo'">
-							</div>
-
 						</div>
 						&nbsp;&nbsp;&nbsp;
-						<div class="card-header">
-							<i class="fas fa-chart-bar me-1"></i> 월별 매출 관리
-						</div>
-						<div class="card-body">
-							<div style="text-align: center; margin: 1%;">
-								From: <input type="month" id="startdate2"
-									onchange="filter2Data()" value="2021-11"> To: <input
-									type="month" id="enddate2" onchange="filter2Data()">
+						<div class="col-lg-6">
+							<div class="card mb-4">
+								<div class="card-header" style="background:#660099;  color:white">
+									<i class="fas fa-chart-bar me-1"></i> 월별 매출 차트
+								</div>
+								<div class="card-body">
+									<canvas id="myBarChart" width="50%" height="22%"></canvas>
+									<hr>
+								</div>
 							</div>
-							<canvas id="myBarChart" width="50%" height="10"></canvas>
-						</div>
-						<hr>
-						<div align="center">
-							<input type="button" class="btn1" value="Exel" style="margin-bottom:1%;" onclick="location.href=''">
 						</div>
 
 					</div>
+
 				</div>
 			</main>
 
 			<jsp:include page="../default/footer.jsp"></jsp:include>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+$("#ben1").click(function() {   
+	   $("#form1").attr("action", "salesExel1.mdo");  
+	   $("#form1").submit();
+	});
+$("#ben2").click(function() {   
+	   $("#form2").attr("action", "salesExel2.mdo");  
+	   $("#form2").submit();
+	});
+</script>
 	<!-- Main -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -220,7 +271,7 @@
                ticks: {
                  min: 0,
                  max: (max),
-                 maxTicksLimit: 6
+                 maxTicksLimit: 9
                },
                gridLines: {
                  color: "rgba(0, 0, 0, .125)",
@@ -301,7 +352,7 @@
     total2 += e.sales_amount;
     
     if(e.sales_amount>max2)
-       max = e.sales_amount;
+       max2 = e.sales_amount;
     
     return e.sales_amount;
  })
@@ -316,14 +367,14 @@
                  display: false
                },
                ticks: {
-                 maxTicksLimit: 7
+                 maxTicksLimit: 12
                }
              }],
              yAxes: [{
                ticks: {
                  min: 0,
-                 max: (max),
-                 maxTicksLimit: 6
+                 max: (max2),
+                 maxTicksLimit: 8
                },
                gridLines: {
                  color: "rgba(0, 0, 0, .125)",

@@ -950,13 +950,15 @@ $(document).ready(function(){
 	})
 })
 function changeCoupon(){
-	$("input#payment").val(originPayPrice-point);
+	var point=$("input#usePoint").val();
+	if(point==""||point==null)point=0;
 	var index=parseInt(document.getElementById("selectCoupon").value);
 	var discount;
 	var max;
 	var min;
+	$("input#payment").val(originPayPrice-parseInt(point));
 	var payment=parseInt($("input#payment").val());
-	var point=$("input#usePoint").val();
+	
 	originPayPrice=keepPayPrice;
 	$("span#couponFalse").text("")
 	if(index>=0){
@@ -1062,14 +1064,16 @@ function reqeustPay(){
 		alert("배송지 정보를 입력해주세요");
 		return false
 	}
-	if($("input#usePoint").val()!="" && $("input#usePoint").val()!="0"){
-		if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
-			alert("적립금은 10원 단위로 사용할 수 있습니다.")
-			return false;
-		}
-		if(parseInt($("input#usePoint").val())<100){
-			alert("적립금은 100원 이상부터 사용가능합니다.");
-			return false;
+	if($("input#usePoint").val()!=null){
+		if($("input#usePoint").val()!="" && $("input#usePoint").val()!="0"){
+			if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
+				alert("적립금은 10원 단위로 사용할 수 있습니다.")
+				return false;
+			}
+			if(parseInt($("input#usePoint").val())<100){
+				alert("적립금은 100원 이상부터 사용가능합니다.");
+				return false;
+			}
 		}
 	}
 	if(parseInt($("input#usePoint").val())>=originPayPrice){
@@ -1118,7 +1122,7 @@ function reqeustPay(){
 				var recipiPhone=$("input#recipientPhone").val();
 				var amount=parseInt(data.amount)
 				var usingPoint=$("input#usePoint").val();
-				if(usingPoint=="")usingPoint=0;
+				if(usingPoint==""||usingPoint==null)usingPoint=0;
 				var coupon=0;
 				if(couponIndex>=0)coupon=$("input#couponserial").eq(couponIndex).val();
 				if(req.paid_amount==data.response.amount){
