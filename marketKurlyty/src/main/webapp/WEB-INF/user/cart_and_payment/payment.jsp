@@ -25,11 +25,11 @@
 	<input type="hidden" id="doorPassword" value=""/>
 	<input type="hidden" id="recipientName" value=""/>
 	<input type="hidden" id="recipientPhone" value=""/>
-	<c:if test="${orderPrice >= 400 }">
+	<c:if test="${orderPrice >= 40000 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice}"/>
 		<input type="hidden" id="payment" value="${orderPrice }">
 	</c:if>
-	<c:if test="${orderPrice < 400 }">
+	<c:if test="${orderPrice < 40000 }">
 		<fmt:formatNumber var="payPrice" maxFractionDigits="3" value="${orderPrice+3000}"/>
 		<input type="hidden" id="payment" value="${orderPrice+3000 }">
 	</c:if>
@@ -255,10 +255,10 @@
 											<dt class="tit">배송비</dt>
 											<dd class="price delivery_area">
 												<div id="paper_delivery_msg1">
-													<c:if test="${orderPrice>=400 }">
+													<c:if test="${orderPrice>=40000 }">
 														<span id="paper_delivery" class="">0</span>
 													</c:if>
-													<c:if test="${orderPrice<400 }">
+													<c:if test="${orderPrice<40000 }">
 														<span id="paper_delivery" class="">+3,000</span>
 													</c:if>
 													원
@@ -323,7 +323,7 @@
 																	&nbsp;&nbsp;${coupon.coupon_discount }원 할인,
 																</c:if>
 																<c:if test="${coupon.coupon_type==0 }">
-																	&nbsp;&nbsp;${coupon.coupon_discount }원 할인,
+																	&nbsp;&nbsp;${coupon.coupon_discount }% 할인,
 																	최대 ${coupon.coupon_max }원 할인적용
 																</c:if>
 																최소 주문 금액:${coupon.coupon_min }원
@@ -402,9 +402,7 @@
 								<input type="hidden" name="escrow" value="N">
 								<div class="type_form" style="display: block;">
 									<input type="hidden" name="save_payment_method" value="false">
-									<label> <input type="checkbox"
-										name="check_save_payment_method"> <span class="ico"></span>
-										선택한 결제 수단을 다음에도 사용
+									<label> 
 									</label>
 								</div>
 								<table class="goodsinfo_table tbl_left">
@@ -952,12 +950,15 @@ $(document).ready(function(){
 	})
 })
 function changeCoupon(){
+	var point=$("input#usePoint").val();
+	if(point==""||point==null)point=0;
 	var index=parseInt(document.getElementById("selectCoupon").value);
 	var discount;
 	var max;
 	var min;
+	$("input#payment").val(originPayPrice-parseInt(point));
 	var payment=parseInt($("input#payment").val());
-	var point=$("input#usePoint").val();
+	
 	originPayPrice=keepPayPrice;
 	$("span#couponFalse").text("")
 	if(index>=0){
@@ -976,7 +977,7 @@ function changeCoupon(){
 			return false;
 		}
 		if(discount<100){
-			discount=parseInt(originPayPrice*((100-discount)/100));
+			discount=parseInt(originPayPrice*discount/100);
 			discount=parseInt(discount/10)*10;
 			if(discount>max)discount=max;
 		}
@@ -1063,18 +1064,24 @@ function reqeustPay(){
 		alert("배송지 정보를 입력해주세요");
 		return false
 	}
-	if($("input#usePoint").val()!="" && $("input#usePoint").val()!="0"){
-		if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
-			alert("적립금은 10원 단위로 사용할 수 있습니다.")
-			return false;
-		}
-		if(parseInt($("input#usePoint").val())<100){
-			alert("적립금은 100원 이상부터 사용가능합니다.");
-			return false;
+	if($("input#usePoint").val()!=null){
+		if($("input#usePoint").val()!="" && $("input#usePoint").val()!="0"){
+			if($("input#usePoint").val().substring($("input#usePoint").val().length-1)!="0"){
+				alert("적립금은 10원 단위로 사용할 수 있습니다.")
+				return false;
+			}
+			if(parseInt($("input#usePoint").val())<100){
+				alert("적립금은 100원 이상부터 사용가능합니다.");
+				return false;
+			}
 		}
 	}
 	if(parseInt($("input#usePoint").val())>=originPayPrice){
 		alert("결제금액보다 많은 적립금은 사용할 수 없습니다.");
+		return false;
+	}
+	if($("input[name=ordAgree]").is(":checked")==false){
+		alert("결제약관에 동의해주세요.")
 		return false;
 	}
 	var amount=$("input#payment").val();
@@ -1119,7 +1126,7 @@ function reqeustPay(){
 				var recipiPhone=$("input#recipientPhone").val();
 				var amount=parseInt(data.amount)
 				var usingPoint=$("input#usePoint").val();
-				if(usingPoint=="")usingPoint=0;
+				if(usingPoint==""||usingPoint==null)usingPoint=0;
 				var coupon=0;
 				if(couponIndex>=0)coupon=$("input#couponserial").eq(couponIndex).val();
 				if(req.paid_amount==data.response.amount){

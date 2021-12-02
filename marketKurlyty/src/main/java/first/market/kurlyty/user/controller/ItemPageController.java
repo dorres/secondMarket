@@ -38,6 +38,9 @@ public class ItemPageController {
 		boolean isPaging=false;
 		boolean isReviewPaging=false;
 		ItemPageVO getItemInfo = itempageService.getItemPage(vo);
+		if(getItemInfo.getGoods_detail_promotion_serial()>0) {
+			getItemInfo.setGoods_detail_dicountrate(getItemInfo.getGoods_detail_dicountrate()+(10*getItemInfo.getGoods_detail_promotion_serial()));
+		}
 		String userId = (String) session.getAttribute("userId");
 		int currentPage=0;
 		int reviewCuPage=0;

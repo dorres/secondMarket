@@ -53,15 +53,16 @@ div, th, td, li, dt, dd, p {
 												<th width="12%">작성자</th>
 												<th width="12%">작성일</th>
 											</tr>									
-											
+										</table>
 											<c:forEach var="personalqna" items="${personalqnaboard}" varStatus="num">
-												<input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}"/>
+											<table  class="xans-board-listheader" width="100%" style="table-layout:fixed;">
+												<%-- <input type="hidden" name="qna_personal_serial" value="${personalqna.qna_personal_serial}"/> --%>
 												<tr class="menu">
 													<td>${num.index+1}</td>
 													<td>${personalqna.qna_personal_category}</td>
 													<td>${personalqna.qna_personal_title}</td>
 													<td>${personalqna.user_id}</td>
-													<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-mm-dd"/> </td>
+													<td><fmt:formatDate value="${personalqna.qna_personal_date}" pattern="yyyy-MM-dd"/> </td>
 												</tr>
 												<c:if test="${personalqna.qna_personal_image1 != null}">
 												<tr>
@@ -79,14 +80,15 @@ div, th, td, li, dt, dd, p {
 												</tr>
 												</c:if>
 												
-												<tr>
-													<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
-														<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-														<input type="button" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
-													</td>
-												</tr>
+												
 												
 												<c:if test="${personalqna.qna_personal_answer_date == null}">
+													<tr>
+														<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;"> ${personalqna.qna_personal_content}
+															<input type="button" class="bhs_button yb" value="삭제" onclick="location.href='deletePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+															<input type="button" class="bhs_button yb" value="수정" onclick="location.href='updatePersonalQna.do?qna_personal_serial=${personalqna.qna_personal_serial}'" style="align:center; line-height: 24px; width: 70px;">
+														</td>
+													</tr>
 													<tr class="menu"> </tr>
 												</c:if>				
 												
@@ -96,7 +98,7 @@ div, th, td, li, dt, dd, p {
 														<td> ┖ 답변</td>
 														<td>${ personalqna.qna_personal_answer_title}</td>
 														<td>Kurlyty</td>
-														<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-mm-dd"/> </td>
+														<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-MM-dd"/> </td>
 													</tr>
 													<tr>
 														<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_answer}
@@ -105,9 +107,8 @@ div, th, td, li, dt, dd, p {
 														</td>
 													</tr>
 												</c:if>
-											
+											</table>
 											</c:forEach>		
-										</table>	
 									</form>		
 						
 						
