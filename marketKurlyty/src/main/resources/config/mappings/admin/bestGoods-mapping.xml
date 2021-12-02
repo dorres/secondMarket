@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+  <mapper namespace="bestGoodsDAO">
+  	
+  	<select id="bestList" resultType="best">
+ 		select * from (select DISTINCT on(t.category_goods_name) *
+ 		from (MK_ORDER_DETAILS B
+ 		JOIN MK_CATEGORY_GOODS C
+ 		ON B.category_goods_serial = C.category_goods_serial)as t
+ 		ORDER BY t.category_goods_name) as dt
+		order by dt.ORDER_GOODS_COUNT DESC;
+  	</select>
+
+</mapper>

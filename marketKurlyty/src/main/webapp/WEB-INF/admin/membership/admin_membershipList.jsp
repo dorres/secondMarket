@@ -23,7 +23,7 @@
  <script type="text/javascript">
 
 	function delete_check(url) {
-		var answer = confirm("게시글를 정말로 삭제할꺼임?");
+		var answer = confirm("선택하신 등급을 삭제 하시겠습니까?");
 		if (answer == true) {
 			location = url;
 		}
@@ -48,16 +48,19 @@ $(document).ready(function(){
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">적립금</h1>
+				<h1 class="mt-4">등급</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">적립금</a></li>
+					<li class="breadcrumb-item">관리자</li>
 					<li class="breadcrumb-item active">목록</li>
 				</ol>
 				
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
+					<div class="card-header" >
 							<div class="col three">
-								<a href="admin_membershipWrite.mdo" class="btn1 btn-dark">적립금 등록</a>
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									등급 목록
+									<a href="admin_membershipWrite.mdo" class="btn1 btn-dark" style="float: right">회원 등급 추가</a>
+								</div>
 							</div>
 						</div>
 					<div class="card-body">
@@ -66,7 +69,7 @@ $(document).ready(function(){
 								<tr>
 									<th>번호</th>
 									<th>등급 이름</th>
-									<th>등급 할인율</th>
+									<th>등급 적립률</th>
 									<th>등급 전월실적 조건</th>
 								</tr>
 							</thead>
@@ -74,19 +77,18 @@ $(document).ready(function(){
 								<tr>
 									<th>번호</th>
 									<th>등급 이름</th>
-									<th>등급 할인율</th>
+									<th>등급 적립률</th>
 									<th>등급 전월실적 조건</th>
 								</tr>
 							</tfoot>
 							<tbody>
 									<c:forEach var="mem" items="${membershipList }">
 										<tr class="rows">
-											<td>${mem.rownum }</td>
-											<td>${mem.user_membership_name }</td>
-											<td>${mem.user_membership_point_rate}</td>
-											<td>${mem.user_membership_performance}</td>
+											<td onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'">${mem.rownum }</td>
+											<td onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'">${mem.user_membership_name }</td>
+											<td onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'">${mem.user_membership_point_rate}%</td>
+											<td onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'">${mem.user_membership_performance}</td>
 											<td>
-												<input type="button" onclick="location.href='admin_membership.mdo?user_membership_name=${mem.user_membership_name }'" value="수정">
 												<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_membershipDelete.mdo?user_membership_name=${mem.user_membership_name }')"/>
 											</td>
 										</tr>

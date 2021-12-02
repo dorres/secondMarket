@@ -10,26 +10,32 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <style type="text/css">
-
-table.type01 {
-  border-collapse: collapse;
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
   text-align: left;
   line-height: 1.5;
-  margin-bottom: 10px;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
 }
-table.type01 th {
-  width: 150px;
+table.type02 th {
+  width: 200px;
   padding: 10px;
   font-weight: bold;
-
-  /* border: 1px solid #ccc; */
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff
+  background: #eee;
 }
-table.type01 td {
-  width: 300px;
+table.type02 td {
+  width: 350px;
   padding: 10px;
-  text-align: 
-  
-  /* border: 1px solid #ccc; */
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 </style>
 </head>
@@ -44,42 +50,38 @@ table.type01 td {
 			<div class="container-fluid px-4">
 
 				<!-- 여기만 수정해서 사용하세요!! -->
-				<h1 class="mt-4">카테고리</h1>
+				<h1 class="mt-4">상품</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">1차카테고리 상세</a></li>
-					<li class="breadcrumb-item active">목록</li>
+					<li class="breadcrumb-item">1차카테고리</li>
+					<li class="breadcrumb-item active">상세</li>
 				</ol>
 
 				<div class="card mb-4">
 					<div class="card-header">
-						1차 카테고리 상세
+						<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+							1차 카테고리 상세
+						</div>
 					</div>
 					<div class="card-body">
 						<form action="admin_categoryMainUpdate.mdo" method="POST" enctype="multipart/form-data">
-								<table class="type01">
+								<table class="type02">
 									<tr>
-										<th scope="row" style="font-size: 20px">이름</th>
+										<th scope="row" >이름</th>
 										<td><input type="text" name="category_main_name" value="${category.category_main_name }" style="width: 300px;"></td>
 									</tr>
 									<tr>
-										<th scope="row"  style="font-size: 20px">icon(black)</th>
-										<td><input type="file" name="iconImage1" /></td>
-										<td><img alt="아이콘 검정" src="${category.category_main_icon_black }"></td>
+										<th scope="row" >icon(black)</th>
+										<td><input type="file" name="iconImage1"><img alt="아이콘 검정" src="${category.category_main_icon_black }" style="float: right"></td>
 									</tr>
 									<tr>
-										<th scope="row"  style="font-size: 20px">icon(color)</th>
-										
-										<td><input type="file" name="iconImage1" /></td>
-
-										<td><input type="file" name="iconImage2" /></td>
-
-										<td><img alt="아이콘 컬러" src="${category.category_main_icon_color }"></td>
+										<th scope="row" >icon(color)</th>
+										<td><input type="file" name="iconImage2" /> <img alt="아이콘 컬러" src="${category.category_main_icon_color }" style="float: right"></td>
 									</tr>
 								</table>
 							<input type="hidden" value="${category.category_main_icon_black }" name="category_main_icon_black">
 							<input type="hidden" value="${category.category_main_icon_color }" name="category_main_icon_color">
 							<input type="hidden" value="${category.category_main_serial }" name="category_main_serial">
-							<input type="submit" value="수정하기" />
+							<input type="submit" value="수정하기" style="margin-left: 10px"/>
 							<input type="button" value="목록보기" onclick="location.href='admin_categoryMainList.mdo'"/>
 						</form>
 					</div>

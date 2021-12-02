@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
@@ -14,13 +15,13 @@ public class AdminReviewController {
 	@Autowired
 	private AdminService adminService;
 	
-	//∏Æ∫‰ ∏ÆΩ∫∆Æ
-	@RequestMapping("getReviewList.mdo")
-	public String getReviewList(AdminReviewVO review, Model model) {
-		model.addAttribute("reviewList", adminService.getReviewList(review));
-		return "review/admin_reviewList";
+	//∏Æ∫‰¿÷¥¬ ªÛ«∞
+	@RequestMapping("getReviewGoodsName.mdo")
+	public String getReviewGoodsName(AdminReviewVO review, Model model) {
+		model.addAttribute("reviewgoodsname", adminService.getReviewGoodsName(review));
+		return "review/reviewGoodsName";
 	}
-	
+
 	//∏Æ∫‰ ªË¡¶
 	@RequestMapping("deleteReview.mdo")
 	public String deleteReview(AdminReviewVO review) {
@@ -31,5 +32,22 @@ public class AdminReviewController {
 		}else {
 			return "redirect:getReviewList.mdo";
 		}
+	}
+	
+	//∏Æ∫‰ ≥ªøÎ
+	@RequestMapping("getReviewContent.mdo")
+	public String getReviewContent(AdminReviewVO review, Model model) {
+		model.addAttribute("reviewcon", adminService.getReviewContent(review));
+		return "review/admin_reviewContent";
+	}
+	
+	@RequestMapping("updateReview.mdo")
+	@ResponseBody
+	public int updateReview(AdminReviewVO review) {
+		int success =0;
+		review.isReview_best_up();
+		
+		success = adminService.updateReview(review);
+		return success;
 	}
 }

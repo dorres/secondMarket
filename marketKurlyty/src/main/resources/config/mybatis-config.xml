@@ -28,8 +28,8 @@
  		<typeAlias type="first.market.kurlyty.user.vo.user_address_listVO" alias="addressListVO"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminRegistVO" alias="regist"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminStockVO" alias="stock"/>
- 		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminStockStockVO" alias="stockstock"/>
+ 		<typeAlias type="first.market.kurlyty.user.vo.ItemPageVO" alias="itemPage"/> <!-- sungy -->
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminMembershipVO" alias="membership"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminOrderVO" alias="order"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminShippingInfoVO" alias="shipping"/>
@@ -39,9 +39,15 @@
 		<typeAlias type="first.market.kurlyty.user.vo.User_order_listVO" alias="orderListVO"/> 
  		<typeAlias type="first.market.kurlyty.user.vo.Board_Pagination" alias="Board_Pagination"/> 
  		<typeAlias type="first.market.kurlyty.user.vo.ShippingVO" alias="shippingVO"/>
- 		<typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminSales2VO" alias="sales2"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminSalesVO" alias="sales"/>
  		<typeAlias type="first.market.kurlyty.admin.vo.AdminCouponVO" alias="coupon"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminBestGoodsVO" alias="best"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminMemberChartVO" alias="memch"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.GoodsQnaVO" alias="gqna"/>
+ 		<typeAlias type="first.market.kurlyty.admin.vo.AdminReviewVO" alias="review"/>
+ 		
+ 		
  	</typeAliases>
  	<mappers>
  		<mapper resource="config/mappings/category-mapping.xml"/>
@@ -52,7 +58,6 @@
  		<mapper resource="config/mappings/personalQna-mapping.xml"/> <!-- sungy -->
  		<mapper resource="config/mappings/user_address_list-mapping.xml"/>
  		<mapper resource="config/mappings/admin/registration-mapping.xml"/>
- 		<!-- <mapper resource="config/mappings/registration-mapping.xml"/> -->
  		<mapper resource="config/mappings/order-mapping.xml"/>
 		<mapper resource="config/mappings/itemPage-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/admin/banner-mapping.xml"/>
@@ -65,13 +70,18 @@
 		<mapper resource="config/mappings/admin/admin-review.xml"/>
         <mapper resource="config/mappings/admin/goodsQNA-mapping.xml"/>
 		<mapper resource="config/mappings/withdraw-mapping.xml"/> <!-- sungy -->
-		<mapper resource="config/mappings/admin/sales-mapping.xml"/>
+		<mapper resource="config/mappings/admin/chart-mapping.xml"/>
+		<mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
+		<!-- <mapper resource="config/mappings/admin/sales-mapping.xml"/> -->
         <mapper resource="config/mappings/GoodsQna-mapping.xml"/> <!-- sungy -->
 		<mapper resource="config/mappings/user_order_list-mapping.xml"/>
 		<mapper resource="config/mappings/point-mapping.xml"/>
 		<mapper resource="config/mappings/Review-mapping.xml"/>
 		<mapper resource="config/mappings/admin/Recipe-mapping.xml"/>
 		<mapper resource="config/mappings/admin/coupon-mapping.xml"/>
+		<mapper resource="config/mappings/admin/bestGoods-mapping.xml"/>
+		<mapper resource="config/mappings/admin/goodsQNA-mapping.xml"/>
+		<mapper resource="config/mappings/admin/admin-review.xml"/>
 		<mapper resource="config/mappings/mykurlyty-mapping.xml"/>
  	</mappers>
  </configuration>

@@ -5,71 +5,113 @@
  
  <mapper namespace="RegistDAO">
  	
-	<!-- 상품조회 
-	<select id="getGoods" resultType="regist">
-		SELECT (ROW_NUMBER() OVER(ORDER BY goods_detail_serial)) AS ROWNUM, * FROM MK_GOODS_DETAIL;
-	</select>-->
+	<!-- 상품조회  -->
 	<select id="getGoodsList" resultType="regist">
-		SELECT D.goods_detail_serial,D.category_main_serial, D.category_sub_serial, 
-		D.category_goods_serial, D.goods_detail_price, D.goods_detail_stock_quantity,
-		D.goods_detail_stock_notification, D.goods_detail_promotion_serial, D.goods_detail_status,
-		D.goods_detail_dicountrate, S.goods_stock_stock_quantity, S.goods_stock_receiving_quantity
-		FROM MK_GOODS_DETAIL D
-		JOIN MK_GOODS_STOCK S
-		ON D.CATEGORY_GOODS_SERIAL = S.CATEGORY_GOODS_SERIAL
-		ORDER BY GOODS_DETAIL_SERIAL;
+		SELECT (ROW_NUMBER() OVER(ORDER by M.CATEGORY_MAIN_SERIAL,S.CATEGORY_SUB_SERIAL)) AS ROWNUM, 
+			GD.goods_detail_serial,
+			GD.category_main_serial, M.category_main_name, GD.category_sub_serial, S.category_sub_name ,GD.category_goods_serial, G.category_goods_name,
+			GD.goods_detail_price, GD.goods_detail_stock_quantity, 
+			GD.goods_detail_stock_notification, GD.goods_detail_promotion_serial, 
+			GD.goods_detail_status, GD.goods_detail_dicountrate
+		FROM MK_GOODS_DETAIL GD
+		LEFT OUTER JOIN mk_category_main M on GD.category_main_serial = M.category_main_serial
+		LEFT OUTER JOIN mk_category_sub S ON GD.category_sub_serial = S.category_sub_serial
+		LEFT OUTER JOIN mk_category_goods G ON GD.category_goods_serial = G.category_goods_serial
+	</select>
+	<!-- 상품 수정 -->
+	<update id="updateGoods" parameterType="stockstock">
+		UPDATE MK_GOODS_DETAIL 
+		SET 
+			GOODS_DETAIL_PRICE = #{goods_detail_price}
+			,GOODS_DETAIL_STOCK_NOTIFICATION = #{goods_detail_stock_notification}
+			,GOODS_DETAIL_PROMOTION_SERIAL = #{goods_detail_promotion_serial}
+			,GOODS_DETAIL_STATUS = #{goods_detail_status}
+			,GOODS_DETAIL_DICOUNTRATE = #{goods_detail_dicountrate}
+		WHERE 
+			GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+	</update>
+	<select id="getCategory3Names" parameterType="java.util.List" resultType="stockstock">
+		select category_goods_serial, category_goods_name from mk_category_goods where category_goods_serial IN
+		<foreach collection="list" item="goodsList"  open="(" close=")" separator=",">
+            #{goodsList}
+        </foreach> 
 	</select>
 	
-	<!-- 상품 수정 -->
-	<update id="updateGoods" parameterType="regist">
-		UPDATE MK_GOODS_DETAIL 
-		SET GOODS_DETAIL_STOCK_NOTIFICATION=#{goods_detail_stock_notification}
-			,GOODS_DETAIL_PROMOTION_SERIAL=#{goods_detail_promotion_serial}
-			,GOODS_DETAIL_STATUS=#{goods_detail_status},GOODS_DETAIL_DICOUNTRATE=#{goods_detail_dicountrate}
-			,GOODS_DETAIL_PRICE = #{goods_detail_price}
-			WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
+	<insert id="insertStock" parameterType="stock">
+		INSERT INTO MK_GOODS_STOCK VALUES (
+			DEFAULT,
+			#{category_goods_serial},
+			#{goods_stock_receiving_date},
+			#{goods_stock_receiving_quantity},
+			#{goods_stock_stock_quantity},
+			#{goods_stock_exp_date}
+		)
+	</insert>
+	<update id="updateStockQuantity" parameterType="stock">
+		update 
+			mk_goods_detail 
+		set 
+			goods_detail_stock_quantity =
+			(select 
+				goods_detail_stock_quantity 
+			 from 
+			 	mk_goods_detail 
+			 where 
+			 	category_goods_serial = #{category_goods_serial}
+			 ) + #{goods_stock_receiving_quantity}
+		where 
+			category_goods_serial = #{category_goods_serial}
 	</update>
+
+	<select id="stockList" resultType="stock">
+		SELECT 
+			GS.CATEGORY_GOODS_SERIAL,
+			 G.category_goods_name,
+			GS.GOODS_STOCK_STOCK_QUANTITY,
+			GS.GOODS_STOCK_RECEIVING_QUANTITY,
+			GS.GOODS_STOCK_RECEIVING_DATE,
+			GS.GOODS_STOCK_EXP_DATE
+		FROM 
+			MK_GOODS_STOCK GS JOIN mk_category_goods G
+		ON
+			GS.category_goods_serial = G.category_goods_serial
+		WHERE 
+			GS.CATEGORY_GOODS_SERIAL = #{category_goods_serial};
+	</select>
 	
-	<!-- 상품 삭제 -->
+	
+<!-- 	 상품 삭제 
 	<delete id="deleteGoods" parameterType="regist">
 	 	DELETE FROM MK_GOODS_DETAIL WHERE GOODS_DETAIL_SERIAL = #{goods_detail_serial};
 	</delete>
 	
-	<!-- 입고 조회 -->
-	<select id="stockList" resultType="stock">
-		SELECT GOODS_STOCK_RECEIVING_DATE,GOODS_STOCK_RECEIVING_QUANTITY, GOODS_STOCK_EXP_DATE,CATEGORY_GOODS_SERIAL
-		FROM MK_GOODS_STOCK 
-		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
-	</select>
+
 	
-	<!-- 입고 수정 -->
+	입고 수정
 	<update id="updateStock" parameterType="stock">
 		UPDATE MK_GOODS_STOCK 
 		SET GOODS_STOCK_RECEIVING_QUANTITY = #{goods_stock_receiving_quantity}
 		WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
 	</update>
 	
-	<!-- 판매등록/입고 -->
+	판매등록/입고
 	<select id="getStock" resultType="stock" parameterType="int">
 		SELECT * FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{serial}
 	</select>
 	
-	<insert id="insertStock" parameterType="stock">
-		INSERT INTO MK_GOODS_STOCK VALUES(DEFAULT,#{category_goods_serial},#{goods_stock_receiving_date},
-		#{goods_stock_receiving_quantity},#{goods_stock_stock_quantity},#{goods_stock_exp_date})
-	</insert>
+
 	
-	<!-- 수량 합계 -->
+	수량 합계
 	<select id="stockSum" resultType="stock">
 	SELECT SUM(GOODS_STOCK_RECEIVING_QUANTITY+GOODS_STOCK_STOCK_QUANTITY) TOTAL
 	FROM MK_GOODS_STOCK WHERE CATEGORY_GOODS_SERIAL = #{category_goods_serial};
 	</select>
 	
-	<!-- 리스트에 재고 출력 -->
+	리스트에 재고 출력
 	<update id="stockstcok" parameterType="stockstock">
 		UPDATE MK_GOODS_DETAIL AS D SET GOODS_DETAIL_STOCK_QUANTITY = 
 		COALESCE(D.GOODS_DETAIL_STOCK_QUANTITY,0)+S.GOODS_STOCK_STOCK_QUANTITY 
 		FROM MK_GOODS_STOCK AS S
 		WHERE D.CATEGORY_GOODS_SERIAL = #{goods_detail_serial};
-	</update>
+	</update> -->
  </mapper>

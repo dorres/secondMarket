@@ -34,14 +34,17 @@
 				<!-- 여기만 수정해서 사용하세요!! -->
 				<h1 class="mt-4">마케팅 관리</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.html">배너 등록</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					<li class="breadcrumb-item">배너</li>
+					<li class="breadcrumb-item active">목록</li>
 				</ol>
 
 				<div class="card mb-4">
-					<div class="card-header"  align="right">
-							<div class="col three">
-								<a href="admin_bannerWrite.mdo" class="btn1 btn-dark">배너 등록</a>
+					<div class="card-header" >
+					<div class="col three">
+								<div style="font-size: 25px; color: #5f0080; font-weight: bold; ">
+									배너목록
+									<a href="admin_bannerWrite.mdo" class="btn1 btn-dark" style="float: right;">배너 등록</a>
+								</div>
 							</div>
 						</div>
 					<div class="card-body">

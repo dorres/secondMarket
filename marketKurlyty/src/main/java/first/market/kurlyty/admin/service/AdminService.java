@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.vo.AdminBannerVO;
+import first.market.kurlyty.admin.vo.AdminBestGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryGoodsVO;
 import first.market.kurlyty.admin.vo.AdminCategoryMainVO;
 import first.market.kurlyty.admin.vo.AdminCategorySubVO;
 import first.market.kurlyty.admin.vo.AdminCouponVO;
 import first.market.kurlyty.admin.vo.AdminFAQVO;
+import first.market.kurlyty.admin.vo.AdminMemberChartVO;
 import first.market.kurlyty.admin.vo.AdminMembershipVO;
 import first.market.kurlyty.admin.vo.AdminNoticeVO;
 import first.market.kurlyty.admin.vo.AdminOrderVO;
@@ -17,6 +19,7 @@ import first.market.kurlyty.admin.vo.AdminQnaVO;
 import first.market.kurlyty.admin.vo.AdminRegistVO;
 import first.market.kurlyty.admin.vo.AdminShippingInfoVO;
 import first.market.kurlyty.admin.vo.AdminReviewVO;
+import first.market.kurlyty.admin.vo.AdminSales2VO;
 import first.market.kurlyty.admin.vo.AdminSalesVO;
 import first.market.kurlyty.admin.vo.AdminStockStockVO;
 import first.market.kurlyty.admin.vo.AdminStockVO;
@@ -62,42 +65,63 @@ public interface AdminService {
 	//약관 삭제
 	 int deleteTerms(AdminTermsAgreementVO agree);
 	
-	//상품 등록
-	 int inserGoods(AdminRegistVO regist);
-	
+
 	//상품조회리스트
-	 List<AdminRegistVO> goodsList(AdminRegistVO regist);
+	 List<AdminRegistVO> goodsList();
 	
-	//상품조회
-	 AdminRegistVO getGoods(AdminRegistVO regist);
-	
-	//상품 수정
-	 int updateGoods(AdminRegistVO regist);
-	
-	//상품 삭제
-	 int deleteGoods(AdminRegistVO regist);
-		
-	//재고 조회
+	 //상품 수정..
+	 int updateGoods(AdminStockStockVO stockstock);
+	 
+	 //3차 카테고리이름
+	 List<AdminStockStockVO> getCategory3Names(List<Integer> goodsList);
+	 
+	 int insertStock(AdminStockVO stock);
+	 int updateStockQuantity(AdminStockVO stock);
+	 
+	 //재고 조회
 	 List<AdminStockVO> getStockList(AdminStockVO stock);
+	 
+
+	 
+
+	 
+//		//상품 등록
+//	 int inserGoods(AdminRegistVO regist);
 	
-	//입고 수정
-	int updateStock (AdminStockVO stock);
+//	//상품조회
+//	 AdminRegistVO getGoods(AdminRegistVO regist);
 	
-	//재고 합계
-	AdminStockVO sumStock(AdminStockVO stock);
-	
-	//판매 등록
-	AdminStockVO getStock(int serial);
-	int insertStock(AdminStockVO stock);
-	
-	// 리스트에 재고 출력
-	int stockstock(AdminStockStockVO stockstock);
+//	//상품 삭제
+//	 int deleteGoods(AdminRegistVO regist);
+//		
+
+//	
+//	//입고 수정
+//	int updateStock (AdminStockVO stock);
+//	
+//	//재고 합계
+//	AdminStockVO sumStock(AdminStockVO stock);
+//	
+//	//판매 등록
+//	AdminStockVO getStock(int serial);
+//	int insertStock(AdminStockStockVO stockstock);
+//	
+//	// 리스트에 재고 출력
+//	int stockstock(AdminStockStockVO stockstock);
 	
 	//----------------------------------------------------------------
-	//리뷰 리스트
-	List<AdminReviewVO> getReviewList(AdminReviewVO review);
+	
+	//리뷰있는 상품
+	List<AdminReviewVO> getReviewGoodsName(AdminReviewVO review);
+	
 	//리뷰 삭제
 	int deleteReview(AdminReviewVO review); 
+	
+	//리뷰내용
+	AdminReviewVO getReviewContent(AdminReviewVO review);
+	
+	//베스트리뷰
+	int updateReview(AdminReviewVO review);
 	//=================================================================
 	
 	// 상품문의 리스트 (답변대기)
@@ -117,12 +141,25 @@ public interface AdminService {
 	
 	//상품 답변 수정
 	int updateGqnaSuc(GoodsQnaVO gqna);
+	
+	//상품문의 카운트
+	GoodsQnaVO gqnaCount(GoodsQnaVO gqna);
 	//=================================================================
 	
-	//매출 날짜 
+	//매출차트 일별
 	List<AdminSalesVO> getDate(AdminSalesVO sales);
+	
+	//매출 차트 월별
+	List<AdminSales2VO> getMonth(AdminSales2VO sales);
+	
+	//멤버등급 차트
+	List<AdminMemberChartVO> getMemChart(AdminMemberChartVO memch);
 	//=================================================================
 
+	//베스트 상품
+	List<AdminBestGoodsVO> bestList(AdminBestGoodsVO best);
+	
+	//=================================================================
 	//공지사항 리스트
 	List<AdminNoticeVO> getNoticeList(AdminNoticeVO notice);
 	
@@ -269,6 +306,8 @@ public interface AdminService {
 	List<AdminShippingInfoVO> getShippingInfoList(List<String> merchantList);
 
 	int updateStatus(List<String> merchantList);
+	
+	AdminOrderVO orderCount(AdminOrderVO order);
 	//---------------------------------------------------------------------------
 	//주문관리 (배송과정)
 	List<AdminOrderVO> getOrderDeliveryList();
