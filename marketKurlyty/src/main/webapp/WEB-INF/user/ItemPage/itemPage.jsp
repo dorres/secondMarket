@@ -537,7 +537,7 @@ $(document).ready(function(){
 													class="goods-view-infomation-tab-anchor __active">상품상세정보</a></li>
 												<li class="goods-view-infomation-tab"><a
 													href="#why-kurlyty"
-													class="goods-view-infomation-tab-anchor">Why Kurylty</a></li>
+													class="goods-view-infomation-tab-anchor">Why Kurlyty</a></li>
 												<li class="goods-view-infomation-tab goods-view-review-tab">
 													<a href="#goods-review"
 													class="goods-view-infomation-tab-anchor">후기 <span

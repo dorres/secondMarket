@@ -58,7 +58,7 @@
 					<div class="user_form">
 						<script id="delivery"></script>
 
-						<c:if test="${fn:contains(shippingAddress.user_address1,'서울')|| fn:contains(shippingAddress.user_address1,'부산')||fn:contains(shippingAddress.user_address1,'대구')}">
+						<c:if test="${fn:contains(shippingAddress.user_address1,'서울')|| fn:contains(shippingAddress.user_address1,'부산')||fn:contains(shippingAddress.user_address1,'대구')||fn:contains(shippingAddress.user_address1,'대전')}">
 							<div id="popup-for-new-satbyul-user-web" class="service_delivery"
 								style="display: block;">
 								<h2 class="tit_bnr">
@@ -70,6 +70,9 @@
 									</c:if>
 									<c:if test="${fn:contains(shippingAddress.user_address1,'대구') }">
 										<span id="new-satbyul-region">주문 지역(대구 일부)에 </span>
+									</c:if>
+									<c:if test="${fn:contains(shippingAddress.user_address1,'대전') }">
+										<span id="new-satbyul-region">주문 지역(대전 일부)에 </span>
 									</c:if>
 									<span class="emph"><span class="in_emph">샛별배송 </span></span> 서비스가
 									시작됩니다!

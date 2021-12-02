@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,7 +111,19 @@
 							</div>
 							<div class="user">
 								<span class="name">${address.user_name }</span><span class="phone"><span
-									class="middot"></span>${address.user_phone }</span><span class="delivery star">샛별배송</span>
+									class="middot"></span>${address.user_phone }</span>
+									<c:if test="${fn:contains(address.user_address1,'서울') }">
+										<span class="delivery star">샛별배송</span>
+									</c:if>
+									<c:if test="${fn:contains(address.user_address1,'대전') }">
+										<span class="delivery star">샛별배송</span>
+									</c:if>
+									<c:if test="${fn:contains(address.user_address1,'대구') }">
+										<span class="delivery star">샛별배송</span>
+									</c:if>
+									<c:if test="${fn:contains(address.user_address1,'부산') }">
+										<span class="delivery star">샛별배송</span>
+									</c:if>
 							</div>
 							<div class="btn_modify">
 								<button type="button" class="ico modify" data-addr-no="12223986"
