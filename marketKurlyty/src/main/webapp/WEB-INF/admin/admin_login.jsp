@@ -28,7 +28,7 @@
 		}
 	});
 </script>
-<title>Login</title>
+<title>마켓컬리티 :: 내일의 장보기, 마켓컬리티</title>
 </head>
 <body>
     <section class="login-form">

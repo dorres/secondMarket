@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰</title>
+<title>마켓컬리티 :: 내일의 장보기, 마켓컬리티</title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
