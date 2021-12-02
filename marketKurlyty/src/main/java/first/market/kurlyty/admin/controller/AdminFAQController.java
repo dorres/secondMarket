@@ -36,7 +36,7 @@ public class AdminFAQController {
 		if(success != 0) {
 			return "redirect:admin_FAQList.mdo";		
 		}else {
-			return "redirect:admin_FAQ";
+			return "redirect:admin_FAQ.mdo";
 			
 		}
 	}

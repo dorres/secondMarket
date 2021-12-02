@@ -63,23 +63,23 @@
 							<thead>
 								<tr>
 									<th>번호</th>
-									<th>1차 카테고리(이름/번호)</th>
-									<th>2차 카테고리(이름/번호)</th>
+									<th>1차 카테고리</th>
+									<th>2차 카테고리</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>번호</th>
-									<th>1차 카테고리(이름/번호)</th>
-									<th>2차 카테고리(이름/번호)</th>
+									<th>1차 카테고리</th>
+									<th>2차 카테고리</th>
 								</tr>
 							</tfoot>
 							<tbody>
 								<c:forEach var="sub" items="${category2 }">
 									<tr>
 										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">${sub.rownum }</td>
-										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">(${ sub.category_main_serial} / ${sub.category_main_name })</td>
-										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">(${sub.category_sub_serial }/${ sub.category_sub_name})</td>
+										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'"> ${sub.category_main_name }</td>
+										<td onclick="location.href='admin_categorySub.mdo?category_sub_serial=${sub.category_sub_serial }'">${ sub.category_sub_name}</td>
 										<td>
 											<input type="button" value="삭제하기" onclick="javascript:delete_check('admin_categorySubDelete.mdo?category_sub_serial=${sub.category_sub_serial }')"/>
 										</td>

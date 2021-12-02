@@ -138,7 +138,7 @@ $(document).on("click", "#updateBtn", function(){
 	var status = tr.find("#deleveryStatus-select option:selected").val();
 	var serial = tr.find("#order_merchant_serial").val();
 	
-    if(confirm('받는 사람을 수정하시겠습니까?')) {
+    if(confirm('배송 상태를 수정하시겠습니까?')) {
 	$.ajax({
 		type:"POST",
 		url:"admin_orderWaitUpdate.mdo",

@@ -122,6 +122,7 @@ textarea:focus, input:focus{
 									<td colspan="3"  height="500px"><textarea name="faq_content" >${faq.faq_content }</textarea>
 								</tr>
 							</table>
+							<input type="hidden" value="${faq.faq_serial }" name="faq_serial">
 							<input type="submit" value="수정하기" />
 							<input type="button" value="목록보기" onclick="location.href='admin_FAQList.mdo'"/>
 						</form>
