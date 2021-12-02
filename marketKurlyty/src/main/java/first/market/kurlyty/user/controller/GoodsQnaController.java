@@ -45,7 +45,7 @@ public class GoodsQnaController {
 		vo.setUser_id((String)session.getAttribute("userId"));
 		List<GoodsQnaVO> boardList = goodsqnaService.getGoodsQnaUserList(vo);
 		for(GoodsQnaVO qna:boardList) {
-			qna.setQna_goods_content(qna.getQna_goods_content().replace("\r\n", "ln"));
+			qna.setQna_goods_content(qna.getQna_goods_content().replaceAll("\r\n", "ln"));
 		}
 		model.addAttribute("goodsqnaboard", boardList);
 		return "mykurly/goodsQna"; 

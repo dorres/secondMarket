@@ -96,7 +96,7 @@ div, th, td, li, dt, dd, p {
 														<td> ┖ 답변</td>
 														<td>${ personalqna.qna_personal_answer_title}</td>
 														<td>Kurlyty</td>
-														<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-mm-dd"/> </td>
+														<td><fmt:formatDate value="${personalqna.qna_personal_answer_date}" pattern="yyyy-MM-dd"/> </td>
 													</tr>
 													<tr>
 														<td align="center" colspan="3" class="sub" style="align:center; display:none; width:100%;">${personalqna.qna_personal_answer}
