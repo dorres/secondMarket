@@ -118,7 +118,10 @@ function inputCart(serial){
 							<div id="paper_delivery_msg1" style="display: none">
 								<span id="paper_delivery">0</span>원
 							</div>
-							<div id="paper_delivery_msg2" style="">최초 1회 무료배송</div>
+							<c:if test="${op>=40000 }">
+							<div id="paper_delivery_msg2" style="">0원</div></c:if>
+							<c:if test="${op<40000 }">
+							<div id="paper_delivery_msg2" style="">3000원</div></c:if>
 						</td>
 					</tr>
 					<tr>
@@ -126,17 +129,13 @@ function inputCart(serial){
 						<td>- <span id="paper_goodsDc">${op-dp }</span>원
 						</td>
 					</tr>
-					<tr>
-						<th>쿠폰할인</th>
-						<td><span id="paper_coupon">0</span>원</td>
-					</tr>
-					<tr>
-						<th>적립금사용</th>
-						<td><span id="paper_emoney">0</span>원</td>
-					</tr>
+					
 					<tr>
 						<th>결제금액</th>
-						<td><span id="paper_settlement">${dp }</span>원</td>
+						<c:if test="${op>=40000 }">
+						<td><span id="paper_settlement">${dp }</span>원</td></c:if>
+						<c:if test="${op<40000 }">
+						<td><span id="paper_settlement">${dp +3000}</span>원</td></c:if>
 					</tr>
 					<tr>
 						<th>적립예정금액</th>

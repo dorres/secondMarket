@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>??????????????</title>
+<title>마켓컬리티 :: 내일의 장보기, 마켓컬리티</title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -138,7 +138,7 @@ $(document).on("click", "#updateBtn", function(){
 	var status = tr.find("#deleveryStatus-select option:selected").val();
 	var serial = tr.find("#order_merchant_serial").val();
 	
-    if(confirm('받는 사람을 수정하시겠습니까?')) {
+    if(confirm('배송 상태를 수정하시겠습니까?')) {
 	$.ajax({
 		type:"POST",
 		url:"admin_orderWaitUpdate.mdo",

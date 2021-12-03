@@ -79,14 +79,14 @@
 								<form action="reviewProc.do" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="user_id" value="${goods.user_id }">
 									<c:if test="${goods!=null }">
-										<input type="text" name="category_goods_serial" value="${goods.category_goods_serial }">
+										<input type="hidden" name="category_goods_serial" value="${goods.category_goods_serial }">
 									</c:if>
 									<c:if test="${goods==null }">
-										<input type="text" name="category_goods_serial" value="${update.category_goods_serial }">
+										<input type="hidden" name="category_goods_serial" value="${update.category_goods_serial }">
 									</c:if>
-									<input type="text" name="review_serial1" value="${update.review_serial }">
+									<input type="hidden" name="review_serial1" value="${update.review_serial }">
 									<c:if test="${goods!=null }">
-										<input type="text" name="order_details_serial" value="${goods.order_details_serial }">
+										<input type="hidden" name="order_details_serial" value="${goods.order_details_serial }">
 									</c:if>
 									<div class="write_board">
 										<div class="goods_info">

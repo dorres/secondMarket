@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>??????????????</title>
+<title>마켓컬리티 :: 내일의 장보기, 마켓컬리티</title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
 <style type="text/css">
@@ -122,6 +122,7 @@ textarea:focus, input:focus{
 									<td colspan="3"  height="500px"><textarea name="faq_content" >${faq.faq_content }</textarea>
 								</tr>
 							</table>
+							<input type="hidden" value="${faq.faq_serial }" name="faq_serial">
 							<input type="submit" value="수정하기" />
 							<input type="button" value="목록보기" onclick="location.href='admin_FAQList.mdo'"/>
 						</form>

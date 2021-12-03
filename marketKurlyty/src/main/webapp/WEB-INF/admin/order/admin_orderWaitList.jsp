@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>마켓컬리티 :: 내일의 장보기, 마켓컬리티</title>
  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/style/admin/styles.css"/>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -163,31 +163,20 @@
 	
 	$("#down").click(function() {
 		var checkArr = [];
-		$("input[name=chk]:checked").each(function(){
+		$("input[name=merchant]:checked").each(function(){
 			 checkArr.push($(this).val());
 		});
-		$("#form").attr("action", "admin_excelDown.mdo");  
-		$("#form").submit();
+
 		
-/* 		if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
+ 		if(confirm('체크한 주문건 송장을 출력하시겠습니까?')) {
 			 if(checkArr.length >0){
-				$.ajax({
-				    type: 'post',
-				    url: 'admin_excelDown.mdo',
-				    dataType: 'text',
-				    data: { "merchant": checkArr },
-				    success: function(result) {
-						if(result != 0){
-							alert("송장 출력 성공.")
-							 location.reload();
-						}else{
-							alert("송장 출력 실패.")
-							
-						}
-					}
-				});
+					$("#form").attr("action", "admin_excelDown.mdo");  
+					$("#form").submit();
+			 }else{
+				 alert("주문건을 체크해주세요.");
+				 location.reload();
 			 }
-		} */
+		} 
 	});
 	
 	$("#update").click(function() {
