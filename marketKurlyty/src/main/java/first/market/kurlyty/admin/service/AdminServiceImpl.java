@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import first.market.kurlyty.admin.dao.AdminDAO;
@@ -50,9 +51,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int joinProc(AdminVO admin) {
-		int success = 0;
-		success = adminDao.insertAdmin(admin);
-		return success;
+		return adminDao.insertAdmin(admin);
 	}
 	
 	
