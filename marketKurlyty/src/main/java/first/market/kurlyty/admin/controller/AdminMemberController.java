@@ -1,5 +1,7 @@
 package first.market.kurlyty.admin.controller;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import first.market.kurlyty.admin.service.AdminService;
 import first.market.kurlyty.admin.vo.AdminTermsAgreementVO;
 import first.market.kurlyty.admin.vo.AdminUserVO;
 import first.market.kurlyty.admin.vo.AdminVO;
+import first.market.kurlyty.user.controller.SecurityUtil;
 
 @Controller
 public class AdminMemberController {
@@ -28,6 +31,24 @@ public class AdminMemberController {
 		model.addAttribute("adminList", adminService.adminList(admin));
 		return "manager/admin_adminList";
 	}
+	//매니저 등록
+	@RequestMapping("joinProc.mdo")
+	public String joinProc(AdminVO admin) {
+		int success = 0;
+		try {
+			String securityPw = SecurityUtil.sha256(admin.getAdmin_pw());
+			admin.setAdmin_pw(securityPw);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		success = adminService.joinProc(admin);
+		if(success==1) {
+			return "redirect:admin_adminList.mdo";
+		}else {
+			return "redirect:join.mdo";
+		}
+	}
+	
 	//매니저 목록 수정페이지
 	@RequestMapping("update.mdo")
 	public String update(AdminVO admin, Model model) {

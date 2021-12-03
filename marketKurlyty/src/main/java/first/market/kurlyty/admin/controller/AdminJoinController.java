@@ -25,24 +25,6 @@ public class AdminJoinController {
 		return "manager/admin_join";
 	}
 	
-	//관리자 회원가입 처리
-	@RequestMapping("joinProc.mdo")
-	public String joinProc(AdminVO admin) {
-		int success = 0;
-		try {
-			String securityPw = SecurityUtil.sha256(admin.getAdmin_pw());
-			admin.setAdmin_pw(securityPw);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		success = adminService.joinProc(admin);
-		if(success==1) {
-			return "redirect:manager/admin_adminList.mdo";
-		}else {
-			return "redirect:join.mdo";
-		}
-	}
-
 	//관리자 회원가입-아이디 체크
 		@RequestMapping(value="idCheck.mdo", produces="html/text; charset=utf-8")
 		@ResponseBody

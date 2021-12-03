@@ -51,7 +51,7 @@
 		FROM MK_USER U
 		JOIN MK_USER_DETAILS UD
 		ON U.USER_ID = UD.USER_ID
-		WHERE U.USER_ID = #{user_id}
+		
 	</select>
 	<!-- 회원 수정 -->
 	<update id="updateUser" parameterType="user">
