@@ -249,7 +249,7 @@ function formJoinSubmit(){
 		document.frmAdmin.admin_address2.focus();
 		return;
 	}
-
+	alert('등록하시겠습니까?');
 	document.frmAdmin.submit();
 }
  function chkId(){
