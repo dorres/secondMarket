@@ -1062,7 +1062,7 @@ function termViewClose(){
 	$("div#termView2").fadeOut(100);
 }
 var IMP = window.IMP; // Can be omitted
-IMP.init("imp09497562"); // Example: imp00000000
+IMP.init(""); // Example: imp00000000
 function reqeustPay(){
 	if($("input#isShipping").val()=="false"){
 		alert("배송지 정보를 입력해주세요");
