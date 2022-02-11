@@ -14,7 +14,7 @@ if(${FailMessage != null}){
 	alert("${FailMessage}");
 }
 
-Kakao.init('e843248c5d13b454b09013d97687a1b6');
+Kakao.init('');
 console.log(Kakao.isInitialized());
 function KakaoLogin(){
 	var kakaoOk=null;
