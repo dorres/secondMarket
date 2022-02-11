@@ -53,8 +53,8 @@ public class PaymentController {
 	private IamportClient api;
 	
 	public PaymentController() {
-		this.api=new IamportClient("2480500976074823",
-				"3fa08672e435742e0be18acb31c3c1624cb054d55c8359c12688d9551b4f09bbbd06b78b2efe9881");
+		this.api=new IamportClient("",
+				"");
 	}
 	
 	@ResponseBody
@@ -106,18 +106,18 @@ public class PaymentController {
 	@RequestMapping("/paymentSuccess.do")
 	@ResponseBody
 	public String paymentSuccess(OrderVO order, ShippingVO shipping,int usingPoint,int coupon_serial) {
-		order.setOrder_delivery_status("°áÁ¦¿Ï·á");
+		order.setOrder_delivery_status("ê²°ì œì™„ë£Œ");
 		orderService.insertOrder(order);
 		List<CartVO> purchaseGoods = cartService.getPurchaseGoods(order.getUser_id());
 		for(CartVO cartItem : purchaseGoods) {
 			
-			//Á¦Ç° Àç°í º¯°æ
+			//ì œí’ˆ ì¬ê³  ë³€ê²½
 			GoodsStockVO stock = new GoodsStockVO();
 			stock.setCategory_goods_serial(cartItem.getCategory_goods_serial());
 			stock.setGoods_stock_stock_quantity(cartItem.getGoods_cart_count());
 			orderService.reduceGoodsStock(stock);
 			
-			//Á¦Ç°ÁÖ¹® ³»¿ª ÀúÀåÇÏ±â
+			//ì œí’ˆì£¼ë¬¸ ë‚´ì—­ ì €ì¥í•˜ê¸°
 			ProductVO productInfo = cartService.getCartItem(cartItem);
 			int goods_price = cartItem.getGoods_cart_count()*productInfo.getGoods_last_price();
 			int goods_old_price = cartItem.getGoods_cart_count()*productInfo.getGoods_detail_price();
@@ -135,7 +135,7 @@ public class PaymentController {
 		userDetail.setUser_point(point+order.getUser_point());
 		userDetail.setUser_total_purchase(totalPurchase+order.getOrder_goods_price());
 		orderService.updateUserPurchase(userDetail);
-		//shippingÃÂ¤ÂºÂ¸ Â´Ã£Â±Ã¢
+		//shippingÂì§šì¨˜ì¨ ì¨ˆì°¾ì§¹ì°½
 		shipping.setOrder_merchant_serial(order.getOrder_merchant_serial());
 		shipping.setShipping_address1(order.getUser_address1());
 		shipping.setShipping_address2(order.getUser_address2());
